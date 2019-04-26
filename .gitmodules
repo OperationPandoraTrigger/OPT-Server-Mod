@@ -1,0 +1,3 @@
+[submodule "dependencies/CLib"]
+	path = dependencies/CLib
+	url = https://github.com/TaktiCool/CLib.git
