@@ -4,7 +4,7 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = 1.70;
-        author = "Raven";
+        author = "OPT";
         authors[] = {"Raven"};
         authorUrl = "";
         version = VERSION;
