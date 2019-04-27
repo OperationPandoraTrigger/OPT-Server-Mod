@@ -33,13 +33,13 @@ if not [%version%] == [both] goto:eof
 	echo Building dev version of the CLib Mod...
 	
 	:: in order to do that the ISDEV macro flag has to be set programmatically
-	1>NUL copy ..\..\dependencies\CLib\isDev.hpp ..\..\dependencies\CLib\isDev.hpp.original
-	echo:>> ..\..\dependencies\CLib\isDev.hpp
-	echo|set /p="#define ISDEV" >> ..\..\dependencies\CLib\isDev.hpp
+	1>NUL copy ..\..\dependencies\CLib\addons\CLib\isDev.hpp ..\..\dependencies\CLib\addons\CLib\isDev.hpp.original
+	echo:>> ..\..\dependencies\CLib\addons\CLib\isDev.hpp
+	echo|set /p="#define ISDEV" >> ..\..\dependencies\CLib\addons\CLib\isDev.hpp
 
-	..\programs\armake2.exe build -x isDev.hpp.original ..\..\dependencies\CLib\addons\CLib ..\..\PBOs\release\@CLib\addons\clib.pbo
-
+	..\programs\armake2.exe build -x isDev.hpp.original ..\..\dependencies\CLib\addons\CLib\ ..\..\PBOs\dev\@CLib\addons\clib.pbo
+	
 	::restore the isDev.hpp file
-	del ..\..\dependencies\CLib\isDev.hpp /q
-	1>NUL copy ..\..\dependencies\CLib\isDev.hpp.original ..\..\dependencies\CLib\isDev.hpp
-	del ..\..\dependencies\CLib\isDev.hpp.original /q
+	del ..\..\dependencies\CLib\addons\CLib\isDev.hpp /q
+	1>NUL copy ..\..\dependencies\CLib\addons\CLib\isDev.hpp.original ..\..\dependencies\CLib\addons\CLib\isDev.hpp
+	del ..\..\dependencies\CLib\addons\CLib\isDev.hpp.original /q
