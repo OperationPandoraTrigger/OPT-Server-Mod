@@ -1,4 +1,5 @@
 :: This script creates all directory infrastructure the build scripts will make use of
+
 @echo off
 
 :: create folder for produced PBOs if it doesn't exist yet

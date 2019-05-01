@@ -1,4 +1,9 @@
-:: This script will build the CLib mod
+:: This script will build the CLib mod. Per default this program pauses at the end of execution to let the user
+:: inspect the output of the called commands
+:: Param 0: Which version of the mod should be built. Possible values are [dev|release|both|ask] where ask has the same effect
+:: 				as omitting this parameter: There will be an interactive prompt asking for any of the other three values
+:: Param 1: If this value is either noPause or buildModAll, the script won't pause at the end of execution
+
 @echo off
 
 :: This batch file will set the pboName variable

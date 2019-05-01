@@ -1,9 +1,14 @@
 :: This script creates a mod directory for a mod with the given name
+:: Param 0: The name of the mod the directory should be created for
+:: Param 1: Determines what kind of version of the mod the created directory should be for (This 
+:: 				determines in which subdir the directory will be created). Can be [dev|release|both] Omitting this parameter
+:: 					is equal to using the both argument
+
 @echo off
 
 :: check if there is a parameter given
 if [%1] == [] (
-	echo Missing argument int createModDir.bat
+	echo Missing argument in createModDir.bat
 	exit 1
 )
 
