@@ -39,6 +39,9 @@ goto processArgs
 	
 	echo Building release version of OPT Mod...
 	
+	:: move away all old PBOs
+	for /f %%a IN ('dir ..\..\PBOs\release\@OPT\addons\ /b') do move ..\..\PBOs\release\@OPT\addons\%%a ..\..\PBOs\archive\release\ >nul
+	
 	..\programs\armake2.exe build -i ..\..\dependencies\CLib\addons\ -x pboName.h ..\..\addons\OPT\ ..\..\PBOs\release\@OPT\addons\%pboName%
 
 if not [%version%] == [both] goto finish
@@ -50,7 +53,10 @@ if not [%version%] == [both] goto finish
 	
 	echo Building dev version of the OPT Mod...
 	
-	:: in order to do that the ISDEV macro flag has to be set programmatically
+	:: move away all old PBOs
+	for /f %%a IN ('dir ..\..\PBOs\dev\@OPT\addons\ /b') do move ..\..\PBOs\dev\@OPT\addons\%%a ..\..\PBOs\archive\dev\ >nul
+	
+	:: in order to build the dev-version the ISDEV macro flag has to be set programmatically
 	1>NUL copy ..\..\addons\OPT\isDev.hpp ..\..\addons\OPT\isDev.hpp.original
 	echo:>> ..\..\addons\OPT\isDev.hpp
 	echo|set /p="#define ISDEV" >> ..\..\addons\OPT\isDev.hpp
