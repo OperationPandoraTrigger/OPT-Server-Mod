@@ -1,6 +1,9 @@
 :: This script will build the CLib mod
 @echo off
 
+:: This batch file will set the pboName variable
+call .\getPBOName.bat ..\..\dependencies\CLib\addons\CLib\pboName.h clib
+
 set version=%1
 
 if [%version%] == [ask] (
@@ -36,7 +39,10 @@ goto processArgs
 	
 	echo Building release version of CLib Mod...
 	
-	..\programs\armake2.exe build  ..\..\dependencies\CLib\addons\CLib ..\..\PBOs\release\@CLib\addons\clib.pbo
+	:: move away all old PBOs
+	for /f %%a IN ('dir ..\..\PBOs\release\@CLib\addons\ /b') do move ..\..\PBOs\release\@CLib\addons\%%a ..\..\PBOs\archive\release\ >nul
+	
+	..\programs\armake2.exe build  ..\..\dependencies\CLib\addons\CLib ..\..\PBOs\release\@CLib\addons\%pboName%
 
 if not [%version%] == [both] goto finish
 
@@ -47,12 +53,15 @@ if not [%version%] == [both] goto finish
 	
 	echo Building dev version of the CLib Mod...
 	
-	:: in order to do that the ISDEV macro flag has to be set programmatically
+	:: move away all old PBOs
+	for /f %%a IN ('dir ..\..\PBOs\dev\@CLib\addons\ /b') do move ..\..\PBOs\dev\@CLib\addons\%%a ..\..\PBOs\archive\dev\ >nul
+	
+	:: in order to build the dev-version the ISDEV macro flag has to be set programmatically
 	1>NUL copy ..\..\dependencies\CLib\addons\CLib\isDev.hpp ..\..\dependencies\CLib\addons\CLib\isDev.hpp.original
 	echo:>> ..\..\dependencies\CLib\addons\CLib\isDev.hpp
 	echo|set /p="#define ISDEV" >> ..\..\dependencies\CLib\addons\CLib\isDev.hpp
 
-	..\programs\armake2.exe build -x isDev.hpp.original ..\..\dependencies\CLib\addons\CLib\ ..\..\PBOs\dev\@CLib\addons\clib.pbo
+	..\programs\armake2.exe build -x isDev.hpp.original ..\..\dependencies\CLib\addons\CLib\ ..\..\PBOs\dev\@CLib\addons\%pboName%
 	
 	::restore the isDev.hpp file
 	del ..\..\dependencies\CLib\addons\CLib\isDev.hpp /q
