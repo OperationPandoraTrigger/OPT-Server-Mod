@@ -1,6 +1,9 @@
 :: This script will build the OPT mod
 @echo off
 
+:: This batch file will set the pboName variable
+call .\getPBOName.bat ..\..\addons\OPT\pboName.h opt
+
 set version=%1
 
 if [%version%] == [ask] (
@@ -36,7 +39,7 @@ goto processArgs
 	
 	echo Building release version of OPT Mod...
 	
-	..\programs\armake2.exe build -i ..\..\dependencies\CLib\addons\ ..\..\addons\OPT\ ..\..\PBOs\release\@OPT\addons\opt.pbo
+	..\programs\armake2.exe build -i ..\..\dependencies\CLib\addons\ -x pboName.h ..\..\addons\OPT\ ..\..\PBOs\release\@OPT\addons\%pboName%
 
 if not [%version%] == [both] goto finish
 
@@ -52,7 +55,7 @@ if not [%version%] == [both] goto finish
 	echo:>> ..\..\addons\OPT\isDev.hpp
 	echo|set /p="#define ISDEV" >> ..\..\addons\OPT\isDev.hpp
 
-	..\programs\armake2.exe build -i ..\..\dependencies\CLib\addons\ -x isDev.hpp.original ..\..\addons\OPT\ ..\..\PBOs\dev\@OPT\addons\opt.pbo
+	..\programs\armake2.exe build -i ..\..\dependencies\CLib\addons\ -x isDev.hpp.original ..\..\addons\OPT\ ..\..\PBOs\dev\@OPT\addons\%pboName%
 
 	::restore the isDev.hpp file
 	del ..\..\addons\OPT\isDev.hpp /q
