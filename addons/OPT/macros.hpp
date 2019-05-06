@@ -1,6 +1,6 @@
-#define PATH OPT
-#define PREFIX OPT
-#define MOD OPT
+#define PATH opt
+#define PREFIX opt
+#define MOD opt
 
 // Define version information of this mod
 #define MAJOR 0
