@@ -1,5 +1,5 @@
-#define PREFIX OPT
 #define PATH OPT
+#define PREFIX OPT
 #define MOD OPT
 
 // Define version information of this mod
