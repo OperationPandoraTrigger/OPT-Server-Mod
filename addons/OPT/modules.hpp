@@ -9,7 +9,23 @@ class CfgCLibModules
 		
 		dependency[] = {};
 		
-		MODULE(ltm) 
+		MODULE(gps) 
+		{
+
+			dependency[] = {"CLib/PerFrame", "Clib/Events"};
+			
+			FNC(clientInit);
+		};
+		
+		MODULE(radar) 
+		{
+
+			dependency[] = {"CLib/PerFrame", "Clib/Events"};
+			
+			FNC(clientInit);
+		};
+		
+		MODULE(dynmarkerverwaltung) 
 		{
 
 			dependency[] = {"CLib/PerFrame", "Clib/Events"};
