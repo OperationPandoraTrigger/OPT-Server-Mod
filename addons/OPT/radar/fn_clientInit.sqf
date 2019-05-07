@@ -1,7 +1,7 @@
 /**
 * Kurzbeschreibung über das Script 
 * 
-* Autor: Name des Script erstellers 
+* Autor: Name des Script Erstellers 
 *
 * Übergebende Variablen:
 * Pro Zeile Variablen angeben mit <TYPE> 
@@ -27,11 +27,11 @@
 * Ja/Nein Wenn Nein und es bestehen Einflüsse auf andere Scripte hier kurz beschreiben.
 * 
 * Global:
-* Ja/Nein Wenn ja die Asuwirkungen auf die anderen Clients kurz beschreiben.
+* Ja/Nein Wenn ja die Auswirkungen auf die anderen Clients kurz beschreiben.
 * 
-* Beispiel Externe aufruf:
+* Beispiel Externe Aufruf:
 * <Rückgabe Variablen> = [<Übergebende Variablen>] call EFUNC(Modul,Funktion);
-* Beispiel interner aufruf:
+* Beispiel interner Aufruf:
 * <Rückgabe Variablen> = [<Übergebende Variablen>] call FUNC(Funktion);
 *
 */
