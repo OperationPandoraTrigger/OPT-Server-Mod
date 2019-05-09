@@ -87,4 +87,38 @@ GVAR(dialogCheck) =
 	
 ] call CFUNC(addPerFrameHandler);
 
+//Initialisierung
+
+["missionStarted", 
+{
+
+	GVAR(gobalerMarkerArray) = 
+	[
+		{
+			/* PARAMS */
+
+			params
+			[
+				"_params",
+				 "_nr"
+			];
+
+			_params params
+			[
+				["_id",""],
+				["_type",""],
+				["_farbe",[]],
+				["_text",""],
+				["_sichtbarkeit",1],
+				["_position",[]],
+			];
+
+
+		}, 0, []
+		
+	] call CFUNC(addPerFrameHandler);
+
+  	
+}, []] call CFUNC(addEventHandler); 
+
 
