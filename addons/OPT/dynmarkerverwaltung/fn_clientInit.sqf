@@ -4,14 +4,7 @@
 * Autor: [GNC]Lord-MDB
 *
 * Argumente:
-* Pro Zeile ein Argument, mit <TYP> und Beschreibung
-* "Keine" wenn keine Argumente übergeben werden
-*
-* bsp:
-* Argumente:
-* 0: <OBJECT>   Das Objekt, mit dem xy gemacht wird
-* 1: <SIDE>     Die Seite des Objekts 
-* 2: <ARRAY>    Die Waffennamen (Strings)
+* keine
 *
 * Rückgabewert:
 * Rückgabewert mit <TYP> und Beschreibung 
@@ -64,3 +57,34 @@ diag_log "Successfully loaded the OPT/dynmarkerverwaltung module on the client";
 
 //Fallschirm Marker
 #define fallschirm_icon "\A3\ui_f\data\map\vehicleicons\iconTank_ca.paa"
+
+//Dialoge zum Overlay hinzufügen für darstellung
+GVAR(dialogCheck) = 
+[
+	{
+		//OPT Karten-Dialog
+		if (!(isNull ((findDisplay 444001) displayCtrl 10007))) then
+		{
+			((findDisplay 444001) displayCtrl 10007) call CFUNC(registerMapControl);
+			[{}, {(isNull ((findDisplay 444001) displayCtrl 10007))}] call CFUNC(waitUntil);	
+		};
+
+		//BIS Artillery Dialog
+		if (!(isNull ((findDisplay -1) displayCtrl 500))) then
+		{
+			((findDisplay -1) displayCtrl 500) call CFUNC(registerMapControl);
+			[{}, {(isNull ((findDisplay -1) displayCtrl 500))}] call CFUNC(waitUntil);	
+		};
+
+		//BIS  UAV Dialog (klappt nicht)
+		if (!(isNull ((findDisplay 160) displayCtrl -1))) then
+		{
+			((findDisplay 160) displayCtrl -1) call CFUNC(registerMapControl);
+			[{}, {(isNull ((findDisplay 160) displayCtrl -1))}] call CFUNC(waitUntil);	
+		};
+
+	}, 0, []
+	
+] call CFUNC(addPerFrameHandler);
+
+
