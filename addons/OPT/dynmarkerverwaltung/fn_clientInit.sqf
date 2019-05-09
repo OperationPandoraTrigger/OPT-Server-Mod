@@ -1,41 +1,66 @@
 /**
-* Kurzbeschreibung über das Script 
+* Dynamische Markerverwaltung, erstellen und verwalten der Anforderungen aus den Einzelfunktionen 
 * 
-* Autor: Name des Script Erstellers 
+* Autor: [GNC]Lord-MDB
 *
-* Übergebende Variablen:
-* Pro Zeile Variablen angeben mit <TYPE> 
-* Leer lassen wenn keine Variablen übergeben werden
+* Argumente:
+* Pro Zeile ein Argument, mit <TYP> und Beschreibung
+* "Keine" wenn keine Argumente übergeben werden
 *
 * bsp:
-* Übergebende Variablen:
-* 0: <OBJECT>   _veh
-* 1: <SIDE>     _side
-* 2: <ARRAY>    _weapons
-* 3: <BOOLEAN>  _buy
-* 4: <NUMBER>   _preis
-* 5: <STRING>   _displayName
+* Argumente:
+* 0: <OBJECT>   Das Objekt, mit dem xy gemacht wird
+* 1: <SIDE>     Die Seite des Objekts 
+* 2: <ARRAY>    Die Waffennamen (Strings)
 *
-* Rückgabe Variablen:
-* Variablen angeben mit <TYPE> 
-* Leer lassen wenn keine Variablen übergeben werden
+* Rückgabewert:
+* Rückgabewert mit <TYP> und Beschreibung 
 *
-* Server Allein:
-* Ja/Nein Wenn ja und es bestehen Einflüsse auf andere Scripte hier kurz beschreiben.
+* Server Only:
+* Nein
+* 
 * 
 * Lokal:
-* Ja/Nein Wenn Nein und es bestehen Einflüsse auf andere Scripte hier kurz beschreiben.
+* Ja/Nein
+* Lokal bedeutet, dass das Skript keine globalen Variablen o.Ä. verändert/erstellt. 
+* Wenn Nein und es bestehen Einflüsse auf andere Skripte hier kurz beschreiben.
 * 
 * Global:
-* Ja/Nein Wenn ja die Auswirkungen auf die anderen Clients kurz beschreiben.
+* Nein
 * 
-* Beispiel Externe Aufruf:
-* <Rückgabe Variablen> = [<Übergebende Variablen>] call EFUNC(Modul,Funktion);
+*
+*
+* API:
+* Ja
+* 
+* 
+* Beispiel Externer Aufruf:
+* <Rückgabewert> = [<Argumente>] call EFUNC(Modul,Funktion);
 * Beispiel interner Aufruf:
-* <Rückgabe Variablen> = [<Übergebende Variablen>] call FUNC(Funktion);
+* <Rückgabewert> = [<Argumente>] call FUNC(Funktion);
 *
 */
 
 #include "macros.hpp"
 
-diag_log "Successfully loaded the OPT/DynamischeMarkerverwaltung module on the client";
+diag_log "Successfully loaded the OPT/dynmarkerverwaltung module on the client";
+
+//Texturverweise
+
+//Spieler Marker
+#define player_icon "\A3\ui_f\data\map\vehicleicons\iconMan_ca.paa"
+
+//Revive Marker
+#define revive_icon "\A3\ui_f\data\map\mapcontrol\hospital_CA.paa"
+
+//Heli Marker
+#define heli_icon "\A3\ui_f\data\map\vehicleicons\iconHelicopter_ca.paa"
+
+//Flugzeuge Marker
+#define flug_icon "\A3\ui_f\data\map\vehicleicons\iconPlane_ca.paa"
+
+//Panzer Marker
+#define panzer_icon "\A3\ui_f\data\map\vehicleicons\iconTank_ca.paa"
+
+//Fallschirm Marker
+#define fallschirm_icon "\A3\ui_f\data\map\vehicleicons\iconTank_ca.paa"

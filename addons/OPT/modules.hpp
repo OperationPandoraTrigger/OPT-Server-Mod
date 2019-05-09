@@ -5,7 +5,7 @@ class CfgCLibModules
 {
     class PREFIX 
 	{
-        path = "OPT\OPT\addons\OPT";
+        path = "opt\opt\addons\opt";
 		
 		dependency[] = {};
 		
