@@ -126,61 +126,65 @@ DFUNC(markerloeschen) =
 				[GVAR(Marker)] call FUNC(markerloeschen);
 			};	
 
-			_params apply 
-			{ 
-				_x params
-				[
-					["_id",""],
-					["_type",""],
-					["_farbe",[]],
-					["_text",""],
-					["_sichtbarkeit",1],
-					["_position",[]],
-					["_winkel",0]
-				];
+			if (count _params > 0) then  
+			{
+				_params apply 
+				{ 
+					_x params
+					[
+						["_id",""],
+						["_type",""],
+						["_farbe",[]],
+						["_text",""],
+						["_sichtbarkeit",1],
+						["_position",[]],
+						["_winkel",0]
+					];
 
-				switch (_type) do 
-				{
-					case "Spieler": 
+					switch (_type) do 
 					{
-						private _marker = ["ICON", player_icon, _farbe, _position, 20, 20, _winkel, _text, _sichtbarkeit, 0.08, "RobotoCondensed", "right"];	
-					}; 
+						case "Spieler": 
+						{
+							private _marker = ["ICON", player_icon, _farbe, _position, 20, 20, _winkel, _text, _sichtbarkeit, 0.08, "RobotoCondensed", "right"];	
+						}; 
 
-					case "Revive": 
-					{
-						private _marker = ["ICON", revive_icon, _farbe, _position, 20, 20, _winkel, _text, _sichtbarkeit, 0.08, "RobotoCondensed", "right"];	
-					}; 
+						case "Revive": 
+						{
+							private _marker = ["ICON", revive_icon, _farbe, _position, 20, 20, _winkel, _text, _sichtbarkeit, 0.08, "RobotoCondensed", "right"];	
+						}; 
 
-					case "Heli": 
-					{
-						private _marker = ["ICON", heli_icon, _farbe, _position, 20, 20, _winkel, _text, _sichtbarkeit, 0.08, "RobotoCondensed", "right"];	
-					};  
+						case "Heli": 
+						{
+							private _marker = ["ICON", heli_icon, _farbe, _position, 20, 20, _winkel, _text, _sichtbarkeit, 0.08, "RobotoCondensed", "right"];	
+						};  
 
-					case "Flugzeuge": 
-					{
-						private _marker = ["ICON", flug_icon, _farbe, _position, 20, 20, _winkel, _text, _sichtbarkeit, 0.08, "RobotoCondensed", "right"];	
-					};    
+						case "Flugzeuge": 
+						{
+							private _marker = ["ICON", flug_icon, _farbe, _position, 20, 20, _winkel, _text, _sichtbarkeit, 0.08, "RobotoCondensed", "right"];	
+						};    
 
-					case "Panzer": 
-					{
-						private _marker = ["ICON", panzer_icon, _farbe, _position, 20, 20, _winkel, _text, _sichtbarkeit, 0.08, "RobotoCondensed", "right"];	
-					}; 
+						case "Panzer": 
+						{
+							private _marker = ["ICON", panzer_icon, _farbe, _position, 20, 20, _winkel, _text, _sichtbarkeit, 0.08, "RobotoCondensed", "right"];	
+						}; 
 
-					case "Fallschirm": 
-					{
-						private _marker = ["ICON", fallschirm_icon, _farbe, _position, 20, 20, _winkel, _text, _sichtbarkeit, 0.08, "RobotoCondensed", "right"];	
-					};    
+						case "Fallschirm": 
+						{
+							private _marker = ["ICON", fallschirm_icon, _farbe, _position, 20, 20, _winkel, _text, _sichtbarkeit, 0.08, "RobotoCondensed", "right"];	
+						};    
 
-					default 
-					{
-					};
+						default 
+						{
+						};
+					};	
+
+					// Sammelarray Marker
+					GVAR(Marker) pushBack _id;
+
+					[_id, [_marker]] call CFUNC(addMapGraphicsGroup);
+
 				};	
-
-				// Sammelarray Marker
-				GVAR(Marker) pushBack _id;
-
-				[_id, [_marker]] call CFUNC(addMapGraphicsGroup);
-
+				
 			};	
 
 		}, 0, []
