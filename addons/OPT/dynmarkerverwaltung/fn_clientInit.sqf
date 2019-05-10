@@ -7,30 +7,24 @@
 * keine
 *
 * Rückgabewert:
-* Rückgabewert mit <TYP> und Beschreibung 
+* keine
 *
 * Server Only:
 * Nein
 * 
-* 
 * Lokal:
-* Ja/Nein
-* Lokal bedeutet, dass das Skript keine globalen Variablen o.Ä. verändert/erstellt. 
-* Wenn Nein und es bestehen Einflüsse auf andere Skripte hier kurz beschreiben.
+* Ja
 * 
 * Global:
 * Nein
 * 
-*
-*
 * API:
 * Ja
 * 
-* 
 * Beispiel Externer Aufruf:
-* <Rückgabewert> = [<Argumente>] call EFUNC(Modul,Funktion);
+* [] call EFUNC(dynmarkerverwaltung,clientInit);
 * Beispiel interner Aufruf:
-* <Rückgabewert> = [<Argumente>] call FUNC(Funktion);
+* [] call FUNC(clientInit);
 *
 */
 
@@ -184,7 +178,7 @@ DFUNC(markerloeschen) =
 					[_id, [_marker]] call CFUNC(addMapGraphicsGroup);
 
 				};	
-				
+
 			};	
 
 		}, 0, []
