@@ -70,6 +70,37 @@ GVAR(dialogCheck) =
 	
 ] call CFUNC(addPerFrameHandler);
 
+//Verarbeitung EIN
+DFUNC(VerarbeitungEin) = 
+{
+	private _verarbeitungEin = false;
+
+	//Karte und Mini GPS
+	if (visibleMap or visibleGPS) then
+    {
+		_verarbeitungEin = true;	
+	};
+
+	//OPT Karten-Dialog
+	if (!(isNull ((findDisplay 444001) displayCtrl 10007))) then
+    {
+		_verarbeitungEin = true;	
+	};	
+
+	//BIS Artillery Dialog
+	if (!(isNull ((findDisplay -1) displayCtrl 500))) then
+    {
+		_verarbeitungEin = true;	
+	};	
+
+	//BIS  UAV Dialog (klappt nicht)
+	if (!(isNull ((findDisplay 160) displayCtrl -1))) then
+    {
+		_verarbeitungEin = true;	
+	};		
+	_verarbeitungEin
+};
+
 //alte Marker löschen
 DFUNC(markerloeschen) = 
 {
@@ -96,79 +127,92 @@ DFUNC(markerloeschen) =
 	GVAR(gobalerMarkerArray) = 
 	[
 		{
-			params
+			//Verarbeitungsbedarf Ermitteln
+
+			private _Verarbeitungsbedarf = false;
+
+			_Verarbeitungsbedarf = [] call FUNC(VerarbeitungEin);
+
 			[
-				["_params",[]],
-				["_nr",0]
-			];
-
-			if (count GVAR(Marker) > 0) then  
-			{
-				[GVAR(Marker)] call FUNC(markerloeschen);
-			};	
-
-			if (count _params > 0) then  
-			{
-				_params apply 
-				{ 
-					_x params
+				{	
+					params
 					[
-						["_id",""],
-						["_type",""],
-						["_farbe",[]],
-						["_text",""],
-						["_sichtbarkeit",1],
-						["_position",[]],
-						["_winkel",0]
+						["_params",[]],
+						["_nr",0]
 					];
 
-					private _marker = [];
-
-					switch (_type) do 
+					if (count GVAR(Marker) > 0) then  
 					{
-						case "Spieler": 
-						{
-							_marker = ["ICON", player_icon, _farbe, _position, 20, 20, _winkel, _text, _sichtbarkeit, 0.08, "RobotoCondensed", "right"];	
-						}; 
-
-						case "Revive": 
-						{
-							_marker = ["ICON", revive_icon, _farbe, _position, 20, 20, _winkel, _text, _sichtbarkeit, 0.08, "RobotoCondensed", "right"];	
-						}; 
-
-						case "Heli": 
-						{
-							_marker = ["ICON", heli_icon, _farbe, _position, 20, 20, _winkel, _text, _sichtbarkeit, 0.08, "RobotoCondensed", "right"];	
-						};  
-
-						case "Flugzeuge": 
-						{
-							_marker = ["ICON", flug_icon, _farbe, _position, 20, 20, _winkel, _text, _sichtbarkeit, 0.08, "RobotoCondensed", "right"];	
-						};    
-
-						case "Panzer": 
-						{
-							_marker = ["ICON", panzer_icon, _farbe, _position, 20, 20, _winkel, _text, _sichtbarkeit, 0.08, "RobotoCondensed", "right"];	
-						}; 
-
-						case "Fallschirm": 
-						{
-							_marker = ["ICON", fallschirm_icon, _farbe, _position, 20, 20, _winkel, _text, _sichtbarkeit, 0.08, "RobotoCondensed", "right"];	
-						};    
-
-						default 
-						{
-						};
+						[GVAR(Marker)] call FUNC(markerloeschen);
 					};	
 
-					// Sammelarray Marker
-					GVAR(Marker) pushBack _id;
+					if (count _params > 0) then  
+					{
+						_params apply 
+						{ 
+							_x params
+							[
+								["_id",""],
+								["_type",""],
+								["_farbe",[]],
+								["_text",""],
+								["_sichtbarkeit",1],
+								["_position",[]],
+								["_winkel",0]
+							];
 
-					[_id, [_marker]] call CFUNC(addMapGraphicsGroup);
+							private _marker = [];
 
-				};	
+							switch (_type) do 
+							{
+								case "Spieler": 
+								{
+									_marker = ["ICON", player_icon, _farbe, _position, 20, 20, _winkel, _text, _sichtbarkeit, 0.08, "RobotoCondensed", "right"];	
+								}; 
 
-			};	
+								case "Revive": 
+								{
+									_marker = ["ICON", revive_icon, _farbe, _position, 20, 20, _winkel, _text, _sichtbarkeit, 0.08, "RobotoCondensed", "right"];	
+								}; 
+
+								case "Heli": 
+								{
+									_marker = ["ICON", heli_icon, _farbe, _position, 20, 20, _winkel, _text, _sichtbarkeit, 0.08, "RobotoCondensed", "right"];	
+								};  
+
+								case "Flugzeuge": 
+								{
+									_marker = ["ICON", flug_icon, _farbe, _position, 20, 20, _winkel, _text, _sichtbarkeit, 0.08, "RobotoCondensed", "right"];	
+								};    
+
+								case "Panzer": 
+								{
+									_marker = ["ICON", panzer_icon, _farbe, _position, 20, 20, _winkel, _text, _sichtbarkeit, 0.08, "RobotoCondensed", "right"];	
+								}; 
+
+								case "Fallschirm": 
+								{
+									_marker = ["ICON", fallschirm_icon, _farbe, _position, 20, 20, _winkel, _text, _sichtbarkeit, 0.08, "RobotoCondensed", "right"];	
+								};    
+
+								default 
+								{
+								};
+							};	
+
+							// Sammelarray Marker
+							GVAR(Marker) pushBack _id;
+
+							[_id, [_marker]] call CFUNC(addMapGraphicsGroup);
+
+						};	
+
+					};
+				},
+				{
+			 		_Verarbeitungsbedarf	 
+			 	}
+			] call CFUNC(waitUntil);			
 
 		}, 0, []
 		
