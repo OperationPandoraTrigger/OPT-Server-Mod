@@ -56,9 +56,9 @@ diag_log "Successfully loaded the OPT/dynmarkerverwaltung module on the client";
 #define panzer_icon "\A3\ui_f\data\map\vehicleicons\iconTank_ca.paa"
 
 //Fallschirm Marker
-#define fallschirm_icon "\A3\ui_f\data\map\vehicleicons\iconTank_ca.paa"
+#define fallschirm_icon "\A3\ui_f\data\map\vehicleicons\iconParachute_ca.paa"
 
-//Dialoge zum Overlay hinzufügen für darstellung
+//Dialoge zum Overlay hinzufügen für Darstellung
 GVAR(dialogCheck) = 
 [
 	{
@@ -87,11 +87,29 @@ GVAR(dialogCheck) =
 	
 ] call CFUNC(addPerFrameHandler);
 
-//Initialisierung
+//alte Marker löschen
+DFUNC(markerloeschen) = 
+{
+	params 
+	[
+		["_id",""],
+	];
+	
+	_id apply 
+	{ 
 
+		[_x] call CFUNC(removeMapGraphicsGroup);
+
+	};	
+
+};
+
+//Initialisierung
 ["missionStarted", 
 {
+	GVAR(Marker) = [];
 
+	//Gobalenarray verarbeiten und ausführen
 	GVAR(gobalerMarkerArray) = 
 	[
 		{
@@ -99,20 +117,71 @@ GVAR(dialogCheck) =
 
 			params
 			[
-				"_params",
-				 "_nr"
+				["_params",[]],
+				["_nr",0]
 			];
 
-			_params params
-			[
-				["_id",""],
-				["_type",""],
-				["_farbe",[]],
-				["_text",""],
-				["_sichtbarkeit",1],
-				["_position",[]],
-			];
+			if (count GVAR(Marker) > 0) then  
+			{
+				[GVAR(Marker)] call FUNC(markerloeschen);
+			};	
 
+			_params apply 
+			{ 
+				_x params
+				[
+					["_id",""],
+					["_type",""],
+					["_farbe",[]],
+					["_text",""],
+					["_sichtbarkeit",1],
+					["_position",[]],
+					["_winkel",0]
+				];
+
+				switch (_type) do 
+				{
+					case "Spieler": 
+					{
+						private _marker = ["ICON", player_icon, _farbe, _position, 20, 20, _winkel, _text, _sichtbarkeit, 0.08, "RobotoCondensed", "right"];	
+					}; 
+
+					case "Revive": 
+					{
+						private _marker = ["ICON", revive_icon, _farbe, _position, 20, 20, _winkel, _text, _sichtbarkeit, 0.08, "RobotoCondensed", "right"];	
+					}; 
+
+					case "Heli": 
+					{
+						private _marker = ["ICON", heli_icon, _farbe, _position, 20, 20, _winkel, _text, _sichtbarkeit, 0.08, "RobotoCondensed", "right"];	
+					};  
+
+					case "Flugzeuge": 
+					{
+						private _marker = ["ICON", flug_icon, _farbe, _position, 20, 20, _winkel, _text, _sichtbarkeit, 0.08, "RobotoCondensed", "right"];	
+					};    
+
+					case "Panzer": 
+					{
+						private _marker = ["ICON", panzer_icon, _farbe, _position, 20, 20, _winkel, _text, _sichtbarkeit, 0.08, "RobotoCondensed", "right"];	
+					}; 
+
+					case "Fallschirm": 
+					{
+						private _marker = ["ICON", fallschirm_icon, _farbe, _position, 20, 20, _winkel, _text, _sichtbarkeit, 0.08, "RobotoCondensed", "right"];	
+					};    
+
+					default 
+					{
+					};
+				};	
+
+				// Sammelarray Marker
+				GVAR(Marker) pushBack _id;
+
+				[_id, [_marker]] call CFUNC(addMapGraphicsGroup);
+
+			};	
 
 		}, 0, []
 		
