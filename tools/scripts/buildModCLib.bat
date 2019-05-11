@@ -7,7 +7,7 @@
 @echo off
 
 :: This batch file will set the pboName variable
-call .\getPBOName.bat ..\..\dependencies\CLib\addons\CLib\pboName.h clib
+call %~dp0\getPBOName.bat %~dp0\..\..\dependencies\CLib\addons\CLib\pboName.h clib
 
 set version=%1
 
@@ -40,42 +40,42 @@ goto processArgs
 
 :release
 	:: build release
-	call .\createModDir.bat CLib release
+	call %~dp0\createModDir.bat CLib release
 	
 	echo Building release version of CLib Mod...
 	
 	:: move away all old PBOs
-	for /f %%a IN ('dir ..\..\PBOs\release\@CLib\addons\ /b') do move ..\..\PBOs\release\@CLib\addons\%%a ..\..\PBOs\archive\release\ >nul
+	for /f %%a IN ('dir %~dp0\..\..\PBOs\release\@CLib\addons\ /b') do move %~dp0\..\..\PBOs\release\@CLib\addons\%%a %~dp0\..\..\PBOs\archive\release\ >nul
 	
-	..\programs\armake2.exe build  ..\..\dependencies\CLib\addons\CLib ..\..\PBOs\release\@CLib\addons\%pboName%
+	%~dp0\..\programs\armake2.exe build  %~dp0\..\..\dependencies\CLib\addons\CLib %~dp0\..\..\PBOs\release\@CLib\addons\%pboName%
 
 if not [%version%] == [both] goto finish
 
 
 :dev
 	:: build dev
-	call .\createModDir.bat CLib dev
+	call %~dp0\createModDir.bat CLib dev
 	
 	echo Building dev version of the CLib Mod...
 	
 	:: move away all old PBOs
-	for /f %%a IN ('dir ..\..\PBOs\dev\@CLib\addons\ /b') do move ..\..\PBOs\dev\@CLib\addons\%%a ..\..\PBOs\archive\dev\ >nul
+	for /f %%a IN ('dir %~dp0\..\..\PBOs\dev\@CLib\addons\ /b') do move %~dp0\..\..\PBOs\dev\@CLib\addons\%%a %~dp0\..\..\PBOs\archive\dev\ >nul
 	
 	:: in order to build the dev-version the ISDEV macro flag has to be set programmatically
-	1>NUL copy ..\..\dependencies\CLib\addons\CLib\isDev.hpp ..\..\dependencies\CLib\addons\CLib\isDev.hpp.original
-	echo:>> ..\..\dependencies\CLib\addons\CLib\isDev.hpp
-	echo|set /p="#define ISDEV" >> ..\..\dependencies\CLib\addons\CLib\isDev.hpp
+	1>NUL copy %~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp %~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp.original
+	echo:>> %~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp
+	echo|set /p="#define ISDEV" >> %~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp
 
-	..\programs\armake2.exe build -x isDev.hpp.original ..\..\dependencies\CLib\addons\CLib\ ..\..\PBOs\dev\@CLib\addons\%pboName%
+	%~dp0\..\programs\armake2.exe build -x isDev.hpp.original %~dp0\..\..\dependencies\CLib\addons\CLib\ %~dp0\..\..\PBOs\dev\@CLib\addons\%pboName%
 	
 	::restore the isDev.hpp file
-	del ..\..\dependencies\CLib\addons\CLib\isDev.hpp /q
-	1>NUL copy ..\..\dependencies\CLib\addons\CLib\isDev.hpp.original ..\..\dependencies\CLib\addons\CLib\isDev.hpp
-	del ..\..\dependencies\CLib\addons\CLib\isDev.hpp.original /q
+	del %~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp /q
+	1>NUL copy %~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp.original %~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp
+	del %~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp.original /q
 
 :finish
 	:: if this script hasn't been called from the build-all script and it hasn't been requested not to,
 	:: issue a pause so the user can have a look at the output of the called commands
 	if not [%2] == [buildModAll] (
-		if not [%2] == [noPause] pause
+		REM if not [%2] == [noPause] pause
 	)
