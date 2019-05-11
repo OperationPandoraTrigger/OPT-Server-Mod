@@ -31,6 +31,7 @@ class CfgCLibModules
 			dependency[] = {"CLib/PerFrame", "Clib/Events"};
 			
 			FNC(clientInit);
+			FNC(datenaustausch);
 		};
 		
     };
