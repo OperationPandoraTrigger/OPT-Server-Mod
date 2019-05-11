@@ -3,11 +3,11 @@
 @echo off
 
 :: create folder for produced PBOs if it doesn't exist yet
-if not exist "..\..\PBOs\" mkdir ..\..\PBOs\
+if not exist "%~dp0\..\..\PBOs\" mkdir %~dp0\..\..\PBOs\
 :: create respective subfolders if they don't exist yet
-if not exist "..\..\PBOs\dev\" mkdir ..\..\PBOs\dev\
-if not exist "..\..\PBOs\release\" mkdir ..\..\PBOs\release\
+if not exist "%~dp0\..\..\PBOs\dev\" mkdir %~dp0\..\..\PBOs\dev\
+if not exist "%~dp0\..\..\PBOs\release\" mkdir %~dp0\..\..\PBOs\release\
 :: create archive folders for old PBOs
-if not exist "..\..\PBOs\archive\" mkdir ..\..\PBOs\archive\
-if not exist "..\..\PBOs\archive\dev\" mkdir ..\..\PBOs\archive\dev\
-if not exist "..\..\PBOs\archive\release\" mkdir ..\..\PBOs\archive\release\
+if not exist "%~dp0\..\..\PBOs\archive\" mkdir %~dp0\..\..\PBOs\archive\
+if not exist "%~dp0\..\..\PBOs\archive\dev\" mkdir %~dp0\..\..\PBOs\archive\dev\
+if not exist "%~dp0\..\..\PBOs\archive\release\" mkdir %~dp0\..\..\PBOs\archive\release\
