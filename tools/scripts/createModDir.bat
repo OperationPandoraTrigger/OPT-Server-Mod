@@ -16,7 +16,7 @@ set modName=%1
 set modVersion=%2
 
 :: Create the base infrastructure
-call .\createBuildDirectories.bat
+call %~dp0\createBuildDirectories.bat
 
 if [%modVersion%] == [] set modVersion=both
 if [%modVersion%] == [dev] goto dev
@@ -24,12 +24,12 @@ if [%modVersion%] == [release] goto release
 
 :: Create mod folders
 :dev
-if not exist "..\..\PBOs\dev\@%modName%\" mkdir ..\..\PBOs\dev\@%modName%\
-if not exist "..\..\PBOs\dev\@%modName%\addons\" mkdir ..\..\PBOs\dev\@%modName%\addons\
-if not exist "..\..\PBOs\dev\@%modName%\keys\" mkdir ..\..\PBOs\dev\@%modName%\keys\
+if not exist "%~dp0\..\..\PBOs\dev\@%modName%\" mkdir %~dp0\..\..\PBOs\dev\@%modName%\
+if not exist "%~dp0\..\..\PBOs\dev\@%modName%\addons\" mkdir %~dp0\..\..\PBOs\dev\@%modName%\addons\
+if not exist "%~dp0\..\..\PBOs\dev\@%modName%\keys\" mkdir %~dp0\..\..\PBOs\dev\@%modName%\keys\
 
 if not [%modVersion%] == [both] goto:eof
 :release
-if not exist "..\..\PBOs\release\@%modName%\" mkdir ..\..\PBOs\release\@%modName%\
-if not exist "..\..\PBOs\release\@%modName%\addons\" mkdir ..\..\PBOs\release\@%modName%\addons\
-if not exist "..\..\PBOs\release\@%modName%\keys\" mkdir ..\..\PBOs\release\@%modName%\keys\
+if not exist "%~dp0\..\..\PBOs\release\@%modName%\" mkdir %~dp0\..\..\PBOs\release\@%modName%\
+if not exist "%~dp0\..\..\PBOs\release\@%modName%\addons\" mkdir %~dp0\..\..\PBOs\release\@%modName%\addons\
+if not exist "%~dp0\..\..\PBOs\release\@%modName%\keys\" mkdir %~dp0\..\..\PBOs\release\@%modName%\keys\
