@@ -6,9 +6,8 @@
         {
             "label": "Build OPT",
             "type": "shell",
-            "command": "./tools/scripts/buildModOPT.bat both",
-            "windows": {},
-            "problemMatcher": []
+            "command": "./tools/scripts/buildModOPT.bat both noPause",
+            "windows": {}
         },
         {
             "label": "Move OPT",

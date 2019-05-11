@@ -77,5 +77,5 @@ if not [%version%] == [both] goto finish
 	:: if this script hasn't been called from the build-all script and it hasn't been requested not to,
 	:: issue a pause so the user can have a look at the output of the called commands
 	if not [%2] == [buildModAll] (
-		REM if not [%2] == [noPause] pause
+		if not [%2] == [noPause] pause
 	)
