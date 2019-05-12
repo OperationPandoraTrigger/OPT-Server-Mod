@@ -6,18 +6,14 @@
         {
             "label": "Build OPT",
             "type": "shell",
-            "command": "./tools/scripts/buildModAll.bat",
-            "windows": {},
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
+            "command": "./tools/scripts/buildModOPT.bat both noPause",
+            "windows": {}
         },
         {
             "label": "Move OPT",
             "type": "shell",
             "command": "cp .\\PBOs\\dev\\@OPT 'E:\\Steam\\steamapps\\common\\Arma 3\\MODS' -recurse -force",
-            "windows": {}
+            "windows": {},
         }
     ]
 }
