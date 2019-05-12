@@ -1,41 +1,75 @@
 /**
-* Kurzbeschreibung über das Script 
+* Spielerdarstellung auf der Karte 
 * 
-* Autor: Name des Script Erstellers 
+* Autor: [GNC]Lord-MDB
 *
-* Übergebende Variablen:
-* Pro Zeile Variablen angeben mit <TYPE> 
-* Leer lassen wenn keine Variablen übergeben werden
+* Argumente:
+* Pro Zeile ein Argument, mit <TYP> und Beschreibung
+* "Keine" wenn keine Argumente übergeben werden
 *
 * bsp:
-* Übergebende Variablen:
-* 0: <OBJECT>   _veh
-* 1: <SIDE>     _side
-* 2: <ARRAY>    _weapons
-* 3: <BOOLEAN>  _buy
-* 4: <NUMBER>   _preis
-* 5: <STRING>   _displayName
+* Argumente:
+* 0: <OBJECT>   Das Objekt, mit dem xy gemacht wird
+* 1: <SIDE>     Die Seite des Objekts 
+* 2: <ARRAY>    Die Waffennamen (Strings)
 *
-* Rückgabe Variablen:
-* Variablen angeben mit <TYPE> 
-* Leer lassen wenn keine Variablen übergeben werden
+* Rückgabewert:
+* Rückgabewert mit <TYP> und Beschreibung 
 *
-* Server Allein:
-* Ja/Nein Wenn ja und es bestehen Einflüsse auf andere Scripte hier kurz beschreiben.
+* Server Only:
+* Nein
 * 
 * Lokal:
-* Ja/Nein Wenn Nein und es bestehen Einflüsse auf andere Scripte hier kurz beschreiben.
+* Ja/Nein
+* Lokal bedeutet, dass das Skript keine globalen Variablen o.Ä. verändert/erstellt. 
+* Wenn Nein und es bestehen Einflüsse auf andere Skripte hier kurz beschreiben.
 * 
 * Global:
-* Ja/Nein Wenn ja die Auswirkungen auf die anderen Clients kurz beschreiben.
+* Nein
+*
+* API:
+* Nein
 * 
-* Beispiel Externe Aufruf:
-* <Rückgabe Variablen> = [<Übergebende Variablen>] call EFUNC(Modul,Funktion);
+* Beispiel Externer Aufruf:
+* [] call EFUNC(gps,clientInit);
 * Beispiel interner Aufruf:
-* <Rückgabe Variablen> = [<Übergebende Variablen>] call FUNC(Funktion);
+* [] call FUNC(clientInit);
 *
 */
 
 #include "macros.hpp"
 
 diag_log "Successfully loaded the OPT/GPS module on the client";
+
+// Kontrolle ob Map oder Dialog geöffnet wird
+DFUNC(Dialogcheck) = 
+{
+	private _verarbeitungEin = false;
+
+	//OPT Karten-Dialog
+	if (!(isNull ((findDisplay 444001) displayCtrl 10007))) then
+		{
+			_verarbeitungEin = true;
+		};
+
+	//BIS Artillery Dialog
+	if (!(isNull ((findDisplay -1) displayCtrl 500))) then
+		{
+			_verarbeitungEin = true;
+		};
+
+	//BIS  UAV Dialog (klappt nicht)	
+	if (!(isNull ((findDisplay 160) displayCtrl -1))) then
+		{
+			_verarbeitungEin = true;
+		};
+
+	//BIS  Karte und Minimap
+	if (visibleMap or visibleGPS) then
+		{
+			_verarbeitungEin = true;
+		};
+
+	_verarbeitungEin	
+};
+
