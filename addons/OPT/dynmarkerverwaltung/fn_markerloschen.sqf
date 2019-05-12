@@ -4,10 +4,10 @@
 * Autor: [GNC]Lord-MDB
 *
 * Argumente:
-* 0: <STRING> _ID
+* 0: <STRING> _ID (Markername des zu Löschenen Marker)
 *
 * Rückgabewert:
-* 0: <STRING> _ID
+* 0: <STRING> _ID (Markername des gelöschten Marker)
 *
 * Server Only:
 * Nein
