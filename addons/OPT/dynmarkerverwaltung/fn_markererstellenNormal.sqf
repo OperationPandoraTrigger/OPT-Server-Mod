@@ -36,7 +36,7 @@
 
 #include "macros.hpp"
 
-params
+(_this select 0) params
 					
 [
 	["_id",""],
