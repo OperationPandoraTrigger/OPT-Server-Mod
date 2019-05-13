@@ -4,8 +4,8 @@
 * Autor: [GNC]Lord-MDB
 *
 * Argumente:
-* 0: <STRING> _ID (Markername des Erstellten Marker)
-* 1: <STRING> _type (Art des erstellen Markers:Spieler,Revive,Heli,Flugzeuge,Panzer,Fallschirm)
+* 0: <STRING> _ID (Markername des erstellten Marker)
+* 1: <STRING> _type (Art des erstellten Markers:Spieler,Revive,Heli,Flugzeuge,Panzer,Fallschirm)
 * 2: <ARRAY> _farbe (Farbe in RGB Code)
 * 3: <STRING> _text (Bezeichnung des Marker)
 * 4: <Number> _sichtbarkeit (Sichtbarkeit des Maker auf der Karte: 0-1)
@@ -13,7 +13,7 @@
 * 6: <Number> _winkel (Winkel in Grad)
 *
 * Rückgabewert:
-* 0: <STRING> _ID (Markername des Erstellten Marker)
+* 0: <STRING> _ID (Markername des erstellten Marker)
 *
 * Server Only:
 * Nein
