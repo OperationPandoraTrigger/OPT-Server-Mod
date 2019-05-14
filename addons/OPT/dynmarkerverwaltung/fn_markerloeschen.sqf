@@ -33,7 +33,6 @@
 (_this select 0) params
 	[
 		["_id",""]
-
 	];
 
 [_id] call CFUNC(removeMapGraphicsGroup);
