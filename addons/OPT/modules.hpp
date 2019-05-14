@@ -15,7 +15,7 @@ class CfgCLibModules
 			dependency[] = {"CLib/PerFrame", "Clib/Events"};
 			
 			FNC(clientInit);
-			APIFNC(markerErstellenNormal);
+			APIFNC(markerErstellen);
 			APIFNC(markerErstellenMitHover);
 			APIFNC(markerLoeschen);			
 		};
