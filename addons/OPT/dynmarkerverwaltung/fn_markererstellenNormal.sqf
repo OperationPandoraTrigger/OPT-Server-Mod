@@ -1,5 +1,5 @@
 /**
-* Erstellten von normalen Markern im Overlay
+* Erstellen von normalen Markern im Overlay
 * 
 * Autor: [GNC]Lord-MDB
 *
