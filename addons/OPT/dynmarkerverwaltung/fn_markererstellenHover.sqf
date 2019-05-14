@@ -29,9 +29,9 @@
 * Ja
 * 
 * Beispiel Externer Aufruf:
-* [] call EFUNC(dynmarkerverwaltung,markererstellenHover);
+* ["_id","_type",[_farbe],"_text",_sichtbarkeit,[_position],_winkel,"_textHover"] call EFUNC(dynmarkerverwaltung,markererstellenHover);
 * Beispiel interner Aufruf:
-* [] call FUNC(markererstellenHover);
+* ["_id","_type",[_farbe],"_text",_sichtbarkeit,[_position],_winkel,"_textHover"] call FUNC(markererstellenHover);
 *
 */
 
