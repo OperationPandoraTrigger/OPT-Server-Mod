@@ -106,4 +106,4 @@ switch (_type) do
 
 [_id, [_marker, _marker, _manDescription], "hover"] call CFUNC(addMapGraphicsGroup);
 
-_id
+nil

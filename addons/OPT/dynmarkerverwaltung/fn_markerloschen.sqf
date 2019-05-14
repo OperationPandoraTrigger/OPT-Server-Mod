@@ -38,4 +38,4 @@
 
 [_id] call CFUNC(removeMapGraphicsGroup);
 
-_id
+nil

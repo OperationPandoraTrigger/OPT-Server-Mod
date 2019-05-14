@@ -93,4 +93,4 @@ switch (_type) do
 
 [_id, [_marker]] call CFUNC(addMapGraphicsGroup);
 
-_id
+nil
