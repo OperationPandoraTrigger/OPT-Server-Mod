@@ -1,5 +1,5 @@
 /**
-* Löschen von erstellten Markern 
+* Löschen eines erstellten Markern mit der angegebenen ID 
 * 
 * Autor: [GNC]Lord-MDB
 *
