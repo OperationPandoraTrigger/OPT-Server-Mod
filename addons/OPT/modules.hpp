@@ -8,23 +8,7 @@ class CfgCLibModules
         path = "opt\opt\addons\opt";
 		
 		dependency[] = {};
-		
-		MODULE(gps) 
-		{
-
-			dependency[] = {"CLib/PerFrame", "Clib/Events"};
-			
-			FNC(clientInit);
-		};
-		
-		MODULE(radar) 
-		{
-
-			dependency[] = {"CLib/PerFrame", "Clib/Events"};
-			
-			FNC(clientInit);
-		};
-		
+				
 		MODULE(dynmarkerverwaltung) 
 		{
 
