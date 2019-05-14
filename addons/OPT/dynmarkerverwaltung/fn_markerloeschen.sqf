@@ -22,9 +22,9 @@
 * Ja
 * 
 * Beispiel Externer Aufruf:
-* [] call EFUNC(dynmarkerverwaltung,markerloschen);
+* ["_id"] call EFUNC(dynmarkerverwaltung,markerloschen);
 * Beispiel interner Aufruf:
-* [] call FUNC(markerloschen);
+* ["_id"] call FUNC(markerloschen);
 *
 */
 
