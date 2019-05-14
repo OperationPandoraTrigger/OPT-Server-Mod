@@ -29,9 +29,9 @@
 * Ja
 * 
 * Beispiel Externer Aufruf:
-* ["_id","_type",[_farbe],"_text",_sichtbarkeit,[_position],_winkel,"_textHover"] call EFUNC(dynmarkerverwaltung,markererstellenHover);
+* ["_id","_type",[_farbe],"_text",_sichtbarkeit,[_position],_winkel,"_textHover"] call EFUNC(dynmarkerverwaltung,markerErstellenMitHover);
 * Beispiel interner Aufruf:
-* ["_id","_type",[_farbe],"_text",_sichtbarkeit,[_position],_winkel,"_textHover"] call FUNC(markererstellenHover);
+* ["_id","_type",[_farbe],"_text",_sichtbarkeit,[_position],_winkel,"_textHover"] call FUNC(markerErstellenMitHover);
 *
 */
 
