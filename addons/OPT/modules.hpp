@@ -33,7 +33,7 @@ class CfgCLibModules
 			FNC(clientInit);
 			APIFNC(markererstellenNormal);
 			APIFNC(markererstellenHover);
-			APIFNC(markerloschen);			
+			APIFNC(markerloeschen);			
 		};
 		
     };
