@@ -30,7 +30,7 @@
 
 #include "macros.hpp"
 
-diag_log "Successfully loaded the OPT/dynmarkerverwaltung module on the client";
+DUMP("Successfully loaded the OPT/dynmarkerverwaltung module on the client");
 
 //Dialoge zum Overlay hinzufügen für Darstellung
 [
