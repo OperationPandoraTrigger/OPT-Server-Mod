@@ -7,7 +7,7 @@
 * 0: <STRING> _ID (Markername des zu löschenden Marker)
 *
 * Rückgabewert:
-* 0: <STRING> _ID (Markername des gelöschten Marker)
+* keinen
 *
 * Server Only:
 * Nein

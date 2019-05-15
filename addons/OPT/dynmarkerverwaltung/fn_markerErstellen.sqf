@@ -13,7 +13,7 @@
 * 6: <Number> _winkel (Winkel in Grad)
 *
 * Rückgabewert:
-* 0: <STRING> _ID (Markername des erstellten Marker)
+* keinen
 *
 * Server Only:
 * Nein
@@ -50,7 +50,7 @@ params
 
 //Texturverweise
 
-#include "Texturen.sqf"
+#include "Texturen.hpp"
 
 private _marker = [];
 

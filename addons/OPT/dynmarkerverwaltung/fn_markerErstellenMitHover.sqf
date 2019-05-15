@@ -14,7 +14,7 @@
 * 7: <STRING> _textHover (Hovertext der anzeigt wird)
 *
 * Rückgabewert:
-* 0: <STRING> _ID (Markername des erstellten Marker)
+* keinen
 *
 * Server Only:
 * Nein
@@ -53,7 +53,7 @@ params
 
 //Texturverweise
 
-#include "Texturen.sqf"
+#include "Texturen.hpp"
 
 private _marker = [];
 private _manDescription = [];
