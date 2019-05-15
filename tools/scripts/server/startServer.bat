@@ -19,5 +19,3 @@ echo Trying to copy config file. This might take a few seconds...
 
 
 start /min %exeName% -config=serverConfig.cfg -serverMod="%clib%;%opt%" -debugCallExtension
-
-pause
