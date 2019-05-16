@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project name="OPT">
+    <Package name="modulname">
+        <Container name="functionname">
+            <Key ID="STR_opt_example">
+                <Original>Example text in english!</Original>
+                <English>Example text in english!</English>
+                <German>Beispieltext in Deutsch!</German>
+            </Key>
+        </Container>
+    </Package>
+</Project>
