@@ -14,11 +14,22 @@ cd /d %armaDir%
 :: there was a server process in the process table that was sent a kill-signal
 :: However this also means that the server is still running and as Windows doesn't really
 :: kill the program, we have to continously send the signal until the server is actually dead
-echo Killing the (potentially) running server. This might take a few seconds...
+echo Killing the (potentially) running server. This might take a while...
 :killLoop
 	taskkill /im %exeName% > NUL 2>&1
 	
 	if [%errorlevel%] == [0] (
-		timeout 1 >NUL
+		:: sleep 300ms
+		pathping localhost -n -q 1 -p 100 >nul
 		goto :killLoop
+	) else (
+		:: wait another 300ms and check again if the server was _really_ killed
+		pathping localhost -n -q 1 -p 100 >nul
+		taskkill /im %exeName% > NUL 2>&1
+		if [%errorlevel%] == [0] (
+			:: apparently the server isn't as dead as it seemed
+			goto :killLoop
+		)
 	)
+
+echo Successfully killed the server

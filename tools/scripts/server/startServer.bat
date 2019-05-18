@@ -14,14 +14,17 @@ set "opt=%modDir%\@OPT"
 
 :: Copy the server-config into the arma-dir as Arma can only read configs relative
 :: to the exe
-echo Trying to copy config file. This might take a few seconds...
+echo Trying to copy config file. This might take a while...
 :copyLoop
 	copy "%~dp0.\serverConfig.cfg" "%armaDir%" > NUL 2>&1
 
 	if not [%errorlevel%] == [0]  (
-		timeout 1 >NUL
+		:: sleep 100ms
+		pathping localhost -n -q 1 -p 100 >nul
 		goto :copyLoop
 	)
 
 :: Start the server and minimize it once it's started
 start /min %exeName% -config=serverConfig.cfg -serverMod="%clib%;%opt%" -debugCallExtension
+
+echo Successfully started the server
