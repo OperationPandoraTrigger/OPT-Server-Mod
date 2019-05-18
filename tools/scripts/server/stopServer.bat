@@ -19,7 +19,7 @@ echo Killing the (potentially) running server. This might take a while...
 	taskkill /im %exeName% > NUL 2>&1
 	
 	if [%errorlevel%] == [0] (
-		:: sleep 300ms
+		:: sleep 100ms
 		pathping localhost -n -q 1 -p 100 >nul
 		goto :killLoop
 	) else (
