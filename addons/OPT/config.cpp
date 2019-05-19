@@ -7,7 +7,7 @@ class CfgPatches {
         author = "OPT";
         authors[] = {"Raven"};
         authorUrl = "";
-        version = QUOTE(VERSION);
+        version = VERSION;
         versionStr = QUOTE(VERSION);
         versionAr[] = {VERSION_AR};
         requiredAddons[] = {"CLib"};
