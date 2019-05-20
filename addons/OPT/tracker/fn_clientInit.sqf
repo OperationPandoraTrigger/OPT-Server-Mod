@@ -65,36 +65,26 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 //Feststellung ob Dialog vorhanden ist und Eventauslösung 
 [
 	{
-		[
-			{
-
-				//OPT Karten-Dialog
-				if (!(isNull ((findDisplay 444001) displayCtrl 10007))) then
-				{
-					["OPTKartenDialog", []] call CFUNC(localEvent)
-				};	
 		
-				//BIS Artillery Dialog
-				if (!(isNull ((findDisplay -1) displayCtrl 500))) then
-				{
-					["BISArtilleryDialog", []] call CFUNC(localEvent)
-				};	
+		//OPT Karten-Dialog
+		if (!(isNull ((findDisplay 444001) displayCtrl 10007))) then
+		{
+			["OPTKartenDialog", []] call CFUNC(localEvent)
+		};	
 		
-				//BIS UAV Dialog 
-				if (!(isNull ((findDisplay 160) displayCtrl 51))) then
-				{
-					["BISUAVDialog", []] call CFUNC(localEvent)
-				};	
-
-			//Zeit verzörgerung für Durchlauf 1/sek
-			},
-			1,
-			""
-
-		] call CLib_fnc_wait;
-	
+		//BIS Artillery Dialog
+		if (!(isNull ((findDisplay -1) displayCtrl 500))) then
+		{
+			["BISArtilleryDialog", []] call CFUNC(localEvent)
+		};	
+		
+		//BIS UAV Dialog 
+		if (!(isNull ((findDisplay 160) displayCtrl 51))) then
+		{
+			["BISUAVDialog", []] call CFUNC(localEvent)
+		};		
 	},
-	0, 
+	1, //Zeit verzörgerung für Durchlauf 1/sek
 	[]
 	
 ] call CFUNC(addPerFrameHandler);
