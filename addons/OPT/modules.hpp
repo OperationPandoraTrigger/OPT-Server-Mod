@@ -9,15 +9,13 @@ class CfgCLibModules
 		
 		dependency[] = {};
 				
-		MODULE(dynmarkerverwaltung) 
+		MODULE(tracker) 
 		{
 
 			dependency[] = {"CLib/PerFrame", "Clib/Events"};
 			
 			FNC(clientInit);
-			APIFNC(markerErstellen);
-			APIFNC(markerErstellenMitHover);
-			APIFNC(markerLoeschen);			
+			APIFNC(addMarker);		
 		};
 		
     };
