@@ -1,5 +1,5 @@
 /**
-* Überwachung ob Dialog vorhanden ist 
+* Überwachung ob Dialog vorhanden ist und Anmeldung des Dialog in Clibsystem
 * 
 * Autor: [GNC]Lord-MDB
 *
