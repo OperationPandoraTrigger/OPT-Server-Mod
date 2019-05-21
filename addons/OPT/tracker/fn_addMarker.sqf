@@ -5,7 +5,7 @@
 *
 * Argumente:
 * 0: <ARRAY> _startPosition (Start Position des erstellten Marker)
-* 1: <STRING> _prioritaet (realtime|high|normal|low, aktuellsierungs Angabe des Marker durch den Tracking code)
+* 1: <Number> _prioritaet (Zeitangabe in ms für Aktuellsierung in der Tracking Funktion)
 * 2: <Objekt> _trackingobjekt (Objekt für die Aktuellsierung des Markers)
 * 3: <STRING> _text (Overlay Textanzeige des Markes)
 * 4: <ARRAY> _icon (Texturverweis für Markersymbol)
@@ -32,9 +32,9 @@
 * ja
 * 
 * Beispiel Externer Aufruf:
-* _markerID = [[_startPosition],"_prioritaet",_trackingobjekt,"_text",[_icon],_winkel,[_farbe],_sichtbarkeit,_ebene,_schriftgroeße,"_schritart"] call OFUNC(addMarker);
+* _markerID = [[_startPosition],_prioritaet,_trackingobjekt,"_text",[_icon],_winkel,[_farbe],_sichtbarkeit,_ebene,_schriftgroeße,"_schritart"] call OFUNC(addMarker);
 * Beispiel interner Aufruf:
-* _markerID = [[_startPosition],"_prioritaet",_trackingobjekt,"_text",[_icon],_winkel,[_farbe],_sichtbarkeit,_ebene,_schriftgroeße,"_schritart"] call OFUNC(addMarker);
+* _markerID = [[_startPosition],_prioritaet,_trackingobjekt,"_text",[_icon],_winkel,[_farbe],_sichtbarkeit,_ebene,_schriftgroeße,"_schritart"] call OFUNC(addMarker);
 *
 */
 
@@ -44,7 +44,7 @@ params
 					
 [
 	["_startPosition",[0,0,0]],
-	["_prioritaet","realtime"],
+	["_prioritaet",1000],
 	["_trackingobjekt",nil],
 	["_text",""],
 	["_icon",[]],
@@ -59,17 +59,17 @@ params
 //Datenblock für Markererstellung
 private _markerdata = ["ICON", _icon, _farbe, _startPosition, 20, 20, _winkel, _text, _sichtbarkeit, _schriftgroeße, _schritart, "right"];	
 
-//Markerzähler
-GVAR(idMarkerConuter) = GVAR(idMarkerConuter) + 1;
-
 //Marker Name erstellen
 private _markerNamen = format ["OPTMarker%1",GVAR(idMarkerConuter)]
+
+//Markerzähler
+GVAR(idMarkerConuter) = GVAR(idMarkerConuter) + 1;
 
 //Marker erstellen mit Clib
 [_markerNamen, [_markerdata]] call CFUNC(addMapGraphicsGroup);
 	
 //Erstellen Marker im System Speichern
-GVAR(markerArray) pushBack [_prioritaet,GVAR(idMarkerConuter),_trackingCode];
+GVAR(markerArray) pushBack [_prioritaet,GVAR(idMarkerConuter),_trackingobjekt];
 
 //Rückgabewert
 _markerID = GVAR(idMarkerConuter);
