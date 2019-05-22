@@ -131,6 +131,7 @@ DFUNC(markerVersetzen) =
 
 	//BIS Marker
 	_markerNamen setmarkerpos getPosWorld _trackingobjekt;
+	_markerNamen setmarkerdir getdir _trackingobjekt;
 	
 };
 
