@@ -6,6 +6,12 @@
 
 @echo off
 
+if not exist "%~dp0.\..\..\dependencies\CLib\addons\CLib\" (
+	echo I can't find the CLib submodule - did you initialize it via "git submodule update"?
+	pause
+	exit 1
+)
+
 :: This batch file will set the pboName variable
 call %~dp0.\getPBOName.bat %~dp0.\..\..\dependencies\CLib\addons\CLib\pboName.h clib
 
