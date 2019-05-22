@@ -92,7 +92,7 @@ switch (_prioritaet) do
 	default 
 	{
 		_prioritaetzeit = 40;
-		LOG("Fehlerhafte Priorität angegeben, Standart Normal Priorität ausgewählt");
+		ERROR_LOG("Fehlerhafte Priorität angegeben, Standart Normal Priorität ausgewählt");
 	};
 
 };
