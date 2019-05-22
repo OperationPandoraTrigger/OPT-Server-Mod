@@ -129,8 +129,9 @@ DFUNC(markerVersetzen) =
 	//Marker Name erstellen
 	private _markerNamen = format ["OPTMarker%1",_markerID]
 
-	//[_markerNamen, [_trackingobjekt]] call CFUNC(addMapGraphicsGroup);
-
+	//BIS Marker
+	_markerNamen setmarkerpos getPosWorld _trackingobjekt;
+	
 };
 
 //Kontrolle ob Karte oder Kartendialog geöffnet ist.

@@ -5,7 +5,7 @@
 *
 * Argumente:
 * 0: <ARRAY> _startPosition (Start Position des erstellten Marker)
-* 1: <Number> _prioritaet (0 = Realtime|40 = Normal,Zeitangabe für Aktuellsierung in der Tracking Funktion)
+* 1: <STRING> _prioritaet (Realtime|Normal,Zeitangabe für Aktuellsierung in der Tracking Funktion)
 * 2: <Objekt> _trackingobjekt (Objekt für die Aktuellsierung des Markers)
 * 3: <STRING> _text (Overlay Textanzeige des Markes)
 * 4: <ARRAY> _icon (Texturverweis für Markersymbol)
@@ -13,7 +13,7 @@
 * 6: <ARRAY> _farbe (Farbe des Markers in RGB Code)
 * 7: <Number> _sichtbarkeit (Sichtbarkeit des Maker auf der Karte: 0-1)
 * 8: <Number> _ebene (Ebene des Maker auf der Karte: 0-1)
-* 9: <Number> _schriftgroeße (_Schriftgroeße des Maker auf der Karte: 0-50)
+* 9: <Number> _schriftgroesse (_Schriftgroeße des Maker auf der Karte: 0-50)
 *10: <STRING> _schritart (Schritart Overlay Textanzeige des Markes)
 *
 * Rückgabewert:
@@ -32,9 +32,9 @@
 * ja
 * 
 * Beispiel Externer Aufruf:
-* _markerID = [[_startPosition],_prioritaet,_trackingobjekt,"_text",[_icon],_winkel,[_farbe],_sichtbarkeit,_ebene,_schriftgroeße,"_schritart"] call OFUNC(addMarker);
+* _markerID = [[_startPosition],"_prioritaet",_trackingobjekt,"_text",[_icon],_winkel,[_farbe],_sichtbarkeit,_ebene,_schriftgroeße,"_schritart"] call OFUNC(addMarker);
 * Beispiel interner Aufruf:
-* _markerID = [[_startPosition],_prioritaet,_trackingobjekt,"_text",[_icon],_winkel,[_farbe],_sichtbarkeit,_ebene,_schriftgroeße,"_schritart"] call OFUNC(addMarker);
+* _markerID = [[_startPosition],"_prioritaet",_trackingobjekt,"_text",[_icon],_winkel,[_farbe],_sichtbarkeit,_ebene,_schriftgroeße,"_schritart"] call OFUNC(addMarker);
 *
 */
 
@@ -44,7 +44,7 @@ params
 					
 [
 	["_startPosition",[0,0,0]],
-	["_prioritaet",40],
+	["_prioritaet","Normal"],
 	["_trackingobjekt",nil],
 	["_text",""],
 	["_icon",[]],
@@ -52,12 +52,12 @@ params
 	["_farbe",[1,1,1,1]],
 	["_sichtbarkeit",1],
 	["_ebene",1],
-	["_schriftgroeße",0.08],
+	["_schriftgroesse",0.08],
 	["_schritart","RobotoCondensed"]
 ];
 
 //Datenblock für Markererstellung
-private _markerdata = ["ICON", _icon, _farbe, _startPosition, 20, 20, _winkel, _text, _sichtbarkeit, _schriftgroeße, _schritart, "right"];	
+private _markerdata = ["ICON", _icon, _farbe, _startPosition, 20, 20, _winkel, _text, _sichtbarkeit, _schriftgroesse, _schritart, "right"];	
 
 //Marker Name erstellen
 private _markerNamen = format ["OPTMarker%1",GVAR(idMarkerConuter)]
@@ -66,10 +66,39 @@ private _markerNamen = format ["OPTMarker%1",GVAR(idMarkerConuter)]
 GVAR(idMarkerConuter) = GVAR(idMarkerConuter) + 1;
 
 //Marker erstellen mit Clib
-[_markerNamen, [_markerdata]] call CFUNC(addMapGraphicsGroup);
+//[_markerNamen, [_markerdata]] call CFUNC(addMapGraphicsGroup);
+//BIS Marker
+_private _marker = createMarkerLocal [_markerNamen, _startPosition];
+_marker setMarkerTypeLocal "mil_triangle";
+_marker setMarkerColorLocal "ColorBlack";
+_marker setMarkerSizeLocal [0.8, 0.8];
+_marker setMarkerAlphaLocal _sichtbarkeit;
+_marker setMarkerTextLocal format["%1",_text];
 	
+private _prioritaetzeit = 0;
+
+switch (_prioritaet) do 
+{
+	case "Normal": 
+	{
+		_prioritaetzeit = 40;
+	}; 
+
+	case "Realtime": 
+	{
+		_prioritaetzeit = 0;
+	};    
+
+	default 
+	{
+		_prioritaetzeit = 40;
+		LOG("Fehlerhafte Priorität angegeben, Standart Normal Priorität ausgewählt");
+	};
+
+};
+
 //Erstellen Marker im System Speichern
-GVAR(markerDatenArray) pushBack [_prioritaet,_trackingobjekt];
+GVAR(markerDatenArray) pushBack [_prioritaetzeit,_trackingobjekt];
 
 GVAR(markerIDArray) pushBack GVAR(idMarkerConuter);
 
