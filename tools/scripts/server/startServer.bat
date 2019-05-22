@@ -4,7 +4,7 @@
 @echo off
 
 :: set meta infos
-call %~dp0\setMetaData.bat
+call %~dp0.\setMetaData.bat
 
 :: change directory into the Arma directory (in which the server-exe resides)
 cd /d "%armaDir%"
@@ -16,7 +16,7 @@ set "opt=%modDir%\@OPT"
 :: to the exe
 echo Trying to copy config file. This might take a while...
 :copyLoop
-	copy "%~dp0.\serverConfig.cfg" "%armaDir%" > NUL 2>&1
+	copy "%~dp0.\.\serverConfig.cfg" "%armaDir%" > NUL 2>&1
 
 	if not [%errorlevel%] == [0]  (
 		:: sleep 100ms

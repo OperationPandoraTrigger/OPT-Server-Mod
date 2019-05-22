@@ -4,7 +4,7 @@
 @echo off
 
 :: set meta infos
-call %~dp0\setMetaData.bat
+call %~dp0.\setMetaData.bat
 
 :: change directory into the Arma directory (in which the server-exe resides)
 cd /d %armaDir%
