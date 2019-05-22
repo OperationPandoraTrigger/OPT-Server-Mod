@@ -65,6 +65,18 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 
 ] call CFUNC(addEventHandler);
 
+//Event addMarker
+[
+	OPTAddMarker, 
+	{
+		_this params ["_eventArgs"];
+
+		[_eventArgs] call OFUNC(addMarker);
+	},
+	[]
+
+] call CFUNC(addEventHandler);
+
 //Feststellung ob Dialog vorhanden ist und Eventauslösung 
 [
 	{
@@ -92,3 +104,108 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 	
 ] call CFUNC(addPerFrameHandler);
 
+//Markerzähler einrichten
+GVAR(idMarkerConuter) = 0;
+
+//Markerspeichern einrichten
+GVAR(markerDatenArray) = [];
+
+GVAR(markerIDArray) = [];
+
+//Hilfs Variable für Zeitkontrolle
+GVAR(markerZeitNormalcheck) = 0;
+
+//versetzt den Marker zum Objekt
+
+DFUNC(markerVersetzen) = 
+{
+	params
+					
+	[
+		["_markerID",0,
+		["_trackingobjekt",nil],
+	];
+
+	//Marker Name erstellen
+	private _markerNamen = format ["OPTMarker%1",_markerID]
+
+	//[_markerNamen, [_trackingobjekt]] call CFUNC(addMapGraphicsGroup);
+
+};
+
+//Kontrolle ob Karte oder Kartendialog geöffnet ist.
+
+DFUNC(kartenCheckOpen) = 
+{
+	
+	private _KartenOpen = false;
+	
+	// OPT Kartendialog 
+	if (!(isNull ((findDisplay 444001) displayCtrl 10007))) then
+	{
+		_KartenOpen = true;	
+	};
+
+	//BIS Artillery Dialog 
+	if (!(isNull ((findDisplay -1) displayCtrl 500))) then
+	{
+		_KartenOpen = true;	
+	};	
+
+	//BIS UAV Dialog
+	if (!(isNull ((findDisplay 160) displayCtrl 51))) then
+	{
+		_KartenOpen = true;	
+	};
+
+	//Mini GPS oder Karte
+	if (visibleMap or visibleGPS) then
+	{
+		_KartenOpen = true;	
+	};	
+
+_KartenOpen
+
+};
+
+
+//Tracking Funktion für versetzen der Marker
+[
+	{
+		// Gobalen Markerspeicher auslesen
+		private _markerDatenArray = GVAR(markerDatenArray);
+
+		private _markerIDArray = GVAR(markerIDArray);
+		
+		// Kontrolle ob Marker versetzt wird
+		for "_i" from 0 to count _markerDatenArray do 
+		{
+			private _prioritaetzeit = (_markerDatenArray select _i) select 0;
+
+			//BearbeitungsStufe Normal
+			if ((GVAR(markerZeitNormalcheck) + _prioritaetzeit) <= time) then
+			{
+				//Neue Zeitmarke ermitteln
+				GVAR(markerZeitNormalcheck) = time;
+
+				// Kontrolle ob Karte oder Kartendialog geöffnet ist
+				private _KartenOpen = [] call FUNC(kartenCheckOpen);
+
+				if (_KartenOpen) then
+				{
+					//Marker versetzen aufrufen
+					[
+
+						((_markerDatenArray select _i) select 1),
+						(_markerIDArray select _i) 
+
+					] call FUNC(markerVersetzen);
+
+				};	
+			};		
+		};    
+	},
+	0,
+	[]
+	
+] call CFUNC(addPerFrameHandler);

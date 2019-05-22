@@ -5,7 +5,7 @@
 *
 * Argumente:
 * 0: <ARRAY> _startPosition (Start Position des erstellten Marker)
-* 1: <Number> _prioritaet (Zeitangabe in ms für Aktuellsierung in der Tracking Funktion)
+* 1: <Number> _prioritaet (0 = Realtime|40 = Normal,Zeitangabe für Aktuellsierung in der Tracking Funktion)
 * 2: <Objekt> _trackingobjekt (Objekt für die Aktuellsierung des Markers)
 * 3: <STRING> _text (Overlay Textanzeige des Markes)
 * 4: <ARRAY> _icon (Texturverweis für Markersymbol)
@@ -44,7 +44,7 @@ params
 					
 [
 	["_startPosition",[0,0,0]],
-	["_prioritaet",1000],
+	["_prioritaet",40],
 	["_trackingobjekt",nil],
 	["_text",""],
 	["_icon",[]],
@@ -69,7 +69,9 @@ GVAR(idMarkerConuter) = GVAR(idMarkerConuter) + 1;
 [_markerNamen, [_markerdata]] call CFUNC(addMapGraphicsGroup);
 	
 //Erstellen Marker im System Speichern
-GVAR(markerArray) pushBack [_prioritaet,GVAR(idMarkerConuter),_trackingobjekt];
+GVAR(markerDatenArray) pushBack [_prioritaet,_trackingobjekt];
+
+GVAR(markerIDArray) pushBack GVAR(idMarkerConuter);
 
 //Rückgabewert
 _markerID = GVAR(idMarkerConuter);
