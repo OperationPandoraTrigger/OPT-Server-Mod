@@ -6,6 +6,14 @@ class CfgCLibModules {
         path = "OPT\OPT\addons\OPT";
 		
 		dependency[] = {};
+
+        MODULE(Beam) 
+		{
+
+			dependency[] = {"CLib/PerFrame", "Clib/Events"};
+			
+			FNC(clientInit);
+		};
 		
     };
 };

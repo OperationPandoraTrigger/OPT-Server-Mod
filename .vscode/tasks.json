@@ -12,7 +12,7 @@
         {
             "label": "Move OPT",
             "type": "shell",
-            "command": "cp .\\PBOs\\dev\\@OPT 'E:\\Steam\\steamapps\\common\\Arma 3\\MODS' -recurse -force",
+            "command": "cp .\\PBOs\\dev\\@OPT 'E:\\Steam\\steamapps\\common\\Arma 3\\MODS' -recurse -force;cp .\\PBOs\\release\\@CLib 'E:\\Steam\\steamapps\\common\\Arma 3\\MODS' -recurse -force",
             "windows": {},
         }
     ]
