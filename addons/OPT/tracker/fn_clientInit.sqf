@@ -182,11 +182,41 @@ _KartenOpen
 		{
 			private _prioritaetzeit = (_markerDatenArray select _i) select 0;
 
+			//Stufe Normal 40ms
+			private _stufeNormal = 40;
+
+			//Stufe Realtime 0ms
+			private _stufeRealtime = 0;
+
 			//BearbeitungsStufe Normal
-			if ((GVAR(markerZeitNormalcheck) + _prioritaetzeit) <= time) then
+			if (_prioritaetzeit isEqualTo _stufeNormal) then
 			{
-				//Neue Zeitmarke ermitteln
-				GVAR(markerZeitNormalcheck) = time;
+
+				if ((GVAR(markerZeitNormalcheck) + _prioritaetzeit) <= time) then
+				{
+					//Neue Zeitmarke ermitteln
+					GVAR(markerZeitNormalcheck) = time;
+
+					// Kontrolle ob Karte oder Kartendialog geöffnet ist
+					private _KartenOpen = [] call FUNC(kartenCheckOpen);
+
+					if (_KartenOpen) then
+					{
+						//Marker versetzen aufrufen
+						[
+
+							((_markerDatenArray select _i) select 1),
+							(_markerIDArray select _i) 
+
+						] call FUNC(markerVersetzen);
+
+					};	
+				};
+			};
+
+			//BearbeitungsStufe Realtime
+			if (_prioritaetzeit isEqualTo _stufeRealtime) then
+			{
 
 				// Kontrolle ob Karte oder Kartendialog geöffnet ist
 				private _KartenOpen = [] call FUNC(kartenCheckOpen);
@@ -202,7 +232,9 @@ _KartenOpen
 					] call FUNC(markerVersetzen);
 
 				};	
-			};		
+				
+			};
+
 		};    
 	},
 	0,
