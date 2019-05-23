@@ -16,7 +16,8 @@ class CfgCLibModules
 			
 			FNC(clientInit);
 			APIFNC(addMarker);	
-			APIFNC(setMarkerText);	
+			APIFNC(setMarkerText);
+			APIFNC(setMarkerIcon);		
 		};
 		
     };

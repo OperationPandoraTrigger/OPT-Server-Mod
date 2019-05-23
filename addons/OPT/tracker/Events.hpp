@@ -12,5 +12,8 @@
 // Event der einen Marker erstellt in Clib System 
 #define OPTAddMarker "OPTAddMarker"
 
-// Event der einen Text an einem Marker erstellt
+// Event der einen Text an einem Marker erstellt/wechselt
 #define OPTsetMarkerText "OPTsetMarkerText"
+
+// Event der einen Icon an einem Marker erstellt/wechselt
+#define OPTsetMarkerIcon "OPTsetMarkerIcon"
