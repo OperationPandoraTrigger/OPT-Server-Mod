@@ -15,7 +15,8 @@ class CfgCLibModules
 			dependency[] = {"CLib/PerFrame", "Clib/Events"};
 			
 			FNC(clientInit);
-			APIFNC(addMarker);		
+			APIFNC(addMarker);	
+			APIFNC(setMarkerText);	
 		};
 		
     };

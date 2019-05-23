@@ -77,6 +77,18 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 
 ] call CFUNC(addEventHandler);
 
+//Event setMarkerText
+[
+	OPTsetMarkerText, 
+	{
+		_this params ["_eventArgs"];
+
+		[_eventArgs] call OFUNC(setMarkerText);
+	},
+	[]
+
+] call CFUNC(addEventHandler);
+
 //Feststellung ob Dialog vorhanden ist und Eventauslösung 
 [
 	{
