@@ -20,3 +20,6 @@
 
 // Event der einen Color an einem Marker erstellt/wechselt
 #define OPTsetMarkerColor "OPTsetMarkerColor"
+
+// Event der einen Hover Marker erstellt/wechselt
+#define OPTsetMarkerHover "OPTsetMarkerHover"
