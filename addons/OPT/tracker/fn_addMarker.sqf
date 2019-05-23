@@ -8,7 +8,7 @@
 * 1: <STRING> _prioritaet (realtime|normal,Prioritätsangabe für Aktuellsierung in der Tracking Funktion)
 * 2: <Objekt> _trackingobjekt (Objekt für die Aktuellsierung des Markers)
 * 3: <STRING> _text (Overlay Textanzeige des Markes)
-* 4: <ARRAY> _icon (Texturverweis für Markersymbol)
+* 4: <STRING> _icon (Texturverweis für Markersymbol)
 * 5: <Number> _winkel (Ausrichtung des Markers im Overlay)
 * 6: <ARRAY> _farbe (Farbe des Markers in RGB Code)
 * 7: <Number> _sichtbarkeit (Sichtbarkeit des Maker auf der Karte: 0-1)
@@ -32,9 +32,9 @@
 * ja
 * 
 * Beispiel Externer Aufruf:
-* _markerID = [[_startPosition],"_prioritaet",_trackingobjekt,"_text",[_icon],_winkel,[_farbe],_sichtbarkeit,_ebene,_schriftgroeße,"_schritart"] call OFUNC(addMarker);
+* _markerID = [[_startPosition],"_prioritaet",_trackingobjekt,"_text","_icon",_winkel,[_farbe],_sichtbarkeit,_ebene,_schriftgroeße,"_schritart"] call OFUNC(addMarker);
 * Beispiel interner Aufruf:
-* _markerID = [[_startPosition],"_prioritaet",_trackingobjekt,"_text",[_icon],_winkel,[_farbe],_sichtbarkeit,_ebene,_schriftgroeße,"_schritart"] call OFUNC(addMarker);
+* _markerID = [[_startPosition],"_prioritaet",_trackingobjekt,"_text","_icon",_winkel,[_farbe],_sichtbarkeit,_ebene,_schriftgroeße,"_schritart"] call OFUNC(addMarker);
 *
 */
 
@@ -47,7 +47,7 @@ params
 	["_prioritaet","normal"],
 	["_trackingobjekt",nil],
 	["_text",""],
-	["_icon",[]],
+	["_icon","\A3\ui_f\data\map\vehicleicons\iconMan_ca.paa"],
 	["_winkel",0],
 	["_farbe",[1,1,1,1]],
 	["_sichtbarkeit",1],
