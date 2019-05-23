@@ -21,6 +21,7 @@ class CfgCLibModules
 			APIFNC(setMarkerColor);	
 			APIFNC(setMarkerHover);	
 			APIFNC(removeMarkerHover);
+			APIFNC(removeMarker);
 		};
 		
     };
