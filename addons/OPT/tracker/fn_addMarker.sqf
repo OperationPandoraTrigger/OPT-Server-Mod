@@ -69,7 +69,7 @@ GVAR(idMarkerConuter) = GVAR(idMarkerConuter) + 1;
 //[_markerNamen, [_markerdata]] call CFUNC(addMapGraphicsGroup);
 //BIS Marker
 private _marker = createMarkerLocal [_markerNamen, _startPosition];
-_marker setMarkerTypeLocal "mil_triangle";
+_marker setMarkerTypeLocal _icon;
 _marker setMarkerColorLocal "ColorBlack";
 _marker setMarkerSizeLocal [0.8, 0.8];
 _marker setMarkerAlphaLocal _sichtbarkeit;
