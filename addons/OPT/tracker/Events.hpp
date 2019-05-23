@@ -23,3 +23,6 @@
 
 // Event der einen Hover Marker erstellt/wechselt
 #define OPTsetMarkerHover "OPTsetMarkerHover"
+
+// Event der einen Hover Marker erstellt/wechselt
+#define OPTremoveMarkerHover "OPTremoveMarkerHover"

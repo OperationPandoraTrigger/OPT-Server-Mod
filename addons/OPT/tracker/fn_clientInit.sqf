@@ -125,6 +125,18 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 
 ] call CFUNC(addEventHandler);
 
+//Event removeMarkerHover
+[
+	OPTremoveMarkerHover, 
+	{
+		_this params ["_eventArgs"];
+
+		[_eventArgs] call OFUNC(removeMarkerHover);
+	},
+	[]
+
+] call CFUNC(addEventHandler);
+
 //Feststellung ob Dialog vorhanden ist und Eventauslösung 
 [
 	{
