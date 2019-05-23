@@ -4,7 +4,7 @@
 * Autor: [GNC]Lord-MDB
 *
 * Argumente:
-* 0: <Number> _id (Marker ID für Markernamen festellung)
+* 0: <Number> _id (Marker ID für Markernamen feststellung)
 * 1: <STRING> _text (Overlay Textanzeige des Markes)
 *
 * Rückgabewert:
