@@ -5,7 +5,7 @@
 *
 * Argumente:
 * 0: <ARRAY> _startPosition (Start Position des erstellten Marker)
-* 1: <STRING> _prioritaet (Realtime|Normal,Zeitangabe für Aktuellsierung in der Tracking Funktion)
+* 1: <STRING> _prioritaet (realtime|normal,Prioritätsangabe für Aktuellsierung in der Tracking Funktion)
 * 2: <Objekt> _trackingobjekt (Objekt für die Aktuellsierung des Markers)
 * 3: <STRING> _text (Overlay Textanzeige des Markes)
 * 4: <ARRAY> _icon (Texturverweis für Markersymbol)
@@ -44,7 +44,7 @@ params
 					
 [
 	["_startPosition",[0,0,0]],
-	["_prioritaet","Normal"],
+	["_prioritaet","normal"],
 	["_trackingobjekt",nil],
 	["_text",""],
 	["_icon",[]],
@@ -68,7 +68,7 @@ GVAR(idMarkerConuter) = GVAR(idMarkerConuter) + 1;
 //Marker erstellen mit Clib
 //[_markerNamen, [_markerdata]] call CFUNC(addMapGraphicsGroup);
 //BIS Marker
-_private _marker = createMarkerLocal [_markerNamen, _startPosition];
+private _marker = createMarkerLocal [_markerNamen, _startPosition];
 _marker setMarkerTypeLocal "mil_triangle";
 _marker setMarkerColorLocal "ColorBlack";
 _marker setMarkerSizeLocal [0.8, 0.8];
@@ -79,12 +79,12 @@ private _prioritaetzeit = 0;
 
 switch (_prioritaet) do 
 {
-	case "Normal": 
+	case "normal": 
 	{
 		_prioritaetzeit = 40;
 	}; 
 
-	case "Realtime": 
+	case "realtime": 
 	{
 		_prioritaetzeit = 0;
 	};    
@@ -92,7 +92,7 @@ switch (_prioritaet) do
 	default 
 	{
 		_prioritaetzeit = 40;
-		ERROR_LOG("Fehlerhafte Priorität angegeben, Standart Normal Priorität ausgewählt");
+		ERROR_LOG("Fehlerhafte Priorität angegeben, Standart normal Priorität ausgewählt");
 	};
 
 };
