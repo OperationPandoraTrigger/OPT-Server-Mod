@@ -101,6 +101,18 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 
 ] call CFUNC(addEventHandler);
 
+//Event setMarkerColor
+[
+	OPTsetMarkerColor, 
+	{
+		_this params ["_eventArgs"];
+
+		[_eventArgs] call OFUNC(setMarkerColor);
+	},
+	[]
+
+] call CFUNC(addEventHandler);
+
 //Feststellung ob Dialog vorhanden ist und Eventauslösung 
 [
 	{

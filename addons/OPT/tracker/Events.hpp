@@ -17,3 +17,6 @@
 
 // Event der einen Icon an einem Marker erstellt/wechselt
 #define OPTsetMarkerIcon "OPTsetMarkerIcon"
+
+// Event der einen Color an einem Marker erstellt/wechselt
+#define OPTsetMarkerColor "OPTsetMarkerColor"
