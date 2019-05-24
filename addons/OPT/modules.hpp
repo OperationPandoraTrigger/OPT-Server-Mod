@@ -23,6 +23,14 @@ class CfgCLibModules
 			APIFNC(removeMarkerHover);
 			APIFNC(removeMarker);
 		};
+
+		MODULE(gps) 
+		{
+
+			dependency[] = {"CLib/PerFrame", "Clib/Events"};
+			
+			FNC(clientInit);
+		};
 		
     };
 };
