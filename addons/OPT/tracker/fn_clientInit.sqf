@@ -71,7 +71,9 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 	{
 		_this params ["_eventArgs"];
 
-		[_eventArgs] call OFUNC(addMarker);
+		private _Id = [_eventArgs] call OFUNC(addMarker);
+
+		_Id
 	},
 	[]
 
