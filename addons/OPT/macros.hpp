@@ -38,6 +38,8 @@
 #define DOFUNC(var) TRIPLE(OPT,fnc,var)
 #define QOFUNC(var) QUOTE(DOFUNC(var))
 
+#define ERROR_LOG(msg) SYSLOGGING("ERROR", msg)
+
 #ifdef ISDEV
     #define OFUNC(var) (currentNamespace getVariable [QOFUNC(var), {if (time > 0) then {["Error function %1 dont exist or isNil", QOFUNC(var)] call BIS_fnc_errorMsg;}; DUMP(QOFUNC(var) + " Doesn't Exist")}])
 #else
