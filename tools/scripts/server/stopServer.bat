@@ -19,13 +19,13 @@ echo Killing the (potentially) running server. This might take a while...
 	taskkill /im %exeName% > NUL 2>&1
 	
 	if [%errorlevel%] == [0] (
-		:: sleep 100ms
-		pathping localhost -n -q 1 -p 100 >nul
+		:: sleep 1s
+		TIMEOUT /NOBREAK /T 1 > NUL
 		goto :killLoop
 	) else (
-		:: wait another 300ms and check again if the server was _really_ killed
-		pathping localhost -n -q 1 -p 100 >nul
-		taskkill /im %exeName% > NUL 2>&1
+		:: wait another 1s and check again if the server was _really_ (hard)killed
+		TIMEOUT /NOBREAK /T 1 > NUL
+		taskkill /f /im %exeName% > NUL 2>&1
 		if [%errorlevel%] == [0] (
 			:: apparently the server isn't as dead as it seemed
 			goto :killLoop
