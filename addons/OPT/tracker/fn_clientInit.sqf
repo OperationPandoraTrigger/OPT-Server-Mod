@@ -37,7 +37,7 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 
 //OPT Karten-Dialog
 [
-	OPTKartenDialogOpen, 
+	OPTKARTENDIALOGOPEN, 
 	{
 		((findDisplay 444001) displayCtrl 10007) call CFUNC(registerMapControl)
 	},
@@ -47,7 +47,7 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 
 //BIS Artillery Dialog
 [
-	BISArtilleryDialogOpen, 
+	BISARTILLERYDIALOGOPEN, 
 	{
 		((findDisplay -1) displayCtrl 500) call CFUNC(registerMapControl)
 	},
@@ -57,7 +57,7 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 
 //BIS UAV Dialog
 [
-	BISUAVDialogOpen, 
+	BISUAVDIALOGOPEN, 
 	{
 		((findDisplay 160) displayCtrl 51) call CFUNC(registerMapControl)
 	},
@@ -67,7 +67,7 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 
 //Event addMarker
 [
-	OPTAddMarker, 
+	OPTADDMARKER, 
 	{
 		_this params ["_eventArgs"];
 
@@ -81,7 +81,7 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 
 //Event setMarkerText
 [
-	OPTsetMarkerText, 
+	OPTSETMARKERTEXT, 
 	{
 		_this params ["_eventArgs"];
 
@@ -93,7 +93,7 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 
 //Event setMarkerIcon
 [
-	OPTsetMarkerIcon, 
+	OPTSETMARKERICON, 
 	{
 		_this params ["_eventArgs"];
 
@@ -105,7 +105,7 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 
 //Event setMarkerColor
 [
-	OPTsetMarkerColor, 
+	OPTSETMARKERCOLOR, 
 	{
 		_this params ["_eventArgs"];
 
@@ -117,7 +117,7 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 
 //Event setMarkerHover
 [
-	OPTsetMarkerHover, 
+	OPTSETMARKERHOVER, 
 	{
 		_this params ["_eventArgs"];
 
@@ -129,7 +129,7 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 
 //Event removeMarkerHover
 [
-	OPTremoveMarkerHover, 
+	OPTREMOVEMARKERHOVER, 
 	{
 		_this params ["_eventArgs"];
 
@@ -141,7 +141,7 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 
 //Event removeMarker
 [
-	OPTremoveMarker, 
+	OPTREMOVEMARKER, 
 	{
 		_this params ["_eventArgs"];
 
@@ -170,7 +170,7 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 		//BIS UAV Dialog 
 		if (!(isNull ((findDisplay 160) displayCtrl 51))) then
 		{
-			[BISUAVDialogOpen, []] call CFUNC(localEvent)
+			[BISUAVDIALOGOPEN, []] call CFUNC(localEvent)
 		};		
 	},
 	1, //Zeit verzörgerung für Durchlauf 1/sek
