@@ -25,12 +25,15 @@ cd /d "%armaDir%"
 
 :: Copy the server-config into the arma-dir as Arma can only read configs relative
 :: to the exe
-copy /Y "%~dp0.\serverConfig.cfg" "%armaDir%" > NUL 2>&1
-if not [%errorlevel%] == [0]  (
-	echo Unable to copy server-config. Press any key to exit...
-	pause > NUL
-	exit 1
-)
+:copyLoop
+	echo Trying to copy config file. This might take a while...
+	copy /Y "%~dp0.\serverConfig.cfg" "%armaDir%" > NUL 2>&1
+
+	if not [%errorlevel%] == [0]  (
+		:: sleep 1s
+		TIMEOUT /NOBREAK /T 1 > NUL
+		goto :copyLoop
+	)
 
 :: Start the server and minimize it once it's started
 start /min %exeName% -config=serverConfig.cfg -serverMod="%clib%;%opt%" -debugCallExtension
