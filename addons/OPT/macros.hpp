@@ -57,7 +57,7 @@
 #ifdef ISDEV
 	#define ASSERTION_FAILED(msg) SYSLOGGING("FAILED ASSERTION",msg)
 
-	#define ASSERT_IS_TYPE(var, type) if !(var isEqualType type) then {private _errMsg = format["Expected %1 but got %2", typeName type, typeName var]; ASSERTION_FAILED(_errMsg);};
+	#define ASSERT_IS_TYPE(var, type) ASSERT_IS_NOT_NIL(var); if !(var isEqualType type) then {private _errMsg = format["Expected %1 but got %2", typeName type, typeName var]; ASSERTION_FAILED(_errMsg);};
 	#define ASSERT_IS_ARRAY(var) ASSERT_IS_TYPE(var,[])
 	#define ASSERT_IS_BOOL(var) ASSERT_IS_TYPE(var,true)
 	#define ASSERT_IS_CODE(var) ASSERT_IS_TYPE(var,{})
@@ -74,20 +74,20 @@
 	#define ASSERT_IS_TEXT(var) ASSERT_IS_TYPE(var,text "")
 	#define ASSERT_IS_LOCATION(var) ASSERT_IS_TYPE(var,locationNull)
 	#define ASSERT_IS_NAMESPACE(var) ASSERT_IS_TYPE(var,missionNamespace)
-	#define ASSERT_IS_NULL(var) if !(IS_NULL(var)) then {private _errMsg = format ["Expected variable to be of type Null but got %1", typeName var]; ASSERTION_FAILED(_errMsg);};
-	#define ASSERT_IS_NOT_NULL(var) if (IS_NULL(var)) then {ASSERTION_FAILED("Expected variable to not be Null, but it was");};
+	#define ASSERT_IS_NULL(var) ASSERT_IS_NOT_NIL(var); if !(IS_NULL(var)) then {private _errMsg = format ["Expected variable to be of type Null but got %1", typeName var]; ASSERTION_FAILED(_errMsg);};
+	#define ASSERT_IS_NOT_NULL(var) ASSERT_IS_NOT_NIL(var); if (IS_NULL(var)) then {ASSERTION_FAILED("Expected variable to not be Null, but it was");};
 	#define ASSERT_IS_NIL(var) if !(isNil {var}) then {private _errMsg = format["Expected Nil but got %1", var]; ASSERTION_FAILED(_errMsg);};
 	#define ASSERT_IS_NOT_NIL(var) if (isNil {var}) then {ASSERTION_FAILED("Variable was nil but shouldn't have been");};
-	#define ASSERT_IS_POSITION(var) if !(IS_POSITION(var)) then {private _errMsg = format ["Expected Position but got %1", var]; ASSERTION_FAILED(_errMsg);};
-	#define ASSERT_IS_POSITION2D(var) if !(IS_POSITION2D(var)) then {private _errMsg = format ["Expected Position2D but got %1", var]; ASSERTION_FAILED(_errMsg);};
-	#define ASSERT_IS_POSITION3D(var) if !(IS_POSITION3D(var)) then {private _errMsg = format ["Expected Position3D but got %1", var]; ASSERTION_FAILED(_errMsg);};
-	#define ASSERT_IS_INTEGER(var) if !(IS_SCALAR(var)) then {private _errMsg = format["Expected integer but got %1", typeName var]; ASSERTION_FAILED(_errMsg);}\
+	#define ASSERT_IS_POSITION(var) ASSERT_IS_NOT_NIL(var); if !(IS_POSITION(var)) then {private _errMsg = format ["Expected Position but got %1", var]; ASSERTION_FAILED(_errMsg);};
+	#define ASSERT_IS_POSITION2D(var) ASSERT_IS_NOT_NIL(var); if !(IS_POSITION2D(var)) then {private _errMsg = format ["Expected Position2D but got %1", var]; ASSERTION_FAILED(_errMsg);};
+	#define ASSERT_IS_POSITION3D(var) ASSERT_IS_NOT_NIL(var); if !(IS_POSITION3D(var)) then {private _errMsg = format ["Expected Position3D but got %1", var]; ASSERTION_FAILED(_errMsg);};
+	#define ASSERT_IS_INTEGER(var) ASSERT_IS_NOT_NIL(var); if !(IS_SCALAR(var)) then {private _errMsg = format["Expected integer but got %1", typeName var]; ASSERTION_FAILED(_errMsg);}\
 		else {private _errMsg = format["Expected integer but got floating point number (%1)", var]; ASSERTION_FAILED(_errMsg);};
-	#define ASSERT_TRUE(var) if !(var isEqualTo true) then {private _errMsg = format["Expected True but got %1", var]; ASSERTION_FAILED(_errMsg);};
-	#define ASSERT_FALSE(var) if !(var isEqualTo false) then {private _errMsg = format["Expected False but got %1", var]; ASSERTION_FAILED(_errMsg);};
-	#define ASSERT_ARRAY_LENGTH(var,length) if !(IS_ARRAY_LENGTH(var,length)) then {private _errMsg = format ["Expected array of length but got %1", var];};
-	#define ASSERT_ALIVE(var) if !(alive var) then {ASSERTION_FAILED("Expected object to be alive but it wasn't")};
-	#define ASSERT_DEAD(var) if (alive var) then {ASSERTION_FAILED("Expected object to be alive but it wasn't")};
+	#define ASSERT_TRUE(var) ASSERT_IS_NOT_NIL(var); if !(var isEqualTo true) then {private _errMsg = format["Expected True but got %1", var]; ASSERTION_FAILED(_errMsg);};
+	#define ASSERT_FALSE(var) ASSERT_IS_NOT_NIL(var); if !(var isEqualTo false) then {private _errMsg = format["Expected False but got %1", var]; ASSERTION_FAILED(_errMsg);};
+	#define ASSERT_ARRAY_LENGTH(var,length) ASSERT_IS_NOT_NIL(var); if !(IS_ARRAY_LENGTH(var,length)) then {private _errMsg = format ["Expected array of length but got %1", var];};
+	#define ASSERT_ALIVE(var) ASSERT_IS_NOT_NIL(var); if !(alive var) then {ASSERTION_FAILED("Expected object to be alive but it wasn't")};
+	#define ASSERT_DEAD(var) ASSERT_IS_NOT_NIL(var); if (alive var) then {ASSERTION_FAILED("Expected object to be alive but it wasn't")};
 #else
 	// Disable all assertions
 	#define ASSERTION_FAILED(msg)
