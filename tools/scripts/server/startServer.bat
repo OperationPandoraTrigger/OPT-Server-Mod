@@ -8,15 +8,13 @@ call "%~dp0.\setMetaData.bat"
 
 :: convert relative to absolute path of clib
 :: so armaserver can read it properly
-set "clib=%~dp0..\..\..\PBOs\dev\@CLib"
-pushd "%clib%"
+pushd "%~dp0..\..\..\PBOs\dev\@CLib"
 set "clib=%CD%"
 popd
 
 :: convert relative to absolute path of opt
 :: so armaserver can read it properly
-set "opt=%~dp0..\..\..\PBOs\dev\@OPT"
-pushd "%opt%"
+pushd "%~dp0..\..\..\PBOs\dev\@OPT"
 set "opt=%CD%"
 popd
 
