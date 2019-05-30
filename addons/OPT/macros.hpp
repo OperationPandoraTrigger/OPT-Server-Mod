@@ -82,7 +82,7 @@
 	#define ASSERT_IS_POSITION2D(var) ASSERT_IS_NOT_NIL(var); if !(IS_POSITION2D(var)) then {private _errMsg = format ["Expected Position2D but got %1", var]; ASSERTION_FAILED(_errMsg);};
 	#define ASSERT_IS_POSITION3D(var) ASSERT_IS_NOT_NIL(var); if !(IS_POSITION3D(var)) then {private _errMsg = format ["Expected Position3D but got %1", var]; ASSERTION_FAILED(_errMsg);};
 	#define ASSERT_IS_INTEGER(var) ASSERT_IS_NOT_NIL(var); if !(IS_SCALAR(var)) then {private _errMsg = format["Expected integer but got %1", typeName var]; ASSERTION_FAILED(_errMsg);}\
-		else {private _errMsg = format["Expected integer but got floating point number (%1)", var]; ASSERTION_FAILED(_errMsg);};
+		else { if !(floor var isEqualTo var ) then { private _errMsg = format["Expected integer but got floating point number (%1)", var]; ASSERTION_FAILED(_errMsg);};};
 	#define ASSERT_TRUE(var) ASSERT_IS_NOT_NIL(var); if !(var isEqualTo true) then {private _errMsg = format["Expected True but got %1", var]; ASSERTION_FAILED(_errMsg);};
 	#define ASSERT_FALSE(var) ASSERT_IS_NOT_NIL(var); if !(var isEqualTo false) then {private _errMsg = format["Expected False but got %1", var]; ASSERTION_FAILED(_errMsg);};
 	#define ASSERT_ARRAY_LENGTH(var,length) ASSERT_IS_NOT_NIL(var); ASSERT_IS_ARRAY(var); if !(IS_ARRAY_LENGTH(var,length)) then {private _errMsg = format ["Expected array of length but got %1", var];};
