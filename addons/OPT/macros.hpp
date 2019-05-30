@@ -85,9 +85,9 @@
 		else {private _errMsg = format["Expected integer but got floating point number (%1)", var]; ASSERTION_FAILED(_errMsg);};
 	#define ASSERT_TRUE(var) ASSERT_IS_NOT_NIL(var); if !(var isEqualTo true) then {private _errMsg = format["Expected True but got %1", var]; ASSERTION_FAILED(_errMsg);};
 	#define ASSERT_FALSE(var) ASSERT_IS_NOT_NIL(var); if !(var isEqualTo false) then {private _errMsg = format["Expected False but got %1", var]; ASSERTION_FAILED(_errMsg);};
-	#define ASSERT_ARRAY_LENGTH(var,length) ASSERT_IS_NOT_NIL(var); if !(IS_ARRAY_LENGTH(var,length)) then {private _errMsg = format ["Expected array of length but got %1", var];};
-	#define ASSERT_ALIVE(var) ASSERT_IS_NOT_NIL(var); if !(alive var) then {ASSERTION_FAILED("Expected object to be alive but it wasn't")};
-	#define ASSERT_DEAD(var) ASSERT_IS_NOT_NIL(var); if (alive var) then {ASSERTION_FAILED("Expected object to be alive but it wasn't")};
+	#define ASSERT_ARRAY_LENGTH(var,length) ASSERT_IS_NOT_NIL(var); ASSERT_IS_ARRAY(var); if !(IS_ARRAY_LENGTH(var,length)) then {private _errMsg = format ["Expected array of length but got %1", var];};
+	#define ASSERT_ALIVE(var) ASSERT_IS_NOT_NIL(var); ASSERT_IS_OBJECT(var); if !(alive var) then {ASSERTION_FAILED("Expected object to be alive but it wasn't")};
+	#define ASSERT_DEAD(var) ASSERT_IS_NOT_NIL(var); ASSERT_IS_OBJECT(var); if (alive var) then {ASSERTION_FAILED("Expected object to be alive but it wasn't")};
 #else
 	// Disable all assertions
 	#define ASSERTION_FAILED(msg)
