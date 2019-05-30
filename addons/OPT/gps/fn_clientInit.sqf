@@ -118,7 +118,7 @@ DFUNC(spielerPoolRevive) =
 };
 
 //UAV Drohnen
-DFUNC(UAV) = 
+DFUNC(uav) = 
 {
 	
 	params 
@@ -127,29 +127,29 @@ DFUNC(UAV) =
 		["_weapon",nil]
 	];
 
-	private _UAVDrohne = [];
-	private _UAVMarker = [];
+	private _uavDrohne = [];
+	private _uavMarker = [];
 
 	if (_weapon in allUnitsUAV) then
 	{
 		if ((side _weapon isEqualTo playerSide) and (alive _x)) then
 		{
-			_UAVDrohne pushBack _x;
+			_uavDrohne pushBack _x;
 		};
 	
-		_UAVDrohnen apply 
+		_uavDrohne apply 
 		{ 
-			if ((GVAR(MarkerPool) find _x) isEqualTo -1) then
+			if ((GVAR(markerPool) find _x) isEqualTo -1) then
 			{
-				_UAVMarker pushBack _x;
+				_uavMarker pushBack _x;
 			};
 		};
 
-		GVAR(MarkerPool) pushBack _UAVMarker;
+		GVAR(markerPool) pushBack _uavMarker;
 
-		_id = [_UAVMarker,1] call FUNC(addMarker);
+		_id = [_uavMarker,1] call FUNC(addMarker);
 
-		GVAR(MarkerIDPool) pushBack _id;
+		GVAR(markerIDPool) pushBack _id;
 	};	
 };	
 
@@ -200,7 +200,7 @@ DFUNC(addMarker) =
    			};
 		};
 
-    	private _MarkerDatenblock = 
+    	private _markerDatenblock = 
 		[
 		[0,0,0],
 		"normal",
@@ -211,7 +211,7 @@ DFUNC(addMarker) =
 		_farbe,		
 		];
 
-		_id = [OPTADDMARKER, _MarkerDatenblock] call CFUNC(localEvent);
+		_id = [OPTADDMARKER, _markerDatenblock] call CFUNC(localEvent);
 
 		_idArray pushBack _id;
 	};
@@ -231,19 +231,19 @@ DFUNC(updateMarkerPool) =
 	private _spielerPoolAdd = [_units] call FUNC(spielerPoolLeben);
 
 	_spielerPoolAdd apply 
-		{ 
-			if ((GVAR(MarkerPool) find _x) isEqualTo -1) then
-			{
-				_spielerAddEH pushBack _x;
-			};
+	{ 
+		if ((GVAR(markerPool) find _x) isEqualTo -1) then
+		{
+			_spielerAddEH pushBack _x;
 		};
+	};
 
 	[_spielerAddEH] call FUNC(addEH);
 
 	_id = [_spielerAddEH,0] call FUNC(addMarker);
 
-	GVAR(MarkerPool) pushBack _spielerAddEH;
-	GVAR(MarkerIDPool) pushBack _id;
+	GVAR(markerPool) pushBack _spielerAddEH;
+	GVAR(markerIDPool) pushBack _id;
 
 };
 
@@ -258,16 +258,17 @@ DFUNC(addEH) =
 
 	_units apply 
 	{ 
-		_x addEventHandler ["GetIn", {[_this] call FUNC(SpielerMarkerText);}];
-		_x addEventHandler ["GetOut", {[_this] call FUNC(SpielerMarkerText);}];
-		_x addEventHandler ["WeaponAssembled", {[_this] call FUNC(UAV);}];
-		["getConnectedUAVChanged", {[_this] call FUNC(UAVMarkerText);}, []] call CFUNC(addEventHandler); 
+		_x addEventHandler ["GetIn", {[_this] call FUNC(spielerMarkerText);}];
+		_x addEventHandler ["GetOut", {[_this] call FUNC(spielerMarkerText);}];
+		_x addEventHandler ["WeaponAssembled", {[_this] call FUNC(uav);}];
+		_x addEventHandler ["PlayerViewChanged", {[_this] call FUNC(UAVMarkerText)}];
+		_x addEventHandler ["Dammaged", {[_this] call FUNC(markerTextRevive);}];
 	};
 	
 };	
 
 //Spieler Marker Text ändern
-DFUNC(SpielerMarkerText) = 
+DFUNC(spielerMarkerText) = 
 {
 	
 	params 
@@ -291,25 +292,30 @@ DFUNC(SpielerMarkerText) =
 		_text = format["%1",name _x];			
 	};	
 		
-	private _index = GVAR(MarkerPool) find _x;
+	private _index = GVAR(markerPool) find _x;
 
-	[OPTSETMARKERTEXT, [(GVAR(MarkerIDPool) select _index),_text]] call CFUNC(localEvent);		
+	[OPTSETMARKERTEXT, [(GVAR(markerIDPool) select _index),_text]] call CFUNC(localEvent);		
 
 };
 
 //UAV Marker Text
-DFUNC(UAVMarkerText) = 
+DFUNC(uavMarkerText) = 
 {
 	
-	params 
-	[
-		["NewUAV",nil],
-		["OldUAV",nil]
+	params [
+		["_oldUnit",nil], 
+		["_newUnit",nil], 
+		["_vehicle",nil],
+		["_oldCamera",nil], 
+		["_newCamera",nil], 
+		["_uav",nil]
 	];
 
 	// Spezialfall Drohne
-    private _operator = (UAVControl vehicle NewUAV) select 0;
+    private _operator = (UAVControl vehicle _uav) select 0;
 
+	private _vehName = getText (configFile >> "cfgVehicles" >> typeOf (vehicle _unit) >> "displayName");
+	
     // UAV Operator ja/nein
     if (!isNull _operator) then 
 	{
@@ -320,24 +326,32 @@ DFUNC(UAVMarkerText) =
 		_text = format["%1 (---)", _vehName];
     };
 						
-	private _index = GVAR(MarkerPool) find _unit;
+	private _index = GVAR(markerPool) find _unit;
 
-	[OPTSETMARKERTEXT, [(GVAR(MarkerIDPool) select _index),_text]] call CFUNC(localEvent);		
+	[OPTSETMARKERTEXT, [(GVAR(markerIDPool) select _index),_text]] call CFUNC(localEvent);		
 	
 };
 
-//Spieler mit Revive Status
-DFUNC(spielerRevive) = 
+//Marker Text Revive
+DFUNC(markerTextRevive) = 
 {
+	params 
+	[
+		["_unit",nil]
+	];
+
 	//Spieler mit Revive Status
-	private _units = playableUnits;
-	_spielerPoolRevive = [_units] call FUNC(spielerPoolRevive);
+	private _unit = playableUnits;
+	private _spielerPoolRevive = [];
+	private _spielerRevive = [];
+
+	private _spielerPoolRevive = [_unit] call FUNC(spielerPoolRevive);
 
 	_spielerPoolRevive apply 
 	{ 
-		if ((GVAR(MarkerPool) find _x) > -1) then
+		if ((GVAR(markerPool) find _x) > -1) then
 		{
-				_spielerRevive pushBack _x;
+			_spielerRevive pushBack _x;
 		};
 	};
 
@@ -346,44 +360,67 @@ DFUNC(spielerRevive) =
 	{ 
 		_text = format["%1 wurde getötet", name _x];		
 				
-		private _index = GVAR(MarkerPool) find _x;
+		private _index = GVAR(markerPool) find _x;
 
-		[OPTSETMARKERTEXT, [(GVAR(MarkerIDPool) select _index),_text]] call CFUNC(localEvent);
+		[OPTSETMARKERTEXT, [(GVAR(markerIDPool) select _index),_text]] call CFUNC(localEvent);
 
-		[OPTSETMARKERICON, [(GVAR(MarkerIDPool) select _index),"loc_Hospital"]] call CFUNC(localEvent);			
+		[OPTSETMARKERICON, [(GVAR(markerIDPool) select _index),"loc_Hospital"]] call CFUNC(localEvent);			
 
+	};
+
+};	
+
+//Marker Text zurücksetzen 
+DFUNC(markerTextReset) = 
+{
+	params 
+	[
+		["_unit",nil]
+	];
+
+	private _spielerAddEH = [];
+
+	//Spieler mit Revive Status
+	private _spielerPoolAdd = [_unit] call FUNC(spielerPoolLeben);
+
+	_spielerPoolAdd apply 
+	{ 
+		if ((GVAR(markerPool) find _x) isEqualTo -1) then
+		{
+			_spielerAddEH pushBack _x;
+		};
 	};
 
 	//Spieler Marker Text und Symbol auf Standart ändern
-	GVAR(MarkerPool) apply 
+	GVAR(markerPool) apply 
 	{ 
 		_text = format["%1", name _x];		
 				
-		private _index = GVAR(MarkerPool) find _x;
+		private _index = GVAR(markerPool) find _x;
 
-		[OPTSETMARKERTEXT, [(GVAR(MarkerIDPool) select _index),_text]] call CFUNC(localEvent);
+		[OPTSETMARKERTEXT, [(GVAR(markerIDPool) select _index),_text]] call CFUNC(localEvent);
 
-		[OPTSETMARKERICON, [(GVAR(MarkerIDPool) select _index),"mil_triangle"]] call CFUNC(localEvent);			
+		[OPTSETMARKERICON, [(GVAR(markerIDPool) select _index),"mil_triangle"]] call CFUNC(localEvent);			
 
 	};
-	
+		
 };	
 
 //Init GPS System
 ["missionStarted", 
 {
 	//Speicher Marker und Einheiten
-	GVAR(MarkerPool) = [];
+	GVAR(markerPool) = [];
 
 	private _units = playableUnits;
 
-	GVAR(MarkerPool) = [_units] call FUNC(spielerPoolLeben);
+	GVAR(markerPool) = [_units] call FUNC(spielerPoolLeben);
 
-	_id = [GVAR(MarkerPool),0] call FUNC(addMarker);
+	_id = [GVAR(markerPool),0] call FUNC(addMarker);
 
-	GVAR(MarkerIDPool) pushBack _id;
+	GVAR(markerIDPool) pushBack _id;
 
-	[GVAR(MarkerPool)] call FUNC(addEH);
+	[GVAR(markerPool)] call FUNC(addEH);
 
 	onPlayerConnected "[] call FUNC(updateMarkerPool);";
 
