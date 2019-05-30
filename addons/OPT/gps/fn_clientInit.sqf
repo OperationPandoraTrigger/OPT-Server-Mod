@@ -261,6 +261,7 @@ DFUNC(addEH) =
 		_x addEventHandler ["GetIn", {[_this] call FUNC(SpielerMarkerText);}];
 		_x addEventHandler ["GetOut", {[_this] call FUNC(SpielerMarkerText);}];
 		_x addEventHandler ["WeaponAssembled", {[_this] call FUNC(UAV);}];
+		["getConnectedUAVChanged", {[_this] call FUNC(UAVMarkerText);}, []] call CFUNC(addEventHandler); 
 	};
 	
 };	
@@ -296,17 +297,18 @@ DFUNC(SpielerMarkerText) =
 
 };
 
-//EH hinzufügen
+//UAV Marker Text
 DFUNC(UAVMarkerText) = 
 {
 	
 	params 
 	[
-		["_unit",nil]
+		["NewUAV",nil],
+		["OldUAV",nil]
 	];
 
 	// Spezialfall Drohne
-    private _operator = (UAVControl vehicle _unit) select 0;
+    private _operator = (UAVControl vehicle NewUAV) select 0;
 
     // UAV Operator ja/nein
     if (!isNull _operator) then 
