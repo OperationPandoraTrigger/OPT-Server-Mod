@@ -37,7 +37,7 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 
 //OPT Karten-Dialog
 [
-	OPTKartenDialogOpen, 
+	OPT_KARTEN_DIALOG_OPEN, 
 	{
 		((findDisplay 444001) displayCtrl 10007) call CFUNC(registerMapControl)
 	},
@@ -47,7 +47,7 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 
 //BIS Artillery Dialog
 [
-	BISArtilleryDialogOpen, 
+	BIS_ARTILLERY_DIALOG_OPEN, 
 	{
 		((findDisplay -1) displayCtrl 500) call CFUNC(registerMapControl)
 	},
@@ -57,7 +57,7 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 
 //BIS UAV Dialog
 [
-	BISUAVDialogOpen, 
+	BIS_UAV_DIALOG_OPEN, 
 	{
 		((findDisplay 160) displayCtrl 51) call CFUNC(registerMapControl)
 	},
@@ -67,7 +67,7 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 
 //Event addMarker
 [
-	OPTAddMarker, 
+	OPT_ADD_MARKER, 
 	{
 		_this params ["_eventArgs"];
 
@@ -79,7 +79,7 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 
 //Event setMarkerText
 [
-	OPTsetMarkerText, 
+	OPT_SET_MARKER_TEXT, 
 	{
 		_this params ["_eventArgs"];
 
@@ -91,7 +91,7 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 
 //Event setMarkerIcon
 [
-	OPTsetMarkerIcon, 
+	OPT_SET_MARKER_ICON, 
 	{
 		_this params ["_eventArgs"];
 
@@ -103,7 +103,7 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 
 //Event setMarkerColor
 [
-	OPTsetMarkerColor, 
+	OPT_SET_MARKER_COLOR, 
 	{
 		_this params ["_eventArgs"];
 
@@ -115,7 +115,7 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 
 //Event setMarkerHover
 [
-	OPTsetMarkerHover, 
+	OPT_SET_MARKER_HOVER, 
 	{
 		_this params ["_eventArgs"];
 
@@ -127,7 +127,7 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 
 //Event removeMarkerHover
 [
-	OPTremoveMarkerHover, 
+	OPT_REMOVE_MARKER_HOVER, 
 	{
 		_this params ["_eventArgs"];
 
@@ -139,7 +139,7 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 
 //Event removeMarker
 [
-	OPTremoveMarker, 
+	OPT_REMOVE_MARKER, 
 	{
 		_this params ["_eventArgs"];
 
@@ -156,19 +156,19 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 		//OPT Karten-Dialog
 		if (!(isNull ((findDisplay 444001) displayCtrl 10007))) then
 		{
-			[OPTKartenDialogOpen, []] call CFUNC(localEvent)
+			[OPT_KARTEN_DIALOG_OPEN, []] call CFUNC(localEvent)
 		};	
 		
 		//BIS Artillery Dialog
 		if (!(isNull ((findDisplay -1) displayCtrl 500))) then
 		{
-			[BISArtilleryDialogOpen, []] call CFUNC(localEvent)
+			[BIS_ARTILLERY_DIALOG_OPEN, []] call CFUNC(localEvent)
 		};	
 		
 		//BIS UAV Dialog 
 		if (!(isNull ((findDisplay 160) displayCtrl 51))) then
 		{
-			[BISUAVDialogOpen, []] call CFUNC(localEvent)
+			[BIS_UAV_DIALOG_OPEN, []] call CFUNC(localEvent)
 		};		
 	},
 	1, //Zeit verzörgerung für Durchlauf 1/sek
