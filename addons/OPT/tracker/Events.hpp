@@ -1,31 +1,31 @@
 //Eventliste
 
 // Event der Ausgelöst wird, wenn ein OPT Karten Dialog geöffnet wird
-#define OPTKARTENDIALOGOPEN "OPTKartenDialogOpen"
+#define OPT_KARTEN_DIALOG_OPEN "OPTKartenDialogOpen"
 
 // Event der Ausgelöst wird, wenn ein BIS Artillery Dialog geöffnet wird
-#define BISARTILLERYDIALOGOPEN "BISArtilleryDialogOpen"
+#define BIS_ARTILLERY_DIALOG_OPEN "BISArtilleryDialogOpen"
 
 // Event der Ausgelöst wird, wenn ein BIS UAV Dialog geöffnet wird
-#define BISUAVDIALOGOPEN "BISUAVDialogOpen"
+#define BIS_UAV_DIALOG_OPEN "BISUAVDialogOpen"
 
 // Event der einen Marker erstellt in Clib System 
-#define OPTADDMARKER "OPTAddMarker"
+#define OPT_ADD_MARKER "OPTAddMarker"
 
 // Event der einen Text an einem Marker erstellt/wechselt
-#define OPTSETMARKERTEXT "OPTSetMarkerText"
+#define OPT_SET_MARKER_TEXT "OPTSetMarkerText"
 
 // Event der einen Icon an einem Marker erstellt/wechselt
-#define OPTSETMARKERICON "OPTSetMarkerIcon"
+#define OPT_SET_MARKER_ICON "OPTSetMarkerIcon"
 
 // Event der einen Color an einem Marker erstellt/wechselt
-#define OPTSETMARKERCOLOR "OPTSetMarkerColor"
+#define OPT_SET_MARKER_COLOR "OPTSetMarkerColor"
 
 // Event der einen Hover Marker erstellt/wechselt
-#define OPTSETMARKERHOVER "OPTSetMarkerHover"
+#define OPT_SET_MARKER_HOVER "OPTSetMarkerHover"
 
 // Event der einen Hover Marker löscht
-#define OPTREMOVEMARKERHOVER "OPTRemoveMarkerHover"
+#define OPT_REMOVE_MARKER_HOVER "OPTRemoveMarkerHover"
 
 // Event der einen Marker löscht
-#define OPTREMOVEMARKER "OPTRemoveMarker"
+#define OPT_REMOVE_MARKER "OPTRemoveMarker"
