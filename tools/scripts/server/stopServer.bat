@@ -19,12 +19,12 @@ echo Killing the (potentially) running server. This might take a while...
 	taskkill /im %exeName% > NUL 2>&1
 	
 	if [%errorlevel%] == [0] (
-		:: sleep 1s
-		TIMEOUT /NOBREAK /T 1 > NUL
+		:: sleep 100ms
+		call %~dp0.\sleep.bat 100
 		goto :killLoop
 	) else (
-		:: wait another 1s and check again if the server was _really_ (hard)killed
-		TIMEOUT /NOBREAK /T 1 > NUL
+		:: wait another 100ms and check again if the server was _really_ (hard)killed
+		call %~dp0.\sleep.bat 100
 		taskkill /f /im %exeName% > NUL 2>&1
 		if [%errorlevel%] == [0] (
 			:: apparently the server isn't as dead as it seemed

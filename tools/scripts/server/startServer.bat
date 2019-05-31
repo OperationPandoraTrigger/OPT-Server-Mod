@@ -38,8 +38,8 @@ echo Trying to copy config file. This might take a while...
 	copy /Y "%~dp0.\serverConfig.cfg" "%armaDir%" > NUL 2>&1
 
 	if not [%errorlevel%] == [0]  (
-		:: sleep 1s
-		TIMEOUT /NOBREAK /T 1 > NUL
+		:: sleep 100ms
+		call %~dp0.\sleep.bat 100
 		goto :copyLoop
 	)
 
