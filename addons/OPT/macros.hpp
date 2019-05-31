@@ -21,9 +21,9 @@
 
 // Do not release with this setting enabled!
 #include "isDev.hpp"
-// #define DEBUGFULL // Enable all debug methods
-// #define ENABLEPERFORMANCECOUNTER // Enable performance counter for function calls
-// #define ENABLEFUNCTIONTRACE // Enable SQF based function tracer
+#define DEBUGFULL // Enable all debug methods
+#define ENABLEPERFORMANCECOUNTER // Enable performance counter for function calls
+#define ENABLEFUNCTIONTRACE // Enable SQF based function tracer
 
 
 #define DISABLECOMPRESSION
