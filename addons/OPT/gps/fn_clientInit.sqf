@@ -208,7 +208,7 @@ DFUNC(addMarker) =
 		_text,
 		"mil_triangle", // PLAYER_ICON
 		getDir _x,
-		_farbe,		
+		_farbe		
 		];
 
 		_id = [OPTADDMARKER, _markerDatenblock] call CFUNC(localEvent);

@@ -71,7 +71,11 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 	{
 		_this params ["_eventArgs"];
 
-		[_eventArgs] call OFUNC(addMarker);
+		private _id = 0;
+
+		_id = _eventArgs call OFUNC(addMarker);
+
+		_id
 	},
 	[]
 
@@ -83,7 +87,8 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 	{
 		_this params ["_eventArgs"];
 
-		[_eventArgs] call OFUNC(setMarkerText);
+		_eventArgs call OFUNC(setMarkerText);
+
 	},
 	[]
 
@@ -95,7 +100,8 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 	{
 		_this params ["_eventArgs"];
 
-		[_eventArgs] call OFUNC(setMarkerText);
+		_eventArgs call OFUNC(setMarkerIcon);
+
 	},
 	[]
 
@@ -107,7 +113,7 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 	{
 		_this params ["_eventArgs"];
 
-		[_eventArgs] call OFUNC(setMarkerColor);
+		_eventArgs call OFUNC(setMarkerColor);
 	},
 	[]
 
@@ -119,7 +125,7 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 	{
 		_this params ["_eventArgs"];
 
-		[_eventArgs] call OFUNC(setMarkerHover);
+		_eventArgs call OFUNC(setMarkerHover);
 	},
 	[]
 
@@ -131,7 +137,7 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 	{
 		_this params ["_eventArgs"];
 
-		[_eventArgs] call OFUNC(removeMarkerHover);
+		_eventArgs call OFUNC(removeMarkerHover);
 	},
 	[]
 
@@ -143,7 +149,7 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 	{
 		_this params ["_eventArgs"];
 
-		[_eventArgs] call OFUNC(removeMarker);
+		_eventArgs call OFUNC(removeMarker);
 	},
 	[]
 
@@ -194,12 +200,16 @@ DFUNC(markerVersetzen) =
 	params
 					
 	[
-		["_markerID",0,
-		["_trackingobjekt",nil],
+		["_markerID",0],
+		["_trackingobjekt",nil]
 	];
 
+	//Assertions
+	ASSERT_IS_NUMBER(_markerID);
+	ASSERT_IS_OBJECT(_trackingobjekt);
+
 	//Marker Name erstellen
-	private _markerNamen = format ["OPTMarker%1",_markerID]
+	private _markerNamen = format ["OPTMarker%1",_markerID];
 
 	//BIS Marker
 	_markerNamen setmarkerpos getPosWorld _trackingobjekt;
@@ -257,7 +267,7 @@ _KartenOpen
 			private _prioritaetzeit = (_markerDatenArray select _i) select 0;
 
 			//Stufe Normal 40ms
-			private _stufeNormal = 40;
+			private _stufeNormal = 0,04;
 
 			//Stufe Realtime 0ms
 			private _stufeRealtime = 0;
@@ -279,8 +289,8 @@ _KartenOpen
 						//Marker versetzen aufrufen
 						[
 
-							((_markerDatenArray select _i) select 1),
-							(_markerIDArray select _i) 
+							(_markerIDArray select _i),
+							((_markerDatenArray select _i) select 1) 
 
 						] call FUNC(markerVersetzen);
 
@@ -300,8 +310,8 @@ _KartenOpen
 					//Marker versetzen aufrufen
 					[
 
-						((_markerDatenArray select _i) select 1),
-						(_markerIDArray select _i) 
+						(_markerIDArray select _i),
+						((_markerDatenArray select _i) select 1) 
 
 					] call FUNC(markerVersetzen);
 

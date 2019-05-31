@@ -38,8 +38,12 @@ params
 	["_text","Error"]
 ];
 
+//Assertions
+ASSERT_IS_NUMBER(_id);
+ASSERT_IS_STRING(_text);
+
 //Marker Name erstellen
-private _markerNamen = format ["OPTMarker%1",_id]
+private _markerNamen = format ["OPTMarker%1",_id];
 
 //Marker Text an Clib geben 
 //[_markerNamen, [_text]] call CFUNC(addMapGraphicsGroup);

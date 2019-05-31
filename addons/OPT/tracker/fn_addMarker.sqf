@@ -56,14 +56,24 @@ params
 	["_schritart","RobotoCondensed"]
 ];
 
+//Assertions
+ASSERT_IS_ARRAY(_startPosition);
+ASSERT_IS_STRING(_prioritaet);
+ASSERT_IS_OBJECT(_trackingobjekt);
+ASSERT_IS_STRING(_text);
+ASSERT_IS_STRING(_icon);
+ASSERT_IS_NUMBER(_winkel);
+ASSERT_IS_ARRAY(_farbe);
+ASSERT_IS_NUMBER(_sichtbarkeit);
+ASSERT_IS_NUMBER(_ebene);
+ASSERT_IS_NUMBER(_schriftgroesse);
+ASSERT_IS_STRING(_schritart);
+
 //Datenblock für Markererstellung
 private _markerdata = ["ICON", _icon, _farbe, _startPosition, 20, 20, _winkel, _text, _sichtbarkeit, _schriftgroesse, _schritart, "right"];	
 
 //Marker Name erstellen
-private _markerNamen = format ["OPTMarker%1",GVAR(idMarkerConuter)]
-
-//Markerzähler
-GVAR(idMarkerConuter) = GVAR(idMarkerConuter) + 1;
+private _markerNamen = format ["OPTMarker%1",GVAR(idMarkerConuter)];
 
 //Marker erstellen mit Clib
 //[_markerNamen, [_markerdata]] call CFUNC(addMapGraphicsGroup);
@@ -81,7 +91,7 @@ switch (_prioritaet) do
 {
 	case "normal": 
 	{
-		_prioritaetzeit = 40;
+		_prioritaetzeit = 0,04;
 	}; 
 
 	case "realtime": 
@@ -91,7 +101,7 @@ switch (_prioritaet) do
 
 	default 
 	{
-		_prioritaetzeit = 40;
+		_prioritaetzeit = 0,04;
 		ERROR_LOG("Fehlerhafte Priorität angegeben, Standart normal Priorität ausgewählt");
 	};
 
@@ -104,5 +114,8 @@ GVAR(markerIDArray) pushBack GVAR(idMarkerConuter);
 
 //Rückgabewert
 _markerID = GVAR(idMarkerConuter);
+
+//Markerzähler
+GVAR(idMarkerConuter) = GVAR(idMarkerConuter) + 1;
 
 _markerID
