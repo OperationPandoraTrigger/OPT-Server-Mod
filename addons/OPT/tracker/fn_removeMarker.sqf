@@ -40,7 +40,7 @@ params
 ASSERT_IS_NUMBER(_id);
 
 //Marker Name erstellen
-private _markerNamen = format ["OPTMarker%1",_id]
+private _markerNamen = format ["OPTMarker%1",_id];
 
 //Marker erstellen mit Clib
 //[_markerNamen] call CFUNC(removeMapGraphicsGroup);
