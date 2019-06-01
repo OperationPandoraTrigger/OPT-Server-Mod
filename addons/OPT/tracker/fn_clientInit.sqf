@@ -65,22 +65,6 @@ DUMP("Successfully loaded the OPT/tracker module on the client");
 
 ] call CFUNC(addEventHandler);
 
-//Event addMarker
-[
-	OPT_ADD_MARKER, 
-	{
-		_this params ["_eventArgs"];
-
-		private _id = 0;
-
-		_id = _eventArgs call OFUNC(addMarker);
-
-		_id
-	},
-	[]
-
-] call CFUNC(addEventHandler);
-
 //Event setMarkerText
 [
 	OPT_SET_MARKER_TEXT, 

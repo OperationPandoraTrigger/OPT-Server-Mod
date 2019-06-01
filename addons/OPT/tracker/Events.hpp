@@ -9,9 +9,6 @@
 // Event der Ausgelöst wird, wenn ein BIS UAV Dialog geöffnet wird
 #define BIS_UAV_DIALOG_OPEN "BISUAVDialogOpen"
 
-// Event der einen Marker erstellt in Clib System 
-#define OPT_ADD_MARKER "OPTAddMarker"
-
 // Event der einen Text an einem Marker erstellt/wechselt
 #define OPT_SET_MARKER_TEXT "OPTSetMarkerText"
 
