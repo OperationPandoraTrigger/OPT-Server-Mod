@@ -64,7 +64,7 @@ if not [%version%] == [both] goto finish
 	:: in order to build the dev-version the ISDEV macro flag has to be set programmatically
 	1>NUL copy %~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp %~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp.original
 	echo:>> %~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp
-	echo|set /p="#define ISDEV" >> %~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp
+	echo #define ISDEV >> %~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp
 
 	%~dp0\..\programs\armake2.exe build -x isDev.hpp.original %~dp0\..\..\dependencies\CLib\addons\CLib\ %~dp0\..\..\PBOs\dev\@CLib\addons\%pboName%
 	
