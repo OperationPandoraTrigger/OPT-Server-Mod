@@ -26,3 +26,9 @@
 
 // Event der einen Marker löscht
 #define OPT_REMOVE_MARKER "OPTRemoveMarker"
+
+// Event Marker Revive Text zurücksetzen
+#define OPT_REMOVE_MARKER_TEXT_Revive "OPTRemoveMarkerTextRevive"
+
+// Event Marker Text bei Drohnen Verbindung/Trennung setzen
+#define OPT_DROHNEN_MARKER_TEXT "OPTDrohnenMarkerText"
