@@ -62,7 +62,7 @@ if not [%version%] == [both] goto finish
 	for /f %%a IN ('dir "%~dp0\..\..\PBOs\dev\@OPT\addons\" /b') do move "%~dp0\..\..\PBOs\dev\@OPT\addons\%%a" "%~dp0\..\..\PBOs\archive\dev\" >nul
 	
 	:: in order to build the dev-version the ISDEV macro flag has to be set programmatically
-	1>NUL copy "%~dp0\..\..\addons\OPT\isDev.hpp" "%~dp0\..\..\addons\OPT\isDev.hpp.original"
+	copy /Y "%~dp0\..\..\addons\OPT\isDev.hpp" "%~dp0\..\..\addons\OPT\isDev.hpp.original" > NUL
 	echo:>> "%~dp0\..\..\addons\OPT\isDev.hpp"
 	echo #define ISDEV >> "%~dp0\..\..\addons\OPT\isDev.hpp"
 
@@ -70,7 +70,7 @@ if not [%version%] == [both] goto finish
 
 	::restore the isDev.hpp file
 	del "%~dp0\..\..\addons\OPT\isDev.hpp" /q
-	1>NUL copy "%~dp0\..\..\addons\OPT\isDev.hpp.original" "%~dp0\..\..\addons\OPT\isDev.hpp"
+	copy /Y "%~dp0\..\..\addons\OPT\isDev.hpp.original" "%~dp0\..\..\addons\OPT\isDev.hpp" > NUL
 	del "%~dp0\..\..\addons\OPT\isDev.hpp.original" /q
 
 :finish
