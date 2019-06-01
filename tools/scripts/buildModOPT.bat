@@ -7,7 +7,7 @@
 @echo off
 
 :: This batch file will set the pboName variable
-call %~dp0\getPBOName.bat %~dp0\..\..\addons\OPT\pboName.h opt
+call "%~dp0\getPBOName.bat" "%~dp0\..\..\addons\OPT\pboName.h" opt
 
 set version=%1
 
@@ -40,38 +40,38 @@ goto processArgs
 
 :release
 	:: build release
-	call %~dp0\createModDir.bat OPT release
+	call "%~dp0\createModDir.bat" OPT release
 	
 	echo Building release version of OPT Mod...
 	
 	:: move away all old PBOs
-	for /f %%a IN ('dir %~dp0\..\..\PBOs\release\@OPT\addons\ /b') do move %~dp0\..\..\PBOs\release\@OPT\addons\%%a %~dp0\..\..\PBOs\archive\release\ >nul
+	for /f %%a IN ('dir "%~dp0\..\..\PBOs\release\@OPT\addons\" /b') do move "%~dp0\..\..\PBOs\release\@OPT\addons\%%a" "%~dp0\..\..\PBOs\archive\release\" >nul
 	
-	%~dp0\..\programs\armake2.exe build -i %~dp0\..\..\dependencies\CLib\addons\ -x pboName.h %~dp0\..\..\addons\OPT\ %~dp0\..\..\PBOs\release\@OPT\addons\%pboName%
+	"%~dp0\..\programs\armake2.exe" build -i "%~dp0\..\..\dependencies\CLib\addons" "%~dp0\..\..\addons\OPT" "%~dp0\..\..\PBOs\release\@OPT\addons\%pboName%"
 
 if not [%version%] == [both] goto finish
 
 
 :dev
 	:: build dev
-	call %~dp0\createModDir.bat OPT dev
+	call "%~dp0\createModDir.bat" OPT dev
 	
 	echo Building dev version of the OPT Mod...
 	
 	:: move away all old PBOs
-	for /f %%a IN ('dir %~dp0\..\..\PBOs\dev\@OPT\addons\ /b') do move %~dp0\..\..\PBOs\dev\@OPT\addons\%%a %~dp0\..\..\PBOs\archive\dev\ >nul
+	for /f %%a IN ('dir "%~dp0\..\..\PBOs\dev\@OPT\addons\" /b') do move "%~dp0\..\..\PBOs\dev\@OPT\addons\%%a" "%~dp0\..\..\PBOs\archive\dev\" >nul
 	
 	:: in order to build the dev-version the ISDEV macro flag has to be set programmatically
-	1>NUL copy %~dp0\..\..\addons\OPT\isDev.hpp %~dp0\..\..\addons\OPT\isDev.hpp.original
-	echo:>> %~dp0\..\..\addons\OPT\isDev.hpp
-	echo|set /p="#define ISDEV" >> %~dp0\..\..\addons\OPT\isDev.hpp
+	copy /Y "%~dp0\..\..\addons\OPT\isDev.hpp" "%~dp0\..\..\addons\OPT\isDev.hpp.original" > NUL
+	echo:>> "%~dp0\..\..\addons\OPT\isDev.hpp"
+	echo #define ISDEV >> "%~dp0\..\..\addons\OPT\isDev.hpp"
 
-	%~dp0\..\programs\armake2.exe build -i %~dp0\..\..\dependencies\CLib\addons\ -x isDev.hpp.original %~dp0\..\..\addons\OPT\ %~dp0\..\..\PBOs\dev\@OPT\addons\%pboName%
+	"%~dp0\..\programs\armake2.exe" build -i "%~dp0\..\..\dependencies\CLib\addons" -x isDev.hpp.original "%~dp0\..\..\addons\OPT" "%~dp0\..\..\PBOs\dev\@OPT\addons\%pboName%"
 
 	::restore the isDev.hpp file
-	del %~dp0\..\..\addons\OPT\isDev.hpp /q
-	1>NUL copy %~dp0\..\..\addons\OPT\isDev.hpp.original %~dp0\..\..\addons\OPT\isDev.hpp
-	del %~dp0\..\..\addons\OPT\isDev.hpp.original /q
+	del "%~dp0\..\..\addons\OPT\isDev.hpp" /q
+	copy /Y "%~dp0\..\..\addons\OPT\isDev.hpp.original" "%~dp0\..\..\addons\OPT\isDev.hpp" > NUL
+	del "%~dp0\..\..\addons\OPT\isDev.hpp.original" /q
 
 :finish
 	:: if this script hasn't been called from the build-all script and it hasn't been requested not to,
@@ -79,4 +79,3 @@ if not [%version%] == [both] goto finish
 	if not [%2] == [buildModAll] (
 		if not [%2] == [noPause] pause
 	)
-	
