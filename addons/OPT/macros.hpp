@@ -122,4 +122,4 @@
 	#define ASSERT_ARRAY_LENGTH(var,length)
 	#define ASSERT_ALIVE(var)
 	#define ASSERT_DEAD(var)
-#fi
+#endif
