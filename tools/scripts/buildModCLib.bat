@@ -45,8 +45,9 @@ goto processArgs
 	:: move away all old PBOs
 	for /f %%a IN ('dir "%~dp0\..\..\PBOs\release\@CLib\addons\" /b') do move "%~dp0\..\..\PBOs\release\@CLib\addons\%%a" "%~dp0\..\..\PBOs\archive\release\" >nul
 	
-	"%~dp0\..\programs\armake2.exe" build  "%~dp0\..\..\dependencies\CLib\addons\CLib\" "%~dp0\..\..\PBOs\release\@CLib\addons\%pboName%"
 
+	"%~dp0\..\programs\armake2.exe" build  "%~dp0\..\..\dependencies\CLib\addons\CLib\" "%~dp0\..\..\PBOs\release\@CLib\addons\%pboName%"
+	
 if not [%version%] == [both] goto finish
 
 
@@ -63,6 +64,7 @@ if not [%version%] == [both] goto finish
 	1>NUL copy "%~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp" "%~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp.original"
 	echo:>> "%~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp"
 	echo #define ISDEV >> "%~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp"
+
 
 	"%~dp0\..\programs\armake2.exe" build -x isDev.hpp.original "%~dp0\..\..\dependencies\CLib\addons\CLib\" "%~dp0\..\..\PBOs\dev\@CLib\addons\%pboName%"
 	
