@@ -47,7 +47,7 @@ goto processArgs
 	:: move away all old PBOs
 	for /f %%a IN ('dir "%~dp0\..\..\PBOs\release\@OPT\addons\" /b') do move "%~dp0\..\..\PBOs\release\@OPT\addons\%%a" "%~dp0\..\..\PBOs\archive\release\" >nul
 	
-	"%~dp0\..\programs\armake2.exe" build -i "%~dp0\..\..\dependencies\CLib\addons" -x pboName.h "%~dp0\..\..\addons\OPT" "%~dp0\..\..\PBOs\release\@OPT\addons\%pboName%"
+	"%~dp0\..\programs\armake2.exe" build -i "%~dp0\..\..\dependencies\CLib\addons" "%~dp0\..\..\addons\OPT" "%~dp0\..\..\PBOs\release\@OPT\addons\%pboName%"
 
 if not [%version%] == [both] goto finish
 
@@ -66,7 +66,7 @@ if not [%version%] == [both] goto finish
 	echo:>> "%~dp0\..\..\addons\OPT\isDev.hpp"
 	echo #define ISDEV >> "%~dp0\..\..\addons\OPT\isDev.hpp"
 
-	"%~dp0\..\programs\armake2.exe" build -i "%~dp0\..\..\dependencies\CLib\addons" -x pboName.h -x isDev.hpp.original "%~dp0\..\..\addons\OPT" "%~dp0\..\..\PBOs\dev\@OPT\addons\%pboName%"
+	"%~dp0\..\programs\armake2.exe" build -i "%~dp0\..\..\dependencies\CLib\addons" -x isDev.hpp.original "%~dp0\..\..\addons\OPT" "%~dp0\..\..\PBOs\dev\@OPT\addons\%pboName%"
 
 	::restore the isDev.hpp file
 	del "%~dp0\..\..\addons\OPT\isDev.hpp" /q
