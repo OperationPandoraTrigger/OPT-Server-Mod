@@ -60,7 +60,7 @@ if not [%version%] == [both] goto finish
 	for /f %%a IN ('dir "%~dp0\..\..\PBOs\dev\@CLib\addons\" /b') do move "%~dp0\..\..\PBOs\dev\@CLib\addons\%%a" "%~dp0\..\..\PBOs\archive\dev\" >nul
 	
 	:: in order to build the dev-version the ISDEV macro flag has to be set programmatically
-	1>NUL copy "%~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp" "%~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp.original"
+	copy /Y "%~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp" "%~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp.original" > NUL
 	echo:>> "%~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp"
 	echo #define ISDEV >> "%~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp"
 
@@ -68,7 +68,7 @@ if not [%version%] == [both] goto finish
 	
 	::restore the isDev.hpp file
 	del "%~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp" /q
-	1>NUL copy "%~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp.original" "%~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp"
+	copy /Y "%~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp.original" "%~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp" > NUL
 	del "%~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp.original" /q
 
 :finish
