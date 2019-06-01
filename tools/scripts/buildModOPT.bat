@@ -66,7 +66,7 @@ if not [%version%] == [both] goto finish
 	echo:>> "%~dp0\..\..\addons\OPT\isDev.hpp"
 	echo #define ISDEV >> "%~dp0\..\..\addons\OPT\isDev.hpp"
 
-	"%~dp0\..\programs\armake2.exe" build -i "%~dp0\..\..\dependencies\CLib\addons\" -x isDev.hpp.original "%~dp0\..\..\addons\OPT\" "%~dp0\..\..\PBOs\dev\@OPT\addons\%pboName%"
+	"%~dp0\..\programs\armake2.exe" build -i "%~dp0\..\..\dependencies\CLib\addons" -x isDev.hpp.original "%~dp0\..\..\addons\OPT" "%~dp0\..\..\PBOs\dev\@OPT\addons\%pboName%"
 
 	::restore the isDev.hpp file
 	del "%~dp0\..\..\addons\OPT\isDev.hpp" /q
