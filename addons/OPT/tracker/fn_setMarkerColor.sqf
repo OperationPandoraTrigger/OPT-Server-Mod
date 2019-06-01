@@ -38,8 +38,12 @@ params
 	["_farbe",[1,1,1,1]]
 ];
 
+//Assertions
+ASSERT_IS_NUMBER(_id);
+ASSERT_IS_ARRAY(_farbe);
+
 //Marker Name erstellen
-private _markerNamen = format ["OPTMarker%1",_id]
+private _markerNamen = format ["OPTMarker%1",_id];
 
 //Marker Icon an Clib geben 
 //[_markerNamen, [_farbe]] call CFUNC(addMapGraphicsGroup);

@@ -38,8 +38,12 @@ params
 	["_icon","\A3\ui_f\data\map\vehicleicons\iconMan_ca.paa"]
 ];
 
+//Assertions
+ASSERT_IS_NUMBER(_id);
+ASSERT_IS_STRING(_icon);
+
 //Marker Name erstellen
-private _markerNamen = format ["OPTMarker%1",_id]
+private _markerNamen = format ["OPTMarker%1",_id];
 
 //Marker Icon an Clib geben 
 //[_markerNamen, [_icon]] call CFUNC(addMapGraphicsGroup);

@@ -56,13 +56,26 @@ params
 	["_schritart","RobotoCondensed"]
 ];
 
+//Assertions
+ASSERT_IS_NUMBER(_markerID);
+ASSERT_IS_ARRAY(_startPosition);
+ASSERT_IS_STRING(_textHover);
+ASSERT_IS_STRING(_text);
+ASSERT_IS_STRING(_icon);
+ASSERT_IS_NUMBER(_winkel);
+ASSERT_IS_ARRAY(_farbe);
+ASSERT_IS_NUMBER(_sichtbarkeit);
+ASSERT_IS_NUMBER(_ebene);
+ASSERT_IS_NUMBER(_schriftgroesse);
+ASSERT_IS_STRING(_schritart);
+
 //Datenblock für Marker Hover erstellung
 private _markerdata = ["ICON", _icon, _farbe, _startPosition, 20, 20, _winkel, _text, _sichtbarkeit, _schriftgroesse, _schritart, "right"];	
 
 private _markerDescription = ["ICON", _icon, _farbe, _startPosition, 20, 20, _winkel, format ["%1 : %2",_text,_textHover], _sichtbarkeit, _schriftgroesse, _schritart, "right"];		
 	
 //Marker Name erstellen
-private _markerNamen = format ["OPTMarker%1",_markerID]
+private _markerNamen = format ["OPTMarker%1",_markerID];
 
 //Marker Hover an Clib geben 
 

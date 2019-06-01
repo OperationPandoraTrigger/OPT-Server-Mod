@@ -36,6 +36,9 @@ params
 	["_id",0]
 ];
 
+//Assertions
+ASSERT_IS_NUMBER(_id);
+
 //Marker Name erstellen
 private _markerNamen = format ["OPTMarker%1",_id]
 
