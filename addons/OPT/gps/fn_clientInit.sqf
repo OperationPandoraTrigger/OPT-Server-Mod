@@ -339,7 +339,6 @@ DFUNC(uavMarkerText) =
 	private _index = GVAR(markerPool) find _uav;
 
 	[OPT_SET_MARKER_TEXT, [(GVAR(markerIDPool) select _index),_text]] call CFUNC(localEvent);
-	hint format["M:%1 MP:%4 CMP:%5 I:%3 T:%2", (GVAR(markerIDPool) select _index),_text,_index,GVAR(markerIDPool),count GVAR(markerIDPool)];		
 			
 };
 
@@ -416,19 +415,6 @@ DFUNC(removeMarkerTextRevive) =
 		
 };	
 
-//Event Marker Revive Text zurücksetzen 
-[
-	OPT_REMOVE_MARKER_TEXT_Revive, 
-	{
-		_this params ["_eventArgs"];
-
-		[_eventArgs] call FUNC(removeMarkerTextRevive);
-
-	},
-	[]
-
-] call CFUNC(addEventHandler);
-
 //Init GPS System
 ["missionStarted", 
 {
@@ -450,6 +436,28 @@ DFUNC(removeMarkerTextRevive) =
 
 }, []] call CFUNC(addEventHandler); 
 
+//Event Marker Revive Text zurücksetzen 
+[
+	OPT_REMOVE_MARKER_TEXT_REVIVE, 
+	{
+		_this params ["_eventArgs"];
+
+		[_eventArgs] call FUNC(removeMarkerTextRevive);
+
+	},
+	[]
+
+] call CFUNC(addEventHandler);
+
+//EH Drohnen Verbinden
+["getConnectedUAVChanged",
+{
+	_this params ["_eventArgs"];
+
+	[OPT_DROHNEN_MARKER_TEXT,_eventArgs] call CFUNC(globalEvent);
+
+},[]] call CFUNC(addEventHandler);
+
 // Event Marker Text bei Drohnen Verbindung/Trennung setzen
 [
 	OPT_DROHNEN_MARKER_TEXT, 
@@ -463,12 +471,20 @@ DFUNC(removeMarkerTextRevive) =
 
 ] call CFUNC(addEventHandler);
 
+// Event Marker für Drohne erstellen im GPS System [Für Shopsystem]
+[
+	OPT_ADD_MARKER_DROHNE_GPS, 
+	{
+		_this params ["_eventArgs"];
 
-//Drohnen Verbinden EH
-["getConnectedUAVChanged",
-{
-	_this params ["_eventArgs"];
+		private _id = 0;
 
-	_eventArgs call CFUNC(globalEvent);
+		_id = [_eventArgs,1] call FUNC(addMarker);
 
-},[]] call CFUNC(addEventHandler);
+		GVAR(markerPool) pushBack _eventArgs;
+		GVAR(markerIDPool) append _id;
+
+	},
+	[]
+	
+] call CFUNC(addEventHandler);
