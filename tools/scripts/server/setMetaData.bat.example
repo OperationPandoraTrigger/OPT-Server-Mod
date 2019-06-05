@@ -1,0 +1,11 @@
+:: This file is an example file. You need to copy this file (removing the .example from the name)
+:: and adjust the paths to your local file structure
+
+:: Set the meta information needed for the start/stop-server scripts
+set "armaDir=C:\Program Files (x86)\Steam\steamapps\common\Arma 3"
+set "exeName=arma3server_x64.exe"
+
+:: @CLib and @OPT will be loaded from your build-directory.
+:: If you need more mods, add them here.
+:: Be sure to use absolute paths if they are not directly in the ArmA-directory.
+set "additionalMods=@CBA_A3;@ace;@sthud;@tfar"
