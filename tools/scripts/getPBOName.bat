@@ -24,7 +24,7 @@ if not exist %path% (
 	goto :end
 ) else (
 	:: preprocess the file into a local file called
-	"%~dp0\..\programs\armake2.exe" preprocess -i "%~dp0\..\..\dependencies\CLib\addons" %path% internal_pboName.h.tmp
+	"%~dp0.\..\programs\armake2.exe" preprocess -i "%~dp0.\..\..\dependencies\CLib\addons" %path% internal_pboName.h.tmp
 	
 	:: read the last line of the file (contains the pboName spec)
 	for /f "delims=" %%x in (internal_pboName.h.tmp) do set pboName=%%x

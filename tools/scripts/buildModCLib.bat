@@ -5,8 +5,16 @@
 :: Param 1: If this value is either noPause or buildModAll, the script won't pause at the end of execution
 
 @echo off
+
+if not exist "%~dp0.\..\..\dependencies\CLib\addons\CLib\" (
+	echo I can't find the CLib submodule - did you initialize it via "git submodule update"?
+	pause
+	exit 1
+)
+
 :: This batch file will set the pboName variable
-call "%~dp0\getPBOName.bat" "%~dp0\..\..\dependencies\CLib\addons\CLib\pboName.h" clib
+call "%~dp0.\getPBOName.bat" "%~dp0.\..\..\dependencies\CLib\addons\CLib\pboName.h" clib
+
 set version=%1
 
 if [%version%] == [ask] (
@@ -38,38 +46,38 @@ goto processArgs
 
 :release
 	:: build release
-	call "%~dp0\createModDir.bat" CLib release
+	call "%~dp0.\createModDir.bat" CLib release
 	
 	echo Building release version of CLib Mod...
 	
 	:: move away all old PBOs
-	for /f %%a IN ('dir "%~dp0\..\..\PBOs\release\@CLib\addons\" /b') do move "%~dp0\..\..\PBOs\release\@CLib\addons\%%a" "%~dp0\..\..\PBOs\archive\release\" >nul
-
-	"%~dp0\..\programs\armake2.exe" build "%~dp0\..\..\dependencies\CLib\addons\CLib" "%~dp0\..\..\PBOs\release\@CLib\addons\%pboName%"
+	for /f %%a IN ('dir "%~dp0.\..\..\PBOs\release\@CLib\addons\" /b') do move "%~dp0.\..\..\PBOs\release\@CLib\addons\%%a" "%~dp0.\..\..\PBOs\archive\release\" >nul
+	
+	"%~dp0.\..\programs\armake2.exe" build  "%~dp0.\..\..\dependencies\CLib\addons\CLib" "%~dp0.\..\..\PBOs\release\@CLib\addons\%pboName%"
 	
 if not [%version%] == [both] goto finish
 
 
 :dev
 	:: build dev
-	call "%~dp0\createModDir.bat" CLib dev
+	call "%~dp0.\createModDir.bat" CLib dev
 	
 	echo Building dev version of the CLib Mod...
 	
 	:: move away all old PBOs
-	for /f %%a IN ('dir "%~dp0\..\..\PBOs\dev\@CLib\addons\" /b') do move "%~dp0\..\..\PBOs\dev\@CLib\addons\%%a" "%~dp0\..\..\PBOs\archive\dev\" >nul
+	for /f %%a IN ('dir "%~dp0.\..\..\PBOs\dev\@CLib\addons\" /b') do move "%~dp0.\..\..\PBOs\dev\@CLib\addons\%%a" "%~dp0.\..\..\PBOs\archive\dev\" >nul
 	
 	:: in order to build the dev-version the ISDEV macro flag has to be set programmatically
-	copy /Y "%~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp" "%~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp.original" > NUL
-	echo:>> "%~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp"
-	echo #define ISDEV >> "%~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp"
+	copy /Y "%~dp0.\..\..\dependencies\CLib\addons\CLib\isDev.hpp" "%~dp0.\..\..\dependencies\CLib\addons\CLib\isDev.hpp.original" > NUL
+	echo:>> "%~dp0.\..\..\dependencies\CLib\addons\CLib\isDev.hpp"
+	echo #define ISDEV >> "%~dp0.\..\..\dependencies\CLib\addons\CLib\isDev.hpp"
 
-	"%~dp0\..\programs\armake2.exe" build -x isDev.hpp.original "%~dp0\..\..\dependencies\CLib\addons\CLib" "%~dp0\..\..\PBOs\dev\@CLib\addons\%pboName%"
+	"%~dp0.\..\programs\armake2.exe" build -x isDev.hpp.original "%~dp0.\..\..\dependencies\CLib\addons\CLib" "%~dp0.\..\..\PBOs\dev\@CLib\addons\%pboName%"
 	
 	::restore the isDev.hpp file
-	del "%~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp" /q
-	copy /Y "%~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp.original" "%~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp" > NUL
-	del "%~dp0\..\..\dependencies\CLib\addons\CLib\isDev.hpp.original" /q
+	del "%~dp0.\..\..\dependencies\CLib\addons\CLib\isDev.hpp" /q
+	copy /Y "%~dp0.\..\..\dependencies\CLib\addons\CLib\isDev.hpp.original" "%~dp0.\..\..\dependencies\CLib\addons\CLib\isDev.hpp" > NUL
+	del "%~dp0.\..\..\dependencies\CLib\addons\CLib\isDev.hpp.original" /q
 
 :finish
 	:: if this script hasn't been called from the build-all script and it hasn't been requested not to,
