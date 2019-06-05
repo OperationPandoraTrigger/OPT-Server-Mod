@@ -4,10 +4,10 @@
 @echo off
 
 :: set meta infos
-call %~dp0.\setMetaData.bat
+call "%~dp0.\setMetaData.bat"
 
 :: change directory into the Arma directory (in which the server-exe resides)
-cd /d %armaDir%
+cd /d "%armaDir%"
 
 :: Kill the server
 :: The loop occurs as long as the killing reports a success status as this means
@@ -20,11 +20,11 @@ echo Killing the (potentially) running server. This might take a while...
 	
 	if [%errorlevel%] == [0] (
 		:: sleep 100ms
-		call %~dp0.\sleep.bat 100
+		call "%~dp0.\sleep.bat" 100
 		goto :killLoop
 	) else (
 		:: wait another 100ms and check again if the server was _really_ (hard)killed
-		call %~dp0.\sleep.bat 100
+		call "%~dp0.\sleep.bat" 100
 		taskkill /f /im %exeName% > NUL 2>&1
 		if [%errorlevel%] == [0] (
 			:: apparently the server isn't as dead as it seemed

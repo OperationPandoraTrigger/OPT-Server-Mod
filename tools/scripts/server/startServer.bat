@@ -39,7 +39,7 @@ echo Trying to copy config file. This might take a while...
 
 	if not [%errorlevel%] == [0]  (
 		:: sleep 100ms
-		call %~dp0.\sleep.bat 100
+		call "%~dp0.\sleep.bat" 100
 		goto :copyLoop
 	)
 
