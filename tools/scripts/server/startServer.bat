@@ -44,4 +44,4 @@ echo Trying to copy config file. This might take a while...
 	)
 
 :: Start the server and minimize it once it's started
-start /min %exeName% -config=serverConfig.cfg -serverMod="%clib%;%opt%" -mod="%additionalMods%" -debugCallExtension
+start /min %exeName% -config=serverConfig.cfg -filePatching -serverMod="%clib%;%opt%" -mod="%additionalMods%" -debugCallExtension
