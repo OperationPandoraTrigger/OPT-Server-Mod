@@ -38,6 +38,14 @@ DUMP("Successfully loaded the OPT/GPS module on the client");
 // Textur Liste
 #include "\opt\opt\addons\opt\tracker\Texturen.hpp"
 
+// Offizier Classname
+GVAR(officer) = [
+    "OPT_NATO_Offizier_T",
+    "OPT_CSAT_Offizier_T",
+	"OPT_NATO_Offizier",
+	"OPT_CSAT_Offizier"
+];
+
 // Kontrolle ob Map oder Dialog geöffnet wird
 DFUNC(dialogCheck) = 
 {
@@ -81,15 +89,47 @@ DFUNC(spielerPoolLeben) =
 
 	private _spielerPoolLeben = [];
 
+	//Spieler für Soldatengruppe 
+	private _groupUnits = units group player;
+	private _leaderUnits = [];
+	private _unitsToMark = [];  
+
+	allGroups apply 
+	{
+		if (side (leader _x) isEqualTo playerSide) then 
+		{    
+			_leaderUnits pushBack (leader _x);
+		};                        
+	};
+
+	_unitsToMark append _leaderUnits;
+    _unitsToMark append _groupUnits; 
+
 	//Spielerfeststellung die zur Seite gehören und keine Revive Status haben 
-	_units apply 
+	
+	_unitsToMark apply 
 	{ 
 		if ((side _x isEqualTo playerSide) and !((_x getVariable ["FAR_isUnconscious", 0]) == 1) and (alive _x)) then
 		{
 			_spielerPoolLeben pushBack _x;
 		};
-	};	
+	};
 
+	//Ofiiziermodus alle Spieler
+
+	if (typeOf player in GVARMAIN(officer)) then
+	{	
+		_spielerPoolLeben = [];
+
+		_units apply 
+		{ 
+			if ((side _x isEqualTo playerSide) and !((_x getVariable ["FAR_isUnconscious", 0]) == 1) and (alive _x)) then
+			{
+				_spielerPoolLeben pushBack _x;
+			};
+		};	
+	};
+		
 	_spielerPoolLeben
 
 };
