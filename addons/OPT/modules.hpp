@@ -13,6 +13,8 @@ class CfgCLibModules {
 			dependency[] = {"CLib/PerFrame", "Clib/Events"};
 			
 			FNC(clientInit);
+			APIFNC(getPoints);
+			// APIFNC(addBeam);
 		};
 		
     };

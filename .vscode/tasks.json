@@ -6,14 +6,16 @@
         {
             "label": "Build OPT",
             "type": "shell",
-            "command": "./tools/scripts/buildModOPT.bat both noPause",
-            "windows": {}
+            "command": "./tools/scripts/buildModOPT.bat both noPause; cp ./PBOs/dev/@OPT 'E:/Steam/steamapps/common/Arma 3/MODS' -recurse -force;cp ./PBOs/release/@CLib 'E:/Steam/steamapps/common/Arma 3/MODS' -recurse -force",
+            "windows": {},
+            "problemMatcher": []
         },
         {
-            "label": "Move OPT",
+            "label": "Build & Move Mission",
             "type": "shell",
-            "command": "cp .\\PBOs\\dev\\@OPT 'E:\\Steam\\steamapps\\common\\Arma 3\\MODS' -recurse -force;cp .\\PBOs\\release\\@CLib 'E:\\Steam\\steamapps\\common\\Arma 3\\MODS' -recurse -force",
+            "command": "./tools/programs/armake2.exe pack -v -x '.git/**' 'C:/Users/tassi/OneDrive/Dokumente/Arma 3 - Other Profiles/[WGP]Senshi/mpmissions/opt_dev.Altis'  'E:/Steam/steamapps/common/Arma 3/MPMissions/opt_dev.Altis.pbo'",
             "windows": {},
+            "problemMatcher": []
         }
     ]
 }
