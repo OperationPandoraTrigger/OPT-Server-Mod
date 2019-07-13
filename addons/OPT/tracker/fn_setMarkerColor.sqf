@@ -48,5 +48,22 @@ private _markerNamen = format ["OPTMarker%1",_id];
 //Marker Icon an Clib geben 
 //[_markerNamen, [_farbe]] call CFUNC(addMapGraphicsGroup);
 //BIS Marker
-_markerNamen setMarkerColorLocal "ColorWhite";
+
+private _farbeMarker = "ColorBlack";
+
+switch (_farbe) do 
+{
+    case [0,0,1,1]: 
+	{
+		//blau
+		_farbeMarker = "ColorBlue";	
+    };
+    case [1,0,0,1]: 
+	{
+		//rot
+        _farbeMarker = "ColorRed";	
+   	};
+};
+
+_markerNamen setMarkerColorLocal _farbeMarker;
 	

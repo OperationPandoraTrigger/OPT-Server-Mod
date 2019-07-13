@@ -77,10 +77,28 @@ private _markerNamen = format ["OPTMarker%1",GVAR(idMarkerConuter)];
 
 //Marker erstellen mit Clib
 //[_markerNamen, [_markerdata]] call CFUNC(addMapGraphicsGroup);
+
 //BIS Marker
+
+private _farbeMarker = "ColorBlack";
+
+switch (_farbe) do 
+{
+    case [0,0,1,1]: 
+	{
+		//blau
+		_farbeMarker = "ColorBlue";	
+    };
+    case [1,0,0,1]: 
+	{
+		//rot
+        _farbeMarker = "ColorRed";	
+   	};
+};
+
 private _marker = createMarkerLocal [_markerNamen, _startPosition];
 _marker setMarkerTypeLocal _icon;
-_marker setMarkerColorLocal "ColorBlack";
+_marker setMarkerColorLocal _farbeMarker;
 _marker setMarkerSizeLocal [0.8, 0.8];
 _marker setMarkerAlphaLocal _sichtbarkeit;
 _marker setMarkerTextLocal format["%1",_text];
