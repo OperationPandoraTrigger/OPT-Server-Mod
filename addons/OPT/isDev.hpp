@@ -2,4 +2,4 @@
 // Therefore the content in this file is not relevant when using the build script (the scripts will overwrite it)
 
 // disable dev-mode by default, in case someone builds manually
-#define ISDEV
+#undef ISDEV
