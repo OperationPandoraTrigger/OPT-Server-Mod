@@ -39,7 +39,8 @@ DUMP("Successfully loaded the OPT/GPS module on the client");
 #include "\opt\opt\addons\opt\tracker\Texturen.hpp"
 
 // Offizier Classname
-GVAR(officer) = [
+GVAR(officer) = 
+[
     "OPT_NATO_Offizier_T",
     "OPT_CSAT_Offizier_T",
 	"OPT_NATO_Offizier",
@@ -94,17 +95,13 @@ DFUNC(spielerPoolLeben) =
 	private _leaderUnits = [];
 	private _unitsToMark = [];  
 
-	allGroups apply 
-	{
-		if (side (leader _x) isEqualTo playerSide) then 
-		{    
-			_leaderUnits pushBack (leader _x);
-		};                        
-	};
+	private _leaderUnits = (allGroups select {(side (leader _x)) isEqualTo playerSide}) apply {leader _x};
 
 	_unitsToMark append _leaderUnits;
-    _unitsToMark append _groupUnits; 
+    _unitsToMark append (_groupUnits - [leader player]);
 
+	systemChat format ["L:%1 U:%2",_leaderUnits,_unitsToMark];
+	
 	//Spielerfeststellung die zur Seite gehören und keine Revive Status haben 
 	
 	_unitsToMark apply 
@@ -117,7 +114,7 @@ DFUNC(spielerPoolLeben) =
 
 	//Ofiiziermodus alle Spieler
 
-	if (typeOf player in GVARMAIN(officer)) then
+	if (typeOf player in GVAR(officer)) then
 	{	
 		_spielerPoolLeben = [];
 
@@ -263,7 +260,7 @@ DFUNC(addMarker) =
 DFUNC(updateMarkerPool) = 
 {
 	
-	private _units = playableUnits;
+	private _units = allUnits;
 	private _spielerPoolAdd = [];
 	private _spielerAddEH = [];
 	private _id = 0;
@@ -366,6 +363,8 @@ DFUNC(uavMarkerText) =
 	
 	private _text = "";
 
+	private _index = 0;
+
     // UAV Operator ja/nein
     if (!isNull _operator) then 
 	{
@@ -376,9 +375,11 @@ DFUNC(uavMarkerText) =
 		_text = format["%1 (---)", _vehName];
     };
 						
-	private _index = GVAR(markerPool) find _uav;
+	_index = GVAR(markerPool) find _uav;
 
 	[OPT_SET_MARKER_TEXT, [(GVAR(markerIDPool) select _index),_text]] call CFUNC(localEvent);
+
+	systemChat format ["I:%1 M:%2 MIP:%3 U:%4 T:%5",_index,(GVAR(markerIDPool) select _index),GVAR(markerIDPool),_uav,typeName _uav];
 			
 };
 
@@ -462,7 +463,7 @@ DFUNC(removeMarkerTextRevive) =
 	GVAR(markerPool) = [];
 	GVAR(markerIDPool) = [];
 
-	private _units = playableUnits;
+	private _units = allUnits;
 
 	GVAR(markerPool) = [_units] call FUNC(spielerPoolLeben);
 
@@ -473,6 +474,8 @@ DFUNC(removeMarkerTextRevive) =
 	[GVAR(markerPool)] call FUNC(addEH);
 
 	onPlayerConnected "[] call FUNC(updateMarkerPool);";
+
+	systemChat format ["MIP:%1 MP:%2",GVAR(markerIDPool),GVAR(markerPool)];
 
 }, []] call CFUNC(addEventHandler); 
 
@@ -505,7 +508,6 @@ DFUNC(removeMarkerTextRevive) =
 		_this params ["_eventArgs"];
 
 		_eventArgs call FUNC(UAVMarkerText);
-
 	},
 	[]
 
