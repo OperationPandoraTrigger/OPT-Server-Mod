@@ -95,12 +95,10 @@ DFUNC(spielerPoolLeben) =
 	private _leaderUnits = [];
 	private _unitsToMark = [];  
 
-	private _leaderUnits = (allGroups select {(side (leader _x)) isEqualTo playerSide}) apply {leader _x};
+	private _leaderUnits = (allGroups select {(side (leader _x)) isEqualTo playerSide and ((leader _x) in _units)}) apply {leader _x};
 
 	_unitsToMark append _leaderUnits;
     _unitsToMark append (_groupUnits - [leader player]);
-
-	systemChat format ["L:%1 U:%2",_leaderUnits,_unitsToMark];
 	
 	//Spielerfeststellung die zur Seite gehören und keine Revive Status haben 
 	
@@ -185,8 +183,16 @@ DFUNC(uav) =
 		GVAR(markerPool) append _uavMarker;
 
 		_id = [_uavMarker,1] call FUNC(addMarker);
+		
+		systemChat format ["U:%1 W:%2 B:%3",_unit,_weapon,(_weapon in allUnitsUAV)];
+
+		//_uavMarker addEventHandler ["Killed", {_this call FUNC(unitkilled);}];
 
 		GVAR(markerIDPool) append _id;
+		GVAR(markerPool) append _uavMarker;
+
+		systemChat format ["ID:%1 MP:%2 MIP:%3 U:%4",_id,GVAR(markerIDPool),GVAR(markerPool),_uavMarker];
+
 	};	
 };	
 
@@ -260,7 +266,7 @@ DFUNC(addMarker) =
 DFUNC(updateMarkerPool) = 
 {
 	
-	private _units = allUnits;
+	private _units = playableUnits;
 	private _spielerPoolAdd = [];
 	private _spielerAddEH = [];
 	private _id = 0;
@@ -379,7 +385,7 @@ DFUNC(uavMarkerText) =
 
 	[OPT_SET_MARKER_TEXT, [(GVAR(markerIDPool) select _index),_text]] call CFUNC(localEvent);
 
-	systemChat format ["I:%1 M:%2 MIP:%3 U:%4 T:%5",_index,(GVAR(markerIDPool) select _index),GVAR(markerIDPool),_uav,typeName _uav];
+	systemChat format ["I:%1 MP:%2 M:%3 MIP:%4 U:%5 T:%6",_index,GVAR(markerPool),(GVAR(markerIDPool) select _index),GVAR(markerIDPool),_uav,typeName _uav];
 			
 };
 
@@ -456,6 +462,29 @@ DFUNC(removeMarkerTextRevive) =
 		
 };	
 
+//Drohne Marker ausblenden bei zerstörung
+DFUNC(unitkilled) = 
+{
+	
+	params 
+	[
+		["_unit",nil],
+		["_killer",nil], 
+		["_instigator",nil],
+		["_useEffects",false]
+	];
+
+	private _index = GVAR(markerPool) find _unit;
+
+	[OPT_REMOVE_MARKER, [(GVAR(markerIDPool) select _index)]] call CFUNC(localEvent);
+
+	systemChat format ["Kill I:%1 MP:%2 M:%3 MIP:%4 U:%5 T:%6",_index,GVAR(markerPool),(GVAR(markerIDPool) select _index),GVAR(markerIDPool),_unit,typeName _unit];
+
+	GVAR(markerIDPool) deleteAt _index;
+
+	GVAR(markerPool) deleteAt _index;
+};	
+
 //Init GPS System
 ["missionStarted", 
 {
@@ -463,7 +492,7 @@ DFUNC(removeMarkerTextRevive) =
 	GVAR(markerPool) = [];
 	GVAR(markerIDPool) = [];
 
-	private _units = allUnits;
+	private _units = playableUnits;
 
 	GVAR(markerPool) = [_units] call FUNC(spielerPoolLeben);
 
@@ -474,8 +503,6 @@ DFUNC(removeMarkerTextRevive) =
 	[GVAR(markerPool)] call FUNC(addEH);
 
 	onPlayerConnected "[] call FUNC(updateMarkerPool);";
-
-	systemChat format ["MIP:%1 MP:%2",GVAR(markerIDPool),GVAR(markerPool)];
 
 }, []] call CFUNC(addEventHandler); 
 
