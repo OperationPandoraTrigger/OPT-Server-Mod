@@ -553,6 +553,7 @@ DFUNC(unitkilled) =
 		GVAR(markerPool) pushBack _eventArgs;
 		GVAR(markerIDPool) append _id;
 
+		systemChat format ["DM I:%1 EV:%2",_id,_eventArgs];
 	},
 	[]
 	
