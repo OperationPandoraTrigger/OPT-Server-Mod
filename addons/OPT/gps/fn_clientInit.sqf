@@ -206,24 +206,12 @@ DFUNC(addMarker) =
 		["_modus",0]
 	];
 
+	systemChat format ["AM U:%1 Mo:%2",_units,_modus];
+
 	private _farbe = [1,1,1,1];	
 	private _idArray = [];
 	private _id = 0;
 	private _text = "";
-
-	switch (playerSide) do 
-	{
-    	case west: 
-		{
-			//blau
-			_farbe = [0,0,1,1];	
-    	};
-    	case east: 
-		{
-			//rot
-        	_farbe = [1,0,0,1];	
-   		};
-	};
 
 	_units apply 
 	{ 
@@ -234,12 +222,26 @@ DFUNC(addMarker) =
     		case 0: 
 			{
 				//Spieler
-				_text = format["%1", name _x]	
+				_text = format["%1", name _x];	
     		};
     		case 1: 
 			{
 				//UAV
-        		_text = format["%1 (---)", _vehName]
+        		_text = format["%1 (---)", _vehName];
+   			};
+		};
+
+		switch (Side _x) do 
+		{
+    		case west: 
+			{
+				//blau
+				_farbe = [0,0,1,1];	
+    		};
+    		case east: 
+			{
+				//rot
+        		_farbe = [1,0,0,1];	
    			};
 		};
 
@@ -305,6 +307,8 @@ DFUNC(addEH) =
 		_x addEventHandler ["GetOutMan", {_this call FUNC(spielerMarkerText);}];
 		_x addEventHandler ["WeaponAssembled", {_this call FUNC(uav);}];
 		_x addEventHandler ["Dammaged", {_this call FUNC(markerTextRevive);}];
+		_x addEventHandler ["Respawn", {_this call FUNC(unitRespawn);}];
+		_x addEventHandler ["Killed", {_this call FUNC(unitkilled);}];
 	};
 
 };	
@@ -462,7 +466,7 @@ DFUNC(removeMarkerTextRevive) =
 		
 };	
 
-//Drohne Marker ausblenden bei zerstörung
+//Marker ausblenden bei Tod/zerstörung
 DFUNC(unitkilled) = 
 {
 	
@@ -478,11 +482,30 @@ DFUNC(unitkilled) =
 
 	[OPT_REMOVE_MARKER, [(GVAR(markerIDPool) select _index)]] call CFUNC(localEvent);
 
-	systemChat format ["Kill I:%1 MP:%2 M:%3 MIP:%4 U:%5 T:%6",_index,GVAR(markerPool),(GVAR(markerIDPool) select _index),GVAR(markerIDPool),_unit,typeName _unit];
-
 	GVAR(markerIDPool) deleteAt _index;
 
 	GVAR(markerPool) deleteAt _index;
+
+	systemChat format ["Kill I:%1 MP:%2 M:%3 MIP:%4 U:%5 T:%6",_index,GVAR(markerPool),(GVAR(markerIDPool) select _index),GVAR(markerIDPool),_unit,typeName _unit];
+
+};	
+
+//Marker erneuern nach Respawn
+DFUNC(unitRespawn) = 
+{
+	
+	params 
+	[
+		["_unit",nil],
+		["_corpse",nil]
+	];
+
+	_id = [[_unit],0] call FUNC(addMarker);
+
+	GVAR(markerPool) pushBack _unit;
+	GVAR(markerIDPool) append _id;
+
+	systemChat format ["UR I:%1 MP:%2 MIP:%3 U:%4",_id,GVAR(markerPool),GVAR(markerIDPool),_unit];
 };	
 
 //Init GPS System
@@ -548,11 +571,13 @@ DFUNC(unitkilled) =
 
 		private _id = 0;
 
-		_id = [_eventArgs,1] call FUNC(addMarker);
+		_id = [[_eventArgs],1] call FUNC(addMarker);
 
 		GVAR(markerPool) pushBack _eventArgs;
 		GVAR(markerIDPool) append _id;
 
+		_eventArgs addEventHandler ["Killed", {_this call FUNC(unitkilled);}];
+	
 		systemChat format ["DM I:%1 EV:%2",_id,_eventArgs];
 	},
 	[]
