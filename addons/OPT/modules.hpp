@@ -15,6 +15,7 @@ class CfgCLibModules {
 			FNC(clientInit);
 			APIFNC(getPoints);
 			APIFNC(openDialog);
+			APIFNC(selectBeam);
 			// APIFNC(addBeam);
 		};
 		
