@@ -2,7 +2,7 @@
 #include "\opt_core\dialogs\OPTDef.hpp"
 
 
-private _success = createDialog "opt_beamDialog";
+private _success = createDialog QUOTE(DIALOG_BEAM); // "opt_beamDialog";
 
 private _display = findDisplay IDD_BEAM;
 private _ctrlList = _display displayCtrl IDC_BEAM_LIST;
