@@ -1,4 +1,4 @@
-@echo off
+@ECHO OFF
 
-call "%~dp0.\stopServer.bat"
-call "%~dp0.\startServer.bat"
+CALL "%~dp0.\stopServer.bat"
+CALL "%~dp0.\startServer.bat"
