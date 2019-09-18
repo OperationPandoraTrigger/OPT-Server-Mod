@@ -185,14 +185,15 @@ DFUNC(uav) =
 		_id = [_uavMarker,1] call FUNC(addMarker);
 		
 		systemChat format ["U:%1 W:%2 B:%3",_unit,_weapon,(_weapon in allUnitsUAV)];
-
+		diag_log format ["U:%1 W:%2 B:%3",_unit,_weapon,(_weapon in allUnitsUAV)];
+		
 		//_uavMarker addEventHandler ["Killed", {_this call FUNC(unitkilled);}];
 
 		GVAR(markerIDPool) append _id;
 		GVAR(markerPool) append _uavMarker;
 
 		systemChat format ["ID:%1 MP:%2 MIP:%3 U:%4",_id,GVAR(markerIDPool),GVAR(markerPool),_uavMarker];
-
+		diag_log format ["ID:%1 MP:%2 MIP:%3 U:%4",_id,GVAR(markerIDPool),GVAR(markerPool),_uavMarker];
 	};	
 };	
 
@@ -207,6 +208,7 @@ DFUNC(addMarker) =
 	];
 
 	systemChat format ["AM U:%1 Mo:%2",_units,_modus];
+	diag_log format ["AM U:%1 Mo:%2",_units,_modus];
 
 	private _farbe = [1,1,1,1];	
 	private _idArray = [];
@@ -390,7 +392,7 @@ DFUNC(uavMarkerText) =
 	[OPT_SET_MARKER_TEXT, [(GVAR(markerIDPool) select _index),_text]] call CFUNC(localEvent);
 
 	systemChat format ["I:%1 MP:%2 M:%3 MIP:%4 U:%5 T:%6",_index,GVAR(markerPool),(GVAR(markerIDPool) select _index),GVAR(markerIDPool),_uav,typeName _uav];
-			
+	diag_log format ["I:%1 MP:%2 M:%3 MIP:%4 U:%5 T:%6",_index,GVAR(markerPool),(GVAR(markerIDPool) select _index),GVAR(markerIDPool),_uav,typeName _uav];		
 };
 
 //Marker Text Revive
@@ -487,7 +489,7 @@ DFUNC(unitkilled) =
 	GVAR(markerPool) deleteAt _index;
 
 	systemChat format ["Kill I:%1 MP:%2 M:%3 MIP:%4 U:%5 T:%6",_index,GVAR(markerPool),(GVAR(markerIDPool) select _index),GVAR(markerIDPool),_unit,typeName _unit];
-
+	diag_log format ["Kill I:%1 MP:%2 M:%3 MIP:%4 U:%5 T:%6",_index,GVAR(markerPool),(GVAR(markerIDPool) select _index),GVAR(markerIDPool),_unit,typeName _unit];
 };	
 
 //Marker erneuern nach Respawn
@@ -506,6 +508,7 @@ DFUNC(unitRespawn) =
 	GVAR(markerIDPool) append _id;
 
 	systemChat format ["UR I:%1 MP:%2 MIP:%3 U:%4",_id,GVAR(markerPool),GVAR(markerIDPool),_unit];
+	diag_log format ["UR I:%1 MP:%2 MIP:%3 U:%4",_id,GVAR(markerPool),GVAR(markerIDPool),_unit];
 };	
 
 //Init GPS System
@@ -579,6 +582,7 @@ DFUNC(unitRespawn) =
 		_eventArgs addEventHandler ["Killed", {_this call FUNC(unitkilled);}];
 	
 		systemChat format ["DM I:%1 EV:%2",_id,_eventArgs];
+		diag_log format ["DM I:%1 EV:%2",_id,_eventArgs];
 	},
 	[]
 	
