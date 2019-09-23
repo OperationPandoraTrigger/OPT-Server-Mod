@@ -79,7 +79,7 @@ GVAR(iconStatemachine) = call CFUNC(createStatemachine);
         if ([_unit] call FUNC(isUnitVisible)) then {
             if (true) then {
                 // Unit marker is only shown for own group or if you're a group leader
-                if ([CLib_Player] call FUNC(isUnitLeader) || group _unit == group CLib_Player ) then {
+                if ([CLib_Player] call FUNC(isUnitLeader) || group _unit == group CLib_Player || [_unit] call FUNC(isUnitLeader) ) then {
                     private _iconId = toLower format [QGVAR(IconId_Player_%1_%2), _unit, group _unit isEqualTo group CLib_Player];
                     // We only add icons that we don't have yet already, but we obviously mark them as processed.
                     GVAR(processedIcons) pushBack _iconId;
