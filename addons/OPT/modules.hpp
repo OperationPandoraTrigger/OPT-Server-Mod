@@ -11,7 +11,7 @@ class CfgCLibModules {
             dependency[] = {"CLib/PerFrame", "Clib/Events"};
             FNC(clientInit);
             FNC(addUnitToGPS);
-            //FNC(addGroupToGPS);
+            FNC(addGroupToGPS);
             //FNC(addVehicleToGPS);
             FNC(isUnitVisible);
             FNC(isVehicleVisible);
