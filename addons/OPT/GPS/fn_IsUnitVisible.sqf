@@ -29,5 +29,9 @@
 params ["_unit"];
 
 !isNull _unit 
-&& alive _unit // Only show alive
-&& side group _unit == side group CLib_Player // Only show same side
+&& {
+	alive _unit // Only show alive
+	&& side group _unit == side group CLib_Player // Only show same side
+	&& simulationEnabled _unit
+	// && isPlayer _unit
+}

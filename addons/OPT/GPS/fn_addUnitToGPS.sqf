@@ -32,10 +32,10 @@ params ["_newUnit", "_iconId"];
 
 // Decide on the right color
 private _color = if (CLib_Player isEqualTo _newUnit) then {
-    COLOR_OWN_GROUP
+    COLOR_PLAYER_UNIT
     } else {
         if (group CLib_Player isEqualTo group _newUnit) then {
-            COLOR_PLAYER_UNIT
+            COLOR_OWN_GROUP
         } else {
             COLOR_SIDE
         }
