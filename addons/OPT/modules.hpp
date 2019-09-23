@@ -6,18 +6,16 @@ class CfgCLibModules {
         path = "OPT\OPT\addons\OPT";
 		
 		dependency[] = {};
-
-        MODULE(Beam) 
-		{
-
-			dependency[] = {"CLib/PerFrame", "Clib/Events"};
-			
-			FNC(clientInit);
-			APIFNC(getPoints);
-			APIFNC(openDialog);
-			APIFNC(selectBeam);
-			// APIFNC(addBeam);
-		};
 		
+        MODULE(GPS) {
+            dependency[] = {"CLib/PerFrame", "Clib/Events"};
+            FNC(clientInit);
+            FNC(addUnitToGPS);
+            //FNC(addGroupToGPS);
+            //FNC(addVehicleToGPS);
+            FNC(isUnitVisible);
+            FNC(isVehicleVisible);
+            FNC(isUnitLeader);
+        };
     };
 };
