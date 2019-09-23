@@ -16,6 +16,7 @@ class CfgCLibModules {
             FNC(isUnitVisible);
             FNC(isVehicleVisible);
             FNC(isUnitLeader);
+            FNC(initCBASettings);
         };
     };
 };

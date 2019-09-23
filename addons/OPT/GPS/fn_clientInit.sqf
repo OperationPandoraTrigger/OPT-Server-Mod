@@ -1,4 +1,5 @@
 #include "macros.hpp"
+[] call FUNC(initCBASettings);
 
 // Inspired by AAW's UnitTracker
 
