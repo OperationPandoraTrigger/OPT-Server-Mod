@@ -8,7 +8,7 @@ class CfgCLibModules {
 		dependency[] = {};
 		
         MODULE(GPS) {
-            dependency[] = {"CLib/PerFrame", "Clib/Events"};
+            dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics"};
             FNC(clientInit);
             FNC(addUnitToGPS);
             //FNC(addGroupToGPS);

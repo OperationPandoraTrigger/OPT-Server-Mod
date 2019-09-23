@@ -1,16 +1,36 @@
+/**
+* Prüft, ob ein Fahrzeug für den Spieler auf der Karte sichtbar ist
+* 
+* Autor: Senshi
+*
+* Argumente:
+* 0: <OBJECT> _unit Zu prüfendes Vehicle
+*
+* Rückgabewert:
+* 0: <BOOL> True, wenn sichtbar, sonst false
+*
+* Server Only:
+* Nein
+* 
+* Lokal:
+* Ja
+* 
+* Global:
+* Nein
+* 
+* API:
+* Nein
+* 
+* Beispiel interner Aufruf:
+* _isVisible = [_unit] call FUNC(isVehicleVisible);
+*
+*/
+
 #include "macros.hpp";
 
+params ["_veh"];
 
-params ["_vehicle"];
-
-if (isNull _vehicle) exitWith { false };
-
-// Don't show destroyed
-if (damage _vehicle == 1) exitWith { false };
-// Only show manned
-if (({alive _x} count crew _vehicle) == 0) exitWith { false };
-// Only show manned by own side
-if (side group (crew _vehicle) select 0 != side group CLibPlayer) exitWith { false};
-
-
-true
+!isNull _veh 
+&& damage _veh < 1 // Don't show destroyed
+&& { alive _x} count crew _veh > 1 // Don't show empty
+&& side group (crew _vehicle) select 0 == side group CLib_Player // Don't show hostile

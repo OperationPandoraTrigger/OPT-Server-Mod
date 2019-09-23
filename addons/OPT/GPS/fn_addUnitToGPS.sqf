@@ -1,24 +1,47 @@
+/**
+* Fügt einen Einheitenmarker auf Karten hinzu
+* 
+* Autor: Senshi
+*
+* Argumente:
+* 0: <OBJECT> _unit     Hinzuzufügende Einheit
+* 1: <STRING> _iconId   Eindeutige Icon-ID
+*
+* Rückgabewert:
+* 0: <String>   Eindeutige Icon-ID
+*
+* Server Only:
+* Nein
+* 
+* Lokal:
+* Ja
+* 
+* Global:
+* Nein
+* 
+* API:
+* Nein
+* 
+* Beispiel interner Aufruf:
+* _iconID = [player, "Icon_Player"] call FUNC(addUnitToGPS);
+*
+*/
+
 #include "macros.hpp"
 
 
 params ["_newUnit", "_iconId"];
 
-private _sideColor = [0,0.3,0.6,1]; // [west, false] call BIS_fnc_sideColor;
-private _groupColor = [0.13, 0.54, 0.21, 1];
-
-private "_color";
-
-// Different colors if own group
-if (group CLib_player isEqualTo group _newUnit) then {
-	_color = _groupColor;
-} else {
-	_color = _sideColor;
-};
-
-// Highlight own marker
-if (CLib_Player == _newUnit) then {
-    _color = [1, 0.4, 0, 1];
-};
+// Decide on the right color
+private _color = if (group CLib_Player isEqualTo group _newUnit) then {
+    COLOR_OWN_GROUP
+    } else {
+        if (CLib_Player == _newUnit) then {
+            COLOR_PLAYER_UNIT
+        } else {
+            COLOR_SIDE
+        }
+    };
 
 
 // Icon is pulled from opt_characters client mod.
@@ -38,7 +61,7 @@ private _unitIcon = ["ICON",
     _newUnit, // 3: Position <MapGraphicsPosition> // We place the object itself here. This allows us hacky access later to retrieve variables of it for conditional onEachFrame styling.
     _width, // 4: Width <Number>
     _height, // 5: Height <Number>
-	_newUnit, // 6: Angle <Number>
+    _newUnit, // 6: Angle <Number>
     "", // 7: Text <String>
     1, // 8: Shadow <Boolean/Number>
     0.08, // 9: Text Size <Number>

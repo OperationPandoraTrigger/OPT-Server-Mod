@@ -56,7 +56,7 @@ GVAR(iconStatemachine) = call CFUNC(createStatemachine);
     // Now we got a clean slate again, let's start the cycle.
     GVAR(processedIcons) = [];
 
-	if (_units isEqualTo [] && _vehicles isEqualTo []) then {
+    if (_units isEqualTo [] && _vehicles isEqualTo []) then {
         "init"
     } else {
         ["addIcons", [_units, _vehicles]]
@@ -64,7 +64,7 @@ GVAR(iconStatemachine) = call CFUNC(createStatemachine);
 }] call CFUNC(addStatemachineState);
 
 [GVAR(iconStatemachine), "addIcons", {
-    params ["_dummy", "_data"];
+    params ["", "_data"];
     _data params ["_units", "_vehicles"];
 
     // First, we process a single Unit
@@ -72,36 +72,35 @@ GVAR(iconStatemachine) = call CFUNC(createStatemachine);
         private _unit = _units deleteAt 0;
 
         // If it's an invalid unit, move on to the next one
-        while {!([_unit] call FUNC(isUnitVisible)) && {!(_units isEqualTo [])}} do {
+        while {
+            !([_unit] call FUNC(isUnitVisible))
+            && !([CLib_Player] call FUNC(isUnitLeader))
+            && group _unit != group CLib_Player
+            && !([_unit] call FUNC(isUnitLeader))
+            && _unit getVariable ["FAR_isUnconscious", 0] == 0
+            && !(_units isEqualTo [])
+        } do {
             _unit = _units deleteAt 0;
         };
 
         if ([_unit] call FUNC(isUnitVisible)) then {
-            if (true) then {
-                // Unit marker is only shown for own group or if you're a group leader
-                if ([CLib_Player] call FUNC(isUnitLeader) || group _unit == group CLib_Player || [_unit] call FUNC(isUnitLeader) ) then {
-                    private _iconId = toLower format [QGVAR(IconId_Player_%1_%2), _unit, group _unit isEqualTo group CLib_Player];
-                    // We only add icons that we don't have yet already, but we obviously mark them as processed.
-                    GVAR(processedIcons) pushBack _iconId;
-                    if !(_iconId in GVAR(lastProcessedIcons)) then {
-                        DUMP("UNIT ICON ADDED: " + _iconId);
-                        [_unit, _iconId] call FUNC(addUnitToGPS);
-                    };
+            // Unit marker is only shown for own group, if you're a group leader or if the unit is a group leader
+            if (
+                [CLib_Player] call FUNC(isUnitLeader) // Show all if player is group leader
+                || group _unit == group CLib_Player // Show all from your own group
+                || [_unit] call FUNC(isUnitLeader) // Show if unit is a group leader
+                || _unit getVariable ["FAR_isUnconscious", 0] == 1 // Show if unit is incapacitated
+            ) then {
+                private _iconId = toLower format [QGVAR(IconId_Player_%1_%2), _unit, group _unit isEqualTo group CLib_Player];
+                // We only add icons that we don't have yet, but we obviously mark them as processed.
+                GVAR(processedIcons) pushBack _iconId;
+                if !(_iconId in GVAR(lastProcessedIcons)) then {
+                    DUMP("UNIT ICON ADDED: " + _iconId);
+                    [_unit, _iconId] call FUNC(addUnitToGPS);
                 };
             };
         };
 
-    };
-
-
-    if (_units isEqualTo [] && _vehicles isEqualTo []) then {
-        {
-            DUMP("ICON REMOVED: " + _x);
-            [_x, "hoverin"] call CFUNC(removeMapGraphicsEventHandler);
-            [_x, "hoverout"] call CFUNC(removeMapGraphicsEventHandler);
-            [_x] call CFUNC(removeMapGraphicsGroup);
-        } count (GVAR(lastProcessedIcons) - GVAR(processedIcons));
-        //[["deleteIcons", _iconsToDelete], _defaultState] select (_iconsToDelete isEqualTo []);
     };
 
 // Keep adding icons until all units and vehicles have been dealt with. Once finished, we cycle from the beginning.
