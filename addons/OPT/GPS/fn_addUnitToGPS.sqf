@@ -92,16 +92,16 @@ private _unitDescription = ["ICON",
     2, 
     0.08, 
     "RobotoCondensed", 
-    "right "
-    // {
-    //     if (_position getVariable ["FAR_isUnconscious", 0] == 1) then {
-    //         if (_position getVariable ["FAR_IsStabilized", 0] == 1) then {
-    //             _text = format ["%1 (%2)", name _position, "Stabilized" ];
-    //         } else {
-    //             _text = format ["%1 (%2)", name _position, "(str _position getVariable ["FAR_bleedTime", "?"])]";
-    //         };
-    //     };
-    // }
+    "right ",
+    {
+        if (_position getVariable ["FAR_isUnconscious", 0] == 1) then {
+            if (_position getVariable ["FAR_IsStabilized", 0] == 1) then {
+                _text = format ["%1 (%2)", name _position, "Stabilisiert" ];
+            } else {
+                _text = format ["%1 (%2)", name _position, "Verwundet"];
+            };
+        };
+    }
 ];
 
 
