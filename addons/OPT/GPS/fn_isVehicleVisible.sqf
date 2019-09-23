@@ -1,26 +1,26 @@
 /**
-* Beschreibung:
-* Prüft, ob ein Fahrzeug für den Spieler auf der Karte sichtbar ist
+* Description:
+* Test if vehicle is supposed to be visible on map
 * 
-* Autor: 
+* Author: 
 * Senshi
 *
-* Argumente:
+* Arguments:
 * 0: <OBJECT> _unit Zu prüfendes Vehicle
 *
-* Rückgabewert:
+* Return value:
 * 0: <BOOL> True, wenn sichtbar, sonst false
 *
 * Server Only:
-* Nein
+* No
 * 
 * Global:
-* Nein
+* No
 * 
 * API:
-* Nein
+* No
 * 
-* Beispiel:
+* Example:
 * _isVisible = [_unit] call FUNC(isVehicleVisible);
 */
 

@@ -1,26 +1,26 @@
 /**
-* Beschreibung:
-* Prüft, ob eine Einheit für den Spieler auf der Karte sichtbar ist
+* Description:
+* Test if unit is supposed to be visible on map
 * 
-* Autor:
+* Author:
 * Senshi
 *
-* Argumente:
-* 0: <OBJECT> _unit Zu prüfende Unit
+* Arguments:
+* 0: <OBJECT> _unit Unit to check
 *
-* Rückgabewert:
-* 0: <BOOL> True, wenn sichtbar, sonst false
+* Return value:
+* 0: <BOOL> If visible: true, else false
 *
 * Server Only:
-* Nein
+* No
 * 
 * Global:
-* Nein
+* No
 * 
 * API:
-* Nein
+* No
 * 
-* Beispiel:
+* Example:
 * _isVisible = [_unit] call FUNC(isUnitVisible);
 */
 

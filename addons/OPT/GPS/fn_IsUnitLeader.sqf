@@ -1,26 +1,26 @@
 /**
-* Beschreibung:
-* Prüft, ob eine Einheit der Anführer einer Gruppe ist
+* Description:
+* Test if unit is leader of a group
 * 
-* Autor:
+* Author:
 * Senshi
 *
-* Argumente:
+* Arguments:
 * 0: <OBJECT> _unit Zu prüfende Unit
 *
-* Rückgabewert:
+* Return value:
 * 0: <BOOL> True, wenn Leader, sonst false
 *
 * Server Only:
-* Nein
+* No
 * 
 * Global:
-* Nein
+* No
 * 
 * API:
-* Nein
+* No
 * 
-* Beispiel:
+* Example:
 * _isLeader = [_unit] call FUNC(isUnitLeader);
 */
 

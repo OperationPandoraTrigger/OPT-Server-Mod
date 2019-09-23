@@ -1,27 +1,27 @@
 /**
-* Beschreibung:
-* Fügt einen Einheitenmarker auf Karten hinzu
+* Description:
+* Add a uniticon for a unit to be shown on mapControls
 * 
-* Autor:
+* Author:
 * Senshi
 *
-* Argumente:
+* Arguments:
 * 0: <OBJECT> _unit     Hinzuzufügende Einheit
 * 1: <STRING> _iconId   Eindeutige Icon-ID
 *
-* Rückgabewert:
+* Return Value:
 * 0: <String>   Eindeutige Icon-ID
 *
 * Server Only:
-* Nein
+* No
 * 
 * Global:
-* Nein
+* No
 * 
 * API:
-* Nein
+* No
 * 
-* Beispiel:
+* Example:
 * _iconID = [player, "Icon_Player"] call FUNC(addUnitToGPS);
 */
 

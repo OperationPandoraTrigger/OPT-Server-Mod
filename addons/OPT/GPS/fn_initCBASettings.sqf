@@ -1,26 +1,29 @@
 /**
-* Beschreibung:
-* CBA-Settings hinzufügen
+* Description:
+* Add CBA-Settings
 *
-* Autor:
+* Author:
 * Senshi
 *
-* Argumente:
-* Keine
+* Arguments:
+* None
 *
-* Rückgabewert:
-* Keine
+* Return Value:
+* None
 *
-* Server Only:
-* Nein
+* Server only:
+* No
+*
+* Public:
+* No - should be called only once from XEH_PreInit.sqf at mission start
 * 
 * Global:
-* Nein
+* No
 * 
 * API:
-* Nein
+* No
 *
-* Beispiel:
+* Example:
 * [] call FUNC(initCBASettings);
 */
 #include "macros.hpp"
