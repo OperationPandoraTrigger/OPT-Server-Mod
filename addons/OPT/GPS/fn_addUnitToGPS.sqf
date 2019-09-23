@@ -33,10 +33,10 @@
 params ["_newUnit", "_iconId"];
 
 // Decide on the right color
-private _color = if (group CLib_Player isEqualTo group _newUnit) then {
+private _color = if (CLib_Player isEqualTo _newUnit) then {
     COLOR_OWN_GROUP
     } else {
-        if (CLib_Player == _newUnit) then {
+        if (group CLib_Player isEqualTo group _newUnit) then {
             COLOR_PLAYER_UNIT
         } else {
             COLOR_SIDE
@@ -106,7 +106,13 @@ private _unitDescription = ["ICON",
     // }
 ];
 
-[_iconId, [_unitIcon]] call CFUNC(addMapGraphicsGroup);
-[_iconId, [_unitIcon, _unitDescription], "hover"] call CFUNC(addMapGraphicsGroup);
+
+// Always draw names depending on settings
+if (GVAR(namesVisible)) then {
+    [_iconId, [_unitIcon, _unitDescription]] call CFUNC(addMapGraphicsGroup);
+} else {
+    [_iconId, [_unitIcon]] call CFUNC(addMapGraphicsGroup);
+    [_iconId, [_unitIcon, _unitDescription], "hover"] call CFUNC(addMapGraphicsGroup);
+};
 
 _iconId;

@@ -31,6 +31,10 @@
 params ["_veh"];
 
 !isNull _veh 
-&& damage _veh < 1 // Don't show destroyed
-&& { alive _x} count crew _veh > 1 // Don't show empty
-&& side group (crew _vehicle) select 0 == side group CLib_Player // Don't show hostile
+&& {
+	damage _veh < 1 // Don't show destroyed
+	&& { alive _x} count crew _veh > 1 // Don't show empty
+	&& side group (crew _vehicle) select 0 == side group CLib_Player // Don't show hostile
+}
+// Wrapping with {} makes this a lazy eval: If the isNull fails, the other conditions aren't checked.
+// Otherwise, all conditions would be checked, even if the first one fails.
