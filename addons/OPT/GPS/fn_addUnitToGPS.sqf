@@ -51,8 +51,8 @@ private _unitIcon = ["ICON",
         if (_position getVariable ["FAR_isUnconscious", 0] == 1) then {
             _texture = "\A3\ui_f\data\igui\cfg\revive\overlayicons\u100_ca.paa";
             _color = [1, 0, 0, 1];
-            _width = 40;
-            _height = 40;
+            _width = 30;
+            _height = 30;
             _angle = 0;
         };
     } // 12: Code executed onEachFrame <{}> 
