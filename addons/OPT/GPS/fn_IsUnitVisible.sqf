@@ -1,7 +1,9 @@
 /**
+* Beschreibung:
 * Prüft, ob eine Einheit für den Spieler auf der Karte sichtbar ist
 * 
-* Autor: Senshi
+* Autor:
+* Senshi
 *
 * Argumente:
 * 0: <OBJECT> _unit Zu prüfende Unit
@@ -12,18 +14,14 @@
 * Server Only:
 * Nein
 * 
-* Lokal:
-* Ja
-* 
 * Global:
 * Nein
 * 
 * API:
 * Nein
 * 
-* Beispiel interner Aufruf:
+* Beispiel:
 * _isVisible = [_unit] call FUNC(isUnitVisible);
-*
 */
 
 #include "macros.hpp";

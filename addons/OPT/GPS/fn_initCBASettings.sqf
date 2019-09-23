@@ -1,29 +1,26 @@
 /**
-* Description:
-* initialize CBA settings
+* Beschreibung:
+* CBA-Settings hinzufügen
 *
-* Author:
+* Autor:
 * Senshi
 *
-* Arguments:
-* None
+* Argumente:
+* Keine
 *
-* Return Value:
-* None
+* Rückgabewert:
+* Keine
 *
-* Server only:
-* no
-*
-* Public:
-* no - should be called only once from XEH_PreInit.sqf at mission start
-*
+* Server Only:
+* Nein
+* 
 * Global:
-* no
+* Nein
+* 
+* API:
+* Nein
 *
-* Sideeffects:
-* yes - create a new setting in the game addons options (according to category and name)
-*
-* Example:
+* Beispiel:
 * [] call FUNC(initCBASettings);
 */
 #include "macros.hpp"

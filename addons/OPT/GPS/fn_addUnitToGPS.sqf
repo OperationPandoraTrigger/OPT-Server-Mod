@@ -1,7 +1,9 @@
 /**
+* Beschreibung:
 * Fügt einen Einheitenmarker auf Karten hinzu
 * 
-* Autor: Senshi
+* Autor:
+* Senshi
 *
 * Argumente:
 * 0: <OBJECT> _unit     Hinzuzufügende Einheit
@@ -13,18 +15,14 @@
 * Server Only:
 * Nein
 * 
-* Lokal:
-* Ja
-* 
 * Global:
 * Nein
 * 
 * API:
 * Nein
 * 
-* Beispiel interner Aufruf:
+* Beispiel:
 * _iconID = [player, "Icon_Player"] call FUNC(addUnitToGPS);
-*
 */
 
 #include "macros.hpp"
