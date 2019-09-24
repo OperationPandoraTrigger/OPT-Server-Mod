@@ -1,4 +1,5 @@
 #include "macros.hpp"
+[] call FUNC(initCBASettings);
 
 // Inspired by AAW's UnitTracker
 
@@ -64,7 +65,7 @@ GVAR(iconStatemachine) = call CFUNC(createStatemachine);
 }] call CFUNC(addStatemachineState);
 
 [GVAR(iconStatemachine), "addIcons", {
-    params ["_dummy", "_data"];
+    params ["", "_data"];
     _data params ["_units", "_vehicles"];
 
     // First, we process a single Unit
@@ -72,18 +73,29 @@ GVAR(iconStatemachine) = call CFUNC(createStatemachine);
         private _unit = _units deleteAt 0;
 
         // If it's an invalid unit, move on to the next one
-        while {!([_unit] call FUNC(isUnitVisible)) && {!(_units isEqualTo [])}} do {
+        while {
+            !([_unit] call FUNC(isUnitVisible))
+            && !([CLib_Player] call FUNC(isUnitLeader))
+            && group _unit != group CLib_Player
+            && !([_unit] call FUNC(isUnitLeader))
+            && _unit getVariable ["FAR_isUnconscious", 0] == 0
+            && !(_units isEqualTo [])
+        } do {
             _unit = _units deleteAt 0;
         };
 
         if ([_unit] call FUNC(isUnitVisible)) then {
-            if (true) then {
-            //if (isNull objectParent _unit) then { // Infantry
+            if (isNull objectParent _unit) then { // Infantry
             
-                // Unit marker is only shown for own group or if you're a group leader
-                if ([CLib_Player] call FUNC(isUnitLeader) || group _unit == group CLib_Player || [_unit] call FUNC(isUnitLeader) ) then {
+            // Unit marker is only shown for own group, if you're a group leader or if the unit is a group leader
+            if (
+                [CLib_Player] call FUNC(isUnitLeader) // Show all if player is group leader
+                || group _unit == group CLib_Player // Show all from your own group
+                || [_unit] call FUNC(isUnitLeader) // Show if unit is a group leader
+                || _unit getVariable ["FAR_isUnconscious", 0] == 1 // Show if unit is incapacitated
+            ) then {
                     private _iconId = toLower format [QGVAR(IconId_Player_%1_%2), _unit, group _unit isEqualTo group CLib_Player];
-                    // We only add icons that we don't have yet already, but we obviously mark them as processed.
+                // We only add icons that we don't have yet, but we obviously mark them as processed.
                     GVAR(processedIcons) pushBack _iconId;
                     if !(_iconId in GVAR(lastProcessedIcons)) then {
                         DUMP("UNIT ICON ADDED: " + _iconId);
@@ -156,17 +168,6 @@ GVAR(iconStatemachine) = call CFUNC(createStatemachine);
     //         };
     //     };
     // };
-
-    if (_units isEqualTo [] && _vehicles isEqualTo []) then {
-        {
-            DUMP("ICON REMOVED: " + _x);
-            [_x, "hoverin"] call CFUNC(removeMapGraphicsEventHandler);
-            [_x, "hoverout"] call CFUNC(removeMapGraphicsEventHandler);
-            [_x] call CFUNC(removeMapGraphicsGroup);
-        } count (GVAR(lastProcessedIcons) - GVAR(processedIcons));
-        //[["deleteIcons", _iconsToDelete], _defaultState] select (_iconsToDelete isEqualTo []);
-    };
-
 // Keep adding icons until all units and vehicles have been dealt with. Once finished, we cycle from the beginning.
 if (_units isEqualTo [] && _vehicles isEqualTo []) then {
     "init"
@@ -181,10 +182,3 @@ if (_units isEqualTo [] && _vehicles isEqualTo []) then {
         GVAR(lastFrameTriggered) = diag_frameNo;
     };
 }] call CFUNC(addEventhandler);
-
-// [{
-//     if (GVAR(lastFrameTriggered) != diag_frameNo) then {
-//         GVAR(iconStatemachine) call CFUNC(stepStatemachine);
-//         GVAR(lastFrameTriggered) = diag_frameNo;
-//     };
-// }, 0.25] call CFUNC(addPerFrameHandler);

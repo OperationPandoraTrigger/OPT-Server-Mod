@@ -54,13 +54,13 @@ private _iconPos = [vehicle leader _group, _attachTo];
         private _display = _mapDisplay;
         // DUMP(_mapDisplay);
         // private _display = _mapDisplay createDisplay "opt_gps_grouphover";
-        // 9900 cutRsc ["opt_gps_grouphover", "PLAIN"];
-        // private _display = uiNamespace getVariable ["opt_gps_grouphover", displayNull];
+        "opt_gps_groupinfo" cutRsc ["opt_gps_grouphover", "PLAIN"];
+        private _display = uiNamespace getVariable ["opt_gps_grouphover", displayNull];
         DUMP(_display);
         // private _idd = ctrlIDD _display;
 
         //titleRsc [QUOTE(DIALOG_GPS_GROUPHOVER), "PLAIN"];
-        // titleRsc ["opt_gps_grouphover", "PLAIN"];
+        //titleRsc ["opt_gps_grouphover", "PLAIN"];
         // "gps_grouphover" cutRsc ["opt_gps_grouphover", "PLAIN"]
         //private _dialog = findDisplay IDD_GPS_GROUPHOVER;
         //DUMP(_dialog);
@@ -73,10 +73,10 @@ private _iconPos = [vehicle leader _group, _attachTo];
         private _ctrlBgBottom = _display displayCtrl IDC_GPS_BGBOTTOM;
         private _ctrlMembers = _display displayCtrl IDC_GPS_SQUADMEMBERS;
         private _textSize = PY(1.8) / (((((safeZoneW / safeZoneH) min 1.2) / 1.2) / 25) * 1);
-        if (isNull _ctrlGrp) then {
-            DUMP(_display);
-            _ctrlGrp = _display ctrlCreate ["GPS_Hover_Group", IDC_GPS_SQUADGROUP];
-        };
+        // if (isNull _ctrlGrp) then {
+        //     DUMP(_display);
+        //     _ctrlGrp = _display ctrlCreate ["GPS_Hover_Group", IDC_GPS_SQUADGROUP];
+        // };
 
 /*
         private _ctrlGrp = uiNamespace getVariable [format [UIVAR(GroupInfo_%1_Group), _idd], controlNull];
