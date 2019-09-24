@@ -71,7 +71,11 @@ private _unitIcon = ["ICON",
         //Show wounded marker if downed
         if (_position getVariable ["FAR_isUnconscious", 0] == 1) then {
             _texture = "\A3\ui_f\data\igui\cfg\revive\overlayicons\u100_ca.paa";
-            _color = [1, 0, 0, 1];
+            if (_position getVariable ["FAR_IsStabilized", 0] == 1) then {
+                _color = [0.850, 0.4, 0, 1];
+            } else {
+                _color = [1, 0, 0, 1];
+            };
             _width = 30;
             _height = 30;
             _angle = 0;

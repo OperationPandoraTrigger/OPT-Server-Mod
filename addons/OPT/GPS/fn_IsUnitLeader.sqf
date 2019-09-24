@@ -28,4 +28,12 @@
 
 params ["_unit"];
 
-_unit == leader group _unit;
+switch (typeOf _unit) do {
+	case "OPT_NATO_Gruppenfuehrer";
+	case "OPT_CSAT_Gruppenfuehrer";
+	case "OPT_NATO_Offizier";
+	case "OPT_CSAT_Offizier";
+	case "OPT_NATO_Pilot";
+	case "OPT_CSAT_Pilot": { true };
+	default { false };
+};
