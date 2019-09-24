@@ -10,6 +10,7 @@ class CfgCLibModules {
         MODULE(GPS) {
             dependency[] = {"CLib/PerFrame", "Clib/Events"};
             FNC(clientInit);
+            FNC(initCBASettings);
             FNC(addUnitToGPS);
             FNC(addGroupToGPS);
             //FNC(addVehicleToGPS);

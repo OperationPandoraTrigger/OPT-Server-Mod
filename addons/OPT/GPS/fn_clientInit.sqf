@@ -114,12 +114,12 @@ GVAR(iconStatemachine) = call CFUNC(createStatemachine);
                 };
                 
             } else { // in vehicle
-            /*
+            
                 private _vehicle = objectParent _unit;
                 // Vehicles should also only be visible if manned by people from your squad or by a group leader.
                 // So we iterate over all occupants and check if one of them qualifies. If so, we show the vehicle.
                 {
-                    if ([_x] call FUNC(isUnitLeader) || group _x == group CLib_Player) exitWith {
+                    if ([CLib_Player] call FUNC(isUnitLeader) || [_x] call FUNC(isUnitLeader) || group _x == group CLib_Player) exitWith {
                         private _nbrGroups = 0;
                         // If a group leader is in the vehicle, the group icon must be attached to the vehicle marker
                         private _inGroup = {
@@ -144,7 +144,7 @@ GVAR(iconStatemachine) = call CFUNC(createStatemachine);
                         };
                     }
                 } forEach crew _vehicle;
-            */
+            
             };
         };
 
