@@ -73,10 +73,8 @@ private _unitIcon = ["ICON",
             _texture = "\A3\ui_f\data\igui\cfg\revive\overlayicons\u100_ca.paa";
             if (_position getVariable ["FAR_IsStabilized", 0] == 1) then {
                 _color = [0.850, 0.4, 0, 1];
-                _text = format ["%1 (%2)", name _position, "Stabilisiert" ];
             } else {
                 _color = [1, 0, 0, 1];
-                _text = format ["%1 (%2)", name _position, "Verwundet"];
             };
             _width = 30;
             _height = 30;
