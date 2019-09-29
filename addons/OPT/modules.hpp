@@ -18,5 +18,10 @@ class CfgCLibModules {
             FNC(isUnitLeader);
             FNC(initCBASettings);
         };
+		MODULE(SHOP) 
+		{
+            dependency[] = {"CLib/PerFrame", "Clib/Events"};
+            FNC(clientInit);           
+        };
     };
 };
