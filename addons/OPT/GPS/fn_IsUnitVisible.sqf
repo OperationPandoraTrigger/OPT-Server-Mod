@@ -35,3 +35,9 @@ params ["_unit"];
 	&& simulationEnabled _unit
 	// && isPlayer _unit
 }
+&& {
+	[CLib_Player] call FUNC(isUnitLeader) // Show all if player is group leader
+	|| group _unit == group CLib_Player // Show all from your own group
+	|| [_unit] call FUNC(isUnitLeader) // Show if unit is a group leader
+	|| _unit getVariable ["FAR_isUnconscious", 0] == 1 // Show if unit is incapacitated
+}
