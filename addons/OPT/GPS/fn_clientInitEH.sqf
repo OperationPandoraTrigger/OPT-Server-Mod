@@ -40,12 +40,9 @@
     DUMP(_unit);
     DUMP(group _unit);
     DUMP(group CLib_Player);
-    if (_unit == CLib_Player) exitWith {};
-
     DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
     private _iconId = toLower format [QGVAR(IconId_Player_%1_%2), _unit, group _unit isEqualTo group CLib_Player];
     [[_unit, _iconId], QFUNC(addUnitToGPS), -2] call CFUNC(remoteExec); // Trigger everywhere except server
     DUMP("ICON ADDED BECAUSE PLAYER JOINED: " + _iconId);
     DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
-
 }] call CFUNC(addEventhandler);
