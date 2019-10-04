@@ -92,7 +92,7 @@ private _unitDescription = ["ICON",
     22, 
     22, 
     0, 
-    name _newUnit, 
+    [_newUnit] call CFUNC(name), 
     2, 
     0.08, 
     "RobotoCondensed", 
@@ -100,9 +100,9 @@ private _unitDescription = ["ICON",
     {
         if (_position getVariable ["FAR_isUnconscious", 0] == 1) then {
             if (_position getVariable ["FAR_IsStabilized", 0] == 1) then {
-                _text = format ["%1 (%2)", name _position, "Stabilisiert" ];
+                _text = format ["%1 (%2)", [_position] call CFUNC(name), "Stabilisiert" ];
             } else {
-                _text = format ["%1 (%2)", name _position, "Verwundet"];
+                _text = format ["%1 (%2)", [_position] call CFUNC(name), "Verwundet"];
             };
         };
     }
