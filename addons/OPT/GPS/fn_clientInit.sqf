@@ -17,19 +17,23 @@ GVAR(processedIcons) = [];
 GVAR(lastProcessedIcons) = [];
 
 
-// Create markers for all players already in here.
-{
-    if ([_x] call FUNC(isUnitVisible)) then {
-        private _iconId = toLower format [QGVAR(IconId_Player_%1_%2), _x, group _x isEqualTo group CLib_Player];
-        DUMP("UNIT ICON ADDED: " + _iconId);
-        [_x, _iconId] call FUNC(addUnitToGPS);
-    };
-} forEach allPlayers;
 
 
-// Register Beam dialog map to show unit markers too. Only try doing this once the mission actually started, so everything is hopefully in place.
-// Because we can only do this for an existing display/control, we gotta wait until it actually exists
 ["missionStarted", {
+    // Create markers for all players already in here.
+    allPlayers apply {
+        DUMP(_x);
+        DUMP([_x] call FUNC(isUnitVisible));
+        if (CLib_Player == _x) exitWith {};
+        if ([_x] call FUNC(isUnitVisible)) then {
+            private _iconId = toLower format [QGVAR(IconId_Player_%1_%2), _x, group _x isEqualTo group CLib_Player];
+            DUMP("UNIT ICON ADDED: " + _iconId);
+            [_x, _iconId] call FUNC(addUnitToGPS);
+            DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
+        };
+    };
+
+    // Register Beam dialog map to show unit markers
     [{
         ((findDisplay 444001) displayCtrl 10007) call CFUNC(registerMapControl);
         DUMP("Beam dialog found");
