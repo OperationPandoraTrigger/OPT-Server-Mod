@@ -20,12 +20,12 @@ GVAR(lastProcessedIcons) = [];
 
 
 ["missionStarted", {
+    DUMP("MISSION STARTED");
     // Create markers for all players already in here.
     allPlayers apply {
         DUMP(_x);
         DUMP([_x] call FUNC(isUnitVisible));
-        if (CLib_Player == _x) exitWith {};
-        if ([_x] call FUNC(isUnitVisible)) then {
+        if (CLib_Player != _x && [_x] call FUNC(isUnitVisible) ) then {
             private _iconId = toLower format [QGVAR(IconId_Player_%1_%2), _x, group _x isEqualTo group CLib_Player];
             DUMP("UNIT ICON ADDED: " + _iconId);
             [_x, _iconId] call FUNC(addUnitToGPS);
@@ -33,18 +33,40 @@ GVAR(lastProcessedIcons) = [];
         };
     };
 
-    // Register Beam dialog map to show unit markers
-    [{
-        ((findDisplay 444001) displayCtrl 10007) call CFUNC(registerMapControl);
-        DUMP("Beam dialog found");
-        DUMP((findDisplay 444001) displayCtrl 10007);
-    }, {!(isNull ((findDisplay 12) displayCtrl 51))}] call CFUNC(waitUntil);
+    DUMP("ADD MAP HANDLER");
+    addMissionEventHandler ["Map", {
+        params ["_mapIsOpened", "_mapIsForced"];
+        DUMP("MAP OPENED");
+        DUMP(_mapIsOpened);
 
-    // UAV Display
+        if (_mapIsOpened) then {
+            // UAV
+            if (!isNull (findDisplay 160 displayCtrl 51)) exitWith {
+                DUMP("UAV dialog found");
+                DUMP((findDisplay 160) displayCtrl 51);
+                (findDisplay 160 displayCtrl 51) call CFUNC(registerMapControl);
+            };
+        } else {
+            (findDisplay 160 displayCtrl 51) call CFUNC(unregisterMapControl);
+        };
+    }];
+
+    // TODO: Is there a better way to deal with artillery computers?
     [{
-        ((findDisplay 160) displayCtrl 51) call CFUNC(registerMapControl);
-        DUMP("UAV dialog found");
-        DUMP((findDisplay 160) displayCtrl 51);
-    }, {!(isNull ((findDisplay 160) displayCtrl 51))}] call CFUNC(waitUntil);
+        if (shownArtilleryComputer) then {
+            if (!isNull (findDisplay -1 displayCtrl 500) && (isNil {uinamespace getVariable QGVAR(artilleryComputerOpen)})) then {
+                uiNamespace setVariable [QGVAR(artilleryComputerOpen), true];
+                DUMP("Artillery dialog2 found");
+                DUMP((findDisplay -1) displayCtrl 500);
+                (findDisplay -1 displayCtrl 500) call CFUNC(registerMapControl);
+            };
+        } else {
+            if (!isNil {uinamespace getVariable QGVAR(artilleryComputerOpen)}) then {
+                DUMP("Artillery dialog2 REMOVED");   
+                (findDisplay -1 displayCtrl 500) call CFUNC(unregisterMapControl);
+                uinamespace setVariable [QGVAR(artilleryComputerOpen), nil];
+            };
+        };
+    }, 1] call CFUNC(addPerFrameHandler);
 
 }] call CFUNC(addEventhandler);
