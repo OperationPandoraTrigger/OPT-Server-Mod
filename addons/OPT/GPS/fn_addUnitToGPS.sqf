@@ -30,6 +30,9 @@
 
 params ["_newUnit", "_iconId"];
 
+DUMP("UNIT ICON ADDED");
+DUMP(_newUnit);
+
 // Decide on the right color
 private _color = if (CLib_Player isEqualTo _newUnit) then {
     COLOR_PLAYER_UNIT
@@ -41,10 +44,28 @@ private _color = if (CLib_Player isEqualTo _newUnit) then {
         }
     };
 
+private _specialTexture = getText (configFile >> "CfgVehicles" >> typeOf _newUnit >> "icon");
+private _texture = format ["\A3\ui_f\data\map\vehicleicons\%1_ca.paa", if (_specialTexture == "") then {"iconMan"} else {_specialTexture}];
+private _text = [_newUnit] call CFUNC(name);
+
+if (_newUnit getVariable ["FAR_isUnconscious", 0] == 1) then {
+    _texture = "\A3\ui_f\data\igui\cfg\revive\overlayicons\u100_ca.paa";
+    if (_newUnit getVariable ["FAR_IsStabilized", 0] == 1) then {
+        _text = format ["%1 (%2)", [_newUnit] call CFUNC(name), "Stabilisiert" ];
+        _texture = "\A3\ui_f\data\igui\cfg\revive\overlayicons\u100_ca.paa";
+        _color = [0.850, 0.4, 0, 1];
+    } else {
+        _color = [1, 0, 0, 1];
+        _text = format ["%1 (%2)", [_newUnit] call CFUNC(name), "Verwundet"];
+    };
+    _width = 30;
+    _height = 30;
+    _angle = 0;
+};
+
+
 
 // Icon is pulled from opt_characters client mod.
-private _specialicon = getText (configFile >> "CfgVehicles" >> typeOf _newUnit >> "icon");
-private _icon = format ["\A3\ui_f\data\map\vehicleicons\%1_ca.paa", if (_specialicon == "") then {"iconMan"} else {_specialicon}];
 
 // Default format
 private _width = 20;
@@ -54,7 +75,7 @@ private _angle = _newUnit;
 
 // Define the icon shown on the map.
 private _unitIcon = ["ICON", 
-    _icon, // 1: Texture <String>
+    _texture, // 1: Texture <String>
     _color, // 2: Color <Array> [r,g,b,a]
     _newUnit, // 3: Position <MapGraphicsPosition> // We place the object itself here. This allows us hacky access later to retrieve variables of it for conditional onEachFrame styling.
     _width, // 4: Width <Number>
@@ -64,23 +85,8 @@ private _unitIcon = ["ICON",
     1, // 8: Shadow <Boolean/Number>
     0.08, // 9: Text Size <Number>
     "RobotoCondensed", // 10: Font <String>
-    "right", // 11: Align <String>
-    {
-        // Only show if medic?
-        //if ((typeof CLib_Player == "OPT_NATO_Sanitaeter" || typeof CLib_Player == "OPT_CSAT_Sanitaeter") && {_newUnit getVariable ["FAR_isUnconscious", 0] == 1}) then {
-        //Show wounded marker if downed
-        if (_position getVariable ["FAR_isUnconscious", 0] == 1) then {
-            _texture = "\A3\ui_f\data\igui\cfg\revive\overlayicons\u100_ca.paa";
-            if (_position getVariable ["FAR_IsStabilized", 0] == 1) then {
-                _color = [0.850, 0.4, 0, 1];
-            } else {
-                _color = [1, 0, 0, 1];
-            };
-            _width = 30;
-            _height = 30;
-            _angle = 0;
-        };
-    } // 12: Code executed onEachFrame <{}> 
+    "right" // 11: Align <String>
+     // 12: Code executed onEachFrame <{}> 
 ];
 
 // Define the description that is only shown when the cursor hovers above the mapicon
@@ -92,20 +98,11 @@ private _unitDescription = ["ICON",
     22, 
     22, 
     0, 
-    [_newUnit] call CFUNC(name), 
+    _text, 
     2, 
     0.08, 
     "RobotoCondensed", 
-    "right ",
-    {
-        if (_position getVariable ["FAR_isUnconscious", 0] == 1) then {
-            if (_position getVariable ["FAR_IsStabilized", 0] == 1) then {
-                _text = format ["%1 (%2)", [_position] call CFUNC(name), "Stabilisiert" ];
-            } else {
-                _text = format ["%1 (%2)", [_position] call CFUNC(name), "Verwundet"];
-            };
-        };
-    }
+    "right"
 ];
 
 
