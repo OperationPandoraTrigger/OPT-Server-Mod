@@ -26,7 +26,7 @@ GVAR(lastProcessedIcons) = [];
         DUMP(_x);
         DUMP([_x] call FUNC(isUnitVisible));
         if (CLib_Player != _x && [_x] call FUNC(isUnitVisible) ) then {
-            private _iconId = toLower format [QGVAR(IconId_Player_%1_%2), _x, group _x isEqualTo group CLib_Player];
+            private _iconId = [_x] call FUNC(getUnitIconID);
             DUMP("UNIT ICON ADDED: " + _iconId);
             [_x, _iconId] call FUNC(addUnitToGPS);
             DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
@@ -36,8 +36,6 @@ GVAR(lastProcessedIcons) = [];
     DUMP("ADD MAP HANDLER");
     addMissionEventHandler ["Map", {
         params ["_mapIsOpened", "_mapIsForced"];
-        DUMP("MAP OPENED");
-        DUMP(_mapIsOpened);
 
         if (_mapIsOpened) then {
             // UAV
@@ -56,17 +54,18 @@ GVAR(lastProcessedIcons) = [];
         if (shownArtilleryComputer) then {
             if (!isNull (findDisplay -1 displayCtrl 500) && (isNil {uinamespace getVariable QGVAR(artilleryComputerOpen)})) then {
                 uiNamespace setVariable [QGVAR(artilleryComputerOpen), true];
-                DUMP("Artillery dialog2 found");
+                DUMP("Artillery dialog found");
                 DUMP((findDisplay -1) displayCtrl 500);
                 (findDisplay -1 displayCtrl 500) call CFUNC(registerMapControl);
             };
         } else {
             if (!isNil {uinamespace getVariable QGVAR(artilleryComputerOpen)}) then {
-                DUMP("Artillery dialog2 REMOVED");   
+                DUMP("Artillery dialog REMOVED");   
                 (findDisplay -1 displayCtrl 500) call CFUNC(unregisterMapControl);
                 uinamespace setVariable [QGVAR(artilleryComputerOpen), nil];
             };
         };
     }, 1] call CFUNC(addPerFrameHandler);
+
 
 }] call CFUNC(addEventhandler);
