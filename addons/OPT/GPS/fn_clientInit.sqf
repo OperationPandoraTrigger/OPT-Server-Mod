@@ -15,6 +15,7 @@
     // We have to register the UAV dialog every time the map is opened/closed
     addMissionEventHandler ["Map", {
         params ["_mapIsOpened", "_mapIsForced"];
+        DUMP("Map opened");
 
         if (_mapIsOpened) then {
             // UAV
@@ -23,10 +24,18 @@
                 DUMP((findDisplay 160) displayCtrl 51);
                 (findDisplay 160 displayCtrl 51) call CFUNC(registerMapControl);
             };
-        } else {
-            (findDisplay 160 displayCtrl 51) call CFUNC(unregisterMapControl);
         };
     }];
+    
+    ["visibleGPSChanged", {
+        if (GVAR(GPSMapCheckRunning)) exitWith {};
+        GVAR(GPSMapCheckRunning) = true;
+        [{
+            DUMP("GPS detected");
+            GVAR(GPSMapCheckRunning) = false;
+            ((uiNamespace getVariable "RscCustomInfoMiniMap") displayCtrl 101) call CFUNC(registerMapControl);
+        }, {!(isNull (uiNamespace getVariable "RscCustomInfoMiniMap"))}] call CFUNC(waitUntil);
+    }] call CFUNC(addEventhandler);
 
     // TODO: Is there a better way to deal with artillery computers?
     // For now, we use perFrame with a 1sec delay. This shouldn't be too painful for clients.
