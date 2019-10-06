@@ -2,11 +2,7 @@
 
 params ["_unit"];
 
-
-// if (_unit isEqualType objNull) then {
-// 	DUMP(format ["%1 is of type %2", _unit, typeName _unit]);
-// };
-// ASSERT_IS_OBJECT(_unit);
+// _unit may be OBJECT or STRING (unit name)
 
 
 DUMP("GET ICON ID");

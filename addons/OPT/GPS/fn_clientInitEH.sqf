@@ -98,17 +98,17 @@
 
 }] call CFUNC(addEventHandler);
 
-"FAR_isStabilized" addPublicVariableEventHandler {
-    private _unit = _this select 2;
-    DUMP("FAR_IsStabilized has updated!");
-    DUMP(_this);
-    [str _unit] call FUNC(updateUnitIcon); // Trigger everywhere except server
-};
+// "FAR_isStabilized" addPublicVariableEventHandler {
+//     private _unit = _this select 2;
+//     DUMP("FAR_IsStabilized has updated!");
+//     DUMP(_this);
+//     [str _unit] call FUNC(updateUnitIcon); // Trigger everywhere except server
+// };
 
-"FAR_isUnconscious" addPublicVariableEventHandler {
-    private _unit = _this select 2;
-    DUMP("FAR_isUnconscious has updated!");
-    DUMP(_this);
-    [str _unit] call FUNC(updateUnitIcon); // Trigger everywhere except server
-};
+// "FAR_isUnconscious" addPublicVariableEventHandler {
+//     private _unit = _this select 2;
+//     DUMP("FAR_isUnconscious has updated!");
+//     DUMP(_this);
+//     [str _unit] call FUNC(updateUnitIcon); // Trigger everywhere except server
+// };
 
