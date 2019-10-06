@@ -1,3 +1,30 @@
+/**
+* Description:
+* Gets the uniticonid for a particular unit
+* 
+* Author:
+* Senshi
+*
+* Arguments:
+* 0: <OBJECT/STRING> 	_unit   Unit
+*
+* Return Value:
+* 0: <String>					Unique Icon-ID
+*
+* Server Only:
+* No
+* 
+* Global:
+* No
+* 
+* API:
+* No
+* 
+* Example:
+* _iconID = [player] call FUNC(getUnitIconID);
+* _iconID = ["player"] call FUNC(getUnitIconID);
+*/
+
 #include "macros.hpp";
 
 params ["_unit"];

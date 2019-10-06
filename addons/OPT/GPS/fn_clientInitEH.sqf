@@ -1,17 +1,40 @@
+/**
+* Description:
+* Sets up events event handlers for GPS
+* 
+* Author:
+* Senshi
+*
+* Arguments:
+*
+* Return Value:
+*
+* Server Only:
+* No
+* 
+* Global:
+* No
+* 
+* API:
+* No
+* 
+* Example:
+* call FUNC(clientInitEH);
+*/
+
 #include "macros.hpp";
 
 ["Killed", {
     DUMP("KILLED");
     DUMP(_this);
-	params ["_unit", "_killer", "_instigator", "_useEffects"];
+    params ["_unit", "_killer", "_instigator", "_useEffects"];
     _unit = _unit select 0;
     DUMP(_unit);
     DUMP(group _unit);
     DUMP(group CLib_Player);
     DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
-    private _iconId = [_unit] call FUNC(getUnitIconID);
     [[str _unit], QFUNC(removeUnitFromGPS), -2] call CFUNC(remoteExec); // Trigger everywhere except server
-    DUMP("ICON REMOVED BECAUSE KILLED: " + _iconId);
+    DUMP(format ["ICON REMOVED BECAUSE KILLED: %1", _unit]);
     DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
 
 }] call CFUNC(addEventhandler);
@@ -27,9 +50,8 @@
         DUMP(alive _currentPlayer);
         DUMP(alive CLib_Player);
         DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
-        private _iconId = [_currentPlayer] call FUNC(getUnitIconID);
-        [[_currentPlayer, _iconId], QFUNC(addUnitToGPS), -2] call CFUNC(remoteExec); // Trigger everywhere except server
-        DUMP("ICON ADDED BECAUSE PLAYERCHANGED: " + _iconId);
+        [[_currentPlayer], QFUNC(addUnitToGPS), -2] call CFUNC(remoteExec); // Trigger everywhere except server
+        DUMP(format ["ICON ADDED BECAUSE PLAYERCHANGED: %1", _currentPlayer]);
         DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
     }, _currentPlayer] call CLib_fnc_execNextFrame;
 }] call CFUNC(addEventhandler);
@@ -44,8 +66,7 @@
 //     DUMP(alive CLib_Player);
 //     {
 //         DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
-//         private _iconId = [_unit] call FUNC(getUnitIconID);
-//         [[_unit, _iconId], QFUNC(addUnitToGPS), -2] call CFUNC(remoteExec); // Trigger everywhere except server
+//         [[_unit], QFUNC(addUnitToGPS), -2] call CFUNC(remoteExec); // Trigger everywhere except server
 //         DUMP("ICON ADDED BECAUSE RESPAWN: " + _iconId);
 //         DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
 //     } call CFUNC(execNextFrame);
@@ -55,14 +76,13 @@
 ["playerJoined", {
     DUMP("PLAYER JOINED");
     DUMP(_this);
-	params ["_unit", ""];
+    params ["_unit", ""];
     DUMP(_unit);
     DUMP(group _unit);
     DUMP(group CLib_Player);
     DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
-    private _iconId = [_unit] call FUNC(getUnitIconID);
-    [[_unit, _iconId], QFUNC(addUnitToGPS), -2] call CFUNC(remoteExec); // Trigger everywhere except server
-    DUMP("ICON ADDED BECAUSE PLAYER JOINED: " + _iconId);
+    [[_unit], QFUNC(addUnitToGPS), -2] call CFUNC(remoteExec); // Trigger everywhere except server
+    DUMP(format ["ICON ADDED BECAUSE PLAYER JOINED: %1", _unit]);
     DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
 }] call CFUNC(addEventhandler);
 

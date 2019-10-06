@@ -6,11 +6,9 @@
 * Senshi
 *
 * Arguments:
-* 0: <OBJECT> _unit     Hinzuzufügende Einheit
-* 1: <STRING> _iconId   Eindeutige Icon-ID
+* 0: <OBJECT>       _unit       Unit to add
 *
 * Return Value:
-* 0: <String>   Eindeutige Icon-ID
 *
 * Server Only:
 * No
@@ -22,7 +20,7 @@
 * No
 * 
 * Example:
-* _iconID = [player, "Icon_Player"] call FUNC(addUnitToGPS);
+* [player, "Icon_Player"] call FUNC(addUnitToGPS);
 */
 
 #include "macros.hpp"
@@ -30,13 +28,14 @@
 
 
 [{
-    params ["_newUnit", "_iconId"];
+    params ["_newUnit"];
     DUMP("UNIT ICON ADDED");
     DUMP(_newUnit);
 
     if (!([_newUnit] call FUNC(isUnitVisible))) exitWith {
         DUMP(format ["Unit %1 is not visible", _newUnit]);
     };
+    private _iconID = _newUnit call FUNC(getUnitIconID);
     // Decide on the right color
     private _color = if (CLib_Player isEqualTo _newUnit) then {
         COLOR_PLAYER_UNIT
@@ -117,7 +116,4 @@
         [_iconId, [_unitIcon]] call CFUNC(addMapGraphicsGroup);
         [_iconId, [_unitIcon, _unitDescription], "hover"] call CFUNC(addMapGraphicsGroup);
     };
-
-    _iconId;
-
 }, _this] call CLib_fnc_execNextFrame;

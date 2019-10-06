@@ -1,3 +1,27 @@
+/**
+* Description:
+* Initializes server EH for disconnects (Autoloaded)
+* 
+* Author:
+* Senshi
+*
+* Arguments:
+*
+* Return Value:
+*
+* Server Only:
+* Yes
+* 
+* Global:
+* No
+* 
+* API:
+* No
+* 
+* Example:
+*/
+
+
 #include "macros.hpp"
 
 addMissionEventHandler ["HandleDisconnect", {

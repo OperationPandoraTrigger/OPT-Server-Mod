@@ -6,10 +6,10 @@
 * Senshi
 *
 * Arguments:
-* 0: <OBJECT> _unit Zu prüfende Unit
+* 0: <OBJECT> _unit     Unit to test
 *
 * Return value:
-* 0: <BOOL> True, wenn Leader, sonst false
+* 0: <BOOL>             True if leader
 *
 * Server Only:
 * No
@@ -28,11 +28,14 @@
 
 params ["_unit"];
 
-typeof _unit in [
-	"OPT_NATO_Gruppenfuehrer", 
-	"OPT_CSAT_Gruppenfuehrer",
-	"OPT_NATO_Offizier",
-	"OPT_CSAT_Offizier",
-	"OPT_NATO_Pilot",
-	"OPT_CSAT_Pilot"
-];
+(typeof _unit in [
+    "OPT_NATO_Gruppenfuehrer", 
+    "OPT_CSAT_Gruppenfuehrer",
+    "OPT_NATO_Offizier",
+    "OPT_CSAT_Offizier",
+    "OPT_NATO_Pilot",
+    "OPT_CSAT_Pilot"
+]
+|| roleDescription _unit in [
+    "GF-Crew@Lowe"
+] )

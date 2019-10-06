@@ -1,5 +1,30 @@
-#include "macros.hpp"
+/**
+* Description:
+* Removes a uniticon for a unit to be shown on mapControls
+* 
+* Author:
+* Senshi
+*
+* Arguments:
+* 0: <OBJECT/STRING> _unit     Unit to remove
+*
+* Return Value:
+*
+* Server Only:
+* No
+* 
+* Global:
+* No
+* 
+* API:
+* No
+* 
+* Example:
+* [player] call FUNC(removeUnitFromGPS);
+* ["player"] call FUNC(removeUnitFromGPS);
+*/
 
+#include "macros.hpp"
 
 params ["_unit"];
 

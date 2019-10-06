@@ -1,39 +1,18 @@
 #include "macros.hpp"
-// [] call FUNC(initCBASettings);
-// call FUNC(initEH);
-
-// Inspired by AAW's UnitTracker
-
-GVAR(playerCounter) = 0;
-GVAR(currentIcons) = [];
-GVAR(blockUpdate) = false;
-GVAR(currentHoverGroup) = grpNull;
-GVAR(currentHoverVehicle) = objNull;
-GVAR(groupInfoPFH) = -1;
-GVAR(vehicleInfoPFH) = -1;
-GVAR(lastFrameTriggered) = diag_frameNo;
-
-GVAR(processedIcons) = [];
-GVAR(lastProcessedIcons) = [];
-
-
-
 
 ["missionStarted", {
-    DUMP("MISSION STARTED");
-    // Create markers for all players already in here.
+    // Create markers for all players already here in case of JIP
     allPlayers apply {
         DUMP(_x);
         DUMP([_x] call FUNC(isUnitVisible));
         if (CLib_Player != _x && [_x] call FUNC(isUnitVisible) ) then {
-            private _iconId = [_x] call FUNC(getUnitIconID);
-            DUMP("UNIT ICON ADDED: " + _iconId);
-            [_x, _iconId] call FUNC(addUnitToGPS);
+            DUMP(format ["UNIT ICON ADDED: %1", _x]);
+            [_x] call FUNC(addUnitToGPS);
             DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
         };
     };
 
-    DUMP("ADD MAP HANDLER");
+    // We have to register the UAV dialog every time the map is opened/closed
     addMissionEventHandler ["Map", {
         params ["_mapIsOpened", "_mapIsForced"];
 
@@ -50,6 +29,7 @@ GVAR(lastProcessedIcons) = [];
     }];
 
     // TODO: Is there a better way to deal with artillery computers?
+    // For now, we use perFrame with a 1sec delay. This shouldn't be too painful for clients.
     [{
         if (shownArtilleryComputer) then {
             if (!isNull (findDisplay -1 displayCtrl 500) && (isNil {uinamespace getVariable QGVAR(artilleryComputerOpen)})) then {
