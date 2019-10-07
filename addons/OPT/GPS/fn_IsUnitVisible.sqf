@@ -40,4 +40,5 @@ params ["_unit"];
 	|| group _unit == group CLib_Player // Show all from your own group
 	|| [_unit] call FUNC(isUnitLeader) // Show if unit is a group leader
 	|| _unit getVariable ["FAR_isUnconscious", 0] == 1 // Show if unit is incapacitated
+	|| _unit getVariable [QGVAR(unitIsVisible), false] // Show if special variable is set on unit
 }

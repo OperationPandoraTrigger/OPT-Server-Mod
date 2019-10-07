@@ -41,7 +41,7 @@ private _errors = [
         0,
         {
             allPlayers apply { _x call FUNC(updateUnitIcon)};
-        } // TODO: We should invalidate ALL unit markers so they get redrawn with the new settings.
+        } // We invalidate ALL unit markers so they get redrawn with the new settings.
     ] call CBA_fnc_addSetting
 
 ] select {_x isEqualTo false};

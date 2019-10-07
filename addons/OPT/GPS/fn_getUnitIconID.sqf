@@ -22,7 +22,7 @@
 * 
 * Example:
 * _iconID = [player] call FUNC(getUnitIconID);
-* _iconID = ["player"] call FUNC(getUnitIconID);
+* _iconID = [str player] call FUNC(getUnitIconID);
 */
 
 #include "macros.hpp";

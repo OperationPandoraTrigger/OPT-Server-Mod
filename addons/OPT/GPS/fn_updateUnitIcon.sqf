@@ -21,7 +21,7 @@
 * 
 * Example:
 * [player] call FUNC(updateUnitIcon);
-* ["player"] call FUNC(updateUnitIcon);
+* [str player] call FUNC(updateUnitIcon);
 */
 
 #include "macros.hpp";

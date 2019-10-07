@@ -21,7 +21,7 @@
 * 
 * Example:
 * [player] call FUNC(removeUnitFromGPS);
-* ["player"] call FUNC(removeUnitFromGPS);
+* [str player] call FUNC(removeUnitFromGPS);
 */
 
 #include "macros.hpp"

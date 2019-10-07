@@ -2,11 +2,11 @@
 
 ["missionStarted", {
     // Create markers for all players already here in case of JIP
+    DUMP("Adding initial unit icons...");
     allPlayers apply {
         DUMP(_x);
         DUMP([_x] call FUNC(isUnitVisible));
         if (CLib_Player != _x && [_x] call FUNC(isUnitVisible) ) then {
-            DUMP(format ["UNIT ICON ADDED: %1", _x]);
             [_x] call FUNC(addUnitToGPS);
             DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
         };
@@ -27,6 +27,8 @@
         };
     }];
     
+    // The same goes for GPS. This should already work out of the box with CLib, but there seem to be weird cases breaking this.
+    // TODO: Monitor if this actually solves the issue! If not, revisit/remove it.
     ["visibleGPSChanged", {
         if (GVAR(GPSMapCheckRunning)) exitWith {};
         GVAR(GPSMapCheckRunning) = true;
