@@ -28,12 +28,16 @@
 
 
 [{
-    params ["_newUnit"];
+    params ["_arg"];
     DUMP("UNIT ICON ADDED");
-    DUMP(_newUnit);
+    DUMP(_arg);
+
+    // _arg might be a string (if called by remoteExec). As we need the actual object to attach the icon, we search for the unit if necessary.
+    private _newUnit = if (_arg isEqualType objNull) then { _arg} else {objectFromNetId _arg};
+    DUMP(netid _newUnit);
 
     if (!([_newUnit] call FUNC(isUnitVisible))) exitWith {
-        DUMP(format ["Unit %1 is not visible", _newUnit]);
+        DUMP("Unit is not visible " + str _newUnit);
     };
     private _iconID = _newUnit call FUNC(getUnitIconID);
     // Decide on the right color
@@ -83,7 +87,7 @@
         _newUnit, // 3: Position <MapGraphicsPosition> // We place the object itself here. This allows us hacky access later to retrieve variables of it for conditional onEachFrame styling.
         _width, // 4: Width <Number>
         _height, // 5: Height <Number>
-        _newUnit, // 6: Angle <Number>
+        _angle, // 6: Angle <Number>
         "", // 7: Text <String>
         1, // 8: Shadow <Boolean/Number>
         0.08, // 9: Text Size <Number>

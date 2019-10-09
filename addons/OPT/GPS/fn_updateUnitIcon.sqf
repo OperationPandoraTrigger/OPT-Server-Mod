@@ -26,13 +26,13 @@
 
 #include "macros.hpp";
 
-params ["_unit"];
+params ["_arg"];
 
 DUMP("UPDATE UNIT ICON");
 
-// _unit might be a string (if called by remoteExec). As we need the actual object to attach the icon, we search for the unit if necessary.
-private _unitObj = if (_unit isEqualType objNull) then { _unit} else {(allPlayers select {str _x == _unit}) select 0 };
-DUMP(format ["UNIT OBJ %1", _unitObj]);
+// _arg might be a string (if called by remoteExec). As we need the actual object to attach the icon, we search for the unit if necessary.
+private _unit = if (_arg isEqualType objNull) then { _arg} else {objectFromNetId _arg};
+DUMP("UNIT OBJ " + str _unit);
 
-[_unitObj] call FUNC(removeUnitFromGPS);
-[_unitObj] call FUNC(addUnitToGPS);
+[_unit] call FUNC(removeUnitFromGPS);
+[_unit] call FUNC(addUnitToGPS);

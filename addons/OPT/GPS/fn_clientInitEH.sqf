@@ -33,8 +33,8 @@
     DUMP(group _unit);
     DUMP(group CLib_Player);
     DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
-    [[str _unit], QFUNC(removeUnitFromGPS), -2] call CFUNC(remoteExec); // Trigger everywhere except server
-    DUMP(format ["ICON REMOVED BECAUSE KILLED: %1", _unit]);
+    [[netId _unit], QFUNC(removeUnitFromGPS), -2] call CFUNC(remoteExec); // Trigger everywhere except server
+    DUMP("ICON REMOVED BECAUSE KILLED: " + str _unit);
     DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
 
 }] call CFUNC(addEventhandler);
@@ -50,8 +50,8 @@
         DUMP(alive _currentPlayer);
         DUMP(alive CLib_Player);
         DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
-        [[_currentPlayer], QFUNC(addUnitToGPS), -2] call CFUNC(remoteExec); // Trigger everywhere except server
-        DUMP(format ["ICON ADDED BECAUSE PLAYERCHANGED: %1", _currentPlayer]);
+        [[netid _currentPlayer], QFUNC(addUnitToGPS), -2] call CFUNC(remoteExec); // Trigger everywhere except server
+        DUMP("ICON ADDED BECAUSE PLAYERCHANGED: " + str _currentPlayer);
         DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
     }, _currentPlayer] call CLib_fnc_execNextFrame;
 }] call CFUNC(addEventhandler);
@@ -81,8 +81,8 @@
     DUMP(group _unit);
     DUMP(group CLib_Player);
     DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
-    [[_unit], QFUNC(addUnitToGPS), -2] call CFUNC(remoteExec); // Trigger everywhere except server
-    DUMP(format ["ICON ADDED BECAUSE PLAYER JOINED: %1", _unit]);
+    [[netid _unit], QFUNC(addUnitToGPS), -2] call CFUNC(remoteExec); // Trigger everywhere except server
+    DUMP("ICON ADDED BECAUSE PLAYER JOINED: " + str _unit);
     DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
 }] call CFUNC(addEventhandler);
 
@@ -93,7 +93,7 @@
     DUMP("PLAYER IS UNCONSCIOUS");
     DUMP(_unit);
     DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
-    [[str _unit], QFUNC(updateUnitIcon), -2] call CFUNC(remoteExec); // Trigger everywhere except server
+    [[netId _unit], QFUNC(updateUnitIcon), -2] call CFUNC(remoteExec); // Trigger everywhere except server
     DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
 
 }] call CFUNC(addEventHandler);
@@ -103,7 +103,7 @@
     DUMP("PLAYER IS REVIVED");
     DUMP(_unit);
     DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
-    [[str _unit], QFUNC(updateUnitIcon), -2] call CFUNC(remoteExec); // Trigger everywhere except server
+    [[netId _unit], QFUNC(updateUnitIcon), -2] call CFUNC(remoteExec); // Trigger everywhere except server
     DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
 
 }] call CFUNC(addEventHandler);
@@ -113,7 +113,7 @@
     DUMP("PLAYER IS STABILIZED");
     DUMP(_unit);
     DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
-    [[str _unit], QFUNC(updateUnitIcon), -2] call CFUNC(remoteExec); // Trigger everywhere except server
+    [[netId _unit], QFUNC(updateUnitIcon), -2] call CFUNC(remoteExec); // Trigger everywhere except server
     DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
 
 }] call CFUNC(addEventHandler);

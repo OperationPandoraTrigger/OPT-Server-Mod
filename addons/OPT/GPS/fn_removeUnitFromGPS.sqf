@@ -26,10 +26,13 @@
 
 #include "macros.hpp"
 
-params ["_unit"];
+params ["_arg"];
 
 DUMP("UNIT ICON REMOVED");
-DUMP(_unit);
+DUMP(_arg);
+
+// _arg might be a string (if called by remoteExec). As we need the actual object to attach the icon, we search for the unit if necessary.
+private _unit = if (_arg isEqualType objNull) then { _arg} else {objectFromNetId _arg};
 DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
 private _iconId = [_unit] call FUNC(getUnitIconID);
 DUMP("ICON ID: " + _iconId);

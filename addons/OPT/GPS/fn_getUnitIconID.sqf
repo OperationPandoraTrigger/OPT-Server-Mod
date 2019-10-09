@@ -33,5 +33,5 @@ params ["_unit"];
 
 
 DUMP("GET ICON ID");
-DUMP(toLower format [QGVAR(IconId_Player_%1), _unit]);
-toLower format [QGVAR(IconId_Player_%1), _unit];
+DUMP(toLower format [QGVAR(IconId_Player_%1), netId _unit]);
+toLower format [QGVAR(IconId_Player_%1), netId _unit];
