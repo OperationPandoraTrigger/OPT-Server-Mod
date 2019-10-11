@@ -88,7 +88,7 @@
 
 
 // Revive Handlers
-["opt_unitUnconscious", {
+[OPT_EVENT_MEDIC_UNCONSCIOUS, {
     params ["_unit"];
     DUMP("PLAYER IS UNCONSCIOUS");
     DUMP(_unit);
@@ -98,7 +98,7 @@
 
 }] call CFUNC(addEventHandler);
 
-["opt_unitRevived", {
+[OPT_EVENT_MEDIC_REVIVED, {
     params ["_unit"];
     DUMP("PLAYER IS REVIVED");
     DUMP(_unit);
@@ -108,7 +108,7 @@
 
 }] call CFUNC(addEventHandler);
 
-["opt_unitStabilized", {
+[OPT_EVENT_MEDIC_STABILIZED, {
     params ["_unit"];
     DUMP("PLAYER IS STABILIZED");
     DUMP(_unit);

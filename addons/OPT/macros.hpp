@@ -31,6 +31,8 @@
 // include the default CLib-macros (providing GVAR and similar)
 // Found here: https://github.com/TaktiCool/CLib/blob/master/addons/CLib/macros.hpp
 #include "\tc\CLib\addons\CLib\macros.hpp"
+// Include OPT specific event definitions
+#include "events.hpp"
 
 // Makros for API variables + functions
 #define OVAR(var) DOUBLE(OPT,var)
