@@ -1,7 +1,7 @@
 /*
 List all events used by OPT here
 */
-#define OPT_EVENT(var)                  QUOTE(TRIPLE(PREFIX,event,var))
+#define OPT_EVENT(var)                  QUOTE(TRIPLE(opt,event,var))
 
 // FAR Medic system (legacy) compatibility events
 // Unit is rendered unconscious
