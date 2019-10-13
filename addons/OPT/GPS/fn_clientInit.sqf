@@ -1,5 +1,4 @@
 #include "macros.hpp"
-[] call FUNC(initCBASettings);
 
 ["missionStarted", {
     // Create markers for all players already here in case of JIP
