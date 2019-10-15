@@ -8,15 +8,20 @@ class CfgCLibModules {
 		dependency[] = {};
 		
         MODULE(GPS) {
-            dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics"};
+            dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
             FNC(clientInit);
+            FNC(serverInit);
             FNC(addUnitToGPS);
+            FNC(removeUnitFromGPS);
             //FNC(addGroupToGPS);
             //FNC(addVehicleToGPS);
             FNC(isUnitVisible);
             FNC(isVehicleVisible);
             FNC(isUnitLeader);
-            FNC(initCBASettings);
+            FNC(clientinitCBASettings);
+            FNC(clientinitEH);
+            FNC(getUnitIconID);
+            FNC(updateUnitIcon);
         };
 		MODULE(SHOP) 
 		{
