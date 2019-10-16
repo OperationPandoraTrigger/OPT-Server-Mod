@@ -26,4 +26,8 @@
 
 #include "macros.hpp"
 
+disableSerialization;
 
+#include "fn_config.sqf";
+
+systemChat "test Einlesen";

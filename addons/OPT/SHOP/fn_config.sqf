@@ -26,5 +26,5 @@
 
 #include "macros.hpp"
 
-
+systemChat "TEST Config";
 

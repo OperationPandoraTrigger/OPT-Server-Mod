@@ -26,7 +26,6 @@
 
 #include "macros.hpp"
 
-
 DUMP("Successfully loaded the OPT/Shop module on the client");
 
 // Events
@@ -35,6 +34,8 @@ DUMP("Successfully loaded the OPT/Shop module on the client");
 	EVENT_SHOP_KAUF_ONLOAD, 
 	{
 		private _id = 0;
+
+		systemChat "Test Event";
 
 		_id = [] call FUNC(einlesenInShopDialog);
 	},
