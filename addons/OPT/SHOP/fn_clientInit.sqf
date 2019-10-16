@@ -25,3 +25,19 @@
 */
 
 #include "macros.hpp"
+
+
+DUMP("Successfully loaded the OPT/Shop module on the client");
+
+// Events
+
+[
+	EVENT_SHOP_KAUF_ONLOAD, 
+	{
+		private _id = 0;
+
+		_id = [] call FUNC(einlesenInShopDialog);
+	},
+	[]
+	
+] call CFUNC(addEventHandler);
