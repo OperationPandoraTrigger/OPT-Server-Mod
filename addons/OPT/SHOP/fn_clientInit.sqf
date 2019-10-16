@@ -33,11 +33,13 @@ DUMP("Successfully loaded the OPT/Shop module on the client");
 [
 	EVENT_SHOP_KAUF_ONLOAD, 
 	{
+		_this params ["_eventArgs"];
+
 		private _id = 0;
 
-		systemChat "Test Event";
+		systemChat format ["VAR Event:%1",_eventArgs];
 
-		_id = [] call FUNC(einlesenInShopDialog);
+		_id = [_eventArgs] call FUNC(einlesenInShopDialog);
 	},
 	[]
 	
