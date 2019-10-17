@@ -37,8 +37,8 @@ params [
 //Spieler Seite bestimmen
 private _side = Side player;
 
+//Shopart bestimmen
 GVAR(vehicleType) = _type;
-
 private _pool = switch (GVAR(vehicleType)) do 
 {
     case "vehicles" : 
@@ -104,13 +104,15 @@ private _pool = switch (GVAR(vehicleType)) do
     default {[]};
 };
 
-systemChat format ["VAR Dialog:P%1 S:%2",_pool,_side];
+systemChat format ["Dialog p:%1 S:%2",_pool,_side];
+
+// Objekte größer 0€ bestimmen 
+_pool = _pool select {_x select 1 > 0};
 
 // Objekte Sortieren 
-_pool = _pool select {_x select 1 > 0};
 GVAR(orderDialogObjects) = [_pool, 1] call CBA_fnc_sortNestedArray; // billigste zuerst
 
-//dialog erstellen und definieren
+//Dialog erstellen und definieren
 private _success = createDialog "Dialogshopkaufen"; 
 
 #define IDD_DLG_ORDER 20000
@@ -160,6 +162,67 @@ switch (_side) do
     };   
 };
 
+// Dialog neuladen für Verkaufsmodus
+_sell ctrlAddEventHandler [ "ButtonClick", 
+{
+    closeDialog 0;
+    ["opt_event_shop_kauf_onload","sale"] call CLib_fnc_localEvent;
+}];
+
+if (count GVAR(orderDialogObjects) == 0) then 
+{
+	// im Falle des Verkaufsbuttons -> Liste aller gefundenen Fahrzeuge
+	// alle Objekte Fahrzeuge die auf allen Pads gefunden wurden
+
+	{
+	    private _objs = nearestObjects [_x, ["AllVehicles", "Thing"], 5];
+
+    } foreach GVAR(pad_all_east);   
+
+
+	// Gehe alle gefundenen Objekte durch und lösche sie, falls nicht in pool, oder ergänze um Verkaufspreis
+	{
+		
+        _index = ((GVAR(all) apply {toLower (_x select 0)}) find (toLower (typeOf _x)));
+
+        if (_index == -1) then 
+        {
+            _objs = _objs - [_x]; 
+            
+        } 
+        else 
+        {
+            _pool pushBack [_x, (GVAR(all) select _index) select 2, (GVAR(all) select _index) select 3]; // füge Fahrzeug und Verkaufspreis hinzu
+        };
+
+	} foreach _objs;
+
+    // Anzeige Objekte die mehr wert sind als 0€
+    _pool = _pool select {_x select 2 > 0};
+
+    //Sortierung der Fahrzeuge nach Preis
+    GVAR(vehiclesToSell) = [_pool, 1, false] call CBA_fnc_sortNestedArray; // teuerste zuerst
+	{
+		_class = typeOf (_x select 0);
+        _displayName = getText (configFile >> "CfgVehicles" >> _class >> "displayName");
+		_listbox_vehicles lbAdd format ["%1", _displayName]; // Name
+        _listbox_vehicles lbSetData [_forEachIndex, _class];
+
+		// Verkaufspreis berechnen saleReturnValue % vom Vollpreis
+        _picture = "";
+        if (getText(configFile >> "cfgVehicles" >> _class >> "picture") find ".paa" != -1) then 
+        {
+            _picture = getText (configFile >> "cfgVehicles" >> _class >> "picture");
+        } 
+        else 
+        {
+            _picture = getText (configFile >> "cfgVehicles" >> _class >> "editorPreview");
+        };
+
+        _listbox_vehicles lbSetPicture [_forEachIndex, _picture];
+
+    } foreach GVAR(vehiclesToSell);
+};
 
 
 

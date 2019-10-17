@@ -37,8 +37,6 @@ DUMP("Successfully loaded the OPT/Shop module on the client");
 
 		private _id = 0;
 
-		systemChat format ["VAR Event:%1",_eventArgs];
-
 		_id = [_eventArgs] call FUNC(einlesenInShopDialog);
 	},
 	[]

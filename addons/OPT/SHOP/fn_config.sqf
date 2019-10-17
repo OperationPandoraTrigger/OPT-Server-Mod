@@ -341,3 +341,41 @@ GVAR(csat_sea);
 
 GVAR(all) = GVAR(allNato) + GVAR(allCsat);
 
+//Pads für Bestellung und Verkauf
+GVAR(pad_veh_east) =
+[
+
+];
+
+GVAR(pad_veh_west) =
+[
+
+];
+
+GVAR(pad_air_east) =
+[
+
+];
+
+GVAR(pad_air_west) =
+[
+
+];
+
+GVAR(pad_sup_east) =
+[
+
+];
+
+GVAR(pad_sup_west) =
+[
+
+];
+
+GVAR(pad_all_east) = GVAR(pad_veh_east) +
+GVAR(pad_air_east) + 
+GVAR(pad_sup_east);
+ 
+GVAR(pad_all_west) = GVAR(pad_veh_west) +
+GVAR(pad_air_west) +
+GVAR(pad_sup_west);
