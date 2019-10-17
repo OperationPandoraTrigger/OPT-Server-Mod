@@ -30,6 +30,8 @@ class CfgCLibModules {
 			FNC(config);
             FNC(einlesenInShopDialog);	
             FNC(fillLB);
+            FNC(getvehicleinfo);
+            FNC(getprice);
         };
     };
 };

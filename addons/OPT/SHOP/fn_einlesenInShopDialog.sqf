@@ -104,8 +104,6 @@ private _pool = switch (GVAR(vehicleType)) do
     default {[]};
 };
 
-systemChat format ["Dialog p:%1 S:%2",_pool,_side];
-
 // Objekte größer 0€ bestimmen 
 _pool = _pool select {_x select 1 > 0};
 
@@ -167,6 +165,21 @@ _sell ctrlAddEventHandler [ "ButtonClick",
 {
     closeDialog 0;
     ["opt_event_shop_kauf_onload","sale"] call CLib_fnc_localEvent;
+}];
+
+_listbox_vehicles ctrlAddEventHandler [ "LBSelChanged", 
+{
+	params ["_listbox_vehicles", "_sel_class"];
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _listbox_vehicles = _display displayCtrl IDC_CTRL_VEHICLE_LIST;
+    private _editbox_info = _display displayCtrl IDC_CTRL_PRICE_LIST;
+
+    private _sel_class = lbCurSel _listbox_vehicles;
+    private _class = _listbox_vehicles lbData _sel_class;
+
+    _editbox_info ctrlSetStructuredText parseText ([_class] call FUNC(getVehicleInfo));
+
 }];
 
 if (count GVAR(orderDialogObjects) == 0) then 
