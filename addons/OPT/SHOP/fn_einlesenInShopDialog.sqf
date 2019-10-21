@@ -150,11 +150,12 @@ private _order = _display displayCtrl 20004;
 private _close = _display displayCtrl 20008;
 private _sell = _display displayCtrl 20005;
 private _rscPicture = _display displayCtrl IDC_PLAYER_FLAG;
+private _padBox = _display displayCtrl 20009;
 
 GVAR(order) ctrlEnable false;
 
 //Boxen füllen
-_budget = 5000000;
+_budget ctrlSetText format ["Budget: %1€",5000000];
 
 private _txtToAdd = GVAR(orderDialogObjects) apply {getText (configFile >> "CfgVehicles" >> (_x select 0) >> "displayName")};
 
@@ -218,7 +219,8 @@ GVAR(idPadCheck) = [{
     private _freiePads = [];
     private _display = findDisplay 20000;
     private _order = _display displayCtrl 20004;
-    
+    private _padBox = _display displayCtrl 20009;
+   
     // check der Pads ob belegt
     {
 	    private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], 5];
@@ -235,11 +237,13 @@ GVAR(idPadCheck) = [{
         {
             _order ctrlEnable true;
             GVAR(orderPAD) = _freiePads select 0;
+            _padBox ctrlSetText format ["BOX:%1",GVAR(orderPAD)];
         }
     else 
         {
             _order ctrlEnable false;
             GVAR(orderPAD) = [];
+            _padBox ctrlSetText format ["BOX:%1",GVAR(orderPAD)];
         };
 
 }, 1] call CFUNC(addPerFrameHandler);
