@@ -42,3 +42,12 @@ DUMP("Successfully loaded the OPT/Shop module on the client");
 	[]
 	
 ] call CFUNC(addEventHandler);
+
+// Entfernung des Boxchecks PFH
+[{
+	if (isNull (findDisplay 20000 displayCtrl 20002)) then 
+	{
+		GVAR(idPadCheck) call CFUNC(removePerframeHandler);	
+	};
+
+}, 1] call CFUNC(addPerFrameHandler);

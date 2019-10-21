@@ -39,17 +39,22 @@ private _side = Side player;
 
 //Shopart bestimmen
 GVAR(vehicleType) = _type;
-private _pool = switch (GVAR(vehicleType)) do 
+private _pool = [];
+GVAR(pads) = [];
+
+switch (GVAR(vehicleType)) do 
 {
     case "vehicles" : 
 	{
         if (_side == west) then 
 		{
-            GVAR(nato_vehicles) + GVAR(nato_vehicles_supply)
+           _pool = GVAR(nato_vehicles) + GVAR(nato_vehicles_supply);
+           GVAR(pads) = GVAR(pad_veh_west);
         } 
 		else 
 		{
-            GVAR(csat_vehicles) + GVAR(csat_vehicles_supply)
+            _pool = GVAR(csat_vehicles) + GVAR(csat_vehicles_supply);
+            GVAR(pads) = GVAR(pad_veh_east);
         };
 
     };
@@ -57,11 +62,13 @@ private _pool = switch (GVAR(vehicleType)) do
 	{
         if (_side == west) then 
 		{
-            GVAR(nato_choppers)
+            _pool = GVAR(nato_choppers);
+            GVAR(pads) = GVAR(pad_air_west);
         } 
 		else 
 		{
-            GVAR(csat_choppers)
+            _pool = GVAR(csat_choppers);
+            GVAR(pads) = GVAR(pad_air_east);
         };
         
     };
@@ -69,11 +76,13 @@ private _pool = switch (GVAR(vehicleType)) do
 	{
         if (_side == west) then 
 		{
-            GVAR(nato_armored)
+            _pool = GVAR(nato_armored);
+            GVAR(pads) = GVAR(pad_veh_west);
         } 
 		else 
 		{
-            GVAR(csat_armored)
+            _pool = GVAR(csat_armored);
+            GVAR(pads) = GVAR(pad_veh_east);
         };
         
     };
@@ -81,11 +90,13 @@ private _pool = switch (GVAR(vehicleType)) do
 	{
         if (_side == west) then 
 		{
-            GVAR(nato_supplies) + GVAR(nato_static)
+            _pool = GVAR(nato_supplies) + GVAR(nato_static);
+            GVAR(pads) = GVAR(pad_sup_west);
         } 
 		else 
 		{
-            GVAR(csat_supplies) + GVAR(csat_static)
+            _pool = GVAR(csat_supplies) + GVAR(csat_static);
+            GVAR(pads) = GVAR(pad_sup_east);
         };
         
     };
@@ -93,15 +104,29 @@ private _pool = switch (GVAR(vehicleType)) do
 	{
         if (_side == west) then 
 		{
-            GVAR(nato_sea)
+            _pool = GVAR(nato_sea);
+            GVAR(pads) = GVAR(pad_sea_west);
         } 
 		else 
 		{
-            GVAR(csat_sea)
+            _pool = GVAR(csat_sea);
+            GVAR(pads) = GVAR(pad_sea_east);
         };
         
     };
-    default {[]};
+    default 
+    {
+        if (_side == west) then 
+		{
+            _pool = [];
+            GVAR(pads) = GVAR(pad_all_west);
+        } 
+		else 
+		{
+            _pool = [];
+            GVAR(pads) = GVAR(pad_all_east);
+        };
+    };
 };
 
 // Objekte größer 0€ bestimmen 
@@ -125,6 +150,8 @@ private _order = _display displayCtrl 20004;
 private _close = _display displayCtrl 20008;
 private _sell = _display displayCtrl 20005;
 private _rscPicture = _display displayCtrl IDC_PLAYER_FLAG;
+
+GVAR(order) ctrlEnable false;
 
 //Boxen füllen
 _budget = 5000000;
@@ -167,6 +194,7 @@ _sell ctrlAddEventHandler [ "ButtonClick",
     ["opt_event_shop_kauf_onload","sale"] call CLib_fnc_localEvent;
 }];
 
+//InfoBox Erneuern bei änderung
 _listbox_vehicles ctrlAddEventHandler [ "LBSelChanged", 
 {
 	params ["_listbox_vehicles", "_sel_class"];
@@ -182,6 +210,40 @@ _listbox_vehicles ctrlAddEventHandler [ "LBSelChanged",
 
 }];
 
+GVAR(orderPAD) = [];
+
+//Kaufbutton Aktivschlaten bei Freiem Pad
+GVAR(idPadCheck) = [{
+
+    private _freiePads = [];
+    private _display = findDisplay 20000;
+    private _order = _display displayCtrl 20004;
+    
+    // check der Pads ob belegt
+    {
+	    private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], 5];
+            
+        if (count _ob == 0) then 
+        {
+            _freiePads append [_x]; 
+        };       
+
+    } foreach GVAR(pads);  
+
+    // Kaufbuttuon Freischalten und erstes Pad zuordnen
+    if ((count _freiePads) > 0) then 
+        {
+            _order ctrlEnable true;
+            GVAR(orderPAD) = _freiePads select 0;
+        }
+    else 
+        {
+            _order ctrlEnable false;
+            GVAR(orderPAD) = [];
+        };
+
+}, 1] call CFUNC(addPerFrameHandler);
+
 if (count GVAR(orderDialogObjects) == 0) then 
 {
 	// im Falle des Verkaufsbuttons -> Liste aller gefundenen Fahrzeuge
@@ -190,7 +252,7 @@ if (count GVAR(orderDialogObjects) == 0) then
 	{
 	    private _objs = nearestObjects [_x, ["AllVehicles", "Thing"], 5];
 
-    } foreach GVAR(pad_all_east);   
+    } foreach _pads;   
 
 
 	// Gehe alle gefundenen Objekte durch und lösche sie, falls nicht in pool, oder ergänze um Verkaufspreis
