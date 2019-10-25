@@ -8,6 +8,7 @@
         DUMP([_x] call FUNC(isUnitVisible));
         if (CLib_Player != _x && [_x] call FUNC(isUnitVisible) ) then {
             [_x] call FUNC(addUnitToGPS);
+            [_x] call FUNC(updateVehicleEH);
             DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
         };
     };
@@ -57,5 +58,5 @@
             };
         };
     }, 1] call CFUNC(addPerFrameHandler);
-
+    
 }] call CFUNC(addEventhandler);

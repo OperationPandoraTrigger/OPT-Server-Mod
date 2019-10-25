@@ -34,5 +34,12 @@ DUMP("UPDATE UNIT ICON");
 private _unit = if (_arg isEqualType objNull) then { _arg} else {objectFromNetId _arg};
 DUMP("UNIT OBJ " + str _unit);
 
-[_unit] call FUNC(removeUnitFromGPS);
-[_unit] call FUNC(addUnitToGPS);
+
+// Check if unit is in a vehicle.
+if (objectParent _unit == objNull) then {
+	[_unit] call FUNC(removeUnitFromGPS);
+	[_unit] call FUNC(addUnitToGPS);
+} else {
+	[objectParent _unit] call FUNC(removeUnitFromGPS);
+	// [objectParent _unit] call FUNC(addVehicleToGPS);
+}

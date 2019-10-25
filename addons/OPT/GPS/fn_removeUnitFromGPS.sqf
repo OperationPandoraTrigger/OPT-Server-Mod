@@ -34,7 +34,7 @@ DUMP(_arg);
 // _arg might be a string (if called by remoteExec). As we need the actual object to attach the icon, we search for the unit if necessary.
 private _unit = if (_arg isEqualType objNull) then { _arg} else {objectFromNetId _arg};
 DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
-private _iconId = [_unit] call FUNC(getUnitIconID);
+private _iconId = [_unit] call FUNC(getIconID);
 DUMP("ICON ID: " + _iconId);
 [_iconID] call CFUNC(removeMapGraphicsGroup);
 DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
