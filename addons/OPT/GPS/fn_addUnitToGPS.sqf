@@ -39,7 +39,7 @@
     if (!([_newUnit] call FUNC(isUnitVisible))) exitWith {
         DUMP("Unit is not visible " + str _newUnit);
     };
-    private _iconID = _newUnit call FUNC(getUnitIconID);
+    private _iconID = _newUnit call FUNC(getIconID);
     // Decide on the right color
     private _color = if (CLib_Player isEqualTo _newUnit) then {
         COLOR_PLAYER_UNIT
@@ -53,7 +53,8 @@
 
     // Icon is pulled from opt_characters client mod.
     private _specialTexture = getText (configFile >> "CfgVehicles" >> typeOf _newUnit >> "icon");
-    private _texture = format ["\A3\ui_f\data\map\vehicleicons\%1_ca.paa", if (_specialTexture == "") then {"iconMan"} else {_specialTexture}];
+    //private _texture = format ["\A3\ui_f\data\map\vehicleicons\%1_ca.paa", if (_specialTexture == "") then {"iconMan"} else {_specialTexture}];
+    private _texture = if (_specialTexture == "") then {"iconMan"} else {_specialTexture};
     private _text = [_newUnit] call CFUNC(name);
     // Default format
     private _width = 20;
@@ -64,11 +65,9 @@
         _texture = "\A3\ui_f\data\igui\cfg\revive\overlayicons\u100_ca.paa";
         // If unit is wounded or stabilized, we simply append a string. TODO: Move to stringtable.xml
         if (_newUnit getVariable ["FAR_IsStabilized", 0] == 1) then {
-            _text = format ["%1 (%2)", _text, "Stabilisiert" ];
             _color = COLOR_ORANGE;
         } else {
             _color = COLOR_RED;
-            _text = format ["%1 (%2)", _text, "Verwundet"];
         };
         _width = 30;
         _height = 30;

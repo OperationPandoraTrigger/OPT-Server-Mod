@@ -20,8 +20,9 @@ class CfgCLibModules {
             FNC(isUnitLeader);
             FNC(clientinitCBASettings);
             FNC(clientinitEH);
-            FNC(getUnitIconID);
+            FNC(getIconID);
             FNC(updateUnitIcon);
+            FNC(updateVehicleEH);
         };
     };
 };
