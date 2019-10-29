@@ -151,8 +151,10 @@ private _close = _display displayCtrl 20008;
 private _sell = _display displayCtrl 20005;
 private _rscPicture = _display displayCtrl IDC_PLAYER_FLAG;
 private _padBox = _display displayCtrl 20009;
+private _moveInVeh = _display displayCtrl 20010;
 
-GVAR(order) ctrlEnable false;
+_order ctrlEnable false;
+_sell ctrlEnable false;
 
 //Boxen füllen
 _budget ctrlSetText format ["Budget: %1€",5000000];
@@ -188,13 +190,6 @@ switch (_side) do
     };   
 };
 
-// Dialog neuladen für Verkaufsmodus
-_sell ctrlAddEventHandler [ "ButtonClick", 
-{
-    closeDialog 0;
-    ["opt_event_shop_kauf_onload","sale"] call CLib_fnc_localEvent;
-}];
-
 //InfoBox Erneuern bei änderung
 _listbox_vehicles ctrlAddEventHandler [ "LBSelChanged", 
 {
@@ -208,6 +203,27 @@ _listbox_vehicles ctrlAddEventHandler [ "LBSelChanged",
     private _class = _listbox_vehicles lbData _sel_class;
 
     _editbox_info ctrlSetStructuredText parseText ([_class] call FUNC(getVehicleInfo));
+
+}];
+
+GVAR(moveInVeh) = true;
+
+// Festlegen ob Spieler in Fahrzeug nach kauf
+_moveInVeh ctrlAddEventHandler [ "ButtonClick", 
+{
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _moveInVeh = _display displayCtrl 20010;
+
+    if (GVAR(moveInVeh)) then 
+    {
+        GVAR(moveInVeh) = false;         
+        _moveInVeh ctrlSetText "Fahrzeug nicht besetzten";          
+    }
+    else
+    {
+        GVAR(moveInVeh) = true;         
+        _moveInVeh ctrlSetText "Fahrzeug besetzten";              
+    };
 
 }];
 
@@ -247,6 +263,25 @@ GVAR(idPadCheck) = [{
         };
 
 }, 1] call CFUNC(addPerFrameHandler);
+
+// Kauf ausführen  
+_order ctrlAddEventHandler [ "ButtonClick", 
+{
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _listbox_vehicles = _display displayCtrl IDC_CTRL_VEHICLE_LIST;
+    private _editbox_info = _display displayCtrl IDC_CTRL_PRICE_LIST;
+
+    private _sel_class = lbCurSel _listbox_vehicles;
+    private _class = _listbox_vehicles lbData _sel_class;
+
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+    
+    [_Datensatz,GVAR(orderPAD),GVAR(moveInVeh)] call FUNC(order);
+    
+    closeDialog 0;
+}];
 
 if (count GVAR(orderDialogObjects) == 0) then 
 {
