@@ -32,6 +32,10 @@ class CfgCLibModules {
             FNC(fillLB);
             FNC(getvehicleinfo);
             FNC(getprice);
+            FNC(order);
+            FNC(loadout);
+            FNC(arm);
+            FNC(filter);
         };
     };
 };
