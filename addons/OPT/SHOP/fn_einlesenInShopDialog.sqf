@@ -155,9 +155,11 @@ private _moveInVeh = _display displayCtrl 20010;
 
 _order ctrlEnable false;
 _sell ctrlEnable false;
+_moveInVeh ctrlSetTextColor [0.0, 1.0, 0.0, 1];
 
 //Boxen füllen
-_budget ctrlSetText format ["Budget: %1€",5000000];
+// Budget 
+[_budget] call opt_common_fnc_renderbudget;
 
 private _txtToAdd = GVAR(orderDialogObjects) apply {getText (configFile >> "CfgVehicles" >> (_x select 0) >> "displayName")};
 
@@ -217,12 +219,14 @@ _moveInVeh ctrlAddEventHandler [ "ButtonClick",
     if (GVAR(moveInVeh)) then 
     {
         GVAR(moveInVeh) = false;         
-        _moveInVeh ctrlSetText "Fahrzeug nicht besetzten";          
+        _moveInVeh ctrlSetText "Fahrzeug nicht besetzten";   
+        _moveInVeh ctrlSetTextColor [1.0, 0.0, 0.0, 1];       
     }
     else
     {
         GVAR(moveInVeh) = true;         
-        _moveInVeh ctrlSetText "Fahrzeug besetzten";              
+        _moveInVeh ctrlSetText "Fahrzeug besetzten"; 
+        _moveInVeh ctrlSetTextColor [0.0, 1.0, 0.0, 1];             
     };
 
 }];

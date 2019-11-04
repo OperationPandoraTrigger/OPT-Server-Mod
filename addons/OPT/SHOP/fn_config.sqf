@@ -679,22 +679,38 @@ FahrzeugBoxWest8
 
 GVAR(pad_air_east) =
 [
-
+HeliBoxEast1,
+HeliBoxEast2
 ];
 
 GVAR(pad_air_west) =
 [
-
+HeliBoxWest1,
+HeliBoxWest2
 ];
 
 GVAR(pad_sup_east) =
 [
-
+AusruestungBoxEast1,
+AusruestungBoxEast2,
+AusruestungBoxEast3,
+AusruestungBoxEast4,
+AusruestungBoxEast5,
+AusruestungBoxEast6,
+AusruestungBoxEast7,
+AusruestungBoxEast8
 ];
 
 GVAR(pad_sup_west) =
 [
-
+AusruestungBoxWest1,
+AusruestungBoxWest2,
+AusruestungBoxWest3,
+AusruestungBoxWest4,
+AusruestungBoxWest5,
+AusruestungBoxWest6,
+AusruestungBoxWest7,
+AusruestungBoxWest8
 ];
 
 GVAR(pad_sea_west) =

@@ -61,6 +61,7 @@ _kosten = _Datensatz select 10;
 //Fahrzeug erstellen
 private _veh = createVehicle [_class, (position _box), [], 0, "NONE"];
 _veh setdir getdir _box;
+_veh setpos getpos _box;
 
 //Fahrzeug bewaffnen
 if (((count _airRaktenmagazin) > 0) or 
