@@ -149,6 +149,7 @@ private _budget = _display displayCtrl 20001;
 private _order = _display displayCtrl 20004;
 private _close = _display displayCtrl 20008;
 private _sell = _display displayCtrl 20005;
+private _konfig = _display displayCtrl 20007;
 private _rscPicture = _display displayCtrl IDC_PLAYER_FLAG;
 private _padBox = _display displayCtrl 20009;
 private _moveInVeh = _display displayCtrl 20010;
@@ -234,7 +235,7 @@ _moveInVeh ctrlAddEventHandler [ "ButtonClick",
 GVAR(orderPAD) = [];
 
 //Kaufbutton Aktivschlaten bei Freiem Pad
-GVAR(idPadCheck) = [{
+GVAR(idPadCheckShop) = [{
 
     private _freiePads = [];
     private _display = findDisplay 20000;
@@ -285,6 +286,22 @@ _order ctrlAddEventHandler [ "ButtonClick",
     [_Datensatz,GVAR(orderPAD),GVAR(moveInVeh)] call FUNC(order);
     
     closeDialog 0;
+}];
+
+// Kauf ausführen  
+_konfig ctrlAddEventHandler [ "ButtonClick", 
+{
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _listbox_vehicles = _display displayCtrl IDC_CTRL_VEHICLE_LIST;
+ 
+    private _sel_class = lbCurSel _listbox_vehicles;
+    private _class = _listbox_vehicles lbData _sel_class;
+
+    systemChat format ["C:%1",_class];
+
+    closeDialog 0;
+
+   [EVENT_SHOP_KONFIG_ONLOAD,[_class,"New"]] call CFUNC(localEvent);
 }];
 
 if (count GVAR(orderDialogObjects) == 0) then 
