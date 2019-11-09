@@ -36,6 +36,10 @@ class CfgCLibModules {
             FNC(loadout);
             FNC(arm);
             FNC(filter);
+            FNC(einlesenInKonfigDialog);
+            FNC(auslesenMagazine);
+            FNC(geldVorhandeneBewaffnung);
+            FNC(dynamischerDatensatz);
         };
     };
 };
