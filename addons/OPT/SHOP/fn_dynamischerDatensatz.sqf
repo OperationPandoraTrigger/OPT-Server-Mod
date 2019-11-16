@@ -29,10 +29,12 @@
 
 #include "macros.hpp"
 
-params [
+params 
+[
     ["_side", nil],
     ["_veh", nil],
-    ["_boxArry", []]
+    ["_boxArry", []],
+    ["_pylon", []]
 ];
 
 #define IDD_DLG_KONFIG 22000
@@ -56,6 +58,12 @@ private _buyrakmagazine = [];
 private _buyrakweapon = [];
 private _buygunmagazine = [];
 private _buygunweapon = [];
+private _airRaktenmagazin = [];
+private _airRaktenweapon = [];
+private _airGunmagazin = [];
+private _airGunweapon = [];
+private _vehMagazin = [];
+private _vehWeapon = [];
 private _Zusatz = [0,0,0];
 private _buykontrolle = [];
 private _waffenauswahlarry1 = "";
@@ -222,9 +230,7 @@ else
             _waffenauswahlarry1 = GVAR(Gunveheast);
 
         };    
-
-        systemChat format ["DD: B1:%1 B2:%2",(lbCurSel _IDD_box1),(lbCurSel _IDD_box2)];
-   
+  
         if ((lbCurSel _IDD_box1) > -1) then 
 		{    
             if ((lbCurSel _IDD_box1) < (count (_boxArry select 1))) then 
@@ -337,10 +343,33 @@ else
     };
 };  
 
-_Datensatz pushBack _buygunmagazine;
+if (_veh isKindOf "Air") then 
+{
+    _vehWeapon = [];
+    _vehMagazin = [];
+
+}
+else
+{
+    _vehWeapon = _buygunweapon;
+    _vehMagazin = _buygunmagazine;
+    _buygunweapon = [];
+    _buygunmagazine = [];
+    _buyrakweapon = [];
+    _buyrakmagazine = [];
+
+};
+
+systemChat format ["DD: bgw:%1 bgm:%2 brw:%3 brm:%4 vw:%5 vm:%6 B:%7",_buygunweapon,_buygunmagazine,_buyrakweapon,_buyrakmagazine,_vehWeapon,_vehMagazin,(_veh isKindOf "Air")];
+ 
+_Datensatz append [_veh];
 _Datensatz pushBack _buygunweapon;
-_Datensatz pushBack _buyrakmagazine;
+_Datensatz pushBack _buygunmagazine;
 _Datensatz pushBack _buyrakweapon;
+_Datensatz pushBack _buyrakmagazine;
+_Datensatz pushBack _vehWeapon;
+_Datensatz pushBack _vehMagazin;
+_Datensatz pushBack _pylon;
 _Datensatz pushBack _buykontrolle;
 _Datensatz pushBack _Zusatz; 
 _Datensatz append [_wert];  

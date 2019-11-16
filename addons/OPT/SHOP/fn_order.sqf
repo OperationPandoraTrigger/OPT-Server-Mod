@@ -26,10 +26,12 @@
 
 #include "macros.hpp"
 
-params [
+params 
+[
     ["_Datensatz", []], 
     ["_box", objNull],
-    ["_moveInVeh", nil]
+    ["_moveInVeh", nil],
+	["_unitCost", 0]
 ];
 
 private _airRaktenmagazin = [];
@@ -41,9 +43,10 @@ private _vehWeapon = [];
 private _pylon = [];
 private _raketencontrol = [];
 private _zusatz = [];
-private _kosten = 0;
+private _waffenkosten = 0;
 private _weaponold = [];
 private _magazinold = [];
+private _kosten = 0;
 
 //Datensatz aufschüsseln
 private _class = _Datensatz select 0;
@@ -56,7 +59,7 @@ _vehMagazin = _Datensatz select 6;
 _pylon = _Datensatz select 7;
 _raketencontrol = _Datensatz select 8;
 _zusatz = _Datensatz select 9;
-_kosten = _Datensatz select 10;
+_waffenkosten = _Datensatz select 10;
 
 //Fahrzeug erstellen
 private _veh = createVehicle [_class, (position _box), [], 0, "NONE"];
@@ -89,5 +92,10 @@ if (_moveInVeh) then
 
 };
 
-systemChat format ["order:D:%1 B:%2 M:%3",_Datensatz,_box,_moveInVeh];
+_kosten = _unitCost + _waffenkosten;
 
+[Name Player, playerSide, typeOf _veh, _kosten, "-"] call opt_common_fnc_updateBudget;
+
+systemChat format ["order:D:%1 B:%2 M:%3 V:%4 K:%5",_Datensatz,_box,_moveInVeh,typeOf _veh,_kosten];
+
+_kosten

@@ -26,24 +26,49 @@
 
 #include "macros.hpp"
 
-params ["_class", "_kindOfOrder"];
+params 
+[
+    ["_class", ""],
+    ["_veh" , objNull]
+];
 
 private _return = "";
-
 private _price = 0;
+private _preis = "";
 private _priceTxt = "";
+private _Datensatz = [];
+private _magazineVehArryNew=[];
+private _bewaffnungpreis = 0;
+private _side = civilian;
+
+if (_class in (GVAR(vehClassWestWW))) then 
+{
+    _side = west;
+};    
+
+if (_class in (GVAR(vehClassEastWW))) then 
+{
+    _side = east;
+};       
 
 switch (GVAR(vehicleType)) do 
 {
     case "sell": 
     {
-        _price = [_class] call FUNC(getPrice);
-        _priceTxt = "Gutschrift";
+    _price = [_class] call FUNC(getPrice);
+    _magazineVehArryNew = [_veh] call FUNC(auslesenMagazine);
+    _bewaffnungpreis = [_side, _magazineVehArryNew] call FUNC(geldVorhandeneBewaffnung);   
+    _preis = Format ["%1/%2", _price,_bewaffnungpreis];
+    _priceTxt = "Gutschrift";
+
     };
+
     default 
     {
-        _price = (GVAR(all) select {toLower (_x select 0) isEqualTo toLower _class}) select 0 select 1;
-        _priceTxt = "Kaufpreis";
+    _price = (GVAR(all) select {toLower (_x select 0) isEqualTo toLower _class}) select 0 select 1;
+    _Datensatz = [_class] call FUNC(loadout);
+    _preis = Format ["%1/%2", _price,(_Datensatz select 10)];
+    _priceTxt = "Kaufpreis/Waffenpreis";
     };
 };
 
@@ -53,42 +78,53 @@ private _cargo_space = 0;
 private _cargo_size = 0;
 private _Dragged_Carried = "";
 
-/*
-private _index = (EGVAR(cargo,canTransportCargo) apply {_x select 0}) find _class;
+private _index = (opt_cargo_canTransportCargo apply {_x select 0}) find _class;
 
 if (_index != -1) then 
 {
-    _cargo_space = (EGVAR(cargo,canTransportCargo) select _index) select 1;    
+    _cargo_space = (opt_cargo_canTransportCargo select _index) select 1;    
 };
 
-private _index = (EGVAR(cargo,canBeTransported) apply {_x select 0}) find _class;
+private _index = (opt_cargo_canBeTransported apply {_x select 0}) find _class;
 
 if (_index != -1) then 
 {
-    _cargo_size = (EGVAR(cargo,canBeTransported) select _index) select 1;   
+    _cargo_size = (opt_cargo_canBeTransported select _index) select 1;   
 };
 
-private _index = (EGVAR(cargo,canBeDragged) apply {_x select 0}) find _class;
+private _index = (opt_cargo_canBeCarried apply {_x select 0}) find _class;
 if (_index != -1) then {
 	_Dragged_Carried = _Dragged_Carried + "Ziehbar" + ", ";
      
 };
 
-private _index = (EGVAR(cargo,canBeCarried) apply {_x select 0}) find _class;
+private _index = (opt_cargo_canBeCarried apply {_x select 0}) find _class;
 if (_index != -1) then {
    _Dragged_Carried = _Dragged_Carried + "Tragbar" + ", ";
    
 };
 
 _Dragged_Carried = _Dragged_Carried select [0, count _Dragged_Carried - 2];
-*/
-
 
 // Nur für Luftfahrzeuge 
 if (_class isKindOf "AllVehicles" and !(_class isKindOf "StaticWeapon")) then 
 {
     private _weapons = [];
     private _weaponsClass = getArray(configFile >> "cfgVehicles" >> _class >> "weapons");
+
+    _weaponsClass deleteAt (_weaponsClass find "TruckHorn");
+	_weaponsClass deleteAt (_weaponsClass find "SportCarHorn");
+    
+    if (count _weaponsClass == 0) then 
+    {
+        _weaponsClass = [];
+        _weaponsClass append (_Datensatz select 1);
+        _weaponsClass append (_Datensatz select 3);
+        _weaponsClass append (_Datensatz select 5);
+    };  
+
+    systemChat format ["Get W:%1",_weaponsClass];
+    
     {
         private _name = getText (configFile >> "cfgWeapons" >> _x >> "displayName");
         _weapons pushBack _name;
@@ -114,7 +150,7 @@ if (_class isKindOf "AllVehicles" and !(_class isKindOf "StaticWeapon")) then
         _weapons pushBack  _name;
 
     } forEach _weapArray;
-
+  
     // Aufbereitung Waffenanzeige
     _weapons deleteAt (_weapons find "Hupe");
 	_weapons deleteAt (_weapons find "Horn");
@@ -164,7 +200,7 @@ if (_class isKindOf "AllVehicles" and !(_class isKindOf "StaticWeapon")) then
     <t align='left'>Treibstoffmenge:</t> <t align='right' color='#00ff00'>%6 Min</t><br/>
     <t align='left'>Panzerung:</t> <t align='right' color='#00ff00'>%7</t><br/>
     <t align='left'>Laderaum:</t> <t align='right' color='#00ff00'>%8 l</t><br/></t>",
-    _priceTxt, _price, _newweapons, _crewCount, _maxSpeed, _fuelCapacity, _armor, _cargo_space
+    _priceTxt, _preis, _newweapons, _crewCount, _maxSpeed, _fuelCapacity, _armor, _cargo_space
     ];
 
 };
@@ -224,7 +260,7 @@ if (_class isKindOf "StaticWeapon") then
     <t align='left'>Sitzplätze:</t> <t align='right' color='#00ff00'>%4</t><br/>
     <t align='left'>Volumen:</t> <t align='right' color='#00ff00'>%5 l</t><br/>
     <t align='left'>Bewegbarkeit:</t> <t align='right' color='#00ff00'>%6</t><br/></t>",
-    _priceTxt, _price, _newweapons, _crewCount, _cargo_size, _Dragged_Carried
+    _priceTxt, _preis, _newweapons, _crewCount, _cargo_size, _Dragged_Carried
     ];
 
 };
@@ -282,7 +318,7 @@ if (_class isKindOf "ThingX") then
     <t align='left'>Waffen:</t> <t align='right' color='#00ff00'>%3</t><br/>
     <t align='left'>Magazine:</t> <t align='right' color='#00ff00'>%4</t><br/>
     <t align='left'>Items:</t> <t align='right' color='#00ff00'>%5</t><br/></t>",
-    _priceTxt, _price,  _weapons, _magazines, _items, _cargo_size, _Dragged_Carried
+    _priceTxt, _preis,  _weapons, _magazines, _items, _cargo_size, _Dragged_Carried
     ];
 
 };

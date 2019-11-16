@@ -35,7 +35,7 @@ params [
 ];
 
 //Spieler Seite bestimmen
-private _side = Side player;
+private _side = playerside;
 
 //Shopart bestimmen
 GVAR(vehicleType) = _type;
@@ -155,7 +155,7 @@ private _padBox = _display displayCtrl 20009;
 private _moveInVeh = _display displayCtrl 20010;
 
 _order ctrlEnable false;
-_sell ctrlEnable false;
+_sell ctrlShow false;
 _moveInVeh ctrlSetTextColor [0.0, 1.0, 0.0, 1];
 
 //Boxen füllen
@@ -193,44 +193,7 @@ switch (_side) do
     };   
 };
 
-//InfoBox Erneuern bei änderung
-_listbox_vehicles ctrlAddEventHandler [ "LBSelChanged", 
-{
-	params ["_listbox_vehicles", "_sel_class"];
-
-    private _display = findDisplay IDD_DLG_ORDER;
-    private _listbox_vehicles = _display displayCtrl IDC_CTRL_VEHICLE_LIST;
-    private _editbox_info = _display displayCtrl IDC_CTRL_PRICE_LIST;
-
-    private _sel_class = lbCurSel _listbox_vehicles;
-    private _class = _listbox_vehicles lbData _sel_class;
-
-    _editbox_info ctrlSetStructuredText parseText ([_class] call FUNC(getVehicleInfo));
-
-}];
-
 GVAR(moveInVeh) = true;
-
-// Festlegen ob Spieler in Fahrzeug nach kauf
-_moveInVeh ctrlAddEventHandler [ "ButtonClick", 
-{
-    private _display = findDisplay IDD_DLG_ORDER;
-    private _moveInVeh = _display displayCtrl 20010;
-
-    if (GVAR(moveInVeh)) then 
-    {
-        GVAR(moveInVeh) = false;         
-        _moveInVeh ctrlSetText "Fahrzeug nicht besetzten";   
-        _moveInVeh ctrlSetTextColor [1.0, 0.0, 0.0, 1];       
-    }
-    else
-    {
-        GVAR(moveInVeh) = true;         
-        _moveInVeh ctrlSetText "Fahrzeug besetzten"; 
-        _moveInVeh ctrlSetTextColor [0.0, 1.0, 0.0, 1];             
-    };
-
-}];
 
 GVAR(orderPAD) = [];
 
@@ -269,52 +232,41 @@ GVAR(idPadCheckShop) = [{
 
 }, 1] call CFUNC(addPerFrameHandler);
 
-// Kauf ausführen  
-_order ctrlAddEventHandler [ "ButtonClick", 
-{
-    private _display = findDisplay IDD_DLG_ORDER;
-    private _listbox_vehicles = _display displayCtrl IDC_CTRL_VEHICLE_LIST;
-    private _editbox_info = _display displayCtrl IDC_CTRL_PRICE_LIST;
-
-    private _sel_class = lbCurSel _listbox_vehicles;
-    private _class = _listbox_vehicles lbData _sel_class;
-
-    private _Datensatz = [];
-
-    _Datensatz = [_class] call FUNC(loadout);
-    
-    [_Datensatz,GVAR(orderPAD),GVAR(moveInVeh)] call FUNC(order);
-    
-    closeDialog 0;
-}];
-
-// Kauf ausführen  
-_konfig ctrlAddEventHandler [ "ButtonClick", 
-{
-    private _display = findDisplay IDD_DLG_ORDER;
-    private _listbox_vehicles = _display displayCtrl IDC_CTRL_VEHICLE_LIST;
- 
-    private _sel_class = lbCurSel _listbox_vehicles;
-    private _class = _listbox_vehicles lbData _sel_class;
-
-    systemChat format ["C:%1",_class];
-
-    closeDialog 0;
-
-   [EVENT_SHOP_KONFIG_ONLOAD,[_class,"New"]] call CFUNC(localEvent);
-}];
-
 if (count GVAR(orderDialogObjects) == 0) then 
 {
+    //Kaufbutton/Konfigbutton ausblenden
+    _order ctrlShow false;
+    _konfig ctrlShow false;
+
+    //Verkaufsbutton einblenden
+    _sell ctrlShow true;
+
+    //Box und Anzeige InFahrzeug ausblenen
+    _padBox ctrlShow false;
+    _moveInVeh ctrlShow false;
+
+    //Fahrzeug Speicher, Fahrzeuge auf den Pad
+    GVAR(sellVeh) = [];
+
 	// im Falle des Verkaufsbuttons -> Liste aller gefundenen Fahrzeuge
 	// alle Objekte Fahrzeuge die auf allen Pads gefunden wurden
 
+    private _objs = [];
+    systemChat format ["sell:P:%1",GVAR(pads)]; 
+
 	{
-	    private _objs = nearestObjects [_x, ["AllVehicles", "Thing"], 5];
+	    private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], 5];
 
-    } foreach _pads;   
+        if (_ob != 0) then 
+            {
 
+            _objs pushBack _ob; 
 
+            };  
+        systemChat format ["sell:O:%1 obs:%2",_ob,_objs];    
+
+    } foreach GVAR(pads);   
+ 
 	// Gehe alle gefundenen Objekte durch und lösche sie, falls nicht in pool, oder ergänze um Verkaufspreis
 	{
 		
@@ -328,15 +280,19 @@ if (count GVAR(orderDialogObjects) == 0) then
         else 
         {
             _pool pushBack [_x, (GVAR(all) select _index) select 2, (GVAR(all) select _index) select 3]; // füge Fahrzeug und Verkaufspreis hinzu
+            GVAR(sellVeh) pushBack [_x];
         };
 
 	} foreach _objs;
 
+    systemChat format ["sell:O:%1 SV:%2",_objs,GVAR(sellVeh)];
+  
     // Anzeige Objekte die mehr wert sind als 0€
     _pool = _pool select {_x select 2 > 0};
 
     //Sortierung der Fahrzeuge nach Preis
-    GVAR(vehiclesToSell) = [_pool, 1, false] call CBA_fnc_sortNestedArray; // teuerste zuerst
+    GVAR(vehiclesToSell) = _pool;
+
 	{
 		_class = typeOf (_x select 0);
         _displayName = getText (configFile >> "CfgVehicles" >> _class >> "displayName");
@@ -357,9 +313,100 @@ if (count GVAR(orderDialogObjects) == 0) then
         _listbox_vehicles lbSetPicture [_forEachIndex, _picture];
 
     } foreach GVAR(vehiclesToSell);
+
+ systemChat format ["sell:P:%1 B:%2 Po:%3 V:%4",GVAR(pads),_objs,_pool,GVAR(vehiclesToSell)];
+   
 };
 
+// Button Listbox Events 
+// Kauf ausführen  
+_order ctrlAddEventHandler [ "ButtonClick", 
+{
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _listbox_vehicles = _display displayCtrl IDC_CTRL_VEHICLE_LIST;
+    private _editbox_info = _display displayCtrl IDC_CTRL_PRICE_LIST;
 
+    private _sel_class = lbCurSel _listbox_vehicles;
+	private _unitRecord = GVAR(orderDialogObjects) select _sel_class;
+    private _class = _listbox_vehicles lbData _sel_class;
+	private _unitCost = _unitRecord select 1;
+
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+    
+    [_Datensatz,GVAR(orderPAD),GVAR(moveInVeh),_unitCost] call FUNC(order);
+    
+    closeDialog 0;
+}];
+
+// Konfig ausführen  
+_konfig ctrlAddEventHandler [ "ButtonClick", 
+{
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _listbox_vehicles = _display displayCtrl IDC_CTRL_VEHICLE_LIST;
+ 
+    private _sel_class = lbCurSel _listbox_vehicles;
+	private _unitRecord = GVAR(orderDialogObjects) select _sel_class;
+    private _class = _listbox_vehicles lbData _sel_class;
+	private _unitCost = _unitRecord select 1;
+
+    systemChat format ["C:%1 K:%2",_class,_unitCost];
+
+    closeDialog 0;
+
+   [EVENT_SHOP_KONFIG_ONLOAD,[_class,"New",_unitCost]] call CFUNC(localEvent);
+}];
+
+// Festlegen ob Spieler in Fahrzeug nach kauf
+_moveInVeh ctrlAddEventHandler [ "ButtonClick", 
+{
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _moveInVeh = _display displayCtrl 20010;
+
+    if (GVAR(moveInVeh)) then 
+    {
+        GVAR(moveInVeh) = false;         
+        _moveInVeh ctrlSetText "Fahrzeug nicht besetzten";   
+        _moveInVeh ctrlSetTextColor [1.0, 0.0, 0.0, 1];       
+    }
+    else
+    {
+        GVAR(moveInVeh) = true;         
+        _moveInVeh ctrlSetText "Fahrzeug besetzten"; 
+        _moveInVeh ctrlSetTextColor [0.0, 1.0, 0.0, 1];             
+    };
+
+}];
+
+//InfoBox Erneuern bei änderung
+_listbox_vehicles ctrlAddEventHandler [ "LBSelChanged", 
+{
+	params ["_listbox_vehicles", "_sel_class"];
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _listbox_vehicles = _display displayCtrl IDC_CTRL_VEHICLE_LIST;
+    private _editbox_info = _display displayCtrl IDC_CTRL_PRICE_LIST;
+    private _budget = _display displayCtrl 20001;
+
+    private _sel_class = lbCurSel _listbox_vehicles;
+    private _class = _listbox_vehicles lbData _sel_class;
+
+    if (GVAR(vehicleType) == "sell") then 
+    {
+        private _sellveh = GVAR(sellVeh) select _sel_class;
+    }
+    else
+    {
+        private _sellveh = objNull;    
+    };    
+
+    _editbox_info ctrlSetStructuredText parseText ([_class,_sellveh] call FUNC(getVehicleInfo));
+
+    // Budget 
+    [_budget] call opt_common_fnc_renderbudget;
+
+}];
 
 
 

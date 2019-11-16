@@ -32,7 +32,8 @@
 //Typ einlesen
 params [
     ["_type", ""],
-    ["_modus", ""]
+    ["_modus", ""],
+	["_unitCost", 0]
 ];
 
 //Dialog Initalisieren
@@ -105,19 +106,21 @@ _Munitext6 ctrlEnable false;
 
 _kosten ctrlSetText "$:0";
 
-private _veh = "";
+GVAR(veh) = "";
 
 //Fahrzeugfeststellung
 if (_modus == "New") then 
 {
     GVAR(vehType) = _type;
     GVAR(Modus) = "New";
+    GVAR(unitCost) = _unitCost;
 }
 else
 {
-    _veh = vehicle player;
-    GVAR(vehType) = typeOf _veh;
+    GVAR(veh) = vehicle player;
+    GVAR(vehType) = typeOf GVAR(veh);
     GVAR(Modus) = "old";
+	GVAR(unitCost) = 0;
 };
 
 //Nanen und Bild ermittlung
@@ -133,12 +136,10 @@ else
     _vehDisplayIcon = getText (configFile >> "cfgVehicles" >> GVAR(vehType) >> "editorPreview");
 };
 
-systemChat format ["Konfig V:%1 M:%2 VN:%3 VI:%4",GVAR(vehType),_modus,_vehDisplayName,_vehDisplayIcon];
-
 //Loadout Daten einlesen
 GVAR(boxArry) = [];
 GVAR(side) = civilian;
-private _pylon = [];
+GVAR(pylon) = [];
 private _boxNames = [];
 private _loadouts = [];
 
@@ -151,98 +152,98 @@ if (GVAR(vehType) in (GVAR(vehclasswestWW) + GVAR(vehclasseastWW))) then
 		{
             GVAR(boxArry) = GVAR(Pawnee);
             GVAR(side) = west;
-            _pylon = ["pylonleft1", "pylonright1"];
+            GVAR(pylon) = ["pylonleft1", "pylonright1"];
 			_loadouts = GVAR(Pawneeloadout);
         };
         case "OPT4_B_Heli_light_03_green_F": 
 		{
             GVAR(boxArry) = GVAR(hellcat1);
             GVAR(side) = west;
-            _pylon = ["pylonleft1", "pylonright1"];
+            GVAR(pylon) = ["pylonleft1", "pylonright1"];
 			_loadouts = GVAR(hellcat1loadout);
         }; 
         case "OPT4_B_Heli_Attack_01_F": 
 		{
             GVAR(boxArry) = GVAR(Blackfoot);
             GVAR(side) = west;
-            _pylon = ["pylonleft1","pylonleft3","pylonright1","pylonright3"];
+            GVAR(pylon) = ["pylonleft1","pylonleft3","pylonright1","pylonright3"];
 			_loadouts = GVAR(Blackfootloadout);
         };
         case "OPT4_B_MRAP_01_hmg_F": 
 		{
             GVAR(boxArry) = GVAR(HunterHMG);
             GVAR(side) = west;
-            _pylon = [];
+            GVAR(pylon) = [];
 			_loadouts = GVAR(HunterHMGloadout);
         };
         case "OPT4_B_MRAP_01_gmg_F": 
 		{
             GVAR(boxArry) = GVAR(HunterGMG);
             GVAR(side) = west;
-            _pylon = [];
+            GVAR(pylon) = [];
 			_loadouts = GVAR(HunterGMGloadout);
         };
         case "OPT4_B_MRAP_03_gmg_F": 
 		{
             GVAR(boxArry) = GVAR(StriderGMG);
             GVAR(side) = west;
-            _pylon = [];
+            GVAR(pylon) = [];
 			_loadouts = GVAR(StriderGMGloadout);
         };
         case "OPT_B_T_LSV_01_armed_F": 
 		{
             GVAR(boxArry) = GVAR(ProwlerHMG);
             GVAR(side) = west;
-            _pylon = [];
+            GVAR(pylon) = [];
 			_loadouts = GVAR(ProwlerHMGloadout);
         };
         case "OPT4_B_LSV_01_AT_F": 
 		{
             GVAR(boxArry) = GVAR(ProwlerAT);
             GVAR(side) = west;
-            _pylon = [];
+            GVAR(pylon) = [];
 			_loadouts = GVAR(ProwlerATloadout);
         };
         case "OPT4_B_APC_Tracked_01_rcws_F": 
 		{
             GVAR(boxArry) = GVAR(Panther);
             GVAR(side) = west;
-            _pylon = [];
+            GVAR(pylon) = [];
 			_loadouts = GVAR(Pantherloadout);
         };
         case "OPT4_B_APC_Wheeled_01_cannon_F": 
 		{
             GVAR(boxArry) = GVAR(Marshall);
             GVAR(side) = west;
-            _pylon = [];
+            GVAR(pylon) = [];
 			_loadouts = GVAR(Marshallloadout);
         };
         case "OPT4_B_APC_tracked_03_cannon_F": 
 		{
             GVAR(boxArry) = GVAR(Mora);
             GVAR(side) = west;
-            _pylon = [];
+            GVAR(pylon) = [];
 			_loadouts = GVAR(Moraloadout);
         };
         case "OPT4_B_APC_Tracked_01_AA_F": 
 		{
             GVAR(boxArry) = GVAR(Cheetah);
             GVAR(side) = west;
-            _pylon = [];
+            GVAR(pylon) = [];
 			_loadouts = GVAR(Cheetahloadout);
         };
         case "OPT4_B_MBT_01_TUSK_F": 
 		{
             GVAR(boxArry) = GVAR(SlammerUp);
             GVAR(side) = west;
-            _pylon = [];
+            GVAR(pylon) = [];
 			_loadouts = GVAR(SlammerUploadout);
         };    
         case "OPT4_B_MBT_01_arty_F": 
 		{
             GVAR(boxArry) = GVAR(Scorcher);
             GVAR(side) = west;
-            _pylon = [];
+            GVAR(pylon) = [];
 			_loadouts = GVAR(Scorcherloadout);
         }; 
         
@@ -251,98 +252,98 @@ if (GVAR(vehType) in (GVAR(vehclasswestWW) + GVAR(vehclasseastWW))) then
 		{
             GVAR(boxArry) = GVAR(Orca);
             GVAR(side) = east;
-            _pylon = ["pylonleft1", "pylonright1"];
+            GVAR(pylon) = ["pylonleft1", "pylonright1"];
 			_loadouts = GVAR(Orcaloadout);
         };
         case "OPT4_O_Heli_Attack_02_F": 
 		{
             GVAR(boxArry) = GVAR(Kajman);
             GVAR(side) = east;
-            _pylon = ["pylonleft1","pylonleft2","pylonright1","pylonright2"];
+            GVAR(pylon) = ["pylonleft1","pylonleft2","pylonright1","pylonright2"];
 			_loadouts = GVAR(Kajmanloadout);
         };  
         case "OPT4_O_Heli_light_03_green_F": 
 		{
             GVAR(boxArry) = GVAR(hellcat);
             GVAR(side) = east;
-            _pylon = ["pylonleft1","pylonright1"];
+            GVAR(pylon) = ["pylonleft1","pylonright1"];
 			_loadouts = GVAR(hellcatloadout);
         }; 			
         case "OPT4_O_MRAP_02_hmg_F": 
 		{
             GVAR(boxArry) = GVAR(irifHMG);
             GVAR(side) = east;
-            _pylon = [];
+            GVAR(pylon) = [];
 			_loadouts = GVAR(irifHMGloadout);
         };
         case "OPT4_O_MRAP_02_gmg_F": 
 		{
             GVAR(boxArry) = GVAR(irifGMG);
             GVAR(side) = east;
-            _pylon = [];
+            GVAR(pylon) = [];
 			_loadouts = GVAR(irifGMGloadout);
         };
         case "OPT_O_T_LSV_02_armed_F": 
 		{
             GVAR(boxArry) = GVAR(QuilinHMG);
             GVAR(side) = east;
-            _pylon = [];
+            GVAR(pylon) = [];
 			_loadouts = GVAR(QuilinHMGloadout);
         };
         case "OPT4_O_LSV_02_AT_F": 
 		{
             GVAR(boxArry) = GVAR(QuilinAT);
             GVAR(side) = east;
-            _pylon = [];
+            GVAR(pylon) = [];
 			_loadouts = GVAR(QuilinATloadout);
         };
         case "OPT4_O_APC_Wheeled_02_rcws_F": 
 		{
             GVAR(boxArry) = GVAR(Marid);
             GVAR(side) = east;
-            _pylon = [];
+            GVAR(pylon) = [];
 			_loadouts = GVAR(Maridloadout);
         };
         case "OPT4_O_APC_Wheeled_03_cannon_F": 
 		{
             GVAR(boxArry) = GVAR(Gorgon);
             GVAR(side) = east;
-            _pylon = [];
+            GVAR(pylon) = [];
 			_loadouts = GVAR(Gorgonloadout);
         };
         case "OPT4_O_APC_Tracked_02_cannon_F": 
 		{
             GVAR(boxArry) = GVAR(Kamysh);
             GVAR(side) = east;
-            _pylon = [];
+            GVAR(pylon) = [];
 			_loadouts = GVAR(Kamyshloadout);
         };
         case "OPT4_O_APC_Tracked_02_AA_F": 
 		{
             GVAR(boxArry) = GVAR(Tigris);
             GVAR(side) = east;
-            _pylon = [];
+            GVAR(pylon) = [];
 			_loadouts = GVAR(Tigrisloadout);
         };    
         case "OPT4_O_MBT_02_cannon_F": 
 		{
             GVAR(boxArry) = GVAR(Varsuk);
             GVAR(side) = east;
-            _pylon = [];
+            GVAR(pylon) = [];
 			_loadouts = GVAR(Varsukloadout);
         };
         case "OPT4_O_MBT_02_arty_F": 
 		{
             GVAR(boxArry) = GVAR(Sochor);
             GVAR(side) = east;
-            _pylon = [];
+            GVAR(pylon) = [];
 			_loadouts = GVAR(Sochorloadout);
         }; 
         case "OPT4_O_T_MBT_02_arty_ghex_F": 
 		{
             GVAR(boxArry) = GVAR(Sochor);
             GVAR(side) = east;
-            _pylon = [];
+            GVAR(pylon) = [];
 			_loadouts = GVAR(Sochorloadout);
         }; 
         
@@ -350,24 +351,25 @@ if (GVAR(vehType) in (GVAR(vehclasswestWW) + GVAR(vehclasseastWW))) then
 		{
             GVAR(boxArry) = [];
             GVAR(side) = civilian;
-			_pylon = [];
+			GVAR(pylon) = [];
 			_loadouts = [];
         };
     };
 };
+
+private _waffenMagazinArry  = [];
+GVAR(weaponsVeh) =[];
+GVAR(magazineVeh) =[];
+private _magazineVehArryNew=[];
 		
 //auslesen und filtern bei alt Fahrzeug
+
 if (GVAR(Modus) == "old") then 
 {
-    private _waffenMagazinArry  = [];
-    private _weaponsVeh =[];
-    private _magazineVeh=[];
-    private _magazineVehArryNew=[];
-
     _waffenMagazinArry = [_veh] call FUNC(filter);	
 
-    _weaponsVeh =_waffenMagazinArry select 0;
-    _magazineVeh = _waffenMagazinArry select 1;
+    GVAR(weaponsVeh) =_waffenMagazinArry select 0;
+    GVAR(magazineVeh) = _waffenMagazinArry select 1;
         
     //Festellung Bewaffnung
     _magazineVehArryNew = [_veh] call FUNC(auslesenMagazine);
@@ -435,13 +437,13 @@ if (GVAR(Modus) == "old") then
     };
 };    
 
-systemChat format ["Konfig IDDM:%1 IDDC:%2 VN:%3 VI:%4",_IDD_vehDisplayName,_IDD_vehDisplayIcon,_vehDisplayName,_vehDisplayIcon];
-
 _IDD_vehDisplayName ctrlSetText _vehDisplayName;
 _IDD_vehDisplayIcon ctrlSetText _vehDisplayIcon;
 
 //Preis vorhandene Bewaffnung
-private _bewaffnungpreis = 0;
+GVAR(VorhandeneBewaffnunggeld) = 0;
+
+systemChat format ["Konfig V:%1 S:%2 B:%3",GVAR(vehType),GVAR(side),(GVAR(side) isEqualTo civilian)];
 
 if (GVAR(side) isEqualTo civilian) then 
 {
@@ -455,7 +457,7 @@ if (GVAR(side) isEqualTo civilian) then
 else 
 {
 
-    _bewaffnungpreis = [GVAR(side), _magazineVehArryNew] call FUNC(geldVorhandeneBewaffnung);
+    GVAR(VorhandeneBewaffnunggeld) = [GVAR(side), _magazineVehArryNew] call FUNC(geldVorhandeneBewaffnung);
     
     //Boxen füllen
     private _Rakmag  = GVAR(boxArry) select 4 select 0;
@@ -464,7 +466,7 @@ else
     private _tarnung = GVAR(boxArry) select 2 select 1;
     private _datalink = GVAR(boxArry) select 3 select 0;
 
-    if (_veh isKindOf "Air") then 
+    if (GVAR(vehType) isKindOf "Air") then 
 	{
         //Box1+2
         private _heli = [];
@@ -635,7 +637,7 @@ else
         _IDD_box_text7 ctrlSetText "Datalink";
     };
 	
-    _kosten ctrlSetText format["$:%1", _bewaffnungpreis];	
+    _kosten ctrlSetText format["$:%1", GVAR(VorhandeneBewaffnunggeld)];	
 };   
 
 //InfoBox Erneuern bei änderung
@@ -646,11 +648,11 @@ _IDD_box1 ctrlAddEventHandler [ "LBSelChanged",
 
     private _Datensatz = [];
 
-    _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry)] call FUNC(dynamischerDatensatz);
+    _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
-    _kosten ctrlSetText format["$:%1", _Datensatz select 6];  
+    _kosten ctrlSetText format["$:%1", _Datensatz select 10];  
 
-    systemChat format ["Konfig box%1: D:%2 K:%3",1,_Datensatz,(_Datensatz select 6)];
+    systemChat format ["Konfig box%1: D:%2 K:%3",1,_Datensatz,(_Datensatz select 10)];
 
 }];
 
@@ -661,11 +663,11 @@ _IDD_box2 ctrlAddEventHandler [ "LBSelChanged",
 
     private _Datensatz = [];
 
-    _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry)] call FUNC(dynamischerDatensatz);
+    _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
-    _kosten ctrlSetText format["$:%1", _Datensatz select 6];  
+    _kosten ctrlSetText format["$:%1", _Datensatz select 10];  
 
-    systemChat format ["Konfig box%1: D:%2 K:%3",2,_Datensatz,(_Datensatz select 6)];
+    systemChat format ["Konfig box%1: D:%2 K:%3",2,_Datensatz,(_Datensatz select 10)];
 }];
 
 _IDD_box3 ctrlAddEventHandler [ "LBSelChanged", 
@@ -675,11 +677,11 @@ _IDD_box3 ctrlAddEventHandler [ "LBSelChanged",
 
     private _Datensatz = [];
 
-    _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry)] call FUNC(dynamischerDatensatz);
+    _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
-    _kosten ctrlSetText format["$:%1", _Datensatz select 6];  
+    _kosten ctrlSetText format["$:%1", _Datensatz select 10];  
 
-    systemChat format ["Konfig box%1: D:%2 K:%3",3,_Datensatz,(_Datensatz select 6)];
+    systemChat format ["Konfig box%1: D:%2 K:%3",3,_Datensatz,(_Datensatz select 10)];
 }];
 
 _IDD_box4 ctrlAddEventHandler [ "LBSelChanged", 
@@ -689,11 +691,11 @@ _IDD_box4 ctrlAddEventHandler [ "LBSelChanged",
 
     private _Datensatz = [];
 
-    _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry)] call FUNC(dynamischerDatensatz);
+    _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
-    _kosten ctrlSetText format["$:%1", _Datensatz select 6];  
+    _kosten ctrlSetText format["$:%1", _Datensatz select 10];  
 
-    systemChat format ["Konfig box%1: D:%2 K:%3",4,_Datensatz,(_Datensatz select 6)];
+    systemChat format ["Konfig box%1: D:%2 K:%3",4,_Datensatz,(_Datensatz select 10)];
 }];
 
 _IDD_box5 ctrlAddEventHandler [ "LBSelChanged", 
@@ -703,11 +705,11 @@ _IDD_box5 ctrlAddEventHandler [ "LBSelChanged",
 
     private _Datensatz = [];
 
-    _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry)] call FUNC(dynamischerDatensatz);
+    _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
-    _kosten ctrlSetText format["$:%1", _Datensatz select 6];  
+    _kosten ctrlSetText format["$:%1", _Datensatz select 10];  
 
-    systemChat format ["Konfig box%1: D:%2 K:%3",5,_Datensatz,(_Datensatz select 6)];
+    systemChat format ["Konfig box%1: D:%2 K:%3",5,_Datensatz,(_Datensatz select 10)];
 }];
 
 _IDD_box6 ctrlAddEventHandler [ "LBSelChanged", 
@@ -717,11 +719,11 @@ _IDD_box6 ctrlAddEventHandler [ "LBSelChanged",
 
     private _Datensatz = [];
 
-    _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry)] call FUNC(dynamischerDatensatz);
+    _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
-    _kosten ctrlSetText format["$:%1", _Datensatz select 6];  
+    _kosten ctrlSetText format["$:%1", _Datensatz select 10];  
 
-    systemChat format ["Konfig box%1: D:%2 K:%3",6,_Datensatz,(_Datensatz select 6)];
+    systemChat format ["Konfig box%1: D:%2 K:%3",6,_Datensatz,(_Datensatz select 10)];
 }];
 
 _IDD_box7 ctrlAddEventHandler [ "LBSelChanged", 
@@ -731,11 +733,11 @@ _IDD_box7 ctrlAddEventHandler [ "LBSelChanged",
 
     private _Datensatz = [];
 
-    _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry)] call FUNC(dynamischerDatensatz);
+    _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
-    _kosten ctrlSetText format["$:%1", _Datensatz select 6];  
+    _kosten ctrlSetText format["$:%1", _Datensatz select 10];  
 
-    systemChat format ["Konfig box%1: D:%2 K:%3",7,_Datensatz,(_Datensatz select 6)];
+    systemChat format ["Konfig box%1: D:%2 K:%3",7,_Datensatz,(_Datensatz select 10)];
 }];
 
 // Kauf Konfig ausführen  
@@ -744,16 +746,74 @@ _IDD_vehKonfigOrder ctrlAddEventHandler [ "ButtonClick",
     private _display = findDisplay IDD_DLG_KONFIG;
 
     private _Datensatz = [];
+    private _Gesamtkosten = 0;
 
-    _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry)] call FUNC(dynamischerDatensatz);
+    _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
+    systemChat format ["Konfig D:%1 M:%2",_Datensatz,GVAR(Modus)];
+   
     if (GVAR(Modus) == "New") then  
 	{
-        [_Datensatz,GVAR(orderPAD),GVAR(moveInVeh)] call FUNC(order);
-    };
+        _Gesamtkosten = [_Datensatz,GVAR(orderPAD),GVAR(moveInVeh),GVAR(unitCost)] call FUNC(order);
+		
+		[Name Player, playerside, GVAR(vehType), _Gesamtkosten, "-"] call opt_common_fnc_updateBudget;
 
+    }
+	else
+	{
+        private _class = _Datensatz select 0;
+
+        if (_veh isKindOf "Air") then 
+	    {
+            private _airGunweapon = _Datensatz select 1;
+            private _airGunmagazin = _Datensatz select 2;
+            private _airRaktenweapon = _Datensatz select 3;
+            private _airRaktenmagazin = _Datensatz select 4;
+            private _vehWeapon = [];
+            private _vehMagazin = [];
+        }
+        else
+        {
+            private _airGunweapon = [];
+            private _airGunmagazin = [];
+            private _airRaktenweapon = [];
+            private _airRaktenmagazin = [];
+            private _vehWeapon = _Datensatz select 5;
+            private _vehMagazin = _Datensatz select 6;
+
+        };
+
+        private _pylon = _Datensatz select 7;
+        private _raketencontrol = _Datensatz select 8;
+        private _zusatz = _Datensatz select 9;
+        private _waffenkosten = _Datensatz select 10;
+
+		[GVAR(veh),
+		_airRaktenweapon,
+		_airRaktenmagazin,
+		_airGunweapon,
+		_airGunmagazin,
+		_vehWeapon,
+		_vehMagazin,
+		_pylon,
+		_raketencontrol,
+		_zusatz,
+		GVAR(weaponsVeh),
+		GVAR(magazineVeh)] call FUNC(arm);			
+		
+		if ((_waffenkosten) > 0) then 
+		{                
+			[Name Player, playerSide, GVAR(vehType), (GVAR(VorhandeneBewaffnunggeld) - _waffenkosten), "+", "weapons"] call opt_common_fnc_updateBudget;
+        } 
+		else 
+		{
+			[Name Player, playerSide, GVAR(vehType), ((GVAR(VorhandeneBewaffnunggeld) - _waffenkosten) * (-1)), "-", "weapons"] call opt_common_fnc_updateBudget;
+		};
+		
+	};
+	
     systemChat format ["Konfig OK: D:%1",_Datensatz];
-
+	
     closeDialog 0;
 }];
 
