@@ -652,8 +652,6 @@ _IDD_box1 ctrlAddEventHandler [ "LBSelChanged",
     
     _kosten ctrlSetText format["$:%1", _Datensatz select 10];  
 
-    systemChat format ["Konfig box%1: D:%2 K:%3",1,_Datensatz,(_Datensatz select 10)];
-
 }];
 
 _IDD_box2 ctrlAddEventHandler [ "LBSelChanged", 
@@ -667,7 +665,6 @@ _IDD_box2 ctrlAddEventHandler [ "LBSelChanged",
     
     _kosten ctrlSetText format["$:%1", _Datensatz select 10];  
 
-    systemChat format ["Konfig box%1: D:%2 K:%3",2,_Datensatz,(_Datensatz select 10)];
 }];
 
 _IDD_box3 ctrlAddEventHandler [ "LBSelChanged", 
@@ -681,7 +678,6 @@ _IDD_box3 ctrlAddEventHandler [ "LBSelChanged",
     
     _kosten ctrlSetText format["$:%1", _Datensatz select 10];  
 
-    systemChat format ["Konfig box%1: D:%2 K:%3",3,_Datensatz,(_Datensatz select 10)];
 }];
 
 _IDD_box4 ctrlAddEventHandler [ "LBSelChanged", 
@@ -695,7 +691,6 @@ _IDD_box4 ctrlAddEventHandler [ "LBSelChanged",
     
     _kosten ctrlSetText format["$:%1", _Datensatz select 10];  
 
-    systemChat format ["Konfig box%1: D:%2 K:%3",4,_Datensatz,(_Datensatz select 10)];
 }];
 
 _IDD_box5 ctrlAddEventHandler [ "LBSelChanged", 
@@ -709,7 +704,6 @@ _IDD_box5 ctrlAddEventHandler [ "LBSelChanged",
     
     _kosten ctrlSetText format["$:%1", _Datensatz select 10];  
 
-    systemChat format ["Konfig box%1: D:%2 K:%3",5,_Datensatz,(_Datensatz select 10)];
 }];
 
 _IDD_box6 ctrlAddEventHandler [ "LBSelChanged", 
@@ -723,7 +717,6 @@ _IDD_box6 ctrlAddEventHandler [ "LBSelChanged",
     
     _kosten ctrlSetText format["$:%1", _Datensatz select 10];  
 
-    systemChat format ["Konfig box%1: D:%2 K:%3",6,_Datensatz,(_Datensatz select 10)];
 }];
 
 _IDD_box7 ctrlAddEventHandler [ "LBSelChanged", 
@@ -736,8 +729,7 @@ _IDD_box7 ctrlAddEventHandler [ "LBSelChanged",
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
     _kosten ctrlSetText format["$:%1", _Datensatz select 10];  
-
-    systemChat format ["Konfig box%1: D:%2 K:%3",7,_Datensatz,(_Datensatz select 10)];
+    
 }];
 
 // Kauf Konfig ausführen  
@@ -756,7 +748,7 @@ _IDD_vehKonfigOrder ctrlAddEventHandler [ "ButtonClick",
 	{
         _Gesamtkosten = [_Datensatz,GVAR(orderPAD),GVAR(moveInVeh),GVAR(unitCost)] call FUNC(order);
 		
-		[Name Player, playerside, GVAR(vehType), _Gesamtkosten, "-"] call opt_common_fnc_updateBudget;
+		//[Name Player, playerside, GVAR(vehType), _Gesamtkosten, "-"] call opt_common_fnc_updateBudget;
 
     }
 	else

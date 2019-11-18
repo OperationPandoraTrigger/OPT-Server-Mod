@@ -360,8 +360,6 @@ else
 
 };
 
-systemChat format ["DD: bgw:%1 bgm:%2 brw:%3 brm:%4 vw:%5 vm:%6 B:%7",_buygunweapon,_buygunmagazine,_buyrakweapon,_buyrakmagazine,_vehWeapon,_vehMagazin,(_veh isKindOf "Air")];
- 
 _Datensatz append [_veh];
 _Datensatz pushBack _buygunweapon;
 _Datensatz pushBack _buygunmagazine;

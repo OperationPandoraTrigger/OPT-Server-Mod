@@ -376,7 +376,7 @@ _auswertungLoadout pushBack _raketencontrol;
 _auswertungLoadout pushBack _Zusatz;
 _auswertungLoadout append [_kosten];
 
-systemChat format ["Loadout:%1",_auswertungLoadout];
+systemChat format ["Load:%1",_auswertungLoadout];
 
 _auswertungLoadout
 

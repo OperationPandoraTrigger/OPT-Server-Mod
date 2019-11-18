@@ -52,7 +52,6 @@ DUMP("Successfully loaded the OPT/Shop module on the client");
 
 		_id = _eventArgs call FUNC(einlesenInKonfigDialog);
 
-		systemChat format["konfig :%1",_eventArgs];
 	},
 	[]
 	

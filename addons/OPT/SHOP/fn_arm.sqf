@@ -42,8 +42,6 @@ params
     ["_magazinold", []]
 ];
 
-systemChat format ["arm: VW:%1 VM:%2",_vehWeaponNew ,_vehMagazinNew];
-
 //Datalink ausrüsten
 if ((_zusatz select 2) == 1) then 
 {
