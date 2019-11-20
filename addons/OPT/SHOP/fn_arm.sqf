@@ -147,6 +147,8 @@ else
     };
 };
 
+systemChat format ["Arm W:%1 M:%2 V:%3",_vehMagazinNew,_vehWeaponNew,_veh];
+
  
     
   

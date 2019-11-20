@@ -366,15 +366,18 @@ private _magazineVehArryNew=[];
 
 if (GVAR(Modus) == "old") then 
 {
-    _waffenMagazinArry = [_veh] call FUNC(filter);	
+    // Boxanzeige ausblenden
+    _padBox ctrlShow false;
 
-    GVAR(weaponsVeh) =_waffenMagazinArry select 0;
-    GVAR(magazineVeh) = _waffenMagazinArry select 1;
-        
+    // Vorhandenen Bewaffnung Filtern
+    _waffenMagazinArry = [GVAR(veh)] call FUNC(filter);	
+
     //Festellung Bewaffnung
-    _magazineVehArryNew = [_veh] call FUNC(auslesenMagazine);
+    GVAR(weaponsVeh) =_waffenMagazinArry select 0;
+    GVAR(magazineVeh) = _waffenMagazinArry select 1;      
+    _magazineVehArryNew = [GVAR(veh)] call FUNC(auslesenMagazine);
         
-    // Darstellung Magazine
+    // Darstellung Magazine im Dialog
     private _magazineVehCount = count _magazineVehArryNew; 
 
     if (_magazineVehCount > 0) then 
@@ -383,7 +386,7 @@ if (GVAR(Modus) == "old") then
     private _MuniKugel = "\A3\Weapons_F\Data\UI\m_200rnd_65x39_yellow_ca.paa";
     private _MuniRakete = "\A3\Weapons_F_beta\Launchers\titan\Data\UI\gear_titan_missile_atl_CA.paa";
 
-        if (_veh isKindOf "Air") then 
+        if (GVAR(veh) isKindOf "Air") then 
         {
             {
                 if (getNumber (configFile >> "cfgMagazines" >> (_x select 0) >> "count") > 30) then 
@@ -402,7 +405,7 @@ if (GVAR(Modus) == "old") then
         } 
         else 
         {
-            for "_i" from 1 to (count _magazineVeh) do 
+            _magazineVehArryNew apply 
             {
             _anzeige pushBack _MuniKugel;  
             };  
@@ -426,13 +429,13 @@ if (GVAR(Modus) == "old") then
         {
             //Bild
             call compile format["_MuniBild%1 = _anzeige select (_i - 1);", _i];
-            call compile format["(_IDD_muniBild1 + _i) ctrlSetText  _MuniBild%1;", _i];
-            (_IDD_muniBild1 + _i) ctrlShow  true;
+            call compile format["_IDD_muniBild%1 ctrlSetText  _MuniBild%1;", _i];
+            call compile format["_IDD_muniBild%1 ctrlShow  true;", _i];
 
             //Text    
             call compile format["_Munitext%1 = getText (configFile >> 'cfgMagazines' >> ((_magazineVehArryNew select (_i - 1)) select 0) >> 'displayName')", _i];
-            call compile format["(_IDD_muniText1 + _i) ctrlSetText _Munitext%1;", _i];
-            (_IDD_muniText1 + _i) ctrlShow true;
+            call compile format["_IDD_muniText%1 ctrlSetText _Munitext%1;", _i];
+            call compile format["_IDD_muniText%1 ctrlShow true;", _i];      
         };        
     };
 };    
@@ -442,8 +445,6 @@ _IDD_vehDisplayIcon ctrlSetText _vehDisplayIcon;
 
 //Preis vorhandene Bewaffnung
 GVAR(VorhandeneBewaffnunggeld) = 0;
-
-systemChat format ["Konfig V:%1 S:%2 B:%3",GVAR(vehType),GVAR(side),(GVAR(side) isEqualTo civilian)];
 
 if (GVAR(side) isEqualTo civilian) then 
 {
@@ -477,7 +478,7 @@ else
         } 
 		else 
 		{
-          _heli = GVAR(Gunhelieast);
+            _heli = GVAR(Gunhelieast);
 
         };
 
@@ -650,7 +651,7 @@ _IDD_box1 ctrlAddEventHandler [ "LBSelChanged",
 
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
-    _kosten ctrlSetText format["$:%1", _Datensatz select 10];  
+    _kosten ctrlSetText format["$:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10))];  
 
 }];
 
@@ -663,7 +664,7 @@ _IDD_box2 ctrlAddEventHandler [ "LBSelChanged",
 
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
-    _kosten ctrlSetText format["$:%1", _Datensatz select 10];  
+    _kosten ctrlSetText format["$:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10))]; 
 
 }];
 
@@ -676,7 +677,7 @@ _IDD_box3 ctrlAddEventHandler [ "LBSelChanged",
 
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
-    _kosten ctrlSetText format["$:%1", _Datensatz select 10];  
+    _kosten ctrlSetText format["$:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10))]; 
 
 }];
 
@@ -689,7 +690,7 @@ _IDD_box4 ctrlAddEventHandler [ "LBSelChanged",
 
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
-    _kosten ctrlSetText format["$:%1", _Datensatz select 10];  
+    _kosten ctrlSetText format["$:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10))];  
 
 }];
 
@@ -702,7 +703,7 @@ _IDD_box5 ctrlAddEventHandler [ "LBSelChanged",
 
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
-    _kosten ctrlSetText format["$:%1", _Datensatz select 10];  
+    _kosten ctrlSetText format["$:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10))]; 
 
 }];
 
@@ -715,7 +716,7 @@ _IDD_box6 ctrlAddEventHandler [ "LBSelChanged",
 
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
-    _kosten ctrlSetText format["$:%1", _Datensatz select 10];  
+    _kosten ctrlSetText format["$:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10))];  
 
 }];
 
@@ -728,7 +729,7 @@ _IDD_box7 ctrlAddEventHandler [ "LBSelChanged",
 
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
-    _kosten ctrlSetText format["$:%1", _Datensatz select 10];  
+    _kosten ctrlSetText format["$:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10))];  
     
 }];
 
@@ -741,37 +742,39 @@ _IDD_vehKonfigOrder ctrlAddEventHandler [ "ButtonClick",
     private _Gesamtkosten = 0;
 
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
-    
-    systemChat format ["Konfig D:%1 M:%2",_Datensatz,GVAR(Modus)];
-   
+       
     if (GVAR(Modus) == "New") then  
 	{
         _Gesamtkosten = [_Datensatz,GVAR(orderPAD),GVAR(moveInVeh),GVAR(unitCost)] call FUNC(order);
 		
-		//[Name Player, playerside, GVAR(vehType), _Gesamtkosten, "-"] call opt_common_fnc_updateBudget;
-
     }
 	else
 	{
         private _class = _Datensatz select 0;
+        private _airGunweapon = [];
+        private _airGunmagazin = [];
+        private _airRaktenweapon = [];
+        private _airRaktenmagazin = [];
+        private _vehWeapon = [];
+        private _vehMagazin = [];
 
-        if (_veh isKindOf "Air") then 
+        if (GVAR(veh) isKindOf "Air") then 
 	    {
-            private _airGunweapon = _Datensatz select 1;
-            private _airGunmagazin = _Datensatz select 2;
-            private _airRaktenweapon = _Datensatz select 3;
-            private _airRaktenmagazin = _Datensatz select 4;
-            private _vehWeapon = [];
-            private _vehMagazin = [];
+            _airGunweapon = _Datensatz select 1;
+            _airGunmagazin = _Datensatz select 2;
+            _airRaktenweapon = _Datensatz select 3;
+            _airRaktenmagazin = _Datensatz select 4;
+            _vehWeapon = [];
+            _vehMagazin = [];
         }
         else
         {
-            private _airGunweapon = [];
-            private _airGunmagazin = [];
-            private _airRaktenweapon = [];
-            private _airRaktenmagazin = [];
-            private _vehWeapon = _Datensatz select 5;
-            private _vehMagazin = _Datensatz select 6;
+            _airGunweapon = [];
+            _airGunmagazin = [];
+            _airRaktenweapon = [];
+            _airRaktenmagazin = [];
+            _vehWeapon = _Datensatz select 5;
+            _vehMagazin = _Datensatz select 6;
 
         };
 
@@ -793,7 +796,7 @@ _IDD_vehKonfigOrder ctrlAddEventHandler [ "ButtonClick",
 		GVAR(weaponsVeh),
 		GVAR(magazineVeh)] call FUNC(arm);			
 		
-		if ((_waffenkosten) > 0) then 
+		if ((GVAR(VorhandeneBewaffnunggeld) - _waffenkosten) > 0) then 
 		{                
 			[Name Player, playerSide, GVAR(vehType), (GVAR(VorhandeneBewaffnunggeld) - _waffenkosten), "+", "weapons"] call opt_common_fnc_updateBudget;
         } 
@@ -804,7 +807,7 @@ _IDD_vehKonfigOrder ctrlAddEventHandler [ "ButtonClick",
 		
 	};
 	
-    systemChat format ["Konfig OK: D:%1",_Datensatz];
+    systemChat format ["Konfig OK: D:%1 K:%2",_Datensatz,(GVAR(VorhandeneBewaffnunggeld) - _waffenkosten)];
 	
     closeDialog 0;
 }];

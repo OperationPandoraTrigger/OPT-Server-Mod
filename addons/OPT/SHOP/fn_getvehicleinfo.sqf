@@ -112,8 +112,14 @@ if (_class isKindOf "AllVehicles" and !(_class isKindOf "StaticWeapon")) then
     private _weapons = [];
     private _weaponsClass = getArray(configFile >> "cfgVehicles" >> _class >> "weapons");
 
+    // Array Bereinigung
     _weaponsClass deleteAt (_weaponsClass find "TruckHorn");
 	_weaponsClass deleteAt (_weaponsClass find "SportCarHorn");
+    _weaponsClass deleteAt (_weaponsClass find "SmokeLauncher");
+    _weaponsClass deleteAt (_weaponsClass find "MiniCarHorn");
+    _weaponsClass deleteAt (_weaponsClass find "TruckHorn3");
+    _weaponsClass deleteAt (_weaponsClass find "TruckHorn2");
+    _weaponsClass deleteAt (_weaponsClass find "CarHorn");
     
     if (count _weaponsClass == 0) then 
     {
@@ -122,9 +128,7 @@ if (_class isKindOf "AllVehicles" and !(_class isKindOf "StaticWeapon")) then
         _weaponsClass append (_Datensatz select 3);
         _weaponsClass append (_Datensatz select 5);
     };  
-
-    systemChat format ["Get W:%1",_weaponsClass];
-    
+  
     {
         private _name = getText (configFile >> "cfgWeapons" >> _x >> "displayName");
         _weapons pushBack _name;

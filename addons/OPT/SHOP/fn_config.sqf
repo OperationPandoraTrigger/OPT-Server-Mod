@@ -648,7 +648,7 @@ GVAR(gorgonLoadout) = [[], [3, 12, 13], [0, 0], [0]];
 GVAR(kamyshLoadout) = [[], [3, 14, 15], [0, 0], [0]]; 
 GVAR(tigrisLoadout) = [[], [20, 22], [0, 0], [0]];
 GVAR(varsukLoadout) = [[], [3, 33, 34, 35], [0, 0], [0]];
-GVAR(sochoLoadout) = [[], [40,40], [0, 0], [0]];
+GVAR(sochorLoadout) = [[], [40,40], [0, 0], [0]];
 
 
 
@@ -715,12 +715,14 @@ AusruestungBoxWest8
 
 GVAR(pad_sea_west) =
 [
-
+SeaBoxWest1,
+SeaBoxWest2
 ];
 
 GVAR(pad_sea_east) =
 [
-
+SeaBoxEast1,
+SeaBoxEast2
 ];
 
 GVAR(pad_all_west) = GVAR(pad_veh_west) +

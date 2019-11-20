@@ -66,6 +66,12 @@ private _veh = createVehicle [_class, (position _box), [], 0, "NONE"];
 _veh setdir getdir _box;
 _veh setpos getpos _box;
 
+//check Box liegt im Wasser
+if ((surfaceIsWater (position _box)) and (_veh isKindOf "Ship")) then 
+{
+    _veh setPos [(position _box select 0),(position _box select 1), 0.2]; 
+};
+
 //Fahrzeug bewaffnen
 if (((count _airRaktenmagazin) > 0) or 
     ((count _airGunmagazin) > 0) or 

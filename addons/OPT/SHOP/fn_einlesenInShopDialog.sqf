@@ -30,7 +30,8 @@
 #include "fn_config.sqf";
 
 //Typ einlesen
-params [
+params 
+[
     ["_type", ""]
 ];
 
@@ -44,20 +45,6 @@ GVAR(pads) = [];
 
 switch (GVAR(vehicleType)) do 
 {
-    case "vehicles" : 
-	{
-        if (_side == west) then 
-		{
-           _pool = GVAR(nato_vehicles) + GVAR(nato_vehicles_supply);
-           GVAR(pads) = GVAR(pad_veh_west);
-        } 
-		else 
-		{
-            _pool = GVAR(csat_vehicles) + GVAR(csat_vehicles_supply);
-            GVAR(pads) = GVAR(pad_veh_east);
-        };
-
-    };
 	case "choppers" : 
 	{
         if (_side == west) then 
@@ -72,16 +59,16 @@ switch (GVAR(vehicleType)) do
         };
         
     };
-	case "armored" : 
+	case "vehicles" : 
 	{
         if (_side == west) then 
 		{
-            _pool = GVAR(nato_armored);
+            _pool = GVAR(nato_armored) + GVAR(nato_vehicles) + GVAR(nato_vehicles_supply);
             GVAR(pads) = GVAR(pad_veh_west);
         } 
 		else 
 		{
-            _pool = GVAR(csat_armored);
+            _pool = GVAR(csat_armored) + GVAR(csat_vehicles) + GVAR(csat_vehicles_supply);
             GVAR(pads) = GVAR(pad_veh_east);
         };
         
@@ -207,7 +194,7 @@ GVAR(idPadCheckShop) = [{
    
     // check der Pads ob belegt
     {
-	    private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], 5];
+	    private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], 4];
             
         if (count _ob == 0) then 
         {
@@ -232,7 +219,7 @@ GVAR(idPadCheckShop) = [{
 
 }, 1] call CFUNC(addPerFrameHandler);
 
-if (count GVAR(orderDialogObjects) == 0) then 
+if (_type == "sell") then 
 {
     //Kaufbutton/Konfigbutton ausblenden
     _order ctrlShow false;
