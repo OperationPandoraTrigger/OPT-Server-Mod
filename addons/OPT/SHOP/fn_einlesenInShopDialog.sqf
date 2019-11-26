@@ -44,6 +44,9 @@ private _pool = [];
 GVAR(pads) = [];
 GVAR(moveInVeh) = false;
 
+//Dialog erstellen
+private _success = createDialog "Dialogshopkaufen"; 
+
 //Dialog definieren
 #define IDD_DLG_ORDER 20000
 #define IDC_PLAYER_FLAG 20102
@@ -149,9 +152,6 @@ _pool = _pool select {_x select 1 > 0};
 
 // Objekte Sortieren 
 GVAR(orderDialogObjects) = [_pool, 1] call CBA_fnc_sortNestedArray; // billigste zuerst
-
-//Dialog erstellen
-private _success = createDialog "Dialogshopkaufen"; 
 
 //Boxen füllen
 // Budget 
