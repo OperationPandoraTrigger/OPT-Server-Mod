@@ -42,6 +42,29 @@ private _side = playerside;
 GVAR(vehicleType) = _type;
 private _pool = [];
 GVAR(pads) = [];
+GVAR(moveInVeh) = false;
+
+//Dialog definieren
+#define IDD_DLG_ORDER 20000
+#define IDC_PLAYER_FLAG 20102
+#define IDC_CTRL_VEHICLE_LIST 20002
+#define IDC_CTRL_PRICE_LIST 20003
+
+private _display = findDisplay IDD_DLG_ORDER;
+private _listbox_vehicles = _display displayCtrl IDC_CTRL_VEHICLE_LIST;
+private _budget = _display displayCtrl 20001;
+private _order = _display displayCtrl 20004;
+private _close = _display displayCtrl 20008;
+private _sell = _display displayCtrl 20005;
+private _remove = _display displayCtrl 20006;
+private _konfig = _display displayCtrl 20007;
+private _rscPicture = _display displayCtrl IDC_PLAYER_FLAG;
+private _padBox = _display displayCtrl 20009;
+private _moveInVeh = _display displayCtrl 20010;
+
+_order ctrlEnable false;
+_sell ctrlShow false;
+_moveInVeh ctrlSetTextColor [0.0, 1.0, 0.0, 1];
 
 switch (GVAR(vehicleType)) do 
 {
@@ -57,6 +80,7 @@ switch (GVAR(vehicleType)) do
             _pool = GVAR(csat_choppers);
             GVAR(pads) = GVAR(pad_air_east);
         };
+        GVAR(moveInVeh) = true;
         
     };
 	case "vehicles" : 
@@ -71,6 +95,7 @@ switch (GVAR(vehicleType)) do
             _pool = GVAR(csat_armored) + GVAR(csat_vehicles) + GVAR(csat_vehicles_supply);
             GVAR(pads) = GVAR(pad_veh_east);
         };
+        GVAR(moveInVeh) = true;
         
     };
 	case "supplies" : 
@@ -85,6 +110,8 @@ switch (GVAR(vehicleType)) do
             _pool = GVAR(csat_supplies) + GVAR(csat_static);
             GVAR(pads) = GVAR(pad_sup_east);
         };
+        GVAR(moveInVeh) = false;
+        _moveInVeh ctrlShow false;
         
     };
 	case "sea" : 
@@ -99,6 +126,7 @@ switch (GVAR(vehicleType)) do
             _pool = GVAR(csat_sea);
             GVAR(pads) = GVAR(pad_sea_east);
         };
+        GVAR(moveInVeh) = true;
         
     };
     default 
@@ -122,29 +150,8 @@ _pool = _pool select {_x select 1 > 0};
 // Objekte Sortieren 
 GVAR(orderDialogObjects) = [_pool, 1] call CBA_fnc_sortNestedArray; // billigste zuerst
 
-//Dialog erstellen und definieren
+//Dialog erstellen
 private _success = createDialog "Dialogshopkaufen"; 
-
-#define IDD_DLG_ORDER 20000
-#define IDC_PLAYER_FLAG 20102
-#define IDC_CTRL_VEHICLE_LIST 20002
-#define IDC_CTRL_PRICE_LIST 20003
-
-private _display = findDisplay IDD_DLG_ORDER;
-private _listbox_vehicles = _display displayCtrl IDC_CTRL_VEHICLE_LIST;
-private _budget = _display displayCtrl 20001;
-private _order = _display displayCtrl 20004;
-private _close = _display displayCtrl 20008;
-private _sell = _display displayCtrl 20005;
-private _remove = _display displayCtrl 20006;
-private _konfig = _display displayCtrl 20007;
-private _rscPicture = _display displayCtrl IDC_PLAYER_FLAG;
-private _padBox = _display displayCtrl 20009;
-private _moveInVeh = _display displayCtrl 20010;
-
-_order ctrlEnable false;
-_sell ctrlShow false;
-_moveInVeh ctrlSetTextColor [0.0, 1.0, 0.0, 1];
 
 //Boxen füllen
 // Budget 
@@ -180,8 +187,6 @@ switch (_side) do
         _rscPicture ctrlSetText "\A3\Data_F\Flags\Flag_CSAT_CO.paa";
     };   
 };
-
-GVAR(moveInVeh) = true;
 
 GVAR(orderPAD) = [];
 
