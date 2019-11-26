@@ -831,7 +831,7 @@ GVAR(idPadCheckKonfig) = [{
     };  
 
     // Kaufbuttuon Freischalten und erstes Pad zuordnen
-    if ((count _freiePads) > 0) then 
+    if (((count _freiePads) > 0) and (GVAR(Modus) == "New")) then 
         {
             _IDD_vehKonfigOrder ctrlEnable true;
             GVAR(orderPAD) = _freiePads select 0;
