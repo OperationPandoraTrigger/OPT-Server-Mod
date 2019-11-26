@@ -361,10 +361,10 @@ else
 };
 
 _Datensatz append [_veh];
-_Datensatz pushBack _buygunweapon;
-_Datensatz pushBack _buygunmagazine;
 _Datensatz pushBack _buyrakweapon;
 _Datensatz pushBack _buyrakmagazine;
+_Datensatz pushBack _buygunweapon;
+_Datensatz pushBack _buygunmagazine;
 _Datensatz pushBack _vehWeapon;
 _Datensatz pushBack _vehMagazin;
 _Datensatz pushBack _pylon;
