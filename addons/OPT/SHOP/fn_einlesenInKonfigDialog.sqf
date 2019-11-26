@@ -760,10 +760,10 @@ _IDD_vehKonfigOrder ctrlAddEventHandler [ "ButtonClick",
 
         if (GVAR(veh) isKindOf "Air") then 
 	    {
-            _airGunweapon = _Datensatz select 1;
-            _airGunmagazin = _Datensatz select 2;
-            _airRaktenweapon = _Datensatz select 3;
-            _airRaktenmagazin = _Datensatz select 4;
+            _airRaktenweapon = _Datensatz select 1;
+            _airRaktenmagazin = _Datensatz select 2;
+            _airGunweapon = _Datensatz select 3;
+            _airGunmagazin = _Datensatz select 4;
             _vehWeapon = [];
             _vehMagazin = [];
         }
