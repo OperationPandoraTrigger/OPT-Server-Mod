@@ -40,6 +40,7 @@ class CfgCLibModules {
             FNC(auslesenMagazine);
             FNC(geldVorhandeneBewaffnung);
             FNC(dynamischerDatensatz);
+            FNC(deletevehicle);
         };
     };
 };
