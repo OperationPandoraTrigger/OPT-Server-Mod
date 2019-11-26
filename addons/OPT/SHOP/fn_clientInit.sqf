@@ -267,7 +267,7 @@ if (hasInterface) then
 
 	[("<t color=""#F60707"">" + ("Luftwaffe") + "</t>"), 
 	east_shop_air, 20, 
-	{!(serverTime >= GVAR(MissionStartTime))}, 
+	{true}, 
 	{[EVENT_SHOP_KAUF_ONLOAD,["choppers"]] call CFUNC(localEvent);}, 
 	[
     "priority", 0,
@@ -278,7 +278,7 @@ if (hasInterface) then
 
 	[("<t color=""#F60707"">" + ("Luftwaffe") + "</t>"), 
 	west_shop_air, 20, 
-	{!(serverTime >= GVAR(MissionStartTime))}, 
+	{true}, 
 	{[EVENT_SHOP_KAUF_ONLOAD,["choppers"]] call CFUNC(localEvent);}, 
 	[
     "priority", 0,
@@ -289,7 +289,7 @@ if (hasInterface) then
 
 	[("<t color=""#F60707"">" + ("Fahrzeuge") + "</t>"), 
 	east_shop_veh, 20, 
-	{!(serverTime >= GVAR(MissionStartTime))}, 
+	{true}, 
 	{[EVENT_SHOP_KAUF_ONLOAD,["vehicles"]] call CFUNC(localEvent);}, 
 	[
     "priority", 0,
@@ -300,7 +300,7 @@ if (hasInterface) then
 
 	[("<t color=""#F60707"">" + ("Fahrzeuge") + "</t>"), 
 	west_shop_veh, 20, 
-	{!(serverTime >= GVAR(MissionStartTime))}, 
+	{true}, 
 	{[EVENT_SHOP_KAUF_ONLOAD,["vehicles"]] call CFUNC(localEvent);}, 
 	[
     "priority", 0,
@@ -311,7 +311,7 @@ if (hasInterface) then
 
 	[("<t color=""#F60707"">" + ("Ausrüstung") + "</t>"), 
 	east_shop_sup, 20, 
-	{!(serverTime >= GVAR(MissionStartTime))}, 
+	{true}, 
 	{[EVENT_SHOP_KAUF_ONLOAD,["supplies"]] call CFUNC(localEvent);}, 
 	[
     "priority", 0,
@@ -322,7 +322,7 @@ if (hasInterface) then
 
 	[("<t color=""#F60707"">" + ("Ausrüstung") + "</t>"), 
 	west_shop_sup, 20, 
-	{!(serverTime >= GVAR(MissionStartTime))}, 
+	{true}, 
 	{[EVENT_SHOP_KAUF_ONLOAD,["supplies"]] call CFUNC(localEvent);}, 
 	[
     "priority", 0,
@@ -333,7 +333,7 @@ if (hasInterface) then
 
 	[("<t color=""#F60707"">" + ("Wasserfahrzeuge") + "</t>"), 
 	east_shop_sea, 20, 
-	{!(serverTime >= GVAR(MissionStartTime))}, 
+	{true}, 
 	{[EVENT_SHOP_KAUF_ONLOAD,["sea"]] call CFUNC(localEvent);}, 
 	[
     "priority", 0,
@@ -344,7 +344,7 @@ if (hasInterface) then
 
 	[("<t color=""#F60707"">" + ("Wasserfahrzeuge") + "</t>"), 
 	west_shop_sea, 20, 
-	{!(serverTime >= GVAR(MissionStartTime))}, 
+	{true}, 
 	{[EVENT_SHOP_KAUF_ONLOAD,["sea"]] call CFUNC(localEvent);}, 
 	[
     "priority", 0,
