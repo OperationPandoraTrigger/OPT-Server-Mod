@@ -29,7 +29,7 @@
 params 
 [
     ["_class", ""],
-    ["_veh" , objNull]
+    ["_nr" , 0]
 ];
 
 private _return = "";
@@ -40,6 +40,7 @@ private _Datensatz = [];
 private _magazineVehArryNew=[];
 private _bewaffnungpreis = 0;
 private _side = civilian;
+private _sellveh = "";
 
 if (_class in (GVAR(vehClassWestWW))) then 
 {
@@ -56,12 +57,12 @@ switch (GVAR(vehicleType)) do
     case "sell": 
     {
     _price = [_class] call FUNC(getPrice);
-    _magazineVehArryNew = [_veh] call FUNC(auslesenMagazine);
+    _sellveh = GVAR(sellVeh) select _nr;
+    _magazineVehArryNew = [_sellveh] call FUNC(auslesenMagazine);
     _bewaffnungpreis = [_side, _magazineVehArryNew] call FUNC(geldVorhandeneBewaffnung);   
     _preis = Format ["%1/%2", _price,_bewaffnungpreis];
     _priceTxt = "Gutschrift";
-
-    };
+   };
 
     default 
     {
@@ -124,9 +125,14 @@ if (_class isKindOf "AllVehicles" and !(_class isKindOf "StaticWeapon")) then
     if (count _weaponsClass == 0) then 
     {
         _weaponsClass = [];
-        _weaponsClass append (_Datensatz select 1);
-        _weaponsClass append (_Datensatz select 3);
-        _weaponsClass append (_Datensatz select 5);
+        
+         if (count _Datensatz > 0) then 
+        {
+            _weaponsClass append (_Datensatz select 1);
+            _weaponsClass append (_Datensatz select 3);
+            _weaponsClass append (_Datensatz select 5);
+        };
+
     };  
   
     {

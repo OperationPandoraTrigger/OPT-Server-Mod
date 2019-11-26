@@ -102,6 +102,4 @@ _kosten = _unitCost + _waffenkosten;
 
 [Name Player, playerSide, typeOf _veh, _kosten, "-"] call opt_common_fnc_updateBudget;
 
-systemChat format ["order:D:%1 B:%2 M:%3 V:%4 K:%5",_Datensatz,_box,_moveInVeh,typeOf _veh,_kosten];
-
 _kosten

@@ -104,7 +104,7 @@ _Munitext4 ctrlEnable false;
 _Munitext5 ctrlEnable false;
 _Munitext6 ctrlEnable false;
 
-_kosten ctrlSetText "$:0";
+_kosten ctrlSetText "€:0";
 
 GVAR(veh) = "";
 
@@ -449,7 +449,7 @@ GVAR(VorhandeneBewaffnunggeld) = 0;
 if (GVAR(side) isEqualTo civilian) then 
 {
     //Box7 füllen
-    private _index =_IDD_box7 lbAdd format ["Datalink $%1", GVAR(preisDatalink)];    
+    private _index =_IDD_box7 lbAdd format ["Datalink €%1", GVAR(preisDatalink)];    
     _index =_IDD_box7 lbAdd "Leer";    
 
     _IDD_box_text7 ctrlSetText "Datalink";
@@ -484,10 +484,10 @@ else
 
         {
             _index =_IDD_box1 lbAdd 	
-            format["%1 $%2", _heli select _x select 4, _heli select _x select 3];
+            format["%1 €%2", _heli select _x select 4, _heli select _x select 3];
 
             _index =_IDD_box2 lbAdd 
-            format["%1 $%2", _heli select _x select 4, _heli select _x select 3];
+            format["%1 €%2", _heli select _x select 4, _heli select _x select 3];
 
         } forEach (GVAR(boxArry) select 1);     
 
@@ -512,10 +512,10 @@ else
 
         {
             _index =_IDD_box3 lbAdd 
-            format["%1 $%2", _heli select _x select 4, _heli select _x select 3];
+            format["%1 €%2", _heli select _x select 4, _heli select _x select 3];
 
             _index =_IDD_box4 lbAdd 
-            format["%1 $%2", _heli select _x select 4, _heli select _x select 3];
+            format["%1 €%2", _heli select _x select 4, _heli select _x select 3];
 
         } forEach (GVAR(boxArry) select 0);
 
@@ -530,10 +530,10 @@ else
 		{
             {
                 _index =_IDD_box5 lbAdd 
-                format["%1 $%2", _heli select _x select 4, _heli select _x select 3];
+                format["%1 €%2", _heli select _x select 4, _heli select _x select 3];
 
                 _index =_IDD_box6 lbAdd 
-                format["%1 $%2", _heli select _x select 4, _heli select _x select 3];
+                format["%1 €%2", _heli select _x select 4, _heli select _x select 3];
 
             } forEach (GVAR(boxArry) select 0);
 
@@ -562,10 +562,10 @@ else
 
         {
             _index =_IDD_box1 lbAdd 
-            format["%1 $%2", _vehSelect select _x select 4,_vehSelect select _x select 3];
+            format["%1 €%2", _vehSelect select _x select 4,_vehSelect select _x select 3];
 
             _index =_IDD_box2 lbAdd 
-            format["%1 $%2", _vehSelect select _x select 4, _vehSelect select _x select 3];
+            format["%1 €%2", _vehSelect select _x select 4, _vehSelect select _x select 3];
 
         } forEach (GVAR(boxArry) select 1);
         
@@ -591,10 +591,10 @@ else
 
         {
             _index =_IDD_box3 lbAdd 
-            format["%1 $%2", _vehSelect select _x select 4, _vehSelect select _x select 3];
+            format["%1 €%2", _vehSelect select _x select 4, _vehSelect select _x select 3];
 
             _index =_IDD_box4 lbAdd 
-            format["%1 $%2", _vehSelect select _x select 4, _vehSelect select _x select 3];
+            format["%1 €%2", _vehSelect select _x select 4, _vehSelect select _x select 3];
 
         } forEach (GVAR(boxArry) select 1);
 
@@ -608,7 +608,7 @@ else
         if (_draht > 0) then 
 		{    
             _index =_IDD_box5 lbAdd  
-            format ["Drahtkäfig $%1", GVAR(preisDrahtkafig)];
+            format ["Drahtkäfig €%1", GVAR(preisDrahtkafig)];
 
             _index =_IDD_box5 lbAdd "Leer";
 
@@ -619,7 +619,7 @@ else
         if (_tarnung > 0) then 
 		{
             _index =_IDD_box6 lbAdd 
-			format ["Tarnung $%1", GVAR(preisTarnung)];
+			format ["Tarnung €%1", GVAR(preisTarnung)];
 
             _index =_IDD_box6 lbAdd "Leer";    
 
@@ -631,14 +631,14 @@ else
     if (_datalink > 0) then  
 	{
         _index =_IDD_box7 lbAdd 
-        format ["Datalink $%1", GVAR(preisDatalink)];  
+        format ["Datalink €%1", GVAR(preisDatalink)];  
 
         _index =_IDD_box7 lbAdd "Leer"; 
            
         _IDD_box_text7 ctrlSetText "Datalink";
     };
 	
-    _kosten ctrlSetText format["$:%1", GVAR(VorhandeneBewaffnunggeld)];	
+    _kosten ctrlSetText format["€:%1", GVAR(VorhandeneBewaffnunggeld)];	
 };   
 
 //InfoBox Erneuern bei änderung
@@ -651,7 +651,7 @@ _IDD_box1 ctrlAddEventHandler [ "LBSelChanged",
 
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
-    _kosten ctrlSetText format["$:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10))];  
+    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10))];  
 
 }];
 
@@ -664,7 +664,7 @@ _IDD_box2 ctrlAddEventHandler [ "LBSelChanged",
 
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
-    _kosten ctrlSetText format["$:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10))]; 
+    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10))]; 
 
 }];
 
@@ -677,7 +677,7 @@ _IDD_box3 ctrlAddEventHandler [ "LBSelChanged",
 
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
-    _kosten ctrlSetText format["$:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10))]; 
+    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10))]; 
 
 }];
 
@@ -690,7 +690,7 @@ _IDD_box4 ctrlAddEventHandler [ "LBSelChanged",
 
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
-    _kosten ctrlSetText format["$:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10))];  
+    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10))];  
 
 }];
 
@@ -703,7 +703,7 @@ _IDD_box5 ctrlAddEventHandler [ "LBSelChanged",
 
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
-    _kosten ctrlSetText format["$:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10))]; 
+    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10))]; 
 
 }];
 
@@ -716,7 +716,7 @@ _IDD_box6 ctrlAddEventHandler [ "LBSelChanged",
 
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
-    _kosten ctrlSetText format["$:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10))];  
+    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10))];  
 
 }];
 
@@ -729,7 +729,7 @@ _IDD_box7 ctrlAddEventHandler [ "LBSelChanged",
 
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
-    _kosten ctrlSetText format["$:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10))];  
+    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10))];  
     
 }];
 
@@ -807,8 +807,6 @@ _IDD_vehKonfigOrder ctrlAddEventHandler [ "ButtonClick",
 		
 	};
 	
-    systemChat format ["Konfig OK: D:%1 K:%2",_Datensatz,(GVAR(VorhandeneBewaffnunggeld) - _waffenkosten)];
-	
     closeDialog 0;
 }];
 
@@ -821,6 +819,7 @@ GVAR(idPadCheckKonfig) = [{
     private _padBox = _display displayCtrl 22018;
    
     // check der Pads ob belegt
+    GVAR(pads) apply
     {
 	    private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], 5];
             
@@ -829,7 +828,7 @@ GVAR(idPadCheckKonfig) = [{
             _freiePads append [_x]; 
         };       
 
-    } foreach GVAR(pads);  
+    };  
 
     // Kaufbuttuon Freischalten und erstes Pad zuordnen
     if ((count _freiePads) > 0) then 

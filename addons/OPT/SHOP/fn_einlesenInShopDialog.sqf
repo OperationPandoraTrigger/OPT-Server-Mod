@@ -136,6 +136,7 @@ private _budget = _display displayCtrl 20001;
 private _order = _display displayCtrl 20004;
 private _close = _display displayCtrl 20008;
 private _sell = _display displayCtrl 20005;
+private _remove = _display displayCtrl 20006;
 private _konfig = _display displayCtrl 20007;
 private _rscPicture = _display displayCtrl IDC_PLAYER_FLAG;
 private _padBox = _display displayCtrl 20009;
@@ -193,7 +194,7 @@ GVAR(idPadCheckShop) = [{
     private _padBox = _display displayCtrl 20009;
    
     // check der Pads ob belegt
-    {
+    GVAR(pads) apply {
 	    private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], 4];
             
         if (count _ob == 0) then 
@@ -201,7 +202,7 @@ GVAR(idPadCheckShop) = [{
             _freiePads append [_x]; 
         };       
 
-    } foreach GVAR(pads);  
+    };  
 
     // Kaufbuttuon Freischalten und erstes Pad zuordnen
     if ((count _freiePads) > 0) then 
@@ -235,29 +236,31 @@ if (_type == "sell") then
     //Fahrzeug Speicher, Fahrzeuge auf den Pad
     GVAR(sellVeh) = [];
 
+    //Räumen Button Ausblenden
+    _remove ctrlShow false;
+
 	// im Falle des Verkaufsbuttons -> Liste aller gefundenen Fahrzeuge
 	// alle Objekte Fahrzeuge die auf allen Pads gefunden wurden
 
     private _objs = [];
-    systemChat format ["sell:P:%1",GVAR(pads)]; 
 
-	{
-	    private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], 5];
+	GVAR(pads) apply 
+    {
+	    private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], 4];
 
-        if (_ob != 0) then 
-            {
+        if ((count _ob) != 0) then 
+        {
 
-            _objs pushBack _ob; 
+            _objs append _ob; 
 
-            };  
-        systemChat format ["sell:O:%1 obs:%2",_ob,_objs];    
-
-    } foreach GVAR(pads);   
+        };   
+    };   
  
 	// Gehe alle gefundenen Objekte durch und lösche sie, falls nicht in pool, oder ergänze um Verkaufspreis
-	{
+	_objs apply 
+    {
 		
-        _index = ((GVAR(all) apply {toLower (_x select 0)}) find (toLower (typeOf _x)));
+        private _index = ((GVAR(all) apply {toLower (_x select 0)}) find (toLower (typeOf _x)));
 
         if (_index == -1) then 
         {
@@ -267,12 +270,10 @@ if (_type == "sell") then
         else 
         {
             _pool pushBack [_x, (GVAR(all) select _index) select 2, (GVAR(all) select _index) select 3]; // füge Fahrzeug und Verkaufspreis hinzu
-            GVAR(sellVeh) pushBack [_x];
+            GVAR(sellVeh) append [_x];
         };
 
-	} foreach _objs;
-
-    systemChat format ["sell:O:%1 SV:%2",_objs,GVAR(sellVeh)];
+	};
   
     // Anzeige Objekte die mehr wert sind als 0€
     _pool = _pool select {_x select 2 > 0};
@@ -300,9 +301,7 @@ if (_type == "sell") then
         _listbox_vehicles lbSetPicture [_forEachIndex, _picture];
 
     } foreach GVAR(vehiclesToSell);
-
- systemChat format ["sell:P:%1 B:%2 Po:%3 V:%4",GVAR(pads),_objs,_pool,GVAR(vehiclesToSell)];
-   
+  
 };
 
 // Button Listbox Events 
@@ -337,8 +336,6 @@ _konfig ctrlAddEventHandler [ "ButtonClick",
 	private _unitRecord = GVAR(orderDialogObjects) select _sel_class;
     private _class = _listbox_vehicles lbData _sel_class;
 	private _unitCost = _unitRecord select 1;
-
-    systemChat format ["C:%1 K:%2",_class,_unitCost];
 
     closeDialog 0;
 
@@ -379,16 +376,7 @@ _listbox_vehicles ctrlAddEventHandler [ "LBSelChanged",
     private _sel_class = lbCurSel _listbox_vehicles;
     private _class = _listbox_vehicles lbData _sel_class;
 
-    if (GVAR(vehicleType) == "sell") then 
-    {
-        private _sellveh = GVAR(sellVeh) select _sel_class;
-    }
-    else
-    {
-        private _sellveh = objNull;    
-    };    
-
-    _editbox_info ctrlSetStructuredText parseText ([_class,_sellveh] call FUNC(getVehicleInfo));
+    _editbox_info ctrlSetStructuredText parseText ([_class,_sel_class] call FUNC(getVehicleInfo));
 
     // Budget 
     [_budget] call opt_common_fnc_renderbudget;
@@ -396,4 +384,59 @@ _listbox_vehicles ctrlAddEventHandler [ "LBSelChanged",
 }];
 
 
+// Verkaufs Ausführen
+_sell ctrlAddEventHandler [ "ButtonClick", 
+{
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _listbox_vehicles = _display displayCtrl IDC_CTRL_VEHICLE_LIST;
+    private _editbox_info = _display displayCtrl IDC_CTRL_PRICE_LIST;
+    private _budget = _display displayCtrl 20001;
 
+    private _sel_class = lbCurSel _listbox_vehicles;
+    private _class = _listbox_vehicles lbData _sel_class;
+
+    private _price = 0;
+    private _magazineVehArryNew=[];
+    private _bewaffnungpreis = 0;
+    private _side = civilian;
+    private _sellveh = "";
+    private _gutschrift = 0;
+
+    if (_class in (GVAR(vehClassWestWW))) then 
+    {
+        _side = west;
+    };    
+
+    if (_class in (GVAR(vehClassEastWW))) then 
+    {
+        _side = east;
+    };   
+
+    _price = [_class] call FUNC(getPrice);
+    _sellveh = GVAR(sellVeh) select _sel_class;
+    _magazineVehArryNew = [_sellveh] call FUNC(auslesenMagazine);
+    _bewaffnungpreis = [_side, _magazineVehArryNew] call FUNC(geldVorhandeneBewaffnung);   
+    _gutschrift = _price + _bewaffnungpreis;
+
+    [Name Player, playerSide, typeOf _sellveh, _gutschrift, "+"] call opt_common_fnc_updateBudget;
+
+    //Fahrzeug löschen
+    deleteVehicle _sellveh;
+
+    // Update Geldanzeige
+    [_budget] call opt_common_fnc_renderbudget;
+
+    // lösche Option aus Verkaufsmenü!
+    _listbox_vehicles lbDelete _sel_class;
+
+    // lösche Fahrzeug aus vehicleToSell!
+    GVAR(sellVeh) deleteAt _sel_class;
+
+}];
+
+// Fahrzeuge auf allen Boxen im Bereich löschen 
+_remove ctrlAddEventHandler [ "ButtonClick", 
+{
+    [GVAR(pads)] call FUNC(deletevehicle);
+
+}];
