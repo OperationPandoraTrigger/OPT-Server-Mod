@@ -62,15 +62,20 @@ _zusatz = _Datensatz select 9;
 _waffenkosten = _Datensatz select 10;
 
 //Fahrzeug erstellen
+private _heightOffset = 0.1;
+
 private _veh = createVehicle [_class, (position _box), [], 0, "NONE"];
+private _posi = getPosASL _box vectorAdd [0, 0, _heightOffset];
 _veh setdir getdir _box;
-_veh setpos getpos _box;
+_veh setPosASL _posi;
 
 //check Box liegt im Wasser
 if ((surfaceIsWater (position _box)) and (_veh isKindOf "Ship")) then 
 {
     _veh setPos [(position _box select 0),(position _box select 1), 0.2]; 
 };
+
+_veh setDamage 0;
 
 //Fahrzeug bewaffnen
 if (((count _airRaktenmagazin) > 0) or 
