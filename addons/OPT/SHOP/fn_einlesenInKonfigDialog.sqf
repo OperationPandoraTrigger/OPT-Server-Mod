@@ -151,99 +151,176 @@ if (GVAR(vehType) in (GVAR(vehclasswestWW) + GVAR(vehclasseastWW))) then
         case "OPT4_B_Heli_Light_01_armed_F": 
 		{
             GVAR(boxArry) = GVAR(Pawnee);
-            GVAR(side) = west;
-            GVAR(pylon) = ["pylonleft1", "pylonright1"];
+             GVAR(side) = west;
+             GVAR(pylon) = ["pylonleft1", "pylonright1"];
 			_loadouts = GVAR(Pawneeloadout);
         };
         case "OPT4_B_Heli_light_03_green_F": 
 		{
             GVAR(boxArry) = GVAR(hellcat1);
-            GVAR(side) = west;
-            GVAR(pylon) = ["pylonleft1", "pylonright1"];
+             GVAR(side) = west;
+             GVAR(pylon) = ["pylonleft1", "pylonright1"];
 			_loadouts = GVAR(hellcat1loadout);
         }; 
         case "OPT4_B_Heli_Attack_01_F": 
 		{
             GVAR(boxArry) = GVAR(Blackfoot);
-            GVAR(side) = west;
-            GVAR(pylon) = ["pylonleft1","pylonleft3","pylonright1","pylonright3"];
+             GVAR(side) = west;
+             GVAR(pylon) = ["pylonleft1","pylonleft3","pylonright1","pylonright3"];
 			_loadouts = GVAR(Blackfootloadout);
         };
         case "OPT4_B_MRAP_01_hmg_F": 
 		{
             GVAR(boxArry) = GVAR(HunterHMG);
-            GVAR(side) = west;
-            GVAR(pylon) = [];
+             GVAR(side) = west;
+             GVAR(pylon) = [];
 			_loadouts = GVAR(HunterHMGloadout);
         };
         case "OPT4_B_MRAP_01_gmg_F": 
 		{
             GVAR(boxArry) = GVAR(HunterGMG);
-            GVAR(side) = west;
-            GVAR(pylon) = [];
+             GVAR(side) = west;
+             GVAR(pylon) = [];
 			_loadouts = GVAR(HunterGMGloadout);
         };
         case "OPT4_B_MRAP_03_gmg_F": 
 		{
             GVAR(boxArry) = GVAR(StriderGMG);
-            GVAR(side) = west;
-            GVAR(pylon) = [];
+             GVAR(side) = west;
+             GVAR(pylon) = [];
 			_loadouts = GVAR(StriderGMGloadout);
         };
         case "OPT_B_T_LSV_01_armed_F": 
 		{
             GVAR(boxArry) = GVAR(ProwlerHMG);
-            GVAR(side) = west;
-            GVAR(pylon) = [];
+             GVAR(side) = west;
+             GVAR(pylon) = [];
 			_loadouts = GVAR(ProwlerHMGloadout);
         };
         case "OPT4_B_LSV_01_AT_F": 
 		{
             GVAR(boxArry) = GVAR(ProwlerAT);
-            GVAR(side) = west;
-            GVAR(pylon) = [];
+             GVAR(side) = west;
+             GVAR(pylon) = [];
 			_loadouts = GVAR(ProwlerATloadout);
         };
         case "OPT4_B_APC_Tracked_01_rcws_F": 
 		{
             GVAR(boxArry) = GVAR(Panther);
-            GVAR(side) = west;
-            GVAR(pylon) = [];
+             GVAR(side) = west;
+             GVAR(pylon) = [];
 			_loadouts = GVAR(Pantherloadout);
         };
         case "OPT4_B_APC_Wheeled_01_cannon_F": 
 		{
             GVAR(boxArry) = GVAR(Marshall);
-            GVAR(side) = west;
-            GVAR(pylon) = [];
+             GVAR(side) = west;
+             GVAR(pylon) = [];
 			_loadouts = GVAR(Marshallloadout);
         };
         case "OPT4_B_APC_tracked_03_cannon_F": 
 		{
             GVAR(boxArry) = GVAR(Mora);
-            GVAR(side) = west;
-            GVAR(pylon) = [];
+             GVAR(side) = west;
+             GVAR(pylon) = [];
 			_loadouts = GVAR(Moraloadout);
         };
         case "OPT4_B_APC_Tracked_01_AA_F": 
 		{
             GVAR(boxArry) = GVAR(Cheetah);
-            GVAR(side) = west;
-            GVAR(pylon) = [];
+             GVAR(side) = west;
+             GVAR(pylon) = [];
 			_loadouts = GVAR(Cheetahloadout);
         };
         case "OPT4_B_MBT_01_TUSK_F": 
 		{
             GVAR(boxArry) = GVAR(SlammerUp);
-            GVAR(side) = west;
-            GVAR(pylon) = [];
+             GVAR(side) = west;
+             GVAR(pylon) = [];
 			_loadouts = GVAR(SlammerUploadout);
         };    
         case "OPT4_B_MBT_01_arty_F": 
 		{
             GVAR(boxArry) = GVAR(Scorcher);
-            GVAR(side) = west;
-            GVAR(pylon) = [];
+             GVAR(side) = west;
+             GVAR(pylon) = [];
+			_loadouts = GVAR(Scorcherloadout);
+        }; 
+		case "OPT4_B_MRAP_01_hmg_ghex_F": 
+		{
+            GVAR(boxArry) = GVAR(HunterHMG);
+             GVAR(side) = west;
+             GVAR(pylon) = [];
+			_loadouts = GVAR(HunterHMGloadout);
+        };
+        case "OPT4_B_MRAP_01_gmg_ghex_F": 
+		{
+            GVAR(boxArry) = GVAR(HunterGMG);
+             GVAR(side) = west;
+             GVAR(pylon) = [];
+			_loadouts = GVAR(HunterGMGloadout);
+        };
+        case "OPT4_B_MRAP_03_gmg_ghex_F": 
+		{
+            GVAR(boxArry) = GVAR(StriderGMG);
+             GVAR(side) = west;
+             GVAR(pylon) = [];
+			_loadouts = GVAR(StriderGMGloadout);
+        };
+        case "OPT_B_T_LSV_01_armed_ghex_F": 
+		{
+            GVAR(boxArry) = GVAR(ProwlerHMG);
+             GVAR(side) = west;
+             GVAR(pylon) = [];
+			_loadouts = GVAR(ProwlerHMGloadout);
+        };
+        case "OPT4_B_LSV_01_AT_ghex_F": 
+		{
+            GVAR(boxArry) = GVAR(ProwlerAT);
+             GVAR(side) = west;
+             GVAR(pylon) = [];
+			_loadouts = GVAR(ProwlerATloadout);
+        };
+        case "OPT4_B_APC_Tracked_01_rcws_ghex_F": 
+		{
+            GVAR(boxArry) = GVAR(Panther);
+             GVAR(side) = west;
+             GVAR(pylon) = [];
+			_loadouts = GVAR(Pantherloadout);
+        };
+        case "OPT4_B_APC_Wheeled_01_cannon_ghex_F": 
+		{
+            GVAR(boxArry) = GVAR(Marshall);
+             GVAR(side) = west;
+             GVAR(pylon) = [];
+			_loadouts = GVAR(Marshallloadout);
+        };
+        case "OPT4_B_APC_tracked_03_cannon_ghex_F": 
+		{
+            GVAR(boxArry) = GVAR(Mora);
+             GVAR(side) = west;
+             GVAR(pylon) = [];
+			_loadouts = GVAR(Moraloadout);
+        };
+        case "OPT4_B_APC_Tracked_01_AA_ghex_F": 
+		{
+            GVAR(boxArry) = GVAR(Cheetah);
+             GVAR(side) = west;
+             GVAR(pylon) = [];
+			_loadouts = GVAR(Cheetahloadout);
+        };
+        case "OPT4_B_MBT_01_TUSK_ghex_F": 
+		{
+            GVAR(boxArry) = GVAR(SlammerUp);
+             GVAR(side) = west;
+             GVAR(pylon) = [];
+			_loadouts = GVAR(SlammerUploadout);
+        };    
+        case "OPT4_B_MBT_01_arty_ghex_F": 
+		{
+            GVAR(boxArry) = GVAR(Scorcher);
+             GVAR(side) = west;
+             GVAR(pylon) = [];
 			_loadouts = GVAR(Scorcherloadout);
         }; 
         
@@ -251,101 +328,164 @@ if (GVAR(vehType) in (GVAR(vehclasswestWW) + GVAR(vehclasseastWW))) then
         case "OPT4_O_Heli_Light_02_F": 
 		{
             GVAR(boxArry) = GVAR(Orca);
-            GVAR(side) = east;
-            GVAR(pylon) = ["pylonleft1", "pylonright1"];
+             GVAR(side) = east;
+             GVAR(pylon) = ["pylonleft1", "pylonright1"];
 			_loadouts = GVAR(Orcaloadout);
         };
         case "OPT4_O_Heli_Attack_02_F": 
 		{
             GVAR(boxArry) = GVAR(Kajman);
-            GVAR(side) = east;
-            GVAR(pylon) = ["pylonleft1","pylonleft2","pylonright1","pylonright2"];
+             GVAR(side) = east;
+             GVAR(pylon) = ["pylonleft1","pylonleft2","pylonright1","pylonright2"];
 			_loadouts = GVAR(Kajmanloadout);
         };  
         case "OPT4_O_Heli_light_03_green_F": 
 		{
             GVAR(boxArry) = GVAR(hellcat);
-            GVAR(side) = east;
-            GVAR(pylon) = ["pylonleft1","pylonright1"];
+             GVAR(side) = east;
+             GVAR(pylon) = ["pylonleft1","pylonright1"];
 			_loadouts = GVAR(hellcatloadout);
         }; 			
         case "OPT4_O_MRAP_02_hmg_F": 
 		{
             GVAR(boxArry) = GVAR(irifHMG);
-            GVAR(side) = east;
-            GVAR(pylon) = [];
+             GVAR(side) = east;
+             GVAR(pylon) = [];
 			_loadouts = GVAR(irifHMGloadout);
         };
         case "OPT4_O_MRAP_02_gmg_F": 
 		{
             GVAR(boxArry) = GVAR(irifGMG);
-            GVAR(side) = east;
-            GVAR(pylon) = [];
+             GVAR(side) = east;
+             GVAR(pylon) = [];
 			_loadouts = GVAR(irifGMGloadout);
         };
         case "OPT_O_T_LSV_02_armed_F": 
 		{
             GVAR(boxArry) = GVAR(QuilinHMG);
-            GVAR(side) = east;
-            GVAR(pylon) = [];
+             GVAR(side) = east;
+             GVAR(pylon) = [];
 			_loadouts = GVAR(QuilinHMGloadout);
         };
         case "OPT4_O_LSV_02_AT_F": 
 		{
             GVAR(boxArry) = GVAR(QuilinAT);
-            GVAR(side) = east;
-            GVAR(pylon) = [];
+             GVAR(side) = east;
+             GVAR(pylon) = [];
 			_loadouts = GVAR(QuilinATloadout);
         };
         case "OPT4_O_APC_Wheeled_02_rcws_F": 
 		{
             GVAR(boxArry) = GVAR(Marid);
-            GVAR(side) = east;
-            GVAR(pylon) = [];
+             GVAR(side) = east;
+             GVAR(pylon) = [];
 			_loadouts = GVAR(Maridloadout);
         };
         case "OPT4_O_APC_Wheeled_03_cannon_F": 
 		{
             GVAR(boxArry) = GVAR(Gorgon);
-            GVAR(side) = east;
-            GVAR(pylon) = [];
+             GVAR(side) = east;
+             GVAR(pylon) = [];
 			_loadouts = GVAR(Gorgonloadout);
         };
         case "OPT4_O_APC_Tracked_02_cannon_F": 
 		{
             GVAR(boxArry) = GVAR(Kamysh);
-            GVAR(side) = east;
-            GVAR(pylon) = [];
+             GVAR(side) = east;
+             GVAR(pylon) = [];
 			_loadouts = GVAR(Kamyshloadout);
         };
         case "OPT4_O_APC_Tracked_02_AA_F": 
 		{
             GVAR(boxArry) = GVAR(Tigris);
-            GVAR(side) = east;
-            GVAR(pylon) = [];
+             GVAR(side) = east;
+             GVAR(pylon) = [];
 			_loadouts = GVAR(Tigrisloadout);
         };    
         case "OPT4_O_MBT_02_cannon_F": 
 		{
             GVAR(boxArry) = GVAR(Varsuk);
-            GVAR(side) = east;
-            GVAR(pylon) = [];
+             GVAR(side) = east;
+             GVAR(pylon) = [];
 			_loadouts = GVAR(Varsukloadout);
         };
         case "OPT4_O_MBT_02_arty_F": 
 		{
             GVAR(boxArry) = GVAR(Sochor);
-            GVAR(side) = east;
-            GVAR(pylon) = [];
+             GVAR(side) = east;
+             GVAR(pylon) = [];
 			_loadouts = GVAR(Sochorloadout);
         }; 
+		case "OPT4_O_T_MRAP_02_hmg_ghex_F": 
+		{
+            GVAR(boxArry) = GVAR(irifHMG);
+             GVAR(side) = east;
+             GVAR(pylon) = [];
+			_loadouts = GVAR(irifHMGloadout);
+        };
+        case "OPT4_O_T_MRAP_02_gmg_ghex_F": 
+		{
+            GVAR(boxArry) = GVAR(irifGMG);
+             GVAR(side) = east;
+             GVAR(pylon) = [];
+			_loadouts = GVAR(irifGMGloadout);
+        };
+        case "OPT_O_T_LSV_02_armed_ghex_F": 
+		{
+            GVAR(boxArry) = GVAR(QuilinHMG);
+             GVAR(side) = east;
+             GVAR(pylon) = [];
+			_loadouts = GVAR(QuilinHMGloadout);
+        };
+        case "OPT4_O_LSV_02_AT_GHEX_F": 
+		{
+            GVAR(boxArry) = GVAR(QuilinAT);
+             GVAR(side) = east;
+             GVAR(pylon) = [];
+			_loadouts = GVAR(QuilinATloadout);
+        };
+        case "OPT4_O_T_APC_Wheeled_02_rcws_ghex_F": 
+		{
+            GVAR(boxArry) = GVAR(Marid);
+             GVAR(side) = east;
+             GVAR(pylon) = [];
+			_loadouts = GVAR(Maridloadout);
+        };
+        case "OPT4_O_APC_Wheeled_03_cannon_ghex_F": 
+		{
+            GVAR(boxArry) = GVAR(Gorgon);
+             GVAR(side) = east;
+             GVAR(pylon) = [];
+			_loadouts = GVAR(Gorgonloadout);
+        };
+        case "OPT4_O_T_APC_Tracked_02_cannon_ghex_F": 
+		{
+            GVAR(boxArry) = GVAR(Kamysh);
+             GVAR(side) = east;
+             GVAR(pylon) = [];
+			_loadouts = GVAR(Kamyshloadout);
+        };
+        case "OPT4_O_T_APC_Tracked_02_AA_ghex_F": 
+		{
+            GVAR(boxArry) = GVAR(Tigris);
+             GVAR(side) = east;
+             GVAR(pylon) = [];
+			_loadouts = GVAR(Tigrisloadout);
+        };    
+        case "OPT4_O_T_MBT_02_cannon_ghex_F": 
+		{
+            GVAR(boxArry) = GVAR(Varsuk);
+             GVAR(side) = east;
+             GVAR(pylon) = [];
+			_loadouts = GVAR(Varsukloadout);
+        };		
         case "OPT4_O_T_MBT_02_arty_ghex_F": 
 		{
             GVAR(boxArry) = GVAR(Sochor);
-            GVAR(side) = east;
-            GVAR(pylon) = [];
+             GVAR(side) = east;
+             GVAR(pylon) = [];
 			_loadouts = GVAR(Sochorloadout);
-        }; 
+        };
         
         default 
 		{
