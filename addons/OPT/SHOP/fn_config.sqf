@@ -204,7 +204,7 @@ GVAR(csat_choppers) =
     ["OPT_O_Heli_Light_01_F", DEF_PROD(60000)],                 // MH6
     ["OPT_O_Heli_Light_03_unarmed_F", DEF_PROD(0)],             // WY-55 Hellcat
     ["OPT4_O_Heli_light_03_F", DEF_PROD(0)],                    // WY-55 Hellcat
-    ["OPT_O_Heli_Light_02_unarmed_F", DEF_PROD(0)],             // PO-30 Orca
+    ["OPT_O_Heli_Light_02_unarmed_F", DEF_PROD(70000)],             // PO-30 Orca
     ["OPT4_O_Heli_Light_02_F", DEF_PROD(70000)],       			// PO-30 Orca
     ["OPT_O_Heli_Transport_04_covered_F", DEF_PROD(110000)],    // Mi-290 Taru (Transport)
 	["OPT_O_Heli_Transport_02_F", DEF_PROD(100000)],            // CH-49 Mohawk (Transport+Lift)
