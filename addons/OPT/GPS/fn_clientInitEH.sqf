@@ -56,21 +56,21 @@
     }, _currentPlayer] call CLib_fnc_execNextFrame;
 }] call CFUNC(addEventhandler);
 
-// ["Respawn", {
-//     DUMP("RESPAWN");
-//     DUMP(_this);
-//     params ["_data", "_params"];
-//     _data params ["_unit"];
-//     DUMP(_unit);
-//     DUMP(alive _unit);
-//     DUMP(alive CLib_Player);
-//     {
-//         DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
-//         [[_unit], QFUNC(addUnitToGPS), -2] call CFUNC(remoteExec); // Trigger everywhere except server
-//         DUMP("ICON ADDED BECAUSE RESPAWN: " + _iconId);
-//         DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
-//     } call CFUNC(execNextFrame);
-// }, [player]] call CFUNC(addEventhandler);
+["Respawn", {
+     DUMP("RESPAWN");
+     DUMP(_this);
+     params ["_data", "_params"];
+     _data params ["_unit"];
+     DUMP(_unit);
+     DUMP(alive _unit);
+     DUMP(alive CLib_Player);
+     {
+         DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
+         [[netid _unit], QFUNC(addUnitToGPS), -2] call CFUNC(remoteExec); // Trigger everywhere except server
+        DUMP("ICON ADDED BECAUSE RESPAWN: " + _iconId);
+        DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
+     } call CFUNC(execNextFrame);
+}] call CFUNC(addEventhandler);
 
 
 ["playerJoined", {
