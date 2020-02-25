@@ -69,14 +69,8 @@ if (hasInterface) then
 	//OPT Karten-Dialog Mini GPS offen
 	if (!(isNull (uiNamespace getVariable "opt_ui_gps_minimap"))) then
 	{
-		private _speedPlayer = speed Player;
+		private _speedPlayer = abs speed Player;
 		private _mapFocus = getpos Player;
-
-		if (_speedplayer < 0) then
-		{
-			_speedplayer = _speedplayer*(-1);
-		};
-
 		private _mapzoom = 0.05+(_speedplayer/1000); 
 
 		(uiNamespace getVariable "opt_ui_gps_minimap" displayCtrl 916) ctrlMapAnimAdd [0,_mapzoom, _mapFocus]; 
