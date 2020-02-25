@@ -27,9 +27,8 @@
 GVAR(MiniMapCount) = 0;
 GVAR(MiniMapCountOld) = 0;
 
-//Init Titel für setzen uiNamespace
-titleRsc ["opt_gps_minimap","plain"];
-titleFadeOut 0;
+//Init Titel für setzen uiNamespace "opt_ui_gps_minimap"
+uiNamespace setVariable ['opt_ui_gps_minimap', controlNull];
 
 //Kippstufe für ein/ausblenden der Mini GPS Karte
 DFUNC(Kippstufe) = 
@@ -39,7 +38,7 @@ DFUNC(Kippstufe) =
 
 	if (GVAR(MiniMapCount) != GVAR(MiniMapCountOld)) then
 	{
-		if (isNull (uiNamespace getVariable "opt_ui_gps_minimap")) then
+		if (isNull (uiNamespace getVariable ["opt_ui_gps_minimap", controlNull])) then
 		{
 			titleRsc ["opt_gps_minimap","plain"];
 		}
@@ -73,7 +72,7 @@ if (hasInterface) then
 
 [{
 	//OPT Karten-Dialog Mini GPS ist offen
-	if (!(isNull (uiNamespace getVariable "opt_ui_gps_minimap"))) then
+	if (!(isNull (uiNamespace getVariable ["opt_ui_gps_minimap", controlNull]))) then
 	{
 		private _speedPlayer = abs speed Player;
 		private _mapFocus = getpos Player;

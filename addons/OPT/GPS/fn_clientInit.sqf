@@ -23,7 +23,7 @@
 		};	
 
 		//OPT Karten-Dialog Mini GPS
-		if (!(isNull (uiNamespace getVariable "opt_ui_gps_minimap"))) then
+		if (!(isNull (uiNamespace getVariable ["opt_ui_gps_minimap", controlNull]))) then
 		{
 			((uiNamespace getVariable "opt_ui_gps_minimap") displayCtrl 916) call CFUNC(registerMapControl);
 		};
@@ -41,7 +41,7 @@
 		};	
 
         //BIS MINI GPS
-		if (!(isNull (uiNamespace getVariable "RscCustomInfoMiniMap"))) then
+		if (!(isNull (uiNamespace getVariable ["RscCustomInfoMiniMap", controlNull]))) then
 		{
 			((uiNamespace getVariable "RscCustomInfoMiniMap") displayCtrl 101) call CFUNC(registerMapControl);
 		};
