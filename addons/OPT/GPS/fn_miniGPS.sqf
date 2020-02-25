@@ -31,27 +31,12 @@ GVAR(MiniMapCountOld) = 0;
 titleRsc ["opt_gps_minimap","plain"];
 titleFadeOut 0;
 
-//Taste für ein/ausblenden des OPT Mini GPS
-if (hasInterface) then 
+//Kippstufe für ein/ausblenden der Mini GPS Karte
+DFUNC(Kippstufe) = 
 {
-    [
-        "OPT", 
-        "OPT Mini GPS Karte", 
-        ["OPT Mini GPS ein/ausblenden", "ein/ausblenden des OPT Mini GPS"], 
-        {
-        GVAR(MiniMapCount) = GVAR(MiniMapCount)+1;
-        }, 
-        {}, 
-        [
-            DIK_F3, 
-            [false, false, false] // [shift, ctrl, alt]
-        ]
-    ] call CBA_fnc_addKeybind;
 
-};
+	GVAR(MiniMapCount) = GVAR(MiniMapCount)+1;
 
-// Steuerung des MiniMap Controls
-[{
 	if (GVAR(MiniMapCount) != GVAR(MiniMapCountOld)) then
 	{
 		if (isNull (uiNamespace getVariable "opt_ui_gps_minimap")) then
@@ -65,8 +50,29 @@ if (hasInterface) then
 
 		GVAR(MiniMapCountOld) = GVAR(MiniMapCount);	
 	};
+};
 
-	//OPT Karten-Dialog Mini GPS offen
+//Taste für ein/ausblenden des OPT Mini GPS
+if (hasInterface) then 
+{
+    [
+        "OPT", 
+        "OPT Mini GPS Karte", 
+        ["OPT Mini GPS ein/ausblenden", "ein/ausblenden des OPT Mini GPS"], 
+        {
+        [] call FUNC(Kippstufe);
+        }, 
+        {}, 
+        [
+            DIK_F3, 
+            [false, false, false] // [shift, ctrl, alt]
+        ]
+    ] call CBA_fnc_addKeybind;
+
+};
+
+[{
+	//OPT Karten-Dialog Mini GPS ist offen
 	if (!(isNull (uiNamespace getVariable "opt_ui_gps_minimap"))) then
 	{
 		private _speedPlayer = abs speed Player;
