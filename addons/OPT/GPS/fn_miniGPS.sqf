@@ -40,6 +40,7 @@ DFUNC(Umschaltung) =
 	};
 };
 
+
 //Taste für ein/ausblenden des OPT Mini GPS
 if (hasInterface) then 
 {
