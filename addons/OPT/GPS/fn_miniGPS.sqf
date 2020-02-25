@@ -27,8 +27,8 @@
 //Init Titel für setzen uiNamespace "opt_ui_gps_minimap"
 uiNamespace setVariable ['opt_ui_gps_minimap', controlNull];
 
-//Kippstufe für ein/ausblenden der Mini GPS Karte
-DFUNC(Kippstufe) = 
+//Umschaltung für ein/ausblenden der Mini GPS Karte
+DFUNC(Umschaltung) = 
 {
 	if (isNull (uiNamespace getVariable ["opt_ui_gps_minimap", controlNull])) then
 	{
@@ -48,7 +48,7 @@ if (hasInterface) then
         "OPT Mini GPS Karte", 
         ["OPT Mini GPS ein/ausblenden", "ein/ausblenden des OPT Mini GPS"], 
         {
-        [] call FUNC(Kippstufe);
+        	[] call FUNC(Umschaltung);
         }, 
         {}, 
         [
