@@ -24,30 +24,19 @@
 
 #include "macros.hpp"
 
-GVAR(MiniMapCount) = 0;
-GVAR(MiniMapCountOld) = 0;
-
 //Init Titel für setzen uiNamespace "opt_ui_gps_minimap"
 uiNamespace setVariable ['opt_ui_gps_minimap', controlNull];
 
 //Kippstufe für ein/ausblenden der Mini GPS Karte
 DFUNC(Kippstufe) = 
 {
-
-	GVAR(MiniMapCount) = GVAR(MiniMapCount)+1;
-
-	if (GVAR(MiniMapCount) != GVAR(MiniMapCountOld)) then
+	if (isNull (uiNamespace getVariable ["opt_ui_gps_minimap", controlNull])) then
 	{
-		if (isNull (uiNamespace getVariable ["opt_ui_gps_minimap", controlNull])) then
-		{
-			titleRsc ["opt_gps_minimap","plain"];
-		}
-		else
-		{
-			titleFadeOut 0;
-		};
-
-		GVAR(MiniMapCountOld) = GVAR(MiniMapCount);	
+		titleRsc ["opt_gps_minimap","plain"];
+	}
+	else
+	{
+		titleFadeOut 0;
 	};
 };
 
