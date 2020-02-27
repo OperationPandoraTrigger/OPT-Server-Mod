@@ -22,6 +22,7 @@ class CfgCLibModules {
             FNC(clientinitEH);
             FNC(getUnitIconID);
             FNC(updateUnitIcon);
+            FNC(miniGPS);			
         };
     };
 };
