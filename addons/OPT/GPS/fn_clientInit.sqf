@@ -21,6 +21,12 @@
 		{
 			((findDisplay 444001) displayCtrl 10007) call CFUNC(registerMapControl);
 		};	
+
+		//OPT Karten-Dialog Mini GPS
+		if (!(isNull (uiNamespace getVariable ["opt_ui_gps_minimap", controlNull]))) then
+		{
+			((uiNamespace getVariable "opt_ui_gps_minimap") displayCtrl 916) call CFUNC(registerMapControl);
+		};
 		
 		//BIS Artillery Dialog
 		if (!(isNull ((findDisplay -1) displayCtrl 500))) then
@@ -35,7 +41,7 @@
 		};	
 
         //BIS MINI GPS
-		if (!(isNull (uiNamespace getVariable "RscCustomInfoMiniMap"))) then
+		if (!(isNull (uiNamespace getVariable ["RscCustomInfoMiniMap", controlNull]))) then
 		{
 			((uiNamespace getVariable "RscCustomInfoMiniMap") displayCtrl 101) call CFUNC(registerMapControl);
 		};
@@ -43,5 +49,7 @@
 
     }, 1] call CFUNC(addPerFrameHandler);
 
+	// MiniGPS Steuerung Init
+	[] call FUNC(miniGPS);
 
 }] call CFUNC(addEventhandler);
