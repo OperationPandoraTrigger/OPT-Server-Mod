@@ -48,6 +48,13 @@ DFUNC(revive) =
 			[player, GVAR(verletzter)] call ace_medical_treatment_fnc_fullHeal;
 			player switchmove "";
 			player action ["WeaponInHand", player];
+
+			//Var für GPS zurück setzen 
+			GVAR(verletzter) setVariable ["FAR_isUnconscious", 0, true];
+		 	GVAR(verletzter) setVariable ["FAR_isStabilized", 0, true];
+
+			//Schaden Ausblendung Ausschalten
+			GVAR(verletzter) allowDamage true;
 		},
 		{
 			player switchmove "";
