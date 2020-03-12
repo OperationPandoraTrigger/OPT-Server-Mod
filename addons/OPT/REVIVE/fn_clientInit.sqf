@@ -29,7 +29,9 @@
 #include "macros.hpp"
 
 //Init Werte
-GVAR(Helizeit) = 20;
+GVAR(Helizeiteigen) = 20;
+GVAR(Helizeitsani) = 20;
+GVAR(stabilisierungzeit) = 20;
 GVAR(Sani) = ["OPT_NATO_Sanitaeter","OPT_CSAT_Sanitaeter"];
 
 //Revive Funktion 
@@ -40,7 +42,7 @@ DFUNC(revive) =
 	player switchmove "AinvPknlMstpSnonWrflDnon_medic";
 
 	[
-		GVAR(Helizeit),
+		GVAR(Helizeitsani),
 		[],
 		{
 			[player, GVAR(verletzter)] call ace_medical_treatment_fnc_fullHeal;
@@ -58,6 +60,23 @@ DFUNC(revive) =
 // Stabilisieren Funktion 
 DFUNC(stabilisieren) = 
 {
+	GVAR(verletzter) = cursorTarget;
+
+	player switchmove "AinvPknlMstpSnonWrflDnon_medic";
+
+	[
+		GVAR(stabilisierungzeit),
+		[],
+		{
+			player switchmove "";
+			player action ["WeaponInHand", player];
+		},
+		{
+			player switchmove "";
+			player action ["WeaponInHand", player];
+		},
+		"Stabilisieren"
+	] call ace_common_fnc_progressBar;
 
 };
 
@@ -67,7 +86,7 @@ DFUNC(eigenversorgung) =
 	player switchmove "AinvPknlMstpSnonWrflDnon_medic";	
 
 	[
-		GVAR(Helizeit),
+		GVAR(Helizeiteigen),
 		[],
 		{
 			[player, player] call ace_medical_treatment_fnc_fullHeal;
