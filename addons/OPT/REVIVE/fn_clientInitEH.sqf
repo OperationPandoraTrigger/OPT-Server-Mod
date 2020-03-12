@@ -48,6 +48,7 @@
 ["Respawn", {
 
     {
+		[player, false, 1, true] call ace_medical_fnc_setUnconscious;
 		player setVariable ["FAR_isUnconscious", 0, true];
 		player setVariable ["FAR_isStabilized", 0, true];
 		player allowDamage true;

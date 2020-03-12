@@ -45,6 +45,7 @@ DFUNC(revive) =
 		GVAR(Helizeitsani),
 		[],
 		{
+			[GVAR(verletzter), false, 1, true] call ace_medical_fnc_setUnconscious;
 			[player, GVAR(verletzter)] call ace_medical_treatment_fnc_fullHeal;
 			player switchmove "";
 			player action ["WeaponInHand", player];
@@ -77,6 +78,13 @@ DFUNC(stabilisieren) =
 		{
 			player switchmove "";
 			player action ["WeaponInHand", player];
+
+			//Person bewustlos halten 
+			[player, GVAR(verletzter)] call ace_medical_treatment_fnc_fullHeal;
+			[GVAR(verletzter), true, 9000, true] call ace_medical_fnc_setUnconscious;
+
+			//Var "Person ist Stabilisiert" auf eins setzen
+			GVAR(verletzter) setVariable ["FAR_isStabilized", 1, true];
 		},
 		{
 			player switchmove "";
@@ -112,9 +120,38 @@ DFUNC(eigenversorgung) =
 ["missionStarted", {
 
 //ACE Interaktioneinträge 
-revive_Action_eigen = ["Erste Hilfe","Erste Hilfe","",{[] call FUNC(eigenversorgung)},{true},{}] call ace_interact_menu_fnc_createAction;
-revive_Action_fremd1 = ["Erste Hilfe","Stabilisieren","",{[] call FUNC(stabilisieren)},{(cursorTarget getVariable ["ACE_isUnconscious", false])},{}] call ace_interact_menu_fnc_createAction;
-revive_Action_fremd2 = ["Erste Hilfe","Wiederbeleben","",{[] call FUNC(revive)},{((cursorTarget getVariable ["ACE_isUnconscious", false]) and (typeOf player in GVAR(Sani)))},{}] call ace_interact_menu_fnc_createAction;
+revive_Action_eigen = 
+[
+	"Erste Hilfe",
+	"Erste Hilfe",
+	"",
+	{[] call FUNC(eigenversorgung)},
+	{true},
+	{}
+
+] call ace_interact_menu_fnc_createAction;
+
+revive_Action_fremd1 = 
+[
+	"Erste Hilfe",
+	"Stabilisieren",
+	"",
+	{[] call FUNC(stabilisieren)},
+	{(cursorTarget getVariable ["ACE_isUnconscious", false])},
+	{}
+
+] call ace_interact_menu_fnc_createAction;
+
+revive_Action_fremd2 = 
+[
+	"Erste Hilfe",
+	"Wiederbeleben",
+	"",
+	{[] call FUNC(revive)},
+	{((cursorTarget getVariable ["ACE_isUnconscious", false]) and (typeOf player in GVAR(Sani)))},
+	{}
+
+] call ace_interact_menu_fnc_createAction;
 
 [(typeOf player), 1, ["ACE_SelfActions"], revive_Action_eigen] call ace_interact_menu_fnc_addActionToClass;
 [player, 0, ["ACE_MainActions"],revive_Action_fremd1] call ace_interact_menu_fnc_addActionToObject;
