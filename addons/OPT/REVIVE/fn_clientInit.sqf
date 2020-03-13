@@ -152,7 +152,7 @@ revive_Action_fremd2 =
 	"Wiederbeleben",
 	"",
 	{[] call FUNC(revive)},
-	{((cursorTarget getVariable ["ACE_isUnconscious", false]) or (cursorTarget getVariable ["FAR_isStabilized", 1] == 1)) and (typeOf player in GVAR(Sani)))},
+	{(((cursorTarget getVariable ["ACE_isUnconscious", false]) or (cursorTarget getVariable ["FAR_isStabilized", 1] == 1)) and (typeOf player in GVAR(Sani)))},
 	{}
 
 ] call ace_interact_menu_fnc_createAction;

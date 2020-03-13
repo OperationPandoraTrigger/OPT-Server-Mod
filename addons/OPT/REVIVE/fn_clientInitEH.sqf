@@ -39,6 +39,16 @@
 
 		//Schaden weiterer abschalten
 		_unit allowDamage false;
+
+		//Einheit aus Fahrzeug endfernen
+		if (vehicle _unit != _unit) then 
+		{
+    		unAssignVehicle _unit;
+    		_unit action ["GetOut", vehicle _unit];
+		};
+
+		//Sprengladungen mit Todmanschalter zünden
+		[_unit] call ace_explosives_fnc_onIncapacitated;
 	};
 
 
