@@ -50,7 +50,7 @@ DFUNC(revive) =
 			player switchmove "";
 			player action ["WeaponInHand", player];
 
-			//Var für GPS zurück setzen 
+			//Var zurück setzen 
 			GVAR(verletzter) setVariable ["FAR_isUnconscious", 0, true];
 		 	GVAR(verletzter) setVariable ["FAR_isStabilized", 0, true];
 
@@ -119,6 +119,10 @@ DFUNC(eigenversorgung) =
 
 ["missionStarted", {
 
+// Var setzen 
+player setVariable ["FAR_isUnconscious", 0, true];
+player setVariable ["FAR_isStabilized", 0, true];
+
 //ACE Interaktioneinträge 
 revive_Action_eigen = 
 [
@@ -137,7 +141,7 @@ revive_Action_fremd1 =
 	"Stabilisieren",
 	"",
 	{[] call FUNC(stabilisieren)},
-	{(cursorTarget getVariable ["ACE_isUnconscious", false])},
+	{((cursorTarget getVariable ["ACE_isUnconscious", false]) and (cursorTarget getVariable ["FAR_isStabilized", 1] == 0))},
 	{}
 
 ] call ace_interact_menu_fnc_createAction;
@@ -148,7 +152,7 @@ revive_Action_fremd2 =
 	"Wiederbeleben",
 	"",
 	{[] call FUNC(revive)},
-	{((cursorTarget getVariable ["ACE_isUnconscious", false]) and (typeOf player in GVAR(Sani)))},
+	{((cursorTarget getVariable ["ACE_isUnconscious", false]) or (cursorTarget getVariable ["FAR_isStabilized", 1] == 1)) and (typeOf player in GVAR(Sani)))},
 	{}
 
 ] call ace_interact_menu_fnc_createAction;
