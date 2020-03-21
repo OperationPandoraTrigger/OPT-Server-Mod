@@ -56,6 +56,9 @@ DFUNC(revive) =
 
 			//Schaden Ausblendung Ausschalten
 			GVAR(verletzter) allowDamage true;
+
+			//Log Eintrag auslösen 
+			[[GVAR(verletzter),player,1], QFUNC(revivelog), 2] call CFUNC(remoteExec);
 		},
 		{
 			player switchmove "";
@@ -85,6 +88,9 @@ DFUNC(stabilisieren) =
 
 			//Var "Person ist Stabilisiert" auf eins setzen
 			GVAR(verletzter) setVariable ["FAR_isStabilized", 1, true];
+
+			//Log Eintrag auslösen 
+			[[GVAR(verletzter),player,2], QFUNC(revivelog), 2] call CFUNC(remoteExec);
 		},
 		{
 			player switchmove "";
