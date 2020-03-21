@@ -31,6 +31,8 @@ class CfgCLibModules {
             FNC(serverInit);
             FNC(clientinitCBASettings);
             FNC(clientinitEH);
+            FNC(revivelog);
+            FNC(dialog);
         };
     };
 };
