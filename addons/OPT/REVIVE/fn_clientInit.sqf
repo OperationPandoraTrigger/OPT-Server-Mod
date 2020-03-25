@@ -29,10 +29,7 @@
 #include "macros.hpp"
 
 //Init Werte
-GVAR(Helizeiteigen) = 20;
-GVAR(Helizeitsani) = 20;
-GVAR(stabilisierungzeit) = 20;
-GVAR(Sani) = ["OPT_NATO_Sanitaeter","OPT_CSAT_Sanitaeter"];
+GVAR(Sani) = ["OPT_NATO_Sanitaeter","OPT_CSAT_Sanitaeter","OPT_NATO_Sanitaeter_T","OPT_CSAT_Sanitaeter_T"];
 
 //Revive Funktion 
 DFUNC(revive) = 
@@ -129,6 +126,9 @@ DFUNC(eigenversorgung) =
 player setVariable ["FAR_isUnconscious", 0, true];
 player setVariable ["FAR_isStabilized", 0, true];
 
+//Chat abschaltung beiu bewustlosigkeit
+(findDisplay 46) displayAddEventHandler ["KeyDown", {_this call FUNC(keyUnbind)}];
+
 //ACE Interaktioneinträge 
 revive_Action_eigen = 
 [
@@ -168,6 +168,13 @@ revive_Action_fremd2 =
 [player, 0, ["ACE_MainActions"],revive_Action_fremd2] call ace_interact_menu_fnc_addActionToObject;
 
 //Test Einträge
+
+p1 setVariable ["FAR_isUnconscious", 0, true];
+p1 setVariable ["FAR_isStabilized", 0, true];
+
+p2 setVariable ["FAR_isUnconscious", 0, true];
+p2 setVariable ["FAR_isStabilized", 0, true];
+
 [p1, 0, ["ACE_MainActions"],revive_Action_fremd1] call ace_interact_menu_fnc_addActionToObject;
 
 [p2, 0, ["ACE_MainActions"],revive_Action_fremd1] call ace_interact_menu_fnc_addActionToObject;

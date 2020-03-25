@@ -61,7 +61,7 @@ switch (_art) do
 			side _retter
 		];
 
-		["REVIVE", "Jemand wurde wiederbelebt"] call opt_log_fnc_write;
+		["REVIVE", _message] call opt_log_fnc_write;
 	};
 
 };

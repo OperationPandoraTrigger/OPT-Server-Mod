@@ -24,16 +24,25 @@
 
 #include "macros.hpp";
 
-//Event zum Ausblende weiteren Schaden und Status setzen
-["Dammaged", {
+DUMP("REVIVE EH");
 
-    params ["_unit", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"];
-    _unit = _unit select 0;
-
-	//Abfrage ob Einheit beustlos ist
-	if (_unit getVariable ["ACE_isUnconscious", false]) then
+//Event Aüslösung bei bewustlosen Spieler.
+[
+	"ace_unconscious",
 	{
+		params ["_unit", "_isUnconscious"]; 
 
+		[_unit] call FUNC(isUnconscious);
+	}
+] call CBA_fnc_addEventHandler;
+
+//Funktion für EH auslösung
+DFUNC(isUnconscious) = 
+{
+	params ["_unit"];
+
+	if (_unit isEqualTo player) then 
+	{
 		//Var für GPS setzen 
 		_unit setVariable ["FAR_isUnconscious", 1, true];
 
@@ -43,16 +52,17 @@
 		//Einheit aus Fahrzeug endfernen
 		if (vehicle _unit != _unit) then 
 		{
-    		unAssignVehicle _unit;
-    		_unit action ["GetOut", vehicle _unit];
+			unAssignVehicle _unit;
+			_unit action ["GetOut", vehicle _unit];
 		};
 
 		//Sprengladungen mit Todmanschalter zünden
 		[_unit] call ace_explosives_fnc_onIncapacitated;
+
+		//Dialog ausführen
+		[] call FUNC(dialog);
 	};
-
-
-}] call CFUNC(addEventhandler);
+};
 
 //var nach Respwan zurück setzen
 ["Respawn", {
@@ -62,6 +72,7 @@
 		player setVariable ["FAR_isUnconscious", 0, true];
 		player setVariable ["FAR_isStabilized", 0, true];
 		player allowDamage true;
+		1 enableChannel true;
 		 
     } call CFUNC(execNextFrame);
 
