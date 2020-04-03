@@ -71,10 +71,10 @@ DUMP("Successfully loaded the OPT/Shop module on the client");
 
 }, 1] call CFUNC(addPerFrameHandler);
 
-//Shop Dialog öffnen
 if (hasInterface) then 
 {
 
+	//Shop Dialog öffnen
     /*
     * https://cbateam.github.io/CBA_A3/docs/files/keybinding/fnc_addKeybind-sqf.html
     */
@@ -126,11 +126,7 @@ if (hasInterface) then
         ]
     ] call CBA_fnc_addKeybind;
 
-};
-
-//Verkaufs Dialog öffnen
-if (hasInterface) then 
-{
+	//Verkaufs Dialog öffnen
 
     /*
     * https://cbateam.github.io/CBA_A3/docs/files/keybinding/fnc_addKeybind-sqf.html
@@ -183,12 +179,7 @@ if (hasInterface) then
         ]
     ] call CBA_fnc_addKeybind;
 
-};
-
-//Konfigdialog öffnen
-if (hasInterface) then 
-{
-
+	//Konfigdialog öffnen
     /*
     * https://cbateam.github.io/CBA_A3/docs/files/keybinding/fnc_addKeybind-sqf.html
     */

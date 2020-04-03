@@ -1,15 +1,15 @@
 /**
-* Description:Kauf ausführen und Fahrzeug erstellen.
+* Description:Loadout laden für Standartausführung der Bewaffnung
 * 
 * 
 * Author:
 * [GNC]Lord-MDB
 *
 * Arguments:
-* 
+* 0 <String> Classname des Fahrzeugs
 *
 * Return value:
-* 
+* 0 <Array> Datensatz für Bewaffnung des Fahrzeugs
 *
 * Server Only:
 * No

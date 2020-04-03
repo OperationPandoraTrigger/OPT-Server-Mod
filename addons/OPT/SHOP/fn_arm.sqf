@@ -6,10 +6,21 @@
 * [GNC]Lord-MDB
 *
 * Arguments:
-* 
+* 0 <Objekt> Fahrzeug
+* 1 <Array> Raketen Waffennamen Luftfahrzeuge
+* 2 <Array> Raketen Magazinnamen Luftfahrzeuge
+* 3 <Array> Geschütz Waffennamen Luftfahrzeuge
+* 4 <Array> Geschütz Magazinnamen Luftfahrzeuge
+* 5 <Array> Geschütz Waffennamen Bodenfahrzeuge
+* 6 <Array> Geschütz Magazinnamen Bodenfahrzeuge
+* 7 <Array> Pylon Datensatz Luftfahrzeuge
+* 8 <Array> Waffencontrolle Luftfahrzeuge
+* 9 <Array> Zusatz Ausrüstung
+* 10 <Array> Alte Waffennamen 
+* 11 <Array> Alte Magazinnamen
 *
 * Return value:
-* 
+* No
 *
 * Server Only:
 * No
@@ -21,7 +32,7 @@
 * No
 * 
 * Example:
-* 
+*
 */
 
 #include "macros.hpp"
@@ -50,14 +61,14 @@ if ((_zusatz select 2) == 1) then
     _veh setVehicleReceiveRemoteTargets true;                                              
 };   
 
-//Dahtkäfig ausrüsten
+//Drahtkäfig ausrüsten
 if ((_zusatz select 0) == 1) then 
 {
     _veh animateSource ["showSLATHull", 1];
     _veh animateSource ["showSLATTurret", 1];
 };
 
-//Tranung ausrüsten
+//Tarnung ausrüsten
 if ((_zusatz select 1) == 1) then 
 {
     _veh animateSource ["showCamonetPlates1", 1];
@@ -67,7 +78,7 @@ if ((_zusatz select 1) == 1) then
     _veh animateSource ["showCamonetTurret", 1];
 };   
  
-//Fahrzeug entwaffnen wenn Fahrzeug bewaffnet war
+//Fahrzeug entwaffnen, wenn Fahrzeug bewaffnet war
 if ((count _weaponold) > 0) then 
 {
     {_veh removeWeapon _x} forEach _weaponold;    

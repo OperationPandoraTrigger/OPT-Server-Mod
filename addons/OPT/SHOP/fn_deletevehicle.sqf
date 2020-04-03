@@ -6,10 +6,10 @@
 * [GNC]Lord-MDB
 *
 * Arguments:
-* 
+* 0 <Objekt> Pads in dem das Fahrzeug gelöscht werden soll
 *
 * Return value:
-* 
+* No
 *
 * Server Only:
 * No

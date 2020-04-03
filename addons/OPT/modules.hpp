@@ -26,8 +26,8 @@ class CfgCLibModules {
 		MODULE(SHOP) 
 		{
             dependency[] = {"CLib/PerFrame", "Clib/Events"};
-            FNC(clientInit);  
-			FNC(config);
+            FNC(clientInit);
+            FNC(config);
             FNC(einlesenInShopDialog);	
             FNC(fillLB);
             FNC(getvehicleinfo);

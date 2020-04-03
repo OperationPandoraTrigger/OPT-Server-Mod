@@ -1,15 +1,16 @@
 /**
 * Description:
-* Funktion Waffen+Magazine erfassen
+* Funktion Magazine erfassung von Fahrzeug und Geld Berechnung 
 * 
 * Author: 
 * [GNC]Lord-MDB
 *
 * Arguments:
-* 
+* 0 <Side> Seite der Ausführung
+* 1 <Array> Magazine des Fahrzeugs
 * 
 * Return Value:
-* 
+* 0 <Number> Geld der Bewaffnung
 * 
 * Server only:
 * no

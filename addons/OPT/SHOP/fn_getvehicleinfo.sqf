@@ -6,10 +6,11 @@
 * [GNC]Lord-MDB
 *
 * Arguments:
-* 
+* 0 <String> Classname des Fahrzeugs
+* 1 <Number> Listbox ID
 *
 * Return value:
-* 
+* 0 <String> Text für Ausgabe in das Infofeld
 *
 * Server Only:
 * No
@@ -41,6 +42,8 @@ private _magazineVehArryNew=[];
 private _bewaffnungpreis = 0;
 private _side = civilian;
 private _sellveh = "";
+
+#define TREIBSTOFFKONSTANTE 0.000056896
 
 if (_class in (GVAR(vehClassWestWW))) then 
 {
@@ -107,7 +110,7 @@ if (_index != -1) then {
 
 _Dragged_Carried = _Dragged_Carried select [0, count _Dragged_Carried - 2];
 
-// Nur für Luftfahrzeuge 
+// Nur für Fahrzeuge 
 if (_class isKindOf "AllVehicles" and !(_class isKindOf "StaticWeapon")) then 
 {
     private _weapons = [];
@@ -115,7 +118,7 @@ if (_class isKindOf "AllVehicles" and !(_class isKindOf "StaticWeapon")) then
 
     // Array Bereinigung
     _weaponsClass deleteAt (_weaponsClass find "TruckHorn");
-	_weaponsClass deleteAt (_weaponsClass find "SportCarHorn");
+    _weaponsClass deleteAt (_weaponsClass find "SportCarHorn");
     _weaponsClass deleteAt (_weaponsClass find "SmokeLauncher");
     _weaponsClass deleteAt (_weaponsClass find "MiniCarHorn");
     _weaponsClass deleteAt (_weaponsClass find "TruckHorn3");
@@ -124,7 +127,6 @@ if (_class isKindOf "AllVehicles" and !(_class isKindOf "StaticWeapon")) then
     
     if (count _weaponsClass == 0) then 
     {
-        _weaponsClass = [];
         
          if (count _Datensatz > 0) then 
         {
@@ -163,7 +165,7 @@ if (_class isKindOf "AllVehicles" and !(_class isKindOf "StaticWeapon")) then
   
     // Aufbereitung Waffenanzeige
     _weapons deleteAt (_weapons find "Hupe");
-	_weapons deleteAt (_weapons find "Horn");
+    _weapons deleteAt (_weapons find "Horn");
 
     private _newweapons = "";
     {
@@ -187,15 +189,15 @@ if (_class isKindOf "AllVehicles" and !(_class isKindOf "StaticWeapon")) then
     if (_class isKindOf "Plane") then {_fuelCapacity = 32;};
     if (_class isKindOf "car") then 
     {
-        _fuelCapacity = round ((getNumber(configFile >> "cfgVehicles" >> _class >> "fuelCapacity")) /(_redRpm * 0.000056896));
+        _fuelCapacity = round ((getNumber(configFile >> "cfgVehicles" >> _class >> "fuelCapacity")) /(_redRpm * TREIBSTOFFKONSTANTE));
     };
     if (_class isKindOf "APC") then 
     {
-        _fuelCapacity = round ((getNumber(configFile >> "cfgVehicles" >> _class >> "fuelCapacity"))/(_redRpm * 0.000056896));
+        _fuelCapacity = round ((getNumber(configFile >> "cfgVehicles" >> _class >> "fuelCapacity"))/(_redRpm * TREIBSTOFFKONSTANTE));
     };
     if (_class isKindOf "Tank") then 
     {
-        _fuelCapacity = round ((getNumber(configFile >> "cfgVehicles" >> _class >> "fuelCapacity"))/(_redRpm * 0.000056896));
+        _fuelCapacity = round ((getNumber(configFile >> "cfgVehicles" >> _class >> "fuelCapacity"))/(_redRpm * TREIBSTOFFKONSTANTE));
     };
 
     private _armor = getNumber(configFile >> "cfgVehicles" >> _class >> "armor");

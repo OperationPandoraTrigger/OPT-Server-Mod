@@ -6,10 +6,10 @@
 * [GNC]Lord-MDB
 *
 * Arguments:
-* 
+* 0 <Objekt> Fahrzeug das Ausgelesen wird
 *
 * Return value:
-* 
+* 0 <Array> Gefilterte Fahrzeug Magazine 
 *
 * Server Only:
 * No
@@ -37,7 +37,6 @@ if (_veh isEqualTo objNull) exitWith{[]};
 private _magazineVehArry = magazinesAmmo _veh;
 
 //kontrolle Bewaffnung Auslesung
-private _magazineFilter2 = 
 [
     ["96Rnd_CMFlare_Chaff_Magazine", 96],
     ["120Rnd_CMFlare_Chaff_Magazine", 120],
@@ -49,11 +48,11 @@ private _magazineFilter2 =
     ["OPT_12Rnd_CMFlare_Chaff_Magazine", 12],
     ["OPT_20Rnd_CMFlare_Chaff_Magazine", 20],
     ["OPT_30Rnd_CMFlare_Chaff_Magazine", 30]
-];
-
+] apply
 {
+
     _magazineVehArry deleteAt (_magazineVehArry find _x);                
-} forEach _magazineFilter2;
+};
 
 
 _magazineVehArry

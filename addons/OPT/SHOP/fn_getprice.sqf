@@ -6,10 +6,10 @@
 * [GNC]Lord-MDB
 *
 * Arguments:
-* 
+* 0 <String> Classname des Fahrzeugs
 *
 * Return value:
-* 
+* 0 <Number> Kosten des Fahrzeugs
 *
 * Server Only:
 * No
@@ -52,6 +52,7 @@ if (_index != -1) then
     if (typeName _unitCost != "SCALAR") then 
     {
         _unitCost = 0;
+        DUMP("getprice: Fehler bei Preisermittlung");
     };
 
 };

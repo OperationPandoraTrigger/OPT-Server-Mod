@@ -6,10 +6,10 @@
 * [GNC]Lord-MDB
 *
 * Arguments:
-* 0: <OBJECT> Fahrzeug, dass ausgelesen werden soll
+* 0 <OBJECT> Fahrzeug, dass ausgelesen werden soll
 * 
 * Return Value:
-* <ARRAY> _waffenMagazinArry 
+* 0 <ARRAY> _waffenMagazinArray 
 * 
 * Server only:
 * no
@@ -24,7 +24,7 @@
 * no
 * 
 * Example:
-* 
+*
 */
 
 #include "macros.hpp"
@@ -36,16 +36,13 @@ params
 
 private _magazineVeh = magazines _veh;
 private _weaponsVeh = weapons _veh;
-private _magazineVehArryNew  = [];
-private _waffenMagazinArry  = [];
+private _magazineVehArrayNew  = [];
+private _waffenMagazinArray  = [];
 
 _weaponsVeh deleteAt (_weaponsVeh find "OPT_CMFlareLauncher");
 _weaponsVeh deleteAt (_weaponsVeh find "OPT_CMFlareLauncher_Triples");
 _weaponsVeh = _weaponsVeh select {_x != ""};
 
-private _magazineVeh = magazines _veh;
-
-private _magazineFilter = 
 [
     "96Rnd_CMFlare_Chaff_Magazine",
     "120Rnd_CMFlare_Chaff_Magazine",
@@ -57,14 +54,13 @@ private _magazineFilter =
     "OPT_12Rnd_CMFlare_Chaff_Magazine",
     "OPT_20Rnd_CMFlare_Chaff_Magazine",
     "OPT_30Rnd_CMFlare_Chaff_Magazine"
-];
-
+] apply
 {
     _magazineVeh deleteAt (_magazineVeh find _x);                
-} forEach _magazineFilter;
+};
 
 _magazineVeh = _magazineVeh select {_x != ""};
 
-_waffenMagazinArry =[_weaponsVeh,_magazineVeh];
+_waffenMagazinArray =[_weaponsVeh,_magazineVeh];
 
-_waffenMagazinArry
+_waffenMagazinArray

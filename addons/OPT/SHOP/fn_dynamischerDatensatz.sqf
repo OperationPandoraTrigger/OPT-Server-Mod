@@ -6,10 +6,13 @@
 * [GNC]Lord-MDB
 *
 * Arguments:
-* 
-* 
+* 0 <side> Seite des Ausführeres
+* 1 <Objekt> Fahrzeug behandelt wird
+* 2 <Array> Datensatz aus der Listbox
+* 3 <Array> Plyondaten bei Luftfahrzeuge 
+*
 * Return Value:
-* 
+* 0 <Array> Gesammelter Datensatz aus Auswertung für Weiterverarbeitung
 * 
 * Server only:
 * no
@@ -24,7 +27,7 @@
 * no
 * 
 * Example:
-* 
+*
 */
 
 #include "macros.hpp"

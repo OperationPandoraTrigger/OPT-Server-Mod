@@ -6,10 +6,14 @@
 * [GNC]Lord-MDB
 *
 * Arguments:
-* 
+* 0 <Number> idd des Controls
+* 1 <Number> Idc der Listbox
+* 2 <String> Text der listbox
+* 3 <String> Bild verweis
+* 4 <String> Angehängten Datensatz zum Listbox Eintrag
 *
 * Return value:
-* 
+* 0 <Bool> Fehlerfreie Ausführung
 *
 * Server Only:
 * No
