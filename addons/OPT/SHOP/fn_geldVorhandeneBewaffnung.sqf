@@ -39,7 +39,7 @@ params
 ];
 
 private _bewaffnungPreis = 0;
-if (_side isEqualTo sideUnknown) exitWith {_bewaffnungPreis};
+if (_side isEqualTo sideUnknown) exitWith {_bewaffnungPreis;ERROR_LOG("geldVorhandeneBewaffnung: Fehler bei Seitenübergabe _side");};
 
 private _vehiclePool = [];
 if (_side isEqualTo west) then 
@@ -59,7 +59,8 @@ for "_i" from 1 to (count _vehiclePool) do
         private _magazineName = _vehiclePool select (_i - 1) select 0;
         // prüfe alle ausgewählten Magazine und vergleiche mit gewähltem Fahrzeug aus Pool
         // wenn Magazine gefunden, addiere Preis
-        if (_magazineName isEqualTo (_x select 0)) then {                            
+        if (_magazineName isEqualTo (_x select 0)) then 
+        {                            
             private _magazinePrice = _vehiclePool select (_i - 1) select 2;
             _bewaffnungPreis = _bewaffnungPreis + (_magazinePrice * (_x select 1));
         };

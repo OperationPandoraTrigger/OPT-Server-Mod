@@ -31,7 +31,7 @@ params
     ["_veh", objNull, [objNull], 1]
 ];
 
-if (_veh isEqualTo objNull) exitWith{[]};
+if (_veh isEqualTo objNull) exitWith{ERROR_LOG("auslesenMagazine: kein Fahrzeug übergeben");};
 
 // Magazine feststellen
 private _magazineVehArry = magazinesAmmo _veh;

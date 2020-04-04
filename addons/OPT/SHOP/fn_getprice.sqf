@@ -30,7 +30,7 @@ params [
     ["_class", "", [""], [1]]
 ];
 
-if (_class isEqualTo "") exitWith {0};
+if (_class isEqualTo "") exitWith {ERROR_LOG("getprice: Fehler bei _class");};
 
 private _unitCost = 0;
 private _index = (GVAR(all) apply {toLower (_x select 0)}) find (toLower _class);
@@ -52,7 +52,7 @@ if (_index != -1) then
     if (typeName _unitCost != "SCALAR") then 
     {
         _unitCost = 0;
-        DUMP("getprice: Fehler bei Preisermittlung");
+        ERROR_LOG("getprice: Fehler bei Preisermittlung");
     };
 
 };
