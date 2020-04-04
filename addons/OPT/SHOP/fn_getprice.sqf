@@ -30,7 +30,7 @@ params [
     ["_class", "", [""], [1]]
 ];
 
-if (_class isEqualTo "") exitWith {ERROR_LOG("getprice: Fehler bei _class");};
+if (_class isEqualTo "") exitWith {ERROR_LOG("getprice: Fehler bei _class");0};
 
 private _unitCost = 0;
 private _index = (GVAR(all) apply {toLower (_x select 0)}) find (toLower _class);

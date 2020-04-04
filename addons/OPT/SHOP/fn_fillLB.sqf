@@ -38,9 +38,9 @@ params [
     ["_dataToAdd", "", [["s"]]]
 ];
 
-if (_idd == 0 or _idc == 0) exitWith {false;ERROR_LOG("fillLB: _idd oder _idc nicht übergeben");};
-if (_txtToAdd isEqualTo "") exitWith {false;ERROR_LOG("fillLB: _txtToAdd ohne Inhalt");;
-if ((count _picToAdd != count _txtToAdd) or (count _dataToAdd != count _txtToAdd)) exitWith {false;ERROR_LOG("fillLB: Fehlehalte Datenübergabe");};
+if (_idd == 0 or _idc == 0) exitWith {ERROR_LOG("fillLB: _idd oder _idc nicht übergeben");false};
+if (_txtToAdd isEqualTo "") exitWith {ERROR_LOG("fillLB: _txtToAdd ohne Inhalt");false};
+if ((count _picToAdd != count _txtToAdd) or (count _dataToAdd != count _txtToAdd)) exitWith {ERROR_LOG("fillLB: Fehlehalte Datenübergabe");false};
 
 private _display = findDisplay _idd;
 private _lb = _display displayCtrl _idc;

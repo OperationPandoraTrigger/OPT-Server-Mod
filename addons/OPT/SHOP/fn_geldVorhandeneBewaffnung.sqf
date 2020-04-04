@@ -39,7 +39,7 @@ params
 ];
 
 private _bewaffnungPreis = 0;
-if (_side isEqualTo sideUnknown) exitWith {_bewaffnungPreis;ERROR_LOG("geldVorhandeneBewaffnung: Fehler bei Seitenübergabe _side");};
+if (_side isEqualTo sideUnknown) exitWith {ERROR_LOG("geldVorhandeneBewaffnung: Fehler bei Seitenübergabe _side");_bewaffnungPreis};
 
 private _vehiclePool = [];
 if (_side isEqualTo west) then 
