@@ -24,6 +24,7 @@
 
 #include "macros.hpp";
 
+/*
 ["Killed", {
     DUMP("KILLED");
     DUMP(_this);
@@ -85,7 +86,7 @@
     DUMP("ICON ADDED BECAUSE PLAYER JOINED: " + str _unit);
     DUMP((CGVAR(MapGraphics_MapGraphicsGroup) call CFUNC(allVariables)) select {(_x find toLower QGVAR(IconId)) == 0});
 }] call CFUNC(addEventhandler);
-
+*/
 
 // Revive Handlers
 [EVENT_MEDIC_UNCONSCIOUS, {

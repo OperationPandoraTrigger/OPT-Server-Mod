@@ -52,4 +52,23 @@
 	// MiniGPS Steuerung Init
 	[] call FUNC(miniGPS);
 
+	// Kontinuierlicher Neustart des GPS System, Löschung alle Marker und Neuerstellung
+	[{
+		// alle Marker Löschen der Einheiten
+		allPlayers apply 
+		{
+			[_x] call FUNC(removeUnitFromGPS);
+		};
+
+		// Marker neu erstellen für alle
+		allPlayers apply 
+		{
+			if (CLib_Player != _x && [_x] call FUNC(isUnitVisible)) then 
+			{
+				[_x] call FUNC(addUnitToGPS);
+			};
+		};	
+
+    }, 60] call CFUNC(addPerFrameHandler);
+
 }] call CFUNC(addEventhandler);

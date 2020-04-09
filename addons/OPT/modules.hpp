@@ -10,7 +10,7 @@ class CfgCLibModules {
         MODULE(GPS) {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
             FNC(clientInit);
-            FNC(serverInit);
+            //FNC(serverInit);
             FNC(addUnitToGPS);
             FNC(removeUnitFromGPS);
             //FNC(addGroupToGPS);
