@@ -54,6 +54,17 @@
 
 	// Kontinuierlicher Neustart des GPS System, Löschung alle Marker und Neuerstellung
 	[{
+
+		// When BuildFlag != Version, the cache should be rebuilt automatically.
+		// The cache is what is actually drawn.
+		// The MapGraphicsGroup is what is currently registered to be drawn
+		// The MapGraphicsMapControls contain all controls where graphics should be drawn on
+		DUMP(clib_MapGraphics_MapGraphicsCacheBuildFlag);
+		DUMP(clib_MapGraphics_MapGraphicsCacheVersion);
+		DUMP(clib_MapGraphics_MapGraphicsCache);
+		DUMP(uinamespace getVariable "clib_mapgraphics_MapGraphicsMapControls");
+		DUMP(clib_MapGraphics_MapGraphicsGroup call clib_fnc_allVariables);
+
 		// alle Marker Löschen der Einheiten
 		allPlayers apply 
 		{
@@ -63,10 +74,7 @@
 		// Marker neu erstellen für alle
 		allPlayers apply 
 		{
-			if (CLib_Player != _x && [_x] call FUNC(isUnitVisible)) then 
-			{
-				[_x] call FUNC(addUnitToGPS);
-			};
+			[_x] call FUNC(addUnitToGPS);
 		};	
 
     }, 60] call CFUNC(addPerFrameHandler);
