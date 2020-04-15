@@ -46,6 +46,15 @@
 			((uiNamespace getVariable "RscCustomInfoMiniMap") displayCtrl 101) call CFUNC(registerMapControl);
 		};
 
+		if (!(isNull ((findDisplay 133) displayCtrl 101))) then
+		{
+			((findDisplay 133) displayCtrl 101) call CFUNC(registerMapControl);
+		};	
+
+		if (!(isNull ((findDisplay 133) displayCtrl 13301))) then
+		{
+			((findDisplay 133) displayCtrl 13301) call CFUNC(registerMapControl);
+		};	
 
     }, 1] call CFUNC(addPerFrameHandler);
 
