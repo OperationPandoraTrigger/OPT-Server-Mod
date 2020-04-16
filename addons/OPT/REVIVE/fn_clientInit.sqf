@@ -126,7 +126,7 @@ DFUNC(eigenversorgung) =
 player setVariable ["FAR_isUnconscious", 0, true];
 player setVariable ["FAR_isStabilized", 0, true];
 
-//Chat abschaltung beiu bewustlosigkeit
+//Chat abschaltung bei Bewustlosigkeit
 (findDisplay 46) displayAddEventHandler ["KeyDown", {_this call FUNC(keyUnbind)}];
 
 //ACE Interaktioneinträge 
