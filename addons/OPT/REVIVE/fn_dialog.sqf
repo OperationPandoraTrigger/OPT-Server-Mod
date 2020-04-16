@@ -85,7 +85,7 @@ GVAR(startzeit) = time;
 	{
 		_units apply 
 		{
-			if ((side _x isEqualTo side player) and (typeOf _x in GVAR(Sani)) and alive _x) then 
+			if ((side _x isEqualTo side player) and (typeOf _x in GVAR(SaniKlassen)) and alive _x) then 
 			{
 				_medics pushBack _x;
 			};

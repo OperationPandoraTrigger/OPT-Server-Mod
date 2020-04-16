@@ -29,7 +29,7 @@
 #include "macros.hpp"
 
 //Init Werte
-GVAR(Sani) = ["OPT_NATO_Sanitaeter","OPT_CSAT_Sanitaeter","OPT_NATO_Sanitaeter_T","OPT_CSAT_Sanitaeter_T"];
+GVAR(SaniKlassen) = ["OPT_NATO_Sanitaeter","OPT_CSAT_Sanitaeter","OPT_NATO_Sanitaeter_T","OPT_CSAT_Sanitaeter_T"];
 
 //Revive Funktion 
 DFUNC(revive) = 
@@ -158,7 +158,7 @@ revive_Action_fremd2 =
 	"Wiederbeleben",
 	"",
 	{[] call FUNC(revive)},
-	{(((cursorTarget getVariable ["ACE_isUnconscious", false]) or (cursorTarget getVariable ["FAR_isStabilized", 1] == 1)) and (typeOf player in GVAR(Sani)))},
+	{(((cursorTarget getVariable ["ACE_isUnconscious", false]) or (cursorTarget getVariable ["FAR_isStabilized", 1] == 1)) and (typeOf player in GVAR(SaniKlassen)))},
 	{}
 
 ] call ace_interact_menu_fnc_createAction;
