@@ -6,6 +6,9 @@
 * Lord-MDB
 *
 * Arguments:
+* 0 <Objekt> Spieler der bewustlos ist und behandelt wird
+* 1 <Objekt> Spieler der einen bewustlosen behandelt
+* 2 <Number> Logmodus für Statistik
 *
 * Return Value:
 *
