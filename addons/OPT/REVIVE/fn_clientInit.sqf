@@ -130,7 +130,7 @@ player setVariable ["FAR_isStabilized", 0, true];
 (findDisplay 46) displayAddEventHandler ["KeyDown", {_this call FUNC(keyUnbind)}];
 
 //ACE Interaktioneinträge 
-revive_Action_eigen = 
+GVAR(revive_Action_eigen) = 
 [
 	"Erste Hilfe",
 	"Erste Hilfe",
@@ -141,7 +141,7 @@ revive_Action_eigen =
 
 ] call ace_interact_menu_fnc_createAction;
 
-revive_Action_fremd1 = 
+GVAR(revive_Action_fremd1) = 
 [
 	"Erste Hilfe",
 	"Stabilisieren",
@@ -152,7 +152,7 @@ revive_Action_fremd1 =
 
 ] call ace_interact_menu_fnc_createAction;
 
-revive_Action_fremd2 = 
+GVAR(revive_Action_fremd2) = 
 [
 	"Erste Hilfe",
 	"Wiederbeleben",
@@ -163,9 +163,9 @@ revive_Action_fremd2 =
 
 ] call ace_interact_menu_fnc_createAction;
 
-[(typeOf player), 1, ["ACE_SelfActions"], revive_Action_eigen] call ace_interact_menu_fnc_addActionToClass;
-[player, 0, ["ACE_MainActions"],revive_Action_fremd1] call ace_interact_menu_fnc_addActionToObject;
-[player, 0, ["ACE_MainActions"],revive_Action_fremd2] call ace_interact_menu_fnc_addActionToObject;
+[(typeOf player), 1, ["ACE_SelfActions"], GVAR(revive_Action_eigen)] call ace_interact_menu_fnc_addActionToClass;
+[player, 0, ["ACE_MainActions"],GVAR(revive_Action_fremd1)] call ace_interact_menu_fnc_addActionToObject;
+[player, 0, ["ACE_MainActions"],GVAR(revive_Action_fremd2)] call ace_interact_menu_fnc_addActionToObject;
 
 //Test Einträge
 
@@ -175,13 +175,13 @@ p1 setVariable ["FAR_isStabilized", 0, true];
 p2 setVariable ["FAR_isUnconscious", 0, true];
 p2 setVariable ["FAR_isStabilized", 0, true];
 
-[p1, 0, ["ACE_MainActions"],revive_Action_fremd1] call ace_interact_menu_fnc_addActionToObject;
+[p1, 0, ["ACE_MainActions"],GVAR(revive_Action_fremd1)] call ace_interact_menu_fnc_addActionToObject;
 
-[p2, 0, ["ACE_MainActions"],revive_Action_fremd1] call ace_interact_menu_fnc_addActionToObject;
+[p2, 0, ["ACE_MainActions"],GVAR(revive_Action_fremd1)] call ace_interact_menu_fnc_addActionToObject;
 
-[p1, 0, ["ACE_MainActions"],revive_Action_fremd2] call ace_interact_menu_fnc_addActionToObject;
+[p1, 0, ["ACE_MainActions"],GVAR(revive_Action_fremd2)] call ace_interact_menu_fnc_addActionToObject;
 
-[p2, 0, ["ACE_MainActions"],revive_Action_fremd2] call ace_interact_menu_fnc_addActionToObject;
+[p2, 0, ["ACE_MainActions"],GVAR(revive_Action_fremd2)] call ace_interact_menu_fnc_addActionToObject;
  
 
 }] call CFUNC(addEventhandler);
