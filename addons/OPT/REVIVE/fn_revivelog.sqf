@@ -67,4 +67,9 @@ switch (_art) do
 		["REVIVE", _message] call opt_log_fnc_write;
 	};
 
+	default 
+	{
+		ERROR_LOG("revivelog: Fehlehalte Datenübergabe _art,Log Modus unbekannt");		
+    };
+
 };
