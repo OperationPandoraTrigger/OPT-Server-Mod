@@ -25,7 +25,7 @@ class CfgCLibModules {
             FNC(miniGPS);			
         };
 		
-		MODULE(REVIVE) {
+        MODULE(REVIVE) {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
             FNC(clientInit);
             FNC(clientinitCBASettings);
