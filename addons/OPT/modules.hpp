@@ -42,6 +42,7 @@ class CfgCLibModules {
             FNC(geldVorhandeneBewaffnung);
             FNC(dynamischerDatensatz);
             FNC(deletevehicle);
+            FNC(typfestellung);
         };
     };
 };
