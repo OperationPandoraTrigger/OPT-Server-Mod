@@ -127,14 +127,7 @@ else
 private _vehDisplayName = getText (configFile >> "CfgVehicles" >> GVAR(vehType) >> "displayName");
 
 private _vehDisplayIcon = "";
-if (getText(configFile >> "cfgVehicles" >> GVAR(vehType) >> "picture") find ".paa" != -1) then 
-{
-    _vehDisplayIcon = getText (configFile >> "cfgVehicles" >> GVAR(vehType) >> "picture");
-} 
-else 
-{
-    _vehDisplayIcon = getText (configFile >> "cfgVehicles" >> GVAR(vehType) >> "editorPreview");
-};
+_vehDisplayIcon = getText (configFile >> "cfgVehicles" >> GVAR(vehType) >> "editorPreview");
 
 //Loadout Daten einlesen
 GVAR(boxArry) = [];
