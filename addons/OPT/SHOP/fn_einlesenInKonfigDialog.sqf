@@ -108,6 +108,11 @@ _kosten ctrlSetText "€:0";
 
 GVAR(veh) = "";
 
+//Fahrzeug besetzt
+private _moveInVeh = _display displayCtrl 22044;
+_moveInVeh ctrlSetTextColor [0.0, 1.0, 0.0, 1];
+
+
 //Fahrzeugfeststellung
 if (_modus == "New") then 
 {
@@ -625,4 +630,25 @@ GVAR(idPadCheckKonfig) = [{
         };
 
 }, 1] call CFUNC(addPerFrameHandler);
+
+// Festlegen ob Spieler in Fahrzeug nach kauf
+_moveInVeh ctrlAddEventHandler [ "ButtonClick", 
+{
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _moveInVeh = _display displayCtrl 20010;
+
+    if (GVAR(moveInVeh)) then 
+    {
+        GVAR(moveInVeh) = false;         
+        _moveInVeh ctrlSetText "Fahrzeug nicht besetzten";   
+        _moveInVeh ctrlSetTextColor [1.0, 0.0, 0.0, 1];       
+    }
+    else
+    {
+        GVAR(moveInVeh) = true;         
+        _moveInVeh ctrlSetText "Fahrzeug besetzten"; 
+        _moveInVeh ctrlSetTextColor [0.0, 1.0, 0.0, 1];             
+    };
+
+}];
 
