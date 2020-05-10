@@ -62,7 +62,7 @@ private _padBox = _display displayCtrl 20003;
 private _moveInVeh = _display displayCtrl 20006;
 
 _order ctrlEnable false;
-_sell ctrlShow false;
+_konfig ctrlEnable false;
 _moveInVeh ctrlSetTextColor [0.0, 1.0, 0.0, 1];
 
 switch (GVAR(vehicleType)) do 
@@ -80,7 +80,7 @@ switch (GVAR(vehicleType)) do
             GVAR(pads) = GVAR(pad_air_east);
         };
         GVAR(moveInVeh) = true;
-        
+        _konfig ctrlEnable true;       
     };
 	case "vehicles" : 
 	{
@@ -95,7 +95,7 @@ switch (GVAR(vehicleType)) do
             GVAR(pads) = GVAR(pad_veh_east);
         };
         GVAR(moveInVeh) = true;
-        
+        _konfig ctrlEnable true;       
     };
 	case "supplies" : 
 	{
@@ -110,8 +110,7 @@ switch (GVAR(vehicleType)) do
             GVAR(pads) = GVAR(pad_sup_east);
         };
         GVAR(moveInVeh) = false;
-        _moveInVeh ctrlShow false;
-        
+        _moveInVeh ctrlShow false;        
     };
 	case "sea" : 
 	{
@@ -126,7 +125,7 @@ switch (GVAR(vehicleType)) do
             GVAR(pads) = GVAR(pad_sea_east);
         };
         GVAR(moveInVeh) = true;
-        
+        _konfig ctrlEnable true;       
     };
     default 
     {
@@ -152,6 +151,9 @@ GVAR(orderDialogObjects) = [_pool, 1] call CBA_fnc_sortNestedArray; // billigste
 //Boxen füllen
 // Budget 
 [_budget] call opt_common_fnc_renderbudget;
+
+//Anzahl Kaufbutton bestimmen
+
 
 
 // Flagge setzen
