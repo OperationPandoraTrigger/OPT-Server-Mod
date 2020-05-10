@@ -49,21 +49,17 @@ private _success = createDialog "Dialogshopkaufen";
 
 //Dialog definieren
 #define IDD_DLG_ORDER 20000
-#define IDC_PLAYER_FLAG 20102
-#define IDC_CTRL_VEHICLE_LIST 20002
-#define IDC_CTRL_PRICE_LIST 20003
+#define IDC_PLAYER_FLAG 20001
 
 private _display = findDisplay IDD_DLG_ORDER;
-private _listbox_vehicles = _display displayCtrl IDC_CTRL_VEHICLE_LIST;
-private _budget = _display displayCtrl 20001;
+private _budget = _display displayCtrl 20009;
 private _order = _display displayCtrl 20004;
-private _close = _display displayCtrl 20008;
-private _sell = _display displayCtrl 20005;
-private _remove = _display displayCtrl 20006;
+private _close = _display displayCtrl 20005;
+private _remove = _display displayCtrl 20008;
 private _konfig = _display displayCtrl 20007;
 private _rscPicture = _display displayCtrl IDC_PLAYER_FLAG;
-private _padBox = _display displayCtrl 20009;
-private _moveInVeh = _display displayCtrl 20010;
+private _padBox = _display displayCtrl 20003;
+private _moveInVeh = _display displayCtrl 20006;
 
 _order ctrlEnable false;
 _sell ctrlShow false;
