@@ -43,6 +43,7 @@ class CfgCLibModules {
             FNC(dynamischerDatensatz);
             FNC(deletevehicle);
             FNC(typfestellung);
+            FNC(einlesenInVerkaufDialog);
         };
     };
 };
