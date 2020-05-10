@@ -61,6 +61,7 @@ private _konfig = _display displayCtrl 20007;
 private _rscPicture = _display displayCtrl IDC_PLAYER_FLAG;
 private _padBox = _display displayCtrl 20003;
 private _moveInVeh = _display displayCtrl 20006;
+private _kosten = _display displayCtrl 20002;
 
 //Kaufbutton
 private _button1 = _display displayCtrl 20010;
@@ -337,6 +338,9 @@ _button1 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 0;
 
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
 }];
 
 //Button 2
@@ -344,12 +348,19 @@ _button2 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 1;
 
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
 }];
 
 //Button 3
 _button3 ctrlAddEventHandler [ "ButtonClick", 
 {
     GVAR(Buttonwahl) = 2;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
 
 }];
 
@@ -358,12 +369,20 @@ _button4 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 3;
 
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
 }];
 
 //Button 5
 _button5 ctrlAddEventHandler [ "ButtonClick", 
 {
     GVAR(Buttonwahl) = 4;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
 
 }];
 
@@ -372,12 +391,20 @@ _button6 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 5;
 
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
 }];
 
 //Button 7
 _button7 ctrlAddEventHandler [ "ButtonClick", 
 {
     GVAR(Buttonwahl) = 6;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
 
 }];
 
@@ -386,12 +413,20 @@ _button8 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 7;
 
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
 }];
 
 //Button 9
 _button9 ctrlAddEventHandler [ "ButtonClick", 
 {
     GVAR(Buttonwahl) = 8;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
 
 }];
 
@@ -400,12 +435,20 @@ _button10 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 9;
 
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
 }];
 
 //Button 11
 _button11 ctrlAddEventHandler [ "ButtonClick", 
 {
     GVAR(Buttonwahl) = 10;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
 
 }];
 
@@ -414,12 +457,20 @@ _button12 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 11;
 
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
 }];
 
 //Button 13
 _button13 ctrlAddEventHandler [ "ButtonClick", 
 {
     GVAR(Buttonwahl) = 12;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
 
 }];
 
@@ -428,12 +479,20 @@ _button14 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 13;
 
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
 }];
 
 //Button 15
 _button15 ctrlAddEventHandler [ "ButtonClick", 
 {
     GVAR(Buttonwahl) = 14;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
 
 }];
 
@@ -442,12 +501,20 @@ _button16 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 15;
 
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
 }];
 
 //Button 17
 _button17 ctrlAddEventHandler [ "ButtonClick", 
 {
     GVAR(Buttonwahl) = 16;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
 
 }];
 
@@ -456,12 +523,20 @@ _button18 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 17;
 
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
 }];
 
 //Button 19
 _button19 ctrlAddEventHandler [ "ButtonClick", 
 {
     GVAR(Buttonwahl) = 18;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
 
 }];
 
@@ -470,12 +545,20 @@ _button20 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 19;
 
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
 }];
 
 //Button 21
 _button21 ctrlAddEventHandler [ "ButtonClick", 
 {
     GVAR(Buttonwahl) = 20;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
 
 }];
 
@@ -484,6 +567,10 @@ _button22 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 21;
 
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
 }];
 
 //Button 23
@@ -491,11 +578,19 @@ _button23 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 22;
 
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
 }];
 
 //Button 24
 _button24 ctrlAddEventHandler [ "ButtonClick", 
 {
     GVAR(Buttonwahl) = 23;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
 
 }];
