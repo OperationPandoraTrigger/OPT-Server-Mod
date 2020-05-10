@@ -153,23 +153,6 @@ GVAR(orderDialogObjects) = [_pool, 1] call CBA_fnc_sortNestedArray; // billigste
 // Budget 
 [_budget] call opt_common_fnc_renderbudget;
 
-private _txtToAdd = GVAR(orderDialogObjects) apply {getText (configFile >> "CfgVehicles" >> (_x select 0) >> "displayName")};
-
-private _picToAdd = GVAR(orderDialogObjects) apply 
-{
-    if (getText(configFile >> "cfgVehicles" >> (_x select 0) >> "picture") find ".paa" != -1) then 
-	{
-        getText (configFile >> "cfgVehicles" >> (_x select 0) >> "picture");
-    } 
-	else 
-	{
-        getText (configFile >> "cfgVehicles" >> (_x select 0) >> "editorPreview");
-    };
-};
-
-private _dataToAdd = GVAR(orderDialogObjects) apply {_x select 0};
-
-[IDD_DLG_ORDER, IDC_CTRL_VEHICLE_LIST, _txtToAdd, _picToAdd, _dataToAdd] call FUNC(fillLB);
 
 // Flagge setzen
 switch (_side) do 
@@ -210,12 +193,14 @@ GVAR(idPadCheckShop) = [{
         {
             _order ctrlEnable true;
             GVAR(orderPAD) = _freiePads select 0;
+            _padBox ctrlSetTextColor [1.0, 0.0, 0.0, 1];
             _padBox ctrlSetText format ["BOX:%1",GVAR(orderPAD)];
         }
     else 
         {
             _order ctrlEnable false;
-            GVAR(orderPAD) = [];
+            GVAR(orderPAD) = "Kein freie Box vorhanden";
+            _padBox ctrlSetTextColor [0.0, 1.0, 0.0, 1];
             _padBox ctrlSetText format ["BOX:%1",GVAR(orderPAD)];
         };
 
