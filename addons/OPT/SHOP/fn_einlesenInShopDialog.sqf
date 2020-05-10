@@ -50,6 +50,7 @@ private _success = createDialog "Dialogshopkaufen";
 //Dialog definieren
 #define IDD_DLG_ORDER 20000
 #define IDC_PLAYER_FLAG 20001
+#define SHOPBUTTONANZAHL 24
 
 private _display = findDisplay IDD_DLG_ORDER;
 private _budget = _display displayCtrl 20009;
@@ -64,6 +65,19 @@ private _moveInVeh = _display displayCtrl 20006;
 _order ctrlEnable false;
 _konfig ctrlEnable false;
 _moveInVeh ctrlSetTextColor [0.0, 1.0, 0.0, 1];
+
+//Kaufbutton ausblenden
+for "_i" from 0 to SHOPBUTTONANZAHL do 
+{
+    //Bild
+    ctrlShow [(20102 + _i), false ];
+
+    //TextName    
+    ctrlShow [(20010 + _i), false ];
+
+    //TextGeld    
+    ctrlShow [(20126 + _i), false ];
+};  
 
 switch (GVAR(vehicleType)) do 
 {
@@ -153,7 +167,30 @@ GVAR(orderDialogObjects) = [_pool, 1] call CBA_fnc_sortNestedArray; // billigste
 [_budget] call opt_common_fnc_renderbudget;
 
 //Anzahl Kaufbutton bestimmen
+private _Objektanzahl = 0;
+_Objektanzahl = count GVAR(orderDialogObjects);
+private _objekte = GVAR(orderDialogObjects);
+private _Bildobjekt = "";
+private _Nameobjekt = "";
+private _Geldobjekt = "";
 
+for "_i" from 0 to SHOPBUTTONANZAHL do 
+{
+    //Bild
+    _Bildobjekt = getText (configFile >> "cfgVehicles" >> ((_objekte select _i) select 0) >> "editorPreview");
+    ctrlSetText [(20102 + _i), _Bildobjekt%1];
+    ctrlShow [(20102 + _i), true ];
+
+    //TextName    
+    _Nameobjekt%1 = getText (configFile >> "CfgVehicles" >> ((_objekte select _i) select 0) >> "displayName");
+    ctrlSetText [(20010 + _i), _Nameobjekt%1];
+    ctrlShow [(20010 + _i), true ];
+
+    //TextGeld    
+    _Geldobjekt%1 = ((_objekte select _i) select 1);
+    ctrlSetText [(20126 + _i), _Geldobjekt%1];
+    ctrlShow [(20126 + _i), true ];
+}; 
 
 
 // Flagge setzen
@@ -177,7 +214,7 @@ GVAR(idPadCheckShop) = [{
     private _freiePads = [];
     private _display = findDisplay 20000;
     private _order = _display displayCtrl 20004;
-    private _padBox = _display displayCtrl 20009;
+    private _padBox = _display displayCtrl 20003;
    
     // check der Pads ob belegt
     GVAR(pads) apply {
@@ -212,13 +249,7 @@ GVAR(idPadCheckShop) = [{
 // Kauf ausführen  
 _order ctrlAddEventHandler [ "ButtonClick", 
 {
-    private _display = findDisplay IDD_DLG_ORDER;
-    private _listbox_vehicles = _display displayCtrl IDC_CTRL_VEHICLE_LIST;
-    private _editbox_info = _display displayCtrl IDC_CTRL_PRICE_LIST;
 
-    private _sel_class = lbCurSel _listbox_vehicles;
-	private _unitRecord = GVAR(orderDialogObjects) select _sel_class;
-    private _class = _listbox_vehicles lbData _sel_class;
 	private _unitCost = _unitRecord select 1;
 
     private _Datensatz = [];
@@ -233,12 +264,6 @@ _order ctrlAddEventHandler [ "ButtonClick",
 // Konfig ausführen  
 _konfig ctrlAddEventHandler [ "ButtonClick", 
 {
-    private _display = findDisplay IDD_DLG_ORDER;
-    private _listbox_vehicles = _display displayCtrl IDC_CTRL_VEHICLE_LIST;
- 
-    private _sel_class = lbCurSel _listbox_vehicles;
-	private _unitRecord = GVAR(orderDialogObjects) select _sel_class;
-    private _class = _listbox_vehicles lbData _sel_class;
 	private _unitCost = _unitRecord select 1;
 
     closeDialog 0;
@@ -250,7 +275,7 @@ _konfig ctrlAddEventHandler [ "ButtonClick",
 _moveInVeh ctrlAddEventHandler [ "ButtonClick", 
 {
     private _display = findDisplay IDD_DLG_ORDER;
-    private _moveInVeh = _display displayCtrl 20010;
+    private _moveInVeh = _display displayCtrl 20006;
 
     if (GVAR(moveInVeh)) then 
     {
