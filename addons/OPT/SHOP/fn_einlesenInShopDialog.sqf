@@ -62,9 +62,37 @@ private _rscPicture = _display displayCtrl IDC_PLAYER_FLAG;
 private _padBox = _display displayCtrl 20003;
 private _moveInVeh = _display displayCtrl 20006;
 
+//Kaufbutton
+private _button1 = _display displayCtrl 20010;
+private _button2 = _display displayCtrl 20011;
+private _button3 = _display displayCtrl 20012;
+private _button4 = _display displayCtrl 20013;
+private _button5 = _display displayCtrl 20014;
+private _button6 = _display displayCtrl 20015;
+private _button7 = _display displayCtrl 20016;
+private _button8 = _display displayCtrl 20017;
+private _button9 = _display displayCtrl 20018;
+private _button10 = _display displayCtrl 20019;
+private _button11 = _display displayCtrl 20020;
+private _button12 = _display displayCtrl 20021;
+private _button13 = _display displayCtrl 20022;
+private _button14 = _display displayCtrl 20023;
+private _button15 = _display displayCtrl 20024;
+private _button16 = _display displayCtrl 20025;
+private _button17 = _display displayCtrl 20026;
+private _button18 = _display displayCtrl 20027;
+private _button19 = _display displayCtrl 20028;
+private _button20 = _display displayCtrl 20029;
+private _button21 = _display displayCtrl 20030;
+private _button22 = _display displayCtrl 20031;
+private _button23 = _display displayCtrl 20032;
+private _button24 = _display displayCtrl 20033;
+
 _order ctrlEnable false;
 _konfig ctrlEnable false;
 _moveInVeh ctrlSetTextColor [0.0, 1.0, 0.0, 1];
+
+GVAR(Buttonwahl) = 0;
 
 //Kaufbutton ausblenden
 for "_i" from 0 to SHOPBUTTONANZAHL do 
@@ -169,7 +197,6 @@ GVAR(orderDialogObjects) = [_pool, 1] call CBA_fnc_sortNestedArray; // billigste
 //Anzahl Kaufbutton bestimmen
 private _Objektanzahl = 0;
 _Objektanzahl = count GVAR(orderDialogObjects);
-private _objekte = GVAR(orderDialogObjects);
 private _Bildobjekt = "";
 private _Nameobjekt = "";
 private _Geldobjekt = "";
@@ -177,18 +204,18 @@ private _Geldobjekt = "";
 for "_i" from 0 to SHOPBUTTONANZAHL do 
 {
     //Bild
-    _Bildobjekt = getText (configFile >> "cfgVehicles" >> ((_objekte select _i) select 0) >> "editorPreview");
-    ctrlSetText [(20102 + _i), _Bildobjekt%1];
+    _Bildobjekt = getText (configFile >> "cfgVehicles" >> ((GVAR(orderDialogObjects) select _i) select 0) >> "editorPreview");
+    ctrlSetText [(20102 + _i), _Bildobjekt];
     ctrlShow [(20102 + _i), true ];
 
     //TextName    
-    _Nameobjekt%1 = getText (configFile >> "CfgVehicles" >> ((_objekte select _i) select 0) >> "displayName");
-    ctrlSetText [(20010 + _i), _Nameobjekt%1];
+    _Nameobjekt = getText (configFile >> "CfgVehicles" >> ((GVAR(orderDialogObjects) select _i) select 0) >> "displayName");
+    ctrlSetText [(20010 + _i), _Nameobjekt];
     ctrlShow [(20010 + _i), true ];
 
     //TextGeld    
-    _Geldobjekt%1 = ((_objekte select _i) select 1);
-    ctrlSetText [(20126 + _i), _Geldobjekt%1];
+    _Geldobjekt = ((GVAR(orderDialogObjects) select _i) select 1);
+    ctrlSetText [(20126 + _i), _Geldobjekt];
     ctrlShow [(20126 + _i), true ];
 }; 
 
@@ -250,7 +277,8 @@ GVAR(idPadCheckShop) = [{
 _order ctrlAddEventHandler [ "ButtonClick", 
 {
 
-	private _unitCost = _unitRecord select 1;
+	private _unitCost = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1);
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
 
     private _Datensatz = [];
 
@@ -264,7 +292,8 @@ _order ctrlAddEventHandler [ "ButtonClick",
 // Konfig ausführen  
 _konfig ctrlAddEventHandler [ "ButtonClick", 
 {
-	private _unitCost = _unitRecord select 1;
+	private _unitCost = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1);
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
 
     closeDialog 0;
 
@@ -296,5 +325,174 @@ _moveInVeh ctrlAddEventHandler [ "ButtonClick",
 _remove ctrlAddEventHandler [ "ButtonClick", 
 {
     [GVAR(pads)] call FUNC(deletevehicle);
+
+}];
+
+//Kaufbutton EH
+//Button 1
+_button1 ctrlAddEventHandler [ "ButtonClick", 
+{
+    GVAR(Buttonwahl) = 0;
+
+}];
+
+//Button 2
+_button2 ctrlAddEventHandler [ "ButtonClick", 
+{
+    GVAR(Buttonwahl) = 1;
+
+}];
+
+//Button 3
+_button3 ctrlAddEventHandler [ "ButtonClick", 
+{
+    GVAR(Buttonwahl) = 2;
+
+}];
+
+//Button 4
+_button4 ctrlAddEventHandler [ "ButtonClick", 
+{
+    GVAR(Buttonwahl) = 3;
+
+}];
+
+//Button 5
+_button5 ctrlAddEventHandler [ "ButtonClick", 
+{
+    GVAR(Buttonwahl) = 4;
+
+}];
+
+//Button 6
+_button6 ctrlAddEventHandler [ "ButtonClick", 
+{
+    GVAR(Buttonwahl) = 5;
+
+}];
+
+//Button 7
+_button7 ctrlAddEventHandler [ "ButtonClick", 
+{
+    GVAR(Buttonwahl) = 6;
+
+}];
+
+//Button 8
+_button8 ctrlAddEventHandler [ "ButtonClick", 
+{
+    GVAR(Buttonwahl) = 7;
+
+}];
+
+//Button 9
+_button9 ctrlAddEventHandler [ "ButtonClick", 
+{
+    GVAR(Buttonwahl) = 8;
+
+}];
+
+//Button 10
+_button10 ctrlAddEventHandler [ "ButtonClick", 
+{
+    GVAR(Buttonwahl) = 9;
+
+}];
+
+//Button 11
+_button11 ctrlAddEventHandler [ "ButtonClick", 
+{
+    GVAR(Buttonwahl) = 10;
+
+}];
+
+//Button 12
+_button12 ctrlAddEventHandler [ "ButtonClick", 
+{
+    GVAR(Buttonwahl) = 11;
+
+}];
+
+//Button 13
+_button13 ctrlAddEventHandler [ "ButtonClick", 
+{
+    GVAR(Buttonwahl) = 12;
+
+}];
+
+//Button 14
+_button14 ctrlAddEventHandler [ "ButtonClick", 
+{
+    GVAR(Buttonwahl) = 13;
+
+}];
+
+//Button 15
+_button15 ctrlAddEventHandler [ "ButtonClick", 
+{
+    GVAR(Buttonwahl) = 14;
+
+}];
+
+//Button 16
+_button16 ctrlAddEventHandler [ "ButtonClick", 
+{
+    GVAR(Buttonwahl) = 15;
+
+}];
+
+//Button 17
+_button17 ctrlAddEventHandler [ "ButtonClick", 
+{
+    GVAR(Buttonwahl) = 16;
+
+}];
+
+//Button 18
+_button18 ctrlAddEventHandler [ "ButtonClick", 
+{
+    GVAR(Buttonwahl) = 17;
+
+}];
+
+//Button 19
+_button19 ctrlAddEventHandler [ "ButtonClick", 
+{
+    GVAR(Buttonwahl) = 18;
+
+}];
+
+//Button 20
+_button20 ctrlAddEventHandler [ "ButtonClick", 
+{
+    GVAR(Buttonwahl) = 19;
+
+}];
+
+//Button 21
+_button21 ctrlAddEventHandler [ "ButtonClick", 
+{
+    GVAR(Buttonwahl) = 20;
+
+}];
+
+//Button 22
+_button22 ctrlAddEventHandler [ "ButtonClick", 
+{
+    GVAR(Buttonwahl) = 21;
+
+}];
+
+//Button 23
+_button23 ctrlAddEventHandler [ "ButtonClick", 
+{
+    GVAR(Buttonwahl) = 22;
+
+}];
+
+//Button 24
+_button24 ctrlAddEventHandler [ "ButtonClick", 
+{
+    GVAR(Buttonwahl) = 23;
 
 }];
