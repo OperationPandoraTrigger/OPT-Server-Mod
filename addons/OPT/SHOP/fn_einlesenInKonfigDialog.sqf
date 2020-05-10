@@ -154,6 +154,9 @@ if (GVAR(Modus) == "old") then
     // Boxanzeige ausblenden
     _padBox ctrlShow false;
 
+    // Kaufbutton anzeigen
+    _IDD_vehKonfigOrder ctrlEnable true;
+
     // Vorhandenen Bewaffnung Filtern
     _waffenMagazinArry = [GVAR(veh)] call FUNC(filter);	
 
