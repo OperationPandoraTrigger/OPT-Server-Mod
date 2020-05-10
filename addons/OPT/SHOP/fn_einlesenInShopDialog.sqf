@@ -102,9 +102,11 @@ for "_i" from 0 to SHOPBUTTONANZAHL do
 
     //TextName    
     ctrlShow [(20010 + _i), false ];
+    ctrlEnable [(20010 + _i), false];
 
     //TextGeld    
     ctrlShow [(20126 + _i), false ];
+    ctrlSetText [(20126 + _i), ""];
 };  
 
 switch (GVAR(vehicleType)) do 
@@ -201,7 +203,7 @@ private _Bildobjekt = "";
 private _Nameobjekt = "";
 private _Geldobjekt = "";
 
-for "_i" from 0 to SHOPBUTTONANZAHL do 
+for "_i" from 0 to _Objektanzahl do 
 {
     //Bild
     _Bildobjekt = getText (configFile >> "cfgVehicles" >> ((GVAR(orderDialogObjects) select _i) select 0) >> "editorPreview");
@@ -212,6 +214,7 @@ for "_i" from 0 to SHOPBUTTONANZAHL do
     _Nameobjekt = getText (configFile >> "CfgVehicles" >> ((GVAR(orderDialogObjects) select _i) select 0) >> "displayName");
     ctrlSetText [(20010 + _i), _Nameobjekt];
     ctrlShow [(20010 + _i), true ];
+    ctrlEnable [(20010 + _i), true];
 
     //TextGeld    
     _Geldobjekt = ((GVAR(orderDialogObjects) select _i) select 1);
@@ -259,14 +262,14 @@ GVAR(idPadCheckShop) = [{
         {
             _order ctrlEnable true;
             GVAR(orderPAD) = _freiePads select 0;
-            _padBox ctrlSetTextColor [1.0, 0.0, 0.0, 1];
+            _padBox ctrlSetTextColor [0.0, 1.0, 0.0, 1];
             _padBox ctrlSetText format ["BOX:%1",GVAR(orderPAD)];
         }
     else 
         {
             _order ctrlEnable false;
             GVAR(orderPAD) = "Kein freie Box vorhanden";
-            _padBox ctrlSetTextColor [0.0, 1.0, 0.0, 1];
+            _padBox ctrlSetTextColor [1.0, 0.0, 0.0, 1];
             _padBox ctrlSetText format ["BOX:%1",GVAR(orderPAD)];
         };
 
@@ -309,13 +312,13 @@ _moveInVeh ctrlAddEventHandler [ "ButtonClick",
     if (GVAR(moveInVeh)) then 
     {
         GVAR(moveInVeh) = false;         
-        _moveInVeh ctrlSetText "Fahrzeug nicht besetzten";   
+        _moveInVeh ctrlSetText "Fahrzeug nicht besetzen";   
         _moveInVeh ctrlSetTextColor [1.0, 0.0, 0.0, 1];       
     }
     else
     {
         GVAR(moveInVeh) = true;         
-        _moveInVeh ctrlSetText "Fahrzeug besetzten"; 
+        _moveInVeh ctrlSetText "Fahrzeug besetzen"; 
         _moveInVeh ctrlSetTextColor [0.0, 1.0, 0.0, 1];             
     };
 
