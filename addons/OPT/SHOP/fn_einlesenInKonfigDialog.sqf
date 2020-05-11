@@ -623,14 +623,14 @@ GVAR(idPadCheckKonfig) = [{
         {
             _IDD_vehKonfigOrder ctrlEnable true;
             GVAR(orderPAD) = _freiePads select 0;
-            _padBox ctrlSetTextColor [1.0, 0.0, 0.0, 1];
+            _padBox ctrlSetTextColor [0.0, 1.0, 0.0, 1];
             _padBox ctrlSetText format ["BOX:%1",GVAR(orderPAD)];
         }
     else 
         {
             _IDD_vehKonfigOrder ctrlEnable false;
             GVAR(orderPAD) = "Kein freie Box vorhanden";
-            _padBox ctrlSetTextColor [0.0, 1.0, 0.0, 1];
+            _padBox ctrlSetTextColor [1.0, 0.0, 0.0, 1];
             _padBox ctrlSetText format ["BOX:%1",GVAR(orderPAD)];
         };
 
@@ -639,8 +639,8 @@ GVAR(idPadCheckKonfig) = [{
 // Festlegen ob Spieler in Fahrzeug nach kauf
 _moveInVeh ctrlAddEventHandler [ "ButtonClick", 
 {
-    private _display = findDisplay IDD_DLG_ORDER;
-    private _moveInVeh = _display displayCtrl 20010;
+    private _display = findDisplay IDD_DLG_KONFIG;
+    private _moveInVeh = _display displayCtrl 22044;
 
     if (GVAR(moveInVeh)) then 
     {
