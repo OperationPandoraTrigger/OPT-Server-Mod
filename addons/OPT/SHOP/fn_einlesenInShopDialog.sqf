@@ -92,6 +92,7 @@ private _button24 = _display displayCtrl 20033;
 _order ctrlEnable false;
 _konfig ctrlEnable false;
 _moveInVeh ctrlSetTextColor [0.0, 1.0, 0.0, 1];
+_kosten ctrlSetText format ["€:%1",0];
 
 GVAR(Buttonwahl) = 0;
 
@@ -202,9 +203,9 @@ private _Objektanzahl = 0;
 _Objektanzahl = count GVAR(orderDialogObjects);
 private _Bildobjekt = "";
 private _Nameobjekt = "";
-private _Geldobjekt = "";
+private _Geldobjekt = 0;
 
-for "_i" from 0 to _Objektanzahl do 
+for "_i" from 0 to (_Objektanzahl-1) do 
 {
     //Bild
     _Bildobjekt = getText (configFile >> "cfgVehicles" >> ((GVAR(orderDialogObjects) select _i) select 0) >> "editorPreview");
@@ -219,10 +220,9 @@ for "_i" from 0 to _Objektanzahl do
 
     //TextGeld    
     _Geldobjekt = ((GVAR(orderDialogObjects) select _i) select 1);
-    ctrlSetText [(20126 + _i), _Geldobjekt];
+    ctrlSetText [(20126 + _i), format["%1",_Geldobjekt]];
     ctrlShow [(20126 + _i), true ];
 }; 
-
 
 // Flagge setzen
 switch (_side) do 
