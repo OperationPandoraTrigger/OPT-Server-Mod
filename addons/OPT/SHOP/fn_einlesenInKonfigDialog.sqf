@@ -645,13 +645,13 @@ _moveInVeh ctrlAddEventHandler [ "ButtonClick",
     if (GVAR(moveInVeh)) then 
     {
         GVAR(moveInVeh) = false;         
-        _moveInVeh ctrlSetText "Fahrzeug nicht besetzen";   
+        _moveInVeh ctrlSetText "[ ] Fahrzeug besetzen";   
         _moveInVeh ctrlSetTextColor [1.0, 0.0, 0.0, 1];       
     }
     else
     {
         GVAR(moveInVeh) = true;         
-        _moveInVeh ctrlSetText "Fahrzeug besetzen"; 
+        _moveInVeh ctrlSetText "[X] Fahrzeug besetzen"; 
         _moveInVeh ctrlSetTextColor [0.0, 1.0, 0.0, 1];             
     };
 
