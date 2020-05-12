@@ -14,7 +14,7 @@ List all events used by OPT here
 // params ["_unit"]
 #define EVENT_MEDIC_REVIVED             OPT_EVENT(medic_revived)
 // Laden der Datenmatrix nach öffen des Shop Dialogs
-// params [""]
+// params ["_typ"]
 #define EVENT_SHOP_KAUF_ONLOAD         OPT_EVENT(shop_kauf_onload)
 // Erneuerung des Infosfeld nach änderung der Auswahl 
 // params ["_typ"]
@@ -31,3 +31,6 @@ List all events used by OPT here
 // Kauf in Konfigurator ausführen 
 // params ["_typ"]
 #define EVENT_SHOP_KONFIG_ORDER      OPT_EVENT(shop_konfig_order)
+// Kauf in Konfigurator ausführen 
+// params ["_typ"]
+#define EVENT_SHOP_VERKAUF_ORDER      OPT_EVENT(shop_verkauf_order)

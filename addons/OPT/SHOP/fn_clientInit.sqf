@@ -53,6 +53,17 @@ DUMP("Successfully loaded the OPT/Shop module on the client");
 	
 ] call CFUNC(addEventHandler);
 
+[
+	EVENT_SHOP_VERKAUF_ORDER, 
+	{
+		_this params ["_eventArgs"];
+
+		_eventArgs call FUNC(einlesenInVerkaufDialog);
+	},
+	[]
+	
+] call CFUNC(addEventHandler);
+
 // Entfernung des Boxchecks PFH Shop
 [{
 	if (isNull (findDisplay 20000 displayCtrl 20002)) then 
@@ -154,22 +165,22 @@ if (hasInterface) then
 
             if (player in _triggerUnitsair) then 
 			{
-                 [EVENT_SHOP_KAUF_ONLOAD,["sell"]] call CFUNC(localEvent);
+                 [EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);
             };
 
 			if (player in _triggerUnitsveh) then 
 			{
-                [EVENT_SHOP_KAUF_ONLOAD,["sell"]] call CFUNC(localEvent);
+                [EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);
             };
 
 			if (player in _triggerUnitssup) then 
 			{
-                [EVENT_SHOP_KAUF_ONLOAD,["sell"]] call CFUNC(localEvent);
+                [EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);
             };
 
 			if (player in _triggerUnitssea) then 
 			{
-                [EVENT_SHOP_KAUF_ONLOAD,["sell"]] call CFUNC(localEvent);
+                [EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);
             };
         }, 
         {}, 
@@ -241,21 +252,9 @@ if (hasInterface) then
 	east_shop_sea addAction [("<t color=""#F60707"">" + ("Wasserfahrzeuge") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["sea"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
 	west_shop_sea addAction [("<t color=""#F60707"">" + ("Wasserfahrzeuge") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["sea"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];	
 
-
-	east_shop_air addAction [("<t color=""#F60707"">" + ("Verkaufen") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-	west_shop_air addAction [("<t color=""#F60707"">" + ("Verkaufen") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];	
+	east_shop_verkauf addAction [("<t color=""#F60707"">" + ("Verkaufen") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
+	west_shop_verkauf addAction [("<t color=""#F60707"">" + ("Verkaufen") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];	
 	
-	east_shop_veh addAction [("<t color=""#F60707"">" + ("Verkaufen") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-	west_shop_veh addAction [("<t color=""#F60707"">" + ("Verkaufen") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];	
-
-	east_shop_sup addAction [("<t color=""#F60707"">" + ("Verkaufen") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-	west_shop_sup addAction [("<t color=""#F60707"">" + ("Verkaufen") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];	
-
-	east_shop_sea addAction [("<t color=""#F60707"">" + ("Verkaufen") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-	west_shop_sea addAction [("<t color=""#F60707"">" + ("Verkaufen") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];	
-
-	
-
 	[("<t color=""#F60707"">" + ("Luftwaffe") + "</t>"), 
 	east_shop_air, 20, 
 	{true}, 
