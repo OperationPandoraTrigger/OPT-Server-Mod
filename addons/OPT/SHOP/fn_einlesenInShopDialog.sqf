@@ -326,9 +326,16 @@ _moveInVeh ctrlAddEventHandler [ "ButtonClick",
 }];
 
 // Fahrzeuge auf allen Boxen im Bereich löschen 
+GVAR(removecount) = 0;
+
 _remove ctrlAddEventHandler [ "ButtonClick", 
 {
-    [GVAR(pads)] call FUNC(deletevehicle);
+    if (GVAR(removecount) == 3) then 
+    {
+        [GVAR(pads)] call FUNC(deletevehicle);
+        GVAR(removecount) = 0;
+    };
+    GVAR(removecount) = GVAR(removecount)+1;
 
 }];
 
