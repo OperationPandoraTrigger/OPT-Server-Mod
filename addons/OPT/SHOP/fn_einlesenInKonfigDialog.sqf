@@ -160,6 +160,9 @@ if (GVAR(Modus) == "old") then
     // Vorhandenen Bewaffnung Filtern
     _waffenMagazinArry = [GVAR(veh)] call FUNC(filter);	
 
+    // Fahrzeugbesetzt button ausblenden
+    _moveInVeh ctrlShow false;
+
     //Festellung Bewaffnung
     GVAR(weaponsVeh) =_waffenMagazinArry select 0;
     GVAR(magazineVeh) = _waffenMagazinArry select 1;      
@@ -609,7 +612,7 @@ GVAR(idPadCheckKonfig) = [{
     // check der Pads ob belegt
     GVAR(pads) apply
     {
-	    private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], 5];
+	    private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], 8];
             
         if (count _ob == 0) then 
         {

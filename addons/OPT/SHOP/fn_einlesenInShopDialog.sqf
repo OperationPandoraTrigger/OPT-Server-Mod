@@ -92,6 +92,7 @@ private _button24 = _display displayCtrl 20033;
 _order ctrlEnable false;
 _konfig ctrlEnable false;
 _moveInVeh ctrlSetTextColor [0.0, 1.0, 0.0, 1];
+_moveInVeh ctrlSetText "[X] Fahrzeug besetzen";
 _kosten ctrlSetText format ["€:%1",0];
 
 GVAR(Buttonwahl) = 0;
@@ -220,7 +221,10 @@ for "_i" from 0 to (_Objektanzahl-1) do
 
     //TextGeld    
     _Geldobjekt = ((GVAR(orderDialogObjects) select _i) select 1);
-    ctrlSetText [(20126 + _i), format["%1",_Geldobjekt]];
+    private _GeldClass = ((GVAR(orderDialogObjects) select _i) select 0);
+    private _GeldDatensatz = [];
+    _GeldDatensatz = [_GeldClass] call FUNC(loadout);
+    ctrlSetText [(20126 + _i), format["%1",_Geldobjekt+(_GeldDatensatz select 10)]];
     ctrlShow [(20126 + _i), true ];
 }; 
 
@@ -249,7 +253,7 @@ GVAR(idPadCheckShop) = [{
    
     // check der Pads ob belegt
     GVAR(pads) apply {
-	    private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], 4];
+	    private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], 8];
             
         if (count _ob == 0) then 
         {
@@ -290,7 +294,11 @@ _order ctrlAddEventHandler [ "ButtonClick",
     
     [_Datensatz,GVAR(orderPAD),GVAR(moveInVeh),_unitCost] call FUNC(order);
     
-    closeDialog 0;
+    if (GVAR(moveInVeh)) then 
+    {
+        closeDialog 0;
+    };   
+
 }];
 
 // Konfig ausführen  
@@ -347,7 +355,15 @@ _button1 ctrlAddEventHandler [ "ButtonClick",
 
     private _display = findDisplay IDD_DLG_ORDER;
     private _kosten = _display displayCtrl 20002;
-    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
+
+    [_budget] call opt_common_fnc_renderbudget;
 }];
 
 //Button 2
@@ -357,7 +373,13 @@ _button2 ctrlAddEventHandler [ "ButtonClick",
 
     private _display = findDisplay IDD_DLG_ORDER;
     private _kosten = _display displayCtrl 20002;
-    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 }];
 
 //Button 3
@@ -367,7 +389,13 @@ _button3 ctrlAddEventHandler [ "ButtonClick",
 
     private _display = findDisplay IDD_DLG_ORDER;
     private _kosten = _display displayCtrl 20002;
-    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
 }];
 
@@ -378,7 +406,13 @@ _button4 ctrlAddEventHandler [ "ButtonClick",
 
     private _display = findDisplay IDD_DLG_ORDER;
     private _kosten = _display displayCtrl 20002;
-    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
 }];
 
@@ -389,7 +423,13 @@ _button5 ctrlAddEventHandler [ "ButtonClick",
 
     private _display = findDisplay IDD_DLG_ORDER;
     private _kosten = _display displayCtrl 20002;
-    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
 }];
 
@@ -400,7 +440,13 @@ _button6 ctrlAddEventHandler [ "ButtonClick",
 
     private _display = findDisplay IDD_DLG_ORDER;
     private _kosten = _display displayCtrl 20002;
-    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
 }];
 
@@ -411,7 +457,13 @@ _button7 ctrlAddEventHandler [ "ButtonClick",
 
     private _display = findDisplay IDD_DLG_ORDER;
     private _kosten = _display displayCtrl 20002;
-    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
 }];
 
@@ -422,7 +474,13 @@ _button8 ctrlAddEventHandler [ "ButtonClick",
 
     private _display = findDisplay IDD_DLG_ORDER;
     private _kosten = _display displayCtrl 20002;
-    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
 }];
 
@@ -433,7 +491,13 @@ _button9 ctrlAddEventHandler [ "ButtonClick",
 
     private _display = findDisplay IDD_DLG_ORDER;
     private _kosten = _display displayCtrl 20002;
-    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
 }];
 
@@ -444,7 +508,13 @@ _button10 ctrlAddEventHandler [ "ButtonClick",
 
     private _display = findDisplay IDD_DLG_ORDER;
     private _kosten = _display displayCtrl 20002;
-    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
 }];
 
@@ -455,7 +525,13 @@ _button11 ctrlAddEventHandler [ "ButtonClick",
 
     private _display = findDisplay IDD_DLG_ORDER;
     private _kosten = _display displayCtrl 20002;
-    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
 }];
 
@@ -466,7 +542,13 @@ _button12 ctrlAddEventHandler [ "ButtonClick",
 
     private _display = findDisplay IDD_DLG_ORDER;
     private _kosten = _display displayCtrl 20002;
-    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
 }];
 
@@ -477,7 +559,13 @@ _button13 ctrlAddEventHandler [ "ButtonClick",
 
     private _display = findDisplay IDD_DLG_ORDER;
     private _kosten = _display displayCtrl 20002;
-    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
 }];
 
@@ -488,7 +576,13 @@ _button14 ctrlAddEventHandler [ "ButtonClick",
 
     private _display = findDisplay IDD_DLG_ORDER;
     private _kosten = _display displayCtrl 20002;
-    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
 }];
 
@@ -499,7 +593,13 @@ _button15 ctrlAddEventHandler [ "ButtonClick",
 
     private _display = findDisplay IDD_DLG_ORDER;
     private _kosten = _display displayCtrl 20002;
-    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
 }];
 
@@ -510,7 +610,13 @@ _button16 ctrlAddEventHandler [ "ButtonClick",
 
     private _display = findDisplay IDD_DLG_ORDER;
     private _kosten = _display displayCtrl 20002;
-    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
 }];
 
@@ -521,7 +627,13 @@ _button17 ctrlAddEventHandler [ "ButtonClick",
 
     private _display = findDisplay IDD_DLG_ORDER;
     private _kosten = _display displayCtrl 20002;
-    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
 }];
 
@@ -532,7 +644,13 @@ _button18 ctrlAddEventHandler [ "ButtonClick",
 
     private _display = findDisplay IDD_DLG_ORDER;
     private _kosten = _display displayCtrl 20002;
-    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
 }];
 
@@ -543,7 +661,13 @@ _button19 ctrlAddEventHandler [ "ButtonClick",
 
     private _display = findDisplay IDD_DLG_ORDER;
     private _kosten = _display displayCtrl 20002;
-    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
 }];
 
@@ -554,7 +678,13 @@ _button20 ctrlAddEventHandler [ "ButtonClick",
 
     private _display = findDisplay IDD_DLG_ORDER;
     private _kosten = _display displayCtrl 20002;
-    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
 }];
 
@@ -565,7 +695,13 @@ _button21 ctrlAddEventHandler [ "ButtonClick",
 
     private _display = findDisplay IDD_DLG_ORDER;
     private _kosten = _display displayCtrl 20002;
-    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
 }];
 
@@ -576,7 +712,13 @@ _button22 ctrlAddEventHandler [ "ButtonClick",
 
     private _display = findDisplay IDD_DLG_ORDER;
     private _kosten = _display displayCtrl 20002;
-    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
 }];
 
@@ -587,7 +729,13 @@ _button23 ctrlAddEventHandler [ "ButtonClick",
 
     private _display = findDisplay IDD_DLG_ORDER;
     private _kosten = _display displayCtrl 20002;
-    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
 }];
 
@@ -598,6 +746,12 @@ _button24 ctrlAddEventHandler [ "ButtonClick",
 
     private _display = findDisplay IDD_DLG_ORDER;
     private _kosten = _display displayCtrl 20002;
-    _kosten ctrlSetText format ["€:%1",((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1)];
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
 }];
