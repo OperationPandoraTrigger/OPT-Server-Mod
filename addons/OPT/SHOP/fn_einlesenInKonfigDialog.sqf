@@ -104,7 +104,7 @@ _Munitext4 ctrlEnable false;
 _Munitext5 ctrlEnable false;
 _Munitext6 ctrlEnable false;
 
-_kosten ctrlSetText "€:0";
+_kosten ctrlSetText format["€:%1",_unitCost];	
 
 GVAR(veh) = "";
 
@@ -426,7 +426,7 @@ else
         _IDD_box_text7 ctrlSetText "Datalink";
     };
 	
-    _kosten ctrlSetText format["€:%1", GVAR(VorhandeneBewaffnunggeld)];	
+    _kosten ctrlSetText format["€:%1", GVAR(VorhandeneBewaffnunggeld)-GVAR(unitCost)];	
 };   
 
 //InfoBox Erneuern bei änderung
@@ -439,7 +439,7 @@ _IDD_box1 ctrlAddEventHandler [ "LBSelChanged",
 
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
-    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10))];  
+    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10) - GVAR(unitCost))];  
 
 }];
 
@@ -452,7 +452,7 @@ _IDD_box2 ctrlAddEventHandler [ "LBSelChanged",
 
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
-    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10))]; 
+    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10) - GVAR(unitCost))]; 
 
 }];
 
@@ -465,7 +465,7 @@ _IDD_box3 ctrlAddEventHandler [ "LBSelChanged",
 
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
-    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10))]; 
+    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10) - GVAR(unitCost))]; 
 
 }];
 
@@ -478,7 +478,7 @@ _IDD_box4 ctrlAddEventHandler [ "LBSelChanged",
 
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
-    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10))];  
+    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10) - GVAR(unitCost))];  
 
 }];
 
@@ -491,7 +491,7 @@ _IDD_box5 ctrlAddEventHandler [ "LBSelChanged",
 
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
-    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10))]; 
+    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10) - GVAR(unitCost))]; 
 
 }];
 
@@ -504,7 +504,7 @@ _IDD_box6 ctrlAddEventHandler [ "LBSelChanged",
 
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
-    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10))];  
+    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10) - GVAR(unitCost))];  
 
 }];
 
@@ -517,7 +517,7 @@ _IDD_box7 ctrlAddEventHandler [ "LBSelChanged",
 
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
-    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10))];  
+    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10) - GVAR(unitCost))];  
     
 }];
 
