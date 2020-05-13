@@ -31,10 +31,13 @@
     params ["_arg"];
     DUMP("UNIT ICON ADDED");
     DUMP(_arg);
+ 
+
 
     // _arg might be a string (if called by remoteExec). As we need the actual object to attach the icon, we search for the unit if necessary.
     private _newUnit = if (_arg isEqualType objNull) then { _arg} else {objectFromNetId _arg};
-    DUMP(netid _newUnit);
+    DUMP(netid 123 _newUnit);
+    DUMP(allPlayers select 1);
 
     if (!([_newUnit] call FUNC(isUnitVisible))) exitWith {
         DUMP("Unit is not visible " + str _newUnit);
