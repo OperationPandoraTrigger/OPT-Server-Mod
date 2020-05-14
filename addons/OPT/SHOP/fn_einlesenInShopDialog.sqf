@@ -97,6 +97,9 @@ _kosten ctrlSetText format ["€:%1",0];
 
 GVAR(Buttonwahl) = 0;
 
+//Bereicht für Boxkontrolle
+GVAR(Checkbereich) = 8;
+
 //Kaufbutton ausblenden
 for "_i" from 0 to SHOPBUTTONANZAHL do 
 {
@@ -150,11 +153,13 @@ switch (GVAR(vehicleType)) do
 		{
             _pool = GVAR(nato_supplies) + GVAR(nato_static);
             GVAR(pads) = GVAR(pad_sup_west);
+            GVAR(Checkbereich) = 4;
         } 
 		else 
 		{
             _pool = GVAR(csat_supplies) + GVAR(csat_static);
             GVAR(pads) = GVAR(pad_sup_east);
+            GVAR(Checkbereich) = 4;
         };
         GVAR(moveInVeh) = false;
         _moveInVeh ctrlShow false;        
@@ -253,7 +258,7 @@ GVAR(idPadCheckShop) = [{
    
     // check der Pads ob belegt
     GVAR(pads) apply {
-	    private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], 8];
+	    private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], GVAR(Checkbereich)];
             
         if (count _ob == 0) then 
         {

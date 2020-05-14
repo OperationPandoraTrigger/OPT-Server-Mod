@@ -108,6 +108,9 @@ _kosten ctrlSetText format["€:%1",_unitCost];
 
 GVAR(veh) = "";
 
+//Bereicht für Boxkontrolle
+GVAR(Checkbereich) = 8;
+
 //Fahrzeug besetzt
 private _moveInVeh = _display displayCtrl 22044;
 _moveInVeh ctrlSetTextColor [0.0, 1.0, 0.0, 1];
@@ -612,7 +615,7 @@ GVAR(idPadCheckKonfig) = [{
     // check der Pads ob belegt
     GVAR(pads) apply
     {
-	    private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], 8];
+	    private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], GVAR(Checkbereich)];
             
         if (count _ob == 0) then 
         {
