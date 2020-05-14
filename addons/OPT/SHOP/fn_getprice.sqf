@@ -39,9 +39,9 @@ if (_index != -1) then
 {
     private _friendOrEnemy = 2; // default is own side
     if (
-        ((GVAR(allNato) apply {toLower (_x select 0)} find (toLower _class) != -1) and PLAYER_SIDE == east) 
+        ((GVAR(allNato) apply {toLower (_x select 0)} find (toLower _class) != -1) and playerside == east) 
         or 
-        ((GVAR(allCsat) apply {toLower (_x select 0)} find (toLower _class) != -1) and PLAYER_SIDE == west)
+        ((GVAR(allCsat) apply {toLower (_x select 0)} find (toLower _class) != -1) and playerside == west)
         ) 
     then 
     {

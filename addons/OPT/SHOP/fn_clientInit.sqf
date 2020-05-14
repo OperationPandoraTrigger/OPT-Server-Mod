@@ -137,59 +137,6 @@ if (hasInterface) then
         ]
     ] call CBA_fnc_addKeybind;
 
-	//Verkaufs Dialog öffnen
-
-    /*
-    * https://cbateam.github.io/CBA_A3/docs/files/keybinding/fnc_addKeybind-sqf.html
-    */
-    [
-        "OPT", 
-        "OPT Verkaufs System", 
-        ["Verkaufs-Dialog öffnen", "Öffnet den Verkaufs-Dialog im Fahnenbereich."], 
-        {
-            private _triggerUnitsair = 
-			(list csat_trigger_Shop_Air1) 
-			+ (list nato_trigger_Shop_Air1);
-
-			private _triggerUnitsveh = 
-			(list csat_trigger_Shop_veh1) 
-			+ (list nato_trigger_Shop_veh1);
-
-			private _triggerUnitssup = 
-			(list csat_trigger_Shop_Sup1) 
-			+ (list nato_trigger_Shop_Sup1);
-
-			private _triggerUnitssea = 
-			(list csat_trigger_Shop_Sea1) 
-			+ (list nato_trigger_Shop_Sea1);
-
-            if (player in _triggerUnitsair) then 
-			{
-                 [EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);
-            };
-
-			if (player in _triggerUnitsveh) then 
-			{
-                [EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);
-            };
-
-			if (player in _triggerUnitssup) then 
-			{
-                [EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);
-            };
-
-			if (player in _triggerUnitssea) then 
-			{
-                [EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);
-            };
-        }, 
-        {}, 
-        [
-            DIK_F3, 
-            [false, false, false] // [shift, ctrl, alt]
-        ]
-    ] call CBA_fnc_addKeybind;
-
 	//Konfigdialog öffnen
     /*
     * https://cbateam.github.io/CBA_A3/docs/files/keybinding/fnc_addKeybind-sqf.html
@@ -252,8 +199,8 @@ if (hasInterface) then
 	east_shop_sea addAction [("<t color=""#F60707"">" + ("Wasserfahrzeuge") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["sea"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
 	west_shop_sea addAction [("<t color=""#F60707"">" + ("Wasserfahrzeuge") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["sea"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];	
 
-	east_shop_verkauf addAction [("<t color=""#F60707"">" + ("Verkaufen") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-	west_shop_verkauf addAction [("<t color=""#F60707"">" + ("Verkaufen") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];	
+	east_shop_verkauf addAction [("<t color=""#F60707"">" + ("Verkaufen") + "</t>"), {[EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
+	west_shop_verkauf addAction [("<t color=""#F60707"">" + ("Verkaufen") + "</t>"), {[EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];	
 	
 	[("<t color=""#F60707"">" + ("Luftwaffe") + "</t>"), 
 	east_shop_air, 20, 

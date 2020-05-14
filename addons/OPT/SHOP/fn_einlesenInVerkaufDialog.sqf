@@ -52,10 +52,16 @@ private _budget = _display displayCtrl 23100;
 private _close = _display displayCtrl 23104;
 private _sell = _display displayCtrl 23103;
 private _rscPicture = _display displayCtrl IDC_PLAYER_FLAG;
+private _listbox_vehicles = _display displayCtrl IDC_CTRL_VEHICLE_LIST;
+private _editbox_info = _display displayCtrl IDC_CTRL_PRICE_LIST;
 
 _order ctrlEnable false;
 _sell ctrlShow false;
 GVAR(pads) = [];
+private _pool = [];
+GVAR(vehicleType) = _type;
+
+[_budget] call opt_common_fnc_renderbudget;
 
 // Flagge setzen
 switch (_side) do 
@@ -64,13 +70,13 @@ switch (_side) do
 	{
         _rscPicture ctrlSetText "\A3\Data_F\Flags\Flag_NATO_CO.paa";
 
-        GVAR(pads) = VerkaufsBoxWest;
+        GVAR(pads) = [VerkaufsBoxWest];
     };
     case east: 
 	{
         _rscPicture ctrlSetText "\A3\Data_F\Flags\Flag_CSAT_CO.paa";
 
-        GVAR(pads) = VerkaufsBoxEast;
+        GVAR(pads) = [VerkaufsBoxEast];
     };   
 };
 
@@ -100,7 +106,7 @@ if (_type == "sell") then
 
 	GVAR(pads) apply 
     {
-	    private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], 4];
+	    private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], 8];
 
         if ((count _ob) != 0) then 
         {
@@ -128,6 +134,8 @@ if (_type == "sell") then
         };
 
 	};
+
+    systemChat format ["P:%1 O:%2",_pool,_objs];
   
     // Anzeige Objekte die mehr wert sind als 0€
     _pool = _pool select {_x select 2 > 0};
@@ -180,7 +188,7 @@ _sell ctrlAddEventHandler [ "ButtonClick",
     private _display = findDisplay IDD_DLG_ORDER;
     private _listbox_vehicles = _display displayCtrl IDC_CTRL_VEHICLE_LIST;
     private _editbox_info = _display displayCtrl IDC_CTRL_PRICE_LIST;
-    private _budget = _display displayCtrl 20100;
+    private _budget = _display displayCtrl 23100;
 
     private _sel_class = lbCurSel _listbox_vehicles;
     private _class = _listbox_vehicles lbData _sel_class;
