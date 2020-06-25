@@ -96,19 +96,23 @@ if (hasInterface) then
         {
             private _triggerUnitsair = 
 			(list csat_trigger_Shop_Air1) 
-			+ (list nato_trigger_Shop_Air1);
+			//+ (list nato_trigger_Shop_Air1)
+			+ (list guer_trigger_Shop_Air1);
 
 			private _triggerUnitsveh = 
 			(list csat_trigger_Shop_veh1) 
-			+ (list nato_trigger_Shop_veh1);
+			//+ (list nato_trigger_Shop_veh1);
+			+ (list guer_trigger_Shop_veh1);
 
 			private _triggerUnitssup = 
 			(list csat_trigger_Shop_Sup1) 
-			+ (list nato_trigger_Shop_Sup1);
+			//+ (list nato_trigger_Shop_Sup1);
+			+ (list guer_trigger_Shop_Sup1);
 
 			private _triggerUnitssea = 
 			(list csat_trigger_Shop_Sea1) 
-			+ (list nato_trigger_Shop_Sea1);
+			//+ (list nato_trigger_Shop_Sea1);
+			+ (list guer_trigger_Shop_Sea1);
 
             if (player in _triggerUnitsair) then 
 			{
@@ -148,15 +152,23 @@ if (hasInterface) then
         {
             private _triggerUnitsair = 
 			(list csat_trigger_Shop_Air1) 
-			+ (list nato_trigger_Shop_Air1);
+			//+ (list nato_trigger_Shop_Air1)
+			+ (list guer_trigger_Shop_Air1);
 
 			private _triggerUnitsveh = 
 			(list csat_trigger_Shop_veh1) 
-			+ (list nato_trigger_Shop_veh1);
+			//+ (list nato_trigger_Shop_veh1);
+			+ (list guer_trigger_Shop_veh1);
 
 			private _triggerUnitssup = 
 			(list csat_trigger_Shop_Sup1) 
-			+ (list nato_trigger_Shop_Sup1);
+			//+ (list nato_trigger_Shop_Sup1);
+			+ (list guer_trigger_Shop_Sup1);
+
+			private _triggerUnitssea = 
+			(list csat_trigger_Shop_Sea1) 
+			//+ (list nato_trigger_Shop_Sea1);
+			+ (list guer_trigger_Shop_Sea1);
 
             if (player isEqualTo assignedDriver vehicle player and (vehicle player in _triggerUnitsair)) then 
 			{
@@ -188,106 +200,23 @@ if (hasInterface) then
 
 	//AddAction für Dialog öffnen
 	east_shop_air addAction [("<t color=""#F60707"">" + ("Luftwaffe") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["choppers"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-	west_shop_air addAction [("<t color=""#F60707"">" + ("Luftwaffe") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["choppers"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];	
-	
+	//west_shop_air addAction [("<t color=""#F60707"">" + ("Luftwaffe") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["choppers"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];	
+	guer_shop_air addAction [("<t color=""#F60707"">" + ("Luftwaffe") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["choppers"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];	
+
 	east_shop_veh addAction [("<t color=""#F60707"">" + ("Fahrzeuge") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["vehicles"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-	west_shop_veh addAction [("<t color=""#F60707"">" + ("Fahrzeuge") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["vehicles"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];	
+	//west_shop_veh addAction [("<t color=""#F60707"">" + ("Fahrzeuge") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["vehicles"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];	
+	guer_shop_veh addAction [("<t color=""#F60707"">" + ("Fahrzeuge") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["vehicles"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];	
 
 	east_shop_sup addAction [("<t color=""#F60707"">" + ("Ausrüstung") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["supplies"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-	west_shop_sup addAction [("<t color=""#F60707"">" + ("Ausrüstung") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["supplies"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];	
+	//west_shop_sup addAction [("<t color=""#F60707"">" + ("Ausrüstung") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["supplies"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];	
+	guer_shop_sup addAction [("<t color=""#F60707"">" + ("Ausrüstung") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["supplies"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];	
 
 	east_shop_sea addAction [("<t color=""#F60707"">" + ("Wasserfahrzeuge") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["sea"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-	west_shop_sea addAction [("<t color=""#F60707"">" + ("Wasserfahrzeuge") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["sea"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];	
+	//west_shop_sea addAction [("<t color=""#F60707"">" + ("Wasserfahrzeuge") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["sea"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];	
+	guer_shop_sea addAction [("<t color=""#F60707"">" + ("Wasserfahrzeuge") + "</t>"), {[EVENT_SHOP_KAUF_ONLOAD,["sea"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];	
 
 	east_shop_verkauf addAction [("<t color=""#F60707"">" + ("Verkaufen") + "</t>"), {[EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-	west_shop_verkauf addAction [("<t color=""#F60707"">" + ("Verkaufen") + "</t>"), {[EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];	
-	
-	[("<t color=""#F60707"">" + ("Luftwaffe") + "</t>"), 
-	east_shop_air, 20, 
-	{true}, 
-	{[EVENT_SHOP_KAUF_ONLOAD,["choppers"]] call CFUNC(localEvent);}, 
-	[
-    "priority", 0,
-    "showWindow", false,
-    "shortcut", "DefaultAction",
-    "ignoredCanInteractConditions", ["isNotInVehicle", "isNotReloading"]
-	]] call CFUNC(addAction);
-
-	[("<t color=""#F60707"">" + ("Luftwaffe") + "</t>"), 
-	west_shop_air, 20, 
-	{true}, 
-	{[EVENT_SHOP_KAUF_ONLOAD,["choppers"]] call CFUNC(localEvent);}, 
-	[
-    "priority", 0,
-    "showWindow", false,
-    "shortcut", "DefaultAction",
-    "ignoredCanInteractConditions", ["isNotInVehicle", "isNotReloading"]
-	]] call CFUNC(addAction);
-
-	[("<t color=""#F60707"">" + ("Fahrzeuge") + "</t>"), 
-	east_shop_veh, 20, 
-	{true}, 
-	{[EVENT_SHOP_KAUF_ONLOAD,["vehicles"]] call CFUNC(localEvent);}, 
-	[
-    "priority", 0,
-    "showWindow", false,
-    "shortcut", "DefaultAction",
-    "ignoredCanInteractConditions", ["isNotInVehicle", "isNotReloading"]
-	]] call CFUNC(addAction);
-
-	[("<t color=""#F60707"">" + ("Fahrzeuge") + "</t>"), 
-	west_shop_veh, 20, 
-	{true}, 
-	{[EVENT_SHOP_KAUF_ONLOAD,["vehicles"]] call CFUNC(localEvent);}, 
-	[
-    "priority", 0,
-    "showWindow", false,
-    "shortcut", "DefaultAction",
-    "ignoredCanInteractConditions", ["isNotInVehicle", "isNotReloading"]
-	]] call CFUNC(addAction);
-
-	[("<t color=""#F60707"">" + ("Ausrüstung") + "</t>"), 
-	east_shop_sup, 20, 
-	{true}, 
-	{[EVENT_SHOP_KAUF_ONLOAD,["supplies"]] call CFUNC(localEvent);}, 
-	[
-    "priority", 0,
-    "showWindow", false,
-    "shortcut", "DefaultAction",
-    "ignoredCanInteractConditions", ["isNotInVehicle", "isNotReloading"]
-	]] call CFUNC(addAction);
-
-	[("<t color=""#F60707"">" + ("Ausrüstung") + "</t>"), 
-	west_shop_sup, 20, 
-	{true}, 
-	{[EVENT_SHOP_KAUF_ONLOAD,["supplies"]] call CFUNC(localEvent);}, 
-	[
-    "priority", 0,
-    "showWindow", false,
-    "shortcut", "DefaultAction",
-    "ignoredCanInteractConditions", ["isNotInVehicle", "isNotReloading"]
-	]] call CFUNC(addAction);
-
-	[("<t color=""#F60707"">" + ("Wasserfahrzeuge") + "</t>"), 
-	east_shop_sea, 20, 
-	{true}, 
-	{[EVENT_SHOP_KAUF_ONLOAD,["sea"]] call CFUNC(localEvent);}, 
-	[
-    "priority", 0,
-    "showWindow", false,
-    "shortcut", "DefaultAction",
-    "ignoredCanInteractConditions", ["isNotInVehicle", "isNotReloading"]
-	]] call CFUNC(addAction);
-
-	[("<t color=""#F60707"">" + ("Wasserfahrzeuge") + "</t>"), 
-	west_shop_sea, 20, 
-	{true}, 
-	{[EVENT_SHOP_KAUF_ONLOAD,["sea"]] call CFUNC(localEvent);}, 
-	[
-    "priority", 0,
-    "showWindow", false,
-    "shortcut", "DefaultAction",
-    "ignoredCanInteractConditions", ["isNotInVehicle", "isNotReloading"]
-	]] call CFUNC(addAction);
+	//west_shop_verkauf addAction [("<t color=""#F60707"">" + ("Verkaufen") + "</t>"), {[EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];	
+	guer_shop_verkauf addAction [("<t color=""#F60707"">" + ("Verkaufen") + "</t>"), {[EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];	
 
 }, []] call CFUNC(addEventHandler); 	
