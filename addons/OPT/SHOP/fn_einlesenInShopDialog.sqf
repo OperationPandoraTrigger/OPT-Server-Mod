@@ -119,78 +119,134 @@ switch (GVAR(vehicleType)) do
 {
 	case "choppers" : 
 	{
-        if (_side == west) then 
-		{
-            _pool = GVAR(nato_choppers);
-            GVAR(pads) = GVAR(pad_air_west);
-        } 
-		else 
-		{
-            _pool = GVAR(csat_choppers);
-            GVAR(pads) = GVAR(pad_air_east);
-        };
+        switch (_side) do 
+        {
+            case west : 
+            {    
+                _pool = GVAR(nato_choppers);
+                GVAR(pads) = GVAR(pad_air_west);
+            };
+            case east : 
+            {    
+                _pool = GVAR(csat_choppers);
+                 GVAR(pads) = GVAR(pad_air_east);
+            };
+            case independent : 
+            {    
+                _pool = GVAR(independent_choppers);
+                GVAR(pads) = GVAR(pad_air_independent);
+            };
+            default 
+            {
+            };        
+        }; 
         GVAR(moveInVeh) = true;
         _konfig ctrlEnable true;       
     };
 	case "vehicles" : 
 	{
-        if (_side == west) then 
-		{
-            _pool = GVAR(nato_armored) + GVAR(nato_vehicles) + GVAR(nato_vehicles_supply);
-            GVAR(pads) = GVAR(pad_veh_west);
-        } 
-		else 
-		{
-            _pool = GVAR(csat_armored) + GVAR(csat_vehicles) + GVAR(csat_vehicles_supply);
-            GVAR(pads) = GVAR(pad_veh_east);
-        };
+        switch (_side) do 
+        {
+            case west : 
+            {    
+                _pool = GVAR(nato_armored) + GVAR(nato_vehicles) + GVAR(nato_vehicles_supply);
+                GVAR(pads) = GVAR(pad_veh_west);
+            };
+            case east : 
+            {    
+                _pool = GVAR(csat_armored) + GVAR(csat_vehicles) + GVAR(csat_vehicles_supply);
+                GVAR(pads) = GVAR(pad_veh_east);
+            };
+            case independent : 
+            {    
+                _pool = GVAR(independent_armored) + GVAR(independent_vehicles) + GVAR(independent_vehicles_supply);
+                GVAR(pads) = GVAR(pad_veh_independent);
+            };
+            default 
+            {
+            };        
+        }; 
         GVAR(moveInVeh) = true;
         _konfig ctrlEnable true;       
     };
 	case "supplies" : 
 	{
-        if (_side == west) then 
-		{
-            _pool = GVAR(nato_supplies) + GVAR(nato_static);
-            GVAR(pads) = GVAR(pad_sup_west);
-            GVAR(Checkbereich) = 4;
-        } 
-		else 
-		{
-            _pool = GVAR(csat_supplies) + GVAR(csat_static);
-            GVAR(pads) = GVAR(pad_sup_east);
-            GVAR(Checkbereich) = 4;
-        };
+        switch (_side) do 
+        {
+            case west : 
+            {    
+                _pool = GVAR(nato_supplies) + GVAR(nato_static);
+                GVAR(pads) = GVAR(pad_sup_west);
+                GVAR(Checkbereich) = 4;
+            };
+            case east : 
+            {    
+                _pool = GVAR(csat_supplies) + GVAR(csat_static);
+                GVAR(pads) = GVAR(pad_sup_east);
+                GVAR(Checkbereich) = 4;
+            };
+            case independent : 
+            {    
+                _pool = GVAR(independent_supplies) + GVAR(independent_static);
+                GVAR(pads) = GVAR(pad_sup_independent);
+                GVAR(Checkbereich) = 4;
+            };
+            default 
+            {
+            };        
+        }; 
         GVAR(moveInVeh) = false;
         _moveInVeh ctrlShow false;        
     };
 	case "sea" : 
 	{
-        if (_side == west) then 
-		{
-            _pool = GVAR(nato_sea);
-            GVAR(pads) = GVAR(pad_sea_west);
-        } 
-		else 
-		{
-            _pool = GVAR(csat_sea);
-            GVAR(pads) = GVAR(pad_sea_east);
-        };
+        switch (_side) do 
+        {
+            case west : 
+            {    
+                _pool = GVAR(nato_sea);
+                GVAR(pads) = GVAR(pad_sea_west);
+            };
+            case east : 
+            {    
+                _pool = GVAR(csat_sea);
+                GVAR(pads) = GVAR(pad_sea_east);
+            };
+            case independent : 
+            {    
+                _pool = GVAR(independent_sea);
+                GVAR(pads) = GVAR(pad_sea_independent);
+            };
+            default 
+            {
+            };        
+        }; 
         GVAR(moveInVeh) = true;
         _konfig ctrlEnable true;       
     };
     default 
     {
-        if (_side == west) then 
-		{
-            _pool = [];
-            GVAR(pads) = GVAR(pad_all_west);
-        } 
-		else 
-		{
-            _pool = [];
-            GVAR(pads) = GVAR(pad_all_east);
-        };
+        switch (_side) do 
+        {
+            case west : 
+            {    
+                _pool = [];
+                GVAR(pads) = GVAR(pad_all_west);
+            };
+            case east : 
+            {    
+                _pool = [];
+                GVAR(pads) = GVAR(pad_all_east);
+            };
+            case independent : 
+            {    
+                _pool = [];
+                GVAR(pads) = GVAR(pad_all_independent);
+            };
+            default 
+            {
+            };        
+        }; 
     };
 };
 
@@ -243,7 +299,11 @@ switch (_side) do
     case east: 
 	{
         _rscPicture ctrlSetText "\A3\Data_F\Flags\Flag_CSAT_CO.paa";
-    };   
+    };  
+    case independent: 
+	{
+        _rscPicture ctrlSetText "\A3\Data_F\Flags\Flag_AAF_CO.paa";
+    };    
 };
 
 GVAR(orderPAD) = [];

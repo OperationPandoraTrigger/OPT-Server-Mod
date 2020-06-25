@@ -322,7 +322,61 @@ if (GVAR(vehType) in (GVAR(vehclasswestWW) + GVAR(vehclasseastWW))) then
             GVAR(side) = east;
             GVAR(pylon) = [];
         };
-        
+        //AAF
+        case "OPT4_I_Heli_light_03_F": 
+		{
+            GVAR(boxArry) = GVAR(hellcat2);
+            GVAR(side) = independent;
+            GVAR(pylon) = ["pylonleft1", "pylonright1"];
+        };		
+        case "OPT4_I_MRAP_03_hmg_F": 
+		{
+            GVAR(boxArry) = GVAR(striderHMG2);
+            GVAR(side) = independent;
+            GVAR(pylon) = [];
+        };
+        case "OPT4_I_MRAP_03_gmg_F": 
+		{
+            GVAR(boxArry) = GVAR(striderGMG2);
+            GVAR(side) = independent;
+            GVAR(pylon) = [];
+        };
+        case "OPT4_I_C_Offroad_02_AT_F": 
+		{
+            GVAR(boxArry) = GVAR(MB4WDAT);
+            GVAR(side) = independent;
+            GVAR(pylon) = [];
+        };
+        case "OPT4_I_APC_tracked_03_cannon_F": 
+		{
+            GVAR(boxArry) = GVAR(mora2);
+            GVAR(side) = independent;
+            GVAR(pylon) = [];
+        };
+        case "OPT4_I_APC_Wheeled_03_cannon_F": 
+		{
+            GVAR(boxArry) = GVAR(gorgon2);
+            GVAR(side) = independent;
+            GVAR(pylon) = [];
+        };
+        case "OPT4_I_LT_01_AT_F": 
+		{
+            GVAR(boxArry) = GVAR(NyxAT);
+            GVAR(side) = independent;
+            GVAR(pylon) = [];
+        };
+        case "OPT4_I_LT_01_AA_F": 
+		{
+            GVAR(boxArry) = GVAR(NyxAA);
+            GVAR(side) = independent;
+            GVAR(pylon) = [];
+        };
+        case "OPT4_I_MBT_03_cannon_F": 
+		{
+            GVAR(boxArry) = GVAR(Kuma);
+            GVAR(side) = independent;
+            GVAR(pylon) = [];
+        };          
         default 
 		{
             GVAR(boxArry) = [];

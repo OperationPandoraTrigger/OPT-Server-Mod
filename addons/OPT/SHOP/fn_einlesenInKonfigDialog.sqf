@@ -265,15 +265,24 @@ else
 	{
         //Box1+2
         private _heli = [];
-        if (GVAR(side) isEqualTo west) then 
-		{    
-            _heli = GVAR(Gunheliwest);         
 
-        } 
-		else 
-		{
-            _heli = GVAR(Gunhelieast);
-
+        switch (GVAR(side)) do 
+        {
+            case west : 
+            {    
+                _heli = GVAR(Gunheliwest); 
+            };
+            case east : 
+            {    
+                _heli = GVAR(Gunhelieast);
+            };
+            case independent : 
+            {    
+                _heli = GVAR(Gunheliindependent);
+            };
+            default 
+            {
+            };        
         };
 
         {
@@ -293,15 +302,23 @@ else
         
         //Box3+4
         _heli = [];
-        if (GVAR(side) isEqualTo west) then 
-		{    
-            _heli = GVAR(Raktenheliwest);
-               
-        } 
-		else 
-		{
-            _heli = GVAR(Raktenhelieast);
-
+        switch (GVAR(side)) do 
+        {
+            case west : 
+            {    
+                _heli = GVAR(Raktenheliwest);
+            };
+            case east : 
+            {    
+                _heli = GVAR(Raktenhelieast);
+            };
+            case independent : 
+            {    
+                _heli = GVAR(Raktenheliindependent);
+            };
+            default 
+            {
+            };        
         };    
 
         {
@@ -343,16 +360,24 @@ else
     {
         //Box1+2
         private _vehSelect = [];
-        if (GVAR(side) isEqualTo west) then 
-		{    
-            _vehSelect = GVAR(Gunvehwest);
-
-        } 
-		else 
-		{
-            _vehSelect = GVAR(Gunveheast);
-                    
-        };
+        switch (GVAR(side)) do 
+        {
+            case west : 
+            {    
+                _vehSelect = GVAR(Gunvehwest);
+            };
+            case east : 
+            {    
+                _vehSelect = GVAR(Gunveheast);
+            };
+            case independent : 
+            {    
+                _vehSelect = GVAR(Gunvehindependent);
+            };
+            default 
+            {
+            };        
+        }; 
 
         {
             _index =_IDD_box1 lbAdd 
@@ -372,16 +397,24 @@ else
 
         //Box3+4
         _vehSelect = []; 
-        if (GVAR(side) == west) then 
-		{    
-            _vehSelect = GVAR(Gunvehwest);
-
-        } 
-		else 
-		{
-            _vehSelect = GVAR(Gunveheast);
-
-        };
+        switch (GVAR(side)) do 
+        {
+            case west : 
+            {    
+                _vehSelect = GVAR(Gunvehwest);
+            };
+            case east : 
+            {    
+                _vehSelect = GVAR(Gunveheast);
+            };
+            case independent : 
+            {    
+                _vehSelect = GVAR(Gunvehindependent);
+            };
+            default 
+            {
+            };        
+        }; 
 
         {
             _index =_IDD_box3 lbAdd 

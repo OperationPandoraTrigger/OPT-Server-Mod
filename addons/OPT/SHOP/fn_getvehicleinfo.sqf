@@ -53,7 +53,12 @@ if (_class in (GVAR(vehClassWestWW))) then
 if (_class in (GVAR(vehClassEastWW))) then 
 {
     _side = east;
-};       
+}; 
+
+if (_class in (GVAR(vehClassindependentWW))) then 
+{
+    _side = independent;
+}; 
 
 switch (GVAR(vehicleType)) do 
 {

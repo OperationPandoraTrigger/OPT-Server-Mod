@@ -77,6 +77,12 @@ switch (_side) do
         _rscPicture ctrlSetText "\A3\Data_F\Flags\Flag_CSAT_CO.paa";
 
         GVAR(pads) = [VerkaufsBoxEast];
+    }; 
+    case independent: 
+	{
+        _rscPicture ctrlSetText "\A3\Data_F\Flags\Flag_AAF_CO.paa";
+
+        GVAR(pads) = [VerkaufsBoxindependent];
     };   
 };
 
@@ -208,6 +214,11 @@ _sell ctrlAddEventHandler [ "ButtonClick",
     if (_class in (GVAR(vehClassEastWW))) then 
     {
         _side = east;
+    }; 
+
+    if (_class in (GVAR(vehClassindependentWW))) then 
+    {
+        _side = independent;
     };   
 
     _price = [_class] call FUNC(getPrice);

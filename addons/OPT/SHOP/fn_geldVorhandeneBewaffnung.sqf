@@ -52,6 +52,25 @@ else
     _vehiclePool = GVAR(Raktenhelieast)  + GVAR(Gunhelieast) + GVAR(Gunveheast);
 
 };
+
+switch (_side) do 
+{
+    case west : 
+    {    
+        _vehiclePool = GVAR(Raktenheliwest) + GVAR(Gunheliwest) + GVAR(Gunvehwest);
+    };
+    case east : 
+    {    
+        _vehiclePool = GVAR(Raktenhelieast)  + GVAR(Gunhelieast) + GVAR(Gunveheast);
+    };
+    case independent : 
+    {    
+        _vehiclePool = GVAR(Raktenheliindependent)  + GVAR(Gunheliindependent) + GVAR(Gunvehindependent);
+    };
+    default 
+    {
+    };        
+};   
       
 for "_i" from 1 to (count _vehiclePool) do 
 {
