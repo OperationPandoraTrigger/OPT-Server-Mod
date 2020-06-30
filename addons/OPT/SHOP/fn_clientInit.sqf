@@ -97,22 +97,22 @@ if (hasInterface) then
             private _triggerUnitsair = 
 			(list csat_trigger_Shop_Air1) 
 			//+ (list nato_trigger_Shop_Air1)
-			+ (list independent_trigger_Shop_Air1);
+			+ (list aaf_trigger_Shop_Air1);
 
 			private _triggerUnitsveh = 
 			(list csat_trigger_Shop_veh1) 
 			//+ (list nato_trigger_Shop_veh1);
-			+ (list independent_trigger_Shop_veh1);
+			+ (list aaf_trigger_Shop_veh1);
 
 			private _triggerUnitssup = 
 			(list csat_trigger_Shop_Sup1) 
 			//+ (list nato_trigger_Shop_Sup1);
-			+ (list independent_trigger_Shop_Sup1);
+			+ (list aaf_trigger_Shop_Sup1);
 
 			private _triggerUnitssea = 
 			(list csat_trigger_Shop_Sea1) 
 			//+ (list nato_trigger_Shop_Sea1);
-			+ (list independent_trigger_Shop_Sea1);
+			+ (list aaf_trigger_Shop_Sea1);
 
             if (player in _triggerUnitsair) then 
 			{
@@ -153,22 +153,22 @@ if (hasInterface) then
             private _triggerUnitsair = 
 			(list csat_trigger_Shop_Air1) 
 			//+ (list nato_trigger_Shop_Air1)
-			+ (list independent_trigger_Shop_Air1);
+			+ (list aaf_trigger_Shop_Air1);
 
 			private _triggerUnitsveh = 
 			(list csat_trigger_Shop_veh1) 
 			//+ (list nato_trigger_Shop_veh1);
-			+ (list independent_trigger_Shop_veh1);
+			+ (list aaf_trigger_Shop_veh1);
 
 			private _triggerUnitssup = 
 			(list csat_trigger_Shop_Sup1) 
 			//+ (list nato_trigger_Shop_Sup1);
-			+ (list independent_trigger_Shop_Sup1);
+			+ (list aaf_trigger_Shop_Sup1);
 
 			private _triggerUnitssea = 
 			(list csat_trigger_Shop_Sea1) 
 			//+ (list nato_trigger_Shop_Sea1);
-			+ (list independent_trigger_Shop_Sea1);
+			+ (list aaf_trigger_Shop_Sea1);
 
             if (player isEqualTo assignedDriver vehicle player and (vehicle player in _triggerUnitsair)) then 
 			{
