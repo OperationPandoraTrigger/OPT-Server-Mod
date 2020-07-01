@@ -27,7 +27,7 @@
 //Dateneinlesen
 #include "fn_config.sqf";
 
-if (GVAR(vehType) in (GVAR(vehclasswestWW) + GVAR(vehclasseastWW))) then 
+if (GVAR(vehType) in (GVAR(vehclasswestWW) + GVAR(vehclasseastWW) + GVAR(vehClassindependentWW))) then 
 {
     switch (GVAR(vehType)) do 
 	{
@@ -256,6 +256,12 @@ if (GVAR(vehType) in (GVAR(vehclasswestWW) + GVAR(vehclasseastWW))) then
             GVAR(side) = east;
             GVAR(pylon) = [];
         };
+        case "OPT4_O_MBT_04_cannon_F": 
+		{
+            GVAR(boxArry) = GVAR(Angara);
+            GVAR(side) = east;
+            GVAR(pylon) = [];
+        };
         case "OPT4_O_MBT_02_arty_F": 
 		{
             GVAR(boxArry) = GVAR(Sochor);
@@ -323,7 +329,7 @@ if (GVAR(vehType) in (GVAR(vehclasswestWW) + GVAR(vehclasseastWW))) then
             GVAR(pylon) = [];
         };
         //AAF
-        case "OPT4_I_Heli_light_03_F": 
+        case "OPT_I_Heli_light_03_F": 
 		{
             GVAR(boxArry) = GVAR(hellcat2);
             GVAR(side) = independent;

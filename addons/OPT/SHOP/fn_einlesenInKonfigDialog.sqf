@@ -466,7 +466,10 @@ else
     };
 	
     _kosten ctrlSetText format["€:%1", GVAR(VorhandeneBewaffnunggeld)-GVAR(unitCost)];	
-};   
+};  
+
+systemChat format ["v:%1 side:%2 G:%3",_vehSelect,GVAR(side),GVAR(Gunvehindependent)];
+
 
 //InfoBox Erneuern bei änderung
 _IDD_box1 ctrlAddEventHandler [ "LBSelChanged", 

@@ -53,7 +53,7 @@ private _kosten = 0;
 private _auswertungLoadout = [];
 
 
-if (_class in (GVAR(vehClassWestWW) + GVAR(vehClassEastWW))) then 
+if (_class in (GVAR(vehClassWestWW) + GVAR(vehClassEastWW) + GVAR(vehClassindependentWW))) then 
 {
     switch (_class) do 
 	{
@@ -364,6 +364,14 @@ if (_class in (GVAR(vehClassWestWW) + GVAR(vehClassEastWW))) then
 			_loadouts = GVAR(Varsukloadout);
             _gunVehArry = GVAR(gunVehEast);
         };
+        case "OPT4_O_MBT_04_cannon_F": 
+		{
+            _boxArry = GVAR(Angara);
+             _side = east;
+             _pylon = [];
+			_loadouts = GVAR(AngaraLoadout);
+            _gunVehArry = GVAR(gunVehEast);
+        };
         case "OPT4_O_MBT_02_arty_F": 
 		{
             _boxArry = GVAR(Sochor);
@@ -453,7 +461,7 @@ if (_class in (GVAR(vehClassWestWW) + GVAR(vehClassEastWW))) then
             _gunVehArry = GVAR(gunVehEast);
         };
         //AAF
-        case "OPT4_I_Heli_light_03_F": 
+        case "OPT_I_Heli_light_03_F": 
 		{
             _boxArry = GVAR(hellcat2);
             _side = independent;
@@ -473,56 +481,56 @@ if (_class in (GVAR(vehClassWestWW) + GVAR(vehClassEastWW))) then
         case "OPT4_I_MRAP_03_gmg_F": 
 		{
             _boxArry = GVAR(striderGMG2);
-             _side = independent;
-             _pylon = [];
+            _side = independent;
+            _pylon = [];
 			_loadouts = GVAR(striderGMG2Loadout);
             _gunVehArry = GVAR(gunVehindependent);
         };
         case "OPT4_I_C_Offroad_02_AT_F": 
 		{
             _boxArry = GVAR(MB4WDAT);
-             _side = independent;
-             _pylon = [];
+            _side = independent;
+            _pylon = [];
 			_loadouts = GVAR(MB4WDATLoadout);
             _gunVehArry = GVAR(gunVehindependent);
         };
         case "OPT4_I_APC_tracked_03_cannon_F": 
 		{
             _boxArry = GVAR(mora2);
-             _side = independent;
-             _pylon = [];
+            _side = independent;
+            _pylon = [];
 			_loadouts = GVAR(mora2Loadout);
             _gunVehArry = GVAR(gunVehindependent);
         };
         case "OPT4_I_APC_Wheeled_03_cannon_F": 
 		{
             _boxArry = GVAR(gorgon2);
-             _side = independent;
-             _pylon = [];
+            _side = independent;
+            _pylon = [];
 			_loadouts = GVAR(gorgon2Loadout);
             _gunVehArry = GVAR(gunVehindependent);
         };
         case "OPT4_I_LT_01_AT_F": 
 		{
             _boxArry = GVAR(NyxAT);
-             _side = independent;
-             _pylon = [];
+            _side = independent;
+            _pylon = [];
 			_loadouts = GVAR(NyxATLoadout);
             _gunVehArry = GVAR(gunVehindependent);
         };
         case "OPT4_I_LT_01_AA_F": 
 		{
             _boxArry = GVAR(NyxAA);
-             _side = independent;
-             _pylon = [];
+            _side = independent;
+            _pylon = [];
 			_loadouts = GVAR(NyxAALoadout);
             _gunVehArry = GVAR(gunVehindependent);
         };
         case "OPT4_I_MBT_03_cannon_F": 
 		{
             _boxArry = GVAR(Kuma);
-             _side = independent;
-             _pylon = [];
+            _side = independent;
+            _pylon = [];
 			_loadouts = GVAR(KumaLoadout);
             _gunVehArry = GVAR(gunVehindependent);
         };    

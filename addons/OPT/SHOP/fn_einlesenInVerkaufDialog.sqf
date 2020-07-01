@@ -141,8 +141,6 @@ if (_type == "sell") then
 
 	};
 
-    systemChat format ["P:%1 O:%2",_pool,_objs];
-  
     // Anzeige Objekte die mehr wert sind als 0€
     _pool = _pool select {_x select 2 > 0};
 

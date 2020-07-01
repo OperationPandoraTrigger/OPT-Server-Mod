@@ -133,7 +133,7 @@ switch (GVAR(vehicleType)) do
             };
             case independent : 
             {    
-                _pool = GVAR(independent_choppers);
+                _pool = GVAR(AAF_choppers);
                 GVAR(pads) = GVAR(pad_air_independent);
             };
             default 
@@ -159,7 +159,7 @@ switch (GVAR(vehicleType)) do
             };
             case independent : 
             {    
-                _pool = GVAR(independent_armored) + GVAR(independent_vehicles) + GVAR(independent_vehicles_supply);
+                _pool = GVAR(AAF_armored) + GVAR(AAF_vehicles) + GVAR(AAF_vehicles_supply);
                 GVAR(pads) = GVAR(pad_veh_independent);
             };
             default 
@@ -187,7 +187,7 @@ switch (GVAR(vehicleType)) do
             };
             case independent : 
             {    
-                _pool = GVAR(independent_supplies) + GVAR(independent_static);
+                _pool = GVAR(AAF_supplies) + GVAR(AAF_static);
                 GVAR(pads) = GVAR(pad_sup_independent);
                 GVAR(Checkbereich) = 4;
             };
@@ -214,7 +214,7 @@ switch (GVAR(vehicleType)) do
             };
             case independent : 
             {    
-                _pool = GVAR(independent_sea);
+                _pool = GVAR(AAF_sea);
                 GVAR(pads) = GVAR(pad_sea_independent);
             };
             default 
