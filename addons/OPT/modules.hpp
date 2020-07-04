@@ -7,7 +7,8 @@ class CfgCLibModules {
 		
 		dependency[] = {};
 		
-        MODULE(GPS) {
+        MODULE(GPS) 
+        {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
             FNC(clientInit);
             FNC(serverInit);
@@ -44,6 +45,15 @@ class CfgCLibModules {
             FNC(deletevehicle);
             FNC(typfestellung);
             FNC(einlesenInVerkaufDialog);
+        };
+        MODULE(REVIVE) 
+        {
+            dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
+            FNC(clientInit);
+            FNC(clientinitCBASettings);
+            FNC(clientinitEH);
+            FNC(revivelog);
+            FNC(dialog);
         };
     };
 };
