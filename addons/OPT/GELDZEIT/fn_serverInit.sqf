@@ -24,52 +24,88 @@
 
 #include "macros.hpp"
 
+//Init Statussignale
+
+GVAR(Missionstart) = false;
+GVAR(FreeztimeEnde) = false;
+GVAR(Waffenruhestart) = false;
+GVAR(WaffenruheEnde) = false;
+GVAR(Spielzeitstart) = false;
+GVAR(SpielzeitEnde) = false;
+GVAR(Endestart) = false;
+
+publicVariable GVAR(Missionstart);
+publicVariable GVAR(FreeztimeEnde);
+publicVariable GVAR(Waffenruhestart);
+publicVariable GVAR(WaffenruheEnde);
+publicVariable GVAR(Spielzeitstart);
+publicVariable GVAR(SpielzeitEnde);
+publicVariable GVAR(Endestart);
+
 //Waffenruhe 
 DFUNC(Waffenruhe) = 
 {
-// Logeintrag
+	// Logeintrag
+	GVAR(FreeztimeEnde) = true;
+	publicVariable GVAR(FreeztimeEnde);
 
-//Spielzeit
-private _Spielzeit = (GVAR(startTime) + GVAR(FREEZETIME) + GVAR(TRUCETIME));
+	GVAR(Waffenruhestart) = true;
+	publicVariable GVAR(Waffenruhestart);
 
-//Nachablauf Waffenruhe Spielzeit auslösen
-[FUNC(Spielzeit), {_Spielzeit == serverTime},[]] call CFUNC(waitUntil);
+	//Spielzeit
+	private _Spielzeit = (GVAR(startTime) + GVAR(FREEZETIME) + GVAR(TRUCETIME));
+
+	//Nachablauf Waffenruhe Spielzeit auslösen
+	[FUNC(Spielzeit), {_Spielzeit == serverTime},[]] call CFUNC(waitUntil);
 };
 
 //Spielzeit
 DFUNC(Spielzeit) = 
 {
-// Logeintrag
+	// Logeintrag
+	GVAR(WaffenruheEnde) = true;
+	publicVariable GVAR(WaffenruheEnde);
 
-//Spielzeit
-private _Endezeit = (GVAR(startTime) + GVAR(FREEZETIME) + GVAR(TRUCETIME) + GVAR(PLAYTIME));
+	GVAR(Spielzeitstart) = true;
+	publicVariable GVAR(Spielzeitstart);
 
-//Nachablauf Spielzeit Ende auslösen
-[FUNC(Ende), {_Endezeit == serverTime},[]] call CFUNC(waitUntil);
+	//Spielzeit
+	private _Endezeit = (GVAR(startTime) + GVAR(FREEZETIME) + GVAR(TRUCETIME) + GVAR(PLAYTIME));
+
+	//Nachablauf Spielzeit Ende auslösen
+	[FUNC(Ende), {_Endezeit == serverTime},[]] call CFUNC(waitUntil);
 };
 
 //Ende
 DFUNC(Ende) = 
 {
+	// Logeintrag
+	GVAR(SpielzeitEnde) = true;
+	publicVariable GVAR(SpielzeitEnde);
+
+	GVAR(Endestart) = true;
+	publicVariable GVAR(Endestart);
 
 };
 
 ["missionStarted", {
 
-// SERVER ONLY
-// nicht time! time ist 0, da time Zeit von Missionsbeginn mitteilt. serverTime hingegen wird
-// immer synchronisiert und beinhaltet Zeit seit Serverstart
+	// SERVER ONLY
+	// nicht time! time ist 0, da time Zeit von Missionsbeginn mitteilt. serverTime hingegen wird
+	// immer synchronisiert und beinhaltet Zeit seit Serverstart
 
-GVAR(startTime) = serverTime;
-publicVariable QGVAR(startTime); // gibt allen Clients die Startzeit des Servers bekannt
+	GVAR(startTime) = serverTime;
+	publicVariable QGVAR(startTime); // gibt allen Clients die Startzeit des Servers bekannt
 
-// Logeintrag
+	// Logeintrag
+	GVAR(Missionstart) = true;
+	publicVariable GVAR(Missionstart);
 
-//Freeztime 
-private _Freeztime = (GVAR(startTime) + GVAR(FREEZETIME));
+	//Freeztime 
+	private _Freeztime = (GVAR(startTime) + GVAR(FREEZETIME));
 
-// Nachablauf Freeztime Waffenruhe auslösen
-[FUNC(Waffenruhe), {_Freeztime == serverTime},[]] call CFUNC(waitUntil);
+	// Nachablauf Freeztime Waffenruhe auslösen
+	[FUNC(Waffenruhe), {_Freeztime == serverTime},[]] call CFUNC(waitUntil);
 
 }] call CFUNC(addEventhandler);
 
