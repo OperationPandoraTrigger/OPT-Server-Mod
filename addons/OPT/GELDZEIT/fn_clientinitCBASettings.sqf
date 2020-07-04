@@ -28,7 +28,7 @@
 */
 #include "macros.hpp"
 [
-    "OPT_PARAM_PLAYTIME", // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    QGVAR(PLAYTIME), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "SLIDER", // setting type
     "Spielzeit in Sek.", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     "OPT Mission", // Pretty name of the category where the setting can be found. Can be stringtable entry.
@@ -38,7 +38,7 @@
 ] call CBA_Settings_fnc_init;
 
 [
-    "OPT_PARAM_TRUCETIME", // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    QGVAR(TRUCETIME), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "SLIDER", // setting type
     "Waffenruhe in Sek.", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     "OPT Mission", // Pretty name of the category where the setting can be found. Can be stringtable entry.
@@ -48,7 +48,7 @@
 ] call CBA_Settings_fnc_init;
 
 [
-    "OPT_PARAM_FREEZE_TIME", // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    QGVAR(FREEZETIME), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "SLIDER", // setting type
     "Freeze-Time in Sek.", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     "OPT Mission", // Pretty name of the category where the setting can be found. Can be stringtable entry.
