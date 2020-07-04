@@ -24,5 +24,26 @@ class CfgCLibModules {
             FNC(updateUnitIcon);
             FNC(miniGPS);			
         };
+		MODULE(SHOP) 
+		{
+            dependency[] = {"CLib/PerFrame", "Clib/Events"};
+            FNC(clientInit);
+            FNC(config);
+            FNC(einlesenInShopDialog);	
+            FNC(fillLB);
+            FNC(getvehicleinfo);
+            FNC(getprice);
+            FNC(order);
+            FNC(loadout);
+            FNC(arm);
+            FNC(filter);
+            FNC(einlesenInKonfigDialog);
+            FNC(auslesenMagazine);
+            FNC(geldVorhandeneBewaffnung);
+            FNC(dynamischerDatensatz);
+            FNC(deletevehicle);
+            FNC(typfestellung);
+            FNC(einlesenInVerkaufDialog);
+        };
     };
 };
