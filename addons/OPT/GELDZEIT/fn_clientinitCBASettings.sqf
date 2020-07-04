@@ -79,7 +79,7 @@
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {
         params ["_value"];
-        GVARMAIN(csat_budget) = parseNumber _value;
+        GVAR(csat_budget) = parseNumber _value;
     } // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
 

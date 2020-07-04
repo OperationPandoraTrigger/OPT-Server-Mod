@@ -26,7 +26,7 @@
 
 //Init Statussignale
 
-GVAR(Missionstart) = false;
+GVAR(Mission_start) = false;
 GVAR(FreeztimeEnde) = false;
 GVAR(Waffenruhestart) = false;
 GVAR(WaffenruheEnde) = false;
@@ -34,29 +34,30 @@ GVAR(Spielzeitstart) = false;
 GVAR(SpielzeitEnde) = false;
 GVAR(Endestart) = false;
 
-publicVariable GVAR(Missionstart);
-publicVariable GVAR(FreeztimeEnde);
-publicVariable GVAR(Waffenruhestart);
-publicVariable GVAR(WaffenruheEnde);
-publicVariable GVAR(Spielzeitstart);
-publicVariable GVAR(SpielzeitEnde);
-publicVariable GVAR(Endestart);
+publicVariable QGVAR(Mission_start);
+publicVariable QGVAR(FreeztimeEnde);
+publicVariable QGVAR(Waffenruhestart);
+publicVariable QGVAR(WaffenruheEnde);
+publicVariable QGVAR(Spielzeitstart);
+publicVariable QGVAR(SpielzeitEnde);
+publicVariable QGVAR(Endestart);
+
+#define ZWISCHENZEIT 30
 
 //Waffenruhe 
 DFUNC(Waffenruhe) = 
 {
 	// Logeintrag
 	GVAR(FreeztimeEnde) = true;
-	publicVariable GVAR(FreeztimeEnde);
+	publicVariable QGVAR(FreeztimeEnde);
+	systemChat "FreeztimeEnde";
 
 	GVAR(Waffenruhestart) = true;
-	publicVariable GVAR(Waffenruhestart);
-
-	//Spielzeit
-	private _Spielzeit = (GVAR(startTime) + GVAR(FREEZETIME) + GVAR(TRUCETIME));
+	publicVariable QGVAR(Waffenruhestart);
+	systemChat "Waffenruhestart";
 
 	//Nachablauf Waffenruhe Spielzeit auslösen
-	[FUNC(Spielzeit), {_Spielzeit == serverTime},[]] call CFUNC(waitUntil);
+	[FUNC(Spielzeit), GVAR(TRUCETIME),""] call CLib_fnc_wait;
 };
 
 //Spielzeit
@@ -64,16 +65,15 @@ DFUNC(Spielzeit) =
 {
 	// Logeintrag
 	GVAR(WaffenruheEnde) = true;
-	publicVariable GVAR(WaffenruheEnde);
+	publicVariable QGVAR(WaffenruheEnde);
+	systemChat "WaffenruheEnde";
 
 	GVAR(Spielzeitstart) = true;
-	publicVariable GVAR(Spielzeitstart);
-
-	//Spielzeit
-	private _Endezeit = (GVAR(startTime) + GVAR(FREEZETIME) + GVAR(TRUCETIME) + GVAR(PLAYTIME));
+	publicVariable QGVAR(Spielzeitstart);
+	systemChat "Spielzeitstart";
 
 	//Nachablauf Spielzeit Ende auslösen
-	[FUNC(Ende), {_Endezeit == serverTime},[]] call CFUNC(waitUntil);
+	[FUNC(Ende), GVAR(PLAYTIME),""] call CLib_fnc_wait;
 };
 
 //Ende
@@ -81,10 +81,25 @@ DFUNC(Ende) =
 {
 	// Logeintrag
 	GVAR(SpielzeitEnde) = true;
-	publicVariable GVAR(SpielzeitEnde);
+	publicVariable QGVAR(SpielzeitEnde);
+	systemChat "SpielzeitEnde";
 
 	GVAR(Endestart) = true;
-	publicVariable GVAR(Endestart);
+	publicVariable QGVAR(Endestart);
+	systemChat "Endestart";
+
+	//Nach Ablauf Zwischenzeit Mission Ende
+	[FUNC(MissionEnde),ZWISCHENZEIT,""] call CLib_fnc_wait;
+
+};
+
+//Mission Ende
+DFUNC(MissionEnde) = 
+{
+	// Logeintrag
+	GVAR(Mission_Ende) = true;
+	publicVariable QGVAR(Mission_Ende);
+	systemChat "Mission Ende";
 
 };
 
@@ -98,14 +113,12 @@ DFUNC(Ende) =
 	publicVariable QGVAR(startTime); // gibt allen Clients die Startzeit des Servers bekannt
 
 	// Logeintrag
-	GVAR(Missionstart) = true;
-	publicVariable GVAR(Missionstart);
-
-	//Freeztime 
-	private _Freeztime = (GVAR(startTime) + GVAR(FREEZETIME));
+	GVAR(Mission_start) = true;
+	publicVariable QGVAR(Mission_start);
+	systemChat "Missionstart";
 
 	// Nachablauf Freeztime Waffenruhe auslösen
-	[FUNC(Waffenruhe), {_Freeztime == serverTime},[]] call CFUNC(waitUntil);
+	[FUNC(Waffenruhe), GVAR(FREEZETIME),""] call CLib_fnc_wait;
 
 }] call CFUNC(addEventhandler);
 
