@@ -55,5 +55,10 @@ class CfgCLibModules {
             FNC(revivelog);
             FNC(dialog);
         };
+        MODULE(GELDZEIT) 
+        {
+            dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
+   
+        };
     };
 };
