@@ -28,3 +28,12 @@
 */
 #include "macros.hpp"
 
+//Event Bildschirmanzeige
+[
+	EVENT_SPIELUHR_ENDBILDSCHIRM, 
+	{
+		[] call FUNC(ende);
+	},
+	[]
+	
+] call CFUNC(addEventHandler);

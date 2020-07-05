@@ -45,3 +45,7 @@ List all events used by OPT here
 // Unit has been revived
 // params ["_unit"]
 #define EVENT_MEDIC_REVIVED             OPT_EVENT(medic_revived)
+
+// Missionende Bildschirmanzeige aufrufen
+// params []
+#define EVENT_SPIELUHR_ENDBILDSCHIRM   OPT_EVENT(spieluhr_endbildschirm)

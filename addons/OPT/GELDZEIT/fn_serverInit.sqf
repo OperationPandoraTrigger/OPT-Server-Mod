@@ -42,7 +42,11 @@ publicVariable QGVAR(Spielzeitstart);
 publicVariable QGVAR(SpielzeitEnde);
 publicVariable QGVAR(Endestart);
 
-#define ZWISCHENZEIT 30
+//Fraktionauswahl
+//AAFvsCSAT
+//NATOvsCSAT
+//NATOvsAAF
+#define Fraktionauswahl "AAFvsCSAT"
 
 //Waffenruhe 
 DFUNC(Waffenruhe) = 
@@ -55,6 +59,8 @@ DFUNC(Waffenruhe) =
 	GVAR(Waffenruhestart) = true;
 	publicVariable QGVAR(Waffenruhestart);
 	systemChat "Waffenruhestart";
+
+	diag_log "########## Waffenruhe hat begonnen";
 
 	//Nachablauf Waffenruhe Spielzeit auslösen
 	[FUNC(Spielzeit), GVAR(TRUCETIME),""] call CLib_fnc_wait;
@@ -72,12 +78,14 @@ DFUNC(Spielzeit) =
 	publicVariable QGVAR(Spielzeitstart);
 	systemChat "Spielzeitstart";
 
+	diag_log "########## Spielzeit hat begonnen";
+
 	//Nachablauf Spielzeit Ende auslösen
-	[FUNC(Ende), GVAR(PLAYTIME),""] call CLib_fnc_wait;
+	[FUNC(Mission_Ende), GVAR(PLAYTIME),""] call CLib_fnc_wait;
 };
 
-//Ende
-DFUNC(Ende) = 
+//Mission Ende
+DFUNC(Mission_Ende) = 
 {
 	// Logeintrag
 	GVAR(SpielzeitEnde) = true;
@@ -88,18 +96,43 @@ DFUNC(Ende) =
 	publicVariable QGVAR(Endestart);
 	systemChat "Endestart";
 
-	//Nach Ablauf Zwischenzeit Mission Ende
-	[FUNC(MissionEnde),ZWISCHENZEIT,""] call CLib_fnc_wait;
+	[EVENT_SPIELUHR_ENDBILDSCHIRM,[]] call CFUNC(globalEvent);
 
-};
+	switch (Fraktionauswahl) do 
+	{
+    	case "AAFvsCSAT" : 
+		{
+			private _points1 = 0;
+			private _points2 = 0;
 
-//Mission Ende
-DFUNC(MissionEnde) = 
-{
-	// Logeintrag
-	GVAR(Mission_Ende) = true;
-	publicVariable QGVAR(Mission_Ende);
-	systemChat "Mission Ende";
+			diag_log format ["########## Schlacht automatisch beendet. Endpunktestand: AAF %1 | CSAT %2 ##########", _points1, _points2];
+
+		};
+
+		case "NATOvsCSAT" : 
+		{
+			private _points1 = 0;
+			private _points2 = 0;
+
+			diag_log format ["########## Schlacht automatisch beendet. Endpunktestand: NATO %1 | CSAT %2 ##########", _points1, _points2];
+
+		};
+
+		case "NATOvsAAF" : 
+		{
+			private _points1 = 0;
+			private _points2 = 0;
+
+			diag_log format ["########## Schlacht automatisch beendet. Endpunktestand: NATO %1 | AAF %2 ##########", _points1, _points2];
+
+		};
+
+   		default 
+		{
+			ERROR_LOG("Missionende: Fehlehalte Datenübergabe keine Fraktionauswahl erkannt");	
+		};
+	};
+
 
 };
 
@@ -116,6 +149,9 @@ DFUNC(MissionEnde) =
 	GVAR(Mission_start) = true;
 	publicVariable QGVAR(Mission_start);
 	systemChat "Missionstart";
+	diag_log "########## Schlacht hat begonnen";
+
+	diag_log "########## Freeztime hat begonnen";
 
 	// Nachablauf Freeztime Waffenruhe auslösen
 	[FUNC(Waffenruhe), GVAR(FREEZETIME),""] call CLib_fnc_wait;
