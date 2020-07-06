@@ -28,13 +28,7 @@
 */
 #include "macros.hpp"
 
-//Fraktionauswahl
-//AAFvsCSAT
-//NATOvsCSAT
-//NATOvsAAF
-#define Fraktionauswahl "AAFvsCSAT"
-
-switch (Fraktionauswahl) do 
+switch (GVAR(Fraktionauswahl)) do 
 {
     case "AAFvsCSAT" : 
 	{

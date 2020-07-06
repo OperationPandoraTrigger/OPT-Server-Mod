@@ -42,12 +42,6 @@ publicVariable QGVAR(Spielzeitstart);
 publicVariable QGVAR(SpielzeitEnde);
 publicVariable QGVAR(Endestart);
 
-//Fraktionauswahl
-//AAFvsCSAT
-//NATOvsCSAT
-//NATOvsAAF
-#define Fraktionauswahl "AAFvsCSAT"
-
 //Waffenruhe 
 DFUNC(Waffenruhe) = 
 {
@@ -98,7 +92,7 @@ DFUNC(Mission_Ende) =
 
 	[EVENT_SPIELUHR_ENDBILDSCHIRM,[]] call CFUNC(globalEvent);
 
-	switch (Fraktionauswahl) do 
+	switch GVAR(Fraktionauswahl) do 
 	{
     	case "AAFvsCSAT" : 
 		{
