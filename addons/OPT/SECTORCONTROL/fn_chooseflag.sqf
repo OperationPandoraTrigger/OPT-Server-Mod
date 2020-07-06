@@ -1,0 +1,476 @@
+/**
+* Description:
+* Flggenwahl Dialog
+*
+* Author:
+* Lord-MDB
+*
+* Arguments:
+* None
+*
+* Return Value:
+* None
+*
+* Server only:
+* No
+*
+* Public:
+* No 
+* 
+* Global:
+* No
+* 
+* API:
+* No
+*
+* Example:
+* [] call FUNC(clientInit);
+*/
+#include "macros.hpp"
+
+openMap [true, false];
+
+ // instructions for player
+private _txt = "Alle möglichen Angriffsflaggen sind mit einem schwarzen Kreis markiert.Die gewählte Flagge wird je nach Seite blau oder rot hervorgehoben.Es kann beliebig oft neu gewählt werden.";
+private _header = parseText "<t size='2.0' color='#2E2EFE'>Instruktionen</t>";
+hint Format ["%1 /n/n %2",_header,_txt];
+
+// Memory for markers which are deleted on map-close
+waffenruheFlagMarkers = [];
+
+// create local marker for each flag pole and restore selected flagmarkers
+{
+    // only process opt flags
+    if (_x getVariable ["opt_flag", false]) then
+    {
+        // only show attack flags
+        switch OPT_GELDZEIT_Fraktionauswahl do 
+        {
+            case "AAFvsCSAT" : 
+            {
+                switch (playerSide) do 
+		        {
+                    case east: 
+                    {
+                        // Flaggenpunkte die zur Auswahl stehen
+                        if (_x getVariable ["start_owner", sideUnknown] == independent) then {
+                            private _markerName = format["OptionMarkerCSAT_%1_%2", _forEachIndex, _x];
+                            private _marker = createMarkerLocal [_markerName, getPos _x];
+                            _marker setMarkerTypeLocal "hd_objective";
+                            waffenruheFlagMarkers pushBackUnique _marker;
+                        };
+
+                        // Gewählte Ziele
+                        if (_x in GVARMAIN(aaf_flags)) then {
+                            private _markerName = format["ActiveMarkerCSAT_%1", _x];
+                            private _marker = createMarkerLocal [_markerName, getPos _x];
+                            _marker setMarkerTypeLocal "selector_selectedMission";
+                            _marker setMarkerSizeLocal [2,2];
+                            _marker setMarkerColorLocal "ColorOPFOR";
+                            waffenruheFlagMarkers pushBackUnique _marker;
+                        };
+                    };
+
+                    case independent: 
+                    {
+                        // Flaggenpunkte die zur Auswahl stehen
+                        if (_x getVariable ["start_owner", sideUnknown] == east) then {
+                            private _markerName = format["OptionMarkerGUER_%1_%2", _forEachIndex, _x];
+                            private _marker = createMarkerLocal [_markerName, getPos _x];
+                            _marker setMarkerTypeLocal "hd_objective";
+                            waffenruheFlagMarkers pushBackUnique _marker;
+                        };
+
+                        // Gewählte Ziele
+                        if (_x in GVARMAIN(csat_flags)) then {
+                            private _markerName = format["ActiveMarkerGUER_%1", _x];
+                            private _marker = createMarkerLocal [_markerName, getPos _x];
+                            _marker setMarkerTypeLocal "selector_selectedMission";
+                            _marker setMarkerSizeLocal [2,2];
+                            _marker setMarkerColorLocal "ColorIndependent";
+                            waffenruheFlagMarkers pushBackUnique _marker;
+                        };
+                    };    
+                };          
+            };
+
+            case "NATOvsCSAT" : 
+            {
+                switch (playerSide) do 
+		        {
+                    case west: 
+                    {
+                        // Flaggenpunkte die zur Auswahl stehen
+                        if (_x getVariable ["start_owner", sideUnknown] == east) then {
+                            private _markerName = format["OptionMarkerNATO_%1_%2", _forEachIndex, _x];
+                            private _marker = createMarkerLocal [_markerName, getPos _x];
+                            _marker setMarkerTypeLocal "hd_objective";
+                            waffenruheFlagMarkers pushBackUnique _marker;
+                        };
+
+                        // Gewählte Ziele
+                        if (_x in GVARMAIN(csat_flags)) then {
+                            private _markerName = format["ActiveMarkerNATO_%1", _x];
+                            private _marker = createMarkerLocal [_markerName, getPos _x];
+                            _marker setMarkerTypeLocal "selector_selectedMission";
+                            _marker setMarkerSizeLocal [2,2];
+                            _marker setMarkerColorLocal "ColorBLUFOR";
+                            waffenruheFlagMarkers pushBackUnique _marker;
+                        };
+                    };
+
+                    case east: 
+                    {
+                        // Flaggenpunkte die zur Auswahl stehen
+                        if (_x getVariable ["start_owner", sideUnknown] == west) then {
+                            private _markerName = format["OptionMarkerCSAT_%1_%2", _forEachIndex, _x];
+                            private _marker = createMarkerLocal [_markerName, getPos _x];
+                            _marker setMarkerTypeLocal "hd_objective";
+                            waffenruheFlagMarkers pushBackUnique _marker;
+                        };
+
+                        // Gewählte Ziele
+                        if (_x in GVAR(nato_flags)) then {
+                            private _markerName = format["ActiveMarkerCSAT_%1", _x];
+                            private _marker = createMarkerLocal [_markerName, getPos _x];
+                            _marker setMarkerTypeLocal "selector_selectedMission";
+                            _marker setMarkerSizeLocal [2,2];
+                            _marker setMarkerColorLocal "ColorOPFOR";
+                            waffenruheFlagMarkers pushBackUnique _marker;
+                        };
+                    };
+                };    
+            };
+
+            case "NATOvsAAF" : 
+            {
+                switch (playerSide) do 
+		        {
+                    case west: 
+                    {
+                        // Flaggenpunkte die zur Auswahl stehen
+                        if (_x getVariable ["start_owner", sideUnknown] == east) then {
+                            private _markerName = format["OptionMarkerNATO_%1_%2", _forEachIndex, _x];
+                            private _marker = createMarkerLocal [_markerName, getPos _x];
+                            _marker setMarkerTypeLocal "hd_objective";
+                            waffenruheFlagMarkers pushBackUnique _marker;
+                        };
+
+                        // Gewählte Ziele
+                        if (_x in GVAR(csat_flags)) then {
+                            private _markerName = format["ActiveMarkerNATO_%1", _x];
+                            private _marker = createMarkerLocal [_markerName, getPos _x];
+                            _marker setMarkerTypeLocal "selector_selectedMission";
+                            _marker setMarkerSizeLocal [2,2];
+                            _marker setMarkerColorLocal "ColorBLUFOR";
+                            waffenruheFlagMarkers pushBackUnique _marker;
+                        };
+                    };
+
+                    case independent: 
+                    {
+                        // Flaggenpunkte die zur Auswahl stehen
+                        if (_x getVariable ["start_owner", sideUnknown] == east) then {
+                            private _markerName = format["OptionMarkerGUER_%1_%2", _forEachIndex, _x];
+                            private _marker = createMarkerLocal [_markerName, getPos _x];
+                            _marker setMarkerTypeLocal "hd_objective";
+                            waffenruheFlagMarkers pushBackUnique _marker;
+                        };
+
+                        // Gewählte Ziele
+                        if (_x in GVAR(nato_flags)) then {
+                            private _markerName = format["ActiveMarkerGUER_%1", _x];
+                            private _marker = createMarkerLocal [_markerName, getPos _x];
+                            _marker setMarkerTypeLocal "selector_selectedMission";
+                            _marker setMarkerSizeLocal [2,2];
+                            _marker setMarkerColorLocal "ColorIndependent";
+                            waffenruheFlagMarkers pushBackUnique _marker;
+                        };
+                    };
+                };     
+            };
+
+            default 
+            {
+                ERROR_LOG("chooseflag: Fehlehalte Datenübergabe keine Fraktionauswahl erkannt");
+                private _side = sideUnknown;
+            };
+        };
+    };
+} forEach allMissionObjects "FlagPole_F";
+
+// add EH for mouse action
+/* _this ([<units>,<pos>,<alt>,<shift>]) and in special variables _units, _pos, _alt, _shift */
+["sectorMap", "onMapSingleClick", {
+    private _flag = nearestObjects [_pos, ["FlagPole_F"], 100];
+
+    if (count _flag > 0) then 
+    {
+        _flag = _flag select 0;
+
+        // bugfix if enemy flag was chosen
+        if ((_flag getVariable ["start_owner", sideUnknown]) == PLAYER_SIDE) exitWith{};
+
+        switch OPT_GELDZEIT_Fraktionauswahl do 
+        {
+            case "AAFvsCSAT" : 
+            {
+                switch (playerside) do
+                {
+                    case east:
+                    {
+                        private _index = GVAR(aaf_flags) find _flag;
+
+                        // flagge schon aktiv gewesen? -> löschen
+                        if (_index >= 0) then
+                        {
+                            allMapMarkers apply
+                            {
+                                if (getMarkerType _x isEqualTo "selector_selectedMission" and _flag distance2D getMarkerPos _x < 1) then
+                                {
+                                    deleteMarkerLocal _x;
+                                };
+                            };
+                            GVAR(aaf_flags) deleteAt _index;
+                            publicVariable QGVAR(aaf_flags);
+                            waffenruheFlagMarkers deleteAt (waffenruheFlagMarkers find _flag);
+                        }
+
+                        // neue flagge? -> hinzufügen
+                        else
+                        { 
+                            // noch genügend flaggen erlaubt?
+                            if (count GVARMAIN(aaf_flags) < round OPT_sectorcontrol_flagCountaaf) then
+                            {
+                                private _markerName = format["ActiveMarker_%1", _flag];
+                                private _marker = createMarkerLocal [_markerName, getPos _flag];
+                                waffenruheFlagMarkers pushBackUnique _marker;
+                                _marker setMarkerTypeLocal "selector_selectedMission";
+                                _marker setMarkerSizeLocal [2,2];
+                                _marker setMarkerColorLocal "ColorIndependent";
+                                GVAR(aaf_flags) pushBack _flag;
+                                publicVariable QGVAR(aaf_flags);
+                            };
+                        };
+                        systemChat format ["%1 von %2 erlaubten Flaggen gewählt.", count GVAR(aaf_flags), round OPT_sectorcontrol_flagCountaaf];
+                    };            
+                };    
+
+                case independent:
+                {
+                    private _index = GVAR(csat_flags) find _flag;
+
+                    // flagge schon aktiv gewesen? -> löschen
+                    if (_index >= 0) then
+                    {
+                        allMapMarkers apply
+                        {
+                            if (getMarkerType _x isEqualTo "selector_selectedMission" and _flag distance2D getMarkerPos _x < 1) then
+                            {
+                                deleteMarkerLocal _x;
+                            };
+                        };
+                        GVAR(csat_flags) deleteAt _index;
+                        publicVariable QGVAR(csat_flags);
+                        waffenruheFlagMarkers deleteAt (waffenruheFlagMarkers find _flag);
+                    }
+
+                    // neue flagge? -> hinzufügen
+                    else
+                    { 
+                        // noch genügend flaggen erlaubt?
+                        if (count GVAR(csat_flags) < round OPT_sectorcontrol_flagCountCSAT) then
+                        {
+                            private _markerName = format["ActiveMarker_%1", _flag];
+                            private _marker = createMarkerLocal [_markerName, getPos _flag];
+                            waffenruheFlagMarkers pushBackUnique _marker;
+                            _marker setMarkerTypeLocal "selector_selectedMission";
+                            _marker setMarkerSizeLocal [2,2];
+                            _marker setMarkerColorLocal "ColorIndependent";
+                            GVAR(csat_flags) pushBack _flag;
+                            publicVariable QGVAR(csat_flags);
+                        };
+                    };
+                    systemChat format ["%1 von %2 erlaubten Flaggen gewählt.", count GVARMAIN(csat_flags), round OPT_sectorcontrol_flagCountCSAT];
+                };
+            };
+
+            case "NATOvsCSAT" : 
+            {
+                switch (playerside) do
+                {
+                    case west:
+                    {
+                        private _index = GVAR(csat_flags) find _flag;
+
+                        // flagge schon aktiv gewesen? -> löschen
+                        if (_index >= 0) then
+                        {
+                            allMapMarkers apply
+                            {
+                                if (getMarkerType _x isEqualTo "selector_selectedMission" and _flag distance2D getMarkerPos _x < 1) then
+                                {
+                                    deleteMarkerLocal _x;
+                                };
+                            };
+                            GVAR(csat_flags) deleteAt _index;
+                            publicVariable QGVAR(csat_flags);
+                            waffenruheFlagMarkers deleteAt (waffenruheFlagMarkers find _flag);
+                        }
+
+                        // neue flagge? -> hinzufügen
+                        else
+                        { 
+                            // noch genügend flaggen erlaubt?
+                            if (count GVAR(csat_flags) < round OPT_sectorcontrol_flagCountCSAT) then
+                            {
+                                private _markerName = format["ActiveMarker_%1", _flag];
+                                private _marker = createMarkerLocal [_markerName, getPos _flag];
+                                waffenruheFlagMarkers pushBackUnique _marker;
+                                _marker setMarkerTypeLocal "selector_selectedMission";
+                                _marker setMarkerSizeLocal [2,2];
+                                _marker setMarkerColorLocal "ColorBLUFOR";
+                                GVAR(csat_flags) pushBack _flag;
+                                publicVariable QGVAR(csat_flags);
+                            };
+                        };
+                        systemChat format ["%1 von %2 erlaubten Flaggen gewählt.", count GVAR(csat_flags), round OPT_sectorcontrol_flagCountCSAT];
+                    };
+
+                    case east:
+                    {
+                        private _index = GVAR(nato_flags) find _flag;
+
+                        // flagge schon aktiv gewesen? -> löschen
+                        if (_index >= 0) then
+                        {
+                            allMapMarkers apply
+                            {
+                                if (getMarkerType _x isEqualTo "selector_selectedMission" and _flag distance2D getMarkerPos _x < 1) then
+                                {
+                                    deleteMarkerLocal _x;
+                                };
+                            };
+                            GVAR(nato_flags) deleteAt _index;
+                            publicVariable QGVAR(nato_flags);
+                            waffenruheFlagMarkers deleteAt (waffenruheFlagMarkers find _flag);
+                        }
+
+                        // neue flagge? -> hinzufügen
+                        else
+                        { 
+                            // noch genügend flaggen erlaubt?
+                            if (count GVAR(nato_flags) < round OPT_sectorcontrol_flagCountNATO) then
+                            {
+                                private _markerName = format["ActiveMarker_%1", _flag];
+                                private _marker = createMarkerLocal [_markerName, getPos _flag];
+                                waffenruheFlagMarkers pushBackUnique _marker;
+                                _marker setMarkerTypeLocal "selector_selectedMission";
+                                _marker setMarkerSizeLocal [2,2];
+                                _marker setMarkerColorLocal "ColorOPFOR";
+                                GVAR(nato_flags) pushBack _flag;
+                                publicVariable QGVAR(nato_flags);
+                            };
+                        };
+                        systemChat format ["%1 von %2 erlaubten Flaggen gewählt.", count GVAR(nato_flags), round OPT_sectorcontrol_flagCountNATO];
+                    };
+                };                 
+            };
+
+            case "NATOvsAAF" : 
+            {
+                switch (playerside) do
+                {
+                    case west:
+                    {
+                        private _index = GVAR(aaf_flags) find _flag;
+
+                        // flagge schon aktiv gewesen? -> löschen
+                        if (_index >= 0) then
+                        {
+                            allMapMarkers apply
+                            {
+                                if (getMarkerType _x isEqualTo "selector_selectedMission" and _flag distance2D getMarkerPos _x < 1) then
+                                {
+                                    deleteMarkerLocal _x;
+                                };
+                            };
+                            GVAR(aaf_flags) deleteAt _index;
+                            publicVariable QGVAR(aaf_flags);
+                            waffenruheFlagMarkers deleteAt (waffenruheFlagMarkers find _flag);
+                        }
+
+                        // neue flagge? -> hinzufügen
+                        else
+                        { 
+                            // noch genügend flaggen erlaubt?
+                            if (count GVAR(aaf_flags) < round OPT_sectorcontrol_flagCountAAF) then
+                            {
+                                private _markerName = format["ActiveMarker_%1", _flag];
+                                private _marker = createMarkerLocal [_markerName, getPos _flag];
+                                waffenruheFlagMarkers pushBackUnique _marker;
+                                _marker setMarkerTypeLocal "selector_selectedMission";
+                                _marker setMarkerSizeLocal [2,2];
+                                _marker setMarkerColorLocal "ColorBLUFOR";
+                                GVAR(csat_flags) pushBack _flag;
+                                publicVariable QGVAR(csat_flags);
+                            };
+                        };
+                        systemChat format ["%1 von %2 erlaubten Flaggen gewählt.", count GVAR(csat_flags), round OPT_sectorcontrol_flagCountCSAT];
+                    };
+
+                    case east:
+                    {
+                        private _index = GVAR(nato_flags) find _flag;
+
+                        // flagge schon aktiv gewesen? -> löschen
+                        if (_index >= 0) then
+                        {
+                            allMapMarkers apply
+                            {
+                                if (getMarkerType _x isEqualTo "selector_selectedMission" and _flag distance2D getMarkerPos _x < 1) then
+                                {
+                                    deleteMarkerLocal _x;
+                                };
+                            };
+                            GVAR(nato_flags) deleteAt _index;
+                            publicVariable QGVAR(nato_flags);
+                            waffenruheFlagMarkers deleteAt (waffenruheFlagMarkers find _flag);
+                        }
+
+                        // neue flagge? -> hinzufügen
+                        else
+                        { 
+                            // noch genügend flaggen erlaubt?
+                            if (count GVAR(nato_flags) < round OPT_sectorcontrol_flagCountNATO) then
+                            {
+                                private _markerName = format["ActiveMarker_%1", _flag];
+                                private _marker = createMarkerLocal [_markerName, getPos _flag];
+                                waffenruheFlagMarkers pushBackUnique _marker;
+                                _marker setMarkerTypeLocal "selector_selectedMission";
+                                _marker setMarkerSizeLocal [2,2];
+                                _marker setMarkerColorLocal "ColorOPFOR";
+                                GVAR(nato_flags) pushBack _flag;
+                                publicVariable QGVAR(nato_flags);
+                            };
+                        };
+                        systemChat format ["%1 von %2 erlaubten Flaggen gewählt.", count GVAR(nato_flags), round OPT_sectorcontrol_flagCountNATO];
+                    };
+                };                          
+            };
+
+            default 
+            {
+                ERROR_LOG("chooseflag: Fehlehalte Datenübergabe keine Fraktionauswahl erkannt");
+                private _side = sideUnknown;
+            };
+        };    
+    }; 
+}] call BIS_fnc_addStackedEventHandler;
+
+waitUntil {!visibleMap};
+["sectorMap", "onMapSingleClick"] call BIS_fnc_removeStackedEventHandler;
+
+// Alle Marker beim Schließen der Karte entfernen und Array löschen
+waffenruheFlagMarkers apply { deleteMarkerLocal _x; };
+waffenruheFlagMarkers = nil;

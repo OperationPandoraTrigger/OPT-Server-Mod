@@ -46,6 +46,7 @@ class CfgCLibModules {
             FNC(typfestellung);
             FNC(einlesenInVerkaufDialog);
         };
+        /*
         MODULE(REVIVE) 
         {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
@@ -55,12 +56,31 @@ class CfgCLibModules {
             FNC(revivelog);
             FNC(dialog);
         };
+        */
         MODULE(GELDZEIT) 
         {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
             FNC(clientInit);
             FNC(clientinitCBASettings);
             FNC(serverInit);
+            FNC(ende);
+        };
+		MODULE(SECTORCONTROL) 
+        {
+            dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
+            FNC(clientInit);
+            FNC(clientinitCBASettings);
+            FNC(serverInit);
+            FNC(setupflag);
+            FNC(setflagowner);
+            FNC(deletemarkers);
+            FNC(writeflagcaptured);
+            FNC(calcdominator);
+            FNC(captureflagcondition);
+            FNC(clientinitplayereh);
+            FNC(addflagmenu);
+            FNC(chooseflag);
+            FNC(setupflagpositions);
         };
     };
 };
