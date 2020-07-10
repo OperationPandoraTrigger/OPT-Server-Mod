@@ -132,7 +132,7 @@
 [
     QGVAR(eastflag), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "EDITBOX", // setting type
-    "Flaggentextur der csat_budget Faktion", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+    "Flaggentextur der CSAT Faktion", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     "OPT Sektorkontrolle", // Pretty name of the category where the setting can be found. Can be stringtable entry.
     "\opt\opt_client\addons\core\bilder\sword_fahne.paa", // data for this setting: [min, max, default, number of shown trailing decimals]
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
