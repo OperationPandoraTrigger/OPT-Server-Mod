@@ -291,10 +291,10 @@ GVAR(csat_static) =
 
 GVAR(csat_sea) = 
 [
-    ["OPT_O_Boat_Transport_01_F", DEF_PROD(0)],                   // Assault Boat
-    ["OPT_O_Boat_Armed_01_hmg_F", DEF_PROD(0)],                 // Speedboat HMG
-    ["OPT_O_C_Boat_Transport_02_F", DEF_PROD(0)],                // rhib unbewaffnet
-    ["OPT_O_SDV_01_F", DEF_PROD(0)]                              // Submarine
+    ["OPT_O_Boat_Transport_01_F", DEF_PROD(500)],                   // Assault Boat
+    ["OPT_O_Boat_Armed_01_hmg_F", DEF_PROD(25000)],                 // Speedboat HMG
+    ["OPT_O_C_Boat_Transport_02_F", DEF_PROD(12000)],                // rhib unbewaffnet
+    ["OPT_O_SDV_01_F", DEF_PROD(40000)]                              // Submarine
 ];
 
 //AAF Einheiten
@@ -370,10 +370,10 @@ GVAR(AAF_static) =
 
 GVAR(AAF_sea) = 
 [
-    ["OPT_I_Boat_Armed_01_minigun_F", DEF_PROD(0)],         // Speedboat Minigun
-    ["OPT_I_Boat_Transport_01_F", DEF_PROD(0)],               // Assault Boat
-    ["OPT_I_SDV_01_F", DEF_PROD(0)],                         // Submarine
-    ["OPT_I_C_Boat_Transport_02_F", DEF_PROD(0)]             // Rhib unbewaffnet
+    ["OPT_I_Boat_Armed_01_minigun_F", DEF_PROD(25000)],         // Speedboat Minigun
+    ["OPT_I_Boat_Transport_01_F", DEF_PROD(500)],               // Assault Boat
+    ["OPT_I_SDV_01_F", DEF_PROD(40000)],                         // Submarine
+    ["OPT_I_C_Boat_Transport_02_F", DEF_PROD(12000)]             // Rhib unbewaffnet
 ];
 
 GVAR(allNato) = GVAR(nato_vehicles) +

@@ -181,7 +181,7 @@ _listbox_vehicles ctrlAddEventHandler [ "LBSelChanged",
     _editbox_info ctrlSetStructuredText parseText ([_class,_sel_class] call FUNC(getVehicleInfo));
 
     // Budget 
-    [_budget] call opt_common_fnc_renderbudget;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 
 }];
 
@@ -225,13 +225,13 @@ _sell ctrlAddEventHandler [ "ButtonClick",
     _bewaffnungpreis = [_side, _magazineVehArryNew] call FUNC(geldVorhandeneBewaffnung);   
     _gutschrift = _price + _bewaffnungpreis;
 
-    [Name Player, playerSide, typeOf _sellveh, _gutschrift, "+"] call opt_common_fnc_updateBudget;
+    [Name Player, playerSide, typeOf _sellveh, _gutschrift, "+"] remoteExecCall ["OPT_GELDZEIT_fnc_updateBudget", 2, false];
 
     //Fahrzeug löschen
     deleteVehicle _sellveh;
 
     // Update Geldanzeige
-    [_budget] call opt_common_fnc_renderbudget;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 
     // lösche Option aus Verkaufsmenü!
     _listbox_vehicles lbDelete _sel_class;

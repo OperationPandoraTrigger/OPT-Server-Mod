@@ -468,9 +468,6 @@ else
     _kosten ctrlSetText format["€:%1", GVAR(VorhandeneBewaffnunggeld)-GVAR(unitCost)];	
 };  
 
-systemChat format ["v:%1 side:%2 G:%3",_vehSelect,GVAR(side),GVAR(Gunvehindependent)];
-
-
 //InfoBox Erneuern bei änderung
 _IDD_box1 ctrlAddEventHandler [ "LBSelChanged", 
 {
@@ -628,11 +625,11 @@ _IDD_vehKonfigOrder ctrlAddEventHandler [ "ButtonClick",
 		
 		if ((GVAR(VorhandeneBewaffnunggeld) - _waffenkosten) > 0) then 
 		{                
-			[Name Player, playerSide, GVAR(vehType), (GVAR(VorhandeneBewaffnunggeld) - _waffenkosten), "+", "weapons"] call opt_common_fnc_updateBudget;
+			[Name Player, playerSide, GVAR(vehType), (GVAR(VorhandeneBewaffnunggeld) - _waffenkosten), "+", "weapons"] remoteExecCall ["OPT_GELDZEIT_fnc_updateBudget", 2, false];
         } 
 		else 
 		{
-			[Name Player, playerSide, GVAR(vehType), ((GVAR(VorhandeneBewaffnunggeld) - _waffenkosten) * (-1)), "-", "weapons"] call opt_common_fnc_updateBudget;
+			[Name Player, playerSide, GVAR(vehType), ((GVAR(VorhandeneBewaffnunggeld) - _waffenkosten) * (-1)), "-", "weapons"] remoteExecCall ["OPT_GELDZEIT_fnc_updateBudget", 2, false];
 		};
 		
 	};
@@ -681,7 +678,7 @@ GVAR(idPadCheckKonfig) = [{
         _IDD_vehKonfigOrder ctrlEnable true;
     };   
 
-}, 1] call CFUNC(addPerFrameHandler);
+}, 0.1] call CFUNC(addPerFrameHandler);
 
 // Festlegen ob Spieler in Fahrzeug nach kauf
 _moveInVeh ctrlAddEventHandler [ "ButtonClick", 
@@ -692,7 +689,7 @@ _moveInVeh ctrlAddEventHandler [ "ButtonClick",
     if (GVAR(moveInVeh)) then 
     {
         GVAR(moveInVeh) = false;         
-        _moveInVeh ctrlSetText "[ ] Fahrzeug besetzen";   
+        _moveInVeh ctrlSetText "[_] Fahrzeug besetzen";   
         _moveInVeh ctrlSetTextColor [1.0, 0.0, 0.0, 1];       
     }
     else

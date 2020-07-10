@@ -109,6 +109,6 @@ if (_moveInVeh) then
 
 _kosten = _unitCost + _waffenkosten;
 
-[Name Player, playerSide, typeOf _veh, _kosten, "-"] call opt_common_fnc_updateBudget;
+[Name Player, playerSide, typeOf _veh, _kosten, "-"] remoteExecCall ["OPT_GELDZEIT_fnc_updateBudget", 2, false];
 
 _kosten

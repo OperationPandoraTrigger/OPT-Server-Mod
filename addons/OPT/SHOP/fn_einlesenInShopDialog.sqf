@@ -258,7 +258,7 @@ GVAR(orderDialogObjects) = [_pool, 1] call CBA_fnc_sortNestedArray; // billigste
 
 //Boxen füllen
 // Budget 
-[_budget] call opt_common_fnc_renderbudget;
+[_budget] call OPT_GELDZEIT_fnc_renderbudget;
 
 //Anzahl Kaufbutton bestimmen
 private _Objektanzahl = 0;
@@ -317,7 +317,8 @@ GVAR(idPadCheckShop) = [{
     private _padBox = _display displayCtrl 20003;
    
     // check der Pads ob belegt
-    GVAR(pads) apply {
+    GVAR(pads) apply 
+    {
 	    private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], GVAR(Checkbereich)];
             
         if (count _ob == 0) then 
@@ -343,7 +344,7 @@ GVAR(idPadCheckShop) = [{
             _padBox ctrlSetText format ["BOX:%1",GVAR(orderPAD)];
         };
 
-}, 1] call CFUNC(addPerFrameHandler);
+}, 0.1] call CFUNC(addPerFrameHandler);
 
 // Button Listbox Events 
 // Kauf ausführen  
@@ -362,7 +363,11 @@ _order ctrlAddEventHandler [ "ButtonClick",
     if (GVAR(moveInVeh)) then 
     {
         closeDialog 0;
-    };   
+    };
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;   
 
 }];
 
@@ -386,7 +391,7 @@ _moveInVeh ctrlAddEventHandler [ "ButtonClick",
     if (GVAR(moveInVeh)) then 
     {
         GVAR(moveInVeh) = false;         
-        _moveInVeh ctrlSetText "[ ] Fahrzeug besetzen";   
+        _moveInVeh ctrlSetText "[_] Fahrzeug besetzen";   
         _moveInVeh ctrlSetTextColor [1.0, 0.0, 0.0, 1];       
     }
     else
@@ -428,7 +433,8 @@ _button1 ctrlAddEventHandler [ "ButtonClick",
 
     _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
-    [_budget] call opt_common_fnc_renderbudget;
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
 
 //Button 2
@@ -445,6 +451,9 @@ _button2 ctrlAddEventHandler [ "ButtonClick",
     _Datensatz = [_class] call FUNC(loadout);
 
     _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
+
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
 
 //Button 3
@@ -462,6 +471,8 @@ _button3 ctrlAddEventHandler [ "ButtonClick",
 
     _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
 
 //Button 4
@@ -478,7 +489,9 @@ _button4 ctrlAddEventHandler [ "ButtonClick",
     _Datensatz = [_class] call FUNC(loadout);
 
     _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
-
+    
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
 
 //Button 5
@@ -496,6 +509,8 @@ _button5 ctrlAddEventHandler [ "ButtonClick",
 
     _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
 
 //Button 6
@@ -513,6 +528,8 @@ _button6 ctrlAddEventHandler [ "ButtonClick",
 
     _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
 
 //Button 7
@@ -530,6 +547,8 @@ _button7 ctrlAddEventHandler [ "ButtonClick",
 
     _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
 
 //Button 8
@@ -547,6 +566,8 @@ _button8 ctrlAddEventHandler [ "ButtonClick",
 
     _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
 
 //Button 9
@@ -564,6 +585,8 @@ _button9 ctrlAddEventHandler [ "ButtonClick",
 
     _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
 
 //Button 10
@@ -581,6 +604,8 @@ _button10 ctrlAddEventHandler [ "ButtonClick",
 
     _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
 
 //Button 11
@@ -598,6 +623,8 @@ _button11 ctrlAddEventHandler [ "ButtonClick",
 
     _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
 
 //Button 12
@@ -615,6 +642,8 @@ _button12 ctrlAddEventHandler [ "ButtonClick",
 
     _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
 
 //Button 13
@@ -632,6 +661,8 @@ _button13 ctrlAddEventHandler [ "ButtonClick",
 
     _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
 
 //Button 14
@@ -649,6 +680,8 @@ _button14 ctrlAddEventHandler [ "ButtonClick",
 
     _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
 
 //Button 15
@@ -666,6 +699,8 @@ _button15 ctrlAddEventHandler [ "ButtonClick",
 
     _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
 
 //Button 16
@@ -683,6 +718,8 @@ _button16 ctrlAddEventHandler [ "ButtonClick",
 
     _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
 
 //Button 17
@@ -700,6 +737,8 @@ _button17 ctrlAddEventHandler [ "ButtonClick",
 
     _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
 
 //Button 18
@@ -717,6 +756,8 @@ _button18 ctrlAddEventHandler [ "ButtonClick",
 
     _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
 
 //Button 19
@@ -734,6 +775,8 @@ _button19 ctrlAddEventHandler [ "ButtonClick",
 
     _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
 
 //Button 20
@@ -751,6 +794,8 @@ _button20 ctrlAddEventHandler [ "ButtonClick",
 
     _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
 
 //Button 21
@@ -768,6 +813,8 @@ _button21 ctrlAddEventHandler [ "ButtonClick",
 
     _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
 
 //Button 22
@@ -785,6 +832,8 @@ _button22 ctrlAddEventHandler [ "ButtonClick",
 
     _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
 
 //Button 23
@@ -802,6 +851,8 @@ _button23 ctrlAddEventHandler [ "ButtonClick",
 
     _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
 
 //Button 24
@@ -819,4 +870,6 @@ _button24 ctrlAddEventHandler [ "ButtonClick",
 
     _kosten ctrlSetText format ["€:%1",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10))];
 
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
