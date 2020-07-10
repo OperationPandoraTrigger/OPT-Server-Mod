@@ -10,7 +10,7 @@
 * 0: <BOOl> true - flag can be captured, false - otherwise
 *
 * Example:
-* [flag, player] call opt_sectorcontrol_fnc_captureFlagCondition.sqf;
+* [flag, player] call FUNC(captureFlagcaptureflagcondition);
 *
 * Server only:
 * no

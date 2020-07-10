@@ -32,10 +32,10 @@
 private _all_flags = allMissionObjects "FlagPole_F";
 private _all_nato_flags = _all_flags select {_x getVariable "start_owner" == west};
 private _all_csat_flags = _all_flags select {_x getVariable "start_owner" == east};
-private _all_csat_flags = _all_flags select {_x getVariable "start_owner" == independent};
+private _all_aaf_flags = _all_flags select {_x getVariable "start_owner" == independent};
 
 private _maxTries = 100;
-while {(count GVAR(nato_flags) < round OPT_sectorcontrol_flagCountNATO) && _maxTries > 0} do
+while {(count GVAR(nato_flags) < round GVAR(flagCountNATO)) && _maxTries > 0} do
 {
     GVAR(nato_flags) pushBackUnique selectRandom _all_nato_flags;
     _maxTries = _maxTries - 1;
@@ -43,16 +43,16 @@ while {(count GVAR(nato_flags) < round OPT_sectorcontrol_flagCountNATO) && _maxT
 publicVariable QGVAR(nato_flags);
 
 private _maxTries = 100;
-while {(count GVAR(csat_flags) < round OPT_sectorcontrol_flagCountCSAT) && _maxTries > 0} do
+while {(count GVAR(csat_flags) < round GVAR(flagCountCSAT)) && _maxTries > 0} do
 {
     GVAR(csat_flags) pushBackUnique selectRandom _all_csat_flags;
     _maxTries = _maxTries - 1;
 };
 publicVariable QGVAR(csat_flags);
 
-while {(count GVAR(aaf_flags) < round OPT_sectorcontrol_flagCountaaf) && _maxTries > 0} do
+while {(count GVAR(aaf_flags) < round GVAR(flagCountAAF)) && _maxTries > 0} do
 {
-    GVARMAIN(aaf_flags) pushBackUnique selectRandom _all_aaf_flags;
+    GVAR(aaf_flags) pushBackUnique selectRandom _all_aaf_flags;
     _maxTries = _maxTries - 1;
 };
 publicVariable QGVAR(aaf_flags);
@@ -107,14 +107,14 @@ unverwundbar, Logistik-Script aus sowie Actionmeneintrag fuer Spieler
     [
         _flag,
         [
-            "<t color='#f0bfbfbf'>Flagge ziehen</t>",     // Anzeigetext
+            "<t color='#FF0000'>Flagge ziehen</t>",                     // Anzeigetext
             {[_this select 0, _this select 1] call FUNC(captureFlag);},  // Skript
             [],                                                          // Parameter fr Skript
             999,                                                         // priority
             true,                                                        // showWindow
             true,                                                        // hideOnUse 
             "",                                                          // shortcut
-            (vehicle player == player and OPT_GELDZEIT_Spielzeitstart and (OPT_GELDZEIT_PLAYTIME - (serverTime - OPT_GELDZEIT_startTime)) > 0 and (playerside != _target getVariable 'owner')),                              
+            "(vehicle player == player and OPT_GELDZEIT_Spielzeitstart and ((OPT_GELDZEIT_PLAYTIME - (serverTime - OPT_GELDZEIT_startTime)) > 0) and (playerside != _target getVariable 'owner'))",                              
             GVAR(flagDistanceToPlayer)                                   // radius
         ]
     ] remoteExecCall ["addAction", 0, true];

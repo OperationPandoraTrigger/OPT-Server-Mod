@@ -14,6 +14,10 @@
 */
 #include "macros.hpp"
 
+#define PLACE_WAITING -1
+#define PLACE_CANCEL 0
+#define PLACE_APPROVE 1
+
 /* EH für das Versetzen der Flaggen im Trainingsmodus */
 if (GVAR(trainingon)) then 
 {
@@ -81,7 +85,7 @@ DFUNC(Minensperrmeldung) =
     // Warnhinweis
     private _txt = "Mine in der Minensperrzone gelegt! Mine wurde gelöscht.";
     private _header = parseText "<t size='2.0' color='#f0bfbfbf'>Sperrzone</t>";
-    hint Format ["%1 /n/n %2",_header,_txt];
+    hint Format ["%1 \n\n %2",_header,_txt];
 
 };
 
@@ -101,7 +105,7 @@ if (GVAR(flagFreeMineZoneOn)) then
             ) then 
             {
                 // wait until explosive was placed by player
-                [FUNC(Minensperrmeldung), {ace_explosives_placeAction == PLACE_APPROVE}, "Awesome Delay"] call CLib_fnc_waitUntil;
+                [FUNC(Minensperrmeldung), {(ace_explosives_placeAction == PLACE_APPROVE)}, "Awesome Delay"] call CLib_fnc_waitUntil;
 
             };
         };

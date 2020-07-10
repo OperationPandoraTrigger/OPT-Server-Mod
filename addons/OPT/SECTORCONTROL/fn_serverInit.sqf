@@ -24,12 +24,52 @@
 
 #include "macros.hpp"
 
-["missionStarted", {
+//init Startwerte
+GVAR(csat_points) = 0;
+publicVariable QGVAR(csat_points);
 
+GVAR(nato_points) = 0;
+publicVariable QGVAR(nato_points);
+
+GVAR(aaf_points) = 0;
+publicVariable QGVAR(aaf_points);
+
+GVAR(draw) = 0;
+publicVariable QGVAR(draw);
+
+GVAR(csat_win)= 0;
+publicVariable QGVAR(csat_win);
+
+GVAR(nato_win) = 0;
+publicVariable QGVAR(nato_win);
+
+GVAR(aaf_win)= 0;
+publicVariable QGVAR(aaf_win);
+
+GVAR(dominator) = sideUnknown;
+publicVariable QGVAR(dominator);
+
+GVAR(nato_flags) = [];
+GVAR(csat_flags) = [];
+GVAR(aaf_flags) = [];
+
+DFUNC(startflagsetup) = 
+{
+	//Punkte Erfassung wärend der Spielzeit
+	[] call FUNC(punkte);
+	
 	// start flag setup (setting owner)
 	[] call FUNC(setupFlag);
 
 	// calculate first time the dominator (it's needed if assynchrone number of flags are defined)
-    [sideUnknown, objNull] call FUNC(setFlagOwner);
+    [sideUnknown, objNull] call FUNC(setFlagOwner);	
+};	
+
+["missionStarted", {
+
+	//Flaggen Daten und Flaggenpol setzung
+	[] call FUNC(setupflagpositions);
+		
+	[FUNC(startflagsetup), {OPT_GELDZEIT_Spielzeitstart}, "Awesome Delay"] call CLib_fnc_waitUntil;
 
 }] call CFUNC(addEventhandler);

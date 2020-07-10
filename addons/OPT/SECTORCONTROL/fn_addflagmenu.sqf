@@ -11,7 +11,7 @@
 * None
 *
 * Example:
-* [] call fnc_addFlagMenu.sqf;
+* [] call FUNC(addflagmenu);
 *
 */
 #include "macros.hpp"
@@ -39,11 +39,11 @@ if (typeOf player in GVAR(officer)) then
         true, 
         true, 
         "", 
-        format["!%1", OPT_GELDZEIT_Spielzeitstart]
+        "!OPT_GELDZEIT_Spielzeitstart"
     ];
 
     // inform player
     private _txt = "Bitte eine Flagge über das Mausradmenü wählen. Dies muss während der Waffenruhe geschehen!";
     private _header = parseText "<t size='2.0' color='#D7DF01'>Wahl der Angriffsflagge</t>";
-    hint Format ["%1 /n/n %2",_header,_txt];
+    hint Format ["%1 \n\n %2",_header,_txt];
 };

@@ -19,7 +19,7 @@
     "SLIDER", // setting type
     [
         "Anzahl der NATO-Flaggen",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.  
-        "Die Anzahl der NATO-Flaggen, die für die CSAT zum Angriff stehen."   // Mouse-Over description of the above
+        "Die Anzahl der NATO-Flaggen, die für die Gegenseite zum Angriff stehen."   // Mouse-Over description of the above
     ],
     "OPT Sektorkontrolle", // Pretty name of the category where the setting can be found. Can be stringtable entry.
     [0, 5, 1, 0], // [_min, _max, _default, _trailingDecimals]
@@ -32,7 +32,20 @@
     "SLIDER", // setting type
     [
         "Anzahl der CSAT-Flaggen",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.  
-        "Die Anzahl der CSAT-Flaggen, die für die NATO zum Angriff stehen."   // Mouse-Over description of the above
+        "Die Anzahl der CSAT-Flaggen, die für die Gegenseite zum Angriff stehen."   // Mouse-Over description of the above
+    ],
+    "OPT Sektorkontrolle", // Pretty name of the category where the setting can be found. Can be stringtable entry.
+    [0, 5, 1, 0], // [_min, _max, _default, _trailingDecimals]
+    1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
+    {} // function that will be executed once on mission start and every time the setting is changed.
+] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(flagCountAAF), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    "SLIDER", // setting type
+    [
+        "Anzahl der AAF-Flaggen",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.  
+        "Die Anzahl der AAF-Flaggen, die für die Gegenseite zum Angriff stehen."   // Mouse-Over description of the above
     ],
     "OPT Sektorkontrolle", // Pretty name of the category where the setting can be found. Can be stringtable entry.
     [0, 5, 1, 0], // [_min, _max, _default, _trailingDecimals]
@@ -108,7 +121,7 @@
     "EDITBOX", // setting type
     "Flaggentextur der NATO Faktion", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     "OPT Sektorkontrolle", // Pretty name of the category where the setting can be found. Can be stringtable entry.
-    "1", // data for this setting: [min, max, default, number of shown trailing decimals]
+    "\opt\opt_client\addons\core\bilder\arf_fahne.paa", // data for this setting: [min, max, default, number of shown trailing decimals]
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {
         params ["_value"];
@@ -119,9 +132,9 @@
 [
     QGVAR(eastflag), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "EDITBOX", // setting type
-    "Flaggentextur der NATO Faktion", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+    "Flaggentextur der csat_budget Faktion", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     "OPT Sektorkontrolle", // Pretty name of the category where the setting can be found. Can be stringtable entry.
-    "1", // data for this setting: [min, max, default, number of shown trailing decimals]
+    "\opt\opt_client\addons\core\bilder\sword_fahne.paa", // data for this setting: [min, max, default, number of shown trailing decimals]
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {
         params ["_value"];
@@ -132,9 +145,9 @@
 [
     QGVAR(independentflag), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "EDITBOX", // setting type
-    "Flaggentextur der NATO Faktion", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+    "Flaggentextur der AAF Faktion", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     "OPT Sektorkontrolle", // Pretty name of the category where the setting can be found. Can be stringtable entry.
-    "1", // data for this setting: [min, max, default, number of shown trailing decimals]
+    "\opt\opt_client\addons\core\bilder\arf_fahne.paa", // data for this setting: [min, max, default, number of shown trailing decimals]
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {
         params ["_value"];

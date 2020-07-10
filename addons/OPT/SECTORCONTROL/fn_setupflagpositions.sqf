@@ -26,30 +26,41 @@
 Diese Datei enthält alle Flaggenpositionen aufgeteilt in NATO und CSAT.
 Jede Flagge besitzt Koordinaten (x,y) sowie die owner Seite, die im Besitz der Flagge ist.
 Demnach muss nach jeder Schlacht nur der owner angepasst werden.
+
+NATO vs CSAT
 west -> Angriffsziel für CSAT
 east -> Angriffsziel für NATO
+
+AAF vs CSAT
+independent -> Angriffsziel für CSAT
+east -> Angriffsziel für AAF
+
+Nato vs AAF
+independent -> Angriffsziel für Nato
+west -> Angriffsziel für AAF
 */
 
 #include "macros.hpp"
 
 GVAR(nato_flags_pos) = [
-	[11663,2696, west,"092 - Lijn- Hafen",true],
-	[10382,2656, west,"093 - Blerick",true],
-	[12250,1849, west,"124 - Taga",true]  
+	[11663,2696, west,"092 - Lijn- Hafen",false],
+	[10382,2656, west,"093 - Blerick",false],
+	[12250,1849, west,"124 - Taga",false]  
 ];
 
 GVAR(csat_flags_pos) = [
-	[11355,4204, east,"012 - Checkpoint Papa Tango",true],
-	[12487,3997, east,"050 - Forest Clearing",true],
-	[13248,2930, east,"110 - Bua Bua",true]
+	[7252,8898, east,"000 - Fahne 1",true],
+	[7418,8866, east,"001 - Fahne 2",true]
 ];
 
 GVAR(aaf_flags_pos) = [
-	[11663,2696, independent,"092 - Lijn- Hafen",true],
-	[10382,2656, independent,"093 - Blerick",true],
-	[12250,1849, independent,"124 - Taga",true]  
+	[7549,8984, independent,"002 - Fahne 3",true],
+	[7384,9006, independent,"003 - Fahne 4",true]  
 ];
 
+publicVariable QGVAR(nato_flags_pos);
+publicVariable QGVAR(csat_flags_pos);
+publicVariable QGVAR(aaf_flags_pos);
 
 // erzeuge für alle oben gelisteten Positionen einen Flaggenmast mit korrekter Flagge vom Server aus.
 
@@ -65,7 +76,7 @@ if (isServer) then
 			_flag setVariable ["opt_flag", true, true];
 			_flag setVariable ["start_owner", _owner, true];
 
-			if (OPT_sectorcontrol_flagStartNeutral) then // Nur Fahnenmast ohne Flagge zum Start gewünscht?
+			if (GVAR(flagStartNeutral)) then // Nur Fahnenmast ohne Flagge zum Start gewünscht?
 			{
 				_flag setVariable ["owner", sideUnknown, true];
 			}
@@ -88,7 +99,7 @@ if (isServer) then
 			_flag setVariable ["opt_flag", true, true];
 			_flag setVariable ["start_owner", _owner, true];
 
-			if (OPT_sectorcontrol_flagStartNeutral) then // Nur Fahnenmast ohne Flagge zum Start gewünscht?
+			if (GVAR(flagStartNeutral)) then // Nur Fahnenmast ohne Flagge zum Start gewünscht?
 			{
 				_flag setVariable ["owner", sideUnknown, true];
 			}
@@ -110,7 +121,7 @@ if (isServer) then
 			_flag setVariable ["opt_flag", true, true];
 			_flag setVariable ["start_owner", _owner, true];
 
-			if (OPT_sectorcontrol_flagStartNeutral) then // Nur Fahnenmast ohne Flagge zum Start gewünscht?
+			if (GVAR(flagStartNeutral)) then // Nur Fahnenmast ohne Flagge zum Start gewünscht?
 			{
 				_flag setVariable ["owner", sideUnknown, true];
 			}
