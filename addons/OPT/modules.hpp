@@ -6,7 +6,7 @@ class CfgCLibModules {
         path = "OPT\OPT\addons\OPT";
 		
 		dependency[] = {};
-		
+		/*
         MODULE(GPS) 
         {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
@@ -25,6 +25,7 @@ class CfgCLibModules {
             FNC(updateUnitIcon);
             FNC(miniGPS);			
         };
+        */
 		MODULE(SHOP) 
 		{
             dependency[] = {"CLib/PerFrame", "Clib/Events"};
@@ -81,6 +82,8 @@ class CfgCLibModules {
             FNC(addflagmenu);
             FNC(chooseflag);
             FNC(setupflagpositions);
+            FNC(Punkte);
+            FNC(captureflag);
         };
     };
 };
