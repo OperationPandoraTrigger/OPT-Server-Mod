@@ -48,13 +48,13 @@ DFUNC(Waffenruhe) =
 	// Logeintrag
 	GVAR(FreeztimeEnde) = true;
 	publicVariable QGVAR(FreeztimeEnde);
-	systemChat "FreeztimeEnde";
+	["FreeztimeEnde"] remoteExecCall ["systemChat", 0, true];
 
 	GVAR(Waffenruhestart) = true;
 	publicVariable QGVAR(Waffenruhestart);
-	systemChat "Waffenruhestart";
+	["Waffenruhestart"] remoteExecCall ["systemChat", 0, true];
 
-	diag_log "########## Waffenruhe hat begonnen";
+	diag_log "########## Waffenruhe hat begonnen ##########";
 
 	//Nachablauf Waffenruhe Spielzeit auslösen
 	[FUNC(Spielzeit), GVAR(TRUCETIME),""] call CLib_fnc_wait;
@@ -66,13 +66,13 @@ DFUNC(Spielzeit) =
 	// Logeintrag
 	GVAR(WaffenruheEnde) = true;
 	publicVariable QGVAR(WaffenruheEnde);
-	systemChat "WaffenruheEnde";
+	["WaffenruheEnde"] remoteExecCall ["systemChat", 0, true];
 
 	GVAR(Spielzeitstart) = true;
 	publicVariable QGVAR(Spielzeitstart);
-	systemChat "Spielzeitstart";
+	["Spielzeitstart"] remoteExecCall ["systemChat", 0, true];
 
-	diag_log "########## Spielzeit hat begonnen";
+	diag_log "########## Spielzeit hat begonnen ##########";
 
 	//Nachablauf Spielzeit Ende auslösen
 	[FUNC(Mission_Ende), GVAR(PLAYTIME),""] call CLib_fnc_wait;
@@ -84,11 +84,11 @@ DFUNC(Mission_Ende) =
 	// Logeintrag
 	GVAR(SpielzeitEnde) = true;
 	publicVariable QGVAR(SpielzeitEnde);
-	systemChat "SpielzeitEnde";
+	["SpielzeitEnde"] remoteExecCall ["systemChat", 0, true];
 
 	GVAR(Endestart) = true;
 	publicVariable QGVAR(Endestart);
-	systemChat "Endestart";
+	["Endestart"] remoteExecCall ["systemChat", 0, true];
 
 	[EVENT_SPIELUHR_ENDBILDSCHIRM,[]] call CFUNC(globalEvent);
 
@@ -96,8 +96,8 @@ DFUNC(Mission_Ende) =
 	{
     	case "AAFvsCSAT" : 
 		{
-			private _points1 = 0;
-			private _points2 = 0;
+			private _points1 = OPT_SECTORCONTROL_aaf_points;
+			private _points2 = OPT_SECTORCONTROL_csat_points;
 
 			diag_log format ["########## Schlacht automatisch beendet. Endpunktestand: AAF %1 | CSAT %2 ##########", _points1, _points2];
 
@@ -105,8 +105,8 @@ DFUNC(Mission_Ende) =
 
 		case "NATOvsCSAT" : 
 		{
-			private _points1 = 0;
-			private _points2 = 0;
+			private _points1 = OPT_SECTORCONTROL_nato_points;
+			private _points2 = OPT_SECTORCONTROL_csat_points;
 
 			diag_log format ["########## Schlacht automatisch beendet. Endpunktestand: NATO %1 | CSAT %2 ##########", _points1, _points2];
 
@@ -114,8 +114,8 @@ DFUNC(Mission_Ende) =
 
 		case "NATOvsAAF" : 
 		{
-			private _points1 = 0;
-			private _points2 = 0;
+			private _points1 = OPT_SECTORCONTROL_nato_points;
+			private _points2 = OPT_SECTORCONTROL_aaf_points;
 
 			diag_log format ["########## Schlacht automatisch beendet. Endpunktestand: NATO %1 | AAF %2 ##########", _points1, _points2];
 
@@ -142,10 +142,10 @@ DFUNC(Mission_Ende) =
 	// Logeintrag
 	GVAR(Mission_start) = true;
 	publicVariable QGVAR(Mission_start);
-	systemChat "Missionstart";
-	diag_log "########## Schlacht hat begonnen";
+	["Missionstart"] remoteExecCall ["systemChat", 0, true];
+	diag_log "########## Schlacht hat begonnen ##########";
 
-	diag_log "########## Freeztime hat begonnen";
+	diag_log "########## Freeztime hat begonnen ##########";
 
 	// Nachablauf Freeztime Waffenruhe auslösen
 	[FUNC(Waffenruhe), GVAR(FREEZETIME),""] call CLib_fnc_wait;

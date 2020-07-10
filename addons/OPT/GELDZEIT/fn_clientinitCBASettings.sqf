@@ -33,7 +33,7 @@
     "EDITBOX", // setting type
     "Fraktionauswahl AAFvsCSAT/NATOvsCSAT/NATOvsAAF", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     "OPT Mission", // Pretty name of the category where the setting can be found. Can be stringtable entry.
-    "1", // data for this setting: [min, max, default, number of shown trailing decimals]
+    "AAFvsCSAT", // data for this setting: [min, max, default, number of shown trailing decimals]
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {
         params ["_value"];

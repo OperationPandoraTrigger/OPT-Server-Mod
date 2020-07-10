@@ -32,8 +32,8 @@ switch (GVAR(Fraktionauswahl)) do
 {
     case "AAFvsCSAT" : 
 	{
-		private _points1 = 0;
-		private _points2 = 0;
+		private _points1 = OPT_SECTORCONTROL_aaf_points;
+		private _points2 = OPT_SECTORCONTROL_csat_points;
 
 		// Ermittel Sieger
 		if (_points2 != _points1) then 
@@ -57,8 +57,8 @@ switch (GVAR(Fraktionauswahl)) do
 
 	case "NATOvsCSAT" : 
 	{
-		private _points1 = 0;
-		private _points2 = 0;
+		private _points1 = OPT_SECTORCONTROL_nato_points;
+		private _points2 = OPT_SECTORCONTROL_csat_points;
 
 		// Ermittel Sieger
 		if (_points2 != _points1) then 
@@ -82,8 +82,8 @@ switch (GVAR(Fraktionauswahl)) do
 
 	case "NATOvsAAF" : 
 	{
-		private _points1 = 0;
-		private _points2 = 0;
+		private _points1 = OPT_SECTORCONTROL_nato_points;
+		private _points2 = OPT_SECTORCONTROL_aaf_points;
 
 		// Ermittel Sieger
 		if (_points2 != _points1) then 
