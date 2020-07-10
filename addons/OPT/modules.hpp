@@ -65,6 +65,10 @@ class CfgCLibModules {
             FNC(clientinitCBASettings);
             FNC(serverInit);
             FNC(ende);
+            FNC(frezztime);
+            FNC(playerinit);
+            FNC(renderbudget);
+            FNC(updatebudget);
         };
 		MODULE(SECTORCONTROL) 
         {
