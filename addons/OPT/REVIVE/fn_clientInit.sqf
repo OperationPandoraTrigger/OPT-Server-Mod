@@ -29,17 +29,26 @@
 #include "macros.hpp"
 
 //Init Werte
-GVAR(SaniKlassen) = ["OPT_NATO_Sanitaeter","OPT_CSAT_Sanitaeter","OPT_NATO_Sanitaeter_T","OPT_CSAT_Sanitaeter_T"];
+GVAR(SaniKlassen) = ["OPT_NATO_Sanitaeter","OPT_CSAT_Sanitaeter","OPT_NATO_Sanitaeter_T","OPT_CSAT_Sanitaeter_T","I_medic_F"];
 
 //Revive Funktion 
 DFUNC(revive) = 
 {
 	GVAR(verletzter) = cursorTarget;
+	GVAR(Helizeit) = 0;
+
+	GVAR(Helizeit) = GVAR(Helizeitsani);
+
+	if (!(typeOf player in GVAR(SaniKlassen))) then 
+	{
+		//50% längere Heilzeit bei nicht Sanitätern
+		GVAR(Helizeit) = GVAR(Helizeitsani)+(GVAR(Helizeitsani)*0.5);
+	};
 
 	player switchmove "AinvPknlMstpSnonWrflDnon_medic";
 
 	[
-		GVAR(Helizeitsani),
+		GVAR(Helizeit),
 		[],
 		{
 			[GVAR(verletzter), false, 1, true] call ace_medical_fnc_setUnconscious;
@@ -48,8 +57,8 @@ DFUNC(revive) =
 			player action ["WeaponInHand", player];
 
 			//Var zurück setzen 
-			GVAR(verletzter) setVariable ["FAR_isUnconscious", 0, true];
-		 	GVAR(verletzter) setVariable ["FAR_isStabilized", 0, true];
+			GVAR(verletzter) setVariable ["OPT_isUnconscious", 0, true];
+		 	GVAR(verletzter) setVariable ["OPT_isStabilized", 0, true];
 
 			//Schaden Ausblendung Ausschalten
 			GVAR(verletzter) allowDamage true;
@@ -72,8 +81,18 @@ DFUNC(stabilisieren) =
 
 	player switchmove "AinvPknlMstpSnonWrflDnon_medic";
 
+	GVAR(stabilisierungzeitnew) = 0;
+
+	GVAR(stabilisierungzeitnew) = GVAR(stabilisierungzeit);
+
+	if (!(typeOf player in GVAR(SaniKlassen))) then 
+	{
+		//50% längere Stabilisierungzeit bei nicht Sanitätern
+		GVAR(stabilisierungzeitnew) = GVAR(stabilisierungzeit)+(GVAR(stabilisierungzeit)*0.5);
+	};
+
 	[
-		GVAR(stabilisierungzeit),
+		GVAR(stabilisierungzeitnew),
 		[],
 		{
 			player switchmove "";
@@ -84,7 +103,7 @@ DFUNC(stabilisieren) =
 			[GVAR(verletzter), true, 9000, true] call ace_medical_fnc_setUnconscious;
 
 			//Var "Person ist Stabilisiert" auf eins setzen
-			GVAR(verletzter) setVariable ["FAR_isStabilized", 1, true];
+			GVAR(verletzter) setVariable ["OPT_isStabilized", 1, true];
 
 			//Log Eintrag auslösen 
 			[[GVAR(verletzter),player,2], QFUNC(revivelog), 2] call CFUNC(remoteExec);
@@ -123,8 +142,8 @@ DFUNC(eigenversorgung) =
 ["missionStarted", {
 
 // Var setzen 
-player setVariable ["FAR_isUnconscious", 0, true];
-player setVariable ["FAR_isStabilized", 0, true];
+player setVariable ["OPT_isUnconscious", 0, true];
+player setVariable ["OPT_isStabilized", 0, true];
 
 //Chat abschaltung bei Bewustlosigkeit
 (findDisplay 46) displayAddEventHandler ["KeyDown", {_this call FUNC(keyUnbind)}];
@@ -147,7 +166,7 @@ GVAR(revive_Action_fremd1) =
 	"Stabilisieren",
 	"",
 	{[] call FUNC(stabilisieren)},
-	{((cursorTarget getVariable ["ACE_isUnconscious", false]) and (cursorTarget getVariable ["FAR_isStabilized", 1] == 0))},
+	{((cursorTarget getVariable ["ACE_isUnconscious", false]) and (cursorTarget getVariable ["OPT_isStabilized", 1] == 0))},
 	{}
 
 ] call ace_interact_menu_fnc_createAction;
@@ -158,7 +177,7 @@ GVAR(revive_Action_fremd2) =
 	"Wiederbeleben",
 	"",
 	{[] call FUNC(revive)},
-	{(((cursorTarget getVariable ["ACE_isUnconscious", false]) or (cursorTarget getVariable ["FAR_isStabilized", 1] == 1)) and (typeOf player in GVAR(SaniKlassen)))},
+	{(((cursorTarget getVariable ["ACE_isUnconscious", false]) or (cursorTarget getVariable ["OPT_isStabilized", 1] == 1)))},
 	{}
 
 ] call ace_interact_menu_fnc_createAction;
@@ -166,22 +185,5 @@ GVAR(revive_Action_fremd2) =
 [(typeOf player), 1, ["ACE_SelfActions"], GVAR(revive_Action_eigen)] call ace_interact_menu_fnc_addActionToClass;
 [player, 0, ["ACE_MainActions"],GVAR(revive_Action_fremd1)] call ace_interact_menu_fnc_addActionToObject;
 [player, 0, ["ACE_MainActions"],GVAR(revive_Action_fremd2)] call ace_interact_menu_fnc_addActionToObject;
-
-//Test Einträge
-
-p1 setVariable ["FAR_isUnconscious", 0, true];
-p1 setVariable ["FAR_isStabilized", 0, true];
-
-p2 setVariable ["FAR_isUnconscious", 0, true];
-p2 setVariable ["FAR_isStabilized", 0, true];
-
-[p1, 0, ["ACE_MainActions"],GVAR(revive_Action_fremd1)] call ace_interact_menu_fnc_addActionToObject;
-
-[p2, 0, ["ACE_MainActions"],GVAR(revive_Action_fremd1)] call ace_interact_menu_fnc_addActionToObject;
-
-[p1, 0, ["ACE_MainActions"],GVAR(revive_Action_fremd2)] call ace_interact_menu_fnc_addActionToObject;
-
-[p2, 0, ["ACE_MainActions"],GVAR(revive_Action_fremd2)] call ace_interact_menu_fnc_addActionToObject;
- 
 
 }] call CFUNC(addEventhandler);

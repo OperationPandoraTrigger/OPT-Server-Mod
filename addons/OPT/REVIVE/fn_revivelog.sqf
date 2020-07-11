@@ -50,7 +50,8 @@ switch (_art) do
 			side _retter
 		];
 
-		["REVIVE", _message] call opt_log_fnc_write;
+		private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
+		diag_log format["(%1) Log: %2 --- %3","REVIVE",_timestamp,_message];
 	};
 
 	case 2 : 
@@ -64,7 +65,8 @@ switch (_art) do
 			side _retter
 		];
 
-		["REVIVE", _message] call opt_log_fnc_write;
+		private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
+		diag_log format["(%1) Log: %2 --- %3","REVIVE",_timestamp,_message];
 	};
 
 	default 

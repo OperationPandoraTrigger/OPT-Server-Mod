@@ -44,7 +44,7 @@ DFUNC(isUnconscious) =
 	if (_unit isEqualTo player) then 
 	{
 		//Var für GPS setzen 
-		_unit setVariable ["FAR_isUnconscious", 1, true];
+		_unit setVariable ["OPT_isUnconscious", 1, true];
 
 		//Schaden weiterer abschalten
 		_unit allowDamage false;
@@ -69,8 +69,8 @@ DFUNC(isUnconscious) =
 
     {
 		[player, false, 1, true] call ace_medical_fnc_setUnconscious;
-		player setVariable ["FAR_isUnconscious", 0, true];
-		player setVariable ["FAR_isStabilized", 0, true];
+		player setVariable ["OPT_isUnconscious", 0, true];
+		player setVariable ["OPT_isStabilized", 0, true];
 		player allowDamage true;
 		1 enableChannel true;
 		 

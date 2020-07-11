@@ -47,7 +47,6 @@ class CfgCLibModules {
             FNC(typfestellung);
             FNC(einlesenInVerkaufDialog);
         };
-        /*
         MODULE(REVIVE) 
         {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
@@ -56,8 +55,8 @@ class CfgCLibModules {
             FNC(clientinitEH);
             FNC(revivelog);
             FNC(dialog);
+            FNC(keyunbind);
         };
-        */
         MODULE(GELDZEIT) 
         {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};

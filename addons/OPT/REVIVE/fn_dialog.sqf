@@ -101,8 +101,6 @@ GVAR(startzeit) = time;
 		
 		_next_Medic = (_medics select 0 select 1);
 
-		systemChat format ["MA:%1",_medics];
-
 		if (!isNull _next_Medic)  then 
 		{
 			private _medic_Name	= name _next_Medic;	
@@ -129,14 +127,14 @@ GVAR(startzeit) = time;
 	};	
 
 	//Auto Respwan nach Ablauf der Ausblutzeit
-	if (((GVAR(ausblutzeit) - (time - GVAR(startzeit))) < 0) and (player getVariable ["FAR_isStabilized", 1] == 0)) then 
+	if (((GVAR(ausblutzeit) - (time - GVAR(startzeit))) < 0) and (player getVariable ["OPT_isStabilized", 1] == 0)) then 
 	{
 		player setDamage 1;
 
 	};	
 
 	// Zeitausgabe bis Auto Respwan
-	if (player getVariable ["FAR_isStabilized", 1] == 1) then 
+	if (player getVariable ["OPT_isStabilized", 1] == 1) then 
 	{
 		_BleedoutBar_Text ctrlSetText format ["%1","Gestopt"]; 
 		_BleedoutBar progressSetPosition 1.0; 
