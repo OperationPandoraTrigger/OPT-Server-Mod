@@ -109,7 +109,7 @@ _kosten ctrlSetText format["€:%1",_unitCost];
 GVAR(veh) = "";
 
 //Bereicht für Boxkontrolle
-GVAR(Checkbereich) = 8;
+GVAR(Checkbereich) = 7;
 
 //Fahrzeug besetzt
 private _moveInVeh = _display displayCtrl 22044;
@@ -678,7 +678,7 @@ GVAR(idPadCheckKonfig) = [{
         _IDD_vehKonfigOrder ctrlEnable true;
     };   
 
-}, 0.1] call CFUNC(addPerFrameHandler);
+}, 0] call CFUNC(addPerFrameHandler);
 
 // Festlegen ob Spieler in Fahrzeug nach kauf
 _moveInVeh ctrlAddEventHandler [ "ButtonClick", 

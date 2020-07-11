@@ -32,8 +32,6 @@ params [
     ["_case", "", ["s"], 1]
 ];
 
-systemChat format ["D:%1",[_buyerName,_side,_unitType,_unitCost,_sign,_case]];
-
 /* CODE BODY */
 private _cat = "Budget";
 private _message = "";

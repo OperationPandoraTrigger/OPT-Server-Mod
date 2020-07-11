@@ -16,10 +16,23 @@
 
 params ["_budget_field"];
 
-private _side = PLAYERSIDE;
-private _side_Budget = if (_side == west) then {GVAR(nato_budget)};
-private _side_Budget = if (_side == east) then {GVAR(csat_budget)};
-private _side_Budget = if (_side == independent) then {GVAR(aaf_budget)};
+private _side = playerSide;
+private _side_Budget = 0;
+
+if (_side == west) then 
+{
+    _side_Budget = GVAR(nato_budget);
+};
+
+if (_side == east) then 
+{
+    _side_Budget = GVAR(csat_budget);
+};
+
+if (_side == independent) then 
+{
+    _side_Budget = GVAR(aaf_budget);
+};
 
 private _txt = if (_side_Budget >= 1e6) then 
 {

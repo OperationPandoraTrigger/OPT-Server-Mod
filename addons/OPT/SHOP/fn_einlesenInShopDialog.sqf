@@ -98,7 +98,7 @@ _kosten ctrlSetText format ["€:%1",0];
 GVAR(Buttonwahl) = 0;
 
 //Bereicht für Boxkontrolle
-GVAR(Checkbereich) = 8;
+GVAR(Checkbereich) = 7;
 
 //Kaufbutton ausblenden
 for "_i" from 0 to SHOPBUTTONANZAHL do 
@@ -344,7 +344,7 @@ GVAR(idPadCheckShop) = [{
             _padBox ctrlSetText format ["BOX:%1",GVAR(orderPAD)];
         };
 
-}, 0.1] call CFUNC(addPerFrameHandler);
+}, 0] call CFUNC(addPerFrameHandler);
 
 // Button Listbox Events 
 // Kauf ausführen  
