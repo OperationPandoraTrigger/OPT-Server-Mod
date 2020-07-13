@@ -46,6 +46,11 @@ class CfgCLibModules {
             FNC(deletevehicle);
             FNC(typfestellung);
             FNC(einlesenInVerkaufDialog);
+            FNC(handledeadvehicle);
+            FNC(Initcbaclassevents);
+            FNC(flipcheck);
+            FNC(unflip);
+            FNC(writekill);
         };
         MODULE(REVIVE) 
         {
