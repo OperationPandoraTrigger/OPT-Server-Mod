@@ -51,7 +51,7 @@ class CfgCLibModules {
         {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
             FNC(clientInit);
-            FNC(clientinitCBASettings);
+            FNC(initCBASettings);
             FNC(clientinitEH);
             FNC(revivelog);
             FNC(dialog);
@@ -61,7 +61,7 @@ class CfgCLibModules {
         {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
             FNC(clientInit);
-            FNC(clientinitCBASettings);
+            FNC(initCBASettings);
             FNC(serverInit);
             FNC(ende);
             FNC(frezztime);
@@ -73,7 +73,7 @@ class CfgCLibModules {
         {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
             FNC(clientInit);
-            FNC(clientinitCBASettings);
+            FNC(initCBASettings);
             FNC(serverInit);
             FNC(setupflag);
             FNC(setflagowner);
