@@ -61,6 +61,7 @@ class CfgCLibModules {
             FNC(revivelog);
             FNC(dialog);
             FNC(keyunbind);
+            FNC(initcbaclassevents);
         };
         MODULE(GELDZEIT) 
         {

@@ -19,7 +19,7 @@
 * No
 * 
 * Example:
-* call FUNC(clientInitEH);
+* [] call FUNC(clientInitEH);
 */
 
 #include "macros.hpp";

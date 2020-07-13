@@ -160,30 +160,14 @@ GVAR(revive_Action_eigen) =
 
 ] call ace_interact_menu_fnc_createAction;
 
-GVAR(revive_Action_fremd1) = 
-[
-	"Erste Hilfe",
-	"Stabilisieren",
-	"",
-	{[] call FUNC(stabilisieren)},
-	{((cursorTarget getVariable ["ACE_isUnconscious", false]) and (cursorTarget getVariable ["OPT_isStabilized", 1] == 0))},
-	{}
-
-] call ace_interact_menu_fnc_createAction;
-
-GVAR(revive_Action_fremd2) = 
-[
-	"Erste Hilfe",
-	"Wiederbeleben",
-	"",
-	{[] call FUNC(revive)},
-	{(((cursorTarget getVariable ["ACE_isUnconscious", false]) or (cursorTarget getVariable ["OPT_isStabilized", 1] == 1)))},
-	{}
-
-] call ace_interact_menu_fnc_createAction;
-
 [(typeOf player), 1, ["ACE_SelfActions"], GVAR(revive_Action_eigen)] call ace_interact_menu_fnc_addActionToClass;
-[player, 0, ["ACE_MainActions"],GVAR(revive_Action_fremd1)] call ace_interact_menu_fnc_addActionToObject;
-[player, 0, ["ACE_MainActions"],GVAR(revive_Action_fremd2)] call ace_interact_menu_fnc_addActionToObject;
+
+//Test Einträge
+
+p1 setVariable ["OPT_isUnconscious", 0, true];
+p1 setVariable ["OPT_isStabilized", 0, true];
+
+p2 setVariable ["OPT_isUnconscious", 0, true];
+p2 setVariable ["OPT_isStabilized", 0, true];
 
 }] call CFUNC(addEventhandler);
