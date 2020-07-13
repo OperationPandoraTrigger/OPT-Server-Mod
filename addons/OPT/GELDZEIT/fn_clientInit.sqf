@@ -38,6 +38,8 @@
 	
 ] call CFUNC(addEventHandler);
 
+[] call FUNC(playerinit);
+
 ["missionStarted", {
 
 player action ["WeaponOnBack", player];
