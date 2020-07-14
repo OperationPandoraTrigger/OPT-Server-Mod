@@ -44,7 +44,7 @@ switch (_side) do
 		{
             _message = format ["NATO Flagge gesichert von %1", _name];
         }; 
-		if (_flag in GVAR(cast_flags)) then 
+		if (_flag in GVAR(csat_flags)) then 
 		{
             _message = format ["NATO Flagge erobert von %1", _name];
         };
@@ -56,7 +56,7 @@ switch (_side) do
 
     case east: 
 	{
-        if (_flag in GVAR(cast_flags)) then 
+        if (_flag in GVAR(csat_flags)) then 
 		{
             _message = format ["CSAT Flagge gesichert von %1", _name];
         }; 
@@ -75,7 +75,7 @@ switch (_side) do
 		{
             _message = format ["AAF Flagge gesichert von %1", _name];
         }; 
-		if (_flag in GVAR(cast_flags)) then 
+		if (_flag in GVAR(csat_flags)) then 
 		{
             _message = format ["AAF Flagge erobert von %1", _name];
         };

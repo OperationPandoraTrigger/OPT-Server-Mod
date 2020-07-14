@@ -9,7 +9,7 @@
 * 0: <SIDE> side of dominator, sideUnknown if none
 *
 * Example:
-* [] call fnc_calcDominator.sqf;
+* [] call (func)calcDominator;
 *
 */
 #include "macros.hpp"
@@ -27,50 +27,32 @@ switch OPT_GELDZEIT_Fraktionauswahl do
 {
     	case "AAFvsCSAT" : 
 		{
-            if (_csat_owner > _aaf_owner) then 
+            _side = switch (true) do 
             {
-                private _side = east;    
+                case (_csat_owner > _aaf_owner) : {east};
+                case (_aaf_owner > _csat_owner) : {independent};
+                case (_aaf_owner == _csat_owner) : {sideUnknown};   
             };
-            if (_aaf_owner > _csat_owner) then 
-            {
-                private _side = independent;    
-            };
-            if (_aaf_owner == _csat_owner) then 
-            {
-                private _side = sideUnknown;    
-            };        
 		};
 
 		case "NATOvsCSAT" : 
 		{
-            if (_csat_owner > _nato_owner) then 
+            _side = switch (true) do 
             {
-                private _side = east;    
-            };
-            if (_nato_owner > _csat_owner) then 
-            {
-                private _side = west;    
-            };
-            if (_nato_owner == _csat_owner) then 
-            {
-                private _side = sideUnknown;    
-            }; 
+                case (_csat_owner > _nato_owner) : {east};
+                case (_nato_owner > _csat_owner) : {west};
+                case (_aaf_owner == _csat_owner) : {sideUnknown};   
+            };            
 		};
 
 		case "NATOvsAAF" : 
 		{
-            if (_aaf_owner > _nato_owner) then 
+            _side = switch (true) do 
             {
-                private _side = independent;    
-            };
-            if (_nato_owner > _aaf_owner) then 
-            {
-                private _side = west;    
-            };
-            if (_nato_owner == _aaf_owner) then 
-            {
-                private _side = sideUnknown;    
-            };         
+                case (_aaf_owner > _nato_owner) : {independent};
+                case (_nato_owner > _aaf_owner) : {west};
+                case (_aaf_owner == _nato_owner) : {sideUnknown};   
+            };                   
 		};
 
    		default 

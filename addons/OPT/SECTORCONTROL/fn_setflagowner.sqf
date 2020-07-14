@@ -10,7 +10,7 @@
 * None
 *
 * Example:
-* [] call fnc_setFlagOwner.sqf;
+* [] call func(setFlagOwner);
 *
 */
 #include "macros.hpp"
