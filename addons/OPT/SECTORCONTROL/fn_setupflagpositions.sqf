@@ -43,19 +43,14 @@ west -> Angriffsziel für AAF
 #include "macros.hpp"
 
 GVAR(nato_flags_pos) = [
-	[11663,2696, west,"092 - Lijn- Hafen",false],
-	[10382,2656, west,"093 - Blerick",false],
-	[12250,1849, west,"124 - Taga",false]  
 ];
 
 GVAR(csat_flags_pos) = [
-	[7252,8898, east,"000 - Fahne 1",true],
-	[7418,8866, east,"001 - Fahne 2",true]
+	[7987,806, east,"000 Kahlstorf Kübis Farm",true]
 ];
 
 GVAR(aaf_flags_pos) = [
-	[7549,8984, independent,"002 - Fahne 3",true],
-	[7384,9006, independent,"003 - Fahne 4",true]  
+	[7182,1206, independent,"001 Schrecki's Jagdhütte",true] 
 ];
 
 publicVariable QGVAR(nato_flags_pos);
