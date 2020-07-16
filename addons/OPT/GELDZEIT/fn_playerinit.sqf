@@ -48,14 +48,26 @@ DFUNC(spielinfo) =
 	Hint format ["Spielzeit: %1 \n\n Punkte :AAF %2 | CSAT %3",_timestamp,OPT_SECTORCONTROL_AAF_points,OPT_SECTORCONTROL_csat_points];	
 };
 
-player addAction [
-        format["<t color=""#655EDE"">%1</t>", "Spielinfo"], 
-        {[] call FUNC(spielinfo)}, 
-        [], 
-        6, 
-        true, 
-        true, 
-        "", 
-        ""
-    ];
+
+				//Konfigdialog öffnen
+				/*
+				* https://cbateam.github.io/CBA_A3/docs/files/keybinding/fnc_addKeybind-sqf.html
+				*/
+				[
+					"OPT", 
+					"OPT Punkte/Zeit Anzeigen", 
+					["Punkte/Zeit Anzeigen", "Gibt die Punkte und Zeit aus."], 
+					{
+                        [] call FUNC(spielinfo)        
+						
+					}, 
+					{}, 
+					[
+						DIK_F3, 
+						[false, false, false] // [shift, ctrl, alt]
+					]
+				] call CBA_fnc_addKeybind;
+
+
+
 
