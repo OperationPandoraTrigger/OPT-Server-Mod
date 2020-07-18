@@ -74,8 +74,10 @@ DFUNC(Spielzeit) =
 
 	diag_log "########## Spielzeit hat begonnen ##########";
 
+	GVAR(PLAYTIMENETTO) = (GVAR(PLAYTIME) - GVAR(TRUCETIME) - GVAR(FREEZETIME);	
+
 	//Nachablauf Spielzeit Ende auslösen
-	[FUNC(Mission_Ende), GVAR(PLAYTIME),""] call CLib_fnc_wait;
+	[FUNC(Mission_Ende), GVAR(PLAYTIMENETTO),""] call CLib_fnc_wait;
 };
 
 //Mission Ende
