@@ -124,7 +124,7 @@ else
 
     private _faction = (getText(configFile >> 'CfgVehicles' >> typeOf _vec >> 'faction'));
     private _name = (getText(configFile >> 'CfgVehicles' >> typeOf _vec >> 'displayName'));
-    private _light = (opt_shop_nato_vehicles + opt_shop_csat_vehicles + opt_shop_AAF_vehicles) apply {toLower (_x select 0)};
+    private _light = (opt_shop_nato_vehicles + opt_shop_csat_vehicles + opt_shop_AAF_vehicles + (nato_vehicles_supply) + GVAR(csat_vehicles_supply) + GVAR(AAF_vehicles_supply)) apply {toLower (_x select 0)};
     private _heavy = (opt_shop_nato_armored + opt_shop_csat_armored + opt_shop_AAF_armored) apply {toLower (_x select 0)};
     private _air = (opt_shop_nato_choppers + opt_shop_csat_choppers + opt_shop_AAF_choppers) apply {toLower (_x select 0)};
     private _boat = (opt_shop_nato_sea + opt_shop_csat_sea + opt_shop_AAF_sea) apply {toLower (_x select 0)};
