@@ -35,6 +35,7 @@ params [
 
 /* VALIDATION */
 if (_victim isEqualTo objNull) exitWith{};
+if ((_instigator isEqualTo objNull) and (_projectile isEqualTo "")) exitWith{};
 
 /* CODE BODY */
 private _cat = "Abschuss";

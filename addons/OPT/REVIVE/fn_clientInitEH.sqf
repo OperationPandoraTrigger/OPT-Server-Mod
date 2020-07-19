@@ -78,5 +78,25 @@ DFUNC(isUnconscious) =
 
 }] call CFUNC(addEventhandler);
 
+//EH für Spielerabschüsslog 
+//Event Aüslösung bei bewustlosen Spieler.
+
+DFUNC(playerHandleDamage) = 
+{
+	params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
+
+	if (_unit getVariable ["ACE_isUnconscious", false]) then 
+	{
+		[_unit, _instigator, _source, _projectile] remoteExecCall ["OPT_SHOP_fnc_writeKill", 2, false];
+	};
+};
+
+player addEventHandler ["HandleDamage", FUNC(playerHandleDamage)];
+
+
+
+
+
+
 
 
