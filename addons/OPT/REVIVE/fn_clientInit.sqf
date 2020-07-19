@@ -155,19 +155,11 @@ GVAR(revive_Action_eigen) =
 	"Erste Hilfe",
 	"",
 	{[] call FUNC(eigenversorgung)},
-	{true},
+	{(vehicle player == player)},
 	{}
 
 ] call ace_interact_menu_fnc_createAction;
 
 [(typeOf player), 1, ["ACE_SelfActions"], GVAR(revive_Action_eigen)] call ace_interact_menu_fnc_addActionToClass;
-
-//Test Einträge
-
-p1 setVariable ["OPT_isUnconscious", 0, true];
-p1 setVariable ["OPT_isStabilized", 0, true];
-
-p2 setVariable ["OPT_isUnconscious", 0, true];
-p2 setVariable ["OPT_isStabilized", 0, true];
 
 }] call CFUNC(addEventhandler);
