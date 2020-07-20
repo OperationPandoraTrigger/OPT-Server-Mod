@@ -94,5 +94,25 @@ class CfgCLibModules {
             FNC(Punkte);
             FNC(captureflag);
         };
+        MODULE(FIELDREPAIR) 
+        {
+            dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
+            FNC(clientInit);
+            FNC(initcbasettings);
+            FNC(initcbaclassevents);
+            FNC(needrepair);
+            FNC(repairvehicle);
+            FNC(refuelVehicle);
+            FNC(vehicleNoFuel);
+            FNC(heavyrepair);
+            FNC(fullrepair);
+            FNC(setminfuel);
+            FNC(vehicledamaged);
+            FNC(partrepair);
+            FNC(vehicleDamagedLight);
+            FNC(getpartsrepairtime);
+            FNC(Init);
+            FNC(checkRepairs);
+        };
     };
 };
