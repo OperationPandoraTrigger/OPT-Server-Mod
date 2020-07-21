@@ -93,6 +93,7 @@ class CfgCLibModules {
             FNC(setupflagpositions);
             FNC(Punkte);
             FNC(captureflag);
+            FNC(teleport);
         };
         MODULE(FIELDREPAIR) 
         {

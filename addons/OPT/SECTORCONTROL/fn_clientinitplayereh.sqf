@@ -9,7 +9,7 @@
 * None
 *
 * Example:
-* [] call fnc_initPlayerEH.sqf;
+* [] call func(initPlayerEH);
 *
 */
 #include "macros.hpp"
@@ -68,6 +68,15 @@ if (GVAR(trainingon)) then
         };
         
     }] call BIS_fnc_addStackedEventHandler;
+
+    player addAction [("<t color=""#f0bfbfbf"">" + ("Teleport") + "</t>"), {[] call FUNC(teleport)}, [], 0, false, true, '', "alive _target"];
+
+    ["Respawn", {
+
+        player addAction [("<t color=""#f0bfbfbf"">" + ("Teleport") + "</t>"), {[] call FUNC(teleport)}, [], 0, false, true, '', "alive _target"];
+
+    }] call CFUNC(addEventhandler);
+
 };
 
 DFUNC(Minensperrmeldung) = 
