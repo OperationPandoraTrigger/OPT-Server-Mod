@@ -114,5 +114,11 @@ class CfgCLibModules {
             FNC(Init);
             FNC(checkRepairs);
         };
+        MODULE(HUD) 
+        {
+            dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
+            FNC(clientInit);
+            FNC(updatehud);
+        };
     };
 };
