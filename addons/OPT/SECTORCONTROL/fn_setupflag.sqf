@@ -19,7 +19,7 @@
 * No
 * 
 * Example:
-* [] call fnc_setupFlag.sqf;
+* [] call func(setupFlag);
 */
 
 #include "macros.hpp"
