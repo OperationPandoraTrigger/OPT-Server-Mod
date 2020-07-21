@@ -88,6 +88,16 @@ DFUNC(playerHandleDamage) =
 	if (_unit getVariable ["ACE_isUnconscious", false]) then 
 	{
 		[_unit, _instigator, _source, _projectile] remoteExecCall ["OPT_SHOP_fnc_writeKill", 2, false];
+
+		if (_unit == _source) then 
+        {          
+			["Name des Gegners:", "Selbstverschulden"] spawn BIS_fnc_infoText;
+        } 
+		else
+		{         
+			["Name des Gegners:", format["%1",name _instigator]] spawn BIS_fnc_infoText;
+
+        };
 	};
 };
 
