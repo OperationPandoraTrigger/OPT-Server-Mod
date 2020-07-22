@@ -17,11 +17,13 @@
 params [["_veh", objNull]];
 
 if (_veh isEqualTo objNull) exitWith {false};
+if ((getAllHitPointsDamage _veh select 2) isEqualTo objNull) exitWith {};
 
 private _flag = false;
 
 {
-	if (_x > 0.01) exitWith {
+	if (_x > 0.01) exitWith 
+	{
 		_flag = true;
 	};
 } forEach (getAllHitPointsDamage _veh select 2);
