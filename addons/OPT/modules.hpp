@@ -6,26 +6,18 @@ class CfgCLibModules {
         path = "OPT\OPT\addons\OPT";
 		
 		dependency[] = {};
-		/*
+
         MODULE(GPS) 
         {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
             FNC(clientInit);
-            FNC(serverInit);
-            FNC(addUnitToGPS);
-            FNC(removeUnitFromGPS);
-            //FNC(addGroupToGPS);
-            //FNC(addVehicleToGPS);
-            FNC(isUnitVisible);
-            FNC(isVehicleVisible);
-            FNC(isUnitLeader);
-            FNC(clientinitCBASettings);
-            FNC(clientinitEH);
-            FNC(getUnitIconID);
-            FNC(updateUnitIcon);
-            FNC(miniGPS);			
+            FNC(gps);
+            FNC(selectUnits);
+            FNC(createPlayerMarker);
+            FNC(createUnitMarker);	
+            FNC(gps_Unconscious);	
+            FNC(createunitmarker_Unconscious);				
         };
-        */
 		MODULE(SHOP) 
 		{
             dependency[] = {"CLib/PerFrame", "Clib/Events"};
