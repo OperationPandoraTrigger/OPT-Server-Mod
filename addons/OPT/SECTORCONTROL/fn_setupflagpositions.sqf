@@ -46,11 +46,13 @@ GVAR(nato_flags_pos) = [
 ];
 
 GVAR(csat_flags_pos) = [
-	[7987,806, east,"000 Kahlstorf Kübis Farm",true]
+	[7987,806, east,"000 Kahlstorf Kübis Farm",false],
+	[9001,7782, east,"003 Jarlitz Bauernhof",true]
 ];
 
 GVAR(aaf_flags_pos) = [
-	[7182,1206, independent,"001 Schrecki's Jagdhütte",true] 
+	[7182,1206, independent,"001 Schrecki's Jagdhütte",false],
+	[7491,9030, independent,"002 Stocken Werkstatt",true]  
 ];
 
 publicVariable QGVAR(nato_flags_pos);
