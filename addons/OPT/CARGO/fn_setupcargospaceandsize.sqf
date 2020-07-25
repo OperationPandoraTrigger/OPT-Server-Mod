@@ -223,10 +223,10 @@ GVAR(canTransportCargo) =
 	["OPT_I_MRAP_03_F", 4],                        // Strider
 	["OPT4_I_MRAP_03_hmg_F", 4],                   // Strider HMG
     ["OPT_I_Truck_02_covered_F", 4],               // Zamak Transport
-    ["OPT_I_Truck_02_box_F", 4],               // Zamak Repair
+    ["OPT_I_Truck_02_box_F", 2],               // Zamak Repair
     ["OPT_I_Truck_02_transport_F", 10],               // Zamak  
-	["OPT_I_Truck_02_ammo_F", 4],               // Zamak Ammo
-    ["OPT_I_Truck_02_fuel_F", 4],  		     // Zamak Fuel
+	["OPT_I_Truck_02_ammo_F", 2],               // Zamak Ammo
+    ["OPT_I_Truck_02_fuel_F", 2],  		     // Zamak Fuel
 // AAF Choppers
     ["OPT_I_Heli_light_03_F", 4],                 // WY-55 Hellcat
     ["OPT_I_Heli_light_03_unarmed_F", 4],          // WY-55 Hellcat Unbewaffnet
