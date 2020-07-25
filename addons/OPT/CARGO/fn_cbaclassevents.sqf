@@ -9,7 +9,7 @@
 * None
 *
 * Example:
-* [] call func(initCBAClassEvents);
+* [] call func(CBAClassEvents);
 *
 */
 #include "macros.hpp" 

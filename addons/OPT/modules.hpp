@@ -117,11 +117,12 @@ class CfgCLibModules {
         {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
             FNC(clientInit);
+            FNC(Init);
             FNC(cargoinit);
             FNC(deactivatecargo);
             FNC(deactivatedragging);
             FNC(dragginginit);
-            FNC(initcbaclassevents);
+            FNC(cbaclassevents);
             FNC(setupcargospaceandsize);
         };
     };

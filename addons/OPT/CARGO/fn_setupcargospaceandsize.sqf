@@ -46,6 +46,9 @@
 /* FORMAT
 * (classname, cargo space): Wenn cargo space = -1, dann cargo deaktiviert
 */
+
+DUMP("Successfully loaded the OPT/CARGO fn_setupCargoSpaceAndSize module");
+
 GVAR(canTransportCargo) = 
 [
 // NATO Vehicles	
@@ -139,7 +142,7 @@ GVAR(canTransportCargo) =
 	["OPT_O_MRAP_02_F", 4],                        // Ifrit-
 	["OPT4_O_MRAP_02_hmg_F", 4],                  // Ifrit HMG
     ["OPT_O_Truck_03_covered_F", 4],               // Tempest Transport
-	["OPT_O_T_Truck_03_transport_F", 10],         // Tempest 
+	["OPT_O_Truck_03_transport_F", 10],         // Tempest 
     ["OPT_O_Truck_03_repair_F", 2],               // Tempest Repair
     ["OPT_O_Truck_03_medical_F", 2],              // Tempest Medicalasa
 	["OPT_O_T_Truck_03_ammo_F", 2],              // Tempest Ammo
@@ -167,6 +170,7 @@ GVAR(canTransportCargo) =
 	["OPT4_O_APC_Tracked_02_cannon_F", 4],       // BTR-K Kamysh
 	["OPT4_O_APC_Tracked_02_AA_F", 2],           // ZSU-39 Tigris
     ["OPT4_O_MBT_02_cannon_F", 2],               // T-100 Varsuk
+	["OPT4_O_MBT_04_cannon_F", 2],               // T-140 Angara
     ["OPT4_O_MBT_02_arty_F", 2],                 // 2S9 Sochor
     ["OPT_O_Truck_02_MRL_F", 2],                 // Zamark MRL    
 	//Tropentarn
@@ -211,7 +215,7 @@ GVAR(canTransportCargo) =
 // CSAT Ships
 	["OPT_O_Boat_Transport_01_F", 4],					// Assault Boat
 	["OPT_O_Boat_Armed_01_hmg_F", 4],					// Speedboat HMG
-	["OPT_O_C_Boat_Transport_02_F", 4]				    // rhib unbewaffnet	
+	["OPT_O_C_Boat_Transport_02_F", 4],				    // rhib unbewaffnet	
 // AAF Vehicles
     ["OPT_I_Quadbike_01_F", 2],                    // Quadbike
     ["OPT_I_C_Offroad_02_unarmed_F", 4],               // Jeep unarmed 
@@ -352,7 +356,7 @@ GVAR(canBeTransported) =
 	["OPT_O_MRAP_02_F", 5],                        // Ifrit-
 	["OPT4_O_MRAP_02_hmg_F", 5],                  // Ifrit HMG
     ["OPT_O_Truck_03_covered_F", 10],               // Tempest Transport
-	["OPT_O_T_Truck_03_transport_F", 10],         // Tempest 
+	["OPT_O_Truck_03_transport_F", 10],         // Tempest 
     ["OPT_O_Truck_03_repair_F", 10],               // Tempest Repair
     ["OPT_O_Truck_03_medical_F", 10],              // Tempest Medicalasa
 	["OPT_O_T_Truck_03_ammo_F", 10],              // Tempest Ammo
@@ -380,6 +384,7 @@ GVAR(canBeTransported) =
 	["OPT4_O_APC_Tracked_02_cannon_F", 10],       // BTR-K Kamysh
 	["OPT4_O_APC_Tracked_02_AA_F", 10],           // ZSU-39 Tigris
     ["OPT4_O_MBT_02_cannon_F", 10],               // T-100 Varsuk
+	["OPT4_O_MBT_04_cannon_F", 10],               // T-140 Angara
     ["OPT4_O_MBT_02_arty_F", 10],                 // 2S9 Sochor
     ["OPT_O_Truck_02_MRL_F", 10],                 // Zamark MRL    
 	//Tropentarn
@@ -429,7 +434,7 @@ GVAR(canBeTransported) =
 // CSAT Ships
 	["OPT_O_Boat_Transport_01_F", 4],					// Assault Boat
 	["OPT_O_Boat_Armed_01_hmg_F", 4],					// Speedboat HMG
-	["OPT_O_C_Boat_Transport_02_F", 4]				    // rhib unbewaffnet	
+	["OPT_O_C_Boat_Transport_02_F", 4],				    // rhib unbewaffnet	
 // AAF Vehicles
     ["OPT_I_Quadbike_01_F", 4],                    // Quadbike
     ["OPT_I_C_Offroad_02_unarmed_F", 5],               // Jeep unarmed 

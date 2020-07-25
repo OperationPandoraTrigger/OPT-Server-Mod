@@ -35,3 +35,5 @@ GVAR(canBeDragged) = []; // holds all objects that can be dragged
 GVAR(canBeCarried) = []; // holds all objects that can be carried
 
 [] call FUNC(setupCargoSpaceAndSize);
+
+[] call FUNC(cbaclassevents);
