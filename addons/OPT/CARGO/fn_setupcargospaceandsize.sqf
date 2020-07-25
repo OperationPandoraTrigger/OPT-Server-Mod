@@ -145,8 +145,8 @@ GVAR(canTransportCargo) =
 	["OPT_O_Truck_03_transport_F", 10],         // Tempest 
     ["OPT_O_Truck_03_repair_F", 2],               // Tempest Repair
     ["OPT_O_Truck_03_medical_F", 2],              // Tempest Medicalasa
-	["OPT_O_T_Truck_03_ammo_F", 2],              // Tempest Ammo
-    ["OPT_O_T_Truck_03_fuel_F", 2],              // Tempest Fuel
+	["OPT_O_Truck_03_ammo_F", 2],              // Tempest Ammo
+    ["OPT_O_Truck_03_fuel_F", 2],              // Tempest Fuel
     //Tropentarn
     ["OPT_O_T_Quadbike_01_ghex_F", 2],                // Quadbike 
     ["OPT_O_T_LSV_02_unarmed_ghex_F", 4],                  // Quilin unarmed 
@@ -359,8 +359,8 @@ GVAR(canBeTransported) =
 	["OPT_O_Truck_03_transport_F", 10],         // Tempest 
     ["OPT_O_Truck_03_repair_F", 10],               // Tempest Repair
     ["OPT_O_Truck_03_medical_F", 10],              // Tempest Medicalasa
-	["OPT_O_T_Truck_03_ammo_F", 10],              // Tempest Ammo
-    ["OPT_O_T_Truck_03_fuel_F", 10],              // Tempest Fuel
+	["OPT_O_Truck_03_ammo_F", 10],              // Tempest Ammo
+    ["OPT_O_Truck_03_fuel_F", 10],              // Tempest Fuel
     //Tropentarn
     ["OPT_O_T_Quadbike_01_ghex_F", 4],                // Quadbike 
     ["OPT_O_T_LSV_02_unarmed_ghex_F", 5],                  // Quilin unarmed 

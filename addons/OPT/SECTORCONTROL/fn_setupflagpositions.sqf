@@ -47,14 +47,14 @@ GVAR(nato_flags_pos) = [
 
 GVAR(csat_flags_pos) = [
 	
-	[7265,8819, independent,"13.1 Tischlerei Stocken",true],
-	[7556,9295, independent,"13.2 Bei der Feuerwehr Stocken",true]  
+	[7265,8819, east,"13.1 Tischlerei Stocken",true],
+	[7556,9295, east,"13.2 Bei der Feuerwehr Stocken",true]  
 ];
 
 GVAR(aaf_flags_pos) = [
 
-	[8884,7698, east,"20.1 Wollproduktion Järlitz",true],
-	[10277,6931, east,"20.2 Hohes Holz",true]
+	[8884,7698, independent,"20.1 Wollproduktion Järlitz",true],
+	[10277,6931, independent,"20.2 Hohes Holz",true]
 ];
 
 publicVariable QGVAR(nato_flags_pos);
