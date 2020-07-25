@@ -46,13 +46,15 @@ GVAR(nato_flags_pos) = [
 ];
 
 GVAR(csat_flags_pos) = [
-	[7987,806, east,"000 Kahlstorf Kübis Farm",false],
-	[9001,7782, east,"003 Jarlitz Bauernhof",true]
+	
+	[7265,8819, independent,"13.1 Tischlerei Stocken",true],
+	[7556,9295, independent,"13.2 Bei der Feuerwehr Stocken",true]  
 ];
 
 GVAR(aaf_flags_pos) = [
-	[7182,1206, independent,"001 Schrecki's Jagdhütte",false],
-	[7491,9030, independent,"002 Stocken Werkstatt",true]  
+
+	[8884,7698, east,"20.1 Wollproduktion Järlitz",true],
+	[10277,6931, east,"20.2 Hohes Holz",true]
 ];
 
 publicVariable QGVAR(nato_flags_pos);
