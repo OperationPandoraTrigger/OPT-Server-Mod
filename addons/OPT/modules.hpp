@@ -43,6 +43,7 @@ class CfgCLibModules {
             FNC(flipcheck);
             FNC(unflip);
             FNC(writekill);
+            FNC(writetransportdistance);
         };
         MODULE(REVIVE) 
         {
