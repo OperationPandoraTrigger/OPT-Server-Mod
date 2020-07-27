@@ -76,7 +76,7 @@ DFUNC(Spielzeit) =
 
 	private _timeElapsed = serverTime - OPT_GELDZEIT_startTime;
 	private _log_msg = format["Beginn Rest-Spielzeit: %1 min", (GVAR(PLAYTIME) - _timeElapsed) / 60];
-	diag_log format ["[%1] (%1) %3","OPT","Mission",_log_msg];
+	diag_log format ["[%1] (%2) %3","OPT","Mission",_log_msg];
 
 	GVAR(PLAYTIMENETTO) = 0;
 
