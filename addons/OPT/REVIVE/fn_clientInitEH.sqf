@@ -85,7 +85,7 @@ DFUNC(playerHandleDamage) =
 {
 	params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
 
-	if (_unit getVariable ["ACE_isUnconscious", false]) then 
+	if (_unit getVariable "ACE_isUnconscious") then 
 	{
 		[_unit, _instigator, _source, _projectile] remoteExecCall ["OPT_SHOP_fnc_writeKill", 2, false];
 
@@ -102,6 +102,24 @@ DFUNC(playerHandleDamage) =
 };
 
 player addEventHandler ["HandleDamage", FUNC(playerHandleDamage)];
+
+// 3D Marker
+GVAR(missionEH_draw3D) = addMissionEventHandler ["Draw3D", 
+{
+    private _nearbyUnits = playableUnits select 
+	{
+        (_x distance player) < 30 and
+        _x getVariable "ACE_isUnconscious" and
+        _x != player and
+        SIDE _x == PLAYERSIDE
+    };
+    {
+        private _name = NAME _x;
+        drawIcon3D ["\a3\ui_f\data\map\MapControl\hospital_ca.paa", [0.6,0.15,0,0.8], _x, 0.5, 0.5, 0, format["%1 (%2m)", _name, ceil (player distance _x)], 0, 0.02];
+
+    } count _nearbyUnits;
+}];
+
 
 
 
