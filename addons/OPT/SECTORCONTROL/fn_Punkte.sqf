@@ -145,7 +145,7 @@ GVAR(Punktecount) = [{
 						private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
 						[_message] remoteExecCall ["systemChat", 0, true];
 
-						/Log
+						//Log
 						diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_message];
 
 					};
