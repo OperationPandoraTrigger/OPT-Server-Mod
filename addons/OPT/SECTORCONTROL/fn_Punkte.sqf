@@ -37,7 +37,8 @@ GVAR(Punktecount) = [{
 						private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
 						[_message] remoteExecCall ["systemChat", 0, true];
 
-						diag_log format["(%1) Log: %2 --- %3","Fahne",_timestamp,_message];
+						//Log
+						diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_message];
 
 					};
 
@@ -50,7 +51,8 @@ GVAR(Punktecount) = [{
 						private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
 						[_message] remoteExecCall ["systemChat", 0, true];
 
-						diag_log format["(%1) Log: %2 --- %3","Fahne",_timestamp,_message];
+						//Log
+						diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_message];
 					};
 						
 				} 
@@ -61,7 +63,8 @@ GVAR(Punktecount) = [{
 						private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
 						[_message] remoteExecCall ["systemChat", 0, true];
 
-						diag_log format["(%1) Log: %2 --- %3","Fahne",_timestamp,_message];
+						//Log
+						diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_message];
 
 				};      
 			};
@@ -81,7 +84,8 @@ GVAR(Punktecount) = [{
 						private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
 						[_message] remoteExecCall ["systemChat", 0, true];
 
-						diag_log format["(%1) Log: %2 --- %3","Fahne",_timestamp,_message];
+						//Log
+						diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_message];
 
 					};
 
@@ -94,7 +98,8 @@ GVAR(Punktecount) = [{
 						private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
 						[_message] remoteExecCall ["systemChat", 0, true];
 
-						diag_log format["(%1) Log: %2 --- %3","Fahne",_timestamp,_message];
+						//Log
+						diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_message];
 					};
 						
 				} 
@@ -105,7 +110,8 @@ GVAR(Punktecount) = [{
 						private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
 						[_message] remoteExecCall ["systemChat", 0, true];
 
-						diag_log format["(%1) Log: %2 --- %3","Fahne",_timestamp,_message];
+						//Log
+						diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_message];
 
 				};
 			};
@@ -125,7 +131,8 @@ GVAR(Punktecount) = [{
 						private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
 						[_message] remoteExecCall ["systemChat", 0, true];
 
-						diag_log format["(%1) Log: %2 --- %3","Fahne",_timestamp,_message];
+						//Log
+						diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_message];
 
 					};
 
@@ -138,7 +145,8 @@ GVAR(Punktecount) = [{
 						private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
 						[_message] remoteExecCall ["systemChat", 0, true];
 
-						diag_log format["(%1) Log: %2 --- %3","Fahne",_timestamp,_message];
+						/Log
+						diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_message];
 
 					};
 						
@@ -150,7 +158,8 @@ GVAR(Punktecount) = [{
 						private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
 						[_message] remoteExecCall ["systemChat", 0, true];
 
-						diag_log format["(%1) Log: %2 --- %3","Fahne",_timestamp,_message];
+						//Log
+						diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_message];
 
 				};           
 			};

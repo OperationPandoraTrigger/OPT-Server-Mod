@@ -66,6 +66,9 @@ class CfgCLibModules {
             FNC(playerinit);
             FNC(renderbudget);
             FNC(updatebudget);
+            FNC(writeplayerlist);
+            FNC(getplayername);
+            FNC(updateplayerlist);
         };
 		MODULE(SECTORCONTROL) 
         {

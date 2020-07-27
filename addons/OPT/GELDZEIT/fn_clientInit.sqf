@@ -42,6 +42,8 @@
 
 ["missionStarted", {
 
+[getPlayerUID player, profileName, playerSide] remoteExecCall [QFUNC(updatePlayerList), 2, false]; 
+
 player action ["WeaponOnBack", player];
 
 	// TEAM BALANCE - end mission for player if side is full

@@ -24,6 +24,8 @@
 
 #include "macros.hpp"
 
+diag_log format ["[%1] (%1) %3 %4 %5","OPT","Mission","####################",missionName,"####################"];
+
 //Init Statussignale
 
 GVAR(Mission_start) = false;
@@ -42,6 +44,8 @@ publicVariable QGVAR(Spielzeitstart);
 publicVariable QGVAR(SpielzeitEnde);
 publicVariable QGVAR(Endestart);
 
+GVAR(playerList) = [];
+
 //Waffenruhe 
 DFUNC(Waffenruhe) = 
 {
@@ -53,8 +57,6 @@ DFUNC(Waffenruhe) =
 	GVAR(Waffenruhestart) = true;
 	publicVariable QGVAR(Waffenruhestart);
 	["Waffenruhestart"] remoteExecCall ["systemChat", 0, true];
-
-	diag_log "########## Waffenruhe hat begonnen ##########";
 
 	//Nachablauf Waffenruhe Spielzeit auslösen
 	[FUNC(Spielzeit), GVAR(TRUCETIME),""] call CLib_fnc_wait;
@@ -72,7 +74,9 @@ DFUNC(Spielzeit) =
 	publicVariable QGVAR(Spielzeitstart);
 	["Spielzeitstart"] remoteExecCall ["systemChat", 0, true];
 
-	diag_log "########## Spielzeit hat begonnen ##########";
+	private _timeElapsed = serverTime - OPT_GELDZEIT_startTime;
+	private _log_msg = format["Beginn Rest-Spielzeit: %1 min", (GVAR(PLAYTIME) - _timeElapsed) / 60];
+	diag_log format ["[%1] (%1) %3","OPT","Mission",_log_msg];
 
 	GVAR(PLAYTIMENETTO) = 0;
 
@@ -96,15 +100,23 @@ DFUNC(Mission_Ende) =
 
 	[EVENT_SPIELUHR_ENDBILDSCHIRM,[]] call CFUNC(globalEvent);
 
+	[] call FUNC(writePlayerList);
+
 	switch GVAR(Fraktionauswahl) do 
 	{
     	case "AAFvsCSAT" : 
-		{
+		{			
 			private _points1 = OPT_SECTORCONTROL_aaf_points;
 			private _points2 = OPT_SECTORCONTROL_csat_points;
 
-			diag_log format ["########## Schlacht automatisch beendet. Endpunktestand: AAF %1 | CSAT %2 ##########", _points1, _points2];
+			_timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
+			diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Mission",_timestamp,"Missionzeit abgelaufen"];
 
+			_message = format ["Endbudget: (AAF:%1 | CSAT:%2)",GVAR(aaf_budget),GVAR(csat_budget)];
+			diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Budget",_timestamp,_message];
+
+			_message = format ["Endpunktestand: (AAF:%1 | CSAT:%2)",_points1, _points2];
+			diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Punkte",_timestamp,_message];
 		};
 
 		case "NATOvsCSAT" : 
@@ -112,8 +124,14 @@ DFUNC(Mission_Ende) =
 			private _points1 = OPT_SECTORCONTROL_nato_points;
 			private _points2 = OPT_SECTORCONTROL_csat_points;
 
-			diag_log format ["########## Schlacht automatisch beendet. Endpunktestand: NATO %1 | CSAT %2 ##########", _points1, _points2];
+			_timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
+			diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Mission",_timestamp,"Missionzeit abgelaufen"];
 
+			_message = format ["Endbudget: (NATO:%1 | CSAT:%2)",GVAR(nato_budget),GVAR(csat_budget)];
+			diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Budget",_timestamp,_message];
+
+			_message = format ["Endpunktestand: (NATO:%1 | CSAT:%2)",_points1, _points2];
+			diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Punkte",_timestamp,_message];
 		};
 
 		case "NATOvsAAF" : 
@@ -121,8 +139,14 @@ DFUNC(Mission_Ende) =
 			private _points1 = OPT_SECTORCONTROL_nato_points;
 			private _points2 = OPT_SECTORCONTROL_aaf_points;
 
-			diag_log format ["########## Schlacht automatisch beendet. Endpunktestand: NATO %1 | AAF %2 ##########", _points1, _points2];
+			_timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
+			diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Mission",_timestamp,"Missionzeit abgelaufen"];
 
+			_message = format ["Endbudget: (NATO:%1 | AAF:%2)",GVAR(nato_budget),GVAR(aaf_budget)];
+			diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Budget",_timestamp,_message];
+
+			_message = format ["Endpunktestand: (NATO:%1 | AAF:%2)",_points1, _points2];
+			diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Punkte",_timestamp,_message];
 		};
 
    		default 
@@ -143,13 +167,50 @@ DFUNC(Mission_Ende) =
 	GVAR(startTime) = serverTime;
 	publicVariable QGVAR(startTime); // gibt allen Clients die Startzeit des Servers bekannt
 
+	switch GVAR(Fraktionauswahl) do 
+	{
+    	case "AAFvsCSAT" : 
+		{
+			private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
+			private _message = format ["Startbudget: AAF:%1 - CSAT:%2",GVAR(aaf_budget),GVAR(csat_budget)];
+			diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Budget",_timestamp,_message];
+
+			_timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
+			_message = format ["Beginn Waffenruhe: %1 min",(GVAR(TRUCETIME) + GVAR(FREEZETIME)) / 60];
+			diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Budget",_timestamp,_message];
+		};
+
+		case "NATOvsCSAT" : 
+		{
+			private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
+			private _message = format ["Startbudget: NATO:%1 - CSAT:%2",GVAR(nato_budget),GVAR(csat_budget)];
+			diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Budget",_timestamp,_message];
+
+			_timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
+			_message = format ["Beginn Waffenruhe: %1 min",(GVAR(TRUCETIME) + GVAR(FREEZETIME)) / 60];
+			diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Budget",_timestamp,_message];		
+		};
+
+		case "NATOvsAAF" : 
+		{
+			private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
+			private _message = format ["Startbudget: NATO:%1 - AAF:%2",GVAR(nato_budget),GVAR(aaf_budget)];
+			diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Budget",_timestamp,_message];
+
+			_timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
+			_message = format ["Beginn Waffenruhe: %1 min",(GVAR(TRUCETIME) + GVAR(FREEZETIME)) / 60];
+			diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Budget",_timestamp,_message];		};
+
+   		default 
+		{
+			ERROR_LOG("Missionbeginn: Fehlehalte Datenübergabe keine Fraktionauswahl erkannt");	
+		};
+	};
+	
 	// Logeintrag
 	GVAR(Mission_start) = true;
 	publicVariable QGVAR(Mission_start);
 	["Missionstart"] remoteExecCall ["systemChat", 0, true];
-	diag_log "########## Schlacht hat begonnen ##########";
-
-	diag_log "########## Freeztime hat begonnen ##########";
 
 	// Nachablauf Freeztime Waffenruhe auslösen
 	[FUNC(Waffenruhe), GVAR(FREEZETIME),""] call CLib_fnc_wait;

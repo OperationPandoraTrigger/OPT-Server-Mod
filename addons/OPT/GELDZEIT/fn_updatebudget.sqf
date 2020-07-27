@@ -114,5 +114,6 @@ switch (_case) do
     };
 };
 
+//Log
 private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
-diag_log format["(%1) Log: %2 --- %3",_cat,_timestamp,_message];
+diag_log format["[%1] (%2) Log: %3 --- %4","OPT",_cat,_timestamp,_message];
