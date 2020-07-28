@@ -24,7 +24,7 @@
 
 #include "macros.hpp"
 
-diag_log format ["[%1] (%1) %3 %4 %5","OPT","Mission","####################",missionName,"####################"];
+diag_log format ["[%1] (%2) %3 %4 %5","OPT","Mission","####################",missionName,"####################"];
 
 //Init Statussignale
 
