@@ -115,4 +115,22 @@
         format["_truck = vehicle _this; ([_target] call %1 || damage _target > 0.01)  and _truck getVariable ['%2', -1] > 0 and {alive _target} and {speed _truck < 3} and (_truck distance _target) < 20", QFUNC(vehicleDamagedLight), QGVAR(repair_cargo)
         ]
     ];
+
+    if (typeOf _vec  == "OPT_O_Heli_Transport_04_box_F") then 
+    {
+        _vec setVariable [QGVAR(repair_cargo), GVAR(DEFAULT_REPAIR_TRUCK_USES), true];
+
+        _vec addAction [
+            "<t color='#ffff00'>" + STR_CHECK_REPAIRS + "</t>", 
+            {[_this select 0] call FUNC(checkRepairs)},
+            [], 
+            -1, 
+            false, 
+            true, 
+            '',
+            '',
+            20
+        ];
+    };
+
     }, nil, nil, true] call CBA_fnc_addClassEventHandler;
