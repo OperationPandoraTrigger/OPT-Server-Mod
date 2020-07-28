@@ -24,6 +24,7 @@ if (_veh isEqualTo objNull) exitWith {false};
 #define STR_REPAIR_CONDITIONS "Das Fahrzeug während der Arbeit nicht bewegen!"
 #define STR_REPAIR_INTERRUPTED "Reparatur unterbrochen"
 #define STR_REPAIR_MSG_STRING "Reparatur von %2 dauert %1 s..."
+#define STR_NEED_TOOLKIT "Das Fahrzeug hat keine Ersatzteile mehr. Nur ein Ingenieur kann jetzt noch Feldreparaturen durchführen!"
 
 // if another action is ongoing
 if (GVAR(mutexAction)) exitWith 
