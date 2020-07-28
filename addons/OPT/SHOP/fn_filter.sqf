@@ -41,6 +41,8 @@ private _waffenMagazinArray  = [];
 
 _weaponsVeh deleteAt (_weaponsVeh find "OPT_CMFlareLauncher");
 _weaponsVeh deleteAt (_weaponsVeh find "OPT_CMFlareLauncher_Triples");
+_weaponsVeh deleteAt (_weaponsVeh find "CMFlareLauncher");
+_weaponsVeh deleteAt (_weaponsVeh find "CMFlareLauncher_Triples");
 _weaponsVeh = _weaponsVeh select {_x != ""};
 
 [
@@ -53,7 +55,11 @@ _weaponsVeh = _weaponsVeh select {_x != ""};
     "300Rnd_CMFlare_Chaff_Magazine",
     "OPT_12Rnd_CMFlare_Chaff_Magazine",
     "OPT_20Rnd_CMFlare_Chaff_Magazine",
-    "OPT_30Rnd_CMFlare_Chaff_Magazine"
+    "OPT_30Rnd_CMFlare_Chaff_Magazine",
+    "OPT_72Rnd_CMFlare_Chaff_Magazine",
+    "60Rnd_CMFlareMagazine",
+    "120Rnd_CMFlareMagazine",
+    "240Rnd_CMFlareMagazine"
 ] apply
 {
     _magazineVeh deleteAt (_magazineVeh find _x);                

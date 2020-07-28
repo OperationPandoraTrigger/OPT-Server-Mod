@@ -47,7 +47,11 @@ private _magazineVehArry = magazinesAmmo _veh;
     ["300Rnd_CMFlare_Chaff_Magazine", 300],
     ["OPT_12Rnd_CMFlare_Chaff_Magazine", 12],
     ["OPT_20Rnd_CMFlare_Chaff_Magazine", 20],
-    ["OPT_30Rnd_CMFlare_Chaff_Magazine", 30]
+    ["OPT_30Rnd_CMFlare_Chaff_Magazine", 30],
+    ["OPT_72Rnd_CMFlare_Chaff_Magazine", 72],
+    ["60Rnd_CMFlareMagazine", 60],
+    ["120Rnd_CMFlareMagazine", 120],
+    ["240Rnd_CMFlareMagazine", 240]
 ] apply
 {
 
