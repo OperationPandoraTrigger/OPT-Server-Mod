@@ -28,6 +28,8 @@
 */
 #include "macros.hpp"
 
+if (!(isNull (findDisplay 5000 displayCtrl 5001))) exitWith{};
+
 //Dialog erstellen
 private _success = createDialog "opt_revive_blackscreen"; 
 
@@ -59,7 +61,7 @@ _Respawn_button ctrlAddEventHandler [ "ButtonClick",
 	player setDamage 1;
 	1 enableChannel true;
 	player allowDamage true;
-
+	
 }];
 
 GVAR(startzeit) = time;
@@ -154,18 +156,23 @@ GVAR(startzeit) = time;
 	// Dialog und PFH Löschung
 	if ((getDammage player) == 1)  then 
 	{
-		_handle call CFUNC(removePerframeHandler);	
+		closeDialog 5000;	
 		closeDialog 0;
+		camDestroy GVAR(cam);
 		1 enableChannel true;
 		player allowDamage true;
+		OPT_REVIVE_unconsciousHandler = nil;
+		_handle call CFUNC(removePerframeHandler);
 	};
 
 	if (!(player getVariable "ACE_isUnconscious"))  then 
-	{
-		_handle call CFUNC(removePerframeHandler);	
+	{	
+		closeDialog 5000;
 		closeDialog 0;
 		1 enableChannel true;
 		player allowDamage true;
+		OPT_REVIVE_unconsciousHandler = nil;
+		_handle call CFUNC(removePerframeHandler);
 	};		
 
 }, 1, _this] call CFUNC(addPerFrameHandler);

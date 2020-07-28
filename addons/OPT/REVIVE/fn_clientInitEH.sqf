@@ -73,6 +73,7 @@ DFUNC(isUnconscious) =
 		player setVariable ["OPT_isStabilized", 0, true];
 		player allowDamage true;
 		1 enableChannel true;
+		OPT_REVIVE_unconsciousHandler = nil;
 		 
     } call CFUNC(execNextFrame);
 
@@ -85,8 +86,9 @@ DFUNC(playerHandleDamage) =
 {
 	params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
 
-	if (_unit getVariable "ACE_isUnconscious") then 
+	if ((_unit getVariable "ACE_isUnconscious") and isNil "OPT_REVIVE_unconsciousHandler") then 
 	{
+		OPT_REVIVE_unconsciousHandler = true;
 		[_unit, _instigator, _source, _projectile] remoteExecCall ["OPT_SHOP_fnc_writeKill", 2, false];
 
 		if (_unit == _source) then 
