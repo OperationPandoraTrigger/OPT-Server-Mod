@@ -40,34 +40,30 @@ oldSubs = showSubtitles false;
 enableSaving [false, false];
 enableTeamswitch false;
 
-//Testweise bis Hud da ist.
+[] call FUNC(briefing);
 
-DFUNC(spielinfo) = 
-{
-	private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;						
-	Hint format ["Spielzeit: %1 \n\n Punkte :AAF %2 | CSAT %3",_timestamp,OPT_SECTORCONTROL_AAF_points,OPT_SECTORCONTROL_csat_points];	
-};
+["missionStarted", {
 
+	// setup earplug ace menu
+	private _action_earplug = [
+		"Ausrüstung",
+		"Ohrenstöpsel",
+		"",
+		{
+			params ["_target", "_player", "_params"]; 
 
-				//Konfigdialog öffnen
-				/*
-				* https://cbateam.github.io/CBA_A3/docs/files/keybinding/fnc_addKeybind-sqf.html
-				*/
-				[
-					"OPT", 
-					"OPT Punkte/Zeit Anzeigen", 
-					["Punkte/Zeit Anzeigen", "Gibt die Punkte und Zeit aus."], 
-					{
-                        [] call FUNC(spielinfo)        
-						
-					}, 
-					{}, 
-					[
-						DIK_F3, 
-						[false, false, false] // [shift, ctrl, alt]
-					]
-				] call CBA_fnc_addKeybind;
+			[] call FUNC(earplugs);
+		},
+		{
+			true
+		}
+	] call ace_interact_menu_fnc_createAction;
 
+	[
+		player, 
+		1, 
+		["ACE_SelfActions", "ACE_Equipment"],
+		_action_earplug
+	] call ace_interact_menu_fnc_addActionToObject;
 
-
-
+}] call CFUNC(addEventhandler);
