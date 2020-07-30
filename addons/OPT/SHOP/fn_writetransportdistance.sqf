@@ -30,11 +30,11 @@ params [
    ["_unit", objNull, [objNull], 1]
 ];
 
-GVAR(distanceFromBase) = 1000;
+private _distanceFromBase = 1000;
 
-if (_vec isEqualTo objNull or _unit isEqualTo objNull) exitWith{};
+//if (_vec isEqualTo objNull or _unit isEqualTo objNull) exitWith{};
 
-if (isPlayer) exitWith{};
+//if (isPlayer) exitWith{};
 
 private _pilot = _vec getVariable [QGVAR(transport_pilot), objNull];
 
@@ -44,15 +44,29 @@ if (_condition) exitWith {};
 
 private _dis = (getPos _vec) distance2D (_unit getVariable QGVAR(transport_start_loc));
 
-if (_pos in ["cargo", "gunner"] and (_dis > GVAR(distanceFromBase)) ) then 
+if (_pos in ["cargo", "gunner"] and (_dis > _distanceFromBase)) then 
 {
+    private _NAME = ""; 
+    private _SIDE = civilian; 
+    
+    if (_pilot isEqualTo objNull) then
+    {
+        _NAME = "Unbekannt"; 
+        _SIDE = SIDE _unit;     
+    }
+    else
+    {
+        _NAME = NAME _pilot; 
+        _SIDE = SIDE _pilot;  
+    };    
+
 
     private _message = format[
         "%1 (%2) wurde von %3 (%4) eingeflogen (%5 m)", 
         NAME _unit, 
         SIDE _unit,  
-        NAME _pilot, 
-        SIDE _pilot,
+        _NAME, 
+        _SIDE,
         _dis
     ];
 
