@@ -70,6 +70,10 @@ class CfgCLibModules {
             FNC(writeplayerlist);
             FNC(getplayername);
             FNC(updateplayerlist);
+            FNC(earplugs);
+            FNC(briefing);
+            FNC(Zeus);
+            FNC(init);
         };
 		MODULE(SECTORCONTROL) 
         {
@@ -128,6 +132,13 @@ class CfgCLibModules {
             FNC(dragginginit);
             FNC(cbaclassevents);
             FNC(setupcargospaceandsize);
+        };
+        MODULE(RULES) 
+        {
+            dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
+            FNC(clientInit);
+            FNC(setup_classnames);
+            FNC(weaponcheck);
         };
     };
 };
