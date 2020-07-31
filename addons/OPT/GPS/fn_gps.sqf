@@ -143,7 +143,18 @@ GVAR(markerplayer) = [] call FUNC(createPlayerMarker);
 				{
                     if (isPlayer _obj) then 
 					{
-                        _marker setMarkerTextLocal _name;						
+                        _marker setMarkerTextLocal _name;
+                        
+                        if (_obj getVariable "ACE_isUnconscious") then 
+					    {
+                            _marker setMarkerTextLocal "";
+                            _marker setMarkerPosLocal [0,0];
+                            _marker setMarkerAlphaLocal 1;						
+                        } 
+                        else 
+					    {                     
+                            _marker setMarkerTextLocal _name;	
+                         };					
                     } 
 					else 
 					{
