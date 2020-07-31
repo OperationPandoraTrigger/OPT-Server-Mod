@@ -258,7 +258,7 @@ GVAR(csat_supplies) =
     ["OPT_Box_East_WpsSpecial_F", 60000, 1000, 2000],                     // Munition spezial kiste
     ["OPT_Box_East_Grenades_F", 75000, 1000, 2000],                       // granatenkiste
     ["OPT_CSAT_Sprengstoffkiste", 300000, 1000, 2000],                    // sprengstoffkiste
-    ["OPT_CSAT_Minienkiste", 300000, 1000, 2000],                      // Minenkiste
+    ["OPT_CSAT_Minenkiste", 300000, 1000, 2000],                      // Minenkiste
     ["OPT_Box_East_WpsSpecial_AT_L1", 200000, 1000, 2000],                         // AT Raketenkiste (RPG-42)
 	["OPT_Box_East_WpsSpecial_AT_L2", 150000, 1000, 2000],                  // AT Raketenkiste (RPG-7)
 	["OPT_Box_East_WpsSpecial_AT_H1", DEF_PROD(0)],                  // AT Raketenkiste (9M135 Vorona)
