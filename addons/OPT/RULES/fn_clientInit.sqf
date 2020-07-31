@@ -28,6 +28,10 @@
 */
 #include "macros.hpp"
 
+#define PLACE_WAITING -1
+#define PLACE_CANCEL 0
+#define PLACE_APPROVE 1
+
 ["missionStarted", {
 
 [] call FUNC(setup_classnames);
@@ -111,7 +115,6 @@ player addEventHandler ["SeatSwitchedMan",
 	{
         if (!(typeOf _unit1 in GVAR(crew))) then 
 		{
-            systemChat format ["c1:%1 B2:%2",(assignedVehicleRole _unit1 select 0), ((assignedVehicleRole _unit1 select 0) in GVAR(blockedVehiclePositions_veh))];
             if ( (assignedVehicleRole _unit1 select 0) in GVAR(blockedVehiclePositions_veh)) then 
 			{
                 if (typeOf _vec in GVAR(crew_vecs) || _vec isKindOf "Tank") then 
@@ -126,6 +129,46 @@ player addEventHandler ["SeatSwitchedMan",
     };
 
 }];
+
+DFUNC(Minencheck) = 
+{
+    private _explosive = nearestObject [player, "ACE_Explosives_Place"];
+
+    // allow satchel and charge
+    if ((typeOf _explosive) find "SatchelCharge" != -1 or (typeOf _explosive) find "DemoCharge" != -1) exitWith {};    
+
+    // only if near flag
+    if (typeOf Player in GVAR(pioniers)) exitWith {};
+
+    deleteVehicle _explosive;  
+
+    // Warnhinweis
+    private _txt = "Mine dürfen nur von Sprengmeister gelegt werden! Mine wurde gelöscht.";
+    private _header = parseText "<t size='2.0' color='#f0bfbfbf'>Regelverstoß</t>";
+    hint Format ["%1 \n\n %2",_header,_txt];
+
+};
+
+// EH für Sprengmeister
+
+    GVAR(eh_ace_interactMenuClosed) = ["ace_interactMenuClosed", 
+    {
+        _this spawn 
+        {
+            _this params ["_menuType"];
+
+            if (
+                _menuType == 1 and // Eigenmenü
+                ace_explosives_pfeh_running // explosive placing in progress
+            ) then 
+            {
+                // wait until explosive was placed by player
+                [FUNC(Minencheck), {(ace_explosives_placeAction == PLACE_APPROVE)}, "Awesome Delay"] call CLib_fnc_waitUntil;
+
+            };
+        };
+
+    }] call CBA_fnc_addEventHandler;
 
 
 }] call CFUNC(addEventhandler);
