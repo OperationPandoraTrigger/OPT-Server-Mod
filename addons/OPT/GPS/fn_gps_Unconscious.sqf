@@ -52,6 +52,12 @@ GVAR(_unitsToMarkisUnconsciousold) = [];
 		GVAR(_unitsToMarkisUnconsciousold) = _unitsToMarkisUnconscious;
 	}; 
 
+	_markerPool apply
+    {
+        _x setMarkerTextLocal "";
+        _x setMarkerPosLocal [0,0];             
+    };
+
 	if ((count _unitsToMarkisUnconscious) > 0) then 
 	{
         for "_i" from 0 to (count _unitsToMarkisUnconscious - 1) do 

@@ -81,7 +81,13 @@ GVAR(markerplayer) = [] call FUNC(createPlayerMarker);
 		GVAR(unitsToMark) = _unitsToMark;
 	}; 
 
-	// update player marper
+    GVAR(markerPool) apply
+    {
+        _x setMarkerTextLocal "";
+        _x setMarkerPosLocal [0,0];             
+    };
+
+	// update player marker
     GVAR(markerplayer) setMarkerPosLocal (getPosATLVisual (vehicle player));   
 
 	if ((count _unitsToMark) > 0) then 

@@ -27,4 +27,6 @@
  
 [] call FUNC(gps);
 
+[] call FUNC(gps_Unconscious);
+
 }] call CFUNC(addEventhandler);
