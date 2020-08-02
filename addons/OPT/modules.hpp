@@ -139,6 +139,7 @@ class CfgCLibModules {
             FNC(clientInit);
             FNC(setup_classnames);
             FNC(weaponcheck);
+            FNC(uav);
         };
     };
 };

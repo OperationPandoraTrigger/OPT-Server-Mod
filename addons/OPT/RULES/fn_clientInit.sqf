@@ -170,5 +170,7 @@ DFUNC(Minencheck) =
 
     }] call CBA_fnc_addEventHandler;
 
+// UAV Drohenstation kontrolle
+[] call FUNC(uav);
 
 }] call CFUNC(addEventhandler);
