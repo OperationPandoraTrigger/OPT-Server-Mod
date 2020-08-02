@@ -19,7 +19,7 @@ private _pcs = [AAF_Drohnenstation,CSAT_Drohnenstation];
 // add to each UAV PC addaction menu
 {
     _x addAction [
-        "Verbinden mit UAV-Station",
+        "<t color='#F3B601'>" + "Verbinden mit UAV-Station" + "</t>",
         {
             private _terminal = _this select 0;
             [
@@ -28,7 +28,7 @@ private _pcs = [AAF_Drohnenstation,CSAT_Drohnenstation];
                 {
                     params ["_terminal"];
                     
-                    Hint "UAV-Station /n/n In UAV-Station eingeloggt.Verbindung geht verloren, wenn mehr als 4m entfernt.";
+                    Hint "UAV-Station \n\n In UAV-Station eingeloggt.Verbindung geht verloren, wenn mehr als 4m entfernt.";
                     player setVariable [QGVAR(loggedInStation), _terminal];
                     
                     if (PLAYERSIDE == west) then 
@@ -61,7 +61,7 @@ private _pcs = [AAF_Drohnenstation,CSAT_Drohnenstation];
     ];
 
     _x addAction [
-        "Trennen mit UAV-Station",
+        "<t color='#F3B601'>" + "Trennen mit UAV-Station" + "</t>",
         {
             private _terminal = _this select 0;
             [
@@ -69,7 +69,7 @@ private _pcs = [AAF_Drohnenstation,CSAT_Drohnenstation];
                 [],
                 {
                     
-                    Hint "UAV-Station /n/n Von UAV-Station ausgeloggt.";
+                    Hint "UAV-Station \n\n Von UAV-Station ausgeloggt.";
                     player connectTerminalToUAV objNull;
                     player setVariable [QGVAR(loggedInStation), objNull];
                     
@@ -117,7 +117,7 @@ DFUNC(UAV_check_player) =
 
                 player setVariable [QGVAR(loggedInStation), objNull];
                 player connectTerminalToUAV objNull;
-                hint "UAV-Station /n/n Verbindung zur UAV-Station verloren.";
+                hint "UAV-Station \n\n Verbindung zur UAV-Station verloren.";
                     
                 if (PLAYERSIDE == west) then 
                 {
