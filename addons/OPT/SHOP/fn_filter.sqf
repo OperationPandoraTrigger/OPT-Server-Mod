@@ -43,6 +43,7 @@ _weaponsVeh deleteAt (_weaponsVeh find "OPT_CMFlareLauncher");
 _weaponsVeh deleteAt (_weaponsVeh find "OPT_CMFlareLauncher_Triples");
 _weaponsVeh deleteAt (_weaponsVeh find "CMFlareLauncher");
 _weaponsVeh deleteAt (_weaponsVeh find "CMFlareLauncher_Triples");
+_weaponsVeh deleteAt (_weaponsVeh find "SmokeLauncher");
 _weaponsVeh = _weaponsVeh select {_x != ""};
 
 [
@@ -59,7 +60,8 @@ _weaponsVeh = _weaponsVeh select {_x != ""};
     "OPT_72Rnd_CMFlare_Chaff_Magazine",
     "60Rnd_CMFlareMagazine",
     "120Rnd_CMFlareMagazine",
-    "240Rnd_CMFlareMagazine"
+    "240Rnd_CMFlareMagazine",
+    "SmokeLauncherMag"
 ] apply
 {
     _magazineVeh deleteAt (_magazineVeh find _x);                
