@@ -162,6 +162,8 @@ GVAR(startzeit) = time;
 		1 enableChannel true;
 		player allowDamage true;
 		OPT_REVIVE_unconsciousHandler = nil;
+		player setVariable ["OPT_isUnconscious", 0, true];
+		player setVariable ["OPT_isStabilized", 0, true];
 		_handle call CFUNC(removePerframeHandler);
 	};
 
@@ -172,6 +174,8 @@ GVAR(startzeit) = time;
 		1 enableChannel true;
 		player allowDamage true;
 		OPT_REVIVE_unconsciousHandler = nil;
+		player setVariable ["OPT_isUnconscious", 0, true];
+		player setVariable ["OPT_isStabilized", 0, true];
 		_handle call CFUNC(removePerframeHandler);
 	};		
 
