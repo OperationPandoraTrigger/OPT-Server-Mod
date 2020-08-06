@@ -34,7 +34,45 @@ params
 	["_art" , 0]	
 ];
 
-private _name1 = name _verletzter;
+private _Sideidunit = 3;
+private _Side = "unbekannt";
+private _name1 = "unbekannt";
+
+if (isNull _verletzter) then
+{
+	_Sideidunit = 3;
+	_name1 = "unbekannt";
+	_Side = "unbekannt";
+}
+else
+{
+	_Sideidunit = getnumber (configFile >> "CfgVehicles" >> (typeof _verletzter) >> "side");
+	private _name1 = name _verletzter;
+
+	switch (_Sideidunit) do 
+	{
+		case 0 : 
+		{
+			_Side = "East";
+		};
+
+		case 1 : 
+		{
+			_Side = "West";
+		};
+
+		case 2 : 
+		{
+			_Side = "GUER";
+		};
+		case 3 : 
+		{
+			_Side = "unbekannt";
+		};
+	};			
+};
+
+
 private _name2 = name _retter;
 
 switch (_art) do 
@@ -45,7 +83,7 @@ switch (_art) do
 		[
     		"%1 (%2) wurde von %3 (%4) wiederbelebt.", 
    	 		_name1, 
-    		side _verletzter,
+    		_side,
     		_name2,
 			side _retter
 		];
@@ -61,7 +99,7 @@ switch (_art) do
 		[
     		"%1 (%2) wurde von %3 (%4) stabilisiert.", 
    	 		_name1, 
-    		side _verletzter,
+    		_side,
     		_name2,
 			side _retter
 		];
