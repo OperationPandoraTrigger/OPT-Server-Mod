@@ -55,6 +55,28 @@
 
     ] call ace_interact_menu_fnc_createAction;
 
+    GVAR(revive_Action_ziehen) = 
+    [
+        "Tragen/Ziehen",
+        "Ziehen",
+        "",
+        {[player, cursorTarget] call ace_dragging_fnc_startDrag},
+        {((cursorTarget getVariable ["ACE_isUnconscious", false]) or (cursorTarget getVariable ["OPT_isStabilized", 1] == 1))},
+        {}
+
+    ] call ace_interact_menu_fnc_createAction;
+
+    GVAR(revive_Action_tragen) = 
+    [
+        "Tragen/Ziehen",
+        "Tragen",
+        "",
+        {[player, cursorTarget] call ace_dragging_fnc_startCarry},
+        {((cursorTarget getVariable ["ACE_isUnconscious", false]) or (cursorTarget getVariable ["OPT_isStabilized", 1] == 1))},
+        {}
+
+    ] call ace_interact_menu_fnc_createAction;
+
     /*
     * Argument:
     * 0: Object the action should be assigned to <OBJECT>
@@ -69,6 +91,6 @@
             ["ACE_MainActions"],
             _x
         ] call ace_interact_menu_fnc_addActionToObject;
-    } forEach [GVAR(revive_Action_Stabilisieren),GVAR(revive_Action_Wiederbeleben)];
+    } forEach [GVAR(revive_Action_Stabilisieren),GVAR(revive_Action_Wiederbeleben),GVAR(revive_Action_ziehen),GVAR(revive_Action_tragen)];
 
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
