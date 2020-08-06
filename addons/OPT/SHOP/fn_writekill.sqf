@@ -41,14 +41,49 @@ if ((_instigator isEqualTo objNull) and (_projectile isEqualTo "")) exitWith{};
 private _cat = "Abschuss";
 private _message = "";
 
+private _Sideidunit = 3;
+private _Side = "unbekannt";
+
 // victim is a vehicle or a player?
 if (_victim isKindOf "Man") then 
 {
+    if (isNull _victim) then
+    {
+        _Sideidunit = 3;
+        _name1 = "unbekannt";
+        _Side = "unbekannt";
+    }
+    else
+    {
+        _Sideidunit = getnumber (configFile >> "CfgVehicles" >> (typeof _victim) >> "side");
+
+        switch (_Sideidunit) do 
+        {
+            case 0 : 
+            {
+                _Side = "East";
+            };
+
+            case 1 : 
+            {
+                _Side = "West";
+            };
+
+            case 2 : 
+            {
+                _Side = "GUER";
+            };
+            case 3 : 
+            {
+                _Side = "unbekannt";
+            };
+        };			
+    };
 
     // base information about victim
     _message = format[
         "Einheit: %1 (side: %2)",
-        NAME _victim, SIDE _victim
+        NAME _victim, _Side
     ];
 
     // was victim in a vehicle?
