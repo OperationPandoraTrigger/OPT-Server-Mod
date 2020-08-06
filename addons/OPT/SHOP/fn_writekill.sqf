@@ -61,12 +61,12 @@ if (_victim isKindOf "Man") then
         {
             case 0 : 
             {
-                _Side = "East";
+                _Side = "EAST";
             };
 
             case 1 : 
             {
-                _Side = "West";
+                _Side = "WEST";
             };
 
             case 2 : 
