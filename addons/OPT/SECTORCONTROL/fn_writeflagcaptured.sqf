@@ -46,11 +46,11 @@ switch (_side) do
         }; 
 		if (_flag in GVAR(csat_flags)) then 
 		{
-            _message = format ["NATO Flagge erobert von %1", _name];
+            _message = format ["CSAT Flagge erobert von %1", _name];
         };
 		if (_flag in GVAR(aaf_flags)) then 
 		{
-            _message = format ["NATO Flagge erobert von %1", _name];
+            _message = format ["AAF Flagge erobert von %1", _name];
         }; 
     };
 
@@ -62,11 +62,11 @@ switch (_side) do
         }; 
 		if (_flag in GVAR(nato_flags)) then 
 		{
-            _message = format ["CSAT Flagge erobert von %1", _name];
+            _message = format ["Nato Flagge erobert von %1", _name];
         };
 		if (_flag in GVAR(aaf_flags)) then 
 		{
-            _message = format ["CSAT Flagge erobert von %1", _name];
+            _message = format ["AAF Flagge erobert von %1", _name];
         }; 
     };
 	case independent: 
@@ -77,11 +77,11 @@ switch (_side) do
         }; 
 		if (_flag in GVAR(csat_flags)) then 
 		{
-            _message = format ["AAF Flagge erobert von %1", _name];
+            _message = format ["CSAT Flagge erobert von %1", _name];
         };
 		if (_flag in GVAR(nato_flags)) then 
 		{
-            _message = format ["AAF Flagge erobert von %1", _name];
+            _message = format ["NATO Flagge erobert von %1", _name];
         }; 
     };
 
