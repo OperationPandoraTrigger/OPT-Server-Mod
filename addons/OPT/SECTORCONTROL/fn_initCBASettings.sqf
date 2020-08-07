@@ -164,3 +164,42 @@
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {} // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(nato_sektor), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    "EDITBOX", // setting type
+    "NATO Sektor", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+    "OPT Sektorkontrolle", // Pretty name of the category where the setting can be found. Can be stringtable entry.
+    "0", // data for this setting: [min, max, default, number of shown trailing decimals]
+    1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
+    {
+        params ["_value"];
+        GVAR(nato_sektor) = parseNumber _value;
+    } // function that will be executed once on mission start and every time the setting is changed.
+] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(csat_sektor), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    "EDITBOX", // setting type
+    "CSAT Sektor", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+    "OPT Sektorkontrolle", // Pretty name of the category where the setting can be found. Can be stringtable entry.
+    "0", // data for this setting: [min, max, default, number of shown trailing decimals]
+    1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
+    {
+        params ["_value"];
+        GVAR(csat_sektor) = parseNumber _value;
+    } // function that will be executed once on mission start and every time the setting is changed.
+] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(aaf_sektor), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    "EDITBOX", // setting type
+    "AAF Sektor", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+    "OPT Sektorkontrolle", // Pretty name of the category where the setting can be found. Can be stringtable entry.
+    "0", // data for this setting: [min, max, default, number of shown trailing decimals]
+    1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
+    {
+        params ["_value"];
+        GVAR(aaf_sektor) = parseNumber _value;
+    } // function that will be executed once on mission start and every time the setting is changed.
+] call CBA_Settings_fnc_init;
