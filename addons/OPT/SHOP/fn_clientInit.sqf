@@ -28,6 +28,9 @@
 
 DUMP("Successfully loaded the OPT/Shop module on the client");
 
+GVAR(Daten_send) = false;
+GVAR(eventArgs) = [];
+
 // Events
 
 [
@@ -35,7 +38,12 @@ DUMP("Successfully loaded the OPT/Shop module on the client");
 	{
 		_this params ["_eventArgs"];
 
-		_eventArgs call FUNC(einlesenInShopDialog);
+		GVAR(eventArgs) = _eventArgs;
+
+		_this remoteExecCall [QFUNC(hardcap_send), 2, false];
+
+		[{GVAR(eventArgs) call FUNC(einlesenInShopDialog)}, {GVAR(Daten_send)}, "Awesome Delay"] call CLib_fnc_waitUntil;
+
 	},
 	[]
 	
