@@ -295,6 +295,4 @@ DFUNC(ordercheck) =
 
 [FUNC(ordercheck), {GVAR(Daten_send)}, "Awesome Delay"] call CLib_fnc_waitUntil;
 
-systemChat format ["O:%1",GVAR(Daten_send)];
-
 GVAR(order_kosten)
