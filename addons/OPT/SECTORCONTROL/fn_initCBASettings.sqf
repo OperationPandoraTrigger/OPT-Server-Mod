@@ -183,7 +183,7 @@
     "EDITBOX", // setting type
     "Angegriffene CSAT Sektor", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     "OPT Sektorkontrolle", // Pretty name of the category where the setting can be found. Can be stringtable entry.
-    "0", // data for this setting: [min, max, default, number of shown trailing decimals]
+    "10", // data for this setting: [min, max, default, number of shown trailing decimals]
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {
         params ["_value"];
@@ -196,7 +196,7 @@
     "EDITBOX", // setting type
     "Angegriffene AAF Sektor", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     "OPT Sektorkontrolle", // Pretty name of the category where the setting can be found. Can be stringtable entry.
-    "0", // data for this setting: [min, max, default, number of shown trailing decimals]
+    "20", // data for this setting: [min, max, default, number of shown trailing decimals]
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {
         params ["_value"];
