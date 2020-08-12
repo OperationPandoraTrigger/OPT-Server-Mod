@@ -6,77 +6,77 @@
 				<English>Other action in progress!</English>
 				<German>Andere Aktion im Gange!</German>
 			</Key>
-            <Key ID="STR_REPAIR_TRUCK_DEPLETED">
+			<Key ID="STR_REPAIR_TRUCK_DEPLETED">
 				<Original>No more spare parts available in the repair truck.</Original>
 				<English>No more spare parts available in the repair truck.</English>
 				<German>Keine weiteren Ersatzteile im Reparatur-LKW vorhanden.</German>
 			</Key>
-            <Key ID="STR_REPAIR_FINISHED">
+			<Key ID="STR_REPAIR_FINISHED">
 				<Original>Repair finished</Original>
 				<English>Repair finished</English>
 				<German>Reparatur beendet</German>
 			</Key>
-            <Key ID="STR_REPAIR_CONDITIONS">
+			<Key ID="STR_REPAIR_CONDITIONS">
 				<Original>Do not move the vehicle when working!</Original>
 				<English>Do not move the vehicle when working!</English>
 				<German>Das Fahrzeug während der Arbeit nicht bewegen!</German>
 			</Key>
-            <Key ID="STR_REPAIR_INTERRUPTED">
+			<Key ID="STR_REPAIR_INTERRUPTED">
 				<Original>Repair interrupted</Original>
 				<English>Repair interrupted</English>
 				<German>Reparatur unterbrochen</German>
 			</Key>
-            <Key ID="STR_REPAIR_MSG_STRING">
+			<Key ID="STR_REPAIR_MSG_STRING">
 				<Original>Repair of %2 takes %1 s...</Original>
 				<English>Repair of %2 takes %1 s...</English>
 				<German>Reparatur von %2 dauert %1 s...</German>
 			</Key>
-            <Key ID="STR_NEED_TOOLKIT">
+			<Key ID="STR_NEED_TOOLKIT">
 				<Original>The vehicle no longer has any spare parts. Only an engineer can do field repairs now!</Original>
 				<English>The vehicle no longer has any spare parts. Only an engineer can do field repairs now!</English>
 				<German>Das Fahrzeug hat keine Ersatzteile mehr. Nur ein Ingenieur kann jetzt noch Feldreparaturen durchführen!</German>
 			</Key>
-            <Key ID="STR_FIELDREPAIR">
+			<Key ID="STR_FIELDREPAIR">
 				<Original>Field Repair</Original>
 				<English>Field Repair</English>
 				<German>Feldreparatur</German>
 			</Key>
-            <Key ID="STR_REPAIR_FINISHED">
+			<Key ID="STR_REPAIR_FINISHED">
 				<Original>Refuelling finished</Original>
 				<English>Refuelling finished</English>
 				<German>Auftanken beendet</German>
 			</Key>
-            <Key ID="STR_REFUEL_INTERRUPTED">
+			<Key ID="STR_REFUEL_INTERRUPTED">
 				<Original>Refuelling interrupted</Original>
 				<English>Refuelling interrupted</English>
 				<German>Auftanken unterbrochen</German>
 			</Key>
-            <Key ID="STR_REFUEL_MSG_STRING">
+			<Key ID="STR_REFUEL_MSG_STRING">
 				<Original>Refuelling of %2 takes %1 s...</Original>
 				<English>Refuelling of %2 takes %1 s...</English>
 				<German>Auftanken von %2 dauert %1 s...</German>
 			</Key>
-            <Key ID="STR_CHECK_REPAIRS">
+			<Key ID="STR_CHECK_REPAIRS">
 				<Original>Check amount of spare parts</Original>
 				<English>Check amount of spare parts</English>
 				<German>Prüfe Zahl an Ersatzteilen</German>
 			</Key>
-            <Key ID="STR_SERIOUS_REPAIR">
+			<Key ID="STR_SERIOUS_REPAIR">
 				<Original>Perform complete repair</Original>
 				<English>Perform complete repair</English>
 				<German>Komplettreparatur durchführen</German>
 			</Key>
-            <Key ID="STR_FIELD_REFUEL">
+			<Key ID="STR_FIELD_REFUEL">
 				<Original>Use spare canister</Original>
 				<English>Use spare canister</English>
 				<German>Reservekanister verwenden</German>
 			</Key>
-            <Key ID="STR_FIELD_REPAIR">
+			<Key ID="STR_FIELD_REPAIR">
 				<Original>Perform field repair</Original>
 				<English>Perform field repair</English>
 				<German>Feldreparatur durchführen</German>
 			</Key>
-            <Key ID="STR_REPAIRS_LEFT">
+			<Key ID="STR_REPAIRS_LEFT">
 				<Original>%1 of %2 Spare parts left</Original>
 				<English>%1 of %2 Spare parts left</English>
 				<German>%1 von %2 Ersatzteilen übrig</German>
