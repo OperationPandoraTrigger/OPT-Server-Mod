@@ -304,6 +304,7 @@ for "_i" from 0 to (_Objektanzahl-1) do
 
     ctrlSetText [(20126 + _i), format["%1",_Geldobjekt+(_GeldDatensatz select 10)]];
     ctrlShow [(20126 + _i), true ];
+    _display displayCtrl (20010 + _i) ctrlSetTooltip format["Waffenpreis:%1 Grundpreis:%2",(_GeldDatensatz select 10),_Geldobjekt];
 }; 
 
 // Flagge setzen
