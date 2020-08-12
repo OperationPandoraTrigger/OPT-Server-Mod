@@ -16,12 +16,6 @@
 
 params [["_veh", objNull]];
 
-#define STR_ANOTHER_ACTION "Andere Aktion im Gange!"
-#define STR_REPAIR_TRUCK_DEPLETED "Keine weiteren Ersatzteile im Reparatur-LKW vorhanden."
-#define STR_REPAIR_FINISHED "Reparatur beendet"  
-#define STR_REPAIR_CONDITIONS "Das Fahrzeug während der Arbeit nicht bewegen!"
-#define STR_REPAIR_MSG_STRING "Reparatur von %2 dauert %1 s..."
-
 if (_veh isEqualTo objNull) exitWith {false};
 
 private _truck = vehicle player;
@@ -30,19 +24,19 @@ private _truck = vehicle player;
 if (GVAR(mutexAction)) exitWith 
 {
     private _txt = STR_ANOTHER_ACTION;
-    private _header = parseText "<t size='2.0' color='#D7DF01'>Feldreparatur</t>";
+    private _header = parseText "<t size='2.0' color='#D7DF01'>STR_FIELDREPAIR</t>";
     hint Format ["%1 \n\n %2",_header,_txt];
 };
 if (_truck getVariable [QGVAR(repair_cargo), 0] <= 0) then 
 {
     private _txt = STR_REPAIR_TRUCK_DEPLETED;
-    private _header = parseText "<t size='2.0' color='#D7DF01'>Feldreparatur</t>";
+    private _header = parseText "<t size='2.0' color='#D7DF01'>STR_FIELDREPAIR</t>";
     hint Format ["%1 \n\n %2",_header,_txt];
 };    
 if (not alive player or vehicle player == player or speed _veh > 3 or _veh distance _truck > 20 ) exitWith 
 {
     private _txt = STR_REPAIR_CONDITIONS;
-    private _header = parseText "<t size='2.0' color='#D7DF01'>Feldreparatur</t>";
+    private _header = parseText "<t size='2.0' color='#D7DF01'>STR_FIELDREPAIR</t>";
     hint Format ["%1 \n\n %2",_header,_txt];
 };
 
@@ -68,7 +62,7 @@ private _length = _maxlength;
         (_this select 0) params ["_veh", "_truck"];
 
         private _txt = STR_REPAIR_FINISHED;
-        private _header = parseText "<t size='2.0' color='#D7DF01'>Feldreparatur</t>";
+        private _header = parseText "<t size='2.0' color='#D7DF01'>STR_FIELDREPAIR</t>";
         hint Format ["%1 \n\n %2",_header,_txt];
         
         [_veh] remoteExecCall [QFUNC(fullRepair), _veh, false]; // called where vehicle is local!
@@ -81,7 +75,7 @@ private _length = _maxlength;
         
     },
     {
-        ["Feldreparatur", STR_REPAIR_INTERRUPTED, "red"] call EFUNC(gui,message);
+        [STR_FIELDREPAIR, STR_REPAIR_INTERRUPTED, "red"] call EFUNC(gui,message);
 
     },
     format[STR_REPAIR_MSG_STRING, _length, _vehname],
