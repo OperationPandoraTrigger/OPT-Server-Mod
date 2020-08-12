@@ -14,11 +14,6 @@
 */
 #include "macros.hpp"
 
-#define STR_FIELD_REPAIR "Feldreparatur durchführen"
-#define STR_FIELD_REFUEL "Reservekanister verwenden"
-#define STR_SERIOUS_REPAIR "Komplettreparatur durchführen"
-#define STR_CHECK_REPAIRS "Prüfe Zahl an Ersatzteilen"
-
 ["LandVehicle", "init", 
 {
     params ["_vec"];
