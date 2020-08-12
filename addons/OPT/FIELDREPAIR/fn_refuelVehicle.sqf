@@ -16,20 +16,13 @@
 
 params [["_veh", objNull]];
 
-#define STR_ANOTHER_ACTION "Andere Aktion im Gange!"
-#define STR_REPAIR_CONDITIONS "Das Fahrzeug während der Arbeit nicht bewegen!"
-#define STR_NEED_TOOLKIT "Das Fahrzeug hat keine Ersatzteile mehr. Nur ein Ingenieur kann jetzt noch Feldreparaturen durchführen!"
-#define STR_REFUEL_FINISHED "Auftanken beendet"
-#define STR_REFUEL_INTERRUPTED "Auftanken unterbrochen"
-#define STR_REFUEL_MSG_STRING "Auftanken von %2 dauert %1 s..."
-
 if (_veh isEqualTo objNull) exitWith {false};
 
 // if another action is ongoing
 if (GVAR(mutexAction)) exitWith 
 {
     private _txt = STR_ANOTHER_ACTION;
-    private _header = parseText "<t size='2.0' color='#D7DF01'>Feldreparatur</t>";
+    private _header = parseText "<t size='2.0' color='#D7DF01'>STR_FIELDREPAIR</t>";
     hint Format ["%1 \n\n %2",_header,_txt];
 };
 
@@ -37,7 +30,7 @@ if (GVAR(mutexAction)) exitWith
 if (not alive player or (player distance _veh) > 10 or (vehicle player != player) or speed _veh > 3) exitWith 
 {
     private _txt = STR_REPAIR_CONDITIONS;
-    private _header = parseText "<t size='2.0' color='#D7DF01'>Feldreparatur</t>";
+    private _header = parseText "<t size='2.0' color='#D7DF01'>STR_FIELDREPAIR</t>";
     hint Format ["%1 \n\n %2",_header,_txt];
 };
 
@@ -45,7 +38,7 @@ if (not alive player or (player distance _veh) > 10 or (vehicle player != player
 if (!(typeOf player in GVAR(pioniers)) and (_veh getVariable [QGVAR(freeRefuelCount), 0] > 0)) exitWith 
 {
     private _txt = STR_NEED_TOOLKIT;
-    private _header = parseText "<t size='2.0' color='#D7DF01'>Feldreparatur</t>";
+    private _header = parseText "<t size='2.0' color='#D7DF01'>STR_FIELDREPAIR</t>";
     hint Format ["%1 \n\n %2",_header,_txt];
 };
 
@@ -86,7 +79,7 @@ if (_veh getVariable [QGVAR(refuelTimeLeft), 0] > 0) then
 
         player switchMove "";
         private _txt = STR_REFUEL_FINISHED;
-        private _header = parseText "<t size='2.0' color='#D7DF01'>Feldreparatur</t>";
+        private _header = parseText "<t size='2.0' color='#D7DF01'>STR_FIELDREPAIR</t>";
         hint Format ["%1 \n\n %2",_header,_txt];
 
         [_veh] remoteExecCall [QFUNC(setMinFuel), _veh, false]; // called where vehicle is local!
@@ -97,7 +90,7 @@ if (_veh getVariable [QGVAR(refuelTimeLeft), 0] > 0) then
         (_this select 0) params ["_veh", "_startTime", "_maxlength"];
 
         private _txt = STR_REFUEL_INTERRUPTED;
-        private _header = parseText "<t size='2.0' color='#D7DF01'>Feldreparatur</t>";
+        private _header = parseText "<t size='2.0' color='#D7DF01'>STR_FIELDREPAIR</t>";
         hint Format ["%1 \n\n %2",_header,_txt];
 
         _veh setVariable [QGVAR(refuelTimeLeft), _maxlength - (time - _startTime), true];
