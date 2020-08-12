@@ -16,5 +16,30 @@
 				<English>Repair finished</English>
 				<German>Reparatur beendet</German>
 			</Key>
+            <Key ID="STR_REPAIR_CONDITIONS">
+				<Original>Do not move the vehicle when working!</Original>
+				<English>Do not move the vehicle when working!</English>
+				<German>Das Fahrzeug während der Arbeit nicht bewegen!</German>
+			</Key>
+            <Key ID="STR_REPAIR_INTERRUPTED">
+				<Original>Repair interrupted</Original>
+				<English>Repair interrupted</English>
+				<German>Reparatur unterbrochen</German>
+			</Key>
+            <Key ID="STR_REPAIR_MSG_STRING">
+				<Original>Repair of %2 takes %1 s...</Original>
+				<English>Repair of %2 takes %1 s...</English>
+				<German>Reparatur von %2 dauert %1 s...</German>
+			</Key>
+            <Key ID="STR_NEED_TOOLKIT">
+				<Original>The vehicle no longer has any spare parts. Only an engineer can do field repairs now!</Original>
+				<English>The vehicle no longer has any spare parts. Only an engineer can do field repairs now!</English>
+				<German>Das Fahrzeug hat keine Ersatzteile mehr. Nur ein Ingenieur kann jetzt noch Feldreparaturen durchführen!</German>
+			</Key>
+            <Key ID="STR_FIELDREPAIR">
+				<Original>Field Repair</Original>
+				<English>Field Repair</English>
+				<German>Feldreparatur</German>
+			</Key>
 	</Package>
 </Project>
