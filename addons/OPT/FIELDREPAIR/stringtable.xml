@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project name="opt-server-mod">
+	<Package name="fieldrepair">
+			<Key ID="STR_ANOTHER_ACTION">
+				<Original>Other action in progress!</Original>
+				<English>Other action in progress!</English>
+				<German>Andere Aktion im Gange!</German>
+			</Key>
+            <Key ID="STR_REPAIR_TRUCK_DEPLETED">
+				<Original>No more spare parts available in the repair truck.</Original>
+				<English>No more spare parts available in the repair truck.</English>
+				<German>Keine weiteren Ersatzteile im Reparatur-LKW vorhanden.</German>
+			</Key>
+            <Key ID="STR_REPAIR_FINISHED">
+				<Original>Repair finished</Original>
+				<English>Repair finished</English>
+				<German>Reparatur beendet</German>
+			</Key>
+	</Package>
+</Project>
