@@ -41,5 +41,20 @@
 				<English>Field Repair</English>
 				<German>Feldreparatur</German>
 			</Key>
+            <Key ID="STR_REPAIR_FINISHED">
+				<Original>Refuelling finished</Original>
+				<English>Refuelling finished</English>
+				<German>Auftanken beendet</German>
+			</Key>
+            <Key ID="STR_REFUEL_INTERRUPTED">
+				<Original>Refuelling interrupted</Original>
+				<English>Refuelling interrupted</English>
+				<German>Auftanken unterbrochen</German>
+			</Key>
+            <Key ID="STR_REFUEL_MSG_STRING">
+				<Original>Refuelling of %2 takes %1 s..</Original>
+				<English>Refuelling of %2 takes %1 s..</English>
+				<German>Auftanken von %2 dauert %1 s...</German>
+			</Key>
 	</Package>
 </Project>
