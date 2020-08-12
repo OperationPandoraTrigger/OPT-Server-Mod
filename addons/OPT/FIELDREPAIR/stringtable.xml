@@ -52,9 +52,29 @@
 				<German>Auftanken unterbrochen</German>
 			</Key>
             <Key ID="STR_REFUEL_MSG_STRING">
-				<Original>Refuelling of %2 takes %1 s..</Original>
-				<English>Refuelling of %2 takes %1 s..</English>
+				<Original>Refuelling of %2 takes %1 s...</Original>
+				<English>Refuelling of %2 takes %1 s...</English>
 				<German>Auftanken von %2 dauert %1 s...</German>
+			</Key>
+            <Key ID="STR_CHECK_REPAIRS">
+				<Original>Check amount of spare parts</Original>
+				<English>Check amount of spare parts</English>
+				<German>Prüfe Zahl an Ersatzteilen</German>
+			</Key>
+            <Key ID="STR_SERIOUS_REPAIR">
+				<Original>Perform complete repair</Original>
+				<English>Perform complete repair</English>
+				<German>Komplettreparatur durchführen</German>
+			</Key>
+            <Key ID="STR_FIELD_REFUEL">
+				<Original>Use spare canister</Original>
+				<English>Use spare canister</English>
+				<German>Reservekanister verwenden</German>
+			</Key>
+            <Key ID="STR_FIELD_REPAIR">
+				<Original>Perform field repair</Original>
+				<English>Perform field repair</English>
+				<German>Feldreparatur durchführen</German>
 			</Key>
 	</Package>
 </Project>
