@@ -76,5 +76,10 @@
 				<English>Perform field repair</English>
 				<German>Feldreparatur durchführen</German>
 			</Key>
+            <Key ID="STR_REPAIRS_LEFT">
+				<Original>%1 of %2 Spare parts left</Original>
+				<English>%1 of %2 Spare parts left</English>
+				<German>%1 von %2 Ersatzteilen übrig</German>
+			</Key>
 	</Package>
 </Project>
