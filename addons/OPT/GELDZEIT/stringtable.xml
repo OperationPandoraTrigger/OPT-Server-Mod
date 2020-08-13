@@ -16,5 +16,10 @@
 				<English>AAF won!</English>
 				<German>AAF hat gewonnen!</German>
 			</Key>
+			<Key ID="STR_NO_WINNER">
+				<Original>It's a tie!</Original>
+				<English>It's a tie!</English>
+				<German>Unentschieden!</German>
+			</Key>
 	</Package>
 </Project>
