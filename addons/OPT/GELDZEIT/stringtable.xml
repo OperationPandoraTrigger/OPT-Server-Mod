@@ -21,5 +21,15 @@
 				<English>It's a tie!</English>
 				<German>Unentschieden!</German>
 			</Key>
+			<Key ID="STR_ACE_EQIP">
+				<Original>Equipment</Original>
+				<English>Equipment</English>
+				<German>Ausrüstung</German>
+			</Key>
+			<Key ID="STR_ACE_EQIP_EARPLUGS">
+				<Original>Earplugs</Original>
+				<English>Earplugs</English>
+				<German>Ohrenstöpsel</German>
+			</Key>
 	</Package>
 </Project>
