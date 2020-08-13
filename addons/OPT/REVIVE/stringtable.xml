@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Project name="opt-server-mod">
-	<Package name="gps">
+	<Package name="revive">
 			<Key ID="STR_KILL_MSG">
 				<Original>Name of the enemy:</Original>
 				<English>Name of the enemy:</English>
@@ -30,6 +30,16 @@
 				<Original>Self-care</Original>
 				<English>Self-care</English>
 				<German>Eigenversorgung</German>
+			</Key>
+			<Key ID="STR_MEDIC_DISTANCE">
+				<Original>Paramedic %1 is %2m away.</Original>
+				<English>Paramedic %1 is %2m away.</English>
+				<German>Sanitäter %1 ist %2m entfernt.</German>
+			</Key>
+			<Key ID="STR_NO_MEDIC">
+				<Original>No paramedics nearby.</Original>
+				<English>No paramedics nearby.</English>
+				<German>Kein Sanitäter in der Nähe.</German>
 			</Key>
 	</Package>
 </Project>
