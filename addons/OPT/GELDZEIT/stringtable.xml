@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project name="opt-server-mod">
+	<Package name="fieldrepair">
+			<Key ID="STR_CSAT_WIN">
+				<Original>CSAT won!</Original>
+				<English>CSAT won!</English>
+				<German>CSAT hat gewonnen!</German>
+			</Key>
+			<Key ID="STR_NATO_WIN">
+				<Original>NATO won!</Original>
+				<English>NATO won!</English>
+				<German>NATO hat gewonnen!</German>
+			</Key>
+			<Key ID="STR_AAF_WIN">
+				<Original>AAF won!</Original>
+				<English>AAF won!</English>
+				<German>AAF hat gewonnen!</German>
+			</Key>
+	</Package>
+</Project>
