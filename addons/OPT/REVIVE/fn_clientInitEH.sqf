@@ -93,11 +93,11 @@ DFUNC(playerHandleDamage) =
 
 		if (_unit == _source) then 
         {          
-			["Name des Gegners:", "Selbstverschulden"] spawn BIS_fnc_infoText;
+			[localize "STR_KILL_MSG", localize "STR_KILL_SELF"] spawn BIS_fnc_infoText;
         } 
 		else
 		{         
-			["Name des Gegners:", format["%1",name _instigator]] spawn BIS_fnc_infoText;
+			[localize "STR_KILL_MSG", format["%1",name _instigator]] spawn BIS_fnc_infoText;
 
         };
 	};
