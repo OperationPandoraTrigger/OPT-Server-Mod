@@ -16,5 +16,20 @@
 				<English>&lt;t size='2.0' color='#D7DF01'&gt;Choice of the attack flag&lt;/t&gt;</English>
 				<German>&lt;t size='2.0' color='#D7DF01'&gt;Wahl der Angriffsflagge&lt;/t&gt;</German>
 			</Key>
+			<Key ID="STR_INSTRUCTION">
+				<Original>All possible attack flags are marked with a black circle. The selected flag is highlighted in blue, green or red, depending on the side. It can be selected as often as you like.</Original>
+				<English>All possible attack flags are marked with a black circle. The selected flag is highlighted in blue, green or red, depending on the side. It can be selected as often as you like.</English>
+				<German>Alle möglichen Angriffsflaggen sind mit einem schwarzen Kreis markiert. Die gewählte Flagge wird je nach Seite blau,grün oder rot hervorgehoben. Es kann beliebig oft neu gewählt werden.</German>
+			</Key>
+			<Key ID="STR_INSTRUCTION_HEADER">
+				<Original>&lt;t size='2.0' color='#2E2EFE'&gt;Instructions&lt;/t&gt;</Original>
+				<English>&lt;t size='2.0' color='#2E2EFE'&gt;Instructions&lt;/t&gt;</English>
+				<German>&lt;t size='2.0' color='#2E2EFE'&gt;Instruktionen&lt;/t&gt;</German>
+			</Key>
+			<Key ID="STR_FLAG_CONFIRM">
+				<Original>%1 of %2 allowed flags selected.</Original>
+				<English>%1 of %2 allowed flags selected.</English>
+				<German>%1 von %2 erlaubten Flaggen gewählt.</German>
+			</Key>
 	</Package>
 </Project>
