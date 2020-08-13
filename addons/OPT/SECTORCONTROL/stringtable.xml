@@ -56,5 +56,10 @@
 				<English>No Dominator (NATO %1 | AAF %2)</English>
 				<German>Kein Dominator (NATO %1 | AAF %2)</German>
 			</Key>
+			<Key ID="STR_CAPTURE_FLAG">
+				<Original>&lt;t color='#FF0000'&gt;Capture the flag&lt;/t&gt;</Original>
+				<English>&lt;t color='#FF0000'&gt;Capture the flag&lt;/t&gt;</English>
+				<German>&lt;t color='#FF0000'&gt;Flagge ziehen&lt;/t&gt;</German>
+			</Key>
 	</Package>
 </Project>
