@@ -35,8 +35,8 @@
 
     GVAR(revive_Action_Stabilisieren) = 
     [
-        "Erste Hilfe",
-        "Stabilisieren",
+        localize "STR_FIRST_AID",
+        localize "STR_STABILISE",
         "",
         {[] call FUNC(stabilisieren)},
         {((cursorTarget getVariable ["ACE_isUnconscious", false]) and (cursorTarget getVariable ["OPT_isStabilized", 1] == 0))},
@@ -46,8 +46,8 @@
 
     GVAR(revive_Action_Wiederbeleben) = 
     [
-        "Erste Hilfe",
-        "Wiederbeleben",
+        localize "STR_FIRST_AID",
+        localize "STR_REVIVE",
         "",
         {[] call FUNC(revive)},
         {((cursorTarget getVariable ["ACE_isUnconscious", false]) or (cursorTarget getVariable ["OPT_isStabilized", 1] == 1))},
@@ -57,8 +57,8 @@
 
     GVAR(revive_Action_ziehen) = 
     [
-        "Tragen/Ziehen",
-        "Ziehen",
+        localize "STR_CARRY_DRAG",
+        localize "STR_DRAG",
         "",
         {[player, cursorTarget] call ace_dragging_fnc_startDrag},
         {((cursorTarget getVariable ["ACE_isUnconscious", false]) or (cursorTarget getVariable ["OPT_isStabilized", 1] == 1))},
@@ -68,8 +68,8 @@
 
     GVAR(revive_Action_tragen) = 
     [
-        "Tragen/Ziehen",
-        "Tragen",
+        localize "STR_CARRY_DRAG",
+        localize "STR_CARRY",
         "",
         {[player, cursorTarget] call ace_dragging_fnc_startCarry},
         {((cursorTarget getVariable ["ACE_isUnconscious", false]) or (cursorTarget getVariable ["OPT_isStabilized", 1] == 1))},
