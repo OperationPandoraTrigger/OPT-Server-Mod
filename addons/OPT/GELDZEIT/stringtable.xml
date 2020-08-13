@@ -41,5 +41,25 @@
 				<English>&lt;t size='0.8' shadow='1' color='#ffffff'&gt;Earplugs out&lt;/t&gt;</English>
 				<German>&lt;t size='0.8' shadow='1' color='#ffffff'&gt;Ohrstoepsel raus&lt;/t&gt;</German>
 			</Key>
+			<Key ID="STR_BUDGET_MIO">
+				<Original>Budget: %1 Mio. €</Original>
+				<English>Budget: %1 Mio. €</English>
+				<German>Budget: %1 Mio. €</German>
+			</Key>
+			<Key ID="STR_BUDGET">
+				<Original>Budget: %1 €</Original>
+				<English>Budget: %1 €</English>
+				<German>Budget: %1 €</German>
+			</Key>
+			<Key ID="STR_OVERDRAFT_MIO">
+				<Original>Overdraft: %1 Mio. €</Original>
+				<English>Overdraft: %1 Mio. €</English>
+				<German>Dispo: %1 Mio. €</German>
+			</Key>
+			<Key ID="STR_OVERDRAFT">
+				<Original>Overdraft: %1 €</Original>
+				<English>Overdraft: %1 €</English>
+				<German>Dispo: %1 €</German>
+			</Key>
 	</Package>
 </Project>
