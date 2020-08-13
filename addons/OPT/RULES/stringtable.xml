@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project name="opt-server-mod">
+	<Package name="rules">
+			<Key ID="STR_SLOT_LOCK">
+				<Original>Slot lock</Original>
+				<English>Slot lock</English>
+				<German>Slotsperre</German>
+			</Key>
+			<Key ID="STR_SLOT_LOCK_PILOT">
+				<Original>Only pilots are allowed to fly!</Original>
+				<English>Only pilots are allowed to fly!</English>
+				<German>Es ist nur Piloten erlaubt zu fliegen!</German>
+			</Key>
+			<Key ID="STR_SLOT_LOCK_CREW">
+				<Original>This place is reserved for the crew!</Original>
+				<English>This place is reserved for the crew!</English>
+				<German>Dieser Platz ist Besatzungsmitgliedern vorbehalten!</German>
+			</Key>
+			<Key ID="STR_PLACE_MINE">
+				<Original>Mines may only be laid by explosive technicians! Mine was deleted.</Original>
+				<English>Mines may only be laid by explosive technicians! Mine was deleted.</English>
+				<German>Minen dürfen nur von Sprengmeister gelegt werden! Mine wurde gelöscht.</German>
+			</Key>
+			<Key ID="STR_RULE_VIOLATION">
+				<Original>&lt;t size='2.0' color='#f0bfbfbf'&gt;Violation of the rules&lt;/t&gt;</Original>
+				<English>&lt;t size='2.0' color='#f0bfbfbf'&gt;Violation of the rules&lt;/t&gt;</English>
+				<German>&lt;t size='2.0' color='#f0bfbfbf'&gt;Regelverstoß&lt;/t&gt;</German>
+			</Key>
+	</Package>
+</Project>
