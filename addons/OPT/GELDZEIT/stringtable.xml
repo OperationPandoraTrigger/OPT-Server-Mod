@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Project name="opt-server-mod">
-	<Package name="fieldrepair">
+	<Package name="geldzeit">
 			<Key ID="STR_CSAT_WIN">
 				<Original>CSAT won!</Original>
 				<English>CSAT won!</English>
