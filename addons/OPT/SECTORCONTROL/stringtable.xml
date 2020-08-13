@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project name="opt-server-mod">
+	<Package name="sectorcontrol">
+			<Key ID="STR_ATTACK_FLAG">
+				<Original>Attack flag</Original>
+				<English>Attack flag</English>
+				<German>Angriffsflagge</German>
+			</Key>
+			<Key ID="STR_FLAG_INST">
+				<Original>Please select a flag via the mousewheel menu. This must be done during the ceasefire!</Original>
+				<English>Please select a flag via the mousewheel menu. This must be done during the ceasefire!</English>
+				<German>Bitte eine Flagge über das Mausradmenü wählen. Dies muss während der Waffenruhe geschehen!</German>
+			</Key>
+			<Key ID="STR_FLAG_CHOOSE">
+				<Original>&lt;t size='2.0' color='#D7DF01'&gt;Choice of the attack flag&lt;/t&gt;</Original>
+				<English>&lt;t size='2.0' color='#D7DF01'&gt;Choice of the attack flag&lt;/t&gt;</English>
+				<German>&lt;t size='2.0' color='#D7DF01'&gt;Wahl der Angriffsflagge&lt;/t&gt;</German>
+			</Key>
+	</Package>
+</Project>
