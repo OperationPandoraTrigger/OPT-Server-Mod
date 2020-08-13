@@ -41,5 +41,20 @@
 				<English>No paramedics nearby.</English>
 				<German>Kein Sanitäter in der Nähe.</German>
 			</Key>
+			<Key ID="STR_CARRY_DRAG">
+				<Original>Carry/Drag</Original>
+				<English>Carry/Drag</English>
+				<German>Tragen/Ziehen</German>
+			</Key>
+			<Key ID="STR_DRAG">
+				<Original>Drag</Original>
+				<English>Drag</English>
+				<German>Ziehen</German>
+			</Key>
+			<Key ID="STR_CARRY">
+				<Original>Carry</Original>
+				<English>Carry</English>
+				<German>Tragen</German>
+			</Key>
 	</Package>
 </Project>
