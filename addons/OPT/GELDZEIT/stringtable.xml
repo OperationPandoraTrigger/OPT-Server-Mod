@@ -61,5 +61,10 @@
 				<English>Overdraft: %1 €</English>
 				<German>Dispo: %1 €</German>
 			</Key>
+			<Key ID="STR_FRACTION_OVERVIEW">
+				<Original>Fraction overview</Original>
+				<English>Fraction overview</English>
+				<German>Fraktionsübersicht</German>
+			</Key>
 	</Package>
 </Project>
