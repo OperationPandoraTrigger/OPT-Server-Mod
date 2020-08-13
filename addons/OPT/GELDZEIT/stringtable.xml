@@ -31,5 +31,15 @@
 				<English>Earplugs</English>
 				<German>Ohrenstöpsel</German>
 			</Key>
+			<Key ID="STR_EARPLUGS_IN">
+				<Original>&lt;t size='0.8' shadow='1' color='#ffffff'&gt;Earplugs in&lt;/t&gt;</Original>
+				<English>&lt;t size='0.8' shadow='1' color='#ffffff'&gt;Earplugs in&lt;/t&gt;</English>
+				<German>&lt;t size='0.8' shadow='1' color='#ffffff'&gt;Ohrstoepsel rein&lt;/t&gt;</German>
+			</Key>
+			<Key ID="STR_EARPLUGS_OUT">
+				<Original>&lt;t size='0.8' shadow='1' color='#ffffff'&gt;Earplugs out&lt;/t&gt;</Original>
+				<English>&lt;t size='0.8' shadow='1' color='#ffffff'&gt;Earplugs out&lt;/t&gt;</English>
+				<German>&lt;t size='0.8' shadow='1' color='#ffffff'&gt;Ohrstoepsel raus&lt;/t&gt;</German>
+			</Key>
 	</Package>
 </Project>
