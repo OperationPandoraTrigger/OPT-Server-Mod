@@ -32,7 +32,7 @@ GVAR(officer) =
 if (typeOf player in GVAR(officer)) then 
 {
     player addAction [
-        format["<t size=""1.5"" color=""#ffffff"">%1</t>", "Angriffsflagge wählen"], 
+        format["<t size=""1.5"" color=""#ffffff"">%1</t>", localize "STR_ATTACK_FLAG"], 
         {[] call FUNC(chooseFlag);}, 
         [], 
         6, 
@@ -43,7 +43,7 @@ if (typeOf player in GVAR(officer)) then
     ];
 
     // inform player
-    private _txt = "Bitte eine Flagge über das Mausradmenü wählen. Dies muss während der Waffenruhe geschehen!";
-    private _header = parseText "<t size='2.0' color='#D7DF01'>Wahl der Angriffsflagge</t>";
+    private _txt = localize "STR_FLAG_INST";
+    private _header = parseText localize "STR_FLAG_CHOOSE";
     hint Format ["%1 \n\n %2",_header,_txt];
 };
