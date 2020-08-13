@@ -171,7 +171,7 @@ if !(_typeOfPlayer in GVAR(medic)) then
 
 if (_bad_item_used) then 
 {
-    private _txt = "Waffe unzulässig für aktuelle Spielerklasse.\n\n Waffe wurde entfernt.";
-    private _header = parseText "<t size='2.0' color='#D7DF01'>Regelverstoß</t>";
+    private _txt = localize "STR_WEAPON_LOCK";
+    private _header = parseText localize "STR_RULE_VIOLATION";
     hint Format ["%1 \n\n %2",_header,_txt];
 };
