@@ -61,5 +61,10 @@
 				<English>UAV station \n\n Connection to UAV station lost.</English>
 				<German>UAV-Station \n\n Verbindung zur UAV-Station verloren.</German>
 			</Key>
+			<Key ID="STR_WEAPON_LOCK">
+				<Original>Weapon inadmissible for current player class.\n\n Weapon has been removed.</Original>
+				<English>Weapon inadmissible for current player class.\n\n Weapon has been removed.</English>
+				<German>Waffe unzulässig für aktuelle Spielerklasse.\n\n Waffe wurde entfernt.</German>
+			</Key>
 	</Package>
 </Project>
