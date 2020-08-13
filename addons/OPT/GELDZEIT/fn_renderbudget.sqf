@@ -36,11 +36,11 @@ if (_side == independent) then
 
 private _txt = if (_side_Budget >= 1e6) then 
 {
-    format ["Budget: %1 Mio. €", str(_side_Budget / 1e6)];  
+    format [localize "STR_BUDGET_MIO", str(_side_Budget / 1e6)];  
 } 
 else 
 {
-    format ["Budget: %1 €", str(_side_Budget)];
+    format [localize "STR_BUDGET", str(_side_Budget)];
 };
 
 // Warnung, wenn Budget niedrig wird
@@ -52,14 +52,14 @@ if (_side_Budget < 4e5) then
 // Falls Budget negativ: Zeige Dispo
 if (_side_Budget < 0) then 
 {
-    _txt = format["Dispo: %1 €", str(_side_Budget)];
+    _txt = format[localize "STR_OVERDRAFT", str(_side_Budget)];
     _budget_field ctrlSetTextColor [1,0,0,1];
 };
 
 // Falls Budget sehr negativ: Zeige Dispo in Mio.
 if (_side_Budget <= -1e6) then 
 {
-    _txt = format ["Dispo: %1 Mio. €", str(_side_Budget / 1e6)];
+    _txt = format [localize "STR_OVERDRAFT_MIO", str(_side_Budget / 1e6)];
 };
 
 _budget_field ctrlSetText _txt;
