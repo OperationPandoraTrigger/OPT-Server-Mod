@@ -31,8 +31,8 @@
 openMap [true, false];
 
  // instructions for player
-private _txt = "Alle möglichen Angriffsflaggen sind mit einem schwarzen Kreis markiert.Die gewählte Flagge wird je nach Seite blau,grün oder rot hervorgehoben.Es kann beliebig oft neu gewählt werden.";
-private _header = parseText "<t size='2.0' color='#2E2EFE'>Instruktionen</t>";
+private _txt = localize "STR_INSTRUCTION";
+private _header = parseText localize "STR_INSTRUCTION_HEADER";
 hint Format ["%1 \n\n %2",_header,_txt];
 
 // Memory for markers which are deleted on map-close
@@ -263,7 +263,7 @@ GVAR(waffenruheFlagMarkers) = [];
                                 publicVariable QGVAR(aaf_flags);
                             };
                         };
-                        systemChat format ["%1 von %2 erlaubten Flaggen gewählt.", count GVAR(aaf_flags), round GVAR(flagCountAAF)];
+                        systemChat format [localize "STR_FLAG_CONFIRM", count GVAR(aaf_flags), round GVAR(flagCountAAF)];
                     };            
     
                     case independent:
@@ -301,7 +301,7 @@ GVAR(waffenruheFlagMarkers) = [];
                                 publicVariable QGVAR(csat_flags);
                             };
                         };
-                        systemChat format ["%1 von %2 erlaubten Flaggen gewählt.", count GVAR(csat_flags), round GVAR(flagCountCSAT)];
+                        systemChat format [localize "STR_FLAG_CONFIRM", count GVAR(csat_flags), round GVAR(flagCountCSAT)];
                     };
                 };   
             };
@@ -345,7 +345,7 @@ GVAR(waffenruheFlagMarkers) = [];
                                 publicVariable QGVAR(csat_flags);
                             };
                         };
-                        systemChat format ["%1 von %2 erlaubten Flaggen gewählt.", count GVAR(csat_flags), round GVAR(flagCountCSAT)];
+                        systemChat format [localize "STR_FLAG_CONFIRM", count GVAR(csat_flags), round GVAR(flagCountCSAT)];
                     };
 
                     case east:
@@ -383,7 +383,7 @@ GVAR(waffenruheFlagMarkers) = [];
                                 publicVariable QGVAR(nato_flags);
                             };
                         };
-                        systemChat format ["%1 von %2 erlaubten Flaggen gewählt.", count GVAR(nato_flags), round GVAR(flagCountNATO)];
+                        systemChat format [localize "STR_FLAG_CONFIRM", count GVAR(nato_flags), round GVAR(flagCountNATO)];
                     };
                 };                 
             };
@@ -427,7 +427,7 @@ GVAR(waffenruheFlagMarkers) = [];
                                 publicVariable QGVAR(csat_flags);
                             };
                         };
-                        systemChat format ["%1 von %2 erlaubten Flaggen gewählt.", count GVAR(csat_flags), round GVAR(flagCountCSAT)];
+                        systemChat format [localize "STR_FLAG_CONFIRM", count GVAR(csat_flags), round GVAR(flagCountCSAT)];
                     };
 
                     case independent:
@@ -465,7 +465,7 @@ GVAR(waffenruheFlagMarkers) = [];
                                 publicVariable QGVAR(nato_flags);
                             };
                         };
-                        systemChat format ["%1 von %2 erlaubten Flaggen gewählt.", count GVAR(nato_flags), round GVAR(flagCountNATO)];
+                        systemChat format [localize "STR_FLAG_CONFIRM", count GVAR(nato_flags), round GVAR(flagCountNATO)];
                     };
                 };                          
             };
