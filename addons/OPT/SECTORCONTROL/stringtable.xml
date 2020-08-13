@@ -31,5 +31,15 @@
 				<English>%1 of %2 allowed flags selected.</English>
 				<German>%1 von %2 erlaubten Flaggen gewählt.</German>
 			</Key>
+			<Key ID="STR_MINE_VIOLATION">
+				<Original>Mine laid in the mine-restricted area! Mine was deleted.</Original>
+				<English>Mine laid in the mine-restricted area! Mine was deleted.</English>
+				<German>Mine in der Minensperrzone gelegt! Mine wurde gelöscht.</German>
+			</Key>
+			<Key ID="STR_MINE_VIOLATION_HEADER">
+				<Original>&lt;t size='2.0' color='#f0bfbfbf'&gt;Restricted area&lt;/t&gt;</Original>
+				<English>&lt;t size='2.0' color='#f0bfbfbf'&gt;Restricted area&lt;/t&gt;</English>
+				<German>&lt;t size='2.0' color='#f0bfbfbf'&gt;Sperrzone&lt;/t&gt;</German>
+			</Key>
 	</Package>
 </Project>
