@@ -41,5 +41,20 @@
 				<English>&lt;t size='2.0' color='#f0bfbfbf'&gt;Restricted area&lt;/t&gt;</English>
 				<German>&lt;t size='2.0' color='#f0bfbfbf'&gt;Sperrzone&lt;/t&gt;</German>
 			</Key>
+			<Key ID="STR_POINT_NO_DOMINATOR_AAFvCSAT">
+				<Original>No Dominator (AAF %1 | CSAT %2)</Original>
+				<English>No Dominator (AAF %1 | CSAT %2)</English>
+				<German>Kein Dominator (AAF %1 | CSAT %2)</German>
+			</Key>
+			<Key ID="STR_POINT_NO_DOMINATOR_NATOvCSAT">
+				<Original>No Dominator (NATO %1 | CSAT %2)</Original>
+				<English>No Dominator (NATO %1 | CSAT %2)</English>
+				<German>Kein Dominator (NATO %1 | CSAT %2)</German>
+			</Key>
+			<Key ID="STR_POINT_NO_DOMINATOR_NATOvAAF">
+				<Original>No Dominator (NATO %1 | AAF %2)</Original>
+				<English>No Dominator (NATO %1 | AAF %2)</English>
+				<German>Kein Dominator (NATO %1 | AAF %2)</German>
+			</Key>
 	</Package>
 </Project>
