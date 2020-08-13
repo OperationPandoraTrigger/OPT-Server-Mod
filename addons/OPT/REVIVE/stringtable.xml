@@ -56,5 +56,15 @@
 				<English>Carry</English>
 				<German>Tragen</German>
 			</Key>
+			<Key ID="STR_CHAT_DEACTIVATED">
+				<Original>Chat disabled!</Original>
+				<English>Chat disabled!</English>
+				<German>Chat deaktiviert!</German>
+			</Key>
+			<Key ID="STR_SAN_SYS">
+				<Original>&lt;t size='2.0' color='#D7DF01'&gt;San-System&lt;/t&gt;</Original>
+				<English>&lt;t size='2.0' color='#D7DF01'&gt;San-System&lt;/t&gt;</English>
+				<German>&lt;t size='2.0' color='#D7DF01'&gt;San-System&lt;/t&gt;</German>
+			</Key>
 	</Package>
 </Project>
