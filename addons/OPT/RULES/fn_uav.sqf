@@ -19,7 +19,7 @@ private _pcs = [AAF_Drohnenstation,CSAT_Drohnenstation];
 // add to each UAV PC addaction menu
 {
     _x addAction [
-        "<t color='#F3B601'>" + "Verbinden mit UAV-Station" + "</t>",
+        "<t color='#F3B601'>" + localize "STR_UAV_LOGIN" + "</t>",
         {
             private _terminal = _this select 0;
             [
@@ -28,7 +28,7 @@ private _pcs = [AAF_Drohnenstation,CSAT_Drohnenstation];
                 {
                     params ["_terminal"];
                     
-                    Hint "UAV-Station \n\n In UAV-Station eingeloggt.Verbindung geht verloren, wenn mehr als 4m entfernt.";
+                    Hint localize "STR_UAV_CONNECTION_MSG";
                     player setVariable [QGVAR(loggedInStation), _terminal];
                     
                     if (PLAYERSIDE == west) then 
@@ -49,7 +49,7 @@ private _pcs = [AAF_Drohnenstation,CSAT_Drohnenstation];
                     [] call FUNC(UAV_check_player);
                 },
                 {},
-                "verbinde..."
+                localize "STR_UAV_CONNECT"
             ] call ace_common_fnc_progressBar;
         },
         [],
@@ -61,7 +61,7 @@ private _pcs = [AAF_Drohnenstation,CSAT_Drohnenstation];
     ];
 
     _x addAction [
-        "<t color='#F3B601'>" + "Trennen mit UAV-Station" + "</t>",
+        "<t color='#F3B601'>" + localize "STR_UAV_LOGOUT" + "</t>",
         {
             private _terminal = _this select 0;
             [
@@ -69,7 +69,7 @@ private _pcs = [AAF_Drohnenstation,CSAT_Drohnenstation];
                 [],
                 {
                     
-                    Hint "UAV-Station \n\n Von UAV-Station ausgeloggt.";
+                    Hint localize "STR_UAV_CONNECTION_QUIT";
                     player connectTerminalToUAV objNull;
                     player setVariable [QGVAR(loggedInStation), objNull];
                     
@@ -90,7 +90,7 @@ private _pcs = [AAF_Drohnenstation,CSAT_Drohnenstation];
                     };
                 },
                 {},
-                "trenne..."
+                localize "STR_UAV_DISCONNECT"
             ] call ace_common_fnc_progressBar;
         },
         [],
@@ -117,7 +117,7 @@ DFUNC(UAV_check_player) =
 
                 player setVariable [QGVAR(loggedInStation), objNull];
                 player connectTerminalToUAV objNull;
-                hint "UAV-Station \n\n Verbindung zur UAV-Station verloren.";
+                hint localize "STR_UAV_CONNECTION_LOST";
                     
                 if (PLAYERSIDE == west) then 
                 {
