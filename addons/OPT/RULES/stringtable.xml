@@ -26,5 +26,40 @@
 				<English>&lt;t size='2.0' color='#f0bfbfbf'&gt;Violation of the rules&lt;/t&gt;</English>
 				<German>&lt;t size='2.0' color='#f0bfbfbf'&gt;Regelverstoß&lt;/t&gt;</German>
 			</Key>
+			<Key ID="STR_UAV_LOGIN">
+				<Original>Connecting to UAV station</Original>
+				<English>Connecting to UAV station</English>
+				<German>Verbinden mit UAV-Station</German>
+			</Key>
+			<Key ID="STR_UAV_LOGOUT">
+				<Original>Disconnect with UAV station</Original>
+				<English>Disconnect with UAV station</English>
+				<German>Trenne mit UAV-Station</German>
+			</Key>
+			<Key ID="STR_UAV_CONNECT">
+				<Original>Connecting...</Original>
+				<English>Connecting...</English>
+				<German>verbinde...</German>
+			</Key>
+			<Key ID="STR_UAV_DISCONNECT">
+				<Original>disconnect...</Original>
+				<English>disconnect...</English>
+				<German>trenne...</German>
+			</Key>
+			<Key ID="STR_UAV_CONNECTION_MSG">
+				<Original>UAV station \n\n Logged into UAV station. Connection is lost if more than 4m away.</Original>
+				<English>UAV station \n\n Logged into UAV station. Connection is lost if more than 4m away.</English>
+				<German>UAV-Station \n\n In UAV-Station eingeloggt. Verbindung geht verloren, wenn mehr als 4m entfernt.</German>
+			</Key>
+			<Key ID="STR_UAV_CONNECTION_QUIT">
+				<Original>UAV station \n\n Logged out of UAV station.</Original>
+				<English>UAV station \n\n Logged out of UAV station.</English>
+				<German>UAV-Station \n\n Von UAV-Station ausgeloggt.</German>
+			</Key>
+			<Key ID="STR_UAV_CONNECTION_LOST">
+				<Original>UAV station \n\n Connection to UAV station lost.</Original>
+				<English>UAV station \n\n Connection to UAV station lost.</English>
+				<German>UAV-Station \n\n Verbindung zur UAV-Station verloren.</German>
+			</Key>
 	</Package>
 </Project>
