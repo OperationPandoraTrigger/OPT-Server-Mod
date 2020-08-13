@@ -61,5 +61,15 @@
 				<English>&lt;t color='#FF0000'&gt;Capture the flag&lt;/t&gt;</English>
 				<German>&lt;t color='#FF0000'&gt;Flagge ziehen&lt;/t&gt;</German>
 			</Key>
+			<Key ID="STR_TELEPORT_MSG_HEADER">
+				<Original>&lt;t color='#D7DF01'&gt;Teleport&lt;/t&gt;</Original>
+				<English>&lt;t color='#D7DF01'&gt;Teleport&lt;/t&gt;</English>
+				<German>&lt;t color='#D7DF01'&gt;Teleport&lt;/t&gt;</German>
+			</Key>
+			<Key ID="STR_TELEPORT_MSG">
+				<Original>Select position to teleport with left click.</Original>
+				<English>Select position to teleport with left click.</English>
+				<German>Position zum Teleport mit Linksklick auswählen.</German>
+			</Key>
 	</Package>
 </Project>
