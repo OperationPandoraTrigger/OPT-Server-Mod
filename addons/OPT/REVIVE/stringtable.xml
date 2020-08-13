@@ -11,5 +11,25 @@
 				<English>self-caused</English>
 				<German>Selbstverschulden</German>
 			</Key>
+			<Key ID="STR_FIRST_AID">
+				<Original>First Aid</Original>
+				<English>First Aid</English>
+				<German>Erste Hilfe</German>
+			</Key>
+			<Key ID="STR_REVIVE">
+				<Original>Resuscitate</Original>
+				<English>Resuscitate</English>
+				<German>Wiederbeleben</German>
+			</Key>
+			<Key ID="STR_STABILISE">
+				<Original>Stabilise</Original>
+				<English>Stabilise</English>
+				<German>Selbstverschulden</German>
+			</Key>
+			<Key ID="STR_SELF_CARE">
+				<Original>Self-care</Original>
+				<English>Self-care</English>
+				<German>Eigenversorgung</German>
+			</Key>
 	</Package>
 </Project>
