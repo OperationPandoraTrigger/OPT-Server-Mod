@@ -107,12 +107,12 @@ GVAR(startzeit) = time;
 		{
 			private _medic_Name	= name _next_Medic;	
 			private _abst = floor (_medics select 0 select 0);
-			_hintMsg = format["Sanitäter %1 ist %2m entfernt.", _medic_Name, _abst];
+			_hintMsg = format[localize "STR_MEDIC_DISTANCE", _medic_Name, _abst];
 		};
 	} 
 	else 
 	{
-		_hintMsg = "Kein Sanitäter in der Nähe.";
+		_hintMsg = localize "STR_NO_MEDIC";
 	};
 
 
