@@ -19,7 +19,7 @@
     params ["_vec"];
     
     _vec addAction [
-        "<t color='#ff0000'>" + STR_FIELD_REPAIR + "</t>", 
+        "<t color='#ff0000'>" + localize "STR_FIELD_REPAIR" + "</t>", 
         {[_this select 0] call FUNC(repairVehicle)},
         [], 
         -1, 
@@ -31,7 +31,7 @@
     ];
 
     _vec addAction [
-        "<t color='#ff0000'>" + STR_FIELD_REFUEL + "</t>", 
+        "<t color='#ff0000'>" + localize "STR_FIELD_REFUEL" + "</t>", 
         {[_this select 0] call FUNC(refuelVehicle)},
         [], 
         -1, 
@@ -43,7 +43,7 @@
     ];
 
     _vec addAction [
-        "<t color='#008507'>" + STR_SERIOUS_REPAIR + "</t>", 
+        "<t color='#008507'>" + localize "STR_SERIOUS_REPAIR" + "</t>", 
         {[_this select 0] call FUNC(heavyRepair)},
         [], 
         -1, 
@@ -58,7 +58,7 @@
         _vec setVariable [QGVAR(repair_cargo), GVAR(DEFAULT_REPAIR_TRUCK_USES), true];
 
         _vec addAction [
-            "<t color='#ffff00'>" + STR_CHECK_REPAIRS + "</t>", 
+            "<t color='#ffff00'>" + localize "STR_CHECK_REPAIRS" + "</t>", 
             {[_this select 0] call FUNC(checkRepairs)},
             [], 
             -1, 
@@ -76,7 +76,7 @@
     params ["_vec"];
 
     _vec addAction [
-        "<t color='#ff0000'>" + STR_FIELD_REPAIR + "</t>", 
+        "<t color='#ff0000'>" + localize "STR_FIELD_REPAIR" + "</t>", 
         {[_this select 0] call FUNC(repairVehicle)},
         [], 
         -1, 
@@ -88,7 +88,7 @@
     ];
 
     _vec addAction [
-        "<t color='#dd0000'>" + STR_FIELD_REFUEL + "</t>", 
+        "<t color='#dd0000'>" + localize "STR_FIELD_REFUEL" + "</t>", 
         {[_this select 0] call FUNC(refuelVehicle)},
         [], 
         -1, 
@@ -100,7 +100,7 @@
     ];
 
     _vec addAction [
-        "<t color='#008507'>" + STR_SERIOUS_REPAIR + "</t>", 
+        "<t color='#008507'>" + localize "STR_SERIOUS_REPAIR" + "</t>", 
         {[_this select 0] call FUNC(heavyRepair)},
         [], 
         -1, 
@@ -116,7 +116,7 @@
         _vec setVariable [QGVAR(repair_cargo), GVAR(DEFAULT_REPAIR_TRUCK_USES), true];
 
         _vec addAction [
-            "<t color='#ffff00'>" + STR_CHECK_REPAIRS + "</t>", 
+            "<t color='#ffff00'>" + localize "STR_CHECK_REPAIRS" + "</t>", 
             {[_this select 0] call FUNC(checkRepairs)},
             [], 
             -1, 

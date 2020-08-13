@@ -23,20 +23,20 @@ private _truck = vehicle player;
 // inform player if anything is wrong
 if (GVAR(mutexAction)) exitWith 
 {
-    private _txt = STR_ANOTHER_ACTION;
-    private _header = parseText "<t size='2.0' color='#D7DF01'>STR_FIELDREPAIR</t>";
+    private _txt = localize "STR_ANOTHER_ACTION";
+    private _header = parseText localize "STR_FIELDREPAIR";
     hint Format ["%1 \n\n %2",_header,_txt];
 };
 if (_truck getVariable [QGVAR(repair_cargo), 0] <= 0) then 
 {
-    private _txt = STR_REPAIR_TRUCK_DEPLETED;
-    private _header = parseText "<t size='2.0' color='#D7DF01'>STR_FIELDREPAIR</t>";
+    private _txt = localize "STR_REPAIR_TRUCK_DEPLETED";
+    private _header = parseText localize "STR_FIELDREPAIR";
     hint Format ["%1 \n\n %2",_header,_txt];
 };    
 if (not alive player or vehicle player == player or speed _veh > 3 or _veh distance _truck > 20 ) exitWith 
 {
-    private _txt = STR_REPAIR_CONDITIONS;
-    private _header = parseText "<t size='2.0' color='#D7DF01'>STR_FIELDREPAIR</t>";
+    private _txt = localize "STR_REPAIR_CONDITIONS";
+    private _header = parseText localize "STR_FIELDREPAIR";
     hint Format ["%1 \n\n %2",_header,_txt];
 };
 
@@ -61,8 +61,8 @@ private _length = _maxlength;
     {
         (_this select 0) params ["_veh", "_truck"];
 
-        private _txt = STR_REPAIR_FINISHED;
-        private _header = parseText "<t size='2.0' color='#D7DF01'>STR_FIELDREPAIR</t>";
+        private _txt = localize "STR_REPAIR_FINISHED";
+        private _header = parseText localize "STR_FIELDREPAIR";
         hint Format ["%1 \n\n %2",_header,_txt];
         
         [_veh] remoteExecCall [QFUNC(fullRepair), _veh, false]; // called where vehicle is local!
@@ -75,10 +75,10 @@ private _length = _maxlength;
         
     },
     {
-        [STR_FIELDREPAIR, STR_REPAIR_INTERRUPTED, "red"] call EFUNC(gui,message);
+        [localize "STR_FIELDREPAIR", localize "STR_REPAIR_INTERRUPTED", "red"] call EFUNC(gui,message);
 
     },
-    format[STR_REPAIR_MSG_STRING, _length, _vehname],
+    format[localize "STR_REPAIR_MSG_STRING", _length, _vehname],
     {
         (_this select 0) params ["_veh", "_truck"];
         alive player and 

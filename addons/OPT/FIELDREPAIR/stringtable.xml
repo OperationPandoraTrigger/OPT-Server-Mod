@@ -37,9 +37,9 @@
 				<German>Das Fahrzeug hat keine Ersatzteile mehr. Nur ein Ingenieur kann jetzt noch Feldreparaturen durchführen!</German>
 			</Key>
 			<Key ID="STR_FIELDREPAIR">
-				<Original>Field Repair</Original>
-				<English>Field Repair</English>
-				<German>Feldreparatur</German>
+				<Original>&lt;t size='2.0' color='#D7DF01'&gt;Field Repair&lt;/t&gt;</Original>
+				<English>&lt;t size='2.0' color='#D7DF01'&gt;Field Repair&lt;/t&gt;</English>
+				<German>&lt;t size='2.0' color='#D7DF01'&gt;Feldreparatur&lt;/t&gt;</German>
 			</Key>
 			<Key ID="STR_REPAIR_FINISHED">
 				<Original>Refuelling finished</Original>
