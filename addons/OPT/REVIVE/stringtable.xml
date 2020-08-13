@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project name="opt-server-mod">
+	<Package name="gps">
+			<Key ID="STR_KILL_MSG">
+				<Original>Name of the enemy:</Original>
+				<English>Name of the enemy:</English>
+				<German>Name des Gegners:</German>
+			</Key>
+			<Key ID="STR_KILL_SELF">
+				<Original>self-caused</Original>
+				<English>self-caused</English>
+				<German>Selbstverschulden</German>
+			</Key>
+	</Package>
+</Project>
