@@ -89,6 +89,9 @@ switch OPT_GELDZEIT_Fraktionauswahl do
 		};
 };
 
+//ACE Bug Workaround das Spieler nicht in Fahrzeugen sterben 
 
-
-
+if (_vec isKindOf "LandVehicle") then 
+{
+    (crew _vec) apply {_x setDamage 1;[_x, _instigator, _source] call FUNC(writeKill);[format["Name des Gegners: %1",name _instigator]] remoteExecCall ["hint", _x,false];}; 
+};   
