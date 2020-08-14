@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project name="opt-server-mod">
+	<Package name="FIELDREPAIR">
+			<Key ID="STR_ANOTHER_ACTION">
+				<Original>Other action in progress!</Original>
+				<English>Other action in progress!</English>
+				<German>Andere Aktion im Gange!</German>
+			</Key>
+			<Key ID="STR_REPAIR_TRUCK_DEPLETED">
+				<Original>No more spare parts available in the repair truck.</Original>
+				<English>No more spare parts available in the repair truck.</English>
+				<German>Keine weiteren Ersatzteile im Reparatur-LKW vorhanden.</German>
+			</Key>
+			<Key ID="STR_REPAIR_FINISHED">
+				<Original>Repair finished</Original>
+				<English>Repair finished</English>
+				<German>Reparatur beendet</German>
+			</Key>
+			<Key ID="STR_REPAIR_CONDITIONS">
+				<Original>Do not move the vehicle when working!</Original>
+				<English>Do not move the vehicle when working!</English>
+				<German>Das Fahrzeug während der Arbeit nicht bewegen!</German>
+			</Key>
+			<Key ID="STR_REPAIR_INTERRUPTED">
+				<Original>Repair interrupted</Original>
+				<English>Repair interrupted</English>
+				<German>Reparatur unterbrochen</German>
+			</Key>
+			<Key ID="STR_REPAIR_MSG_STRING">
+				<Original>Repair of %2 takes %1 s...</Original>
+				<English>Repair of %2 takes %1 s...</English>
+				<German>Reparatur von %2 dauert %1 s...</German>
+			</Key>
+			<Key ID="STR_NEED_TOOLKIT">
+				<Original>The vehicle no longer has any spare parts. Only an engineer can do field repairs now!</Original>
+				<English>The vehicle no longer has any spare parts. Only an engineer can do field repairs now!</English>
+				<German>Das Fahrzeug hat keine Ersatzteile mehr. Nur ein Ingenieur kann jetzt noch Feldreparaturen durchführen!</German>
+			</Key>
+			<Key ID="STR_FIELDREPAIR">
+				<Original>&lt;t size='2.0' color='#D7DF01'&gt;Field Repair&lt;/t&gt;</Original>
+				<English>&lt;t size='2.0' color='#D7DF01'&gt;Field Repair&lt;/t&gt;</English>
+				<German>&lt;t size='2.0' color='#D7DF01'&gt;Feldreparatur&lt;/t&gt;</German>
+			</Key>
+			<Key ID="STR_REPAIR_FINISHED">
+				<Original>Refuelling finished</Original>
+				<English>Refuelling finished</English>
+				<German>Auftanken beendet</German>
+			</Key>
+			<Key ID="STR_REFUEL_INTERRUPTED">
+				<Original>Refuelling interrupted</Original>
+				<English>Refuelling interrupted</English>
+				<German>Auftanken unterbrochen</German>
+			</Key>
+			<Key ID="STR_REFUEL_MSG_STRING">
+				<Original>Refuelling of %2 takes %1 s...</Original>
+				<English>Refuelling of %2 takes %1 s...</English>
+				<German>Auftanken von %2 dauert %1 s...</German>
+			</Key>
+			<Key ID="STR_CHECK_REPAIRS">
+				<Original>Check amount of spare parts</Original>
+				<English>Check amount of spare parts</English>
+				<German>Prüfe Zahl an Ersatzteilen</German>
+			</Key>
+			<Key ID="STR_SERIOUS_REPAIR">
+				<Original>Perform complete repair</Original>
+				<English>Perform complete repair</English>
+				<German>Komplettreparatur durchführen</German>
+			</Key>
+			<Key ID="STR_FIELD_REFUEL">
+				<Original>Use spare canister</Original>
+				<English>Use spare canister</English>
+				<German>Reservekanister verwenden</German>
+			</Key>
+			<Key ID="STR_FIELD_REPAIR">
+				<Original>Perform field repair</Original>
+				<English>Perform field repair</English>
+				<German>Feldreparatur durchführen</German>
+			</Key>
+			<Key ID="STR_REPAIRS_LEFT">
+				<Original>%1 of %2 Spare parts left</Original>
+				<English>%1 of %2 Spare parts left</English>
+				<German>%1 von %2 Ersatzteilen übrig</German>
+			</Key>
+	</Package>
+	<Package name="GELDZEIT">
+			<Key ID="STR_CSAT_WIN">
+				<Original>CSAT won!</Original>
+				<English>CSAT won!</English>
+				<German>CSAT hat gewonnen!</German>
+			</Key>
+			<Key ID="STR_NATO_WIN">
+				<Original>NATO won!</Original>
+				<English>NATO won!</English>
+				<German>NATO hat gewonnen!</German>
+			</Key>
+			<Key ID="STR_AAF_WIN">
+				<Original>AAF won!</Original>
+				<English>AAF won!</English>
+				<German>AAF hat gewonnen!</German>
+			</Key>
+			<Key ID="STR_NO_WINNER">
+				<Original>It's a tie!</Original>
+				<English>It's a tie!</English>
+				<German>Unentschieden!</German>
+			</Key>
+			<Key ID="STR_ACE_EQIP">
+				<Original>Equipment</Original>
+				<English>Equipment</English>
+				<German>Ausrüstung</German>
+			</Key>
+			<Key ID="STR_ACE_EQIP_EARPLUGS">
+				<Original>Earplugs</Original>
+				<English>Earplugs</English>
+				<German>Ohrenstöpsel</German>
+			</Key>
+			<Key ID="STR_EARPLUGS_IN">
+				<Original>&lt;t size='0.8' shadow='1' color='#ffffff'&gt;Earplugs in&lt;/t&gt;</Original>
+				<English>&lt;t size='0.8' shadow='1' color='#ffffff'&gt;Earplugs in&lt;/t&gt;</English>
+				<German>&lt;t size='0.8' shadow='1' color='#ffffff'&gt;Ohrstoepsel rein&lt;/t&gt;</German>
+			</Key>
+			<Key ID="STR_EARPLUGS_OUT">
+				<Original>&lt;t size='0.8' shadow='1' color='#ffffff'&gt;Earplugs out&lt;/t&gt;</Original>
+				<English>&lt;t size='0.8' shadow='1' color='#ffffff'&gt;Earplugs out&lt;/t&gt;</English>
+				<German>&lt;t size='0.8' shadow='1' color='#ffffff'&gt;Ohrstoepsel raus&lt;/t&gt;</German>
+			</Key>
+			<Key ID="STR_BUDGET_MIO">
+				<Original>Budget: %1 Mio. €</Original>
+				<English>Budget: %1 Mio. €</English>
+				<German>Budget: %1 Mio. €</German>
+			</Key>
+			<Key ID="STR_BUDGET">
+				<Original>Budget: %1 €</Original>
+				<English>Budget: %1 €</English>
+				<German>Budget: %1 €</German>
+			</Key>
+			<Key ID="STR_OVERDRAFT_MIO">
+				<Original>Overdraft: %1 Mio. €</Original>
+				<English>Overdraft: %1 Mio. €</English>
+				<German>Dispo: %1 Mio. €</German>
+			</Key>
+			<Key ID="STR_OVERDRAFT">
+				<Original>Overdraft: %1 €</Original>
+				<English>Overdraft: %1 €</English>
+				<German>Dispo: %1 €</German>
+			</Key>
+			<Key ID="STR_FRACTION_OVERVIEW">
+				<Original>Fraction overview</Original>
+				<English>Fraction overview</English>
+				<German>Fraktionsübersicht</German>
+			</Key>
+	</Package>
+	<Package name="GPS">
+			<Key ID="STR_PLAYER_STABILISED">
+				<Original>%1 stabilised</Original>
+				<English>%1 stabilised</English>
+				<German>%1 stabilisiert</German>
+			</Key>
+			<Key ID="STR_PLAYER_INJURED">
+				<Original>%1 injured</Original>
+				<English>%1 injured</English>
+				<German>%1 verwundet</German>
+			</Key>
+	</Package>
+	<Package name="HUD">
+			<Key ID="STR_AAFvCSAT">
+				<Original>Player: (A) %1 vs %2 (C)</Original>
+				<English>Player: (A) %1 vs %2 (C)</English>
+				<German>Spieler: (A) %1 vs %2 (C)</German>
+			</Key>
+			<Key ID="STR_NATOvCSAT">
+				<Original>Player: (N) %1 vs %2 (C)</Original>
+				<English>Player: (N) %1 vs %2 (C)</English>
+				<German>Spieler: (N) %1 vs %2 (C)</German>
+			</Key>
+			<Key ID="STR_NATOvAAF">
+				<Original>Player: (N) %1 vs %2 (A)</Original>
+				<English>Player: (N) %1 vs %2 (A)</English>
+				<German>Spieler: (N) %1 vs %2 (A)</German>
+			</Key>
+			<Key ID="STR_AAFvCSAT_POINT">
+				<Original>Points: (N) %1 vs %2 (A)</Original>
+				<English>Points: (N) %1 vs %2 (A)</English>
+				<German>Punkte: (A) %1 : %2 (C)</German>
+			</Key>
+			<Key ID="STR_NATOvCSAT_POINT">
+				<Original>Points: (N) %1 vs %2 (A)</Original>
+				<English>Points: (N) %1 vs %2 (A)</English>
+				<German>Punkte: (N) %1 : %2 (C)</German>
+			</Key>
+			<Key ID="STR_NATOvAAF_POINT">
+				<Original>Points: (N) %1 : %2 (A)</Original>
+				<English>Points: (N) %1 : %2 (A)</English>
+				<German>Punkte: (N) %1 : %2 (A)</German>
+			</Key>
+			<Key ID="STR_TIME_LEFT">
+				<Original>Remaining game time: %1</Original>
+				<English>Remaining game time: %1</English>
+				<German>Rest-Spielzeit: %1</German>
+			</Key>
+			<Key ID="STR_TIME_END">
+				<Original>Time: 00:00</Original>
+				<English>Time: 00:00</English>
+				<German>Zeit: 00:00</German>
+			</Key>
+			<Key ID="STR_TIME_CEASEFIRE">
+				<Original>Ceasefire: %1</Original>
+				<English>Ceasefire: %1</English>
+				<German>Waffenruhe: %1</German>
+			</Key>
+			<Key ID="STR_TIME_CEASEFIRE_END">
+				<Original>Ceasefire: 00:00</Original>
+				<English>Ceasefire: 00:00</English>
+				<German>Waffenruhe: 00:00</German>
+			</Key>
+	</Package>
+	<Package name="REVIVE">
+			<Key ID="STR_KILL_MSG">
+				<Original>Name of the enemy:</Original>
+				<English>Name of the enemy:</English>
+				<German>Name des Gegners:</German>
+			</Key>
+			<Key ID="STR_KILL_SELF">
+				<Original>self-caused</Original>
+				<English>self-caused</English>
+				<German>Selbstverschulden</German>
+			</Key>
+			<Key ID="STR_FIRST_AID">
+				<Original>First Aid</Original>
+				<English>First Aid</English>
+				<German>Erste Hilfe</German>
+			</Key>
+			<Key ID="STR_REVIVE">
+				<Original>Resuscitate</Original>
+				<English>Resuscitate</English>
+				<German>Wiederbeleben</German>
+			</Key>
+			<Key ID="STR_STABILISE">
+				<Original>Stabilise</Original>
+				<English>Stabilise</English>
+				<German>Selbstverschulden</German>
+			</Key>
+			<Key ID="STR_SELF_CARE">
+				<Original>Self-care</Original>
+				<English>Self-care</English>
+				<German>Eigenversorgung</German>
+			</Key>
+			<Key ID="STR_MEDIC_DISTANCE">
+				<Original>Paramedic %1 is %2m away.</Original>
+				<English>Paramedic %1 is %2m away.</English>
+				<German>Sanitäter %1 ist %2m entfernt.</German>
+			</Key>
+			<Key ID="STR_NO_MEDIC">
+				<Original>No paramedics nearby.</Original>
+				<English>No paramedics nearby.</English>
+				<German>Kein Sanitäter in der Nähe.</German>
+			</Key>
+			<Key ID="STR_CARRY_DRAG">
+				<Original>Carry/Drag</Original>
+				<English>Carry/Drag</English>
+				<German>Tragen/Ziehen</German>
+			</Key>
+			<Key ID="STR_DRAG">
+				<Original>Drag</Original>
+				<English>Drag</English>
+				<German>Ziehen</German>
+			</Key>
+			<Key ID="STR_CARRY">
+				<Original>Carry</Original>
+				<English>Carry</English>
+				<German>Tragen</German>
+			</Key>
+			<Key ID="STR_CHAT_DEACTIVATED">
+				<Original>Chat disabled!</Original>
+				<English>Chat disabled!</English>
+				<German>Chat deaktiviert!</German>
+			</Key>
+			<Key ID="STR_SAN_SYS">
+				<Original>&lt;t size='2.0' color='#D7DF01'&gt;San-System&lt;/t&gt;</Original>
+				<English>&lt;t size='2.0' color='#D7DF01'&gt;San-System&lt;/t&gt;</English>
+				<German>&lt;t size='2.0' color='#D7DF01'&gt;San-System&lt;/t&gt;</German>
+			</Key>
+	</Package>
+    	<Package name="RULES">
+			<Key ID="STR_SLOT_LOCK">
+				<Original>Slot lock</Original>
+				<English>Slot lock</English>
+				<German>Slotsperre</German>
+			</Key>
+			<Key ID="STR_SLOT_LOCK_PILOT">
+				<Original>Only pilots are allowed to fly!</Original>
+				<English>Only pilots are allowed to fly!</English>
+				<German>Es ist nur Piloten erlaubt zu fliegen!</German>
+			</Key>
+			<Key ID="STR_SLOT_LOCK_CREW">
+				<Original>This place is reserved for the crew!</Original>
+				<English>This place is reserved for the crew!</English>
+				<German>Dieser Platz ist Besatzungsmitgliedern vorbehalten!</German>
+			</Key>
+			<Key ID="STR_PLACE_MINE">
+				<Original>Mines may only be laid by explosive technicians! Mine was deleted.</Original>
+				<English>Mines may only be laid by explosive technicians! Mine was deleted.</English>
+				<German>Minen dürfen nur von Sprengmeister gelegt werden! Mine wurde gelöscht.</German>
+			</Key>
+			<Key ID="STR_RULE_VIOLATION">
+				<Original>&lt;t size='2.0' color='#f0bfbfbf'&gt;Violation of the rules&lt;/t&gt;</Original>
+				<English>&lt;t size='2.0' color='#f0bfbfbf'&gt;Violation of the rules&lt;/t&gt;</English>
+				<German>&lt;t size='2.0' color='#f0bfbfbf'&gt;Regelverstoß&lt;/t&gt;</German>
+			</Key>
+			<Key ID="STR_UAV_LOGIN">
+				<Original>Connecting to UAV station</Original>
+				<English>Connecting to UAV station</English>
+				<German>Verbinden mit UAV-Station</German>
+			</Key>
+			<Key ID="STR_UAV_LOGOUT">
+				<Original>Disconnect with UAV station</Original>
+				<English>Disconnect with UAV station</English>
+				<German>Trenne mit UAV-Station</German>
+			</Key>
+			<Key ID="STR_UAV_CONNECT">
+				<Original>Connecting...</Original>
+				<English>Connecting...</English>
+				<German>verbinde...</German>
+			</Key>
+			<Key ID="STR_UAV_DISCONNECT">
+				<Original>disconnect...</Original>
+				<English>disconnect...</English>
+				<German>trenne...</German>
+			</Key>
+			<Key ID="STR_UAV_CONNECTION_MSG">
+				<Original>UAV station \n\n Logged into UAV station. Connection is lost if more than 4m away.</Original>
+				<English>UAV station \n\n Logged into UAV station. Connection is lost if more than 4m away.</English>
+				<German>UAV-Station \n\n In UAV-Station eingeloggt. Verbindung geht verloren, wenn mehr als 4m entfernt.</German>
+			</Key>
+			<Key ID="STR_UAV_CONNECTION_QUIT">
+				<Original>UAV station \n\n Logged out of UAV station.</Original>
+				<English>UAV station \n\n Logged out of UAV station.</English>
+				<German>UAV-Station \n\n Von UAV-Station ausgeloggt.</German>
+			</Key>
+			<Key ID="STR_UAV_CONNECTION_LOST">
+				<Original>UAV station \n\n Connection to UAV station lost.</Original>
+				<English>UAV station \n\n Connection to UAV station lost.</English>
+				<German>UAV-Station \n\n Verbindung zur UAV-Station verloren.</German>
+			</Key>
+			<Key ID="STR_WEAPON_LOCK">
+				<Original>Weapon inadmissible for current player class.\n\n Weapon has been removed.</Original>
+				<English>Weapon inadmissible for current player class.\n\n Weapon has been removed.</English>
+				<German>Waffe unzulässig für aktuelle Spielerklasse.\n\n Waffe wurde entfernt.</German>
+			</Key>
+	</Package>
+	<Package name="SECTORCONTROL">
+			<Key ID="STR_ATTACK_FLAG">
+				<Original>Attack flag</Original>
+				<English>Attack flag</English>
+				<German>Angriffsflagge</German>
+			</Key>
+			<Key ID="STR_FLAG_INST">
+				<Original>Please select a flag via the mousewheel menu. This must be done during the ceasefire!</Original>
+				<English>Please select a flag via the mousewheel menu. This must be done during the ceasefire!</English>
+				<German>Bitte eine Flagge über das Mausradmenü wählen. Dies muss während der Waffenruhe geschehen!</German>
+			</Key>
+			<Key ID="STR_FLAG_CHOOSE">
+				<Original>&lt;t size='2.0' color='#D7DF01'&gt;Choice of the attack flag&lt;/t&gt;</Original>
+				<English>&lt;t size='2.0' color='#D7DF01'&gt;Choice of the attack flag&lt;/t&gt;</English>
+				<German>&lt;t size='2.0' color='#D7DF01'&gt;Wahl der Angriffsflagge&lt;/t&gt;</German>
+			</Key>
+			<Key ID="STR_INSTRUCTION">
+				<Original>All possible attack flags are marked with a black circle. The selected flag is highlighted in blue, green or red, depending on the side. It can be selected as often as you like.</Original>
+				<English>All possible attack flags are marked with a black circle. The selected flag is highlighted in blue, green or red, depending on the side. It can be selected as often as you like.</English>
+				<German>Alle möglichen Angriffsflaggen sind mit einem schwarzen Kreis markiert. Die gewählte Flagge wird je nach Seite blau,grün oder rot hervorgehoben. Es kann beliebig oft neu gewählt werden.</German>
+			</Key>
+			<Key ID="STR_INSTRUCTION_HEADER">
+				<Original>&lt;t size='2.0' color='#2E2EFE'&gt;Instructions&lt;/t&gt;</Original>
+				<English>&lt;t size='2.0' color='#2E2EFE'&gt;Instructions&lt;/t&gt;</English>
+				<German>&lt;t size='2.0' color='#2E2EFE'&gt;Instruktionen&lt;/t&gt;</German>
+			</Key>
+			<Key ID="STR_FLAG_CONFIRM">
+				<Original>%1 of %2 allowed flags selected.</Original>
+				<English>%1 of %2 allowed flags selected.</English>
+				<German>%1 von %2 erlaubten Flaggen gewählt.</German>
+			</Key>
+			<Key ID="STR_MINE_VIOLATION">
+				<Original>Mine laid in the mine-restricted area! Mine was deleted.</Original>
+				<English>Mine laid in the mine-restricted area! Mine was deleted.</English>
+				<German>Mine in der Minensperrzone gelegt! Mine wurde gelöscht.</German>
+			</Key>
+			<Key ID="STR_MINE_VIOLATION_HEADER">
+				<Original>&lt;t size='2.0' color='#f0bfbfbf'&gt;Restricted area&lt;/t&gt;</Original>
+				<English>&lt;t size='2.0' color='#f0bfbfbf'&gt;Restricted area&lt;/t&gt;</English>
+				<German>&lt;t size='2.0' color='#f0bfbfbf'&gt;Sperrzone&lt;/t&gt;</German>
+			</Key>
+			<Key ID="STR_POINT_NO_DOMINATOR_AAFvCSAT">
+				<Original>No Dominator (AAF %1 | CSAT %2)</Original>
+				<English>No Dominator (AAF %1 | CSAT %2)</English>
+				<German>Kein Dominator (AAF %1 | CSAT %2)</German>
+			</Key>
+			<Key ID="STR_POINT_NO_DOMINATOR_NATOvCSAT">
+				<Original>No Dominator (NATO %1 | CSAT %2)</Original>
+				<English>No Dominator (NATO %1 | CSAT %2)</English>
+				<German>Kein Dominator (NATO %1 | CSAT %2)</German>
+			</Key>
+			<Key ID="STR_POINT_NO_DOMINATOR_NATOvAAF">
+				<Original>No Dominator (NATO %1 | AAF %2)</Original>
+				<English>No Dominator (NATO %1 | AAF %2)</English>
+				<German>Kein Dominator (NATO %1 | AAF %2)</German>
+			</Key>
+			<Key ID="STR_CAPTURE_FLAG">
+				<Original>&lt;t color='#FF0000'&gt;Capture the flag&lt;/t&gt;</Original>
+				<English>&lt;t color='#FF0000'&gt;Capture the flag&lt;/t&gt;</English>
+				<German>&lt;t color='#FF0000'&gt;Flagge ziehen&lt;/t&gt;</German>
+			</Key>
+			<Key ID="STR_TELEPORT_MSG_HEADER">
+				<Original>&lt;t color='#D7DF01'&gt;Teleport&lt;/t&gt;</Original>
+				<English>&lt;t color='#D7DF01'&gt;Teleport&lt;/t&gt;</English>
+				<German>&lt;t color='#D7DF01'&gt;Teleport&lt;/t&gt;</German>
+			</Key>
+			<Key ID="STR_TELEPORT_MSG">
+				<Original>Select position to teleport with left click.</Original>
+				<English>Select position to teleport with left click.</English>
+				<German>Position zum Teleport mit Linksklick auswählen.</German>
+			</Key>
+	</Package>
+</Project>
