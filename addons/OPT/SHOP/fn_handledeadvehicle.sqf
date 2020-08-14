@@ -34,7 +34,7 @@ switch OPT_GELDZEIT_Fraktionauswahl do
 {
     	case "AAFvsCSAT" : 
 		{
-            if (!(_vec isKindOf "CAManBase") and ((_vec distance2D (getmarkerPos "respawn_guerrila") < 200) or (_vec distance2D (getmarkerPos "respawn_east") < 200))) then 
+            if (!(_vec isKindOf "CAManBase") and ((_vec distance2D (getmarkerPos "respawn_guerrila") < 200) or (_vec distance2D (getmarkerPos "respawn_east") < 200) or (_vec distance2D (getmarkerPos "CSAT_Basis2") < 200) or (_vec distance2D (getmarkerPos "AAF_Basis2") < 200))) then 
             {
                 [_vec] spawn 
                 {
@@ -51,7 +51,7 @@ switch OPT_GELDZEIT_Fraktionauswahl do
 
 		case "NATOvsCSAT" : 
 		{
-            if (!(_vec isKindOf "CAManBase") and ((_vec distance2D (getmarkerPos "respawn_west") < 200) or (_vec distance2D (getmarkerPos "respawn_east") < 200))) then 
+            if (!(_vec isKindOf "CAManBase") and ((_vec distance2D (getmarkerPos "respawn_west") < 200) or (_vec distance2D (getmarkerPos "respawn_east") < 200) or (_vec distance2D (getmarkerPos "CSAT_Basis2") < 200) or (_vec distance2D (getmarkerPos "NATO_Basis2") < 200))) then 
             {
                 [_vec] spawn 
                 {
@@ -68,7 +68,7 @@ switch OPT_GELDZEIT_Fraktionauswahl do
 
 		case "NATOvsAAF" : 
 		{
-            if (!(_vec isKindOf "CAManBase") and ((_vec distance2D (getmarkerPos "respawn_west") < 200) or (_vec distance2D (getmarkerPos "respawn_guerrila") < 200))) then 
+            if (!(_vec isKindOf "CAManBase") and ((_vec distance2D (getmarkerPos "respawn_west") < 200) or (_vec distance2D (getmarkerPos "respawn_guerrila") < 200) or (_vec distance2D (getmarkerPos "Nato_Basis2") < 200) or (_vec distance2D (getmarkerPos "AAF_Basis2") < 200))) then 
             {
                 [_vec] spawn 
                 {

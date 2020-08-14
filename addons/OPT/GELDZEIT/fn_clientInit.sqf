@@ -113,5 +113,67 @@ player action ["WeaponOnBack", player];
 	// friere Spieler, falls freezeTime aktiv
 	[] call FUNC(frezztime);
 
+//Beam ausführen zur zweiten Basis
+GVAR(beam_trigger) = [];
+
+switch GVAR(Fraktionauswahl) do 
+{
+	case "AAFvsCSAT" : 
+	{
+		GVAR(beam_trigger) = 
+		[
+			AAF_trigger_beam_basis1,
+    		AAF_trigger_beam_basis2,
+    		csat_trigger_beam_basis1,
+    		csat_trigger_beam_basis2
+		];
+	};
+
+	case "NATOvsCSAT" : 
+	{
+		GVAR(beam_trigger) = 
+		[
+			nato_trigger_beam_basis1,
+    		nato_trigger_beam_basis2,
+    		csat_trigger_beam_basis1,
+    		csat_trigger_beam_basis2
+		];	
+	};
+
+	case "NATOvsAAF" : 
+	{
+		GVAR(beam_trigger) = 
+		[
+			AAF_trigger_beam_basis1,
+    		AAF_trigger_beam_basis2,
+    		nato_trigger_beam_basis1,
+    		nato_trigger_beam_basis2
+		];			
+	};
+
+	default 
+	{
+		ERROR_LOG("clientinit: Fehlehalte Datenübergabe keine Fraktionauswahl erkannt");	
+	};
+};
+
+[
+    "OPT", 
+    QGVAR(cba_addKeybind_beam_dialog), 
+    ["Beam-Funktion", "Beamen im Teleportbereich zur anderen Basis."], 
+    {
+        if ( ({vehicle player in list _x} count GVAR(beam_trigger)) > 0 ) then 
+        {
+            [] call FUNC(beam);
+        };
+        
+    }, 
+    {}, 
+    [
+        DIK_F2, 
+        [false, false, false] // [shift, ctrl, alt]
+    ]
+] call CBA_fnc_addKeybind;
+
 
 }] call CFUNC(addEventhandler);
