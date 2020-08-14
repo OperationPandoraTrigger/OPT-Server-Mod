@@ -38,18 +38,10 @@ private _Sideidunit = 3;
 private _Side = "unbekannt";
 private _name1 = "unbekannt";
 
-if (isNull _verletzter) then
-{
-	_Sideidunit = 3;
-	_name1 = "unbekannt";
-	_Side = "unbekannt";
-}
-else
-{
-	_Sideidunit = getnumber (configFile >> "CfgVehicles" >> (typeof _verletzter) >> "side");
-	private _name1 = name _verletzter;
+_Sideidunit = getnumber (configFile >> "CfgVehicles" >> (typeof _verletzter) >> "side");
+_name1 = name _verletzter;
 
-	switch (_Sideidunit) do 
+switch (_Sideidunit) do 
 	{
 		case 0 : 
 		{
@@ -65,13 +57,13 @@ else
 		{
 			_Side = "GUER";
 		};
-		case 3 : 
+
+		default
 		{
 			_Side = "unbekannt";
+			_name1 = "unbekannt";
 		};
 	};			
-};
-
 
 private _name2 = name _retter;
 
