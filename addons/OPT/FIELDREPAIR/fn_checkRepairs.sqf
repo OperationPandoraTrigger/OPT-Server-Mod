@@ -17,6 +17,6 @@
 
 params [["_veh", objNull]];
 
-private _txt = format[localize "STR_REPAIRS_LEFT", _veh getVariable QGVAR(repair_cargo), GVAR(DEFAULT_REPAIR_TRUCK_USES)];
-private _header = parseText localize "STR_FIELDREPAIR";
+private _txt = format[MLOC(REPAIRS_LEFT), _veh getVariable QGVAR(repair_cargo), GVAR(DEFAULT_REPAIR_TRUCK_USES)];
+private _header = MLOC(FIELD_REPAIR_HEADER);
 hint Format ["%1 \n\n %2",_header,_txt];
