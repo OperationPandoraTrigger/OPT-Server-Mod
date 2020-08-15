@@ -70,7 +70,7 @@ DFUNC(revive) =
 			player switchmove "";
 			player action ["WeaponInHand", player];
 		},
-		localize "STR_REVIVE"
+		MLOC(MEDIC_REVIVE)
 	] call ace_common_fnc_progressBar;
 };
 
@@ -112,7 +112,7 @@ DFUNC(stabilisieren) =
 			player switchmove "";
 			player action ["WeaponInHand", player];
 		},
-		localize "STR_STABILISE"
+		MLOC(STABILISE)
 	] call ace_common_fnc_progressBar;
 
 };
@@ -134,7 +134,7 @@ DFUNC(eigenversorgung) =
 			player switchmove "";
 			player action ["WeaponInHand", player];	
 		}, 
-		localize "STR_SELF_CARE"
+		MLOC(KILL_SELF)
 	] call ace_common_fnc_progressBar;
 
 };
@@ -151,8 +151,8 @@ player setVariable ["OPT_isStabilized", 0, true];
 //ACE Interaktioneinträge 
 GVAR(revive_Action_eigen) = 
 [
-	localize "STR_FIRST_AID",
-	localize "STR_FIRST_AID",
+	MLOC(FIRST_AID),
+	MLOC(FIRST_AID),
 	"",
 	{[] call FUNC(eigenversorgung)},
 	{(vehicle player == player)},

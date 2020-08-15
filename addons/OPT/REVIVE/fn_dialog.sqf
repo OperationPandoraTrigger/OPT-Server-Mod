@@ -107,12 +107,12 @@ GVAR(startzeit) = time;
 		{
 			private _medic_Name	= name _next_Medic;	
 			private _abst = floor (_medics select 0 select 0);
-			_hintMsg = format[localize "STR_MEDIC_DISTANCE", _medic_Name, _abst];
+			_hintMsg = format[MLOC(MEDIC_DISTANCE), _medic_Name, _abst];
 		};
 	} 
 	else 
 	{
-		_hintMsg = localize "STR_NO_MEDIC";
+		_hintMsg = MLOC(NO_MEDIC);
 	};
 
 

@@ -35,8 +35,8 @@ _return = false;
     if ((player getVariable ['OPT_isUnconscious',0] == 1) && {_key in (actionkeys _x)}) then 
     {
         _return = (_key == (actionkeys _x) select 0);
-        private _txt = localize "STR_CHAT_DEACTIVATED";
-        private _header = parseText localize "STR_SAN_SYS";
+        private _txt = MLOC(CHAT_DEACTIVATED);
+        private _header = MLOC(SAN_SYS);
         hint Format ["%1 \n\n %2",_header,_txt];
     };
 } forEach ['Chat'];

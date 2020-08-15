@@ -93,11 +93,11 @@ DFUNC(playerHandleDamage) =
 
 		if (_unit == _source) then 
         {          
-			[localize "STR_KILL_MSG", localize "STR_KILL_SELF"] spawn BIS_fnc_infoText;
+			[MLOCC(KILL_MSG), MLOC(KILL_SELF)] spawn BIS_fnc_infoText;
         } 
 		else
 		{         
-			[localize "STR_KILL_MSG", format["%1",name _instigator]] spawn BIS_fnc_infoText;
+			[MLOC(KILL_MSG), format["%1",name _instigator]] spawn BIS_fnc_infoText;
 
         };
 	};
