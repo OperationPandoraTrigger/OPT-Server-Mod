@@ -62,5 +62,69 @@ class CfgCLibLocalisation {
 				German = "Position zum Teleport mit Linksklick auswählen.";
 			};
 		};
+		class RULES {
+			class SLOT_LOCK {
+				English = "Slot lock";
+				German = "Slotsperre";
+			};
+			class SLOT_LOCK_PILOT {
+				English = "Only pilots are allowed to fly!";
+				German = "Es ist nur Piloten erlaubt zu fliegen!";
+			};
+			class SLOT_LOCK_CREW {
+				English = "This place is reserved for the crew!";
+				German = "Dieser Platz ist Besatzungsmitgliedern vorbehalten!";
+			};
+			class PLACE_MINE {
+				English = "Mines may only be laid by explosive technicians! Mine was deleted.";
+				German = "Minen dürfen nur von Sprengmeister gelegt werden! Mine wurde gelöscht.";
+			};
+			class RULE_VIOLATION {
+				English = "Violation of the rules";
+				German = "Regelverstoß";
+			};
+			class UAV_LOGIN {
+				English = "Connecting to UAV station";
+				German = "Verbinden mit UAV-Station";
+			};
+			class UAV_LOGOUT {
+				English = "Disconnect with UAV station";
+				German = "Trenne mit UAV-Station";
+			};
+			class UAV_CONNECT {
+				English = "Connecting...";
+				German = "verbinde...";
+			};
+			class UAV_DISCONNECT {
+				English = "disconnect...";
+				German = "trenne...";
+			};
+			class UAV_CONNECTION_MSG {
+				English = "UAV station \n\n Logged into UAV station. Connection is lost if more than 4m away.";
+				German = "UAV-Station \n\n In UAV-Station eingeloggt. Verbindung geht verloren, wenn mehr als 4m entfernt.";
+			};
+			class CONNECTION_QUIT {
+				English = "UAV station \n\n Logged out of UAV station.";
+				German = "UAV-Station \n\n Von UAV-Station ausgeloggt.";
+			};
+			class UAV_CONNECTION_LOST {
+				English = "UAV station \n\n Connection to UAV station lost.";
+				German = "UAV-Station \n\n Verbindung zur UAV-Station verloren.";
+			};
+			class WEAPON_LOCK {
+				English = "Weapon inadmissible for current player class.\n\n Weapon has been removed.";
+				German = "Waffe unzulässig für aktuelle Spielerklasse.\n\n Waffe wurde entfernt.";
+			};
+		};
+		class REVIVE {
+		};
+		class HUD {
+		};
+		class GPS {
+		};
+		class GELDZEIT {
+		};
+		class FIELDREPAIR {
+		};
 	};
 };
