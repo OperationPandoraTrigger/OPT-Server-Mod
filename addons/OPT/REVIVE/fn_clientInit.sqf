@@ -134,7 +134,7 @@ DFUNC(eigenversorgung) =
 			player switchmove "";
 			player action ["WeaponInHand", player];	
 		}, 
-		MLOC(KILL_SELF)
+		MLOC(SELF_CARE)
 	] call ace_common_fnc_progressBar;
 
 };
