@@ -277,6 +277,70 @@ class CfgCLibLocalisation {
 			};
 		};
 		class FIELDREPAIR {
+			class ANOTHER_ACTION {
+				English = "Other action in progress!";
+				German = "Andere Aktion im Gange!";
+			};
+			class REPAIR_TRUCK_DEPLETED {
+				English = "No more spare parts available in the repair truck.";
+				German = "Keine weiteren Ersatzteile im Reparatur-LKW vorhanden.";
+			};
+			class REPAIR_FINISHED {
+				English = "Repair finished";
+				German = "Reparatur beendet";
+			};
+			class REPAIR_CONDITIONS {
+				English = "Do not move the vehicle when working!";
+				German = "Das Fahrzeug während der Arbeit nicht bewegen!";
+			};
+			class REPAIR_INTERRUPTED {
+				English = "Repair interrupted";
+				German = "Reparatur unterbrochen";
+			};
+			class REPAIR_MSG_STRNG {
+				English = "Repair of %2 takes %1 s...";
+				German = "Reparatur von %2 dauert %1 s...";
+			};
+			class NEED_TOOLKIT {
+				English = "The vehicle no longer has any spare parts. Only an engineer can do field repairs now!";
+				German = "Das Fahrzeug hat keine Ersatzteile mehr. Nur ein Ingenieur kann jetzt noch Feldreparaturen durchführen!";
+			};
+			class FIELD_REPAIR_HEADER {
+				English = "Field Repair";
+				German = "Feldreparatur";
+			};
+			class REFUEL_FINISHED {
+				English = "Refuelling finished";
+				German = "Auftanken beendet";
+			};
+			class REFUEL_INTERRUPTED {
+				English = "Refuelling interrupted";
+				German = "Auftanken unterbrochen";
+			};
+			class REFUEL_MSG_STRING {
+				English = "Refuelling of %2 takes %1 s...";
+				German = "Auftanken von %2 dauert %1 s...";
+			};
+			class CHECK_REPAIRS {
+				English = "Check amount of spare parts";
+				German = "Prüfe Zahl an Ersatzteilen";
+			};
+			class SERIOUS_REPAIR {
+				English = "Perform complete repair";
+				German = "Komplettreparatur durchführen";
+			};
+			class FIELD_REFUEL {
+				English = "Use spare canister";
+				German = "Reservekanister verwenden";
+			};
+			class FIELD_REPAIR {
+				English = "Perform field repair";
+				German = "Feldreparatur durchführen";
+			};
+			class REPAIRS_LEFT {
+				English = "%1 of %2 Spare parts left";
+				German = "%1 von %2 Ersatzteilen übrig";
+			};
 		};
 	};
 };
