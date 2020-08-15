@@ -213,6 +213,14 @@ class CfgCLibLocalisation {
 			};
 		};
 		class GPS {
+			class PLAYER_STABILISED {
+				English = "%1 stabilised";
+				German = "%1 stabilisiert";
+			};
+			class PLAYER_INJURED {
+				English = "%1 injured";
+				German = "%1 verwundet";
+			};
 		};
 		class GELDZEIT {
 		};
