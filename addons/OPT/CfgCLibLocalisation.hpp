@@ -223,6 +223,58 @@ class CfgCLibLocalisation {
 			};
 		};
 		class GELDZEIT {
+			class CSAT_WIN {
+				English = "CSAT won!";
+				German = "CSAT hat gewonnen!";
+			};
+			class NATO_WIN {
+				English = "NATO won!";
+				German = "NATO hat gewonnen!";
+			};
+			class AAF_WIN {
+				English = "AAF won!";
+				German = "AAF hat gewonnen!";
+			};
+			class NO_WINNER {
+				English = "It's a tie!";
+				German = "Unentschieden!";
+			};
+			class ACE_EQIP {
+				English = "Equipment";
+				German = "Ausrüstung";
+			};
+			class ACE_EQIP_EARPLUGS {
+				English = "Earplugs";
+				German = "Ohrenstöpsel";
+			};
+			class EARPLUGS_IN {
+				English = "Earplugs in";
+				German = "Ohrstoepsel rein";
+			};
+			class EARPLUGS_OUT {
+				English = "Earplugs out";
+				German = "Ohrstoepsel raus";
+			};
+			class BUDGET_MIO {
+				English = "Budget: %1 Mio. €";
+				German = "Budget: %1 Mio. €";
+			};
+			class BUDGET {
+				English = "Budget: %1 €";
+				German = "Budget: %1 €";
+			};
+			class OVERDRAFT_MIO {
+				English = "Overdraft: %1 Mio. €";
+				German = "Dispo: %1 Mio. €";
+			};
+			class OVERDRAFT {
+				English = "Overdraft: %1 €";
+				German = "Dispo: %1 €";
+			};
+			class FRACTION_OVERVIEW {
+				English = "Fraction overview";
+				German = "Fraktionsübersicht";
+			};
 		};
 		class FIELDREPAIR {
 		};
