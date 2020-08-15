@@ -32,7 +32,7 @@ GVAR(officer) =
 if (typeOf player in GVAR(officer)) then 
 {
     player addAction [
-        format["<t size=""1.5"" color=""#ffffff"">%1</t>", localize "STR_ATTACK_FLAG"], 
+        format["<t size=""1.5"" color=""#ffffff"">%1</t>", MLOC(ATTACK_FLAG)], 
         {[] call FUNC(chooseFlag);}, 
         [], 
         6, 
@@ -43,7 +43,5 @@ if (typeOf player in GVAR(officer)) then
     ];
 
     // inform player
-    private _txt = localize "STR_FLAG_INST";
-    private _header = parseText localize "STR_FLAG_CHOOSE";
-    hint Format ["%1 \n\n %2",_header,_txt];
+    hint format["%1 \n\n %2",MLOC(FLAG_CHOOSE),MLOC(FLAG_INST)];
 };
