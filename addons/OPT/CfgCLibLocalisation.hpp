@@ -171,6 +171,46 @@ class CfgCLibLocalisation {
 			};
 		};
 		class HUD {
+			class AAFvCSAT {
+				English = "Player: (A) %1 vs %2 (C)";
+				German = "Spieler: (A) %1 vs %2 (C)";
+			};
+			class NATOvCSAT {
+				English = "Player: (N) %1 vs %2 (C)";
+				German = "Spieler: (N) %1 vs %2 (C)";
+			};
+			class NATOvAAF {
+				English = "Player: (N) %1 vs %2 (A)";
+				German = "Spieler: (N) %1 vs %2 (A)";
+			};
+			class AAFvCSAT_POINT {
+				English = "Points: (A) %1 vs %2 (C)";
+				German = "Punkte: (A) %1 : %2 (C)";
+			};
+			class NATOvCSAT_POINT {
+				English = "Points: (N) %1 vs %2 (C)";
+				German = "Punkte: (N) %1 : %2 (C)";
+			};
+			class NATOvAAF_POINT {
+				English = "Points: (N) %1 : %2 (A)";
+				German = "Punkte: (N) %1 : %2 (A)";
+			};
+			class TIME_LEFT {
+				English = "Remaining game time: %1";
+				German = "Rest-Spielzeit: %1";
+			};
+			class TIME_END {
+				English = "Time: 00:00";
+				German = "Zeit: 00:00";
+			};
+			class TIME_CEASEFIRE {
+				English = "Ceasefire: %1";
+				German = "Waffenruhe: %1";
+			};
+			class TIME_CEASEFIRE_END {
+				English = "Ceasefire: 00:00";
+				German = "Waffenruhe: 00:00";
+			};
 		};
 		class GPS {
 		};
