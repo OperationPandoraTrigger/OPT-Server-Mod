@@ -117,6 +117,58 @@ class CfgCLibLocalisation {
 			};
 		};
 		class REVIVE {
+			class KILL_MSG {
+				English = "Name of the enemy:";
+				German = "Name des Gegners:";
+			};
+			class KILL_SELF {
+				English = "self-caused";
+				German = "Selbstverschulden";
+			};
+			class FIRST_AID {
+				English = "First Aid";
+				German = "Erste Hilfe";
+			};
+			class MEDIC_REVIVE {
+				English = "Resuscitate";
+				German = "Wiederbeleben";
+			};
+			class STABILISE {
+				English = "Stabilise";
+				German = "Stabilisieren";
+			};
+			class SELF_CARE {
+				English = "Self-care";
+				German = "Eigenversorgung";
+			};
+			class MEDIC_DISTANCE {
+				English = "Paramedic %1 is %2m away.";
+				German = "Sanitäter %1 ist %2m entfernt.";
+			};
+			class NO_MEDIC {
+				English = "No paramedics nearby.";
+				German = "Kein Sanitäter in der Nähe.";
+			};
+			class CARRY_DRAG {
+				English = "Carry/Drag";
+				German = "Tragen/Ziehen";
+			};
+			class CARRY {
+				English = "Carry";
+				German = "Tragen";
+			};
+			class DRAG {
+				English = "Drag";
+				German = "Ziehen";
+			};
+			class CHAT_DEACTIVATED {
+				English = "Chat disabled!";
+				German = "Chat deaktiviert!";
+			};
+			class SAN_SYS {
+				English = "San-System";
+				German = "San-System";
+			};
 		};
 		class HUD {
 		};
