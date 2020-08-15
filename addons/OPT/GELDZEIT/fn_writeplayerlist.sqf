@@ -21,7 +21,7 @@
 
 #include "macros.hpp"
 
-private _cat = localize "STR_FRACTION_OVERVIEW";
+private _cat = MLOC(FRACTION_OVERVIEW);
 private _message = "";
 private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
 

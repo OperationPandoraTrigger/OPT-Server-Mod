@@ -41,17 +41,17 @@ switch (GVAR(Fraktionauswahl)) do
 			if (_points2 > _points1) then 
 			{
 				GVAR(csat_win) = 1;
-				private _text = localize "STR_CSAT_WIN";
+				private _text = MLOC(CSAT_WIN);
 			} 
 			else 
 			{
 				GVAR(aaf_win) = 1;
-				private _text = localize "STR_AAF_WIN";
+				private _text = MLOC(AAF_WIN);
 			};
 		}	
 		else 
 		{
-				private _text = localize "STR_NO_WINNER";
+				private _text = MLOC(NO_WINNER);
 		};	
 	};
 
@@ -66,17 +66,17 @@ switch (GVAR(Fraktionauswahl)) do
 			if (_points2 > _points1) then 
 			{
 				GVAR(csat_win = 1);
-				private _text = localize "STR_CSAT_WIN";
+				private _text = MLOC(CSAT_WIN);
 			} 
 			else 
 			{
 				GVAR(nato_win = 1);
-				private _text = localize "STR_NATO_WIN";
+				private _text = MLOC(NATO_WIN);
 			};
 		}	
 		else 
 		{
-				private _text = localize "STR_NO_WINNER";
+				private _text = MLOC(NO_WINNER);
 		};		
 	};
 
@@ -91,17 +91,17 @@ switch (GVAR(Fraktionauswahl)) do
 			if (_points2 > _points1) then 
 			{
 				GVAR(aaf_win = 1);
-				private _text = localize "STR_AAF_WIN";
+				private _text = MLOC(AAF_WIN);
 			} 
 			else 
 			{
 				GVAR(nato_win = 1);
-				private _text = localize "STR_NATO_WIN";
+				private _text = MLOC(NATO_WIN);
 			};
 		}	
 		else 
 		{
-				private _text = localize "STR_NO_WINNER";
+				private _text = MLOC(NO_WINNER);
 		};	
 	};
 

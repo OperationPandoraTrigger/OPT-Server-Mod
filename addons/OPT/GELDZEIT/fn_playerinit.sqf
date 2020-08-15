@@ -46,8 +46,8 @@ enableTeamswitch false;
 
 	// setup earplug ace menu
 	private _action_earplug = [
-		localize "STR_ACE_EQIP",
-		localize "STR_ACE_EQIP_EARPLUGS",
+		MLOC(ACE_EQIP),
+		MLOC(ACE_EQIP_EARPLUGS),
 		"",
 		{
 			params ["_target", "_player", "_params"]; 
