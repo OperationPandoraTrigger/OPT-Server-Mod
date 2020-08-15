@@ -59,7 +59,7 @@ GVAR(Punktecount) = [{
 				else 
 				{
 
-						private _message = format [localize "STR_POINT_NO_DOMINATOR_AAFvCSAT", GVAR(aaf_points), GVAR(csat_points)];
+						private _message = format [MLOC(POINT_NO_DOMINATOR_AAFvCSAT), GVAR(aaf_points), GVAR(csat_points)];
 						private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
 						[_message] remoteExecCall ["systemChat", 0, true];
 
@@ -106,7 +106,7 @@ GVAR(Punktecount) = [{
 				else 
 				{
 
-						private _message = format [localize "STR_POINT_NO_DOMINATOR_NATOvCSAT", GVAR(nato_points), GVAR(csat_points)];
+						private _message = format [MLOC(POINT_NO_DOMINATOR_NATOvCSAT), GVAR(nato_points), GVAR(csat_points)];
 						private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
 						[_message] remoteExecCall ["systemChat", 0, true];
 
@@ -154,7 +154,7 @@ GVAR(Punktecount) = [{
 				else 
 				{
 
-						private _message = format [localize "STR_POINT_NO_DOMINATOR_NATOvAAF", GVAR(nato_points), GVAR(aaf_points)];
+						private _message = format [MLOC(POINT_NO_DOMINATOR_NATOvAAF), GVAR(nato_points), GVAR(aaf_points)];
 						private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
 						[_message] remoteExecCall ["systemChat", 0, true];
 

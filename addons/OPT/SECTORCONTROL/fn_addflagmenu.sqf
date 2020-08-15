@@ -43,5 +43,7 @@ if (typeOf player in GVAR(officer)) then
     ];
 
     // inform player
-    hint format["%1 \n\n %2",MLOC(FLAG_CHOOSE),MLOC(FLAG_INST)];
+    private _txt = MLOC(FLAG_INST);
+    private _header = MLOC(FLAG_CHOOSE);
+    hint format["%1 \n\n %2",_header,_txt];
 };

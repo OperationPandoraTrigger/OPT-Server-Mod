@@ -14,8 +14,8 @@
 */
 #include "macros.hpp"
 
-private _txt = localize "STR_TELEPORT_MSG";
-private _header = parseText localize "STR_TELEPORT_MSG_HEADER";
+private _txt = MLOC(TELEPORT_MSG);
+private _header = MLOC(TELEPORT_MSG_HEADER);
 hint Format ["%1 \n\n %2",_header,_txt];
 
 openMap true;

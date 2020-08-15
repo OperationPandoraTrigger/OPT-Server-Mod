@@ -92,8 +92,8 @@ DFUNC(Minensperrmeldung) =
     deleteVehicle _explosive;  
 
     // Warnhinweis
-    private _txt = localize "STR_MINE_VIOLATION";
-    private _header = parseText localize "STR_MINE_VIOLATION_HEADER";
+    private _txt = MLOC(MINE_VIOLATION);
+    private _header = MLOC(MINE_VIOLATION_HEADER);
     hint Format ["%1 \n\n %2",_header,_txt];
 
 };
