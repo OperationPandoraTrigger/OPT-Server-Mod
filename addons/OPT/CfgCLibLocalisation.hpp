@@ -99,17 +99,21 @@ class CfgCLibLocalisation {
 				English = "disconnect...";
 				German = "trenne...";
 			};
+			class UAV_STATION {
+				English = "UAV station";
+				German = "UAV-Station";
+			};
 			class UAV_CONNECTION_MSG {
-				English = "UAV station \n\n Logged into UAV station. Connection is lost if more than 4m away.";
-				German = "UAV-Station \n\n In UAV-Station eingeloggt. Verbindung geht verloren, wenn mehr als 4m entfernt.";
+				English = "Logged into UAV station. Connection is lost if more than 4m away.";
+				German = "In UAV-Station eingeloggt. Verbindung geht verloren, wenn mehr als 4m entfernt.";
 			};
 			class CONNECTION_QUIT {
-				English = "UAV station \n\n Logged out of UAV station.";
-				German = "UAV-Station \n\n Von UAV-Station ausgeloggt.";
+				English = "Logged out of UAV station.";
+				German = "Von UAV-Station ausgeloggt.";
 			};
 			class UAV_CONNECTION_LOST {
-				English = "UAV station \n\n Connection to UAV station lost.";
-				German = "UAV-Station \n\n Verbindung zur UAV-Station verloren.";
+				English = "Connection to UAV station lost.";
+				German = "Verbindung zur UAV-Station verloren.";
 			};
 			class WEAPON_LOCK {
 				English = "Weapon inadmissible for current player class.\n\n Weapon has been removed.";

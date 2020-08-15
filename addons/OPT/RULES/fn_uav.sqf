@@ -28,7 +28,9 @@ private _pcs = [AAF_Drohnenstation,CSAT_Drohnenstation];
                 {
                     params ["_terminal"];
                     
-                    Hint MLOC(UAV_CONNECTION_MSG);
+                    private _txt = MLOC(UAV_CONNECTION_MSG);
+                    private _header = MLOC(UAV_STATION);
+                    Hint format["%1 \n\n %2",_header,_txt]; 
                     player setVariable [QGVAR(loggedInStation), _terminal];
                     
                     if (PLAYERSIDE == west) then 
@@ -69,7 +71,9 @@ private _pcs = [AAF_Drohnenstation,CSAT_Drohnenstation];
                 [],
                 {
                     
-                    Hint MLOC(CONNECTION_QUIT);
+                    private _txt = MLOC(CONNECTION_QUIT);
+                    private _header = MLOC(UAV_STATION);
+                    Hint format["%1 \n\n %2",_header,_txt]; 
                     player connectTerminalToUAV objNull;
                     player setVariable [QGVAR(loggedInStation), objNull];
                     
@@ -117,8 +121,10 @@ DFUNC(UAV_check_player) =
 
                 player setVariable [QGVAR(loggedInStation), objNull];
                 player connectTerminalToUAV objNull;
-                hint MLOC(UAV_CONNECTION_LOST);
-                    
+
+                private _txt = MLOC(UAV_CONNECTION_LOST);
+                private _header = MLOC(UAV_STATION);
+                Hint format["%1 \n\n %2",_header,_txt];     
                 if (PLAYERSIDE == west) then 
                 {
                     player removeWeapon "B_UavTerminal";
