@@ -171,7 +171,7 @@ if !(_typeOfPlayer in GVAR(medic)) then
 
 if (_bad_item_used) then 
 {
-    private _txt = localize "STR_WEAPON_LOCK";
-    private _header = parseText localize "STR_RULE_VIOLATION";
+    private _txt = MLOC(WEAPON_LOCK);
+    private _header = MLOC(RULE_VIOLATION);
     hint Format ["%1 \n\n %2",_header,_txt];
 };

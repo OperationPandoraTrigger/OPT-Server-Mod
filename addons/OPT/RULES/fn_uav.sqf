@@ -19,7 +19,7 @@ private _pcs = [AAF_Drohnenstation,CSAT_Drohnenstation];
 // add to each UAV PC addaction menu
 {
     _x addAction [
-        "<t color='#F3B601'>" + localize "STR_UAV_LOGIN" + "</t>",
+        format["<t color=""#F3B601"">%1</t>", MLOC(UAV_LOGIN)],
         {
             private _terminal = _this select 0;
             [
@@ -28,7 +28,7 @@ private _pcs = [AAF_Drohnenstation,CSAT_Drohnenstation];
                 {
                     params ["_terminal"];
                     
-                    Hint localize "STR_UAV_CONNECTION_MSG";
+                    Hint MLOC(UAV_CONNECTION_MSG);
                     player setVariable [QGVAR(loggedInStation), _terminal];
                     
                     if (PLAYERSIDE == west) then 
@@ -49,7 +49,7 @@ private _pcs = [AAF_Drohnenstation,CSAT_Drohnenstation];
                     [] call FUNC(UAV_check_player);
                 },
                 {},
-                localize "STR_UAV_CONNECT"
+                MLOC(UAV_CONNECT)
             ] call ace_common_fnc_progressBar;
         },
         [],
@@ -61,7 +61,7 @@ private _pcs = [AAF_Drohnenstation,CSAT_Drohnenstation];
     ];
 
     _x addAction [
-        "<t color='#F3B601'>" + localize "STR_UAV_LOGOUT" + "</t>",
+        format["<t color=""#F3B601"">%1</t>", MLOC(UAV_LOGOUT)],
         {
             private _terminal = _this select 0;
             [
@@ -69,7 +69,7 @@ private _pcs = [AAF_Drohnenstation,CSAT_Drohnenstation];
                 [],
                 {
                     
-                    Hint localize "STR_UAV_CONNECTION_QUIT";
+                    Hint MLOC(CONNECTION_QUIT);
                     player connectTerminalToUAV objNull;
                     player setVariable [QGVAR(loggedInStation), objNull];
                     
@@ -90,7 +90,7 @@ private _pcs = [AAF_Drohnenstation,CSAT_Drohnenstation];
                     };
                 },
                 {},
-                localize "STR_UAV_DISCONNECT"
+                MLOC(UAV_DISCONNECT)
             ] call ace_common_fnc_progressBar;
         },
         [],
@@ -117,7 +117,7 @@ DFUNC(UAV_check_player) =
 
                 player setVariable [QGVAR(loggedInStation), objNull];
                 player connectTerminalToUAV objNull;
-                hint localize "STR_UAV_CONNECTION_LOST";
+                hint MLOC(UAV_CONNECTION_LOST);
                     
                 if (PLAYERSIDE == west) then 
                 {

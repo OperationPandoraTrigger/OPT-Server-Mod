@@ -58,8 +58,8 @@ player addEventHandler ["GetInMan",
                 if (!(typeOf _vec in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then 
 				{
                     _unit action ["GetOut", _vec];
-                    private _txt = localize "STR_SLOT_LOCK_PILOT";
-					private _header = localize "STR_SLOT_LOCK";
+                    private _txt = MLOC(SLOT_LOCK_PILOT);
+					private _header = MLOC(SLOT_LOCK);
     				hint Format ["%1 \n\n %2",_header,_txt];
                 };
             };
@@ -75,8 +75,8 @@ player addEventHandler ["GetInMan",
                 if (typeOf _vec in GVAR(crew_vecs) || _vec isKindOf "Tank") then 
 				{
                     _unit action ["GetOut", _vec];
-                    private _txt = localize "STR_SLOT_LOCK_CREW";
-                    private _header = localize "STR_SLOT_LOCK";
+                    private _txt = MLOC(SLOT_LOCK_CREW);
+                    private _header = MLOC(SLOT_LOCK);
     				hint Format ["%1 \n\n %2",_header,_txt];
                 };
             };
@@ -103,8 +103,8 @@ player addEventHandler ["SeatSwitchedMan",
                 if (!(typeOf _vec in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then 
 				{
                     _unit1 action ["GetOut", _vec];
-                    _txt = localize "STR_SLOT_LOCK_PILOT";
-                    private _header = localize "STR_SLOT_LOCK";
+                    _txt = MLOC(SLOT_LOCK_PILOT);
+                    private _header = MLOC(SLOT_LOCK);
     				hint Format ["%1 \n\n %2",_header,_txt];
                 };
             };
@@ -120,8 +120,8 @@ player addEventHandler ["SeatSwitchedMan",
                 if (typeOf _vec in GVAR(crew_vecs) || _vec isKindOf "Tank") then 
 				{
                     _unit1 action ["GetOut", _vec];
-                    _txt = localize "STR_SLOT_LOCK_CREW";
-                    private _header = localize "STR_SLOT_LOCK";
+                    _txt = MLOC(SLOT_LOCK_CREW);
+                    private _header = MLOC(SLOT_LOCK);
     				hint Format ["%1 \n\n %2",_header,_txt];
                 };
             };
@@ -143,8 +143,8 @@ DFUNC(Minencheck) =
     deleteVehicle _explosive;  
 
     // Warnhinweis
-    private _txt = localize "STR_PLACE_MINE";
-    private _header = parseText localize "STR_RULE_VIOLATION";
+    private _txt = MLOC(PLACE_MINE);
+    private _header = MLOC(RULE_VIOLATION);
     hint Format ["%1 \n\n %2",_header,_txt];
 
 };
