@@ -29,17 +29,17 @@ disableSerialization;
     {
         case "AAFvsCSAT" : 
         {
-            _playersStr = format [localize "STR_AAFvCSAT", playersNumber independent, playersNumber east];
+            _playersStr = format [MLOC(AAFvCSAT), playersNumber independent, playersNumber east];
         };
 
         case "NATOvsCSAT" : 
         {
-            _playersStr = format [localize "STR_NATOvCSAT", playersNumber west, playersNumber east];
+            _playersStr = format [MLOC(NATOvCSAT), playersNumber west, playersNumber east];
         };
 
         case "NATOvsAAF" : 
         {
-            _playersStr = format [localize "STR_NATOvAAF", playersNumber west, playersNumber independent];         
+            _playersStr = format [MLOC(NATOvAAF), playersNumber west, playersNumber independent];         
         };
 
         default 
@@ -68,17 +68,17 @@ disableSerialization;
     {
         case "AAFvsCSAT" : 
         {
-            _scoreStr = format [localize "STR_AAFvCSAT_POINT",  OPT_SECTORCONTROL_aaf_points, OPT_SECTORCONTROL_csat_points];
+            _scoreStr = format [MLOC(AAFvCSAT_POINT),  OPT_SECTORCONTROL_aaf_points, OPT_SECTORCONTROL_csat_points];
         };
 
         case "NATOvsCSAT" : 
         {
-            _scoreStr = format [localize "STR_NATOvCSAT_POINT", OPT_SECTORCONTROL_nato_points, OPT_SECTORCONTROL_csat_points];
+            _scoreStr = format [MLOC(NATOvCSAT_POINT), OPT_SECTORCONTROL_nato_points, OPT_SECTORCONTROL_csat_points];
         };
 
         case "NATOvsAAF" : 
         {
-            _scoreStr = format [localize "STR_NATOvAAF_POINT", OPT_SECTORCONTROL_nato_points, OPT_SECTORCONTROL_aaf_points];          
+            _scoreStr = format [MLOC(NATOvAAF_POINT), OPT_SECTORCONTROL_nato_points, OPT_SECTORCONTROL_aaf_points];          
         };
 
         default 
@@ -109,13 +109,13 @@ disableSerialization;
         if (_playTime > 0) then 
         {
 
-            _timeStr = format [localize "STR_TIME_LEFT", _timeLeft];
+            _timeStr = format [MLOC(TIME_LEFT), _timeLeft];
             _control ctrlSetTextColor [0.7, 0.7, 0.7, 1];
         } 
         else
         {
 
-            _timeStr = localize "STR_TIME_END";
+            _timeStr = MLOC(TIME_END);
             _control ctrlSetTextColor [1, 0, 0, 0.9];
         };
     } 
@@ -128,13 +128,13 @@ disableSerialization;
         if (_truceTime > 0) then 
         {
 
-            _timeStr = format [localize "STR_TIME_CEASEFIRE", _timeLeft];
+            _timeStr = format [MLOC(TIME_CEASEFIRE), _timeLeft];
             _control ctrlSetTextColor [0.6, 0.1, 0, 1];
         } 
         else
         {
 
-            _timeStr = localize "STR_TIME_CEASEFIRE_END";
+            _timeStr = MLOC(TIME_CEASEFIRE_END);
             _control ctrlSetTextColor [0.7, 0.7, 0.7, 1];
         }
     };
