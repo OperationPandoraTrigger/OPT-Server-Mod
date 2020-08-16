@@ -93,11 +93,11 @@ DFUNC(playerHandleDamage) =
 
 		if (_unit == _source) then 
         {          
-			[MLOCC(KILL_MSG), MLOC(KILL_SELF)] spawn BIS_fnc_infoText;
+			["Name des Gegners:", "Selbstverschulden"] spawn BIS_fnc_infoText;
         } 
 		else
 		{         
-			[MLOC(KILL_MSG), format["%1",name _instigator]] spawn BIS_fnc_infoText;
+			["Name des Gegners:", format["%1",name _instigator]] spawn BIS_fnc_infoText;
 
         };
 	};
