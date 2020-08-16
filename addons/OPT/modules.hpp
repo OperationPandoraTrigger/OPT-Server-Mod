@@ -76,6 +76,7 @@ class CfgCLibModules {
             FNC(briefing);
             FNC(Zeus);
             FNC(init);
+            FNC(beam);
         };
 		MODULE(SECTORCONTROL) 
         {

@@ -14,6 +14,102 @@
 */
 #include "macros.hpp"
 
+//Revive Funktion 
+DFUNC(revive) = 
+{
+    params 
+    [
+        ["_unit", objNull]
+    ];
+
+	GVAR(verletzter) = _unit;
+	GVAR(Helizeit) = 0;
+
+	GVAR(Helizeit) = GVAR(Helizeitsani);
+
+	if (!(typeOf player in GVAR(SaniKlassen))) then 
+	{
+		//50% längere Heilzeit bei nicht Sanitätern
+		GVAR(Helizeit) = GVAR(Helizeitsani)+(GVAR(Helizeitsani)*0.5);
+	};
+
+	player switchmove "AinvPknlMstpSnonWrflDnon_medic";
+
+	[
+		GVAR(Helizeit),
+		[],
+		{
+			[GVAR(verletzter), false, 1, true] call ace_medical_fnc_setUnconscious;
+			[player, GVAR(verletzter)] call ace_medical_treatment_fnc_fullHeal;
+			player switchmove "";
+			player action ["WeaponInHand", player];
+
+			//Var zurück setzen 
+			GVAR(verletzter) setVariable ["OPT_isUnconscious", 0, true];
+		 	GVAR(verletzter) setVariable ["OPT_isStabilized", 0, true];
+
+			//Schaden Ausblendung Ausschalten
+			GVAR(verletzter) allowDamage true;
+
+			//Log Eintrag auslösen 
+			[[GVAR(verletzter),player,1], QFUNC(revivelog), 2] call CFUNC(remoteExec);
+		},
+		{
+			player switchmove "";
+			player action ["WeaponInHand", player];
+		},
+		"Wiederbeleben"
+	] call ace_common_fnc_progressBar;
+};
+
+// Stabilisieren Funktion 
+DFUNC(stabilisieren) = 
+{
+    params 
+    [
+        ["_unit", objNull]
+    ];
+
+	GVAR(verletzter) = _unit;
+
+	player switchmove "AinvPknlMstpSnonWrflDnon_medic";
+
+	GVAR(stabilisierungzeitnew) = 0;
+
+	GVAR(stabilisierungzeitnew) = GVAR(stabilisierungzeit);
+
+	if (!(typeOf player in GVAR(SaniKlassen))) then 
+	{
+		//50% längere Stabilisierungzeit bei nicht Sanitätern
+		GVAR(stabilisierungzeitnew) = GVAR(stabilisierungzeit)+(GVAR(stabilisierungzeit)*0.5);
+	};
+
+	[
+		GVAR(stabilisierungzeitnew),
+		[],
+		{
+			player switchmove "";
+			player action ["WeaponInHand", player];
+
+			//Person bewustlos halten 
+			[player, GVAR(verletzter)] call ace_medical_treatment_fnc_fullHeal;
+			[GVAR(verletzter), true, 9000, true] call ace_medical_fnc_setUnconscious;
+
+			//Var "Person ist Stabilisiert" auf eins setzen
+			GVAR(verletzter) setVariable ["OPT_isStabilized", 1, true];
+
+			//Log Eintrag auslösen 
+			[[GVAR(verletzter),player,2], QFUNC(revivelog), 2] call CFUNC(remoteExec);
+		},
+		{
+			player switchmove "";
+			player action ["WeaponInHand", player];
+		},
+		"Stabilisieren"
+	] call ace_common_fnc_progressBar;
+
+};
+
 ["CAManBase", "init", 
 {
     params ["_unit"];
@@ -38,8 +134,8 @@
         MLOC(FIRST_AID),
         MLOC(STABILISE),
         "",
-        {[] call FUNC(stabilisieren)},
-        {((cursorTarget getVariable ["ACE_isUnconscious", false]) and (cursorTarget getVariable ["OPT_isStabilized", 1] == 0))},
+        {[_target] call FUNC(stabilisieren)},
+        {((_target getVariable ["ACE_isUnconscious", false]) and (_target getVariable ["OPT_isStabilized", 1] == 0))},
         {}
 
     ] call ace_interact_menu_fnc_createAction;
@@ -49,8 +145,8 @@
         MLOC(FIRST_AID),
         MLOC(MEDIC_REVIVE),
         "",
-        {[] call FUNC(revive)},
-        {((cursorTarget getVariable ["ACE_isUnconscious", false]) or (cursorTarget getVariable ["OPT_isStabilized", 1] == 1))},
+        {[_target] call FUNC(revive)},
+        {((_target getVariable ["ACE_isUnconscious", false]) or (_target getVariable ["OPT_isStabilized", 1] == 1))},
         {}
 
     ] call ace_interact_menu_fnc_createAction;
@@ -60,8 +156,8 @@
         MLOC(CARRY_DRAG),
         MLOC(DRAG),
         "",
-        {[player, cursorTarget] call ace_dragging_fnc_startDrag},
-        {((cursorTarget getVariable ["ACE_isUnconscious", false]) or (cursorTarget getVariable ["OPT_isStabilized", 1] == 1))},
+        {[player, _target] call ace_dragging_fnc_startDrag},
+        {((_target getVariable ["ACE_isUnconscious", false]) or (_target getVariable ["OPT_isStabilized", 1] == 1))},
         {}
 
     ] call ace_interact_menu_fnc_createAction;
@@ -71,8 +167,8 @@
         MLOC(CARRY_DRAG),
         MLOC(CARRY),
         "",
-        {[player, cursorTarget] call ace_dragging_fnc_startCarry},
-        {((cursorTarget getVariable ["ACE_isUnconscious", false]) or (cursorTarget getVariable ["OPT_isStabilized", 1] == 1))},
+        {[player, _target] call ace_dragging_fnc_startCarry},
+        {((_target getVariable ["ACE_isUnconscious", false]) or (_target getVariable ["OPT_isStabilized", 1] == 1))},
         {}
 
     ] call ace_interact_menu_fnc_createAction;
