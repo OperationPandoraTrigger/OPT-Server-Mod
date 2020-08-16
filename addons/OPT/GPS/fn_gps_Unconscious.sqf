@@ -88,11 +88,11 @@ GVAR(markerPoolisUnconscious) = [];
             // Ist Spieler stabilisiert
             if (player getVariable ["OPT_isStabilized", 1] == 1)  then 
 			{
-				_marker setMarkerTextLocal format ["%1 stabilisiert",_name];	
+				_marker setMarkerTextLocal format [MLOC(PLAYER_STABILISED),_name];	
             } 
 			else 
 			{
-				_marker setMarkerTextLocal format ["%1 verwundet",_name];
+				_marker setMarkerTextLocal format [MLOC(PLAYER_INJURED),_name];
             };
         };
     };      

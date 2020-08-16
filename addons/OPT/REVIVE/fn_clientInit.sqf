@@ -48,7 +48,7 @@ DFUNC(eigenversorgung) =
 			player switchmove "";
 			player action ["WeaponInHand", player];	
 		}, 
-		"Eigenversorgung"
+		MLOC(SELF_CARE)
 	] call ace_common_fnc_progressBar;
 
 };
@@ -65,8 +65,8 @@ player setVariable ["OPT_isStabilized", 0, true];
 //ACE Interaktioneinträge 
 GVAR(revive_Action_eigen) = 
 [
-	"Erste Hilfe",
-	"Erste Hilfe",
+	MLOC(FIRST_AID),
+	MLOC(FIRST_AID),
 	"",
 	{[] call FUNC(eigenversorgung)},
 	{(vehicle player == player)},

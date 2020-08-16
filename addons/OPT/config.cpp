@@ -1,4 +1,5 @@
 #include "macros.hpp"
+#include "CfgCLibLocalisation.hpp"
 class CfgPatches {
     class PREFIX {
         units[] = {};

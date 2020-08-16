@@ -19,7 +19,7 @@ private _pcs = [AAF_Drohnenstation,CSAT_Drohnenstation];
 // add to each UAV PC addaction menu
 {
     _x addAction [
-        "<t color='#F3B601'>" + "Verbinden mit UAV-Station" + "</t>",
+        format["<t color=""#F3B601"">%1</t>", MLOC(UAV_LOGIN)],
         {
             private _terminal = _this select 0;
             [
@@ -28,7 +28,9 @@ private _pcs = [AAF_Drohnenstation,CSAT_Drohnenstation];
                 {
                     params ["_terminal"];
                     
-                    Hint "UAV-Station \n\n In UAV-Station eingeloggt.Verbindung geht verloren, wenn mehr als 4m entfernt.";
+                    private _txt = MLOC(UAV_CONNECTION_MSG);
+                    private _header = MLOC(UAV_STATION);
+                    Hint format["%1 \n\n %2",_header,_txt]; 
                     player setVariable [QGVAR(loggedInStation), _terminal];
                     
                     if (PLAYERSIDE == west) then 
@@ -49,7 +51,7 @@ private _pcs = [AAF_Drohnenstation,CSAT_Drohnenstation];
                     [] call FUNC(UAV_check_player);
                 },
                 {},
-                "verbinde..."
+                MLOC(UAV_CONNECT)
             ] call ace_common_fnc_progressBar;
         },
         [],
@@ -61,7 +63,7 @@ private _pcs = [AAF_Drohnenstation,CSAT_Drohnenstation];
     ];
 
     _x addAction [
-        "<t color='#F3B601'>" + "Trennen mit UAV-Station" + "</t>",
+        format["<t color=""#F3B601"">%1</t>", MLOC(UAV_LOGOUT)],
         {
             private _terminal = _this select 0;
             [
@@ -69,7 +71,9 @@ private _pcs = [AAF_Drohnenstation,CSAT_Drohnenstation];
                 [],
                 {
                     
-                    Hint "UAV-Station \n\n Von UAV-Station ausgeloggt.";
+                    private _txt = MLOC(CONNECTION_QUIT);
+                    private _header = MLOC(UAV_STATION);
+                    Hint format["%1 \n\n %2",_header,_txt]; 
                     player connectTerminalToUAV objNull;
                     player setVariable [QGVAR(loggedInStation), objNull];
                     
@@ -90,7 +94,7 @@ private _pcs = [AAF_Drohnenstation,CSAT_Drohnenstation];
                     };
                 },
                 {},
-                "trenne..."
+                MLOC(UAV_DISCONNECT)
             ] call ace_common_fnc_progressBar;
         },
         [],
@@ -117,8 +121,10 @@ DFUNC(UAV_check_player) =
 
                 player setVariable [QGVAR(loggedInStation), objNull];
                 player connectTerminalToUAV objNull;
-                hint "UAV-Station \n\n Verbindung zur UAV-Station verloren.";
-                    
+
+                private _txt = MLOC(UAV_CONNECTION_LOST);
+                private _header = MLOC(UAV_STATION);
+                Hint format["%1 \n\n %2",_header,_txt];     
                 if (PLAYERSIDE == west) then 
                 {
                     player removeWeapon "B_UavTerminal";

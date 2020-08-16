@@ -18,35 +18,27 @@ params [["_veh", objNull]];
 
 if (_veh isEqualTo objNull) exitWith {false};
 
-#define STR_ANOTHER_ACTION "Andere Aktion im Gange!"
-#define STR_REPAIR_TRUCK_DEPLETED "Keine weiteren Ersatzteile im Reparatur-LKW vorhanden."
-#define STR_REPAIR_FINISHED "Reparatur beendet"  
-#define STR_REPAIR_CONDITIONS "Das Fahrzeug während der Arbeit nicht bewegen!"
-#define STR_REPAIR_INTERRUPTED "Reparatur unterbrochen"
-#define STR_REPAIR_MSG_STRING "Reparatur von %2 dauert %1 s..."
-#define STR_NEED_TOOLKIT "Das Fahrzeug hat keine Ersatzteile mehr. Nur ein Ingenieur kann jetzt noch Feldreparaturen durchführen!"
-
 // if another action is ongoing
 if (GVAR(mutexAction)) exitWith 
 {
-    private _txt = STR_ANOTHER_ACTION;
-    private _header = parseText "<t size='2.0' color='#D7DF01'>Feldreparatur</t>";
+    private _txt = MLOC(ANOTHER_ACTION);
+    private _header = MLOC(FIELD_REPAIR_HEADER);
     hint Format ["%1 \n\n %2",_header,_txt];
 };
 
 // if conditions are not met
 if (not alive player or (player distance _veh) > 10 or (vehicle player != player) or speed _veh > 3) exitWith 
 {
-    private _txt = STR_REPAIR_CONDITIONS;
-    private _header = parseText "<t size='2.0' color='#D7DF01'>Feldreparatur</t>";
+    private _txt = MLOC(REPAIR_CONDITIONS);
+    private _header = MLOC(FIELD_REPAIR_HEADER);
     hint Format ["%1 \n\n %2",_header,_txt];
 };
 
 // if player has no tool kit or vehicle was repaired more often than free repair
 if (!(typeOf player in GVAR(pioniers)) and (_veh getVariable [QGVAR(longRepairTimes), 0] > 0)) exitWith 
 {
-    private _txt = STR_NEED_TOOLKIT;
-    private _header = parseText "<t size='2.0' color='#D7DF01'>Feldreparatur</t>";
+    private _txt = MLOC(NEED_TOOLKIT);
+    private _header = MLOC(FIELD_REPAIR_HEADER);
     hint Format ["%1 \n\n %2",_header,_txt];
 };
 
@@ -85,8 +77,8 @@ if (_veh getVariable [QGVAR(repTimeLeft), 0] > 0) then
         (_this select 0) params ["_veh"];
 
         player switchMove "";
-        private _txt = STR_REPAIR_FINISHED;
-        private _header = parseText "<t size='2.0' color='#D7DF01'>Feldreparatur</t>";
+        private _txt = MLOC(REPAIR_FINISHED);
+        private _header = MLOC(FIELD_REPAIR_HEADER);
         hint Format ["%1 \n\n %2",_header,_txt];
 
         [_veh] remoteExecCall [QFUNC(partRepair), _veh, false]; // called where vehicle is local!
@@ -97,13 +89,13 @@ if (_veh getVariable [QGVAR(repTimeLeft), 0] > 0) then
     {   
         (_this select 0) params ["_veh", "_startTime", "_maxlength"];
 
-        private _txt = STR_REPAIR_INTERRUPTED;
-        private _header = parseText "<t size='2.0' color='#D7DF01'>Feldreparatur</t>";
+        private _txt = MLOC(REPAIR_INTERRUPTED);
+        private _header = MLOC(FIELD_REPAIR_HEADER);
         hint Format ["%1 \n\n %2",_header,_txt];
 
         _veh setVariable [QGVAR(repTimeLeft), _maxlength - (time - _startTime), true];
     },
-    format[STR_REPAIR_MSG_STRING, _maxlength, _vehname],
+    format[MLOC(REPAIR_MSG_STRNG), _maxlength, _vehname],
     {
         (_this select 0) params ["_veh"];
         alive player and (player distance _veh) < 10 and 

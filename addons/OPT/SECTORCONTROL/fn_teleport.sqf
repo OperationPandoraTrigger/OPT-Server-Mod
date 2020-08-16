@@ -14,8 +14,8 @@
 */
 #include "macros.hpp"
 
-private _txt = "Position zum Teleport mit Linksklick auswählen.";
-private _header = parseText "<t size='2.0' color='#D7DF01'>Teleport</t>";
+private _txt = MLOC(TELEPORT_MSG);
+private _header = MLOC(TELEPORT_MSG_HEADER);
 hint Format ["%1 \n\n %2",_header,_txt];
 
 openMap true;

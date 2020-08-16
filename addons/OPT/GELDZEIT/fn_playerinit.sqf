@@ -46,8 +46,8 @@ enableTeamswitch false;
 
 	// setup earplug ace menu
 	private _action_earplug = [
-		"Ausrüstung",
-		"Ohrenstöpsel",
+		MLOC(ACE_EQIP),
+		MLOC(ACE_EQIP_EARPLUGS),
 		"",
 		{
 			params ["_target", "_player", "_params"]; 

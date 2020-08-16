@@ -25,13 +25,13 @@ switch (GVAR(earplugsInUse)) do
     case 1: 
     {
         1 fadeSound 0.25;
-        ["<t size='0.8' shadow='1' color='#ffffff'>Ohrstoepsel rein</t>", (safeZoneX - 0.2), (safeZoneY + 0.3), 3, 1, 0, 1] spawn BIS_fnc_dynamicText;
+        [format["<t size='0.8' shadow='1' color='#ffffff'>%1</t>", MLOC(EARPLUGS_IN)], (safeZoneX - 0.2), (safeZoneY + 0.3), 3, 1, 0, 1] spawn BIS_fnc_dynamicText;
         GVAR(earplugsInUse) = 2;
     };
     case 2: 
     {
         1 fadeSound 1;
-        ["<t size='0.8' shadow='1' color='#ffffff'>Ohrstoepsel raus</t>",  (safeZoneX - 0.2), (safeZoneY + 0.3), 3, 1, 0, 1] spawn BIS_fnc_dynamicText;
+        [format["<t size='0.8' shadow='1' color='#ffffff'>%1</t>", MLOC(EARPLUGS_OUT)],  (safeZoneX - 0.2), (safeZoneY + 0.3), 3, 1, 0, 1] spawn BIS_fnc_dynamicText;
         GVAR(earplugsInUse) = 1;
     };
 };

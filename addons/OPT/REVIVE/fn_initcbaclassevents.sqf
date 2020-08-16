@@ -131,8 +131,8 @@ DFUNC(stabilisieren) =
 
     GVAR(revive_Action_Stabilisieren) = 
     [
-        "Erste Hilfe",
-        "Stabilisieren",
+        MLOC(FIRST_AID),
+        MLOC(STABILISE),
         "",
         {[_target] call FUNC(stabilisieren)},
         {((_target getVariable ["ACE_isUnconscious", false]) and (_target getVariable ["OPT_isStabilized", 1] == 0))},
@@ -142,8 +142,8 @@ DFUNC(stabilisieren) =
 
     GVAR(revive_Action_Wiederbeleben) = 
     [
-        "Erste Hilfe",
-        "Wiederbeleben",
+        MLOC(FIRST_AID),
+        MLOC(MEDIC_REVIVE),
         "",
         {[_target] call FUNC(revive)},
         {((_target getVariable ["ACE_isUnconscious", false]) or (_target getVariable ["OPT_isStabilized", 1] == 1))},
@@ -153,8 +153,8 @@ DFUNC(stabilisieren) =
 
     GVAR(revive_Action_ziehen) = 
     [
-        "Tragen/Ziehen",
-        "Ziehen",
+        MLOC(CARRY_DRAG),
+        MLOC(DRAG),
         "",
         {[player, _target] call ace_dragging_fnc_startDrag},
         {((_target getVariable ["ACE_isUnconscious", false]) or (_target getVariable ["OPT_isStabilized", 1] == 1))},
@@ -164,8 +164,8 @@ DFUNC(stabilisieren) =
 
     GVAR(revive_Action_tragen) = 
     [
-        "Tragen/Ziehen",
-        "Tragen",
+        MLOC(CARRY_DRAG),
+        MLOC(CARRY),
         "",
         {[player, _target] call ace_dragging_fnc_startCarry},
         {((_target getVariable ["ACE_isUnconscious", false]) or (_target getVariable ["OPT_isStabilized", 1] == 1))},
