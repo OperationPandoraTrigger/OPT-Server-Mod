@@ -97,8 +97,11 @@ GVAR(Hardcap_aaf_vehicles) =
 	["OPT4_I_LT_01_AT_F",2],
 	["OPT4_I_APC_Wheeled_03_cannon_F",4],
 	["OPT4_I_APC_tracked_03_cannon_F",4],
-	["OPT4_I_MBT_03_cannon_F",2]
+	["OPT4_I_MBT_03_cannon_F",2],
+	["OPT_I_LT_01_cannon_F",parseNumber OPT_GELDZEIT_aaf_sonderausobjektanzahl]
 ];
+
+
 
 GVAR(Hardcap_aaf_supplies) = 
 [

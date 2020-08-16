@@ -336,7 +336,8 @@ GVAR(AAF_armored) =
     ["OPT4_I_LT_01_AT_F", DEF_PROD(80000)],                    // Nyx AT
     ["OPT_I_LT_01_scout_F", DEF_PROD(75000)],                    // Nyx Recon
     ["OPT4_I_MBT_03_cannon_F", DEF_PROD(100000)],                     // MBT-52 Kuma
-    ["OPT_I_Truck_02_MRL_F", DEF_PROD(100000)]                      // Zamak Arty   	
+    ["OPT_I_Truck_02_MRL_F", DEF_PROD(100000)],                      // Sonderfahrzeug Nyx Cannon  
+    ["OPT_I_LT_01_cannon_F", 1,1,1] 	
 ];
 
 GVAR(AAF_supplies) = 

@@ -278,6 +278,16 @@ DFUNC(ordercheck) =
                     
         };
 
+        //Sonderausrüstung CSAT Arty
+        if ((OPT_GELDZEIT_csat_sonderausobjektanzahl > 0) and (_veh isKindOf "O_MBT_02_arty_F")) then 
+        {
+            for "_i" from 1 to (OPT_GELDZEIT_csat_sonderausobjektanzahl)  do 
+		    {
+                _veh addMagazine "OPT_2Rnd_155mm_Mo_Cluster";    
+		    }; 
+
+        };
+
         GVAR(order_kosten) = GVAR(order_unitCost) + _waffenkosten;
 
         [Name Player, playerSide, typeOf _veh, GVAR(order_kosten), "-"] remoteExecCall ["OPT_GELDZEIT_fnc_updateBudget", 2, false];
