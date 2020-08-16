@@ -462,4 +462,54 @@ GVAR(eventArgs) = [];
 			};
 	};
 
+//TFAR Verschlüsselung bei Fahrzeugen
+
+player addEventHandler ["GetInMan", {
+    /*
+    unit: Object - Unit the event handler is assigned to
+    position: String - Can be either "driver", "gunner" or "cargo"
+    vehicle: Object - Vehicle the unit entered
+    turret: Array - turret path
+    */
+    params ["_unit", "_pos", "_veh", "_turret"];
+
+    // check if there is a radio in the vehicle
+    if (_veh call TFAR_fnc_hasVehicleRadio) then 
+	{
+        _VehicleLR = player call TFAR_fnc_VehicleLR;
+        _encryption = _VehicleLR call TFAR_fnc_getLrRadioCode;
+        
+        // Check if vehicle was occupied by other team. IF so, we change the encryption to match the team again.
+        switch (PLAYERSIDE) do 
+		{
+            case west: 
+			{
+                if ((toLower(_encryption) == "_opfor") or (toLower(_encryption) == "_independent")) then 
+				{
+                    [_VehicleLR, "_bluefor"] call TFAR_fnc_setLrRadioCode;
+                    systemChat "Die Funk-Verschlüsselung wurde geändert.";
+                };
+            };
+            case east:  
+			{
+                if ((toLower(_encryption) == "_bluefor") or (toLower(_encryption) == "_independent")) then 
+				{
+                    [_VehicleLR, "_opfor"] call TFAR_fnc_setLrRadioCode;
+                    systemChat "Die Funk-Verschlüsselung wurde geändert.";
+                };            
+            };
+			case independent: 
+			{
+                if ((toLower(_encryption) == "_bluefor") or (toLower(_encryption) == "_opfor")) then 
+				{
+                    [_VehicleLR, "independent"] call TFAR_fnc_setLrRadioCode;
+                    systemChat "Die Funk-Verschlüsselung wurde geändert.";
+                };
+            };
+        };
+    };
+
+}];
+
+
 }, []] call CFUNC(addEventHandler); 	
