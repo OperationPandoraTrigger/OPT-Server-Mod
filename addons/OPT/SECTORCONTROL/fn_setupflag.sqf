@@ -108,7 +108,7 @@ unverwundbar, Logistik-Script aus sowie Actionmeneintrag fuer Spieler
         _flag,
         [
             format["<t color=""#FF0000"">%1</t>", MLOC(CAPTURE_FLAG)],   // Anzeigetext
-            {[] call FUNC(captureFlag);},  // Skript
+            {[_this select 0, _this select 1] call FUNC(captureFlag);},  // Skript
             [],                                                          // Parameter fr Skript
             999,                                                         // priority
             true,                                                        // showWindow
