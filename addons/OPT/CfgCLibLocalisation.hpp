@@ -338,5 +338,27 @@ class CfgCLibLocalisation {
 				German = "%1 von %2 Ersatzteilen übrig";
 			};
 		};
+		class SHOP {
+			class SHOPMENU_AIR {
+				English = "Air Force";
+				German = "Luftwaffe";
+			};
+			class SHOPMENU_GROUND {
+				English = "Vehicles";
+				German = "Fahrzeuge";
+			};
+			class SHOPMENU_EQUIPMENT {
+				English = "Equipment";
+				German = "Ausrüstung";
+			};
+			class SHOPMENU_SEA {
+				English = "Watercraft";
+				German = "Wasserfahrzeuge";
+			};
+			class SHOPMENU_SELL {
+				English = "Sell";
+				German = "Verkaufen";
+			};
+		};
 	};
 };
