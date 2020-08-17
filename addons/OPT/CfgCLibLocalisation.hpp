@@ -37,17 +37,9 @@ class CfgCLibLocalisation {
 				English = "Restricted area";
 				German = "Sperrzone";
 			};
-			class POINT_NO_DOMINATOR_AAFvCSAT {
-				English = "No Dominator (AAF %1 | CSAT %2)";
-				German = "Kein Dominator (AAF %1 | CSAT %2)";
-			};
-			class POINT_NO_DOMINATOR_NATOvCSAT {
-				English = "No Dominator (NATO %1 | CSAT %2)";
-				German = "Kein Dominator (NATO %1 | CSAT %2)";
-			};
-			class POINT_NO_DOMINATOR_NATOvAAF {
-				English = "No Dominator (NATO %1 | AAF %2)";
-				German = "Kein Dominator (NATO %1 | AAF %2)";
+			class NO_DOMINATOR {
+				English = "No Dominator";
+				German = "Kein Dominator";
 			};
 			class CAPTURE_FLAG {
 				English = "Capture the flag";
@@ -188,11 +180,11 @@ class CfgCLibLocalisation {
 				German = "Spieler: (N) %1 vs %2 (A)";
 			};
 			class AAFvCSAT_POINT {
-				English = "Points: (A) %1 vs %2 (C)";
+				English = "Points: (A) %1 : %2 (C)";
 				German = "Punkte: (A) %1 : %2 (C)";
 			};
 			class NATOvCSAT_POINT {
-				English = "Points: (N) %1 vs %2 (C)";
+				English = "Points: (N) %1 : %2 (C)";
 				German = "Punkte: (N) %1 : %2 (C)";
 			};
 			class NATOvAAF_POINT {
