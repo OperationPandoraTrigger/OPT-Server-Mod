@@ -107,7 +107,7 @@ unverwundbar, Logistik-Script aus sowie Actionmeneintrag fuer Spieler
     [
         _flag,
         [
-            "<t color='#FF0000'>Flagge ziehen</t>",                     // Anzeigetext
+            "<t color='#FF0000'>Flagge ziehen</t>",                      // Anzeigetext
             {[_this select 0, _this select 1] call FUNC(captureFlag);},  // Skript
             [],                                                          // Parameter fr Skript
             999,                                                         // priority
