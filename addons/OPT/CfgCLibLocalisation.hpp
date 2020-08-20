@@ -126,11 +126,19 @@ class CfgCLibLocalisation {
 				German = "Erste Hilfe";
 			};
 			class MEDIC_REVIVE {
-				English = "Resuscitate";
+				English = "Revive";
+				German = "Wiederbeleben";
+			};
+			class MEDIC_REVIVING {
+				English = "Reviving";
 				German = "Wiederbeleben";
 			};
 			class STABILISE {
 				English = "Stabilise";
+				German = "Stabilisieren";
+			};
+			class STABILISING {
+				English = "Stabilising";
 				German = "Stabilisieren";
 			};
 			class SELF_CARE {
