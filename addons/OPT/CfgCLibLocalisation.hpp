@@ -375,6 +375,10 @@ class CfgCLibLocalisation {
 				English = "Vehicle limit reached, purchase was cancelled";
 				German = "Fahrzeuggrenze erreicht, kauf wurde abgebrochen";
 			};
+			class FLIP_VEH {
+				English = "Raise the vehicle";
+				German = "Fahrzeug aufrichten";
+			};
 		};
 	};
 };
