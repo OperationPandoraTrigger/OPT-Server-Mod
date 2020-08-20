@@ -32,7 +32,7 @@ This event happens every time a soldier enters a vehicle.
     params ["_vec"];
    
     _vec addAction [
-        "<t color='#00D3BF'>Fahrzeug aufrichten</t>", 
+        format["<t color='#00D3BF'>%1</t>", MLOC(FLIP_VEH)], 
         {[] call FUNC(unFlip);},
         [], 
         0, 
@@ -49,7 +49,7 @@ This event happens every time a soldier enters a vehicle.
     params ["_vec"]; 
         
     _vec addAction [
-        "<t color='#00D3BF'>Fahrzeug aufrichten</t>",
+        format["<t color='#00D3BF'>%1</t>", MLOC(FLIP_VEH)],
         {[] call FUNC(unFlip);}, 
         [], 
         0, 
