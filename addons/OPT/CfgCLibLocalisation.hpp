@@ -367,6 +367,14 @@ class CfgCLibLocalisation {
 				English = "Sell";
 				German = "Verkaufen";
 			};
+			class HARDCAP {
+				English = "Hardcap";
+				German = "Hardcap";
+			};
+			class HARDCAP_TEXT {
+				English = "Vehicle limit reached, purchase was cancelled";
+				German = "Fahrzeuggrenze erreicht, kauf wurde abgebrochen";
+			};
 		};
 	};
 };
