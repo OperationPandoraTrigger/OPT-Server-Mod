@@ -58,7 +58,7 @@ DFUNC(revive) =
 			player switchmove "";
 			player action ["WeaponInHand", player];
 		},
-		"Wiederbeleben"
+		MLOC(MEDIC_REVIVING)
 	] call ace_common_fnc_progressBar;
 };
 
@@ -105,7 +105,7 @@ DFUNC(stabilisieren) =
 			player switchmove "";
 			player action ["WeaponInHand", player];
 		},
-		"Stabilisieren"
+		MLOC(STABILISING)
 	] call ace_common_fnc_progressBar;
 
 };
