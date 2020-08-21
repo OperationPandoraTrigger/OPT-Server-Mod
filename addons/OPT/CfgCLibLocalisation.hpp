@@ -126,11 +126,19 @@ class CfgCLibLocalisation {
 				German = "Erste Hilfe";
 			};
 			class MEDIC_REVIVE {
-				English = "Resuscitate";
+				English = "Revive";
+				German = "Wiederbeleben";
+			};
+			class MEDIC_REVIVING {
+				English = "Reviving";
 				German = "Wiederbeleben";
 			};
 			class STABILISE {
 				English = "Stabilise";
+				German = "Stabilisieren";
+			};
+			class STABILISING {
+				English = "Stabilising";
 				German = "Stabilisieren";
 			};
 			class SELF_CARE {
@@ -358,6 +366,18 @@ class CfgCLibLocalisation {
 			class SHOPMENU_SELL {
 				English = "Sell";
 				German = "Verkaufen";
+			};
+			class HARDCAP {
+				English = "Hardcap";
+				German = "Hardcap";
+			};
+			class HARDCAP_TEXT {
+				English = "Vehicle limit reached, purchase was cancelled";
+				German = "Fahrzeuggrenze erreicht, kauf wurde abgebrochen";
+			};
+			class FLIP_VEH {
+				English = "Raise the vehicle";
+				German = "Fahrzeug aufrichten";
 			};
 		};
 	};
