@@ -87,7 +87,7 @@ GVAR(startzeit) = time;
 	{
 		_units apply 
 		{
-			if ((side _x isEqualTo side player) and (typeOf _x in GVAR(SaniKlassen)) and alive _x) then 
+			if ((side _x isEqualTo side player) and (typeOf _x in GVAR(SaniKlassen)) and !(_x getVariable "ACE_isUnconscious")) then 
 			{
 				_medics pushBack _x;
 			};
@@ -138,13 +138,17 @@ GVAR(startzeit) = time;
 	// Zeitausgabe bis Auto Respwan
 	if (player getVariable ["OPT_isStabilized", 1] == 1) then 
 	{
-		_BleedoutBar_Text ctrlSetText format ["%1","Gestopt"]; 
+		_BleedoutBar_Text ctrlSetText format ["%1",MLOC(STABILISE)]; 
 		_BleedoutBar progressSetPosition 1.0; 
+		_BleedoutBar_Text ctrlSetTextColor [0, 1, 0, 1];
+		_BleedoutBar ctrlSetTextColor [0, 1, 0, 1];
 	}
 	else
 	{
 		_BleedoutBar_Text ctrlSetText format ["%1 sec",floor (GVAR(ausblutzeit) - (time - GVAR(startzeit)))]; 
 		_BleedoutBar progressSetPosition ((floor (GVAR(ausblutzeit) - (time - GVAR(startzeit)))) / GVAR(ausblutzeit)); 
+		_BleedoutBar_Text ctrlSetTextColor [1, 0, 0, 1];
+		_BleedoutBar ctrlSetTextColor [1, 0, 0, 1];
 	};
 
 	// Check Dialog offen
@@ -158,7 +162,6 @@ GVAR(startzeit) = time;
 	{
 		closeDialog 5000;	
 		closeDialog 0;
-		camDestroy GVAR(cam);
 		1 enableChannel true;
 		player allowDamage true;
 		OPT_REVIVE_unconsciousHandler = nil;
