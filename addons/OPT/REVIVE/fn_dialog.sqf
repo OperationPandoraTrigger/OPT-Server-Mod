@@ -138,7 +138,7 @@ GVAR(startzeit) = time;
 	// Zeitausgabe bis Auto Respwan
 	if (player getVariable ["OPT_isStabilized", 1] == 1) then 
 	{
-		_BleedoutBar_Text ctrlSetText format ["%1",MLOC(STABILISE)]; 
+		_BleedoutBar_Text ctrlSetText format ["%1",MLOC(IS_STABILISED)]; 
 		_BleedoutBar progressSetPosition 1.0; 
 		_BleedoutBar_Text ctrlSetTextColor [0, 1, 0, 1];
 		_BleedoutBar ctrlSetTextColor [0, 1, 0, 1];

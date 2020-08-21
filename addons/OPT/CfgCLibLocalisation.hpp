@@ -137,6 +137,10 @@ class CfgCLibLocalisation {
 				English = "Stabilise";
 				German = "Stabilisieren";
 			};
+			class IS_STABILISED {
+				English = "Stabilised";
+				German = "Stabilisiert";
+			};
 			class STABILISING {
 				English = "Stabilising";
 				German = "Stabilisieren";
