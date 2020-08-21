@@ -73,6 +73,8 @@ DFUNC(isUnconscious) =
 		player setVariable ["OPT_isStabilized", 0, true];
 		player allowDamage true;
 		1 enableChannel true;
+		1 fadeSound 1;
+		OPT_GELDZEIT_earplugsInUse = 1;
 		OPT_REVIVE_unconsciousHandler = nil;
 		 
     } call CFUNC(execNextFrame);
