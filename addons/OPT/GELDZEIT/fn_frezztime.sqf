@@ -42,7 +42,8 @@ if (!GVAR(Waffenruhestart)) then
 	player enableSimulation false;
 
 	// warte OPT_PARAM_FREEZE_TIME
-	[FUNC(Player_freeze_time), GVAR(FREEZETIME),""] call CLib_fnc_wait;
+	//[FUNC(Player_freeze_time), GVAR(FREEZETIME),""] call CLib_fnc_wait;
+	[FUNC(Player_freeze_time), {(GVAR(FreeztimeEnde))}, "Awesome Delay"] call CLib_fnc_waitUntil;
 
 };
 
