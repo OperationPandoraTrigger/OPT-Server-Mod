@@ -294,8 +294,8 @@ DFUNC(ordercheck) =
     }
     else 
     {
-        private _txt = "Fahrzeuggrenze erreicht, kauf wurde abgebrochen";
-        private _header = parseText "<t size='2.0' color='#D7DF01'>Hardcap</t>";
+        private _txt = MLOC(HARDCAP_TEXT);
+        private _header = MLOC(HARDCAP);
         hint Format ["%1 \n\n %2",_header,_txt];
     };    
 };
