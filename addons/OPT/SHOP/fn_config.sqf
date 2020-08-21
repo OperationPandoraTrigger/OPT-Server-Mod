@@ -485,7 +485,7 @@ GVAR(gunVehWest) =
     ["4Rnd_120mm_cannon_missiles", "cannon_120mm", 50000, 200000, "4x120mm ATGM"],  // 38.4x120mm ATGM
     ["4Rnd_125mm_cannon_missiles", "cannon_125mm", 50000, 200000, "4x125mm ATGM"],  //  39.4x125mm ATGM
     ["OPT_32Rnd_155mm_Mo_shells", "OPT_mortar_155mm_AMOS", 5000, 160000, "32x155 mm HE"],  //  40.32x155 mm HE
-    ["OPT_2Rnd_155mm_Mo_Cluster", "OPT_mortar_155mm_AMOS", 20000, 40000, "2xCluster"],  //  41.2xCluster Shells
+    ["OPT_2Rnd_155mm_Mo_Cluster", "OPT_mortar_155mm_AMOS", 2, 4, "2xCluster"],  //  41.2xCluster Shells
     ["6Rnd_155mm_Mo_smoke", "OPT_mortar_155mm_AMOS", 500, 3000, "6xSmoke"],  //  42.6xSmoke 
     ["Vorona_HEAT", "missiles_Vorona", 500, 250000, "1xVorona-HEAT"],  //  43.vorona-test KalleK 
     ["Vorona_HE", "missiles_Vorona", 500, 150000, "1xVorona-HE"],  //  44.vorona-test KalleK 
@@ -578,7 +578,7 @@ GVAR(gunVehEast) =
     ["4Rnd_120mm_cannon_missiles", "cannon_120mm", 50000, 200000, "4x120mm ATGM"],  // 38.4x120mm ATGM
     ["4Rnd_125mm_cannon_missiles", "cannon_125mm", 50000, 200000, "4x125mm ATGM"],  //  39.4x125mm ATGM
     ["OPT_32Rnd_155mm_Mo_shells", "OPT_mortar_155mm_AMOS", 5000, 160000, "32x155 mm HE"],  //  40.32x155 mm HE
-    ["OPT_2Rnd_155mm_Mo_Cluster", "OPT_mortar_155mm_AMOS", 20000, 40000, "2xCluster"],  //  41.2xCluster Shells
+    ["OPT_2Rnd_155mm_Mo_Cluster", "OPT_mortar_155mm_AMOS", 2, 4, "2xCluster"],  //  41.2xCluster Shells
     ["6Rnd_155mm_Mo_smoke", "OPT_mortar_155mm_AMOS", 500, 3000, "6xSmoke"],  //  42.6xSmoke 
     ["Vorona_HEAT", "missiles_Vorona", 500, 250000, "1xVorona-HEAT"],  //  43.vorona-test KalleK 
     ["Vorona_HE", "missiles_Vorona", 500, 150000, "1xVorona-HE"],  //  44.vorona-test KalleK 
@@ -671,7 +671,7 @@ GVAR(gunVehindependent) =
     ["4Rnd_120mm_cannon_missiles", "cannon_120mm", 50000, 200000, "4x120mm ATGM"],  // 38.4x120mm ATGM
     ["4Rnd_125mm_cannon_missiles", "cannon_125mm", 50000, 200000, "4x125mm ATGM"],  //  39.4x125mm ATGM
     ["OPT_32Rnd_155mm_Mo_shells", "OPT_mortar_155mm_AMOS", 5000, 160000, "32x155 mm HE"],  //  40.32x155 mm HE
-    ["OPT_2Rnd_155mm_Mo_Cluster", "OPT_mortar_155mm_AMOS", 20000, 40000, "2xCluster"],  //  41.2xCluster Shells
+    ["OPT_2Rnd_155mm_Mo_Cluster", "OPT_mortar_155mm_AMOS", 2, 4, "2xCluster"],  //  41.2xCluster Shells
     ["6Rnd_155mm_Mo_smoke", "OPT_mortar_155mm_AMOS", 500, 3000, "6xSmoke"],  //  42.6xSmoke 
     ["Vorona_HEAT", "missiles_Vorona", 500, 250000, "1xVorona-HEAT"],  //  43.vorona-test KalleK 
     ["Vorona_HE", "missiles_Vorona", 500, 150000, "1xVorona-HE"],  //  44.vorona-test KalleK 
@@ -701,7 +701,7 @@ GVAR(marshall) = [[], [3, 4, 5, 6, 14, 15], [0, 0], [1], [0, 4]];
 GVAR(mora) = [[], [3, 4, 5, 6, 12, 13], [0, 0], [1], [0, 4]]; 
 GVAR(cheetah) = [[], [20, 22], [0, 0], [1], [0, 4]];
 GVAR(slammerUp) = [[], [3, 4, 5, 6, 45, 27, 30, 28, 47, 31, 29, 32, 38], [0, 0], [1], [0, 4]];
-GVAR(scorcher) = [[], [40, 41, 42], [0, 0], [1], [0, 4]];
+GVAR(scorcher) = [[], [40, 42], [0, 0], [1], [0, 4]];
 
 //EAST Einheiten
 GVAR(orca) = [[4, 8, 9, 10, 11], [0, 1, 2], [0, 0], [1], [2, 2]]; 
@@ -718,7 +718,7 @@ GVAR(kamysh) = [[], [3, 4, 5, 6, 12, 13, 16], [0, 0], [1], [0, 4]];
 GVAR(tigris) = [[], [20, 22], [0, 0], [1], [0, 4]];
 GVAR(varsuk) = [[], [3, 4, 5, 6, 33, 46, 36, 34, 37, 35, 39], [0, 0], [1], [0, 4]];
 GVAR(Angara) = [[], [3, 4, 5, 6, 33, 46, 36, 34, 37, 35, 39], [0, 0], [1], [0, 4]];
-GVAR(sochor) = [[], [40, 41, 42], [0, 0], [1], [0, 4]];
+GVAR(sochor) = [[], [40, 42], [0, 0], [1], [0, 4]];
 
 //independent Einheiten
 //[[Raketen], [Gun], [Drahtkäfig, Tranung], [Datalink], [Raketenmagzine, Gunmagazine]]
