@@ -36,6 +36,7 @@ params [
 private _cat = "Budget";
 private _message = "";
 private _budget_neu = 0;
+private _unitName = (getText(configFile >> 'CfgVehicles' >> _unitType >> 'displayName'));
 
 switch (_sign) do 
 {
@@ -53,6 +54,7 @@ switch (_sign) do
             { 
                 _budget_neu = GVAR(aaf_budget) - _unitCost;
             };
+            ["Budget", "Buy", [GVAR(nato_budget), GVAR(csat_budget), GVAR(aaf_budget), 0, _buyerName, _side, _unitName, 0, _unitCost]] call OPT_LOGGING_fnc_writelog;
 
     };
     case "+":  
@@ -69,11 +71,11 @@ switch (_sign) do
             {                   
                 _budget_neu = GVAR(aaf_budget) + _unitCost;
             };
+            ["Budget", "Sell", [GVAR(nato_budget), GVAR(csat_budget), GVAR(aaf_budget), 0, _buyerName, _side, _unitName, 0, _unitCost]] call OPT_LOGGING_fnc_writelog;
     };
 };
 
 // server log sowie Aktualisierung via publicVarialbe
-private _unitName = (getText(configFile >> 'CfgVehicles' >> _unitType >> 'displayName'));
 
 if (_side == west) then 
 {

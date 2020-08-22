@@ -144,5 +144,9 @@ class CfgCLibModules {
             FNC(weaponcheck);
             FNC(uav);
         };
+        MODULE(LOGGING)
+        {
+            FNC(writelog);
+        };
     };
 };
