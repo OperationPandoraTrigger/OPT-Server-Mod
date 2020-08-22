@@ -35,7 +35,6 @@ GVAR(Punktecount) = [{
 						publicVariable QGVAR(csat_points);
 						private _message = format ["CSAT +1 (AAF %1 | CSAT %2)", GVAR(aaf_points), GVAR(csat_points)];
 						private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
-						[_message] remoteExecCall ["systemChat", 0, true];
 
 						//Log
 						diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_message];
@@ -49,7 +48,6 @@ GVAR(Punktecount) = [{
 						publicVariable QGVAR(aaf_points);
 						private _message = format ["AAF +1 (AAF %1 | CSAT %2)", GVAR(AAF_points), GVAR(csat_points)];
 						private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
-						[_message] remoteExecCall ["systemChat", 0, true];
 
 						//Log
 						diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_message];
@@ -61,7 +59,6 @@ GVAR(Punktecount) = [{
 
 						private _message = format ["Kein Dominator (AAF %1 | CSAT %2)", GVAR(aaf_points), GVAR(csat_points)];
 						private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
-						[_message] remoteExecCall ["systemChat", 0, true];
 
 						//Log
 						diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_message];
@@ -82,7 +79,6 @@ GVAR(Punktecount) = [{
 						publicVariable QGVAR(csat_points);
 						private _message = format ["CSAT +1 (NATO %1 | CSAT %2)", GVAR(nato_points), GVAR(csat_points)];
 						private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
-						[_message] remoteExecCall ["systemChat", 0, true];
 
 						//Log
 						diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_message];
@@ -96,7 +92,6 @@ GVAR(Punktecount) = [{
 						publicVariable QGVAR(nato_points);
 						private _message = format ["NATO +1 (NATO %1 | CSAT %2)", GVAR(nato_points), GVAR(csat_points)];
 						private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
-						[_message] remoteExecCall ["systemChat", 0, true];
 
 						//Log
 						diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_message];
@@ -108,7 +103,6 @@ GVAR(Punktecount) = [{
 
 						private _message = format ["Kein Dominator (NATO %1 | CSAT %2)", GVAR(nato_points), GVAR(csat_points)];
 						private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
-						[_message] remoteExecCall ["systemChat", 0, true];
 
 						//Log
 						diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_message];
@@ -129,7 +123,6 @@ GVAR(Punktecount) = [{
 						publicVariable QGVAR(nato_points);
 						private _message = format ["NATO +1 (NATO %1 | AAF %2)", GVAR(nato_points), GVAR(aaf_points)];
 						private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
-						[_message] remoteExecCall ["systemChat", 0, true];
 
 						//Log
 						diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_message];
@@ -143,7 +136,6 @@ GVAR(Punktecount) = [{
 						publicVariable QGVAR(aaf_points);
 						private _message = format ["AAF +1 (Nato %1 | AAF %2)", GVAR(nato_points), GVAR(aaf_points)];
 						private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
-						[_message] remoteExecCall ["systemChat", 0, true];
 
 						//Log
 						diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_message];
@@ -156,7 +148,6 @@ GVAR(Punktecount) = [{
 
 						private _message = format ["Kein Dominator (NATO %1 | AAF %2)", GVAR(nato_points), GVAR(aaf_points)];
 						private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
-						[_message] remoteExecCall ["systemChat", 0, true];
 
 						//Log
 						diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_message];
