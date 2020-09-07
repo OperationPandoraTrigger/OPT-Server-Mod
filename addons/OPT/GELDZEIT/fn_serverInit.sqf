@@ -53,11 +53,9 @@ DFUNC(Waffenruhe) =
 	// Logeintrag
 	GVAR(FreeztimeEnde) = true;
 	publicVariable QGVAR(FreeztimeEnde);
-	["FreeztimeEnde"] remoteExecCall ["systemChat", 0, true];
 
 	GVAR(Waffenruhestart) = true;
 	publicVariable QGVAR(Waffenruhestart);
-	["Waffenruhestart"] remoteExecCall ["systemChat", 0, true];
 
 	["Mission", "Truce", [0, 0, 0, missionName]] call OPT_LOGGING_fnc_writelog;
 
@@ -71,11 +69,9 @@ DFUNC(Spielzeit) =
 	// Logeintrag
 	GVAR(WaffenruheEnde) = true;
 	publicVariable QGVAR(WaffenruheEnde);
-	["WaffenruheEnde"] remoteExecCall ["systemChat", 0, true];
 
 	GVAR(Spielzeitstart) = true;
 	publicVariable QGVAR(Spielzeitstart);
-	["Spielzeitstart"] remoteExecCall ["systemChat", 0, true];
 
 	private _timeElapsed = serverTime - OPT_GELDZEIT_startTime;
 	private _log_msg = format["Beginn Rest-Spielzeit: %1 min", (GVAR(PLAYTIME) - _timeElapsed) / 60];
@@ -98,11 +94,9 @@ DFUNC(Mission_Ende) =
 	// Logeintrag
 	GVAR(SpielzeitEnde) = true;
 	publicVariable QGVAR(SpielzeitEnde);
-	["SpielzeitEnde"] remoteExecCall ["systemChat", 0, true];
 
 	GVAR(Endestart) = true;
 	publicVariable QGVAR(Endestart);
-	["Endestart"] remoteExecCall ["systemChat", 0, true];
 
 	[EVENT_SPIELUHR_ENDBILDSCHIRM,[]] call CFUNC(globalEvent);
 
@@ -217,7 +211,6 @@ DFUNC(Mission_Ende) =
 	// Logeintrag
 	GVAR(Mission_start) = true;
 	publicVariable QGVAR(Mission_start);
-	["Missionstart"] remoteExecCall ["systemChat", 0, true];
 
 	// Nachablauf Freeztime Waffenruhe auslösen
 	[FUNC(Waffenruhe), GVAR(FREEZETIME),""] call CLib_fnc_wait;
