@@ -73,4 +73,6 @@ if (_pos in ["cargo", "gunner"] and (_dis > _distanceFromBase)) then
     // Log
     private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
     diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Transport",_timestamp,_message];
+
+    ["Transport", "Fly", [getPlayerUID _unit, name _unit, side _unit, getPlayerUID _pilot, name _pilot, side _pilot, _dis]] call OPT_LOGGING_fnc_writelog;
 };

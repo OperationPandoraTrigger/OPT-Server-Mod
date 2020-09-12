@@ -151,11 +151,10 @@ if (_victim isKindOf "Man") then
         } forEach ([configFile >> "CfgMagazines", 0, true] call BIS_fnc_returnChildren);
         
     };
-
+    ["Health", "Kill", [getPlayerUID _victim, name _victim, side _victim, getPlayerUID _instigator, name _instigator, side _instigator, _victim distance2D _instigator, _projectile]] call OPT_LOGGING_fnc_writelog;
 } 
 else 
 {
-
     private _vec = _victim;
     private _category ="";
 
@@ -216,10 +215,11 @@ else
                     "%1 von: %2 (side: %3).",
                     _message, NAME _instigator , SIDE _instigator
                 ];
+                ["Vehicle", "DestroyByMan", [_name, _category, _faction, getPlayerUID _instigator, name _instigator, side _instigator, _victim distance2D _instigator, _projectile]] call OPT_LOGGING_fnc_writelog;
             } 
             else 
             {
-                private _name = getText (configFile >> "CfgVehicles" >> typeOf _source >> "displayName");
+                private _killername = getText (configFile >> "CfgVehicles" >> typeOf _source >> "displayName");
                 private _killerTxt = [];
                 // in case of a vehicle, credit kill to all crew members
                 {
@@ -231,17 +231,21 @@ else
                     {
                             _killerTxt pushBack format[
                             "%1 (side: %2) (vehicle: %3)",
-                            NAME _unit, SIDE _unit, _name
+                            NAME _unit, SIDE _unit, _killername
                         ];
                     };
-                    
+
+                    private _crewArray = [];
+                    private _separator = toString [9]; // tabulator
+                    _crewArray pushBack getPlayerUID _unit;
+                    _crewArray pushBack name _unit;
                 } forEach (fullCrew _source);
 
                 _killerTxt = _killerTxt joinString ", ";
                 _message = format[
                     "%1 von: %2", _message, _killerTxt
                 ];
-
+                ["Vehicle", "DestroyByCrew", [_name, _category, _faction, getText (configFile >> "CfgVehicles" >> typeOf _source >> "displayName"), side _instigator, _victim distance2D _instigator, _crewArray joinString _separator]] call OPT_LOGGING_fnc_writelog;
             };
         };
 

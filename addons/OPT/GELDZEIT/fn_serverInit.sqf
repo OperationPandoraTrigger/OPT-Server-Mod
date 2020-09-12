@@ -25,6 +25,7 @@
 #include "macros.hpp"
 
 diag_log format ["[%1] (%2) %3 %4 %5","OPT","Mission","####################",missionName,"####################"];
+["Mission", "Load", [0, 0, 0, missionName]] call OPT_LOGGING_fnc_writelog;
 
 //Init Statussignale
 
@@ -56,6 +57,8 @@ DFUNC(Waffenruhe) =
 	GVAR(Waffenruhestart) = true;
 	publicVariable QGVAR(Waffenruhestart);
 
+	["Mission", "Truce", [0, 0, 0, missionName]] call OPT_LOGGING_fnc_writelog;
+
 	//Nachablauf Waffenruhe Spielzeit auslösen
 	[FUNC(Spielzeit), GVAR(TRUCETIME),""] call CLib_fnc_wait;
 };
@@ -73,6 +76,9 @@ DFUNC(Spielzeit) =
 	private _timeElapsed = serverTime - OPT_GELDZEIT_startTime;
 	private _log_msg = format["Beginn Rest-Spielzeit: %1 min", (GVAR(PLAYTIME) - _timeElapsed) / 60];
 	diag_log format ["[%1] (%2) %3","OPT","Mission",_log_msg];
+
+	// Missionsstart loggen
+	["Mission", "Start", [0, 0, 0, missionName]] call OPT_LOGGING_fnc_writelog;
 
 	GVAR(PLAYTIMENETTO) = 0;
 
@@ -148,7 +154,7 @@ DFUNC(Mission_Ende) =
 			ERROR_LOG("Missionende: Fehlehalte Datenübergabe keine Fraktionauswahl erkannt");	
 		};
 	};
-
+	["Mission", "End", [GVAR(nato_points), GVAR(csat_points), GVAR(aaf_points), missionName]] call OPT_LOGGING_fnc_writelog;
 
 };
 
@@ -193,14 +199,15 @@ DFUNC(Mission_Ende) =
 
 			_timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
 			_message = format ["Beginn Waffenruhe: %1 min",(GVAR(TRUCETIME) + GVAR(FREEZETIME)) / 60];
-			diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Budget",_timestamp,_message];		};
+			diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Budget",_timestamp,_message];
+		};
 
    		default 
 		{
 			ERROR_LOG("Missionbeginn: Fehlehalte Datenübergabe keine Fraktionauswahl erkannt");	
 		};
 	};
-	
+
 	// Logeintrag
 	GVAR(Mission_start) = true;
 	publicVariable QGVAR(Mission_start);
