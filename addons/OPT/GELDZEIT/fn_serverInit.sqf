@@ -154,7 +154,7 @@ DFUNC(Mission_Ende) =
 			ERROR_LOG("Missionende: Fehlehalte Datenübergabe keine Fraktionauswahl erkannt");	
 		};
 	};
-	["Mission", "End", [GVAR(nato_points), GVAR(csat_points), GVAR(aaf_points), missionName]] call OPT_LOGGING_fnc_writelog;
+	["Mission", "End", [OPT_SECTORCONTROL_nato_points, OPT_SECTORCONTROL_csat_points, OPT_SECTORCONTROL_aaf_points, missionName]] call OPT_LOGGING_fnc_writelog;
 
 };
 
