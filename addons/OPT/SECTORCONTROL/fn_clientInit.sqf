@@ -45,7 +45,6 @@ GVAR(aaf_flags) = [];
         {
             private _cursorObject = cursorObject;
             if (
-                (_cursorObject in GVAR(nato_flags) or _cursorObject in GVAR(csat_flags) or _cursorObject in GVAR(aaf_flags)) and
                 [_cursorObject, player] call FUNC(captureFlagCondition)
             ) then {
                 [_cursorObject, player] call FUNC(captureFlag);
