@@ -33,7 +33,8 @@ GVAR(officer) = [
 ];
 
 // default GPS mode: all squad units are visible
-GVAR(mode) = 1;
+// Auf Wunsch der Comm solle alle alle sehen können, Normal Modus ist GVAR(mode) = 1;
+GVAR(mode) = 2;
 
 // GPS mode: all units are visible in mode 2
 if (typeOf player in GVAR(officer)) then 
