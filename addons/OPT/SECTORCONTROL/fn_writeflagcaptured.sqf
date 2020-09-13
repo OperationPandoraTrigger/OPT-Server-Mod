@@ -92,3 +92,4 @@ private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatEl
 
 //Log
 diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_message];
+["Flag", "Conquer", [_flag, getPlayerUID _unit, _name, _side, _flag distance2D _unit]] call OPT_LOGGING_fnc_writelog;

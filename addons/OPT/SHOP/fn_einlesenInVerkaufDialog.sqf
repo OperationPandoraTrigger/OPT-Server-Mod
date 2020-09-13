@@ -225,7 +225,7 @@ _sell ctrlAddEventHandler [ "ButtonClick",
     _bewaffnungpreis = [_side, _magazineVehArryNew] call FUNC(geldVorhandeneBewaffnung);   
     _gutschrift = _price + _bewaffnungpreis;
 
-    [Name Player, playerSide, typeOf _sellveh, _gutschrift, "+"] remoteExecCall ["OPT_GELDZEIT_fnc_updateBudget", 2, false];
+    [getPlayerUID player, Name Player, playerSide, typeOf _sellveh, _gutschrift, "+"] remoteExecCall ["OPT_GELDZEIT_fnc_updateBudget", 2, false];
 
     //Fahrzeug löschen
     deleteVehicle _sellveh;

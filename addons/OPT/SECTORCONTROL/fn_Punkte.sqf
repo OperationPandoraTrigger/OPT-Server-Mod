@@ -160,6 +160,12 @@ GVAR(Punktecount) = [{
 				ERROR_LOG("Punkte: Fehlehalte Datenübergabe keine Fraktionauswahl erkannt");
 			};
 		};
+		
+		// Nur Loggen, wenn es einen Dominator gibt
+		if !(GVAR(dominator) isEqualTo sideUnknown) then
+		{ 
+			["Mission", "State", [GVAR(nato_points), GVAR(csat_points), GVAR(aaf_points), missionName]] call OPT_LOGGING_fnc_writelog;
+		};
 	};
 
 }, 60] call CFUNC(addPerFrameHandler);

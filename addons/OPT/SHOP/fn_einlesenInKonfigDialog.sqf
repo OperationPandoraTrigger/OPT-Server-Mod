@@ -625,11 +625,11 @@ _IDD_vehKonfigOrder ctrlAddEventHandler [ "ButtonClick",
 		
 		if ((GVAR(VorhandeneBewaffnunggeld) - _waffenkosten) > 0) then 
 		{                
-			[Name Player, playerSide, GVAR(vehType), (GVAR(VorhandeneBewaffnunggeld) - _waffenkosten), "+", "weapons"] remoteExecCall ["OPT_GELDZEIT_fnc_updateBudget", 2, false];
+			[getPlayerUID player, Name Player, playerSide, GVAR(vehType), (GVAR(VorhandeneBewaffnunggeld) - _waffenkosten), "+", "weapons"] remoteExecCall ["OPT_GELDZEIT_fnc_updateBudget", 2, false];
         } 
 		else 
 		{
-			[Name Player, playerSide, GVAR(vehType), ((GVAR(VorhandeneBewaffnunggeld) - _waffenkosten) * (-1)), "-", "weapons"] remoteExecCall ["OPT_GELDZEIT_fnc_updateBudget", 2, false];
+			[getPlayerUID player, Name Player, playerSide, GVAR(vehType), ((GVAR(VorhandeneBewaffnunggeld) - _waffenkosten) * (-1)), "-", "weapons"] remoteExecCall ["OPT_GELDZEIT_fnc_updateBudget", 2, false];
 		};
 		
 	};

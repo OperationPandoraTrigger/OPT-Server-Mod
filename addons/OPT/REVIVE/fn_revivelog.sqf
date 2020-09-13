@@ -83,6 +83,7 @@ switch (_art) do
 		//Log
 		private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
 		diag_log format["[%1] (%2) Log: %3 --- %4","OPT","REVIVE",_timestamp,_message];
+		["Health", "Revive", [getPlayerUID _verletzter, name _verletzter, side _verletzter, getPlayerUID _retter, name _retter, side _retter, _verletzter distance2D _retter]] call OPT_LOGGING_fnc_writelog;
 	};
 
 	case 2 : 
@@ -99,6 +100,7 @@ switch (_art) do
 		//Log
 		private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
 		diag_log format["[%1] (%2) Log: %3 --- %4","OPT","REVIVE",_timestamp,_message];
+		["Health", "Stabilize", [getPlayerUID _verletzter, name _verletzter, side _verletzter, getPlayerUID _retter, name _retter, side _retter, _verletzter distance2D _retter]] call OPT_LOGGING_fnc_writelog;
 	};
 
 	default 

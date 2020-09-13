@@ -65,6 +65,7 @@ Fuer jede Flagge in einem Sektor:
 Marker für Flag falls Marker an
 Marker für Minensperre falls Minensperre an
 unverwundbar, Logistik-Script aus sowie Actionmeneintrag fuer Spieler
+Flaggen-Seite loggen
 */
 {
     private _flag = _x;
@@ -120,4 +121,7 @@ unverwundbar, Logistik-Script aus sowie Actionmeneintrag fuer Spieler
     ] remoteExecCall ["addAction", 0, true];
    
     _flag allowDamage false;  // Flagge kann nicht beschaedigt werden
+
+    	// Bei Missionsstart alle ursprünglichen Flaggenowner loggen
+		["Flag", "StartState", [_flag, _flag getVariable ["start_owner", sideUnknown]]] call OPT_LOGGING_fnc_writelog;
 } foreach GVAR(csat_flags) + GVAR(nato_flags) + GVAR(aaf_flags);
