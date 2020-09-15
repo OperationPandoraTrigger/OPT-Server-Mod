@@ -19,15 +19,24 @@ params [["_veh", objNull]];
 
 if (_veh isEqualTo objNull) exitWith {false}; 
 
-// repair each part if it is damaged more than 30%, repair 100%
+// Repaiert alles was beschädigt ist auf 90%, Räder werden auf 100% repaiert
 {
 	private _dmg = _veh getHitPointDamage _x;
-	if (not isNil {_dmg}) then {
-		if ( _dmg > 0.3 ) then {
-				_veh setHitPointDamage [_x, 0.0];
+	if (not isNil {_dmg}) then 
+	{
+		if ( _dmg > 0.3 ) then 
+		{
+			_veh setHitPointDamage [_x, 0.1];
 		};
 	};
 
 } foreach GVAR(repair_hps);
+
+// Räder von 90% auf 100% repaieren 
+{
+	_veh setHitPointDamage [_x, 0.0];
+
+} foreach GVAR(repair_Wheel);
+
 
 true
