@@ -280,7 +280,7 @@ switch (GVAR(csat_sektor)) do
 
 	case 17: 
 	{
-		GVAR(csat_flags_pos) pushBack [5396,11810, east,"17.1 Junky's Junkyard",true];
+		GVAR(csat_flags_pos) pushBack [1557,5432, east,"17.1 Junky's Junkyard",true];
 		GVAR(csat_flags_pos) pushBack [2563,5296, east,"17.2 Agrargemeinschaft Uelzen",true];		
 	};
 
