@@ -465,7 +465,7 @@ switch (GVAR(aaf_sektor)) do
 
 	case 17: 
 	{
-		GVAR(aaf_flags_pos) pushBack [5396,11810, independent,"17.1 Junky's Junkyard",true];
+		GVAR(aaf_flags_pos) pushBack [1557,5432, independent,"17.1 Junky's Junkyard",true];
 		GVAR(aaf_flags_pos) pushBack [2563,5296, independent,"17.2 Agrargemeinschaft Uelzen",true];		
 	};
 
