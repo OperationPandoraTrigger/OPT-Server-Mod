@@ -48,7 +48,6 @@ DFUNC(ordercheck) =
 {
 
     //Hardcap Send Auslösung Zurücksetzen
-    GVAR(Daten_send) = false;
 
     private _hardcapobj = "";
     private _hardcapinfo = 999;
@@ -301,8 +300,6 @@ DFUNC(ordercheck) =
 };
 
 //Hardcap Check
-[] remoteExecCall [QFUNC(hardcap_send), 2, false];
-
-[FUNC(ordercheck), {GVAR(Daten_send)}, "Awesome Delay"] call CLib_fnc_waitUntil;
+[] Call FUNC(ordercheck);
 
 GVAR(order_kosten)

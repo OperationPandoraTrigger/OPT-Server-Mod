@@ -36,7 +36,6 @@ params
 ];
 
 //Hardcap Send Auslösung Zurücksetzen
-GVAR(Daten_send) = false;
 GVAR(Hardcap_pool) = [];
 
 //Spieler Seite bestimmen
