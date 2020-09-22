@@ -1,3 +1,4 @@
 # ignore the PBOs folder
 PBOs/
 setMetaData.bat
+*.lnk
