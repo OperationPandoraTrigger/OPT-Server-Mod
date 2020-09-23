@@ -30,7 +30,8 @@ params [
     ["_unitType", "", [""], 1],
     ["_unitCost", 0, [0], 1],
     ["_sign", "", [""], 1],
-    ["_case", "", ["s"], 1]
+    ["_case", "", ["s"], 1],
+    ["_hardcap", 999, [999], 1]
 ];
 
 /* CODE BODY */
@@ -113,7 +114,7 @@ switch (_case) do
     };
     default 
     {
-        _message = format["%1 %2 (ver)kaufte %3", _message, _buyerName, _unitName];
+        _message = format["%1 %2 (ver)kaufte %3 (Hardcap:%4)", _message, _buyerName, _unitName,_hardcap];
     };
 };
 
