@@ -46,6 +46,8 @@ class CfgCLibModules {
             FNC(writetransportdistance);
             FNC(serverInit);
             FNC(hardcap_send);
+            FNC(hardcap_check);
+            FNC(create);
         };
         MODULE(REVIVE) 
         {
