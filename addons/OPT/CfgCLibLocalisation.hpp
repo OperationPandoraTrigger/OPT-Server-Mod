@@ -383,6 +383,14 @@ class CfgCLibLocalisation {
 				English = "Raise the vehicle";
 				German = "Fahrzeug aufrichten";
 			};
+			class BOX_CHECK_Empty {
+				English = "No free box available";
+				German = "Kein freie Box vorhanden";
+			};
+			class BOX_CHECK {
+				English = "Box Check";
+				German = "Box Check";
+			};
 		};
 	};
 };

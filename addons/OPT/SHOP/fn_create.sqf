@@ -31,6 +31,35 @@ params
 	["_status", 0]
 ];
 
+GVAR(idPadCheckCreate) = [{
+
+    private _freiePads = [];
+ 
+    // check der Pads ob belegt
+    GVAR(pads) apply 
+    {
+	    private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], GVAR(Checkbereich)];
+            
+        if (count _ob == 0) then 
+        {
+            _freiePads append [_x]; 
+        };       
+
+    };  
+
+    // erstes Freies Pad zuordnen
+    if ((count _freiePads) > 0) then 
+        {
+            GVAR(order_box) = _freiePads select 0;
+        }
+    else 
+        {
+            GVAR(order_box) = player;
+        };
+
+}, 0] call CFUNC(addPerFrameHandler);
+
+
 DFUNC(createOrder) = 
 {
 
@@ -159,15 +188,26 @@ DFUNC(createOrder) =
     
 };
 
-//Hardcap Check
+//Hardcap Check und Padbox check
 if (_status isEqualTo 1) then 
 {
-    [] Call FUNC(createOrder);
+    if (GVAR(order_box) != Player)  then 
+    {
+        [] Call FUNC(createOrder);
+    }                 
+    else 
+    {
+        private _txt = MLOC(BOX_CHECK_Empty);
+        private _header = MLOC(BOX_CHECK);
+        hint Format ["%1 \n\n %2",_header,_txt];    
+    };        
 }                   
 else 
 {
     private _txt = MLOC(HARDCAP_TEXT);
     private _header = MLOC(HARDCAP);
     hint Format ["%1 \n\n %2",_header,_txt];
-};  
+}; 
+
+GVAR(idPadCheckCreate) call CFUNC(removePerframeHandler);	
 
