@@ -404,7 +404,7 @@ GVAR(canBeTransported) =
 	["OPT_Box_East_WpsSpecial_F", 2],         			    // Munition spezial kiste NEUE KISTE!
 	["OPT_Box_East_Grenades_F", 2],     				    // granatenkiste
 	["OPT_CSAT_Sprengstoffkiste", 2],     				    // sprengstoffkiste NEUE KISTE!
-	["OPT_CSAT_Minienkiste", 2],     				    // Minenkiste NEUE KISTE!
+	["OPT_CSAT_Minenkiste", 2],     				    // Minenkiste NEUE KISTE!
 	["OPT_Box_East_WpsSpecial_AT_L1", 2],   				    // AT Raketenkiste RPG42 NEUE KISTE!
 	["OPT_Box_East_WpsSpecial_AT_L2", 2],   				    // AT Raketenkiste PPG 7 NEUE KISTE!
 	["OPT_Box_East_WpsSpecial_AT_H1", 2],   				    // AT Raketenkiste Titan NEUE KISTE!
@@ -537,7 +537,7 @@ GVAR(canBeDragged) =
 	["OPT_Box_East_WpsSpecial_F"],            			                    // Munition spezial kiste NEUE KISTE!
     ["OPT_Box_East_Grenades_F"],            		                        // granatenkiste,75000
     ["OPT_CSAT_Sprengstoffkiste"],            		                        // sprengstoffkiste,75000 NEUE KISTE!
-	["OPT_CSAT_Minienkiste"],            		                        // Minenkiste,75000 NEUE KISTE!
+	["OPT_CSAT_Minenkiste"],            		                        // Minenkiste,75000 NEUE KISTE!
 	["OPT_Box_East_WpsLaunch_F"],					                		// HAT-Kiste (Titan),400000
 	["OPT_O_HMG_01_F"],								                        // Stand-MG niedrig,10000
 	["OPT_O_HMG_01_high_F"],							                    // Stand-MG hoch,10000
@@ -631,7 +631,7 @@ GVAR(canBeCarried) =
 	["OPT_Box_East_WpsSpecial_F"],            			// Munition spezial kiste NEUE KISTE!
     ["OPT_Box_East_Grenades_F"],                		// granatenkiste,75000
 	["OPT_CSAT_Sprengstoffkiste"],            		    // sprengstoffkiste,75000 NEUE KISTE!
-	["OPT_CSAT_Minienkiste"],            		         // Minenkiste,75000 NEUE KISTE!
+	["OPT_CSAT_Minenkiste"],            		         // Minenkiste,75000 NEUE KISTE!
 	["OPT_Box_East_WpsLaunch_F"],						// HAT-Kiste (Titan),400000
 	["OPT_O_HMG_01_F"],						    		// Stand-MG niedrig,10000
 	["OPT_O_HMG_01_high_F"],							// Stand-MG hoch,10000
