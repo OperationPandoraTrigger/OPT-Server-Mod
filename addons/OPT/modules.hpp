@@ -150,5 +150,10 @@ class CfgCLibModules {
         {
             FNC(writelog);
         };
+        MODULE(GRENZLINIE) 
+        {
+            dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
+            FNC(clientInit);
+        };
     };
 };
