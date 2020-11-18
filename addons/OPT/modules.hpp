@@ -150,5 +150,10 @@ class CfgCLibModules {
         {
             FNC(writelog);
         };
+        MODULE(WEATHERTIME)
+        {
+            FNC(initCBASettings);
+            FNC(serverInit);
+        };
     };
 };
