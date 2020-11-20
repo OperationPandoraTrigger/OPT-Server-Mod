@@ -24,28 +24,27 @@
 
 #include "macros.hpp"
 
-if (isServer) then
-{
-    waitUntil {time > 0};
-    _private newdate = missionStart select [0,3] append timeslider_hours append timeslider_minutes;
-    [_newdate] remoteExec ["setDate"];
-    [[], {setDate _newdate}] remoteExec ["call",0,"JIP_id_setDate"];
+["missionStarted", {
+	// update mission time
+	private _newdate = missionStart select [0,3];
+	_newdate append [round OPT_WEATHERTIME_timeslider_hours, round OPT_WEATHERTIME_timeslider_minutes];
+	[_newdate] remoteExec ["setDate"];
+	[[], {setDate _newdate}] remoteExec ["call",0,"JIP_id_setDate"];
 
-    // update weather conditions (time skip to get clouds in sync)
-    skipTime -24;
-    86400 setOvercast weather_overcast;
-    86400 setRain weather_rain;
-    86400 setFog weather_fog;
-    forceWeatherChange;
-    skipTime 24;
+	// update weather conditions (time skip to get clouds in sync)
+	skipTime -24;
+	86400 setOvercast OPT_WEATHERTIME_weather_overcast;
+	forceWeatherChange;
+	skipTime 24;
+	0 setRain OPT_WEATHERTIME_weather_rain;
+	0 setFog OPT_WEATHERTIME_weather_fog;
+	forceWeatherChange;
 
-    // make sure the values stay as desired - long transision to the same value
-    999999 setOvercast weather_overcast;
-    999999 setRain weather_rain;
-    999999 setFog weather_fog;
-};
+	// make sure overcast stays as desired - long transision to the same value
+	999999 setOvercast OPT_WEATHERTIME_weather_overcast;
 
-// TODO: 
-// fogValue: Number - normal fog value that represents fog density at fogBase level. Range 0..1
-// fogDecay: Number - decay of fog density with altitude. Range -1..1
-// fogBase: Number - base altitude (ASL) of fog (in meters). Range -5000..5000
+	// TODO: 
+	// fogValue: Number - normal fog value that represents fog density at fogBase level. Range 0..1
+	// fogDecay: Number - decay of fog density with altitude. Range -1..1
+	// fogBase: Number - base altitude (ASL) of fog (in meters). Range -5000..5000
+}] call CFUNC(addEventhandler);

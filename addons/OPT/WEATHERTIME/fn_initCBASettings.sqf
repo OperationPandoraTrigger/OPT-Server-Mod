@@ -68,23 +68,23 @@
 	{
 	    case (0) :
 	    {
-		weather_overcast = 1;
-		weather_rain = 1;
-		weather_fog = 0;
+		OPT_WEATHERTIME_weather_overcast = 1;
+		OPT_WEATHERTIME_weather_rain = 1;
+		OPT_WEATHERTIME_weather_fog = 0;
 	    };
 
 	    case (1) :
 	    {
-		weather_overcast = 0;
-		weather_rain = 0;
-		weather_fog = 0.1;
+		OPT_WEATHERTIME_weather_overcast = 0;
+		OPT_WEATHERTIME_weather_rain = 0;
+		OPT_WEATHERTIME_weather_fog = 0.1;
 	    };
 
 	    case (2) :
 	    {
-		weather_overcast = 0.8;
-		weather_rain = 0.7;
-		weather_fog = 0.5;
+		OPT_WEATHERTIME_weather_overcast = 0.8;
+		OPT_WEATHERTIME_weather_rain = 0.7;
+		OPT_WEATHERTIME_weather_fog = 0.5;
 	    };
 
 	    default {};
