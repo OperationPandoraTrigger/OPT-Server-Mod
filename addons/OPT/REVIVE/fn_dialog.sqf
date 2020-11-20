@@ -89,16 +89,17 @@ GVAR(startzeit) = time;
 		_units apply 
 		{
 			//Nur Sanis
-			if ((side _x isEqualTo side player) and (typeOf _x in GVAR(SaniKlassen)) and !(ifeState _x isEqualTo "INCAPACITATED") and GVAR(onlysani)) then 
+			if ((side _x isEqualTo side player) and (typeOf _x in GVAR(SaniKlassen)) and !(lifeState _x isEqualTo "INCAPACITATED") and GVAR(onlysani)) then 
 			{
 				_poolplayer pushBack _x;
 			};
 			//alle Spieler
-			if ((side _x isEqualTo side player) and !(ifeState _x isEqualTo "INCAPACITATED") and !GVAR(onlysani)) then 
+			if ((side _x isEqualTo side player) and !(lifeState _x isEqualTo "INCAPACITATED") and !GVAR(onlysani)) then 
 			{
 				_poolplayer pushBack _x;
 			};
 		};
+
 		_poolplayer = _poolplayer apply { [_x distance player, _x] };
 	};
 
@@ -153,6 +154,7 @@ GVAR(startzeit) = time;
 		1 enableChannel true;
 		player allowDamage true;
 		player setVariable ["OPT_isUnconscious", 0, true];
+		OPT_REVIVE_unconsciousHandler = nil;
 		_handle call CFUNC(removePerframeHandler);
 	};
 

@@ -24,18 +24,6 @@
 
 #include "macros.hpp";
 
-//kontrolle ob Spieler in BIS Revive System bewustlosen Spieler ist.
-[{
-	private _lifeState = lifeState player;
-
-	if (_lifeState isEqualTo "INCAPACITATED") then 
-	{	
-		[player] call FUNC(isUnconscious);
-	};
-	
-}, 1, _this] call CFUNC(addPerFrameHandler);
-
-
 //Funktion für EH auslösung
 DFUNC(isUnconscious) = 
 {
@@ -71,6 +59,7 @@ DFUNC(isUnconscious) =
 		1 enableChannel true;
 		1 fadeSound 1;
 		OPT_GELDZEIT_earplugsInUse = 1;
+		OPT_REVIVE_unconsciousHandler = nil;
 		 
     } call CFUNC(execNextFrame);
 
@@ -79,14 +68,17 @@ DFUNC(isUnconscious) =
 //EH für Spielerabschüsslog 
 //Event Aüslösung bei bewustlosen Spieler.
 
-DFUNC(playerKilled) = 
+
+DFUNC(playerHandleDamage) = 
 {
-	params ["_unit", "_killer", "_instigator", "_useEffects"];
+	params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
 
-		//Log Revive Spieler Kill
+	if ((lifeState _unit isEqualTo "INCAPACITATED") and isNil "OPT_REVIVE_unconsciousHandler") then 
+	{
+		OPT_REVIVE_unconsciousHandler = true;
+		[_unit, _instigator, _source, _projectile] remoteExecCall ["OPT_SHOP_fnc_writeKill", 2, false];
 
-		//Anzeige Selbstverschuldet oder Gegner
-		if (_unit == _killer) then 
+		if (_unit == _source) then 
         {          
 			[MLOC(KILL_MSG), MLOC(KILL_SELF)] spawn BIS_fnc_infoText;
         } 
@@ -95,10 +87,13 @@ DFUNC(playerKilled) =
 			[MLOC(KILL_MSG), format["%1",name _instigator]] spawn BIS_fnc_infoText;
 
         };
+
+		// Dialog auslösen 
+		[player] call FUNC(isUnconscious);	
 	};
 };
 
-player addEventHandler ["Killed", FUNC(playerKilled)];
+player addEventHandler ["HandleDamage", FUNC(playerHandleDamage)];
 
 // 3D Marker
 GVAR(missionEH_draw3D) = addMissionEventHandler ["Draw3D", 
