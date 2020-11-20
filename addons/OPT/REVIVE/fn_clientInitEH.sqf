@@ -44,6 +44,9 @@ DFUNC(isUnconscious) =
 		//Sprengladungen mit Todmanschalter zünden
 		[_unit] call ace_explosives_fnc_onIncapacitated;
 
+		//TFAR ausschalten
+		player setVariable ["tf_unable_to_use_radio", true];
+
 		//Dialog ausführen
 		[] call FUNC(dialog);
 	};
@@ -60,6 +63,7 @@ DFUNC(isUnconscious) =
 		1 fadeSound 1;
 		OPT_GELDZEIT_earplugsInUse = 1;
 		OPT_REVIVE_unconsciousHandler = nil;
+		player setVariable ["tf_unable_to_use_radio", false];
 		 
     } call CFUNC(execNextFrame);
 
@@ -88,7 +92,7 @@ DFUNC(playerHandleDamage) =
 
         };
 
-		// Dialog auslösen 
+		//Funktion starten wenn Spieler bewustlos ist. 
 		[player] call FUNC(isUnconscious);	
 	};
 };

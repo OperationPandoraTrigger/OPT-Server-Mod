@@ -155,6 +155,20 @@ GVAR(startzeit) = time;
 		player allowDamage true;
 		player setVariable ["OPT_isUnconscious", 0, true];
 		OPT_REVIVE_unconsciousHandler = nil;
+		player setVariable ["tf_unable_to_use_radio", false];
+		_handle call CFUNC(removePerframeHandler);
+	};
+
+	// Dialog und PFH Löschung
+	if (!(lifeState player isEqualTo "INCAPACITATED"))  then 
+	{
+		closeDialog 5000;	
+		closeDialog 0;
+		1 enableChannel true;
+		player allowDamage true;
+		player setVariable ["OPT_isUnconscious", 0, true];
+		OPT_REVIVE_unconsciousHandler = nil;
+		player setVariable ["tf_unable_to_use_radio", false];
 		_handle call CFUNC(removePerframeHandler);
 	};
 
