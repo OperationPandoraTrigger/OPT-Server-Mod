@@ -24,17 +24,17 @@
 
 #include "macros.hpp";
 
-DUMP("REVIVE EH");
+//kontrolle ob Spieler in BIS Revive System bewustlosen Spieler ist.
+[{
+	private _lifeState = lifeState player;
 
-//Event Aüslösung bei bewustlosen Spieler.
-[
-	"ace_unconscious",
-	{
-		params ["_unit", "_isUnconscious"]; 
+	if (_lifeState isEqualTo "INCAPACITATED") then 
+	{	
+		[player] call FUNC(isUnconscious);
+	};
+	
+}, 1, _this] call CFUNC(addPerFrameHandler);
 
-		[_unit] call FUNC(isUnconscious);
-	}
-] call CBA_fnc_addEventHandler;
 
 //Funktion für EH auslösung
 DFUNC(isUnconscious) = 
@@ -45,9 +45,6 @@ DFUNC(isUnconscious) =
 	{
 		//Var für GPS setzen 
 		_unit setVariable ["OPT_isUnconscious", 1, true];
-
-		//Schaden weiterer abschalten
-		_unit allowDamage false;
 
 		//Einheit aus Fahrzeug endfernen
 		if (vehicle _unit != _unit) then 
@@ -68,14 +65,12 @@ DFUNC(isUnconscious) =
 ["Respawn", {
 
     {
-		[player, false, 1, true] call ace_medical_fnc_setUnconscious;
 		player setVariable ["OPT_isUnconscious", 0, true];
 		player setVariable ["OPT_isStabilized", 0, true];
 		player allowDamage true;
 		1 enableChannel true;
 		1 fadeSound 1;
 		OPT_GELDZEIT_earplugsInUse = 1;
-		OPT_REVIVE_unconsciousHandler = nil;
 		 
     } call CFUNC(execNextFrame);
 
@@ -84,16 +79,14 @@ DFUNC(isUnconscious) =
 //EH für Spielerabschüsslog 
 //Event Aüslösung bei bewustlosen Spieler.
 
-DFUNC(playerHandleDamage) = 
+DFUNC(playerKilled) = 
 {
-	params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
+	params ["_unit", "_killer", "_instigator", "_useEffects"];
 
-	if ((_unit getVariable "ACE_isUnconscious") and isNil "OPT_REVIVE_unconsciousHandler") then 
-	{
-		OPT_REVIVE_unconsciousHandler = true;
-		[_unit, _instigator, _source, _projectile] remoteExecCall ["OPT_SHOP_fnc_writeKill", 2, false];
+		//Log Revive Spieler Kill
 
-		if (_unit == _source) then 
+		//Anzeige Selbstverschuldet oder Gegner
+		if (_unit == _killer) then 
         {          
 			[MLOC(KILL_MSG), MLOC(KILL_SELF)] spawn BIS_fnc_infoText;
         } 
@@ -105,7 +98,7 @@ DFUNC(playerHandleDamage) =
 	};
 };
 
-player addEventHandler ["HandleDamage", FUNC(playerHandleDamage)];
+player addEventHandler ["Killed", FUNC(playerKilled)];
 
 // 3D Marker
 GVAR(missionEH_draw3D) = addMissionEventHandler ["Draw3D", 
@@ -113,7 +106,7 @@ GVAR(missionEH_draw3D) = addMissionEventHandler ["Draw3D",
     private _nearbyUnits = playableUnits select 
 	{
         (_x distance player) < 30 and
-        _x getVariable "ACE_isUnconscious" and
+        lifeState _x isEqualTo "INCAPACITATED" and
         _x != player and
         SIDE _x == PLAYERSIDE
     };
