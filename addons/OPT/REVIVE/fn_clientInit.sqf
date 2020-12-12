@@ -70,7 +70,7 @@ GVAR(revive_Action_eigen) =
 	MLOC(FIRST_AID),
 	"",
 	{[] call FUNC(eigenversorgung)},
-	{(vehicle player == player)},
+	{((vehicle player == player) and (getdammage player > 0.2))},
 	{}
 
 ] call ace_interact_menu_fnc_createAction;
