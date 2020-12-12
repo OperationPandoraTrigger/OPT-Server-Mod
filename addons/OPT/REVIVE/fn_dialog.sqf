@@ -82,6 +82,8 @@ GVAR(startzeit) = time;
 	private _units = nearestObjects [getpos player, ["CAManBase"], _dist] - [player];
 	private _poolplayer = [];
 	private _hintMsg = "";	
+	private _sidesoldat = 0;
+	private _sideplayer = 0;
 		
 	// Spieler im Bereich finden
 	if (count _units > 0) then 
@@ -89,12 +91,15 @@ GVAR(startzeit) = time;
 		_units apply 
 		{
 			//Nur Sanis
-			if ((side _x isEqualTo side player) and (typeOf _x in GVAR(SaniKlassen)) and !(lifeState _x isEqualTo "INCAPACITATED") and GVAR(onlysani)) then 
+			_sidesoldat =getnumber (configFile >> "CfgVehicles" >> (typeof _x) >> "side"); 
+			_sideplayer =getnumber (configFile >> "CfgVehicles" >> (typeof player) >> "side");
+
+			if ((_sidesoldat isEqualTo _sideplayer) and (typeOf _x in GVAR(SaniKlassen)) and !(lifeState _x isEqualTo "INCAPACITATED") and GVAR(onlysani)) then 
 			{
 				_poolplayer pushBack _x;
 			};
 			//alle Spieler
-			if ((side _x isEqualTo side player) and !(lifeState _x isEqualTo "INCAPACITATED") and !GVAR(onlysani)) then 
+			if ((_sidesoldat isEqualTo _sideplayer) and !(lifeState _x isEqualTo "INCAPACITATED") and !GVAR(onlysani)) then 
 			{
 				_poolplayer pushBack _x;
 			};
