@@ -37,8 +37,8 @@
 	86400 setOvercast OPT_WEATHERTIME_weather_overcast;
 	forceWeatherChange;
 	skipTime 24;
-	0 setRain OPT_WEATHERTIME_weather_rain;
-	0 setFog [OPT_WEATHERTIME_weather_fogValue, OPT_WEATHERTIME_weather_fogDecay, OPT_WEATHERTIME_weather_fogBase];
+	0 setRain OPT_WEATHERTIME_weather_rain_start;
+	0 setFog [OPT_WEATHERTIME_weather_fogValue_start, OPT_WEATHERTIME_weather_fogDecay_start, OPT_WEATHERTIME_weather_fogBase_start];
 	forceWeatherChange;
 }] call CFUNC(addEventhandler);
 
