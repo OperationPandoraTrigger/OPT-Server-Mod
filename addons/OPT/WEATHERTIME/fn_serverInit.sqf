@@ -13,7 +13,7 @@
 * Yes
 * 
 * Global:
-* No
+* Yes
 * 
 * API:
 * No
@@ -24,62 +24,37 @@
 
 #include "macros.hpp"
 
-#define TRANSITION_INTERVAL 10	// interval in seconds for framehandler to refresh weather transitions
-TRANSITION_INDEX = 0;
+#define TRANSITION_INTERVAL 60	// interval in seconds for framehandler to refresh weather transitions
 
 ["missionStarted", {
 	// update mission time
-	private _newdate = missionStart select [0,3];
+	private _newdate = missionStart select [0,3]; // keep current date from "real life"
 	_newdate append [round OPT_WEATHERTIME_timeslider_hours, round OPT_WEATHERTIME_timeslider_minutes];
 	[_newdate] remoteExec ["setDate"];
-	[[], {setDate _newdate}] remoteExec ["call",0,"JIP_id_setDate"];
 
 	// update weather conditions (time skip to get clouds in sync)
 	skipTime -24;
-	86400 setOvercast OPT_WEATHERTIME_weather_overcast_start;
+	86400 setOvercast OPT_WEATHERTIME_weather_overcast;
 	forceWeatherChange;
 	skipTime 24;
-	0 setRain OPT_WEATHERTIME_weather_rain_start;
-	0 setFog OPT_WEATHERTIME_weather_fog_start;
+	0 setRain OPT_WEATHERTIME_weather_rain;
+	0 setFog [OPT_WEATHERTIME_weather_fogValue, OPT_WEATHERTIME_weather_fogDecay, OPT_WEATHERTIME_weather_fogBase];
 	forceWeatherChange;
-
-	// TODO: 
-	// fogValue: Number - normal fog value that represents fog density at fogBase level. Range 0..1
-	// fogDecay: Number - decay of fog density with altitude. Range -1..1
-	// fogBase: Number - base altitude (ASL) of fog (in meters). Range -5000..5000
 }] call CFUNC(addEventhandler);
 
-// update weather transisions every TRANSITION_INTERVAL seconds. arma allows only one transition at the same time - so we do it one after another.
+// update rain and fog transisions every TRANSITION_INTERVAL seconds
 [{
 	private _timeElapsed = serverTime - OPT_GELDZEIT_startTime;
 	private _missionProgress = _timeElapsed / OPT_GELDZEIT_PLAYTIME;
-	switch (TRANSITION_INDEX) do
-	{
-		case 0:
-		{
-			(TRANSITION_INTERVAL * 0.9) setOvercast (OPT_WEATHERTIME_weather_overcast_end - OPT_WEATHERTIME_weather_overcast_start) * _missionProgress + OPT_WEATHERTIME_weather_overcast_start;
-			simulWeatherSync;
-			TRANSITION_INDEX = 1;
-		};
 
-		case 1:
-		{
-			(TRANSITION_INTERVAL * 0.9) setRain (OPT_WEATHERTIME_weather_rain_end - OPT_WEATHERTIME_weather_rain_start) * _missionProgress + OPT_WEATHERTIME_weather_rain_start;
-			simulWeatherSync;
-			TRANSITION_INDEX = 2;
-		};
+	// calculate linear transition state from start to end based on mission progress
+	private _rain = (OPT_WEATHERTIME_weather_rain_end - OPT_WEATHERTIME_weather_rain_start) * _missionProgress + OPT_WEATHERTIME_weather_rain_start;
+	private _fogValue = (OPT_WEATHERTIME_weather_fogValue_end - OPT_WEATHERTIME_weather_fogValue_start) * _missionProgress + OPT_WEATHERTIME_weather_fogValue_start;
+	private _fogDecay = (OPT_WEATHERTIME_weather_fogDecay_end - OPT_WEATHERTIME_weather_fogDecay_start) * _missionProgress + OPT_WEATHERTIME_weather_fogDecay_start;
+	private _fogBase = (OPT_WEATHERTIME_weather_fogBase_end - OPT_WEATHERTIME_weather_fogBase_start) * _missionProgress + OPT_WEATHERTIME_weather_fogBase_start;
 
-		case 2:
-		{
-			(TRANSITION_INTERVAL * 0.9) setFog (OPT_WEATHERTIME_weather_fog_end - OPT_WEATHERTIME_weather_fog_start) * _missionProgress + OPT_WEATHERTIME_weather_fog_start;
-			simulWeatherSync;
-			TRANSITION_INDEX = 0;
-		};
-
-		default
-		{
-			TRANSITION_INDEX = 0;
-			["default"] remoteExec ["systemChat"];
-		};
-	}
+	// update weather
+	(TRANSITION_INTERVAL * 0.9) setRain _rain;
+	(TRANSITION_INTERVAL * 0.9) setFog [_fogValue, _fogDecay, _fogBase];
+	simulWeatherSync;
 }, TRANSITION_INTERVAL, _this] call CFUNC(addPerFrameHandler);
