@@ -50,6 +50,7 @@ private _BleedoutBar_Text = _display displayCtrl IDC_REVIVE_BLEEDOUTBAR_TEXT;
 //Grundstellung
 _BleedoutBar progressSetPosition 1.0; 
 _MedicNearLabel_Meter ctrlSetText "";  
+GVAR(ausblutzeit) = 300;
 _BleedoutBar_Text ctrlSetText format ["%1 sec",GVAR(ausblutzeit)]; 
 
 //Chat abschalten
@@ -77,37 +78,49 @@ GVAR(startzeit) = time;
 	private _MedicNearLabel_Meter = _display displayCtrl IDC_REVIVE_MEDICNEARLABEL_METER;
 	private _BleedoutBar_Text = _display displayCtrl IDC_REVIVE_BLEEDOUTBAR_TEXT;
 
-	private _dist = GVAR(sanidist);
+	private _dist = GVAR(playerdist);
 	private _units = nearestObjects [getpos player, ["CAManBase"], _dist] - [player];
-	private _medics = [];
+	private _poolplayer = [];
 	private _hintMsg = "";	
+	private _sidesoldat = 0;
+	private _sideplayer = 0;
 		
-	// Sanis im Bereich finden
+	// Spieler im Bereich finden
 	if (count _units > 0) then 
 	{
 		_units apply 
 		{
-			if ((side _x isEqualTo side player) and (typeOf _x in GVAR(SaniKlassen)) and !(_x getVariable "ACE_isUnconscious")) then 
+			//Nur Sanis
+			_sidesoldat =getnumber (configFile >> "CfgVehicles" >> (typeof _x) >> "side"); 
+			_sideplayer =getnumber (configFile >> "CfgVehicles" >> (typeof player) >> "side");
+
+			if ((_sidesoldat isEqualTo _sideplayer) and (typeOf _x in GVAR(SaniKlassen)) and !(lifeState _x isEqualTo "INCAPACITATED") and GVAR(onlysani)) then 
 			{
-				_medics pushBack _x;
+				_poolplayer pushBack _x;
+			};
+			//alle Spieler
+			if ((_sidesoldat isEqualTo _sideplayer) and !(lifeState _x isEqualTo "INCAPACITATED") and !GVAR(onlysani)) then 
+			{
+				_poolplayer pushBack _x;
 			};
 		};
-		_medics = _medics apply { [_x distance player, _x] };
+
+		_poolplayer = _poolplayer apply { [_x distance player, _x] };
 	};
 
 	//Ordnung nächster Sani
-	private _next_Medic = objNull;
+	private _next_poolplayer = objNull;
 
-	if (count _medics > 0) then 
+	if (count _poolplayer > 0) then 
 	{
 		
-		_next_Medic = (_medics select 0 select 1);
+		_next_poolplayer = (_poolplayer select 0 select 1);
 
-		if (!isNull _next_Medic)  then 
+		if (!isNull _next_poolplayer)  then 
 		{
-			private _medic_Name	= name _next_Medic;	
-			private _abst = floor (_medics select 0 select 0);
-			_hintMsg = format[MLOC(MEDIC_DISTANCE), _medic_Name, _abst];
+			private _poolplayer_Name = name _next_poolplayer;	
+			private _abst = floor (_poolplayer select 0 select 0);
+			_hintMsg = format[MLOC(MEDIC_DISTANCE), _poolplayer_Name, _abst];
 		};
 	} 
 	else 
@@ -119,37 +132,18 @@ GVAR(startzeit) = time;
 	// Textausgabe über MEdic entfernung
 	_MedicNearLabel_Meter ctrlSetText format ["%1",_hintMsg]; 
 
-	// 3.0 ist bei ACE Medic die untergrenze für die Respwan Auslösung. 
-	private _blutlevel = player getVariable ["ace_medical_bloodVolume", 6];
-
-	//Kontrolle des nicht unterschreiten der Blutuntergrenze
-	if (_blutlevel < GVAR(Blutuntergrenze)) then 
-	{
-		player setVariable ["ace_medical_bloodVolume", 3.5];
-	};	
-
 	//Auto Respwan nach Ablauf der Ausblutzeit
-	if (((GVAR(ausblutzeit) - (time - GVAR(startzeit))) < 0) and (player getVariable ["OPT_isStabilized", 1] == 0)) then 
+	if (((GVAR(ausblutzeit) - (time - GVAR(startzeit))) < 0)) then 
 	{
 		player setDamage 1;
 
 	};	
 
 	// Zeitausgabe bis Auto Respwan
-	if (player getVariable ["OPT_isStabilized", 1] == 1) then 
-	{
-		_BleedoutBar_Text ctrlSetText format ["%1",MLOC(IS_STABILISED)]; 
-		_BleedoutBar progressSetPosition 1.0; 
-		_BleedoutBar_Text ctrlSetTextColor [0, 1, 0, 1];
-		_BleedoutBar ctrlSetTextColor [0, 1, 0, 1];
-	}
-	else
-	{
-		_BleedoutBar_Text ctrlSetText format ["%1 sec",floor (GVAR(ausblutzeit) - (time - GVAR(startzeit)))]; 
-		_BleedoutBar progressSetPosition ((floor (GVAR(ausblutzeit) - (time - GVAR(startzeit)))) / GVAR(ausblutzeit)); 
-		_BleedoutBar_Text ctrlSetTextColor [1, 0, 0, 1];
-		_BleedoutBar ctrlSetTextColor [1, 0, 0, 1];
-	};
+	_BleedoutBar_Text ctrlSetText format ["%1 sec",floor (GVAR(ausblutzeit) - (time - GVAR(startzeit)))]; 
+	_BleedoutBar progressSetPosition ((floor (GVAR(ausblutzeit) - (time - GVAR(startzeit)))) / GVAR(ausblutzeit)); 
+	_BleedoutBar_Text ctrlSetTextColor [1, 0, 0, 1];
+	_BleedoutBar ctrlSetTextColor [1, 0, 0, 1];
 
 	// Check Dialog offen
 	if (isNull (_display displayCtrl 5001)) then
@@ -164,23 +158,24 @@ GVAR(startzeit) = time;
 		closeDialog 0;
 		1 enableChannel true;
 		player allowDamage true;
-		OPT_REVIVE_unconsciousHandler = nil;
 		player setVariable ["OPT_isUnconscious", 0, true];
-		player setVariable ["OPT_isStabilized", 0, true];
+		OPT_REVIVE_unconsciousHandler = nil;
+		player setVariable ["tf_unable_to_use_radio", false];
 		_handle call CFUNC(removePerframeHandler);
 	};
 
-	if (!(player getVariable "ACE_isUnconscious"))  then 
-	{	
-		closeDialog 5000;
+	// Dialog und PFH Löschung
+	if (!(lifeState player isEqualTo "INCAPACITATED"))  then 
+	{
+		closeDialog 5000;	
 		closeDialog 0;
 		1 enableChannel true;
 		player allowDamage true;
-		OPT_REVIVE_unconsciousHandler = nil;
 		player setVariable ["OPT_isUnconscious", 0, true];
-		player setVariable ["OPT_isStabilized", 0, true];
+		OPT_REVIVE_unconsciousHandler = nil;
+		player setVariable ["tf_unable_to_use_radio", false];
 		_handle call CFUNC(removePerframeHandler);
-	};		
+	};
 
 }, 1, _this] call CFUNC(addPerFrameHandler);
 

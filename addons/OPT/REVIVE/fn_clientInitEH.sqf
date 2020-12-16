@@ -24,18 +24,6 @@
 
 #include "macros.hpp";
 
-DUMP("REVIVE EH");
-
-//Event Aüslösung bei bewustlosen Spieler.
-[
-	"ace_unconscious",
-	{
-		params ["_unit", "_isUnconscious"]; 
-
-		[_unit] call FUNC(isUnconscious);
-	}
-] call CBA_fnc_addEventHandler;
-
 //Funktion für EH auslösung
 DFUNC(isUnconscious) = 
 {
@@ -45,9 +33,6 @@ DFUNC(isUnconscious) =
 	{
 		//Var für GPS setzen 
 		_unit setVariable ["OPT_isUnconscious", 1, true];
-
-		//Schaden weiterer abschalten
-		_unit allowDamage false;
 
 		//Einheit aus Fahrzeug endfernen
 		if (vehicle _unit != _unit) then 
@@ -59,6 +44,9 @@ DFUNC(isUnconscious) =
 		//Sprengladungen mit Todmanschalter zünden
 		[_unit] call ace_explosives_fnc_onIncapacitated;
 
+		//TFAR ausschalten
+		player setVariable ["tf_unable_to_use_radio", true];
+
 		//Dialog ausführen
 		[] call FUNC(dialog);
 	};
@@ -68,7 +56,6 @@ DFUNC(isUnconscious) =
 ["Respawn", {
 
     {
-		[player, false, 1, true] call ace_medical_fnc_setUnconscious;
 		player setVariable ["OPT_isUnconscious", 0, true];
 		player setVariable ["OPT_isStabilized", 0, true];
 		player allowDamage true;
@@ -76,6 +63,7 @@ DFUNC(isUnconscious) =
 		1 fadeSound 1;
 		OPT_GELDZEIT_earplugsInUse = 1;
 		OPT_REVIVE_unconsciousHandler = nil;
+		player setVariable ["tf_unable_to_use_radio", false];
 		 
     } call CFUNC(execNextFrame);
 
@@ -84,25 +72,40 @@ DFUNC(isUnconscious) =
 //EH für Spielerabschüsslog 
 //Event Aüslösung bei bewustlosen Spieler.
 
-DFUNC(playerHandleDamage) = 
+DFUNC(playercheckINCAPACITATED) = 
 {
-	params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
-
-	if ((_unit getVariable "ACE_isUnconscious") and isNil "OPT_REVIVE_unconsciousHandler") then 
+	if ((lifeState GVAR(playerHandleDamage_unit) isEqualTo "INCAPACITATED") and isNil "OPT_REVIVE_unconsciousHandler") then 
 	{
 		OPT_REVIVE_unconsciousHandler = true;
-		[_unit, _instigator, _source, _projectile] remoteExecCall ["OPT_SHOP_fnc_writeKill", 2, false];
+		[GVAR(playerHandleDamage_unit), GVAR(playerHandleDamage_instigator), GVAR(playerHandleDamage_source), GVAR(playerHandleDamage_projectile)] remoteExecCall ["OPT_SHOP_fnc_writeKill", 2, false];
 
-		if (_unit == _source) then 
+		if (GVAR(playerHandleDamage_unit) == GVAR(playerHandleDamage_source)) then 
         {          
 			[MLOC(KILL_MSG), MLOC(KILL_SELF)] spawn BIS_fnc_infoText;
         } 
 		else
 		{         
-			[MLOC(KILL_MSG), format["%1",name _instigator]] spawn BIS_fnc_infoText;
+			[MLOC(KILL_MSG), format["%1",name GVAR(playerHandleDamage_instigator)]] spawn BIS_fnc_infoText;
 
         };
+
+		//Funktion starten wenn Spieler bewustlos ist. 
+		[player] call FUNC(isUnconscious);	
 	};
+
+};
+
+DFUNC(playerHandleDamage) = 
+{
+	params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
+
+	//Var übergabe
+	GVAR(playerHandleDamage_unit) = _unit; 
+	GVAR(playerHandleDamage_instigator) = _instigator; 
+	GVAR(playerHandleDamage_source) = _source; 
+	GVAR(playerHandleDamage_projectile) = _unit; 
+
+	[FUNC(playercheckINCAPACITATED), 1,""] call CLib_fnc_wait;
 };
 
 player addEventHandler ["HandleDamage", FUNC(playerHandleDamage)];
@@ -113,7 +116,7 @@ GVAR(missionEH_draw3D) = addMissionEventHandler ["Draw3D",
     private _nearbyUnits = playableUnits select 
 	{
         (_x distance player) < 30 and
-        _x getVariable "ACE_isUnconscious" and
+        lifeState _x isEqualTo "INCAPACITATED" and
         _x != player and
         SIDE _x == PLAYERSIDE
     };
