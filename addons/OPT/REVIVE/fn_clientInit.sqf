@@ -40,7 +40,8 @@ DFUNC(eigenversorgung) =
 		GVAR(Helizeiteigen),
 		[],
 		{
-			[player, player] call ace_medical_treatment_fnc_fullHeal;
+			//Heilung auf in CBA eingestellten wert
+			player setDamage ((100-GVAR(Heliwerteigen))/100)+0.01;
 			player switchmove "";
 			player action ["WeaponInHand", player];
 		},
@@ -58,7 +59,6 @@ DFUNC(eigenversorgung) =
 // Var setzen 
 player setVariable ["OPT_isUnconscious", 0, true];
 player setVariable ["OPT_isStabilized", 0, true];
-player setVariable ["ACE_isUnconscious",false, true];
 
 //Chat abschaltung bei Bewustlosigkeit
 (findDisplay 46) displayAddEventHandler ["KeyDown", {_this call FUNC(keyUnbind)}];
@@ -70,7 +70,7 @@ GVAR(revive_Action_eigen) =
 	MLOC(FIRST_AID),
 	"",
 	{[] call FUNC(eigenversorgung)},
-	{(vehicle player == player)},
+	{((vehicle player == player) and (getdammage player > 0.2))},
 	{}
 
 ] call ace_interact_menu_fnc_createAction;
