@@ -27,6 +27,7 @@ params [
     ["_buyerUID", "", [""], 1], 
     ["_buyerName", "", [""], 1], 
     ["_side", sideUnknown, [sideUnknown], 1],
+    ["_unitId", "", [""], 1],
     ["_unitType", "", [""], 1],
     ["_unitCost", 0, [0], 1],
     ["_sign", "", [""], 1],
@@ -55,7 +56,7 @@ switch (_sign) do
             { 
                 _budget_neu = GVAR(aaf_budget) - _unitCost;
             };
-            ["Budget", "Buy", [GVAR(nato_budget), GVAR(csat_budget), GVAR(aaf_budget), _buyerUID, _buyerName, _side, _unitName, _unitCost]] call OPT_LOGGING_fnc_writelog;
+            ["Budget", "Buy", [GVAR(nato_budget), GVAR(csat_budget), GVAR(aaf_budget), _buyerUID, _buyerName, _side, _unitId, _unitName, _unitCost]] call OPT_LOGGING_fnc_writelog;
 
     };
     case "+":  
@@ -72,7 +73,7 @@ switch (_sign) do
             {                   
                 _budget_neu = GVAR(aaf_budget) + _unitCost;
             };
-            ["Budget", "Sell", [GVAR(nato_budget), GVAR(csat_budget), GVAR(aaf_budget), _buyerUID, _buyerName, _side, _unitName, _unitCost]] call OPT_LOGGING_fnc_writelog;
+            ["Budget", "Sell", [GVAR(nato_budget), GVAR(csat_budget), GVAR(aaf_budget), _buyerUID, _buyerName, _side, _unitId, _unitName, _unitCost]] call OPT_LOGGING_fnc_writelog;
     };
 };
 

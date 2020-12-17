@@ -184,7 +184,7 @@ DFUNC(createOrder) =
 
         GVAR(order_kosten) = GVAR(order_unitCost) + _waffenkosten;
 
-        [getPlayerUID player, Name Player, playerSide, typeOf _veh, GVAR(order_kosten), "-"] remoteExecCall ["OPT_GELDZEIT_fnc_updateBudget", 2, false];
+        [getPlayerUID player, Name Player, playerSide, netId _veh, typeOf _veh, GVAR(order_kosten), "-"] remoteExecCall ["OPT_GELDZEIT_fnc_updateBudget", 2, false];
     
 };
 
