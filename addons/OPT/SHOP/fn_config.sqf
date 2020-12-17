@@ -292,7 +292,7 @@ GVAR(csat_static) =
     ["OPT_O_static_AA_F", DEF_PROD(20000)],                         // Stand-AA
     ["OPT_O_static_AT_F", DEF_PROD(150000)],                        // Stand-AT
     ["OPT_O_Mortar_01_F", DEF_PROD(50000)],                         // MK6 Mrser
-    ["OPT_O_Static_Designator_02_F", DEF_PROD(0)]               // Remote Designator
+    ["OPT_O_Static_Designator_02_F", DEF_PROD(10000)]               // Remote Designator
 ];
 
 GVAR(csat_sea) = 
@@ -376,7 +376,7 @@ GVAR(AAF_static) =
     ["OPT_I_static_AA_F", DEF_PROD(20000)],                     // Stand-AA
     ["OPT_I_static_AT_F", DEF_PROD(150000)],                    // Stand-AT
     ["OPT_I_Mortar_01_F", DEF_PROD(50000)],                    // MK6 - Mörser
-    ["OPT_I_Static_Designator_01_F", DEF_PROD(0)]           // Remote Designator
+    ["OPT_I_Static_Designator_01_F", DEF_PROD(10000)]           // Remote Designator
 ];
 
 GVAR(AAF_sea) = 
