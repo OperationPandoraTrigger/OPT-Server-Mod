@@ -215,7 +215,7 @@ else
                     "%1 von: %2 (side: %3).",
                     _message, NAME _instigator , SIDE _instigator
                 ];
-                ["Vehicle", "DestroyByMan", [_name, _category, _faction, getPlayerUID _instigator, name _instigator, side _instigator, _victim distance2D _instigator, _projectile]] call OPT_LOGGING_fnc_writelog;
+                ["Vehicle", "DestroyByMan", [_name, _category, _faction, netId _victim, getPlayerUID _instigator, name _instigator, side _instigator, _victim distance2D _instigator, _projectile]] call OPT_LOGGING_fnc_writelog;
             } 
             else 
             {
@@ -245,7 +245,7 @@ else
                 _message = format[
                     "%1 von: %2", _message, _killerTxt
                 ];
-                ["Vehicle", "DestroyByCrew", [_name, _category, _faction, getText (configFile >> "CfgVehicles" >> typeOf _source >> "displayName"), side _instigator, _victim distance2D _instigator, _crewArray joinString _separator]] call OPT_LOGGING_fnc_writelog;
+                ["Vehicle", "DestroyByCrew", [_name, _category, _faction, netId _victim, getText (configFile >> "CfgVehicles" >> typeOf _source >> "displayName"), side _instigator, _victim distance2D _instigator, _crewArray joinString _separator]] call OPT_LOGGING_fnc_writelog;
             };
         };
 
