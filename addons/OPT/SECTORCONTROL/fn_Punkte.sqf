@@ -49,6 +49,9 @@ GVAR(Punktecount) = [{
 
 							//Log
 							diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_message];
+
+							// New-Log
+							["Mission", "State", [GVAR(nato_points), GVAR(csat_points), GVAR(aaf_points), missionName]] call OPT_LOGGING_fnc_writelog;
 						};
 					};
 
@@ -68,6 +71,9 @@ GVAR(Punktecount) = [{
 
 							//Log
 							diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_message];
+
+							// New-Log
+							["Mission", "State", [GVAR(nato_points), GVAR(csat_points), GVAR(aaf_points), missionName]] call OPT_LOGGING_fnc_writelog;
 						};
 					};
 						
@@ -83,6 +89,9 @@ GVAR(Punktecount) = [{
 
 						//Log
 						diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_message];
+
+						// New-Log
+						["Mission", "State", [GVAR(nato_points), GVAR(csat_points), GVAR(aaf_points), missionName]] call OPT_LOGGING_fnc_writelog;
 					};
 				};      
 			};
@@ -109,6 +118,9 @@ GVAR(Punktecount) = [{
 
 							//Log
 							diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_message];
+
+							// New-Log
+							["Mission", "State", [GVAR(nato_points), GVAR(csat_points), GVAR(aaf_points), missionName]] call OPT_LOGGING_fnc_writelog;
 						};
 					};
 
@@ -128,6 +140,9 @@ GVAR(Punktecount) = [{
 
 							//Log
 							diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_message];
+
+							// New-Log
+							["Mission", "State", [GVAR(nato_points), GVAR(csat_points), GVAR(aaf_points), missionName]] call OPT_LOGGING_fnc_writelog;
 						};
 					};
 						
@@ -143,6 +158,9 @@ GVAR(Punktecount) = [{
 
 						//Log
 						diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_message];
+
+						// New-Log
+						["Mission", "State", [GVAR(nato_points), GVAR(csat_points), GVAR(aaf_points), missionName]] call OPT_LOGGING_fnc_writelog;
 					};
 				};
 			};
@@ -169,6 +187,9 @@ GVAR(Punktecount) = [{
 
 							//Log
 							diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_message];
+
+							// New-Log
+							["Mission", "State", [GVAR(nato_points), GVAR(csat_points), GVAR(aaf_points), missionName]] call OPT_LOGGING_fnc_writelog;
 						};
 					};
 
@@ -188,6 +209,9 @@ GVAR(Punktecount) = [{
 
 							//Log
 							diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_message];
+
+							// New-Log
+							["Mission", "State", [GVAR(nato_points), GVAR(csat_points), GVAR(aaf_points), missionName]] call OPT_LOGGING_fnc_writelog;
 						};
 					};
 						
@@ -203,6 +227,9 @@ GVAR(Punktecount) = [{
 
 						//Log
 						diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_message];
+
+						// New-Log
+						["Mission", "State", [GVAR(nato_points), GVAR(csat_points), GVAR(aaf_points), missionName]] call OPT_LOGGING_fnc_writelog;
 					};
 				};           
 			};
@@ -211,12 +238,6 @@ GVAR(Punktecount) = [{
 			{
 				ERROR_LOG("Punkte: Fehlehalte Datenübergabe keine Fraktionauswahl erkannt");
 			};
-		};
-		
-		// Nur Loggen, wenn es einen Dominator gibt
-		if !(GVAR(dominator) isEqualTo sideUnknown) then
-		{ 
-			["Mission", "State", [GVAR(nato_points), GVAR(csat_points), GVAR(aaf_points), missionName]] call OPT_LOGGING_fnc_writelog;
 		};
 	};
 

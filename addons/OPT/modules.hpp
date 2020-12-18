@@ -58,7 +58,6 @@ class CfgCLibModules {
             FNC(revivelog);
             FNC(dialog);
             FNC(keyunbind);
-            FNC(initcbaclassevents);
         };
         MODULE(GELDZEIT) 
         {
@@ -149,6 +148,11 @@ class CfgCLibModules {
         MODULE(LOGGING)
         {
             FNC(writelog);
+        };
+        MODULE(WEATHERTIME)
+        {
+            FNC(initCBASettings);
+            FNC(serverInit);
         };
     };
 };

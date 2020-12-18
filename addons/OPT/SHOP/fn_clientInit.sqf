@@ -113,54 +113,6 @@ GVAR(eventArgs) = [];
 				east_shop_verkauf addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SELL)], {[EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
 				independent_shop_verkauf addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SELL)], {[EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];	
 
-				//Konfigdialog öffnen
-				/*
-				* https://cbateam.github.io/CBA_A3/docs/files/keybinding/fnc_addKeybind-sqf.html
-				*/
-				[
-					"OPT", 
-					"OPT Konfig System", 
-					["Konfig-Dialog öffnen", "Öffnet den Konfig-Dialog im Boxbereich."], 
-					{
-						private _triggerUnitsair = 
-						(list csat_trigger_Shop_Air1) 
-						+ (list aaf_trigger_Shop_Air1);
-
-						private _triggerUnitsveh = 
-						(list csat_trigger_Shop_veh1) 
-						+ (list aaf_trigger_Shop_veh1);
-
-						private _triggerUnitssup = 
-						(list csat_trigger_Shop_Sup1) 
-						+ (list aaf_trigger_Shop_Sup1);
-
-						private _triggerUnitssea = 
-						(list csat_trigger_Shop_Sea1) 
-						+ (list aaf_trigger_Shop_Sea1);
-
-						if (player isEqualTo assignedDriver vehicle player and (vehicle player in _triggerUnitsair)) then 
-						{
-							[EVENT_SHOP_KONFIG_ONLOAD,["leer","old",0]] call CFUNC(localEvent);
-						};
-
-						if (player isEqualTo assignedDriver vehicle player and (vehicle player in _triggerUnitsveh)) then 
-						{
-							[EVENT_SHOP_KONFIG_ONLOAD,["leer","old",0]] call CFUNC(localEvent);
-						};
-
-						if (player isEqualTo assignedDriver vehicle player and (vehicle player in _triggerUnitssup)) then 
-						{
-							[EVENT_SHOP_KONFIG_ONLOAD,["leer","old",0]] call CFUNC(localEvent);
-						};
-						
-					}, 
-					{}, 
-					[
-						DIK_F3, 
-						[false, false, false] // [shift, ctrl, alt]
-					]
-				] call CBA_fnc_addKeybind;
-
 				//Shop Dialog öffnen
 				/*
 				* https://cbateam.github.io/CBA_A3/docs/files/keybinding/fnc_addKeybind-sqf.html
@@ -234,54 +186,6 @@ GVAR(eventArgs) = [];
 				east_shop_verkauf addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SELL)], {[EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
 				west_shop_verkauf addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SELL)], {[EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];	
 
-				//Konfigdialog öffnen
-				/*
-				* https://cbateam.github.io/CBA_A3/docs/files/keybinding/fnc_addKeybind-sqf.html
-				*/
-				[
-					"OPT", 
-					"OPT Konfig System", 
-					["Konfig-Dialog öffnen", "Öffnet den Konfig-Dialog im Boxbereich."], 
-					{
-						private _triggerUnitsair = 
-						(list csat_trigger_Shop_Air1) 
-						+ (list nato_trigger_Shop_Air1);
-
-						private _triggerUnitsveh = 
-						(list csat_trigger_Shop_veh1) 
-						+ (list nato_trigger_Shop_veh1);
-
-						private _triggerUnitssup = 
-						(list csat_trigger_Shop_Sup1) 
-						+ (list nato_trigger_Shop_Sup1);
-
-						private _triggerUnitssea = 
-						(list csat_trigger_Shop_Sea1) 
-						+ (list nato_trigger_Shop_Sea1);
-
-						if (player isEqualTo assignedDriver vehicle player and (vehicle player in _triggerUnitsair)) then 
-						{
-							[EVENT_SHOP_KONFIG_ONLOAD,["leer","old",0]] call CFUNC(localEvent);
-						};
-
-						if (player isEqualTo assignedDriver vehicle player and (vehicle player in _triggerUnitsveh)) then 
-						{
-							[EVENT_SHOP_KONFIG_ONLOAD,["leer","old",0]] call CFUNC(localEvent);
-						};
-
-						if (player isEqualTo assignedDriver vehicle player and (vehicle player in _triggerUnitssup)) then 
-						{
-							[EVENT_SHOP_KONFIG_ONLOAD,["leer","old",0]] call CFUNC(localEvent);
-						};
-						
-					}, 
-					{}, 
-					[
-						DIK_F3, 
-						[false, false, false] // [shift, ctrl, alt]
-					]
-				] call CBA_fnc_addKeybind;
-
 				//Shop Dialog öffnen
 				/*
 				* https://cbateam.github.io/CBA_A3/docs/files/keybinding/fnc_addKeybind-sqf.html
@@ -352,54 +256,6 @@ GVAR(eventArgs) = [];
 
 				west_shop_verkauf addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SELL)], {[EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];	
 				independent_shop_verkauf addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SELL)], {[EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];	
-
-				//Konfigdialog öffnen
-				/*
-				* https://cbateam.github.io/CBA_A3/docs/files/keybinding/fnc_addKeybind-sqf.html
-				*/
-				[
-					"OPT", 
-					"OPT Konfig System", 
-					["Konfig-Dialog öffnen", "Öffnet den Konfig-Dialog im Boxbereich."], 
-					{
-						private _triggerUnitsair = 
-						(list nato_trigger_Shop_Air1)
-						+ (list aaf_trigger_Shop_Air1);
-
-						private _triggerUnitsveh = 
-						(list nato_trigger_Shop_veh1)
-						+ (list aaf_trigger_Shop_veh1);
-
-						private _triggerUnitssup = 
-						(list nato_trigger_Shop_Sup1)
-						+ (list aaf_trigger_Shop_Sup1);
-
-						private _triggerUnitssea = 
-						(list nato_trigger_Shop_Sea1)
-						+ (list aaf_trigger_Shop_Sea1);
-
-						if (player isEqualTo assignedDriver vehicle player and (vehicle player in _triggerUnitsair)) then 
-						{
-							[EVENT_SHOP_KONFIG_ONLOAD,["leer","old",0]] call CFUNC(localEvent);
-						};
-
-						if (player isEqualTo assignedDriver vehicle player and (vehicle player in _triggerUnitsveh)) then 
-						{
-							[EVENT_SHOP_KONFIG_ONLOAD,["leer","old",0]] call CFUNC(localEvent);
-						};
-
-						if (player isEqualTo assignedDriver vehicle player and (vehicle player in _triggerUnitssup)) then 
-						{
-							[EVENT_SHOP_KONFIG_ONLOAD,["leer","old",0]] call CFUNC(localEvent);
-						};
-						
-					}, 
-					{}, 
-					[
-						DIK_F3, 
-						[false, false, false] // [shift, ctrl, alt]
-					]
-				] call CBA_fnc_addKeybind;
 
 				//Shop Dialog öffnen
 				/*
