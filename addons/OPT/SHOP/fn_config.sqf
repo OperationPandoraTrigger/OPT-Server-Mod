@@ -262,10 +262,12 @@ GVAR(csat_supplies) =
 [
     ["OPT_Box_East_Ammo_F", 40000, 1000, 2000],                           // Munitionskiste
     ["OPT_Box_East_WpsSpecial_F", 60000, 1000, 2000],                     // Munition spezial kiste
-    ["OPT_Box_East_Grenades_F", 75000, 1000, 2000],                       // granatenkiste
+    ["OPT_Box_East_Grenades_F", 50000, 1000, 2000],                       // granatenkiste
+    ["OPT_Box_CSAT_UGL_F", 21000, 1000, 2000],                       // Unterlaufgranatenkiste
     ["OPT_CSAT_Sprengstoffkiste", 200000, 1000, 2000],                    // sprengstoffkiste
     ["OPT_CSAT_Minenkiste", 150000, 1000, 2000],                      // Minenkiste
     ["OPT_Box_East_WpsSpecial_AT_L1", 200000, 1000, 2000],                         // AT Raketenkiste (RPG-42)
+    ["OPT_Box_East_WpsSpecial_AT_L3", 200000, 1000, 2000],                         // AT Raketenkiste (MAAWS)
 	["OPT_Box_East_WpsSpecial_AT_L2", 101000, 1000, 2000],                  // AT Raketenkiste (RPG-7)
 	["OPT_Box_East_WpsSpecial_AT_H1", DEF_PROD(0)],                  // AT Raketenkiste (9M135 Vorona)
     ["OPT_Box_East_WpsSpecial_AA_F", 150000, 1000, 2000],                  // AA Raketenkiste
@@ -355,10 +357,12 @@ GVAR(AAF_supplies) =
     ["OPT_Box_EFA_Ammo_F", 40000, 1000, 2000],               // Munitionskiste
     ["OPT_Box_EAF_WpsSpecial_F", 60000, 1000, 2000],         // Munition spezial
     ["OPT_Box_EAF_Grenades_F", 50000, 1000, 2000],           // granatenkiste
+    ["OPT_Box_EAF_UGL_F", 21000, 1000, 2000],           // granatenkiste
     ["OPT_EAF_Sprengstoffkiste", 200000, 1000, 2000],        // sprengstoffkiste
     ["OPT_EAF_Minenkiste", 150000, 1000, 2000],               // Minenkiste
     ["OPT_Box_EAF_WpsSpecial_AT_L2", 101000, 1000, 2000],     // AT Raketenkiste (RPG7)
-	["OPT_Box_EAF_WpsSpecial_AT_L1" ,200000, 1000, 2000],              // AT Raketenkiste RPG42)
+	["OPT_Box_EAF_WpsSpecial_AT_L1" ,200000, 1000, 2000],              // AT Raketenkiste (MAAWS)
+    ["OPT_Box_EAF_WpsSpecial_AT_L3" ,200000, 1000, 2000],              // AT Raketenkiste (RPG-42)
     ["OPT_Box_EAF_WpsSpecial_AA_F", 150000, 1000, 2000],      // AA Raketenkiste
     ["OPT_I_supplyCrate_F", 5000,1000, 2000],                     // Transportkiste (leer)
     ["OPT_I_CargoNet_01_ammo_F", 5000,1000, 2000],               // Ausrstungskiste
