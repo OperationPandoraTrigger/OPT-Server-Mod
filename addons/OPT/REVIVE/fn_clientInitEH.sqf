@@ -103,7 +103,7 @@ DFUNC(playerHandleDamage) =
 	GVAR(playerHandleDamage_unit) = _unit; 
 	GVAR(playerHandleDamage_instigator) = _instigator; 
 	GVAR(playerHandleDamage_source) = _source; 
-	GVAR(playerHandleDamage_projectile) = _unit; 
+	GVAR(playerHandleDamage_projectile) = _projectile; 
 
 	[FUNC(playercheckINCAPACITATED), 1,""] call CLib_fnc_wait;
 };
@@ -126,12 +126,3 @@ GVAR(missionEH_draw3D) = addMissionEventHandler ["Draw3D",
 
     } count _nearbyUnits;
 }];
-
-
-
-
-
-
-
-
-

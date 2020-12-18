@@ -21,4 +21,4 @@ private _prefix = "[OPT_LOG]";
 private _separator = toString [9]; // tabulator
 private _msg = _array joinString _separator;
 
-diag_log format["%1%2%3%4%5%6%7%8%9", _prefix, _separator, serverTime, _separator, _class, _separator, _event, _separator, _msg];
+diag_log text format["%1%2%3%4%5%6%7%8%9", _prefix, _separator, serverTime, _separator, _class, _separator, _event, _separator, _msg];
