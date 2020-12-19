@@ -348,7 +348,7 @@ GVAR(AAF_armored) =
     ["OPT_I_APC_Tracked_01_AA_ghex_F", DEF_PROD(320000)],                     // AA cheetah	
     ["OPT_I_MBT_03_cannon_F_INF", DEF_PROD(400000)],                     // MBT-52 Kuma Infanterie
     ["OPT_I_MBT_03_cannon_F_AT", DEF_PROD(500000)],                     // MBT-52 Kuma Fahrzeug
-    ["OPT_O_T_MBT_02_arty_ghex_F", DEF_PROD(350000)],                     // Scorcher Arty
+    ["OPT_I_MBT_01_arty_ghex_F", DEF_PROD(350000)],                     // Scorcher Arty
     ["OPT_I_Truck_02_MRL_F", DEF_PROD(400000)]                      // Zamak Arty		
 ];
 
