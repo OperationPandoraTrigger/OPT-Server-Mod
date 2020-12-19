@@ -263,7 +263,7 @@ GVAR(canTransportCargo) =
     ["OPT_I_MBT_03_cannon_F", 2],                     // MBT-52 Kuma
 	["OPT_I_MBT_03_cannon_F_INF", 2],                     // MBT-52 Kuma Infanterie
 	["OPT_I_MBT_03_cannon_F_AT", 2],                     // MBT-52 Kuma Fahrzeug
-    ["OPT_O_T_MBT_02_arty_ghex_F", 2],                      // Scorcher Arty 
+    ["OPT_I_MBT_01_arty_ghex_F", 2],                      // Scorcher Arty 
 	["OPT_I_Truck_02_MRL_F", 2],                      // Zamak Arty 
 // AAF Stomper	
     ["OPT_I_UGV_01_F", 6],                         // UGV Stomper   	
@@ -393,7 +393,7 @@ GVAR(canBeTransported) =
 	["OPT_O_G_Offroad_01_F", 5],                      // Pickup
     ["OPT_O_G_Offroad_01_armed_F", 5],                // Pickup HMG
 	["OPT_O_T_MRAP_02_ghex_F", 5],                    // Ifrit 
-    ["OPT4_O_T_MRAP_02_hmg_ghex_F", 5],                // Ifrit HMG 
+    ["OPT_O_T_MRAP_02_hmg_ghex_F", 5],                // Ifrit HMG 
     ["OPT_O_T_Truck_03_covered_ghex_F", 10],           // Tempest Transport 
 	["OPT_O_T_Truck_03_transport_ghex_F", 10],         // Tempest 
     ["OPT_O_T_Truck_03_repair_ghex_F", 10],            // Tempest Repair
@@ -418,14 +418,14 @@ GVAR(canBeTransported) =
     ["OPT4_O_MBT_02_arty_F", 10],                 // 2S9 Sochor
     ["OPT_O_Truck_02_MRL_F", 10],                 // Zamark MRL    
 	//Tropentarn
-	["OPT4_O_MRAP_02_gmg_ghex_F", 5],                  // Ifrit GMG
-	["OPT4_O_LSV_02_AT_ghex_F", 5],                    // Quilin AT 
-    ["OPT4_O_T_APC_Wheeled_02_rcws_ghex_F", 10],       // MSE-3 Marid 
-    ["OPT4_O_APC_Wheeled_03_cannon_ghex_F", 10],       		// AFV-4 Gorgon
-	["OPT4_O_T_APC_Tracked_02_cannon_ghex_F", 10],     // BTR-K Kamysh 
-    ["OPT4_O_T_APC_Tracked_02_AA_ghex_F", 10],         // ZSU-39 Tigris 
-    ["OPT4_O_T_MBT_02_cannon_ghex_F", 10],             // T-100 Varsuk 
-    ["OPT4_O_T_MBT_02_arty_ghex_F", 10],               // 2S9 Sochor 
+	["OPT_O_MRAP_02_gmg_ghex_F", 5],                  // Ifrit GMG
+	["OPT_O_LSV_02_AT_ghex_F", 5],                    // Quilin AT 
+    ["OPT_O_T_APC_Wheeled_02_rcws_ghex_F", 10],       // MSE-3 Marid 
+    ["OPT_O_APC_Wheeled_03_cannon_ghex_F", 10],       		// AFV-4 Gorgon
+	["OPT_O_T_APC_Tracked_02_cannon_ghex_F", 10],     // BTR-K Kamysh 
+    ["OPT_O_T_APC_Tracked_02_AA_ghex_F", 10],         // ZSU-39 Tigris 
+    ["OPT_O_T_MBT_02_cannon_ghex_F", 10],             // T-100 Varsuk 
+    ["OPT_O_T_MBT_02_arty_ghex_F", 10],               // 2S9 Sochor 
 	["OPT_O_Truck_02_MRL_ghex_F", 10],                 // Zamark MRL  
 	["OPT_O_T_APC_Wheeled_01_cannon_F_INF", 10],     // Marchall Infanterie 
 	["OPT_O_T_APC_Tracked_02_cannon_ghex_F_VEH", 10],     // BTR-K Kamysh Fahrzeug
