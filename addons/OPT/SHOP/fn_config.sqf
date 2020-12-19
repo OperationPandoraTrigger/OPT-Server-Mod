@@ -186,9 +186,9 @@ GVAR(csat_vehicles) =
     ["OPT_O_G_Offroad_01_armed_F", DEF_PROD(0)],                // Pickup HMG
 	["OPT_O_T_MRAP_02_ghex_F", DEF_PROD(20000)],                    // Ifrit 
     ["OPT_O_T_MRAP_02_hmg_ghex_F", DEF_PROD(80000)],                // Ifrit HMG 
-    ["OPT_O_T_Truck_03_covered_ghex_F", DEF_PROD(5000)],           // Zamack Infanterie
-	["OPT_O_T_Truck_03_transport_ghex_F", DEF_PROD(5000)],         // Zamack Logistik
-    ["OPT_O_T_Truck_03_repair_ghex_F", 10000,5000,10000],            // Zamack Repair
+    ["OPT_O_T_Truck_02_F", DEF_PROD(5000)],           // Zamack Infanterie
+	["OPT_O_T_Truck_02_transport_F", DEF_PROD(5000)],         // Zamack Logistik
+    ["OPT_O_T_Truck_02_box_F", 10000,5000,10000],            // Zamack Repair
     ["OPT_O_T_Truck_03_medical_ghex_F", DEF_PROD(0)]          // Zamack Medical
 
 ];
@@ -198,8 +198,8 @@ GVAR(csat_vehicles_supply) =
     ["OPT_O_Truck_03_ammo_F", DEF_PROD(0)],              // Zamack Ammo
     ["OPT_O_Truck_03_fuel_F", DEF_PROD(0)],              // Zamack Fuel
 	//Tropentarn
-    ["OPT_O_T_Truck_03_ammo_ghex_F", 50000,5000,10000],                 // Zamack Ammo
-    ["OPT_O_T_Truck_03_fuel_ghex_F", 10000,5000,10000]                  // Zamack Fuel
+    ["OPT_O_T_Truck_02_ammo_F", 50000,5000,10000],                 // Zamack Ammo
+    ["OPT_O_T_Truck_02_fuel_F", 10000,5000,10000]                  // Zamack Fuel
 ];
 
 GVAR(csat_choppers) = 
