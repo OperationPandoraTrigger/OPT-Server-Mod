@@ -340,7 +340,7 @@ GVAR(DMRsnipers) =
 	"OPT_NATO_Beobachter",
 	"OPT_CSAT_Beobachter_T",
 	"OPT_NATO_Beobachter_T",
-	"O_Soldier_M_F",
+	"O_soldier_M_F",
 	"I_Soldier_M_F"
 ];
 
