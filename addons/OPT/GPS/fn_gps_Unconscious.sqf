@@ -41,7 +41,7 @@ GVAR(markerPoolisUnconscious) = [];
         _Sideidunit = getnumber (configFile >> "CfgVehicles" >> (typeof _x) >> "side");
         _sideidplayer = playerSide call BIS_fnc_sideID;   
 
-        if ((_Sideidunit == _sideidplayer) and (_x getVariable "ACE_isUnconscious")) then 
+        if ((_Sideidunit == _sideidplayer) and (lifeState _x isEqualTo "INCAPACITATED")) then 
         {
             _unitsToMarkisUnconscious pushBack _x;
 
@@ -85,15 +85,7 @@ GVAR(markerPoolisUnconscious) = [];
             _marker setMarkerPosLocal (getPosATLVisual (vehicle _obj));
             _marker setMarkerDirLocal (getDirVisual (vehicle _obj));
 
-            // Ist Spieler stabilisiert
-            if (player getVariable ["OPT_isStabilized", 1] == 1)  then 
-			{
-				_marker setMarkerTextLocal format [MLOC(PLAYER_STABILISED),_name];	
-            } 
-			else 
-			{
-				_marker setMarkerTextLocal format [MLOC(PLAYER_INJURED),_name];
-            };
+			_marker setMarkerTextLocal format [MLOC(PLAYER_INJURED),_name];
         };
     };      
 

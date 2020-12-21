@@ -146,7 +146,7 @@ GVAR(markerplayer) = [] call FUNC(createPlayerMarker);
 					{
                         _marker setMarkerTextLocal _name;
                         
-                        if (_obj getVariable "ACE_isUnconscious") then 
+                        if (lifeState _obj isEqualTo "INCAPACITATED") then 
 					    {
                             _marker setMarkerTextLocal "";
                             _marker setMarkerPosLocal [0,0];
