@@ -160,8 +160,8 @@
     "SLIDER", // setting type
     [
         "Nebel Anstieg/Rückgang pro Höhe",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.  
-        "Positiver Wert: Nebelintensität nimmt mit steigender Höhe zu (z.B. für Bodennebel)." + endl + 
-        "Negativer Wert: Nebelintensität nimmt mit steigender Höhe ab (z.B. für Höhennebel)." + endl
+        "Positiver Wert: Nebelintensität nimmt mit steigender Höhe ab (z.B. für Bodennebel)." + endl + 
+        "Negativer Wert: Nebelintensität nimmt mit steigender Höhe zu (z.B. für Höhennebel)." + endl
         // Mouse-Over description of the above
     ],
     ["OPT Wetter/Zeit", "4 - Regen und Nebel zum Schlachtende"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
