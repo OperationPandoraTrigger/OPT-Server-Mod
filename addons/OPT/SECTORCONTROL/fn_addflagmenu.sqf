@@ -24,7 +24,8 @@ GVAR(officer) =
     "OPT_CSAT_Offizier_T",
 	"OPT_NATO_Offizier",
 	"OPT_CSAT_Offizier",
-    "I_officer_F"
+    "I_officer_F",
+    "O_officer_F"
 ];
 
 
