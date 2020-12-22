@@ -79,46 +79,34 @@ if (GVAR(trainingon)) then
 
 };
 
-DFUNC(Minensperrmeldung) = 
-{
-    private _explosive = nearestObject [player, "ACE_Explosives_Place"];
-
-    // allow satchel and charge
-    if ((typeOf _explosive) find "SatchelCharge" != -1 or (typeOf _explosive) find "DemoCharge" != -1) exitWith {};    
-
-    // only if near flag
-    if ({_explosive distance _x <= GVAR(flagFreeMineZoneRadius)} count (GVAR(nato_flags) + GVAR(csat_flags) + GVAR(aaf_flags)) == 0) exitWith {};
-
-    deleteVehicle _explosive;  
-
-    // Warnhinweis
-    private _txt = MLOC(MINE_VIOLATION);
-    private _header = MLOC(MINE_VIOLATION_HEADER);
-    hint Format ["%1 \n\n %2",_header,_txt];
-
-};
-
 // EH für Minensperre
 if (GVAR(flagFreeMineZoneOn)) then 
 {
-
-    GVAR(eh_ace_interactMenuClosed) = ["ace_interactMenuClosed", 
+	player addEventHandler ["FiredMan", 
     {
-        _this spawn 
+		/* 
+			0 unit: Object - Unit the event handler is assigned to (the instigator)
+		    1 weapon: String - Fired weapon
+            2 muzzle: String - Muzzle that was used
+            3 mode: String - Current mode of the fired weapon
+            4 ammo: String - Ammo used
+            5 magazine: String - magazine name which was used
+            6 projectile: Object - Object of the projectile that was shot out
+            7 vehicle: Object - Vehicle, if weapon is vehicle weapon, otherwise objNull
+    	*/
+        if (_this select 1 == "Put" && ({(_x distance player) <= GVAR(flagFreeMineZoneRadius)} count (GVAR(nato_flags) + GVAR(csat_flags) + GVAR(aaf_flags)) > 0)) then 
         {
-            _this params ["_menuType"];
-
-            if (
-                _menuType == 1 and // Eigenmenü
-                ace_explosives_pfeh_running // explosive placing in progress
-            ) then 
-            {
-                // wait until explosive was placed by player
-                [FUNC(Minensperrmeldung), {(ace_explosives_placeAction == PLACE_APPROVE)}, "Awesome Delay"] call CLib_fnc_waitUntil;
-
-            };
-        };
-
-    }] call CBA_fnc_addEventHandler;
+            // lösche Mine
+            deleteVehicle (_this select 6);
+            // gib Spieler Mine zurück
+            player addMagazine (_this select 5);
+            // Warnhinweis
+            private _txt = MLOC(MINE_VIOLATION);
+            private _header = MLOC(MINE_VIOLATION_HEADER);
+            hint Format ["%1 \n\n %2",_header,_txt];
+    	};  
+	}];
 };
+
+
 

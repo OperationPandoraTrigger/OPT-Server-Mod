@@ -130,45 +130,33 @@ player addEventHandler ["SeatSwitchedMan",
 
 }];
 
-DFUNC(Minencheck) = 
-{
-    private _explosive = nearestObject [player, "ACE_Explosives_Place"];
-
-    // allow satchel and charge
-    if ((typeOf _explosive) find "SatchelCharge" != -1 or (typeOf _explosive) find "DemoCharge" != -1) exitWith {};    
-
-    // only if near flag
-    if (typeOf Player in GVAR(pioniers)) exitWith {};
-
-    deleteVehicle _explosive;  
-
-    // Warnhinweis
-    private _txt = MLOC(PLACE_MINE);
-    private _header = MLOC(RULE_VIOLATION);
-    hint Format ["%1 \n\n %2",_header,_txt];
-
-};
-
 // EH für Sprengmeister
-
-    GVAR(eh_ace_interactMenuClosed) = ["ace_interactMenuClosed", 
-    {
-        _this spawn 
+player addEventHandler ["FiredMan", 
+{
+	/* 
+		0 unit: Object - Unit the event handler is assigned to (the instigator)
+		1 weapon: String - Fired weapon
+        2 muzzle: String - Muzzle that was used
+        3 mode: String - Current mode of the fired weapon
+        4 ammo: String - Ammo used
+        5 magazine: String - magazine name which was used
+        6 projectile: Object - Object of the projectile that was shot out
+        7 vehicle: Object - Vehicle, if weapon is vehicle weapon, otherwise objNull
+    */
+    if ((_this select 1 == "Put") and !(typeOf player in GVAR(pioniers)) and !(((_this select 5) isEqualTo "SatchelCharge_Remote_Mag") or ((_this select 5) isEqualTo "DemoCharge_Remote_Mag") or ((_this select 5) isEqualTo "ClaymoreDirectionalMine_Remote_Mag"))) then 
         {
-            _this params ["_menuType"];
+            // lösche Mine
+            deleteVehicle (_this select 6);
+            // gib Spieler Mine zurück
+            player addMagazine (_this select 5);
+            // Warnhinweis
+            private _txt = MLOC(PLACE_MINE);
+            private _header = MLOC(RULE_VIOLATION);
+            hint Format ["%1 \n\n %2",_header,_txt];
+    	};  
+}];
 
-            if (
-                _menuType == 1 and // Eigenmenü
-                ace_explosives_pfeh_running // explosive placing in progress
-            ) then 
-            {
-                // wait until explosive was placed by player
-                [FUNC(Minencheck), {(ace_explosives_placeAction == PLACE_APPROVE)}, "Awesome Delay"] call CLib_fnc_waitUntil;
 
-            };
-        };
-
-    }] call CBA_fnc_addEventHandler;
 
 // UAV Drohenstation kontrolle
 [] call FUNC(uav);
