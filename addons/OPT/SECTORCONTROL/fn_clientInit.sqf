@@ -29,9 +29,6 @@
 #include "macros.hpp"
 
 //init Startwerte
-GVAR(nato_flags) = [];
-GVAR(csat_flags) = [];
-GVAR(aaf_flags) = [];
 
 ["missionStarted", {
 
