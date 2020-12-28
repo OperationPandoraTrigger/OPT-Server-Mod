@@ -49,6 +49,7 @@
 
 DUMP("Successfully loaded the OPT/CARGO fn_setupCargoSpaceAndSize module");
 
+// Laderaum den ein Objekt hat
 GVAR(canTransportCargo) = 
 [
 // NATO Vehicles	
@@ -154,13 +155,18 @@ GVAR(canTransportCargo) =
 	["OPT_O_G_Offroad_01_F", 4],                      // Pickup
     ["OPT_O_G_Offroad_01_armed_F", 4],                // Pickup HMG
 	["OPT_O_T_MRAP_02_ghex_F", 4],                    // Ifrit 
-    ["OPT4_O_T_MRAP_02_hmg_ghex_F", 4],                // Ifrit HMG 
+    ["OPT_O_T_MRAP_02_hmg_ghex_F", 4],                // Ifrit HMG 
     ["OPT_O_T_Truck_03_covered_ghex_F", 4],           // Tempest Transport 
 	["OPT_O_T_Truck_03_transport_ghex_F", 10],         // Tempest 
     ["OPT_O_T_Truck_03_repair_ghex_F", 2],            // Tempest Repair
     ["OPT_O_T_Truck_03_medical_ghex_F", 2],          // Tempest Medical
 	["OPT_O_T_Truck_03_ammo_ghex_F", 2],                 // Tempest Ammo
     ["OPT_O_T_Truck_03_fuel_ghex_F", 2],                 // Tempest Fuel
+	["OPT_O_T_Truck_02_F", 4],           // Zamack Infanterie
+	["OPT_O_T_Truck_02_transport_F", 10],         // Zamack Logistik
+    ["OPT_O_T_Truck_02_box_F", 2],            // Zamack Repair
+	["OPT_O_T_Truck_02_ammo_F", 2],                 // Zamack Ammo
+    ["OPT_O_T_Truck_02_fuel_F", 2],                 // Zamack Fuel
 	
 // CSAT Armored
 	["OPT4_O_MRAP_02_gmg_F", 4],                  // Ifrit GMG
@@ -174,14 +180,19 @@ GVAR(canTransportCargo) =
     ["OPT4_O_MBT_02_arty_F", 2],                 // 2S9 Sochor
     ["OPT_O_Truck_02_MRL_F", 2],                 // Zamark MRL    
 	//Tropentarn
-	["OPT4_O_MRAP_02_gmg_ghex_F", 4],                  // Ifrit GMG
-	["OPT4_O_LSV_02_AT_ghex_F", 4],                    // Quilin AT 
-    ["OPT4_O_T_APC_Wheeled_02_rcws_ghex_F", 4],       // MSE-3 Marid 
-    ["OPT4_O_APC_Wheeled_03_cannon_ghex_F", 4],       		// AFV-4 Gorgon
-	["OPT4_O_T_APC_Tracked_02_cannon_ghex_F", 4],     // BTR-K Kamysh 
-    ["OPT4_O_T_APC_Tracked_02_AA_ghex_F", 2],         // ZSU-39 Tigris 
-    ["OPT4_O_T_MBT_02_cannon_ghex_F", 2],             // T-100 Varsuk 
-    ["OPT4_O_T_MBT_02_arty_ghex_F", 2],               // 2S9 Sochor 
+	["OPT_O_MRAP_02_gmg_ghex_F", 4],                  // Ifrit GMG
+	["OPT_O_LSV_02_AT_GHEX_F", 4],                    // Quilin AT 
+    ["OPT_O_T_APC_Wheeled_02_rcws_ghex_F", 4],       // MSE-3 Marid 
+    ["OPT_O_APC_Wheeled_03_cannon_ghex_F", 4],       		// AFV-4 Gorgon
+	["OPT_O_T_APC_Tracked_02_cannon_ghex_F", 4],     // BTR-K Kamysh 
+	["OPT_O_T_APC_Wheeled_01_cannon_F_INF", 4],     // Marchall Infanterie 
+	["OPT_O_T_APC_Tracked_02_cannon_ghex_F_VEH", 4],     // BTR-K Kamysh Fahrzeug
+	["OPT_O_T_APC_Tracked_02_cannon_ghex_F_AT", 4],     // BTR-K Kamysh Tank 
+    ["OPT_O_T_APC_Tracked_02_AA_ghex_F", 2],         // ZSU-39 Tigris 
+	["OPT_O_T_MBT_02_cannon_ghex_F", 2],             // T-100 Varsuk 
+    ["OPT_O_T_MBT_02_cannon_ghex_F_INF", 2],             // T-100 Varsuk Infanterie
+	["OPT_O_T_MBT_02_cannon_ghex_F_AT", 2],             // T-100 Varsuk Fahrzeug
+    ["OPT_O_T_MBT_02_arty_ghex_F", 2],               // 2S9 Sochor 
 	["OPT_O_Truck_02_MRL_ghex_F", 2],                 // Zamark MRL  
 	
 // CSAT Helicopter
@@ -190,6 +201,8 @@ GVAR(canTransportCargo) =
     ["OPT4_O_Heli_light_03_F", 4],                    // WY-55 Hellcat
     ["OPT_O_Heli_Light_02_unarmed_F", 4],             // PO-30 Orca
     ["OPT4_O_Heli_Light_02_F", 4],       			// PO-30 Orca
+	["OPT_O_Heli_Light_02_v2_F", 4],       			// PO-30 Orca Cas Light
+	["OPT_O_Heli_Light_02_v3_F", 4],       			// PO-30 Orca Cas Heavy
     ["OPT_O_Heli_Transport_04_covered_F", 4],    // Mi-290 Taru (Transport)
 	["OPT_O_Heli_Transport_04_F", 10],    // Mi-290 Taru (Lift)
 	["OPT_O_Heli_Transport_04_fuel_F", 4],    // Mi-290 Taru (Fuel)
@@ -221,7 +234,7 @@ GVAR(canTransportCargo) =
     ["OPT_I_C_Offroad_02_unarmed_F", 4],               // Jeep unarmed 
     ["OPT_I_C_Offroad_02_LMG_F", 4],                 // Jeeg MG
 	["OPT_I_MRAP_03_F", 4],                        // Strider
-	["OPT4_I_MRAP_03_hmg_F", 4],                   // Strider HMG
+	["OPT_I_MRAP_03_hmg_F", 4],                   // Strider HMG
     ["OPT_I_Truck_02_covered_F", 4],               // Zamak Transport
     ["OPT_I_Truck_02_box_F", 2],               // Zamak Repair
     ["OPT_I_Truck_02_transport_F", 10],               // Zamak  
@@ -229,19 +242,29 @@ GVAR(canTransportCargo) =
     ["OPT_I_Truck_02_fuel_F", 2],  		     // Zamak Fuel
 // AAF Choppers
     ["OPT_I_Heli_light_03_F", 4],                 // WY-55 Hellcat
+	["OPT_I_Heli_light_03_v2_F", 4],                 // WY-55 Hellcat Cas Light
+	["OPT_I_Heli_light_03_v3_F", 4],                 // WY-55 Hellcat Cas Heavy
     ["OPT_I_Heli_light_03_unarmed_F", 4],          // WY-55 Hellcat Unbewaffnet
 	["OPT_I_Heli_Transport_02_F", 10],           	    // CH-49 Mohawk (Transport+Lift)
     ["OPT_I_UAV_02_light_F", 0],                 // Greyhawk unbewaffnet
 // AAF Armored
 	["OPT4_I_C_Offroad_02_AT_F", 4],                     // Jeep AT 
-	["OPT4_I_MRAP_03_gmg_F", 4],                		// Strider GMG 
-    ["OPT4_I_APC_Wheeled_03_cannon_F", 4],        // Gorgon    
-    ["OPT4_I_APC_tracked_03_cannon_F", 4],        // FV-720 Mora   
-    ["OPT4_I_LT_01_AA_F", 2],                     // Nyx AA	
-    ["OPT4_I_LT_01_AT_F", 2],                    // Nyx AT
+	["OPT_I_LSV_01_AT_ghex_F", 4],                     // Prowler AT 
+	["OPT_I_MRAP_03_gmg_F", 4],                		// Strider GMG 
+    ["OPT_I_APC_Wheeled_03_cannon_F", 4],        // Gorgon    
+    ["OPT_I_APC_tracked_03_cannon_F", 4],        // FV-720 Mora
+	["OPT_I_APC_tracked_03_cannon_F_INF", 4],        // FV-720 Mora Infanterie 
+	["OPT_I_APC_Wheeled_03_cannon_F_VEH", 4],        // Gorgon Fahrzeug
+	["OPT_I_APC_Wheeled_03_cannon_F_AT", 4],        // Gorgon Tank
+    ["OPT_I_LT_01_AA_F", 2],                     // Nyx AA	
+    ["OPT_I_LT_01_AT_F", 2],                    // Nyx AT
     ["OPT_I_LT_01_scout_F", 2],                    // Nyx Recon
-    ["OPT4_I_MBT_03_cannon_F", 2],                     // MBT-52 Kuma
-    ["OPT_I_Truck_02_MRL_F", 2],                      // Zamak Arty  
+	["OPT_I_APC_Tracked_01_AA_ghex_F", 2],                    // AA cheetah	
+    ["OPT_I_MBT_03_cannon_F", 2],                     // MBT-52 Kuma
+	["OPT_I_MBT_03_cannon_F_INF", 2],                     // MBT-52 Kuma Infanterie
+	["OPT_I_MBT_03_cannon_F_AT", 2],                     // MBT-52 Kuma Fahrzeug
+    ["OPT_I_MBT_01_arty_ghex_F", 2],                      // Scorcher Arty 
+	["OPT_I_Truck_02_MRL_F", 2],                      // Zamak Arty 
 // AAF Stomper	
     ["OPT_I_UGV_01_F", 6],                         // UGV Stomper   	
 // AAF Ships
@@ -255,6 +278,8 @@ GVAR(canTransportCargo) =
  * The second element of the nested arrays is the cost capacity (in relation with the capacity of the vehicles).
  * (classname, cargo size): Wenn cargo size = -1, dann Verladen deaktiviert
 */
+
+//Platzbedarf eines Objekts
 GVAR(canBeTransported) =
 [	
 // NATO Vehicles	
@@ -368,13 +393,18 @@ GVAR(canBeTransported) =
 	["OPT_O_G_Offroad_01_F", 5],                      // Pickup
     ["OPT_O_G_Offroad_01_armed_F", 5],                // Pickup HMG
 	["OPT_O_T_MRAP_02_ghex_F", 5],                    // Ifrit 
-    ["OPT4_O_T_MRAP_02_hmg_ghex_F", 5],                // Ifrit HMG 
+    ["OPT_O_T_MRAP_02_hmg_ghex_F", 5],                // Ifrit HMG 
     ["OPT_O_T_Truck_03_covered_ghex_F", 10],           // Tempest Transport 
 	["OPT_O_T_Truck_03_transport_ghex_F", 10],         // Tempest 
     ["OPT_O_T_Truck_03_repair_ghex_F", 10],            // Tempest Repair
     ["OPT_O_T_Truck_03_medical_ghex_F", 10],          // Tempest Medical
 	["OPT_O_T_Truck_03_ammo_ghex_F", 10],                 // Tempest Ammo
     ["OPT_O_T_Truck_03_fuel_ghex_F", 10],                 // Tempest Fuel
+	["OPT_O_T_Truck_02_F", 10],           // Zamack Infanterie
+	["OPT_O_T_Truck_02_transport_F", 10],         // Zamack Logistik
+    ["OPT_O_T_Truck_02_box_F", 10],            // Zamack Repair
+	["OPT_O_T_Truck_02_ammo_F", 10],                 // Zamack Ammo
+    ["OPT_O_T_Truck_02_fuel_F", 10],                 // Zamack Fuel
 	
 // CSAT Armored
 	["OPT4_O_MRAP_02_gmg_F", 5],                  // Ifrit GMG
@@ -388,24 +418,31 @@ GVAR(canBeTransported) =
     ["OPT4_O_MBT_02_arty_F", 10],                 // 2S9 Sochor
     ["OPT_O_Truck_02_MRL_F", 10],                 // Zamark MRL    
 	//Tropentarn
-	["OPT4_O_MRAP_02_gmg_ghex_F", 5],                  // Ifrit GMG
-	["OPT4_O_LSV_02_AT_ghex_F", 5],                    // Quilin AT 
-    ["OPT4_O_T_APC_Wheeled_02_rcws_ghex_F", 10],       // MSE-3 Marid 
-    ["OPT4_O_APC_Wheeled_03_cannon_ghex_F", 10],       		// AFV-4 Gorgon
-	["OPT4_O_T_APC_Tracked_02_cannon_ghex_F", 10],     // BTR-K Kamysh 
-    ["OPT4_O_T_APC_Tracked_02_AA_ghex_F", 10],         // ZSU-39 Tigris 
-    ["OPT4_O_T_MBT_02_cannon_ghex_F", 10],             // T-100 Varsuk 
-    ["OPT4_O_T_MBT_02_arty_ghex_F", 10],               // 2S9 Sochor 
+	["OPT_O_MRAP_02_gmg_ghex_F", 5],                  // Ifrit GMG
+	["OPT_O_LSV_02_AT_ghex_F", 5],                    // Quilin AT 
+    ["OPT_O_T_APC_Wheeled_02_rcws_ghex_F", 10],       // MSE-3 Marid 
+    ["OPT_O_APC_Wheeled_03_cannon_ghex_F", 10],       		// AFV-4 Gorgon
+	["OPT_O_T_APC_Tracked_02_cannon_ghex_F", 10],     // BTR-K Kamysh 
+    ["OPT_O_T_APC_Tracked_02_AA_ghex_F", 10],         // ZSU-39 Tigris 
+    ["OPT_O_T_MBT_02_cannon_ghex_F", 10],             // T-100 Varsuk 
+    ["OPT_O_T_MBT_02_arty_ghex_F", 10],               // 2S9 Sochor 
 	["OPT_O_Truck_02_MRL_ghex_F", 10],                 // Zamark MRL  
+	["OPT_O_T_APC_Wheeled_01_cannon_F_INF", 10],     // Marchall Infanterie 
+	["OPT_O_T_APC_Tracked_02_cannon_ghex_F_VEH", 10],     // BTR-K Kamysh Fahrzeug
+	["OPT_O_T_APC_Tracked_02_cannon_ghex_F_AT", 10],     // BTR-K Kamysh Tank 
+    ["OPT_O_T_MBT_02_cannon_ghex_F_INF", 10],             // T-100 Varsuk Infanterie
+	["OPT_O_T_MBT_02_cannon_ghex_F_AT", 10],             // T-100 Varsuk Fahrzeug
 	
 // CSAT supplies
 	["OPT_O_supplyCrate_F", 2],							    // Transportkiste (leer)
 	["OPT_Box_East_Ammo_F", 2],         				    // Munitionskiste
 	["OPT_Box_East_WpsSpecial_F", 2],         			    // Munition spezial kiste NEUE KISTE!
 	["OPT_Box_East_Grenades_F", 2],     				    // granatenkiste
+	["OPT_Box_CSAT_UGL_F", 2],     				    // Unterlaufgranatenkiste NEUE KISTE!
 	["OPT_CSAT_Sprengstoffkiste", 2],     				    // sprengstoffkiste NEUE KISTE!
 	["OPT_CSAT_Minenkiste", 2],     				    // Minenkiste NEUE KISTE!
 	["OPT_Box_East_WpsSpecial_AT_L1", 2],   				    // AT Raketenkiste RPG42 NEUE KISTE!
+	["OPT_Box_East_WpsSpecial_AT_L3", 2],   				    // AT Raketenkiste (MAAWS) NEUE KISTE!
 	["OPT_Box_East_WpsSpecial_AT_L2", 2],   				    // AT Raketenkiste PPG 7 NEUE KISTE!
 	["OPT_Box_East_WpsSpecial_AT_H1", 2],   				    // AT Raketenkiste Titan NEUE KISTE!
 	["OPT_Box_East_WpsSpecial_AA_F", 2],				    // AA Raketenkiste
@@ -440,30 +477,40 @@ GVAR(canBeTransported) =
     ["OPT_I_C_Offroad_02_unarmed_F", 5],               // Jeep unarmed 
     ["OPT_I_C_Offroad_02_LMG_F", 5],                 // Jeeg MG
 	["OPT_I_MRAP_03_F", 5],                        // Strider
-	["OPT4_I_MRAP_03_hmg_F", 5],                   // Strider HMG
+	["OPT_I_MRAP_03_hmg_F", 5],                   // Strider HMG
     ["OPT_I_Truck_02_covered_F", 10],               // Zamak Transport
     ["OPT_I_Truck_02_box_F", 10],               // Zamak Repair
     ["OPT_I_Truck_02_transport_F", 10],               // Zamak  
 	["OPT_I_Truck_02_ammo_F", 10],               // Zamak Ammo
-    ["OPT_I_Truck_02_fuel_F", 10],  		     // Zamak Fuel               // Greyhawk unbewaffnet
+    ["OPT_I_Truck_02_fuel_F", 10],  		     // Zamak Fuel              
 // AAF Armored
-	["OPT4_I_C_Offroad_02_AT_F", 5],                     // Jeep AT 
-	["OPT4_I_MRAP_03_gmg_F", 5],                		// Strider GMG 
-    ["OPT4_I_APC_Wheeled_03_cannon_F", 10],        // Gorgon    
-    ["OPT4_I_APC_tracked_03_cannon_F", 10],        // FV-720 Mora   
-    ["OPT4_I_LT_01_AA_F", 10],                     // Nyx AA	
-    ["OPT4_I_LT_01_AT_F", 10],                    // Nyx AT
+	["OPT_I_C_Offroad_02_AT_F", 5],                     // Jeep AT 
+	["OPT_I_LSV_01_AT_ghex_F", 5],                     // Prowler AT 
+	["OPT_I_MRAP_03_gmg_F", 5],                		// Strider GMG 
+    ["OPT_I_APC_Wheeled_03_cannon_F", 10],        // Gorgon    
+    ["OPT_I_APC_tracked_03_cannon_F", 10],        // FV-720 Mora   
+    ["OPT_I_LT_01_AA_F", 10],                     // Nyx AA	
+    ["OPT_I_LT_01_AT_F", 10],                    // Nyx AT
     ["OPT_I_LT_01_scout_F", 10],                    // Nyx Recon
-    ["OPT4_I_MBT_03_cannon_F", 10],                     // MBT-52 Kuma
+    ["OPT_I_MBT_03_cannon_F", 10],                     // MBT-52 Kuma
     ["OPT_I_Truck_02_MRL_F", 10],                      // Zamak Arty  
+	["OPT_I_APC_tracked_03_cannon_F_INF", 10],        // FV-720 Mora Infanterie 
+	["OPT_I_APC_Wheeled_03_cannon_F_VEH", 10],        // Gorgon Fahrzeug
+	["OPT_I_APC_Wheeled_03_cannon_F_AT", 10],        // Gorgon Tank
+	["OPT_I_APC_Tracked_01_AA_ghex_F", 10],                    // AA cheetah	
+	["OPT_I_MBT_03_cannon_F_INF", 10],                     // MBT-52 Kuma Infanterie
+	["OPT_I_MBT_03_cannon_F_AT", 10],                     // MBT-52 Kuma Fahrzeug
+    ["OPT_O_T_MBT_02_arty_ghex_F", 10],                      // Scorcher Arty 
 // AAF supplies
 	["OPT_I_supplyCrate_F", 2],							    // Transportkiste (leer)
 	["OPT_Box_EFA_Ammo_F", 2],         				    // Munitionskiste
 	["OPT_Box_EAF_WpsSpecial_F", 2],         			    // Munition spezial kiste NEUE KISTE!
 	["OPT_Box_EAF_Grenades_F", 2],     				    // granatenkiste
+	["OPT_Box_EAF_UGL_F", 2],     				    // granatenkiste NEUE KISTE!
 	["OPT_EAF_Sprengstoffkiste", 2],     				    // sprengstoffkiste NEUE KISTE!
 	["OPT_EAF_Minenkiste", 2],     				    // Minenkiste NEUE KISTE!
 	["OPT_Box_EAF_WpsSpecial_AT_L1", 2],   				    // AT Raketenkiste MAWSS NEUE KISTE!
+	["OPT_Box_EAF_WpsSpecial_AT_L3", 2],   				    // AT Raketenkiste (RPG-42) NEUE KISTE!
 	["OPT_Box_EAF_WpsSpecial_AT_L2", 2],   				    // AT Raketenkiste PPG 7 NEUE KISTE!
 	["OPT_Box_EAF_WpsSpecial_AA_F", 2],				    // AA Raketenkiste
 	["OPT_Box_EAF_WpsSpecial_Diver_F", 2],				    // Taucherkiste
@@ -477,6 +524,9 @@ GVAR(canBeTransported) =
 	["I_Mortar_01_F", 2],						// MK6 - Mrser
 	["OPT_FlexibleTank_01_forest_F", 1],					    // Treibstoff-Fass	
 	["OPT_I_Static_Designator_01_F", 1],					    // Remote Designator	
+	["OPT_B_Slingload_01_Ammo_F", 10],					    // Slinglot Muni Container	
+	["OPT_B_Slingload_01_Repair_F", 10],					    // Slinglot Rep Container	
+	["OPT_B_Slingload_01_Fuel_F", 10],					    // Slinglot Fuel Container	
 // AAF Stomper	
     ["OPT_I_UGV_01_F", 4],                         // UGV Stomper  		
 // AAF Ships
@@ -530,6 +580,7 @@ GVAR(canBeDragged) =
 	["OPT_O_supplyCrate_F", [0, 2, 0.1], 0],							    // Transportkiste,500
 	["OPT_Box_East_WpsSpecial_Diver_F"],				                    // Taucherkiste,5000
 	["OPT_Box_East_WpsSpecial_AA_F"],				                        // AA Raketenkiste,40000
+	["OPT_Box_East_WpsSpecial_AT_L1"],   				   					// AT Raketenkiste RPG42 NEUE KISTE!
 	["OPT_Box_East_WpsSpecial_AT_L1"],   				   					// AT Raketenkiste RPG42 NEUE KISTE!
 	["OPT_Box_East_WpsSpecial_AT_L2"],   				   					// AT Raketenkiste PPG 7 NEUE KISTE!
 	["OPT_Box_East_WpsSpecial_AT_H1"],   				    				// AT Raketenkiste Titan NEUE KISTE!
@@ -591,6 +642,7 @@ GVAR(canBeDragged) =
     ["OPT_I_C_Boat_Transport_02_F", [0, 2, 0.1], 0]             // Rhib unbewaffnet		
 ];
 
+// Trag und Ziehbare Objekte
 GVAR(canBeCarried) = 
 [
  // NATO supplies	
@@ -616,20 +668,22 @@ GVAR(canBeCarried) =
 	["OPT_FlexibleTank_01_forest_F"],					// Spritfass
 	["OPT_B_Slingload_01_Fuel_F", [0, 5, 0.05], 0],                      // Fuelcontainer,5000
 	["OPT_B_Slingload_01_Ammo_F", [0, 5, 0.05], 0],                      // Munitionscontainer,50000
-	["OPT_B_Slingload_01_Repair_F", [0, 5, 0.05], 0],                    // Reparaturcontainer,5000
+	["OPT_B_Slingload_01_Repair_F", [0, 5, 0.05], 0],                    // Reparaturcontainer,
 	["OPT_B_Slingload_01_Repair_radar_F", [0, 5, 0.05], 0],    	        // NATO Radar Container
 	["Land_Cargo10_military_green_F"],
-	["OPT_B_Static_Designator_01_F"],					// Remote Designator,10000
+	["OPT_B_Static_Designator_01_F"],					// Remote Designator,
 //CSAT supplies
-	["OPT_O_supplyCrate_F"],							// Transportkiste,500
-	["OPT_Box_East_WpsSpecial_Diver_F"],				// Taucherkiste,5000
-	["OPT_Box_East_WpsSpecial_AA_F"],					// AA Raketenkiste,40000
+	["OPT_O_supplyCrate_F"],							// Transportkiste,
+	["OPT_Box_East_WpsSpecial_Diver_F"],				// Taucherkiste,
+	["OPT_Box_East_WpsSpecial_AA_F"],					// AA Raketenkiste,
 	["OPT_Box_East_WpsSpecial_AT_L1"],   				// AT Raketenkiste RPG42 NEUE KISTE!
+	["OPT_Box_East_WpsSpecial_AT_L3"],   				// AT Raketenkiste (MAAWS) NEUE KISTE!
 	["OPT_Box_East_WpsSpecial_AT_L2"],   				// AT Raketenkiste PPG 7 NEUE KISTE!
 	["OPT_Box_East_WpsSpecial_AT_H1"],   				// AT Raketenkiste Titan NEUE KISTE!
-	["OPT_Box_East_Ammo_F"],            				// Munitionskiste,40000
+	["OPT_Box_East_Ammo_F"],            				// Munitionskiste,
 	["OPT_Box_East_WpsSpecial_F"],            			// Munition spezial kiste NEUE KISTE!
-    ["OPT_Box_East_Grenades_F"],                		// granatenkiste,75000
+    ["OPT_Box_East_Grenades_F"],                		// granatenkiste
+	["OPT_Box_CSAT_UGL_F"],                		// Unterlaufgranatenkiste
 	["OPT_CSAT_Sprengstoffkiste"],            		    // sprengstoffkiste,75000 NEUE KISTE!
 	["OPT_CSAT_Minenkiste"],            		         // Minenkiste,75000 NEUE KISTE!
 	["OPT_Box_East_WpsLaunch_F"],						// HAT-Kiste (Titan),400000
@@ -655,9 +709,11 @@ GVAR(canBeCarried) =
 	["OPT_Box_EFA_Ammo_F"],         				    // Munitionskiste
 	["OPT_Box_EAF_WpsSpecial_F"],         			    // Munition spezial kiste NEUE KISTE!
 	["OPT_Box_EAF_Grenades_F"],     				    // granatenkiste
+	["OPT_Box_EAF_UGL_F"],     				    // granatenkiste
 	["OPT_EAF_Sprengstoffkiste"],     				    // sprengstoffkiste NEUE KISTE!
 	["OPT_EAF_Minenkiste"],     				    // Minenkiste NEUE KISTE!
 	["OPT_Box_EAF_WpsSpecial_AT_L1"],   				    // AT Raketenkiste MAWSS NEUE KISTE!
+	["OPT_Box_EAF_WpsSpecial_AT_L3"],   				    // AT Raketenkiste (RPG-42) MAWSS NEUE KISTE!
 	["OPT_Box_EAF_WpsSpecial_AT_L2"],   				    // AT Raketenkiste PPG 7 NEUE KISTE!
 	["OPT_Box_EAF_WpsSpecial_AA_F"],				    // AA Raketenkiste
 	["OPT_Box_EAF_WpsSpecial_Diver_F"],				    // Taucherkiste
@@ -670,5 +726,8 @@ GVAR(canBeCarried) =
 	["OPT_I_Mortar_01_F"],							                        // MK6 Mörser,200000
 	["I_Mortar_01_F"],						// MK6 - Mrser
 	["OPT_FlexibleTank_01_forest_F"],					    // Treibstoff-Fass	
+	["OPT_B_Slingload_01_Ammo_F"],					    // Slinglot Muni Container	
+	["OPT_B_Slingload_01_Repair_F"],					    // Slinglot Rep Container	
+	["OPT_B_Slingload_01_Fuel_F"],					    // Slinglot Fuel Container	
 	["OPT_I_Static_Designator_01_F"]					    // Remote Designator
 ];

@@ -222,36 +222,25 @@ GVAR(Lightrocketmen) =
 	"OPT_NATO_Aufklaerung_Spaeher_AT_T",
 	"OPT_CSAT_Aufklaerung_Spaeher_AT_T",
 	"O_Soldier_LAT_F",
-	"I_Soldier_LAT_F"
+	"I_Soldier_LAT2_F"
 ];
 
 GVAR(lightlaunchers) = 
 [
-    "OPT_launch_B_RPG32_F",
-    "OPT_launch_RPG32_F",
-    "OPT_launch_NLAW_F",
-    "OPT_launch_NLAW_M_F",
-	"OPT_launch_MRAWS_green_rail_F",
-	"OPT_launch_MRAWS_olive_rail_F",
-	"launch_RPG7_F",
-	"launch_RPG32_F",
-	"launch_MRAWS_green_rail_F"
+	"launch_RPG7_F"
 ];
 
 /* Heavy AT-Schützen UND LAUNCHER */
 GVAR(Heavyrocketmen) = 
 [
-	"OPT_NATO_PA_Schuetze_Heavy",
-	"OPT_CSAT_PA_Schuetze_Heavy"
+	"O_Soldier_HAT_F",
+	"I_Soldier_LAT_F"
 ];
 
 GVAR(Heavylaunchers) = 
 [
-    "OPT_launch_O_Titan_short_F",
-    "OPT_launch_B_Titan_short_F",
-	"OPT_launch_O_Titan_short_ghex_F",
-	"OPT_launch_B_Titan_short_tna_F",
-	"OPT_launch_O_Vorona_green_F"
+    "OPT_launch_MRAWS_green_rail_F",
+    "OPT_launch_RPG32_F"
 ];
 
 /* AA-Schützen UND LAUNCHER */
@@ -288,7 +277,8 @@ GVAR(medic) =
 	"OPT_CSAT_Sanitaeter_T",
 	"OPT_NATO_Sanitaeter",
 	"OPT_CSAT_Sanitaeter",
-	"I_medic_F"
+	"I_medic_F",
+	"O_medic_F"
 ];
 
 /* spaeher */
@@ -349,7 +339,7 @@ GVAR(DMRsnipers) =
 	"OPT_NATO_Beobachter",
 	"OPT_CSAT_Beobachter_T",
 	"OPT_NATO_Beobachter_T",
-	"O_recon_F",
+	"O_soldier_M_F",
 	"I_Soldier_M_F"
 ];
 
@@ -389,7 +379,8 @@ GVAR(soldatLMG) =
 GVAR(LMG) = 
 [
     "OPT_arifle_CTARS_blk_F",
-    "OPT_LMG_03_F"
+    "OPT_LMG_03_F",
+	"OPT_arifle_SPAR_02_blk_F"
 ];
 
 /* GRENADIER */
