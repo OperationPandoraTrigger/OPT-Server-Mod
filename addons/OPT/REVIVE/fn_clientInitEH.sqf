@@ -47,6 +47,9 @@ DFUNC(isUnconscious) =
 		//TFAR ausschalten
 		player setVariable ["tf_unable_to_use_radio", true];
 
+		//Schaden ausblenden
+		player allowDamage false;
+
 		//Dialog ausführen
 		[] call FUNC(dialog);
 	};
@@ -64,6 +67,9 @@ DFUNC(isUnconscious) =
 		OPT_GELDZEIT_earplugsInUse = 1;
 		OPT_REVIVE_unconsciousHandler = nil;
 		player setVariable ["tf_unable_to_use_radio", false];
+
+		//Schaden Freigeben
+		player allowDamage true;
 		 
     } call CFUNC(execNextFrame);
 
