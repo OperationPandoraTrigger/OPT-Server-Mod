@@ -161,6 +161,10 @@ GVAR(startzeit) = time;
 		player setVariable ["OPT_isUnconscious", 0, true];
 		OPT_REVIVE_unconsciousHandler = nil;
 		player setVariable ["tf_unable_to_use_radio", false];
+
+		//Schaden Freigeben
+		player allowDamage true;
+
 		_handle call CFUNC(removePerframeHandler);
 	};
 
@@ -174,6 +178,10 @@ GVAR(startzeit) = time;
 		player setVariable ["OPT_isUnconscious", 0, true];
 		OPT_REVIVE_unconsciousHandler = nil;
 		player setVariable ["tf_unable_to_use_radio", false];
+
+		//Schaden Freigeben
+		player allowDamage true;
+
 		_handle call CFUNC(removePerframeHandler);
 	};
 
