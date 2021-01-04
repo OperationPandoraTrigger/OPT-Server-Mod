@@ -255,9 +255,13 @@ class CfgCLibLocalisation {
 				English = "Earplugs";
 				German = "Ohrenstöpsel";
 			};
-			class EARPLUGS_IN {
-				English = "Earplugs in";
-				German = "Ohrstoepsel rein";
+			class EARPLUGS_25 {
+				English = "Earplugs 25%";
+				German = "Ohrstoepsel 25%";
+			};
+			class EARPLUGS_50 {
+				English = "Earplugs 50%";
+				German = "Ohrstoepsel 50%";
 			};
 			class EARPLUGS_OUT {
 				English = "Earplugs out";
