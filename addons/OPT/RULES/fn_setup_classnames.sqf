@@ -199,7 +199,6 @@ GVAR(crew_vecs) =
 GVAR(blockedVehiclePositions_veh) = 
 [
 	"gunner",
-	"commander",
 	"Turret"
 ];
 
