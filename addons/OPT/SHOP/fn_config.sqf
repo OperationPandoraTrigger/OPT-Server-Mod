@@ -207,7 +207,7 @@ GVAR(csat_choppers) =
     ["OPT_O_Heli_Light_01_F", DEF_PROD(0)],                 // MH6
     ["OPT_O_Heli_Light_03_unarmed_F", DEF_PROD(0)],             // WY-55 Hellcat
     ["OPT4_O_Heli_light_03_F", DEF_PROD(0)],                    // WY-55 Hellcat
-    ["OPT_O_Heli_Light_02_unarmed_F", 50000,10000,20000],             // PO-30 Orca
+    ["OPT_O_Heli_Light_02_unarmed_F", 40000,10000,20000],             // PO-30 Orca
     ["OPT_O_Heli_Light_02_v2_F", 200000,10000,20000],       			// PO-30 Orca Cas Light
     ["OPT_O_Heli_Light_02_v3_F", 400000,10000,20000],       			// PO-30 Orca Cas Heavy
     ["OPT_O_Heli_Transport_04_covered_F", 45000,10000,20000],    // Mi-290 Taru (Transport)
@@ -334,7 +334,7 @@ GVAR(AAF_choppers) =
 [
     ["OPT_I_Heli_light_03_v2_F", 200000,10000,20000],                 // WY-55 Hellcat Cas Light
     ["OPT_I_Heli_light_03_v3_F", 400000,10000,20000],                 // WY-55 Hellcat Cas Heavy
-    ["OPT_I_Heli_light_03_unarmed_F", 50000,10000,20000],          // WY-55 Hellcat Unbewaffnet
+    ["OPT_I_Heli_light_03_unarmed_F", 40000,10000,20000],          // WY-55 Hellcat Unbewaffnet
 	["OPT_I_Heli_Transport_02_F", 45000,10000,20000],           	    // CH-49 Mohawk (Transport+Lift)
     ["OPT_I_UAV_02_light_F", DEF_PROD(0)]                 // Greyhawk unbewaffnet
 ];
