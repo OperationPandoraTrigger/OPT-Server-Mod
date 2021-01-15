@@ -189,7 +189,7 @@ GVAR(csat_vehicles) =
     ["OPT_O_T_Truck_02_F", DEF_PROD(5000)],           // Zamack Infanterie
 	["OPT_O_T_Truck_02_transport_F", DEF_PROD(5000)],         // Zamack Logistik
     ["OPT_O_T_Truck_02_box_F", 10000,5000,10000],            // Zamack Repair
-    ["OPT_O_T_Truck_03_medical_ghex_F", DEF_PROD(0)]          // Zamack Medical
+    ["OPT_O_T_Truck_02_Medical_F", DEF_PROD(6000)]          // Zamack Medical
 
 ];
 
@@ -316,6 +316,7 @@ GVAR(AAF_vehicles) =
     ["OPT_I_Truck_02_covered_F", DEF_PROD(5000)],               // Zamak Transport
     ["OPT_I_Truck_02_box_F", 10000,5000,10000],               // Zamak Repair
     ["OPT_I_Truck_02_transport_F", DEF_PROD(5000)]               // Zamak   
+    ["OPT_I_Truck_02_medical_F", DEF_PROD(6000)]               // Zamak Medical
 	
 ];
 
