@@ -30,6 +30,7 @@
 
 //Init Werte
 GVAR(SaniKlassen) = ["OPT_NATO_Sanitaeter","OPT_CSAT_Sanitaeter","OPT_NATO_Sanitaeter_T","OPT_CSAT_Sanitaeter_T","I_medic_F"];
+GVAR(OPT_REVIVE_MAX_DAMAGE) =0.94;
 
 // Eigenversorung Funktion 
 DFUNC(eigenversorgung) = 

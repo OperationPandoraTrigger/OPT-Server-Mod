@@ -47,9 +47,6 @@ DFUNC(isUnconscious) =
 		//TFAR ausschalten
 		player setVariable ["tf_unable_to_use_radio", true];
 
-		//Schaden ausblenden
-		player allowDamage false;
-
 		//Dialog ausführen
 		[] call FUNC(dialog);
 	};
@@ -105,13 +102,20 @@ DFUNC(playerHandleDamage) =
 {
 	params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
 
-	//Var übergabe
-	GVAR(playerHandleDamage_unit) = _unit; 
-	GVAR(playerHandleDamage_instigator) = _instigator; 
-	GVAR(playerHandleDamage_source) = _source; 
-	GVAR(playerHandleDamage_projectile) = _projectile; 
+	if (_damage >= GVAR(OPT_REVIVE_MAX_DAMAGE)) then 
+    {  
+		//Var übergabe	
+		GVAR(playerHandleDamage_unit) = _unit; 
+		GVAR(playerHandleDamage_instigator) = _instigator; 
+		GVAR(playerHandleDamage_source) = _source; 
+		GVAR(playerHandleDamage_projectile) = _projectile; 
+		GVAR(playerHandleDamage_damage) = _damage; 
 
-	[FUNC(playercheckINCAPACITATED), 1,""] call CLib_fnc_wait;
+		//Schaden ausblenden
+		player allowDamage false;
+
+		[FUNC(playercheckINCAPACITATED), 1,""] call CLib_fnc_wait;
+	};
 };
 
 player addEventHandler ["HandleDamage", FUNC(playerHandleDamage)];
