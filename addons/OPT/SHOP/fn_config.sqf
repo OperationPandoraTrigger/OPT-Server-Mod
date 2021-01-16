@@ -315,7 +315,7 @@ GVAR(AAF_vehicles) =
 	["OPT_I_MRAP_03_hmg_F", DEF_PROD(80000)],                   // Strider HMG
     ["OPT_I_Truck_02_covered_F", DEF_PROD(5000)],               // Zamak Transport
     ["OPT_I_Truck_02_box_F", 10000,5000,10000],               // Zamak Repair
-    ["OPT_I_Truck_02_transport_F", DEF_PROD(5000)]               // Zamak   
+    ["OPT_I_Truck_02_transport_F", DEF_PROD(5000)],               // Zamak   
     ["OPT_I_Truck_02_medical_F", DEF_PROD(6000)]               // Zamak Medical
 	
 ];
