@@ -164,7 +164,7 @@ GVAR(startzeit) = time;
 
 		//Schaden Freigeben
 		player allowDamage true;
-
+		
 		_handle call CFUNC(removePerframeHandler);
 	};
 
@@ -182,8 +182,22 @@ GVAR(startzeit) = time;
 		//Schaden Freigeben
 		player allowDamage true;
 
+		// Für alle zum Schluss anwesenden (25 m) Kameraden einen Revive-Punkt loggen
+		_units = nearestObjects [getpos player, ["CAManBase"], 25] - [player];
+		if (count _units > 0) then 
+		{
+			{
+				_sidesoldat = getnumber (configFile >> "CfgVehicles" >> (typeof _x) >> "side"); 
+				_sideplayer = getnumber (configFile >> "CfgVehicles" >> (typeof player) >> "side");
+
+				if (_sidesoldat isEqualTo _sideplayer and !(lifeState _x isEqualTo "INCAPACITATED")) then 
+				{
+					[player, _x, 1] remoteExecCall ["OPT_REVIVE_fnc_revivelog", 2, false];
+				};
+			} forEach _units;
+		};
+
 		_handle call CFUNC(removePerframeHandler);
 	};
 
 }, 1, _this] call CFUNC(addPerFrameHandler);
-
