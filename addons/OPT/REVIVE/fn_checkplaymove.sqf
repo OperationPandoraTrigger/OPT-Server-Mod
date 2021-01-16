@@ -12,7 +12,7 @@
 * [player] call FUNC(checkplaymove);
 *
 */
-#include "script_component.hpp"
+#include "macros.hpp"
 
 params ["_target"];
 

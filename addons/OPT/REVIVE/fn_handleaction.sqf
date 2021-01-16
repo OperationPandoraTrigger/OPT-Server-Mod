@@ -14,7 +14,7 @@
 * [cursorObject, player, "action_revive"] call fnc_handleAction.sqf;
 *
 */
-#include "script_component.hpp"
+#include "macros.hpp"
 
 params ["_target", "_caller", "_action"];
 

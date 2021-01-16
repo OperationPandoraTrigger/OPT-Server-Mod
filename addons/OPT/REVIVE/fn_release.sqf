@@ -12,7 +12,7 @@
 * [] call fnc_handleAction.sqf;
 *
 */
-#include "script_component.hpp"
+#include "macros.hpp"
 
 player playMove "amovpknlmstpsraswrfldnon";
 GVAR(OPT_isDragging) = false;

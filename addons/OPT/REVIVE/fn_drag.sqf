@@ -12,7 +12,7 @@
 * [cursorObject] call fnc_handleAction.sqf;
 *
 */
-#include "script_component.hpp"
+#include "macros.hpp"
 
 params ["_target"];
 GVAR(OPT_isDragging) = true;

@@ -12,7 +12,7 @@
 * [] call fnc_initCBAClassEvents.sqf;
 *
 */
-#include "script_component.hpp"
+#include "macros.hpp"
 
 ["CAManBase", "init", 
 {

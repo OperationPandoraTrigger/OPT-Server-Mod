@@ -13,7 +13,7 @@
 * [cursorObject, player] call fnc_checkDragging.sqf;
 *
 */
-#include "script_component.hpp"
+#include "macros.hpp"
 
 params ["_target", "_caller"];
 
