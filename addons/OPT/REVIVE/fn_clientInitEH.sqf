@@ -65,9 +65,6 @@ DFUNC(isUnconscious) =
 		OPT_GELDZEIT_earplugsInUse = 1;
 		OPT_REVIVE_unconsciousHandler = nil;
 		player setVariable ["tf_unable_to_use_radio", false];
-
-		//Schaden Freigeben
-		player allowDamage true;
 		 
     } call CFUNC(execNextFrame);
 
@@ -76,34 +73,11 @@ DFUNC(isUnconscious) =
 //EH für Spielerabschüsslog 
 //Event Aüslösung bei bewustlosen Spieler.
 
-DFUNC(playercheckINCAPACITATED) = 
-{
-	if ((lifeState GVAR(playerHandleDamage_unit) isEqualTo "INCAPACITATED") and isNil "OPT_REVIVE_unconsciousHandler") then 
-	{
-		OPT_REVIVE_unconsciousHandler = true;
-		[GVAR(playerHandleDamage_unit), GVAR(playerHandleDamage_instigator), GVAR(playerHandleDamage_source), GVAR(playerHandleDamage_projectile)] remoteExecCall ["OPT_SHOP_fnc_writeKill", 2, false];
-
-		if (GVAR(playerHandleDamage_unit) == GVAR(playerHandleDamage_source)) then 
-        {          
-			[MLOC(KILL_MSG), MLOC(KILL_SELF)] spawn BIS_fnc_infoText;
-        } 
-		else
-		{         
-			[MLOC(KILL_MSG), format["%1",name GVAR(playerHandleDamage_instigator)]] spawn BIS_fnc_infoText;
-
-        };
-
-		//Funktion starten wenn Spieler bewustlos ist. 
-		[player] call FUNC(isUnconscious);	
-	};
-
-};
-
 DFUNC(playerHandleDamage) = 
 {
 	params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
 
-	if (_damage >= GVAR(OPT_REVIVE_MAX_DAMAGE)) then 
+	if (_damage >= GVAR(MAX_DAMAGE)) then 
     {  
 		//Var übergabe	
 		GVAR(playerHandleDamage_unit) = _unit; 
@@ -115,7 +89,28 @@ DFUNC(playerHandleDamage) =
 		//Schaden ausblenden
 		player allowDamage false;
 
-		[FUNC(playercheckINCAPACITATED), 1,""] call CLib_fnc_wait;
+		if (isNil "OPT_REVIVE_unconsciousHandler") then 
+		{
+			OPT_REVIVE_unconsciousHandler = true;
+			[GVAR(playerHandleDamage_unit), GVAR(playerHandleDamage_instigator), GVAR(playerHandleDamage_source), GVAR(playerHandleDamage_projectile)] remoteExecCall ["OPT_SHOP_fnc_writeKill", 2, false];
+
+			if ((GVAR(playerHandleDamage_unit) == GVAR(playerHandleDamage_source)) or (GVAR(playerHandleDamage_unit) == GVAR(playerHandleDamage_instigator))) then 
+			{          
+				[MLOC(KILL_MSG), MLOC(KILL_SELF)] spawn BIS_fnc_infoText;
+			} 
+			else
+			{         
+				[MLOC(KILL_MSG), format["%1",name GVAR(playerHandleDamage_instigator)]] spawn BIS_fnc_infoText;
+
+			};
+
+			//BIS Revivesysterm auslösen
+			[ "#rev", 2, player ] call BIS_fnc_reviveOnState; 
+			
+			//Funktion starten wenn Spieler bewustlos ist. 
+			[player] call FUNC(isUnconscious);	
+		};
+
 	};
 };
 

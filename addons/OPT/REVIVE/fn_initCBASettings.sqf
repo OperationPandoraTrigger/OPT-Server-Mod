@@ -70,3 +70,13 @@
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {} // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(MAX_DAMAGE), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    "SLIDER", // setting type
+    "Maximaler Schaden bis zur Bewusstlosigkeit", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+    "OPT San-System", // Pretty name of the category where the setting can be found. Can be stringtable entry.
+    [0, 0.99, 0.59, 2], // [min, max, default, decimal]
+    1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
+    {} // function that will be executed once on mission start and every time the setting is changed.
+] call CBA_Settings_fnc_init;
