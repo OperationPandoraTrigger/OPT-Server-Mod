@@ -40,6 +40,44 @@ private _message = "";
 private _budget_neu = 0;
 private _unitName = (getText(configFile >> 'CfgVehicles' >> _unitType >> 'displayName'));
 
+// get category of item
+private _veh = objectFromNetId _unitId;
+private _category = "";
+private _light = (opt_shop_nato_vehicles + opt_shop_csat_vehicles + opt_shop_AAF_vehicles + opt_shop_nato_vehicles_supply + opt_shop_csat_vehicles_supply + opt_shop_AAF_vehicles_supply) apply {toLower (_x select 0)};
+private _heavy = (opt_shop_nato_armored + opt_shop_csat_armored + opt_shop_AAF_armored) apply {toLower (_x select 0)};
+private _air = (opt_shop_nato_choppers + opt_shop_csat_choppers + opt_shop_AAF_choppers) apply {toLower (_x select 0)};
+private _boat = (opt_shop_nato_sea + opt_shop_csat_sea + opt_shop_AAF_sea) apply {toLower (_x select 0)};
+
+_category = if (toLower (typeOf _veh) in _light) then 
+    {
+        "Leicht"
+    } 
+    else 
+    {
+        if (toLower (typeOf _veh) in _heavy) then 
+        {
+            "Schwer"
+        } 
+        else 
+        {
+            if (toLower (typeOf _veh) in _air) then 
+            {
+                "Flug"
+            } 
+            else 
+            {
+                if (toLower (typeOf _veh) in _boat) then 
+                {
+                    "Boot"
+                } 
+                else 
+                {
+                    "Unbekannt"
+                }                
+            };
+        };
+    }; 
+
 switch (_sign) do 
 {
     case "-": 
@@ -56,7 +94,7 @@ switch (_sign) do
             { 
                 _budget_neu = GVAR(aaf_budget) - _unitCost;
             };
-            ["Budget", "Buy", [GVAR(nato_budget), GVAR(csat_budget), GVAR(aaf_budget), _buyerUID, _buyerName, _side, _unitId, _unitName, _unitCost]] call OPT_LOGGING_fnc_writelog;
+            ["Budget", "Buy", [GVAR(nato_budget), GVAR(csat_budget), GVAR(aaf_budget), _buyerUID, _buyerName, _side, _unitId, _unitName, _category, _unitCost]] call OPT_LOGGING_fnc_writelog;
 
     };
     case "+":  
@@ -73,7 +111,7 @@ switch (_sign) do
             {                   
                 _budget_neu = GVAR(aaf_budget) + _unitCost;
             };
-            ["Budget", "Sell", [GVAR(nato_budget), GVAR(csat_budget), GVAR(aaf_budget), _buyerUID, _buyerName, _side, _unitId, _unitName, _unitCost]] call OPT_LOGGING_fnc_writelog;
+            ["Budget", "Sell", [GVAR(nato_budget), GVAR(csat_budget), GVAR(aaf_budget), _buyerUID, _buyerName, _side, _unitId, _unitName, _category, _unitCost]] call OPT_LOGGING_fnc_writelog;
     };
 };
 
