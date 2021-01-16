@@ -326,7 +326,7 @@ GVAR(AAF_vehicles_supply) =
     ["OPT_I_Truck_02_ammo_F", 50000,5000,10000],             			// Zamak Ammo
     ["OPT_I_Truck_02_fuel_F", 10000,5000,10000],              		// Zamak Fuel
     ["OPT_B_Slingload_01_Ammo_F", 50000,5000,10000],              		// Slinglot Muni Container
-    ["OPT_B_Slingload_01_Repair_F", 10000,5000,10000],              		// Slinglot Rep Container
+    ["OPT_B_Slingload_01_Repair_F", DEF_PROD(0)],              		// Slinglot Rep Container
     ["OPT_B_Slingload_01_Fuel_F", 10000,5000,10000]              		// Slinglot Fuel Container
 ];	
   
