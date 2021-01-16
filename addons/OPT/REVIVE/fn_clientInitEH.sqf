@@ -58,6 +58,7 @@ DFUNC(isUnconscious) =
     {
 		player setVariable ["OPT_isUnconscious", 0, true];
 		player setVariable ["OPT_isStabilized", 0, true];
+		GVAR(OPT_isDragging) = false;
 		player allowDamage true;
 		1 enableChannel true;
 		1 fadeSound 1;
