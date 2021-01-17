@@ -64,6 +64,7 @@ DFUNC(isUnconscious) =
 		1 fadeSound 1;
 		OPT_GELDZEIT_earplugsInUse = 1;
 		OPT_REVIVE_unconsciousHandler = nil;
+		OPT_REVIVE_respawnedHandler = nil;
 		player setVariable ["tf_unable_to_use_radio", false];
 		 
     } call CFUNC(execNextFrame);

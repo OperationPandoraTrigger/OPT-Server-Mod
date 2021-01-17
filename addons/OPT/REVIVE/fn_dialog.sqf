@@ -59,17 +59,17 @@ _BleedoutBar_Text ctrlSetText format ["%1 sec",GVAR(ausblutzeit)];
 // Respwan Button
 _Respawn_button ctrlAddEventHandler [ "ButtonClick", 
 {
+	OPT_REVIVE_respawnedHandler = true;
+	["Health", "Respawn", [getPlayerUID player, name player, side player, "RespawnClick"]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
 	player setDamage 1;
 	1 enableChannel true;
 	player allowDamage true;
-	
 }];
 
 GVAR(startzeit) = time;
 
 //Anzeigen Steuerung im Dialog
 [{
-
 	params ["_args", "_handle"];
 
 	private _display = findDisplay IDD_REVIVE_BLACKSCREEN;
@@ -135,8 +135,9 @@ GVAR(startzeit) = time;
 	//Auto Respwan nach Ablauf der Ausblutzeit
 	if (((GVAR(ausblutzeit) - (time - GVAR(startzeit))) < 0)) then 
 	{
+		OPT_REVIVE_respawnedHandler = true;
+		["Health", "Respawn", [getPlayerUID player, name player, side player, "RespawnTimeout"]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
 		player setDamage 1;
-
 	};	
 
 	// Zeitausgabe bis Auto Respwan
@@ -164,7 +165,7 @@ GVAR(startzeit) = time;
 
 		//Schaden Freigeben
 		player allowDamage true;
-
+		
 		_handle call CFUNC(removePerframeHandler);
 	};
 
@@ -182,8 +183,26 @@ GVAR(startzeit) = time;
 		//Schaden Freigeben
 		player allowDamage true;
 
+		// Nicht nach dem Respawnen ausführen
+		if (isNil "OPT_REVIVE_respawnedHandler") then
+		{
+			// Für alle zum Schluss anwesenden (25 m) Kameraden einen Revive-Punkt loggen
+			_units = nearestObjects [getpos player, ["CAManBase"], 25] - [player];
+			if (count _units > 0) then 
+			{
+				{
+					_sidesoldat = getnumber (configFile >> "CfgVehicles" >> (typeof _x) >> "side"); 
+					_sideplayer = getnumber (configFile >> "CfgVehicles" >> (typeof player) >> "side");
+
+					if (_sidesoldat isEqualTo _sideplayer and !(lifeState _x isEqualTo "INCAPACITATED")) then 
+					{
+						[player, _x, 1] remoteExecCall ["OPT_REVIVE_fnc_revivelog", 2, false];
+					};
+				} forEach _units;
+			};
+		};
+
 		_handle call CFUNC(removePerframeHandler);
 	};
 
 }, 1, _this] call CFUNC(addPerFrameHandler);
-
