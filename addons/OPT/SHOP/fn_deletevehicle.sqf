@@ -40,7 +40,7 @@ _pads apply
     private _spawnpos = _x;
     private _objs = [];
     
-    _objs = nearestObjects [_spawnpos, ["AllVehicles", "Thing"], 4];
+    _objs = nearestObjects [_spawnpos, ["AllVehicles", "Thing"], 8];
 
     // now delete
     {
@@ -48,6 +48,11 @@ _pads apply
         if (toLower (typeOf _x) in (GVAR(orderDialogObjects) apply {toLower (_x select 0)}) and ({isPlayer (_x select 0)} count (fullCrew _x)) == 0) then {
             deleteVehicle _x;
         };
+
+        if ((_x isKindOf "CAManBase") and !alive _x) then 
+        {
+            deleteVehicle _x;
+        };    
 
     } forEach _objs;
 

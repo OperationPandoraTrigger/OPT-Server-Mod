@@ -53,7 +53,7 @@
         format["_truck = vehicle _this; ([_target] call %1 || damage _target > 0.01)  and _truck getVariable ['%2', -1] > 0 and {alive _target} and {speed _truck < 3} and (_truck distance _target) < 25", QFUNC(vehicleDamagedLight), QGVAR(repair_cargo)]
     ];
 
-    if (typeOf _vec  == "OPT_O_T_Truck_03_repair_ghex_F" || typeOf _vec == "OPT_O_Truck_03_repair_F" || typeOf _vec  == "OPT_B_Truck_01_Repair_F" || typeOf _vec  == "OPT_B_Truck_01_Repair_ghex_F" || typeOf _vec  == "OPT_I_Truck_02_box_F") then 
+    if (typeOf _vec  == "OPT_O_T_Truck_02_box_F" || typeOf _vec == "OPT_O_Truck_03_repair_F" || typeOf _vec  == "OPT_B_Truck_01_Repair_F" || typeOf _vec  == "OPT_B_Truck_01_Repair_ghex_F" || typeOf _vec  == "OPT_I_Truck_02_box_F" || typeOf _vec  == "OPT_B_Slingload_01_Repair_F" || typeOf _vec  == "OPT_O_Heli_Transport_04_box_F") then 
     {
         _vec setVariable [QGVAR(repair_cargo), GVAR(DEFAULT_REPAIR_TRUCK_USES), true];
 

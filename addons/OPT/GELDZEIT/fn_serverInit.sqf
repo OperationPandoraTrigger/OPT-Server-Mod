@@ -101,8 +101,6 @@ DFUNC(Mission_Ende) =
 	GVAR(Endestart) = true;
 	publicVariable QGVAR(Endestart);
 
-	[EVENT_SPIELUHR_ENDBILDSCHIRM,[]] call CFUNC(globalEvent);
-
 	[] call FUNC(writePlayerList);
 
 	switch GVAR(Fraktionauswahl) do 
@@ -111,6 +109,9 @@ DFUNC(Mission_Ende) =
 		{			
 			private _points1 = OPT_SECTORCONTROL_aaf_points;
 			private _points2 = OPT_SECTORCONTROL_csat_points;
+
+			publicVariable "OPT_SECTORCONTROL_aaf_points";
+			publicVariable "OPT_SECTORCONTROL_csat_points";
 
 			_timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
 			diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Mission",_timestamp,"Missionzeit abgelaufen"];
@@ -127,6 +128,9 @@ DFUNC(Mission_Ende) =
 			private _points1 = OPT_SECTORCONTROL_nato_points;
 			private _points2 = OPT_SECTORCONTROL_csat_points;
 
+			publicVariable "OPT_SECTORCONTROL_aaf_points";
+			publicVariable "OPT_SECTORCONTROL_csat_points";
+
 			_timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
 			diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Mission",_timestamp,"Missionzeit abgelaufen"];
 
@@ -141,6 +145,9 @@ DFUNC(Mission_Ende) =
 		{
 			private _points1 = OPT_SECTORCONTROL_nato_points;
 			private _points2 = OPT_SECTORCONTROL_aaf_points;
+
+			publicVariable "OPT_SECTORCONTROL_aaf_points";
+			publicVariable "OPT_SECTORCONTROL_csat_points";
 
 			_timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
 			diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Mission",_timestamp,"Missionzeit abgelaufen"];
@@ -158,6 +165,8 @@ DFUNC(Mission_Ende) =
 		};
 	};
 	["Mission", "End", [OPT_SECTORCONTROL_nato_points, OPT_SECTORCONTROL_csat_points, OPT_SECTORCONTROL_aaf_points, missionName]] call OPT_LOGGING_fnc_writelog;
+
+	[EVENT_SPIELUHR_ENDBILDSCHIRM,[]] call CFUNC(globalEvent);
 
 };
 

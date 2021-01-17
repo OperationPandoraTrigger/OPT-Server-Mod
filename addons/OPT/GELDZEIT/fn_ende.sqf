@@ -114,21 +114,23 @@ switch (GVAR(Fraktionauswahl)) do
 DFUNC(endscreen) = 
 {
 	removeallweapons player;
+	private _Sideidplayer = 0;
+	_sideidplayer = playerSide call BIS_fnc_sideID;
 
 	// Auswahl Bildschirmanzeige und Ende der Mission
 	private _end = switch (true) do 
 	{
-    case (side player == west && {GVAR(nato_win) == 1}) : {["END1",true,true]};
-    case (side player == west && {GVAR(csat_win) == 1}) : {["END2",false,true]};
-	case (side player == west && {GVAR(aaf_win) == 1}) : {["END3",false,true]};
+    case (_sideidplayer == 1 && {GVAR(nato_win) == 1}) : {["END1",true,true]};
+    case (_sideidplayer == 1 && {GVAR(csat_win) == 1}) : {["END2",false,true]};
+	case (_sideidplayer == 1 && {GVAR(aaf_win) == 1}) : {["END3",false,true]};
 
-    case (side player == east && {GVAR(nato_win) == 1}) : {["END1",false,true]};
-    case (side player == east && {GVAR(csat_win) == 1}) : {["END2",true,true]};
-	case (side player == east && {GVAR(aaf_win) == 1}) : {["END3",false,true]};
+    case (_sideidplayer == 0 && {GVAR(nato_win) == 1}) : {["END1",false,true]};
+    case (_sideidplayer == 0 && {GVAR(csat_win) == 1}) : {["END2",true,true]};
+	case (_sideidplayer == 0 && {GVAR(aaf_win) == 1}) : {["END3",false,true]};
 
-	case (side player == independent && {GVAR(aaf_win) == 1}) : {["END3",true,true]};
-	case (side player == independent && {GVAR(csat_win) == 1}) : {["END2",false,true]};
-	case (side player == independent && {GVAR(nato_win) == 1}) : {["END1",false,true]};
+	case (_sideidplayer == 2 && {GVAR(aaf_win) == 1}) : {["END3",true,true]};
+	case (_sideidplayer == 2 && {GVAR(csat_win) == 1}) : {["END2",false,true]};
+	case (_sideidplayer == 2 && {GVAR(nato_win) == 1}) : {["END1",false,true]};
 
     default {["END4",true,true]};
 	};

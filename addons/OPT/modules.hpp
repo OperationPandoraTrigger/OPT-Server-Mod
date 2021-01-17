@@ -58,6 +58,12 @@ class CfgCLibModules {
             FNC(revivelog);
             FNC(dialog);
             FNC(keyunbind);
+            FNC(checkdragging);
+            FNC(drag);
+            FNC(handleaction);
+            FNC(checkplaymove);
+            FNC(initcbaclassevents);
+            FNC(release);
         };
         MODULE(GELDZEIT) 
         {

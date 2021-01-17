@@ -50,7 +50,8 @@ GVAR(pilots) =
 	"OPT_NATO_Pilot",
 	"OPT_CSAT_Pilot",
 	"O_Pilot_F",
-	"I_helipilot_F"
+	"I_helipilot_F",
+	"O_helipilot_F",
 ];
 
 GVAR(pilots_vecs) = 
