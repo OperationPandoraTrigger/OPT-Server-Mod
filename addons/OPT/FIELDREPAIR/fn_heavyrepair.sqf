@@ -82,7 +82,7 @@ private _length = _maxlength;
     {
         (_this select 0) params ["_veh", "_truck"];
         alive player and 
-        !(player getVariable ["ACE_isUnconscious", false]) and // behebt Fehler, dass bewusstlose Soldaten weiter reparieren // TODO:
+        !(lifeState player isEqualTo "INCAPACITATED") and // behebt Fehler, dass bewusstlose Soldaten weiter reparieren // TODO:
         alive _truck and 
         alive _veh and 
         (not isNull (objectParent player)) and

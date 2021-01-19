@@ -189,7 +189,7 @@ GVAR(csat_vehicles) =
     ["OPT_O_T_Truck_02_F", DEF_PROD(5000)],           // Zamack Infanterie
 	["OPT_O_T_Truck_02_transport_F", DEF_PROD(5000)],         // Zamack Logistik
     ["OPT_O_T_Truck_02_box_F", 10000,5000,10000],            // Zamack Repair
-    ["OPT_O_T_Truck_03_medical_ghex_F", DEF_PROD(0)]          // Zamack Medical
+    ["OPT_O_T_Truck_02_Medical_F", DEF_PROD(6000)]          // Zamack Medical
 
 ];
 
@@ -207,7 +207,7 @@ GVAR(csat_choppers) =
     ["OPT_O_Heli_Light_01_F", DEF_PROD(0)],                 // MH6
     ["OPT_O_Heli_Light_03_unarmed_F", DEF_PROD(0)],             // WY-55 Hellcat
     ["OPT4_O_Heli_light_03_F", DEF_PROD(0)],                    // WY-55 Hellcat
-    ["OPT_O_Heli_Light_02_unarmed_F", 50000,10000,20000],             // PO-30 Orca
+    ["OPT_O_Heli_Light_02_unarmed_F", 40000,10000,20000],             // PO-30 Orca
     ["OPT_O_Heli_Light_02_v2_F", 200000,10000,20000],       			// PO-30 Orca Cas Light
     ["OPT_O_Heli_Light_02_v3_F", 400000,10000,20000],       			// PO-30 Orca Cas Heavy
     ["OPT_O_Heli_Transport_04_covered_F", 45000,10000,20000],    // Mi-290 Taru (Transport)
@@ -315,7 +315,8 @@ GVAR(AAF_vehicles) =
 	["OPT_I_MRAP_03_hmg_F", DEF_PROD(80000)],                   // Strider HMG
     ["OPT_I_Truck_02_covered_F", DEF_PROD(5000)],               // Zamak Transport
     ["OPT_I_Truck_02_box_F", 10000,5000,10000],               // Zamak Repair
-    ["OPT_I_Truck_02_transport_F", DEF_PROD(5000)]               // Zamak   
+    ["OPT_I_Truck_02_transport_F", DEF_PROD(5000)],               // Zamak   
+    ["OPT_I_Truck_02_medical_F", DEF_PROD(6000)]               // Zamak Medical
 	
 ];
 
@@ -325,7 +326,7 @@ GVAR(AAF_vehicles_supply) =
     ["OPT_I_Truck_02_ammo_F", 50000,5000,10000],             			// Zamak Ammo
     ["OPT_I_Truck_02_fuel_F", 10000,5000,10000],              		// Zamak Fuel
     ["OPT_B_Slingload_01_Ammo_F", 50000,5000,10000],              		// Slinglot Muni Container
-    ["OPT_B_Slingload_01_Repair_F", 10000,5000,10000],              		// Slinglot Rep Container
+    ["OPT_B_Slingload_01_Repair_F", DEF_PROD(0)],              		// Slinglot Rep Container
     ["OPT_B_Slingload_01_Fuel_F", 10000,5000,10000]              		// Slinglot Fuel Container
 ];	
   
@@ -333,7 +334,7 @@ GVAR(AAF_choppers) =
 [
     ["OPT_I_Heli_light_03_v2_F", 200000,10000,20000],                 // WY-55 Hellcat Cas Light
     ["OPT_I_Heli_light_03_v3_F", 400000,10000,20000],                 // WY-55 Hellcat Cas Heavy
-    ["OPT_I_Heli_light_03_unarmed_F", 50000,10000,20000],          // WY-55 Hellcat Unbewaffnet
+    ["OPT_I_Heli_light_03_unarmed_F", 40000,10000,20000],          // WY-55 Hellcat Unbewaffnet
 	["OPT_I_Heli_Transport_02_F", 45000,10000,20000],           	    // CH-49 Mohawk (Transport+Lift)
     ["OPT_I_UAV_02_light_F", DEF_PROD(0)]                 // Greyhawk unbewaffnet
 ];
@@ -1007,3 +1008,19 @@ GVAR(pad_air_independent) +
 GVAR(pad_sup_independent) +
 GVAR(pad_sea_independent);
 
+// for access from OPT_GELDZEIT
+publicVariable QGVAR(nato_vehicles);
+publicVariable QGVAR(csat_vehicles);
+publicVariable QGVAR(AAF_vehicles);
+publicVariable QGVAR(nato_vehicles_supply);
+publicVariable QGVAR(csat_vehicles_supply);
+publicVariable QGVAR(AAF_vehicles_supply);
+publicVariable QGVAR(nato_armored);
+publicVariable QGVAR(csat_armored);
+publicVariable QGVAR(AAF_armored);
+publicVariable QGVAR(nato_choppers);
+publicVariable QGVAR(csat_choppers);
+publicVariable QGVAR(AAF_choppers);
+publicVariable QGVAR(nato_sea);
+publicVariable QGVAR(csat_sea);
+publicVariable QGVAR(AAF_sea);
