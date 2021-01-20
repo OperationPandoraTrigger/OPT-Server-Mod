@@ -22,6 +22,7 @@ class CfgCLibModules {
 		{
             dependency[] = {"CLib/PerFrame", "Clib/Events"};
             FNC(clientInit);
+            FNC(initCBASettings);
             FNC(config);
             FNC(einlesenInShopDialog);	
             FNC(fillLB);
