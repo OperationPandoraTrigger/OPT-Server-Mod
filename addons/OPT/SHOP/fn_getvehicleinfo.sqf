@@ -67,7 +67,8 @@ switch (GVAR(vehicleType)) do
     _price = [_class] call FUNC(getPrice);
     _sellveh = GVAR(sellVeh) select _nr;
     _magazineVehArryNew = [_sellveh] call FUNC(auslesenMagazine);
-    _bewaffnungpreis = [_side, _magazineVehArryNew] call FUNC(geldVorhandeneBewaffnung);   
+    // Abgeschalter da wieder es keine Variabele bewaffnung mehr gibt. 
+    // _bewaffnungpreis = [_side, _magazineVehArryNew] call FUNC(geldVorhandeneBewaffnung);   
     _preis = Format ["%1/%2", _price,_bewaffnungpreis];
     _priceTxt = "Gutschrift";
    };

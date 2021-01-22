@@ -112,6 +112,13 @@ DFUNC(playerHandleDamage) =
 	GVAR(playerHandleDamage_instigator) = _instigator; 
 	GVAR(playerHandleDamage_source) = _source; 
 	GVAR(playerHandleDamage_projectile) = _projectile; 
+	GVAR(playerHandleDamage_damage) = _damage; 
+
+	// Schade hoeher eingestellen Werte Blocken um Autorespwan zu verhindern.
+	if (_damage >= GVAR(MAX_DAMAGE)) then 
+    { 
+		_unit setDamage GVAR(MAX_DAMAGE);		
+	};	
 
 	[FUNC(playercheckINCAPACITATED), 1,""] call CLib_fnc_wait;
 };

@@ -34,7 +34,7 @@
     */
     _action_drag = [
         "OPT_REVIVE_DRAG",
-        FAR_REVIVE_ACTION_DRAG,
+        MLOC(DRAG),
         "",
         {
             params ["_target", "_player", "_params"]; 

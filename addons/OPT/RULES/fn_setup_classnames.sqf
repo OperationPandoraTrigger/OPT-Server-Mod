@@ -51,7 +51,7 @@ GVAR(pilots) =
 	"OPT_CSAT_Pilot",
 	"O_Pilot_F",
 	"I_helipilot_F",
-	"O_helipilot_F",
+	"O_helipilot_F"
 ];
 
 GVAR(pilots_vecs) = 
@@ -118,7 +118,11 @@ GVAR(pilots_vecs) =
 	"OPT_I_Heli_light_03_F",                 // WY-55 Hellcat
     "OPT_I_Heli_light_03_unarmed_F",          // WY-55 Hellcat Unbewaffnet
 	"OPT_I_Heli_Transport_02_F",         	    // CH-49 Mohawk (Transport+Lift)
-    "OPT_I_UAV_02_light_F"                 // Greyhawk unbewaffnet
+    "OPT_I_UAV_02_light_F",                 // Greyhawk unbewaffnet
+	"OPT_O_Heli_Light_02_v2_F",				// PO-30 Orca Cas light
+	"OPT_O_Heli_Light_02_v3_F",				// PO-30 Orca Cas Heavy 
+	"OPT_I_Heli_light_03_v2_F",				// WY-55 Hellcat Cas light
+	"OPT_I_Heli_light_03_v3_F"				// WY-55 Hellcat Cas Heavy
 ];
 
 GVAR(blockedVehiclePositions_air) = 
@@ -185,6 +189,14 @@ GVAR(crew_vecs) =
     "OPT4_O_T_MBT_02_cannon_ghex_F",	
     "OPT4_O_T_MBT_02_arty_ghex_F",
 	"OPT_O_Truck_02_MRL_ghex_F",
+	"OPT_O_LSV_02_AT_GHEX_F",
+	"OPT_O_T_MBT_02_arty_ghex_F",
+	"OPT_O_T_APC_Tracked_02_AA_ghex_F",
+	"OPT_O_T_APC_Wheeled_01_cannon_F_INF",
+	"OPT_O_T_APC_Tracked_02_cannon_ghex_F_VEH",
+	"OPT_O_T_APC_Tracked_02_cannon_ghex_F_AT",
+	"OPT_O_T_MBT_02_cannon_ghex_F_INF",
+	"OPT_O_T_MBT_02_cannon_ghex_F_AT",
 
 	//AAF
 	"OPT4_I_C_Offroad_02_AT_F",
@@ -194,7 +206,15 @@ GVAR(crew_vecs) =
 	"OPT4_I_LT_01_AA_F",
 	"OPT4_I_LT_01_AT_F",
 	"OPT4_I_MBT_03_cannon_F",
-	"OPT_I_Truck_02_MRL_F"
+	"OPT_I_Truck_02_MRL_F",
+	"OPT_I_LSV_01_AT_ghex_F",
+	"OPT_I_MBT_01_arty_ghex_F",
+	"OPT_I_APC_Tracked_01_AA_ghex_F",
+	"OPT_I_APC_tracked_03_cannon_F_INF",
+	"OPT_I_APC_Wheeled_03_cannon_F_VEH",
+	"OPT_I_APC_Wheeled_03_cannon_F_AT",
+	"OPT_I_MBT_03_cannon_F_INF",
+	"OPT_I_MBT_03_cannon_F_AT"
 ];
 
 GVAR(blockedVehiclePositions_veh) = 
