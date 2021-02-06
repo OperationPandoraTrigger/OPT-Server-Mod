@@ -19,7 +19,9 @@ params ["_target", "_caller"];
 
 private _return = false;
 
-if (!alive _caller || {!(lifeState _caller isEqualTo "INCAPACITATED")} || {GVAR(OPT_isDragging)} || {isNil "_target"} || {!alive _target} || {!isPlayer _target} || {(_target distance _caller) > 5}) exitWith 
+private _isPlayerUnconscious = _caller getVariable "OPT_isUnconscious";
+
+if (!alive _caller || {_isPlayerUnconscious == 1} || {GVAR(OPT_isDragging)} || {isNil "_target"} || {!alive _target}  || {(_target distance _caller) > 5}) exitWith 
 {
 	_return;
 };
@@ -27,13 +29,15 @@ if (!alive _caller || {!(lifeState _caller isEqualTo "INCAPACITATED")} || {GVAR(
 // Target of the action
 private _isTargetUnconscious = false;
 private _isDragged = _target getVariable "OPT_isDragged"; 
+private _isPlayerUnconscioustarget = _target getVariable "OPT_isUnconscious";
 
-if (lifeState _target isEqualTo "INCAPACITATED") then
+
+if (_isPlayerUnconscioustarget == 1) then
 {
-	private _isTargetUnconscious = 	true;
+	_isTargetUnconscious = 	true;
 };	
 
-if (_isTargetUnconscious && {_isDragged == 0}) then 
+if (_isTargetUnconscious && (_isDragged == 0)) then 
 {
 	_return = true;
 };

@@ -20,12 +20,13 @@ GVAR(OPT_isDragging) = true;
 _target attachTo [player, [0, 1.1, 0.092]];
 _target setVariable ["OPT_isDragged", 1, true];
 player playMove "AcinPknlMwlkSnonWnonDb";
+GVAR(drag_target) = _target;
 
 // Rotation fix
 [_target, 180] remoteExecCall ["setDir", -2, false];
 
 // Add release action and save its id so it can be removed
-_id = player addAction 
+GVAR(Addaction_id) = player addAction 
 [
 	"<t color=""#C90000"">" + "Ablegen" + "</t>",
 	{_caller = _this select 1; [cursorTarget, _caller, "action_release"] call FUNC(handleAction);},
@@ -40,28 +41,34 @@ _id = player addAction
 //Playmove check
 player addEventHandler ["AnimChanged", {[_this select 0] call FUNC(checkplaymove)}];
 
-// Wait until release action is used
-[FUNC(releaseaction), {(!alive player || (lifeState player isEqualTo "INCAPACITATED") || !alive _target || _target getVariable "OPT_isUnconscious" == 0 || !GVAR(OPT_isDragging) || _target getVariable "OPT_isDragged" == 0 )}, "Awesome Delay"] call CLib_fnc_waitUntil;
+[{
+	params ["_args", "_handle"];
 
-DFUNC(releaseaction) = 
-{
-	// Handle release action
-	GVAR(OPT_isDragging) = false;
-
-	//EH entfernen
-	player removeEventHandler ["AnimChanged", 0];
-
-	//Löschen der letzen Animation 
-	player switchMove ""; 
-		
-	if (!isNull _target && alive _target) then 
+	if (!alive player || (lifeState player isEqualTo "INCAPACITATED") || !alive GVAR(drag_target) || (GVAR(drag_target) getVariable "OPT_isUnconscious" == 0) || !GVAR(OPT_isDragging) || (GVAR(drag_target) getVariable "OPT_isDragged" == 0)) then 
 	{
-		_target playActionNow "Unconscious";
-		_target setVariable ["OPT_isDragged", 0, true];
-		detach _target;
+		// Handle release action
+		GVAR(OPT_isDragging) = false;
+
+		//EH entfernen
+		player removeEventHandler ["AnimChanged", 0];
+
+		//Löschen der letzen Animation 
+		player switchMove ""; 
+			
+		if (!isNull GVAR(drag_target) && alive GVAR(drag_target)) then 
+		{
+			GVAR(drag_target) playActionNow "Unconscious";
+			GVAR(drag_target) setVariable ["OPT_isDragged", 0, true];
+			detach GVAR(drag_target);
+		};
+
+		player removeAction GVAR(Addaction_id);
+
+		// PFH entfernen
+		_handle call CFUNC(removePerframeHandler);
+
 	};
 
-	player removeAction _id;
+}, 1, _this] call CFUNC(addPerFrameHandler);
 
-	true
-};	
+
