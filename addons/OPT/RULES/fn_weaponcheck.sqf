@@ -174,6 +174,7 @@ if !(_typeOfPlayer in GVAR(pioniers)) then
 {
     {
         _unit removeMagazines _x; 
+        _bad_item_used = true;
     } forEach ["SLAMDirectionalMine_Wire_Mag","ATMine_Range_Mag"];
 };
 
