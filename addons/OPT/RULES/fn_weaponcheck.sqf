@@ -169,6 +169,14 @@ if !(_typeOfPlayer in GVAR(medic)) then
     } forEach ["Medikit"]; 
 };
 
+// check Minen
+if !(_typeOfPlayer in GVAR(pioniers)) then 
+{
+    {
+        _unit removeMagazines _x; 
+    } forEach ["SLAMDirectionalMine_Wire_Mag","ATMine_Range_Mag"];
+};
+
 if (_bad_item_used) then 
 {
     private _txt = MLOC(WEAPON_LOCK);
