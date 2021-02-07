@@ -261,7 +261,8 @@ GVAR(Heavyrocketmen) =
 GVAR(Heavylaunchers) = 
 [
     "OPT_launch_MRAWS_green_rail_F",
-    "OPT_launch_RPG32_F"
+    "OPT_launch_RPG32_F",
+	"OPT_launch_MRAWS_green_F"
 ];
 
 /* AA-Schützen UND LAUNCHER */
