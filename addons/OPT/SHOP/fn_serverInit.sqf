@@ -47,7 +47,7 @@ GVAR(Hardcap_csat_vehicles) = [];
 GVAR(Hardcap_csat_supplies) = 
 [
 	["OPT_O_Mortar_01_F",1],
-	["OPT_CSAT_Minenkiste",2],
+	["OPT_CSAT_Minenkiste",4],
 	["OPT_O_Static_Designator_02_F",1],
 	["OPT_O_static_AA_F",2],
 	["OPT_O_static_AT_F",2]
@@ -66,7 +66,7 @@ GVAR(Hardcap_aaf_vehicles) = [];
 GVAR(Hardcap_aaf_supplies) = 
 [
 	["OPT_I_Mortar_01_F",1],
-	["OPT_EAF_Minenkiste",2],
+	["OPT_EAF_Minenkiste",4],
 	["OPT_I_Static_Designator_01_F",1],
 	["OPT_I_static_AA_F",2],
 	["OPT_I_static_AT_F",2]
