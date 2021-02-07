@@ -124,7 +124,8 @@ GVAR(nato_supplies) =
     ["OPT_Box_NATO_Grenades_F", 75000, 10000, 20000],           // granatenkiste
     ["OPT_NATO_Sprengstoffkiste", 150000, 10000, 20000],        // sprengstoffkiste
     ["OPT_NATO_Minienkiste", 150000, 10000, 20000],              // Minenkiste
-    ["OPT_Box_NATO_WpsSpecial_AT_L1", 200000, 10000, 20000],     // AT Raketenkiste (MRAWS)
+    ["OPT_Box_NATO_WpsSpecial_AT_L1", 225000, 10000, 20000],     // AT Raketenkiste (MRAWS)
+    ["OPT_Box_NATO_WpsSpecial_AT_L1A", 250000, 10000, 20000],     // AT Raketenkiste (MRAWS)
 	["OPT_Box_NATO_WpsSpecial_AT_L2" ,DEF_PROD(0)],     // AT Raketenkiste (PCML)
 	["OPT_Box_NATO_WpsSpecial_AT_H1", 350000, 10000, 20000],     // AT Raketenkiste (Titan)
     ["OPT_Box_NATO_WpsSpecial_AA_F", 140000, 10000, 20000],      // AA Raketenkiste
@@ -265,9 +266,10 @@ GVAR(csat_supplies) =
     ["OPT_Box_East_Grenades_F", 50000, 1000, 2000],                       // granatenkiste
     ["OPT_Box_CSAT_UGL_F", 21000, 1000, 2000],                       // Unterlaufgranatenkiste
     ["OPT_CSAT_Sprengstoffkiste", 200000, 1000, 2000],                    // sprengstoffkiste
-    ["OPT_CSAT_Minenkiste", 150000, 1000, 2000],                      // Minenkiste
+    ["OPT_CSAT_Minenkiste", 80000, 1000, 2000],                      // Minenkiste
     ["OPT_Box_East_WpsSpecial_AT_L1", 200000, 1000, 2000],                         // AT Raketenkiste (RPG-42)
-    ["OPT_Box_East_WpsSpecial_AT_L3", 200000, 1000, 2000],                         // AT Raketenkiste (MAAWS)
+    ["OPT_Box_East_WpsSpecial_AT_L3", 225000, 1000, 2000],                         // AT Raketenkiste (MAAWS)
+    ["OPT_Box_East_WpsSpecial_AT_L3A", 250000, 1000, 2000],                         // AT Raketenkiste (MAAWS)
 	["OPT_Box_East_WpsSpecial_AT_L2", 101000, 1000, 2000],                  // AT Raketenkiste (RPG-7)
 	["OPT_Box_East_WpsSpecial_AT_H1", DEF_PROD(0)],                  // AT Raketenkiste (9M135 Vorona)
     ["OPT_Box_East_WpsSpecial_AA_F", 150000, 1000, 2000],                  // AA Raketenkiste
@@ -360,9 +362,10 @@ GVAR(AAF_supplies) =
     ["OPT_Box_EAF_Grenades_F", 50000, 1000, 2000],           // granatenkiste
     ["OPT_Box_EAF_UGL_F", 21000, 1000, 2000],           // granatenkiste
     ["OPT_EAF_Sprengstoffkiste", 200000, 1000, 2000],        // sprengstoffkiste
-    ["OPT_EAF_Minenkiste", 150000, 1000, 2000],               // Minenkiste
+    ["OPT_EAF_Minenkiste", 80000, 1000, 2000],               // Minenkiste
     ["OPT_Box_EAF_WpsSpecial_AT_L2", 101000, 1000, 2000],     // AT Raketenkiste (RPG7)
-	["OPT_Box_EAF_WpsSpecial_AT_L1" ,200000, 1000, 2000],              // AT Raketenkiste (MAAWS)
+	["OPT_Box_EAF_WpsSpecial_AT_L1" ,225000, 1000, 2000],              // AT Raketenkiste (MAAWS)
+    ["OPT_Box_EAF_WpsSpecial_AT_L1A" ,250000, 1000, 2000],              // AT Raketenkiste (MAAWS)
     ["OPT_Box_EAF_WpsSpecial_AT_L3" ,200000, 1000, 2000],              // AT Raketenkiste (RPG-42)
     ["OPT_Box_EAF_WpsSpecial_AA_F", 150000, 1000, 2000],      // AA Raketenkiste
     ["OPT_I_supplyCrate_F", 5000,1000, 2000],                     // Transportkiste (leer)
