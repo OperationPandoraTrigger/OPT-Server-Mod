@@ -162,9 +162,9 @@ player addEventHandler ["FiredMan",
 [] call FUNC(uav);
 
 // Hint Meldung das Zuschauerslot besetzt wurde. 
-if (Player isKindOf "VirtualSpectator_F") then 
+if ((Player isKindOf "VirtualSpectator_F") or (Player isKindOf "ace_spectator_virtual")) then 
 	{
-        private _txt = format["Spieler %1 hat einen Zusauerslot ausgewählt.", name Player];
+        private _txt = format["Spieler %1 hat einen Zuschauerslot ausgewählt.", name Player];
         [_txt] remoteExecCall ["hint", 0, false];
     };    
 
