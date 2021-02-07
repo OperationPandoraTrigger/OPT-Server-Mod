@@ -50,8 +50,13 @@ GVAR(dominator) = sideUnknown;
 publicVariable QGVAR(dominator);
 
 GVAR(nato_flags) = [];
+publicVariable QGVAR(nato_flags);
+
 GVAR(csat_flags) = [];
+publicVariable QGVAR(csat_flags);
+
 GVAR(aaf_flags) = [];
+publicVariable QGVAR(aaf_flags);
 
 DFUNC(startflagsetup) = 
 {
@@ -73,3 +78,6 @@ DFUNC(startflagsetup) =
 	[FUNC(startflagsetup), {OPT_GELDZEIT_Spielzeitstart}, "Awesome Delay"] call CLib_fnc_waitUntil;
 
 }] call CFUNC(addEventhandler);
+
+// Sektorenmarker auf die Karte zeichnen sobald die Mission durchgeladen ist
+[] call FUNC(drawsectormarkers);

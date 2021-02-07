@@ -331,6 +331,8 @@ switch (GVAR(csat_sektor)) do
 
 	case 25: 
 	{	
+		GVAR(csat_flags_pos) pushBack [3188.39,4943.81, east,"25_1",true];
+		GVAR(csat_flags_pos) pushBack [4486.81,4834.73, east,"25_2",true];
 	};
 
 	case 26: 
@@ -511,6 +513,8 @@ switch (GVAR(aaf_sektor)) do
 
 	case 25: 
 	{	
+		GVAR(aaf_flags_pos) pushBack [9636.87,4968.81, independent,"25_1",true];
+		GVAR(aaf_flags_pos) pushBack [10968.9,4183.22, independent,"25_2",true];
 	};
 
 	case 26: 
