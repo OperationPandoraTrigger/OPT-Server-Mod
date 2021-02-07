@@ -50,8 +50,13 @@ GVAR(dominator) = sideUnknown;
 publicVariable QGVAR(dominator);
 
 GVAR(nato_flags) = [];
+publicVariable QGVAR(nato_flags);
+
 GVAR(csat_flags) = [];
+publicVariable QGVAR(csat_flags);
+
 GVAR(aaf_flags) = [];
+publicVariable QGVAR(aaf_flags);
 
 DFUNC(startflagsetup) = 
 {
