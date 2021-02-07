@@ -347,6 +347,7 @@ GVAR(canBeTransported) =
 	["OPT_Box_NATO_Grenades_F", 2],  					    // granatenkiste	
 	["OPT_NATO_Sprengstoffkiste", 2],  					    // sprengstoffkiste NEUE KISTE!
 	["OPT_Box_NATO_WpsSpecial_AT_L1", 2],				    // Raketenkiste MAWWS NEUE KISTE!
+	["OPT_Box_NATO_WpsSpecial_AT_L1A", 2],				    // Raketenkiste MAWWS NEUE KISTE!
 	["OPT_Box_NATO_WpsSpecial_AT_L2", 2],				    // Raketenkiste PCML NEUE KISTE!
 	["OPT_Box_NATO_WpsSpecial_AT_H1", 2],				    // Raketenkiste Titan NEUE KISTE!
 	["OPT_Box_NATO_WpsSpecial_AA_F", 2],				    // Raketenkiste AA 
@@ -443,6 +444,7 @@ GVAR(canBeTransported) =
 	["OPT_CSAT_Minenkiste", 2],     				    // Minenkiste NEUE KISTE!
 	["OPT_Box_East_WpsSpecial_AT_L1", 2],   				    // AT Raketenkiste RPG42 NEUE KISTE!
 	["OPT_Box_East_WpsSpecial_AT_L3", 2],   				    // AT Raketenkiste (MAAWS) NEUE KISTE!
+	["OPT_Box_East_WpsSpecial_AT_L3A", 2],   				    // AT Raketenkiste (MAAWS) NEUE KISTE!
 	["OPT_Box_East_WpsSpecial_AT_L2", 2],   				    // AT Raketenkiste PPG 7 NEUE KISTE!
 	["OPT_Box_East_WpsSpecial_AT_H1", 2],   				    // AT Raketenkiste Titan NEUE KISTE!
 	["OPT_Box_East_WpsSpecial_AA_F", 2],				    // AA Raketenkiste
@@ -510,6 +512,7 @@ GVAR(canBeTransported) =
 	["OPT_EAF_Sprengstoffkiste", 2],     				    // sprengstoffkiste NEUE KISTE!
 	["OPT_EAF_Minenkiste", 2],     				    // Minenkiste NEUE KISTE!
 	["OPT_Box_EAF_WpsSpecial_AT_L1", 2],   				    // AT Raketenkiste MAWSS NEUE KISTE!
+	["OPT_Box_EAF_WpsSpecial_AT_L1A", 2],   				    // AT Raketenkiste MAWSS NEUE KISTE!
 	["OPT_Box_EAF_WpsSpecial_AT_L3", 2],   				    // AT Raketenkiste (RPG-42) NEUE KISTE!
 	["OPT_Box_EAF_WpsSpecial_AT_L2", 2],   				    // AT Raketenkiste PPG 7 NEUE KISTE!
 	["OPT_Box_EAF_WpsSpecial_AA_F", 2],				    // AA Raketenkiste
@@ -551,6 +554,7 @@ GVAR(canBeDragged) =
     ["OPT_Box_NATO_Grenades_F"],         				                    // granatenkiste,75000
     ["OPT_NATO_Sprengstoffkiste"],         				                    // sprengstoffkiste,75000 NEUE KISTE!	
 	["OPT_Box_NATO_WpsSpecial_AT_L1"],				   					 // Raketenkiste MAWWS NEUE KISTE!
+	["OPT_Box_NATO_WpsSpecial_AT_L1A"],				   					 // Raketenkiste MAWWS NEUE KISTE!
 	["OPT_Box_NATO_WpsSpecial_AT_L2"],				   					 // Raketenkiste PCML NEUE KISTE!
 	["OPT_Box_NATO_WpsSpecial_AT_H1"],				    				// Raketenkiste Titan NEUE KISTE!	
 	["OPT_Box_NATO_WpsSpecial_AA_F"],					                    // AA Raketenkiste,40000	
@@ -580,7 +584,8 @@ GVAR(canBeDragged) =
 	["OPT_O_supplyCrate_F", [0, 2, 0.1], 0],							    // Transportkiste,500
 	["OPT_Box_East_WpsSpecial_Diver_F"],				                    // Taucherkiste,5000
 	["OPT_Box_East_WpsSpecial_AA_F"],				                        // AA Raketenkiste,40000
-	["OPT_Box_East_WpsSpecial_AT_L1"],   				   					// AT Raketenkiste RPG42 NEUE KISTE!
+	["OPT_Box_East_WpsSpecial_AT_L3"],   				   					// AT Raketenkiste MAAWS NEUE KISTE!
+	["OPT_Box_East_WpsSpecial_AT_L3A"],   				   					// AT Raketenkiste MAAWS NEUE KISTE!
 	["OPT_Box_East_WpsSpecial_AT_L1"],   				   					// AT Raketenkiste RPG42 NEUE KISTE!
 	["OPT_Box_East_WpsSpecial_AT_L2"],   				   					// AT Raketenkiste PPG 7 NEUE KISTE!
 	["OPT_Box_East_WpsSpecial_AT_H1"],   				    				// AT Raketenkiste Titan NEUE KISTE!
@@ -623,6 +628,7 @@ GVAR(canBeDragged) =
 	["OPT_EAF_Sprengstoffkiste"],     				    // sprengstoffkiste NEUE KISTE!
 	["OPT_EAF_Minenkiste"],     				    // Minenkiste NEUE KISTE!
 	["OPT_Box_EAF_WpsSpecial_AT_L1"],   				    // AT Raketenkiste MAWSS NEUE KISTE!
+	["OPT_Box_EAF_WpsSpecial_AT_L1A"],   				    // AT Raketenkiste MAWSS NEUE KISTE!
 	["OPT_Box_EAF_WpsSpecial_AT_L2"],   				    // AT Raketenkiste PPG 7 NEUE KISTE!
 	["OPT_Box_EAF_WpsSpecial_AA_F"],				    // AA Raketenkiste
 	["OPT_Box_EAF_WpsSpecial_Diver_F"],				    // Taucherkiste
@@ -653,6 +659,7 @@ GVAR(canBeCarried) =
     ["OPT_Box_NATO_Grenades_F"],         				// granatenkiste,75000
     ["OPT_NATO_Sprengstoffkiste"],         				// sprengstoffkiste,75000 NEUE KISTE!
 	["OPT_Box_NATO_WpsSpecial_AT_L1"],				   	// Raketenkiste MAWWS NEUE KISTE!
+	["OPT_Box_NATO_WpsSpecial_AT_L1A"],				   	// Raketenkiste MAWWS NEUE KISTE!
 	["OPT_Box_NATO_WpsSpecial_AT_L2"],				   	// Raketenkiste PCML NEUE KISTE!
 	["OPT_Box_NATO_WpsSpecial_AT_H1"],				    // Raketenkiste Titan NEUE KISTE!	
 	["OPT_Box_NATO_WpsSpecial_AA_F"],					// AA Raketenkiste,40000	
@@ -678,6 +685,7 @@ GVAR(canBeCarried) =
 	["OPT_Box_East_WpsSpecial_AA_F"],					// AA Raketenkiste,
 	["OPT_Box_East_WpsSpecial_AT_L1"],   				// AT Raketenkiste RPG42 NEUE KISTE!
 	["OPT_Box_East_WpsSpecial_AT_L3"],   				// AT Raketenkiste (MAAWS) NEUE KISTE!
+	["OPT_Box_East_WpsSpecial_AT_L3A"],   				// AT Raketenkiste (MAAWS) NEUE KISTE!
 	["OPT_Box_East_WpsSpecial_AT_L2"],   				// AT Raketenkiste PPG 7 NEUE KISTE!
 	["OPT_Box_East_WpsSpecial_AT_H1"],   				// AT Raketenkiste Titan NEUE KISTE!
 	["OPT_Box_East_Ammo_F"],            				// Munitionskiste,
@@ -713,6 +721,7 @@ GVAR(canBeCarried) =
 	["OPT_EAF_Sprengstoffkiste"],     				    // sprengstoffkiste NEUE KISTE!
 	["OPT_EAF_Minenkiste"],     				    // Minenkiste NEUE KISTE!
 	["OPT_Box_EAF_WpsSpecial_AT_L1"],   				    // AT Raketenkiste MAWSS NEUE KISTE!
+	["OPT_Box_EAF_WpsSpecial_AT_L1A"],   				    // AT Raketenkiste MAWSS NEUE KISTE!
 	["OPT_Box_EAF_WpsSpecial_AT_L3"],   				    // AT Raketenkiste (RPG-42) MAWSS NEUE KISTE!
 	["OPT_Box_EAF_WpsSpecial_AT_L2"],   				    // AT Raketenkiste PPG 7 NEUE KISTE!
 	["OPT_Box_EAF_WpsSpecial_AA_F"],				    // AA Raketenkiste
