@@ -618,10 +618,4 @@ if (isServer) then
 		
 	} forEach GVAR(aaf_flags_pos);
 
-	GVAR(nato_flags) = [];
-	GVAR(csat_flags) = [];
-	GVAR(aaf_flags) = [];
-	publicVariable QGVAR(nato_flags);
-	publicVariable QGVAR(csat_flags);
-	publicVariable QGVAR(aaf_flags);
 };
