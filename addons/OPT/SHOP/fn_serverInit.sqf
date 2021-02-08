@@ -47,7 +47,7 @@ GVAR(Hardcap_csat_vehicles) = [];
 GVAR(Hardcap_csat_supplies) = 
 [
 	["OPT_O_Mortar_01_F",1],
-	["OPT_CSAT_Minenkiste",2],
+	["OPT_CSAT_Minenkiste",4],
 	["OPT_O_Static_Designator_02_F",1],
 	["OPT_O_static_AA_F",2],
 	["OPT_O_static_AT_F",2]
@@ -66,7 +66,7 @@ GVAR(Hardcap_aaf_vehicles) = [];
 GVAR(Hardcap_aaf_supplies) = 
 [
 	["OPT_I_Mortar_01_F",1],
-	["OPT_EAF_Minenkiste",2],
+	["OPT_EAF_Minenkiste",4],
 	["OPT_I_Static_Designator_01_F",1],
 	["OPT_I_static_AA_F",2],
 	["OPT_I_static_AT_F",2]
@@ -84,7 +84,7 @@ switch (GVAR(hardcaplist)) do
 	{
 		GVAR(Hardcap_csat_choppers) pushBack ["OPT_O_Heli_Light_02_v2_F",0];
 		GVAR(Hardcap_csat_choppers) pushBack ["OPT_O_Heli_Light_02_v3_F",0];
-		GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_T_MRAP_02_ghex_F",3];
+		GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_T_MRAP_02_ghex_F",5];
 		GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_T_MRAP_02_hmg_ghex_F",5];
 		GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_LSV_02_AT_GHEX_F",0];
 		GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_T_MBT_02_arty_ghex_F",0];
@@ -98,7 +98,7 @@ switch (GVAR(hardcaplist)) do
 
 		GVAR(Hardcap_aaf_choppers) pushBack ["OPT_I_Heli_light_03_v2_F",0];
 		GVAR(Hardcap_aaf_choppers) pushBack ["OPT_I_Heli_light_03_v3_F",0];
-		GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_MRAP_03_F",3];
+		GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_MRAP_03_F",5];
 		GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_MRAP_03_hmg_F",5];
 		GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_LSV_01_AT_ghex_F",0];
 		GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_MBT_01_arty_ghex_F",0];
