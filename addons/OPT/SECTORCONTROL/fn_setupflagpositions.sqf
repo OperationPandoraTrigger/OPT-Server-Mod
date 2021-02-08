@@ -566,6 +566,7 @@ if (isServer) then
 				_flag setFlagTexture GVAR(westflag);
 				_flag setVariable ["owner", _owner, true];
 			};
+
 		};
 		
 	} forEach GVAR(nato_flags_pos);
@@ -589,6 +590,7 @@ if (isServer) then
 				_flag setFlagTexture GVAR(eastflag);
 				_flag setVariable ["owner", _owner, true];
 			};
+
 		};
 	} forEach GVAR(csat_flags_pos);
 	
@@ -611,7 +613,15 @@ if (isServer) then
 				_flag setFlagTexture GVAR(independentflag);
 				_flag setVariable ["owner", _owner, true];
 			};
+
 		};
 		
 	} forEach GVAR(aaf_flags_pos);
+
+	GVAR(nato_flags) = [];
+	GVAR(csat_flags) = [];
+	GVAR(aaf_flags) = [];
+	publicVariable QGVAR(nato_flags);
+	publicVariable QGVAR(csat_flags);
+	publicVariable QGVAR(aaf_flags);
 };
