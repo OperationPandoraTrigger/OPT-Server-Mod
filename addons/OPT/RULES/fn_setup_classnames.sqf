@@ -453,6 +453,12 @@ GVAR(pioniers) =
 	"I_Soldier_exp_F"
 ];
 
+GVAR(Sprengmittel) = 
+[
+	"SLAMDirectionalMine_Wire_Mag",
+	"ATMine_Range_Mag"
+];	
+
 /* RECON */
 GVAR(recon) = 
 [

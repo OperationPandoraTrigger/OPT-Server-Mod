@@ -173,9 +173,13 @@ if !(_typeOfPlayer in GVAR(medic)) then
 if !(_typeOfPlayer in GVAR(pioniers)) then 
 {
     {
-        _unit removeMagazines _x; 
-        _bad_item_used = true;
-    } forEach ["SLAMDirectionalMine_Wire_Mag","ATMine_Range_Mag"];
+        if (_x in GVAR(Sprengmittel)) then 
+        {
+            _unit removeMagazines _x; 
+            _bad_item_used = true;
+        };
+    } forEach (magazines _unit);
+
 };
 
 if (_bad_item_used) then 
