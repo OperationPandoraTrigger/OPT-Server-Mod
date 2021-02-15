@@ -27,8 +27,20 @@ params [
    ["_side", sideUnknown, [sideUnknown], 1]
 ];
 
-if (_uid isEqualTo "" or "_name" isEqualTo "") exitWith{};
-if (_uid in (GVAR(playerList) apply {_x select 0})) exitWith{};
+if (_uid isEqualTo "" or _name isEqualTo "") exitWith{};
 
-GVAR(playerList) pushBack [_uid, _name, _side];
+// Finde Spieler in der Liste
+private _pos = (GVAR(playerList) apply {_x select 0}) find _uid;
+
+// Spieler ist schon in der Liste -> Update (z.B. nach Seitenwechsel oder Nickchange)
+if (_pos != -1) then
+{
+   GVAR(playerList) set [_pos, [_uid, _name, _side]];
+}
+// Spieler ist noch nicht in der Liste -> Add
+else
+{
+   GVAR(playerList) pushBack [_uid, _name, _side];
+};
+
 publicVariable QGVAR(playerList);
