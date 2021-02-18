@@ -121,6 +121,11 @@ DFUNC(playerHandleDamage) =
 		_unit setDamage GVAR(MAX_DAMAGE);		
 	};	
 
+	if (getDammage _unit >= GVAR(MAX_DAMAGE)) then 
+    { 
+		_unit setDamage GVAR(MAX_DAMAGE);		
+	};	
+
 	[FUNC(playercheckINCAPACITATED), 1,""] call CLib_fnc_wait;
 };
 
