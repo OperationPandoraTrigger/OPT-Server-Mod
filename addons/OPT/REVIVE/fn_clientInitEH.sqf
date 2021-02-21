@@ -127,6 +127,10 @@ DFUNC(playerHandleDamage) =
 	};	
 
 	[FUNC(playercheckINCAPACITATED), 1,""] call CLib_fnc_wait;
+	
+	if (_damage >= GVAR(MAX_DAMAGE)) exitWith {MAX_DAMAGE};	
+	
+	_damage
 };
 
 player addEventHandler ["HandleDamage", FUNC(playerHandleDamage)];
