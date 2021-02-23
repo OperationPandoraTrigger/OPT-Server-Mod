@@ -268,7 +268,7 @@ switch (GVAR(csat_sektor)) do
 	case 14: 
 	{
 		GVAR(csat_flags_pos) pushBack [10320,6810, east,"14_1 Karlin",true];
-		GVAR(csat_flags_pos) pushBack [[11864.2,7399.04, east,"14_2 Ivetow",true];
+		GVAR(csat_flags_pos) pushBack [11864.2,7399.04, east,"14_2 Ivetow",true];
 	};
 
 	case 15: 
@@ -448,7 +448,7 @@ switch (GVAR(aaf_sektor)) do
 	case 14: 
 	{
 		GVAR(aaf_flags_pos) pushBack [10320,6810, independent,"14_1 Karlin",true];
-		GVAR(csat_flags_pos) pushBack [[11864.2,7399.04, independent,"14_2 Ivetow",true];
+		GVAR(csat_flags_pos) pushBack [11864.2,7399.04, independent,"14_2 Ivetow",true];
 	};
 
 	case 15: 
