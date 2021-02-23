@@ -57,25 +57,26 @@ DFUNC(isUnconscious) =
 
 //var nach Respwan zurück setzen
 ["Respawn", {
+	params ["_data", "_args"];
+    _data params ["_new", "_old"];
+	
+	_old removeEventHandler ["handleDamage", GVAR(PLAYER_HANDLE_DAMAGE_EH_ID)];
+	
+	GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = _new addEventHandler ["HandleDamage", FUNC(playerHandleDamage)];
 
-    {
-		player setVariable ["OPT_isUnconscious", 0, true];
-		player setVariable ["OPT_isStabilized", 0, true];
-		player setVariable ["OPT_isDragged", 0, true];
-		GVAR(OPT_isDragging) = false;
-		player allowDamage true;
-		1 enableChannel true;
-		1 fadeSound 1;
-		OPT_GELDZEIT_earplugsInUse = 1;
-		OPT_REVIVE_unconsciousHandler = nil;
-		OPT_REVIVE_respawnedHandler = nil;
-		player setVariable ["tf_unable_to_use_radio", false];
 
-		//Schaden Freigeben
-		player allowDamage true;
-		 
-    } call CFUNC(execNextFrame);
-
+	_new setVariable ["OPT_isUnconscious", 0, true];
+	_new setVariable ["OPT_isStabilized", 0, true];
+	_new setVariable ["OPT_isDragged", 0, true];
+	_new allowDamage true;
+	_new setVariable ["tf_unable_to_use_radio", false];
+	
+	GVAR(OPT_isDragging) = false;
+	OPT_GELDZEIT_earplugsInUse = 1;
+	OPT_REVIVE_unconsciousHandler = nil;
+	OPT_REVIVE_respawnedHandler = nil;
+	
+	1 enableChannel true;	
 }] call CFUNC(addEventhandler);
 
 //EH für Spielerabschüsslog 
@@ -108,27 +109,19 @@ DFUNC(playerHandleDamage) =
 {
 	params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
 
-	//Var übergabe
-	GVAR(playerHandleDamage_unit) = _unit; 
-	GVAR(playerHandleDamage_instigator) = _instigator; 
-	GVAR(playerHandleDamage_source) = _source; 
-	GVAR(playerHandleDamage_projectile) = _projectile; 
-	GVAR(playerHandleDamage_damage) = _damage; 
-
 	private _unitDamage = damage _unit;
 	private _resultingDamage = _damage;
-	
+
 	[FUNC(playercheckINCAPACITATED), 1,""] call CLib_fnc_wait;
 
 	if (_unitDamage >= GVAR(MAX_DAMAGE)) then { 
-		_unit setUnconscious true; 
 		_resultingDamage = GVAR(MAX_DAMAGE);
 	};
 	
 	_resultingDamage;
 };
 
-player addEventHandler ["HandleDamage", FUNC(playerHandleDamage)];
+GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = player addEventHandler ["HandleDamage", FUNC(playerHandleDamage)];
 
 // 3D Marker
 GVAR(missionEH_draw3D) = addMissionEventHandler ["Draw3D", 
