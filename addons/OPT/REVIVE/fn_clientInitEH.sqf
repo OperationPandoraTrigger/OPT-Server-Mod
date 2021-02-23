@@ -58,18 +58,17 @@ DFUNC(isUnconscious) =
 //var nach Respwan zurück setzen
 ["Respawn", {
 	params ["_data", "_args"];
-    _data params ["_new", "_old"];
-	
-	_old removeEventHandler ["handleDamage", GVAR(PLAYER_HANDLE_DAMAGE_EH_ID)];
-	
-	GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = _new addEventHandler ["HandleDamage", FUNC(playerHandleDamage)];
+	_data params ["_newPlayer", "_oldPlayer"];
 
+	_oldPlayer removeEventHandler ["HandleDamage", GVAR(PLAYER_HANDLE_DAMAGE_EH_ID)];
 
-	_new setVariable ["OPT_isUnconscious", 0, true];
-	_new setVariable ["OPT_isStabilized", 0, true];
-	_new setVariable ["OPT_isDragged", 0, true];
-	_new allowDamage true;
-	_new setVariable ["tf_unable_to_use_radio", false];
+	GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = _newPlayer addEventHandler ["HandleDamage", FUNC(playerHandleDamage)];
+
+	_newPlayer setVariable ["OPT_isUnconscious", 0, true];
+	_newPlayer setVariable ["OPT_isStabilized", 0, true];
+	_newPlayer setVariable ["OPT_isDragged", 0, true];
+	_newPlayer allowDamage true;
+	_newPlayer setVariable ["tf_unable_to_use_radio", false];
 	
 	GVAR(OPT_isDragging) = false;
 	OPT_GELDZEIT_earplugsInUse = 1;
@@ -111,16 +110,14 @@ DFUNC(playerHandleDamage) =
 
 	private _unitDamage = damage _unit;
 	private _resultingDamage = _damage;
-
-	[FUNC(playercheckINCAPACITATED), 1,""] call CLib_fnc_wait;
-
-	if (_unitDamage >= GVAR(MAX_DAMAGE)) then { 
-		_resultingDamage = GVAR(MAX_DAMAGE);
-	};
 	
+	if (_damage >= GVAR(MAX_DAMAGE)) then {   
+		[FUNC(playercheckINCAPACITATED), 1,""] call CLib_fnc_wait;
+		_resultingDamage = 0; 
+	};
+	  
 	_resultingDamage;
 };
-
 GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = player addEventHandler ["HandleDamage", FUNC(playerHandleDamage)];
 
 // 3D Marker
