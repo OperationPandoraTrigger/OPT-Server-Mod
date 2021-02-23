@@ -115,22 +115,17 @@ DFUNC(playerHandleDamage) =
 	GVAR(playerHandleDamage_projectile) = _projectile; 
 	GVAR(playerHandleDamage_damage) = _damage; 
 
-	// Schade hoeher eingestellen Werte Blocken um Autorespwan zu verhindern.
-	if (_damage >= GVAR(MAX_DAMAGE)) then 
-    { 
-		_unit setDamage GVAR(MAX_DAMAGE);		
-	};	
-
-	if (getDammage _unit >= GVAR(MAX_DAMAGE)) then 
-    { 
-		_unit setDamage GVAR(MAX_DAMAGE);		
-	};	
-
+	private _unitDamage = damage _unit;
+	private _resultingDamage = _damage;
+	
 	[FUNC(playercheckINCAPACITATED), 1,""] call CLib_fnc_wait;
+
+	if (_unitDamage >= GVAR(MAX_DAMAGE)) then { 
+		_unit setUnconscious true; 
+		_resultingDamage = GVAR(MAX_DAMAGE);
+	};
 	
-	if (_damage >= GVAR(MAX_DAMAGE)) exitWith {MAX_DAMAGE};	
-	
-	_damage
+	_resultingDamage;
 };
 
 player addEventHandler ["HandleDamage", FUNC(playerHandleDamage)];
