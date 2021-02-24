@@ -59,7 +59,6 @@ DFUNC(isUnconscious) =
 ["Respawn", {
 	params ["_data", "_args"];
 	_data params ["_newPlayer", "_oldPlayer"];
-
 	_oldPlayer removeEventHandler ["HandleDamage", GVAR(PLAYER_HANDLE_DAMAGE_EH_ID)];
 
 	GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = _newPlayer addEventHandler ["HandleDamage", FUNC(playerHandleDamage)];
@@ -124,6 +123,15 @@ DFUNC(playerHandleDamage) =
 
 	_resultingDamage;
 };
+// omg dont look at me please
+player removeEventHandler ["HandleDamage", 0];
+player removeEventHandler ["HandleDamage", 1];
+player removeEventHandler ["HandleDamage", 2];
+player removeEventHandler ["HandleDamage", 3];
+player removeEventHandler ["HandleDamage", 4];
+player removeEventHandler ["HandleDamage", 5];
+player removeEventHandler ["HandleDamage", 6];
+// ok now you may have a peek again
 GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = player addEventHandler ["HandleDamage", FUNC(playerHandleDamage)];
 
 // 3D Marker
