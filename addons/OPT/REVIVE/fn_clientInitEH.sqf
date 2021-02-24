@@ -108,14 +108,20 @@ DFUNC(playerHandleDamage) =
 {
 	params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
 
-	private _unitDamage = damage _unit;
+	//Var übergabe
+	GVAR(playerHandleDamage_unit) = _unit; 
+	GVAR(playerHandleDamage_instigator) = _instigator; 
+	GVAR(playerHandleDamage_source) = _source; 
+	GVAR(playerHandleDamage_projectile) = _projectile; 
+	GVAR(playerHandleDamage_damage) = _damage; 
+
 	private _resultingDamage = _damage;
-	
+
 	if (_damage >= GVAR(MAX_DAMAGE)) then {   
 		[FUNC(playercheckINCAPACITATED), 1,""] call CLib_fnc_wait;
 		_resultingDamage = 0; 
 	};
-	  
+
 	_resultingDamage;
 };
 GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = player addEventHandler ["HandleDamage", FUNC(playerHandleDamage)];
