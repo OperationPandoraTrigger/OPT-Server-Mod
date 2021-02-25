@@ -65,9 +65,8 @@ for "_i" from 0 to 6 do {
 };
 // ok now you may have a peek again
 
-// This ensures that the EH is set. zero is okay since we just deleted any EH.
-GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = 0
-// GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = player addEventHandler ["HandleDamage", FUNC(playerHandleDamage)];
+// Initial assignment, Respawn Handler does not trigger on first-spawn.
+GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = player addEventHandler ["HandleDamage", FUNC(playerHandleDamage)];
 ["Respawn", {
 	params ["_data", "_args"];
 	_data params ["_newPlayer", "_oldPlayer"];
