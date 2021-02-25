@@ -55,12 +55,25 @@ DFUNC(isUnconscious) =
 	};
 };
 
-//var nach Respwan zurück setzen
+
+
+// The initial EHs are not needed and resulting in strange problems adding a new EH, so we remove any.
+// still very bad practise that screams for sideeffects. 
+// Just look away.
+for "_i" from 0 to 6 do {
+    player removeEventHandler ["HandleDamage", _i];
+};
+// ok now you may have a peek again
+
+// This ensures that the EH is set. zero is okay since we just deleted any EH.
+GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = 0
+// GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = player addEventHandler ["HandleDamage", FUNC(playerHandleDamage)];
 ["Respawn", {
 	params ["_data", "_args"];
 	_data params ["_newPlayer", "_oldPlayer"];
 	_oldPlayer removeEventHandler ["HandleDamage", GVAR(PLAYER_HANDLE_DAMAGE_EH_ID)];
 
+	// Respawn will change the player Object. We need to reassign the Eventhandler.
 	GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = _newPlayer addEventHandler ["HandleDamage", FUNC(playerHandleDamage)];
 
 	_newPlayer setVariable ["OPT_isUnconscious", 0, true];
@@ -79,7 +92,6 @@ DFUNC(isUnconscious) =
 
 //EH für Spielerabschüsslog 
 //Event Aüslösung bei bewustlosen Spieler.
-
 DFUNC(playercheckINCAPACITATED) = 
 {
 	if ((lifeState GVAR(playerHandleDamage_unit) isEqualTo "INCAPACITATED") and isNil "OPT_REVIVE_unconsciousHandler") then 
@@ -118,17 +130,15 @@ DFUNC(playerHandleDamage) =
 
 	if (_damage >= GVAR(MAX_DAMAGE)) then {   
 		[FUNC(playercheckINCAPACITATED), 1,""] call CLib_fnc_wait;
+		// Player will be "down" from this point on. 
+		
+		// Making him invulnerable to prevent forced respawn and random damage that accumulates, if he get overkilled
+		// the Revive-Function should set the desired damage after reviving the body.
 		_resultingDamage = 0; 
 	};
 
 	_resultingDamage;
 };
-// omg dont look at me please
-for "_i" from 0 to 6 do {
-    player removeEventHandler ["HandleDamage", _i];
-};
-// ok now you may have a peek again
-GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = player addEventHandler ["HandleDamage", FUNC(playerHandleDamage)];
 
 // 3D Marker
 GVAR(missionEH_draw3D) = addMissionEventHandler ["Draw3D", 
