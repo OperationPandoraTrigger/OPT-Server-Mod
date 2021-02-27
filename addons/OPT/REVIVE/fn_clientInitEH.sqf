@@ -55,31 +55,30 @@ DFUNC(isUnconscious) =
 	};
 };
 
-//var nach Respwan zurück setzen
 ["Respawn", {
+	params ["_data", "_args"];
+	_data params ["_newPlayer", "_oldPlayer"];
+	_oldPlayer removeEventHandler ["HandleDamage", GVAR(PLAYER_HANDLE_DAMAGE_EH_ID)];
 
-    {
-		player setVariable ["OPT_isUnconscious", 0, true];
-		player setVariable ["OPT_isStabilized", 0, true];
-		player setVariable ["OPT_isDragged", 0, true];
-		GVAR(OPT_isDragging) = false;
-		player allowDamage true;
-		1 enableChannel true;
-		1 fadeSound 1;
-		OPT_GELDZEIT_earplugsInUse = 1;
-		OPT_REVIVE_unconsciousHandler = nil;
-		OPT_REVIVE_respawnedHandler = nil;
-		player setVariable ["tf_unable_to_use_radio", false];
+	// Respawn will change the player Object. We need to reassign the Eventhandler.
+	GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = _newPlayer addEventHandler ["HandleDamage", FUNC(playerHandleDamage)];
 
-		//Schaden Freigeben
-		player allowDamage true;
-    } call CFUNC(execNextFrame);
-
+	_newPlayer setVariable ["OPT_isUnconscious", 0, true];
+	_newPlayer setVariable ["OPT_isStabilized", 0, true];
+	_newPlayer setVariable ["OPT_isDragged", 0, true];
+	_newPlayer allowDamage true;
+	_newPlayer setVariable ["tf_unable_to_use_radio", false];
+	
+	GVAR(OPT_isDragging) = false;
+	OPT_GELDZEIT_earplugsInUse = 1;
+	OPT_REVIVE_unconsciousHandler = nil;
+	OPT_REVIVE_respawnedHandler = nil;
+	
+	1 enableChannel true;	
 }] call CFUNC(addEventhandler);
 
 //EH für Spielerabschüsslog 
 //Event Aüslösung bei bewustlosen Spieler.
-
 DFUNC(playercheckINCAPACITATED) = 
 {
 	if ((lifeState GVAR(playerHandleDamage_unit) isEqualTo "INCAPACITATED") and isNil "OPT_REVIVE_unconsciousHandler") then 
@@ -114,21 +113,29 @@ DFUNC(playerHandleDamage) =
 	GVAR(playerHandleDamage_projectile) = _projectile; 
 	GVAR(playerHandleDamage_damage) = _damage; 
 
-	// Schade hoeher eingestellen Werte Blocken um Autorespwan zu verhindern.
-	if (_damage >= GVAR(MAX_DAMAGE)) then 
-    { 
-		_unit setDamage GVAR(MAX_DAMAGE);		
-	};	
+	private _resultingDamage = _damage;
 
-	if (getDammage _unit >= GVAR(MAX_DAMAGE)) then 
-    { 
-		_unit setDamage GVAR(MAX_DAMAGE);		
-	};	
+	if (_damage >= GVAR(MAX_DAMAGE)) then {   
+		[FUNC(playercheckINCAPACITATED), 1,""] call CLib_fnc_wait;
+		// Player will be "down" from this point on. 
+		
+		// Making him invulnerable to prevent forced respawn and random damage that accumulates, if he get overkilled
+		// the Revive-Function should set the desired damage after reviving the body.
+		_resultingDamage = GVAR(MAX_DAMAGE); 
+	};
 
-	[FUNC(playercheckINCAPACITATED), 1,""] call CLib_fnc_wait;
+	_resultingDamage;
 };
+// The initial EHs are not needed and resulting in strange problems adding a new EH, so we remove any.
+// still very bad practise that screams for sideeffects. 
+// Just look away.
+for "_i" from 0 to 6 do {
+    player removeEventHandler ["HandleDamage", _i];
+};
+// ok now you may have a peek again
 
-player addEventHandler ["HandleDamage", FUNC(playerHandleDamage)];
+// Initial assignment, Respawn Handler does not trigger on first-spawn.
+GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = player addEventHandler ["HandleDamage", FUNC(playerHandleDamage)];
 
 // 3D Marker
 GVAR(missionEH_draw3D) = addMissionEventHandler ["Draw3D", 
