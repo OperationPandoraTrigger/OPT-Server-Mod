@@ -81,3 +81,6 @@ DFUNC(startflagsetup) =
 
 // Sektorenmarker auf die Karte zeichnen sobald die Mission durchgeladen ist
 [] call FUNC(drawsectormarkers);
+
+// Flaggen Arrays und Markierungen setzen sobald die Mission durchgeladen ist
+[] call FUNC(setupflagmarkers);

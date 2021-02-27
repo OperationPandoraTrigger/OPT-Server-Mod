@@ -60,6 +60,11 @@ publicVariable QGVAR(aaf_flags);
 // Delete all Flagmarkers set during Waffenruhe
 remoteExecCall [QFUNC(deleteMarkers)];
 
+// Delete MineZoneMarkers from all possible flags
+{
+    deleteMarker _x;
+} foreach GVAR(PreMineZoneMarkers);
+
 /*
 Fuer jede Flagge in einem Sektor: 
 Marker für Flag falls Marker an
@@ -104,7 +109,7 @@ Flaggen-Seite loggen
         _marker setMarkerSize [GVAR(flagFreeMineZoneRadius), GVAR(flagFreeMineZoneRadius)];
         _flag setVariable [QGVAR(mineMarker), _marker, true];
     };
-    
+
     [
         _flag,
         [
