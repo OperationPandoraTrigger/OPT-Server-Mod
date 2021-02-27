@@ -121,7 +121,7 @@ DFUNC(playerHandleDamage) =
 		
 		// Making him invulnerable to prevent forced respawn and random damage that accumulates, if he get overkilled
 		// the Revive-Function should set the desired damage after reviving the body.
-		_resultingDamage = 0; 
+		_resultingDamage = GVAR(MAX_DAMAGE); 
 	};
 
 	_resultingDamage;
