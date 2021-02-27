@@ -73,7 +73,6 @@ DFUNC(isUnconscious) =
 
 		//Schaden Freigeben
 		player allowDamage true;
-		 
     } call CFUNC(execNextFrame);
 
 }] call CFUNC(addEventhandler);

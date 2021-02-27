@@ -63,5 +63,4 @@
             _x
         ] call ace_interact_menu_fnc_addActionToObject;
     } forEach [ _action_drag];
-
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
