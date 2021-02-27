@@ -129,14 +129,9 @@ DFUNC(playerHandleDamage) =
 // The initial EHs are not needed and resulting in strange problems adding a new EH, so we remove any.
 // still very bad practise that screams for sideeffects. 
 // Just look away.
-player removeEventHandler ["HandleDamage", 0];
-player removeEventHandler ["HandleDamage", 1];
-player removeEventHandler ["HandleDamage", 2];
-// do not use a for loop, that does not ensure the EHs are removed before we add out own handler.
-player removeEventHandler ["HandleDamage", 3];
-player removeEventHandler ["HandleDamage", 4];
-player removeEventHandler ["HandleDamage", 5];
-player removeEventHandler ["HandleDamage", 6];
+for "_i" from 0 to 6 do {
+    player removeEventHandler ["HandleDamage", _i];
+};
 // ok now you may have a peek again
 
 // Initial assignment, Respawn Handler does not trigger on first-spawn.
