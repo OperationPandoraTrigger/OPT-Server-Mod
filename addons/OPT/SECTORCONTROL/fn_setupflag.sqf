@@ -57,6 +57,19 @@ while {(count GVAR(aaf_flags) < round GVAR(flagCountAAF)) && _maxTries > 0} do
 };
 publicVariable QGVAR(aaf_flags);
 
+// Delete unselected Flagpoles
+{
+   // only process opt flags
+    if (_x getVariable ["opt_flag", false]) then
+    {
+        // only unselected flags
+        if (!(_x in (GVAR(csat_flags) + GVAR(nato_flags) + GVAR(aaf_flags)))) then
+        {
+            deleteVehicle _x;
+        };
+    };
+} forEach allMissionObjects "FlagPole_F";
+
 // Delete all Flagmarkers set during Waffenruhe
 remoteExecCall [QFUNC(deleteMarkers)];
 
