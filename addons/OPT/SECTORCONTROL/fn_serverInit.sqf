@@ -72,8 +72,8 @@ DFUNC(startflagsetup) =
 
 ["missionStarted", {
 
-	//Flaggen Daten und Flaggenpol setzung
-	[] call FUNC(setupflagpositions);
+	// Finale Fahnenmasten und Markierungen setzen
+	[] call FUNC(setupflagpoles);
 		
 	[FUNC(startflagsetup), {OPT_GELDZEIT_Spielzeitstart}, "Awesome Delay"] call CLib_fnc_waitUntil;
 
@@ -83,4 +83,4 @@ DFUNC(startflagsetup) =
 [] call FUNC(drawsectormarkers);
 
 // Flaggen Arrays und Markierungen setzen sobald die Mission durchgeladen ist
-[] call FUNC(setupflagmarkers);
+[] call FUNC(setupflagpositions);

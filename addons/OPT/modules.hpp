@@ -102,7 +102,7 @@ class CfgCLibModules {
             FNC(addflagmenu);
             FNC(chooseflag);
             FNC(setupflagpositions);
-            FNC(setupflagmarkers);
+            FNC(setupflagpoles);
             FNC(Punkte);
             FNC(captureflag);
             FNC(teleport);
