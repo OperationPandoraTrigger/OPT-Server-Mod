@@ -57,8 +57,26 @@ while {(count GVAR(aaf_flags) < round GVAR(flagCountAAF)) && _maxTries > 0} do
 };
 publicVariable QGVAR(aaf_flags);
 
+// Delete unselected Flagpoles
+{
+   // only process opt flags
+    if (_x getVariable ["opt_flag", false]) then
+    {
+        // only unselected flags
+        if (!(_x in (GVAR(csat_flags) + GVAR(nato_flags) + GVAR(aaf_flags)))) then
+        {
+            deleteVehicle _x;
+        };
+    };
+} forEach allMissionObjects "FlagPole_F";
+
 // Delete all Flagmarkers set during Waffenruhe
 remoteExecCall [QFUNC(deleteMarkers)];
+
+// Delete MineZoneMarkers from all possible flags
+{
+    deleteMarker _x;
+} foreach GVAR(PreMineZoneMarkers);
 
 /*
 Fuer jede Flagge in einem Sektor: 
@@ -104,7 +122,7 @@ Flaggen-Seite loggen
         _marker setMarkerSize [GVAR(flagFreeMineZoneRadius), GVAR(flagFreeMineZoneRadius)];
         _flag setVariable [QGVAR(mineMarker), _marker, true];
     };
-    
+
     [
         _flag,
         [

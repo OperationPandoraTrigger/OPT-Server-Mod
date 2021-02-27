@@ -54,29 +54,29 @@ DFUNC(eigenversorgung) =
 
 };
 
-["missionStarted", {
+["missionStarted",
+{
+	// Var setzen 
+	player setVariable ["OPT_isUnconscious", 0, true];
+	player setVariable ["OPT_isStabilized", 0, true];
+	GVAR(OPT_isDragging) = false;
+	player setVariable ["OPT_isDragged", 0, true];
 
-// Var setzen 
-player setVariable ["OPT_isUnconscious", 0, true];
-player setVariable ["OPT_isStabilized", 0, true];
-GVAR(OPT_isDragging) = false;
-player setVariable ["OPT_isDragged", 0, true];
+	//Chat abschaltung bei Bewustlosigkeit
+	(findDisplay 46) displayAddEventHandler ["KeyDown", {_this call FUNC(keyUnbind)}];
 
-//Chat abschaltung bei Bewustlosigkeit
-(findDisplay 46) displayAddEventHandler ["KeyDown", {_this call FUNC(keyUnbind)}];
+	//ACE Interaktioneinträge 
+	GVAR(revive_Action_eigen) = 
+	[
+		MLOC(FIRST_AID),
+		MLOC(FIRST_AID),
+		"",
+		{[] call FUNC(eigenversorgung)},
+		{((vehicle player == player) and (getdammage player > 0.2))},
+		{}
+	] call ace_interact_menu_fnc_createAction;
 
-//ACE Interaktioneinträge 
-GVAR(revive_Action_eigen) = 
-[
-	MLOC(FIRST_AID),
-	MLOC(FIRST_AID),
-	"",
-	{[] call FUNC(eigenversorgung)},
-	{((vehicle player == player) and (getdammage player > 0.2))},
-	{}
+	[(typeOf player), 1, ["ACE_SelfActions"], GVAR(revive_Action_eigen)] call ace_interact_menu_fnc_addActionToClass;
 
-] call ace_interact_menu_fnc_createAction;
-
-[(typeOf player), 1, ["ACE_SelfActions"], GVAR(revive_Action_eigen)] call ace_interact_menu_fnc_addActionToClass;
-
+	["Player", "Joined", [getPlayerUID player, name player, side player]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
 }] call CFUNC(addEventhandler);

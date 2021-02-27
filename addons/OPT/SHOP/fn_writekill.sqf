@@ -34,7 +34,7 @@ params [
 ];
 
 // Raw-Logging of everything
-["Health", "Raw", [netID _victim, _victim, _instigator, _source, _projectile]] call OPT_LOGGING_fnc_writelog;
+["Health", "Raw", [netID _victim, getPlayerUID _victim, _victim, netID _instigator, getPlayerUID _instigator, _instigator, netID _source, getPlayerUID _source, _source, _projectile]] call OPT_LOGGING_fnc_writelog;
 
 /* VALIDATION */
 if (_victim isEqualTo objNull) exitWith{};
