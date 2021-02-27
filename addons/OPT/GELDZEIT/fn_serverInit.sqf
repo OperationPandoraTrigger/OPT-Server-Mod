@@ -27,7 +27,7 @@
 diag_log format ["[%1] (%2) %3 %4 %5","OPT","Mission","####################",missionName,"####################"];
 
 private _time = systemTime;
-["Logging", "Start", [5, OPT_GELDZEIT_Fraktionauswahl, format ["%1-%2-%3 %4:%5:%6", _time select 0, _time select 1, _time select 2, _time select 3, _time select 4, _time select 5]]] call OPT_LOGGING_fnc_writelog;
+["Logging", "Start", [6, OPT_GELDZEIT_Fraktionauswahl, format ["%1-%2-%3 %4:%5:%6", _time select 0, _time select 1, _time select 2, _time select 3, _time select 4, _time select 5]]] call OPT_LOGGING_fnc_writelog;
 ["Mission", "Load", [0, 0, 0, missionName]] call OPT_LOGGING_fnc_writelog;
 
 //Init Statussignale
