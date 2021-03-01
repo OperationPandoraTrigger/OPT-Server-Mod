@@ -36,6 +36,12 @@
 	if (OPT_SECTORCONTROL_trainingon) then
 	{ 
 		[] call FUNC(zeus);
+
+		Player addEventHandler ["Respawn", {
+		
+			[] call FUNC(zeus);
+		
+		}];	
 	};	
 
 }] call CFUNC(addEventhandler);
