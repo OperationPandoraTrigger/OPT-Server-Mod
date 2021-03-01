@@ -28,6 +28,19 @@ params [
 // log destroyed vehicle and killer
 [_vec, _instigator, _source] call FUNC(writeKill);
 
+//Log Besatzung bei Fahrzeugabschuss
+//Fahrzeug Explosionen überlager den queller des Abschuss.
+
+ if ((_vec isKindOf "Air")) then 
+{
+    private _crewarray = Crew _vec;
+   
+    _crewarray apply
+    {
+        [_x, _instigator, _source] call FUNC(writeKill);    
+    };
+};
+
 // delete all wrecks within the base safezone
 
 switch OPT_GELDZEIT_Fraktionauswahl do 
