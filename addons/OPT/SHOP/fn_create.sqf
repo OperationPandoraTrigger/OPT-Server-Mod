@@ -101,8 +101,8 @@ DFUNC(createOrder) =
     #define HEIGHT_OFFSET_WATER 0.2
 
         //Objekt Erstellung 
-        private _veh = createVehicle [_class, (position GVAR(order_box)), [], 0, "NONE"];
         private _posi = getPosASL GVAR(order_box) vectorAdd [0, 0, HEIGHT_OFFSET_GROUND];
+        private _veh = createVehicle [_class, _posi, [], 0, "NONE"];
         _veh setdir getdir GVAR(order_box);
         _veh setPosASL _posi;
 
