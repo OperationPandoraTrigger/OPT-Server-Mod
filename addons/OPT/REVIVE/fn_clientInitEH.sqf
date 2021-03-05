@@ -108,7 +108,8 @@ DFUNC(playerHandleDamage) =
 
 	//Var übergabe
 	GVAR(playerHandleDamage_unit) = _unit; 
-	GVAR(playerHandleDamage_instigator) = _instigator; 
+	//_instigator kann oft nicht übergeben werden _source ist immer vorhanden. 
+	GVAR(playerHandleDamage_instigator) = _source; 
 	GVAR(playerHandleDamage_source) = _source; 
 	GVAR(playerHandleDamage_projectile) = _projectile; 
 	GVAR(playerHandleDamage_damage) = _damage; 
