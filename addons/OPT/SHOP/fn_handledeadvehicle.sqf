@@ -31,7 +31,7 @@ params [
 //Log Besatzung bei Fahrzeugabschuss
 //Fahrzeug Explosionen überlager den queller des Abschuss.
 
- if ((_vec isKindOf "Air")) then 
+ if ((_vec isKindOf "Air") or (_vec isKindOf "tank") or (_vec isKindOf "Wheeled_APC")) then 
 {
     private _crewarray = Crew _vec;
    
