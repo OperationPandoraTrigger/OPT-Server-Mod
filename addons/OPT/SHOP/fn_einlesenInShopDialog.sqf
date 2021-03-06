@@ -129,18 +129,21 @@ switch (GVAR(vehicleType)) do
             {    
                 _pool = GVAR(nato_choppers);
                 GVAR(pads) = GVAR(pad_air_west);
+                GVAR(Checkbereich) = 13;
                 GVAR(Hardcap_pool) = GVAR(Hardcap_nato_choppers);
             };
             case east : 
             {    
                 _pool = GVAR(csat_choppers);
                  GVAR(pads) = GVAR(pad_air_east);
+                 GVAR(Checkbereich) = 13;
                  GVAR(Hardcap_pool) = GVAR(Hardcap_csat_choppers);
             };
             case independent : 
             {    
                 _pool = GVAR(AAF_choppers);
                 GVAR(pads) = GVAR(pad_air_independent);
+                GVAR(Checkbereich) = 13;
                 GVAR(Hardcap_pool) = GVAR(Hardcap_aaf_choppers);
             };
             default 
