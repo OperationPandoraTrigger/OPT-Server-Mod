@@ -108,15 +108,21 @@ DFUNC(playerHandleDamage) =
 
 	//Var übergabe
 	GVAR(playerHandleDamage_unit) = _unit; 
-	GVAR(playerHandleDamage_instigator) = _instigator; 
+	//_instigator kann oft nicht übergeben werden _source ist immer vorhanden. 
+	GVAR(playerHandleDamage_instigator) = _source; 
 	GVAR(playerHandleDamage_source) = _source; 
 	GVAR(playerHandleDamage_projectile) = _projectile; 
 	GVAR(playerHandleDamage_damage) = _damage; 
 
 	private _resultingDamage = _damage;
 
-	if (_damage >= GVAR(MAX_DAMAGE)) then {   
+	if (getDammage _unit >= 0.65) then 
+	{
 		[FUNC(playercheckINCAPACITATED), 1,""] call CLib_fnc_wait;
+	};	
+
+	if (_damage >= GVAR(MAX_DAMAGE)) then 
+	{   
 		// Player will be "down" from this point on. 
 		
 		// Making him invulnerable to prevent forced respawn and random damage that accumulates, if he get overkilled

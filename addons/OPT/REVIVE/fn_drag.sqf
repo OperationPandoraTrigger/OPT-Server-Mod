@@ -39,7 +39,7 @@ GVAR(Addaction_id) = player addAction
 ];
 
 //Playmove check
-player addEventHandler ["AnimChanged", {[_this select 0] call FUNC(checkplaymove)}];
+GVAR(PLAYER_AnimChanged_EH_ID) = player addEventHandler ["AnimChanged", {[_this select 0] call FUNC(checkplaymove)}];
 
 [{
 	params ["_args", "_handle"];
@@ -50,7 +50,7 @@ player addEventHandler ["AnimChanged", {[_this select 0] call FUNC(checkplaymove
 		GVAR(OPT_isDragging) = false;
 
 		//EH entfernen
-		player removeEventHandler ["AnimChanged", 0];
+		player removeEventHandler ["AnimChanged", GVAR(PLAYER_AnimChanged_EH_ID)];
 
 		//Löschen der letzen Animation 
 		player switchMove ""; 

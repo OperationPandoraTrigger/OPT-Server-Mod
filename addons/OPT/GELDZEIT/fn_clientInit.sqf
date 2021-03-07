@@ -48,6 +48,8 @@ player action ["WeaponOnBack", player];
 
 	// TEAM BALANCE - end mission for player if side is full
 	// nicht in onPlayerRespawn, da nur zu Missionsbeginn prüfen
+if (!(OPT_SECTORCONTROL_trainingon)) then 
+{	
 	if (isMultiplayer && hasInterface) then 
 	{
 		if (GVAR(TEAMBALANCE) > 0) then 
@@ -109,9 +111,10 @@ player action ["WeaponOnBack", player];
 
 		};
 	};
+};
 
-	// friere Spieler, falls freezeTime aktiv
-	[] call FUNC(frezztime);
+// friere Spieler, falls freezeTime aktiv
+[] call FUNC(frezztime);
 
 //Beam ausführen zur zweiten Basis
 GVAR(beam_trigger) = [];

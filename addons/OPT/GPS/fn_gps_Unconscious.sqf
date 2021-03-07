@@ -41,7 +41,7 @@ GVAR(markerPoolisUnconscious) = [];
         _Sideidunit = getnumber (configFile >> "CfgVehicles" >> (typeof _x) >> "side");
         _sideidplayer = playerSide call BIS_fnc_sideID;   
 
-        if ((_Sideidunit == _sideidplayer) and (lifeState _x isEqualTo "INCAPACITATED")) then 
+        if ((_Sideidunit == _sideidplayer) and ((lifeState _x isEqualTo "INCAPACITATED") or (_x getVariable "OPT_isUnconscious" == 1))) then 
         {
             _unitsToMarkisUnconscious pushBack _x;
 
