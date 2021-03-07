@@ -116,8 +116,13 @@ DFUNC(playerHandleDamage) =
 
 	private _resultingDamage = _damage;
 
-	if (_damage >= GVAR(MAX_DAMAGE)) then {   
+	if (getDammage _unit >= 0.65) then 
+	{
 		[FUNC(playercheckINCAPACITATED), 1,""] call CLib_fnc_wait;
+	};	
+
+	if (_damage >= GVAR(MAX_DAMAGE)) then 
+	{   
 		// Player will be "down" from this point on. 
 		
 		// Making him invulnerable to prevent forced respawn and random damage that accumulates, if he get overkilled
