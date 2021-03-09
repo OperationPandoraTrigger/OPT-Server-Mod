@@ -40,7 +40,7 @@ _pads apply
     private _spawnpos = _x;
     private _objs = [];
     
-    _objs = nearestObjects [_spawnpos, ["AllVehicles", "Thing"], 8];
+    _objs = nearestObjects [_spawnpos, ["AllVehicles", "Thing"], GVAR(Checkbereich)];
 
     // now delete
     {
