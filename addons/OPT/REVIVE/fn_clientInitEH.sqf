@@ -173,35 +173,36 @@ for "_i" from 0 to 6 do {
 // Initial assignment, Respawn Handler does not trigger on first-spawn.
 GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = player addEventHandler ["HandleDamage", FUNC(playerHandleDamage)];
 
-
-// Avoid Handcuffing, by TeTeT
+// Avoid Handcuffing
+// Adjusted by TeTeT for OPT, original code from Larrow, see
+// https://forums.bohemia.net/forums/topic/206086-solved-prevent-player-from-force-respawn-when-incapacitated/
 DFUNC(playerDamaged) = 
 {
 	params ["_unit", "", "_damage","","_hitPoint","_source"];
 
     systemChat "CUFFS: In damaged eh";
     if (
-        alive _unit && {
-            _damage >= 1 && {
-                REVIVE_ENABLED(_unit) && {
-                    _hitPoint == "Incapacitated" && {
-                        IS_DISABLED(_unit)
-                    }
-                }
-            }
-        }
+		alive _unit && {
+			_damage >= 1 && {
+				_unit getVariable ["#rev_enabled", false] && {
+					_hitPoint == "Incapacitated" && {
+						_unit getVariable ["#rev_state", 0] isEqualTo 2
+					}
+				}
+			}
+		}
     ) then {
         systemChat "CUFFS: starting watch script";
         _nul = [ _unit ] spawn { 
             params[ "_unit" ];
             
-            waitUntil{ !( _unit getVariable [ VAR_ACTION_ID_SECURE, -1 ] isEqualTo -1 ) };
+            waitUntil{ !( _unit getVariable [ "#rev_actionID_secure", -1 ] isEqualTo -1 ) };
             systemChat "CUFFS: Removing secure action from player";
-            _actionID = _unit getVariable [ VAR_ACTION_ID_SECURE, -1 ];
+            _actionID = _unit getVariable [ "#rev_actionID_secure", -1 ];
             [ _unit, _actionID ] call bis_fnc_holdActionRemove;
             
             waitUntil{ !( lifeState _unit == "Incapacitated" ) };
-            _unit setVariable [ VAR_ACTION_ID_SECURE, -1 ];
+            _unit setVariable [ "#rev_actionID_secure", -1 ];
         }; 
     };
 };
