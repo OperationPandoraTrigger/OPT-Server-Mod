@@ -102,36 +102,6 @@ DFUNC(playercheckINCAPACITATED) =
 
 };
 
-player addEventHandler["Dammaged",{
-    params ["_unit", "", "_damage","","_hitPoint","_source"];
-    
-    systemChat "CUFFS: In damaged eh";
-    if (
-        alive _unit && {
-            _damage >= 1 && {
-                REVIVE_ENABLED(_unit) && {
-                    _hitPoint == "Incapacitated" && {
-                        IS_DISABLED(_unit)
-                    }
-                }
-            }
-        }
-    ) then {
-        systemChat "CUFFS: starting watch script";
-        _nul = [ _unit ] spawn { 
-            params[ "_unit" ];
-            
-            waitUntil{ !( _unit getVariable [ VAR_ACTION_ID_SECURE, -1 ] isEqualTo -1 ) };
-            systemChat "CUFFS: Removing secure action from player";
-            _actionID = _unit getVariable [ VAR_ACTION_ID_SECURE, -1 ];
-            [ _unit, _actionID ] call bis_fnc_holdActionRemove;
-            
-            waitUntil{ !( lifeState _unit == "Incapacitated" ) };
-            _unit setVariable [ VAR_ACTION_ID_SECURE, -1 ];
-        }; 
-    };
-}];
-
 DFUNC(playerHandleDamage) = 
 {
 	params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
