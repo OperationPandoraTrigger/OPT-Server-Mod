@@ -204,7 +204,8 @@ DFUNC(playerDamaged) =
             _unit setVariable [ VAR_ACTION_ID_SECURE, -1 ];
         }; 
     };
-}
+};
+
 GVAR(PLAYER_DAMAGED_EH_ID) = player addEventHandler ["Dammaged", FUNC(playerDamaged)];
 
 // 3D Marker
