@@ -162,38 +162,6 @@ for "_i" from 0 to 6 do {
 // Initial assignment, Respawn Handler does not trigger on first-spawn.
 GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = player addEventHandler ["HandleDamage", FUNC(playerHandleDamage)];
 
-DFUNC(playerDamaged) = 
-{
-	params ["_unit", "_selection", "_damage","","_hitPoint","_source"];
-
-    systemChat "CUFFS: In damaged eh";
-    if (
-		alive _unit && {
-			_damage >= 1 && {
-				_unit getVariable ["#rev_enabled", false] && {
-					_hitPoint == "Incapacitated" && {
-						_unit getVariable ["#rev_state", 0] isEqualTo 2
-					}
-				}
-			}
-		}
-    ) then {
-        systemChat "CUFFS: starting watch script";
-        _nul = [ _unit ] spawn { 
-            params[ "_unit" ];
-            
-            waitUntil{ !( _unit getVariable [ "#rev_actionID_secure", -1 ] isEqualTo -1 ) };
-            systemChat "CUFFS: Removing secure action from player";
-            _actionID = _unit getVariable [ "#rev_actionID_secure", -1 ];
-            [ _unit, _actionID ] call bis_fnc_holdActionRemove;
-            
-            waitUntil{ !( lifeState _unit == "Incapacitated" ) };
-            _unit setVariable [ "#rev_actionID_secure", -1 ];
-        }; 
-    };
-};
-GVAR(PLAYER_DAMAGED_EH_ID) = player addEventHandler ["Dammaged", FUNC(playerDamaged)];
-
 // 3D Marker
 GVAR(missionEH_draw3D) = addMissionEventHandler ["Draw3D", 
 {
