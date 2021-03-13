@@ -75,7 +75,26 @@ DFUNC(isUnconscious) =
 	OPT_REVIVE_respawnedHandler = nil;
 	
 	1 enableChannel true;	
+
+	[] spawn FUNC(playerRemoveSecureAction);
+	
 }] call CFUNC(addEventhandler);
+
+// Avoid Handcuffing
+// by TeTeT for OPT
+// TODO: consider using https://community.bistudio.com/wiki/inGameUISetEventHandler
+DFUNC(playerRemoveSecureAction) = 
+{
+	while {alive player} do {
+		waitUntil{
+			!( cursorObject getVariable [ "#rev_actionID_secure", -1 ] isEqualTo -1 ) && {
+				cursorObject getVariable ["#rev_state", -1] isEqualTo 2
+			}
+		};
+		_actionID = cursorObject getVariable [ "#rev_actionID_secure", -1 ];
+		[ cursorObject, _actionID ] call bis_fnc_holdActionRemove;	
+	};
+};
 
 //EH für Spielerabschüsslog 
 //Event Aüslösung bei bewustlosen Spieler.
@@ -143,12 +162,9 @@ for "_i" from 0 to 6 do {
 // Initial assignment, Respawn Handler does not trigger on first-spawn.
 GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = player addEventHandler ["HandleDamage", FUNC(playerHandleDamage)];
 
-// Avoid Handcuffing
-// Adjusted by TeTeT for OPT, original code from Larrow, see
-// https://forums.bohemia.net/forums/topic/206086-solved-prevent-player-from-force-respawn-when-incapacitated/
 DFUNC(playerDamaged) = 
 {
-	params ["_unit", "", "_damage","","_hitPoint","_source"];
+	params ["_unit", "_selection", "_damage","","_hitPoint","_source"];
 
     systemChat "CUFFS: In damaged eh";
     if (
@@ -176,7 +192,6 @@ DFUNC(playerDamaged) =
         }; 
     };
 };
-
 GVAR(PLAYER_DAMAGED_EH_ID) = player addEventHandler ["Dammaged", FUNC(playerDamaged)];
 
 // 3D Marker
