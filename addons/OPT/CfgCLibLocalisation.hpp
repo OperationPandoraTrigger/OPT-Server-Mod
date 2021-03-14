@@ -283,10 +283,6 @@ class CfgCLibLocalisation {
 				English = "Overdraft: %1 €";
 				German = "Dispo: %1 €";
 			};
-			class FRACTION_OVERVIEW {
-				English = "Fraction overview";
-				German = "Fraktionsübersicht";
-			};
 		};
 		class FIELDREPAIR {
 			class ANOTHER_ACTION {

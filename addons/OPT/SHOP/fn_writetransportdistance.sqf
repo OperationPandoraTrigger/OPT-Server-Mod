@@ -46,33 +46,6 @@ private _dis = (getPos _vec) distance2D (_unit getVariable QGVAR(transport_start
 
 if (_pos in ["cargo", "gunner"] and (_dis > _distanceFromBase)) then 
 {
-    private _NAME = ""; 
-    private _SIDE = civilian; 
-    
-    if (_pilot isEqualTo objNull) then
-    {
-        _NAME = "Unbekannt"; 
-        _SIDE = SIDE _unit;     
-    }
-    else
-    {
-        _NAME = NAME _pilot; 
-        _SIDE = SIDE _pilot;  
-    };    
-
-
-    private _message = format[
-        "%1 (%2) wurde von %3 (%4) eingeflogen (%5 m)", 
-        NAME _unit, 
-        SIDE _unit,  
-        _NAME, 
-        _SIDE,
-        _dis
-    ];
-
-    // Log
-    private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
-    diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Transport",_timestamp,_message];
-
+    // Log Flugdistanz
     ["Transport", "Fly", [getPlayerUID _unit, name _unit, side _unit, getPlayerUID _pilot, name _pilot, side _pilot, _dis]] call OPT_LOGGING_fnc_writelog;
 };
