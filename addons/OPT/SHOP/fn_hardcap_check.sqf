@@ -29,7 +29,6 @@ private _Hardcaparray = [];
 private _Hardcap_pool = [];
 private _hardcapobj = "";
 private _hardcapinfo = 999;
-private _orderStatus = 0;
 
 // Auswahl Hardcap Array
 switch (_vehicleType) do 
@@ -244,12 +243,13 @@ if (_hardcapinfo > 0) then
             };
     };
 
-    //Statusfreigabe
-    _orderStatus = 1;
-    [_orderStatus,_classSend,GVAR(vehicleType)] remoteExecCall [QFUNC(create), _user, false];
+    [1] remoteExecCall [QFUNC(create), _user, false];
 }
 else
 {
-    _orderStatus = 0;
-    [_orderStatus,_classSend,GVAR(vehicleType)] remoteExecCall [QFUNC(create), _user, false];
+    [0] remoteExecCall [QFUNC(create), _user, false];
 };
+
+// Log Hardcap Info
+private _unitName = (getText(configFile >> 'CfgVehicles' >> _class >> 'displayName'));
+["Hardcap", "Info", [_unitName, _hardcapinfo]] call OPT_LOGGING_fnc_writelog;
