@@ -17,7 +17,7 @@
 params [["_veh", objNull]];
 
 if (_veh isEqualTo objNull) exitWith {false};
-if (count _veh <= 0) exitWith {false};
+if (count (getAllHitPointsDamage _veh) <= 0) exitWith {false};
 if ((getAllHitPointsDamage _veh select 2) isEqualTo objNull) exitWith {false};
 
 private _flag = false;
