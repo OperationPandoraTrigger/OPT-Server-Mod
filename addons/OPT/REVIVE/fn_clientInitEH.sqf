@@ -75,26 +75,19 @@ DFUNC(isUnconscious) =
 	OPT_REVIVE_respawnedHandler = nil;
 	
 	1 enableChannel true;	
-
-	[] spawn FUNC(playerRemoveSecureAction);
-	
 }] call CFUNC(addEventhandler);
+
 
 // Avoid Handcuffing
 // by TeTeT for OPT
-// TODO: consider using https://community.bistudio.com/wiki/inGameUISetEventHandler
-DFUNC(playerRemoveSecureAction) = 
-{
-	while {alive player} do {
-		waitUntil{
-			!( cursorObject getVariable [ "#rev_actionID_secure", -1 ] isEqualTo -1 ) && {
-				cursorObject getVariable ["#rev_state", -1] isEqualTo 2
-			}
-		};
-		_actionID = cursorObject getVariable [ "#rev_actionID_secure", -1 ];
-		[ cursorObject, _actionID ] call bis_fnc_holdActionRemove;	
-	};
-};
+inGameUISetEventHandler ["Action", '
+	params ["_target"];
+	private _actionID = _target getVariable [ "#rev_actionID_secure", -1 ];
+    if (_actionID isNotEqualTo -1) then {
+        [ _target, _actionID ] call bis_fnc_holdActionRemove;    
+        true;
+    };
+'];
 
 //EH für Spielerabschüsslog 
 //Event Aüslösung bei bewustlosen Spieler.
