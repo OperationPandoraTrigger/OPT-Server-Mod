@@ -110,7 +110,8 @@ switch (_sign) do
             };
             ["Budget", "Sell", [GVAR(nato_budget), GVAR(csat_budget), GVAR(aaf_budget), _buyerUID, _buyerName, _side, _unitId, _unitName, _category, _unitCost]] call OPT_LOGGING_fnc_writelog;
     };
-    publicVariable QGVAR(nato_budget);
-    publicVariable QGVAR(csat_budget);
-    publicVariable QGVAR(aaf_budget);
 };
+
+publicVariable QGVAR(nato_budget);
+publicVariable QGVAR(csat_budget);
+publicVariable QGVAR(aaf_budget);
