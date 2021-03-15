@@ -78,7 +78,6 @@ class CfgCLibModules {
             FNC(renderbudget);
             FNC(updatebudget);
             FNC(writeplayerlist);
-            FNC(getplayername);
             FNC(updateplayerlist);
             FNC(earplugs);
             FNC(briefing);
