@@ -40,7 +40,7 @@ class CfgCLibModules {
             FNC(typfestellung);
             FNC(einlesenInVerkaufDialog);
             FNC(handledeadvehicle);
-            FNC(Initcbaclassevents);
+            FNC(clientInitcbaclassevents);
             FNC(flipcheck);
             FNC(unflip);
             FNC(writekill);
@@ -54,7 +54,7 @@ class CfgCLibModules {
         {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
             FNC(clientInit);
-            FNC(initCBASettings);
+            FNC(clientInitCBASettings);
             FNC(clientinitEH);
             FNC(revivelog);
             FNC(dialog);
@@ -115,7 +115,7 @@ class CfgCLibModules {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
             FNC(clientInit);
             FNC(initcbasettings);
-            FNC(initcbaclassevents);
+            FNC(clientInitcbaclassevents);
             FNC(needrepair);
             FNC(repairvehicle);
             FNC(refuelVehicle);
