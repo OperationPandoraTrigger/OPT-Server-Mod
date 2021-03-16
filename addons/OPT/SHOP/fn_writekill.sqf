@@ -41,92 +41,10 @@ if (_victim isEqualTo objNull) exitWith{};
 //if ((_instigator isEqualTo objNull) and (_projectile isEqualTo "")) exitWith{};
 
 /* CODE BODY */
-private _cat = "Abschuss";
-private _message = "";
-
-private _Sideidunit = 3;
-private _Side = "unbekannt";
 
 // victim = man?
 if (_victim isKindOf "Man") then 
 {
-    if (isNull _victim) then
-    {
-        _Sideidunit = 3;
-        _name1 = "unbekannt";
-        _Side = "unbekannt";
-    }
-    else
-    {
-        _Sideidunit = getnumber (configFile >> "CfgVehicles" >> (typeof _victim) >> "side");
-
-        switch (_Sideidunit) do 
-        {
-            case 0 : 
-            {
-                _Side = "EAST";
-            };
-
-            case 1 : 
-            {
-                _Side = "WEST";
-            };
-
-            case 2 : 
-            {
-                _Side = "GUER";
-            };
-            case 3 : 
-            {
-                _Side = "unbekannt";
-            };
-        };			
-    };
-
-    // base information about victim
-    _message = format[
-        "Einheit: %1 (side: %2)",
-        NAME _victim, _Side
-    ];
-
-    // was victim in a vehicle?
-    if !(vehicle _victim isEqualTo _victim) then 
-    {
-        private _name = getText (configFile >> "CfgVehicles" >> typeOf (vehicle _victim) >> "displayName");
-        _message = format["%1 (vehicle: %2)", _message, _name];
-    };
-
-    // instigator known?
-    if !(_instigator isEqualTo objNull) then 
-    {
-        
-        if (_victim isEqualTo _instigator) then 
-        {
-            _message = format["%1 von: Selbstverschulden.", _message];
-
-        } 
-        else 
-        {
-            
-            // base information about instigator
-            _message = format["%1 von: %2 (side: %3)", _message, NAME _instigator, SIDE _instigator];
-
-            // source in vehicle or not?
-            if !(_source isEqualTo _instigator) then 
-            {
-                private _name = getText (configFile >> "CfgVehicles" >> typeOf _source >> "displayName");
-                _message = format["%1 (vehicle: %2)", _message, _name];
-            };
-
-        };
-
-    } 
-    else 
-    {
-        _message = format["%1 von: unbekannt", _message];
-        
-    };
-
     // projectile known?
     private _projectileName = "";
     if !(_projectile isEqualTo "") then 
@@ -145,12 +63,6 @@ if (_victim isKindOf "Man") then
                 };
                 _name = getText (_parent >> "displayName");
                 _projectileName = _name;
-
-                if !(_name isEqualTo "") then 
-                {
-                    _message = format["%1 (magazine: %2)", _message, _name];
-                };
-                
             };  
         
         } forEach ([configFile >> "CfgMagazines", 0, true] call BIS_fnc_returnChildren);
@@ -199,7 +111,6 @@ else // victim = vehicle!
             };
         };
     };
-    _message = format["Fahrzeug: %1 (category: %2) (side: %3)", _name, _category, _faction];
 
     // Täter bekannt
     if !(_instigator isEqualTo objNull) then 
@@ -207,13 +118,10 @@ else // victim = vehicle!
         // source is vehicle or player?
         if (_source isEqualTo _instigator) then 
         {
-            _message = format["%1 von: %2 (side: %3).", _message, NAME _instigator , SIDE _instigator];
             ["Vehicle", "DestroyByMan", [_name, _category, _faction, netId _victim, getPlayerUID _instigator, name _instigator, side _instigator, _victim distance2D _instigator, _projectile]] call OPT_LOGGING_fnc_writelog;
         } 
         else 
         {
-            private _killername = getText (configFile >> "CfgVehicles" >> typeOf _source >> "displayName");
-            private _killerTxt = [];
             private _crewArray = [];
             private _separator = toString [9]; // tabulator
             // in case of a vehicle, credit kill to all crew members
@@ -224,16 +132,11 @@ else // victim = vehicle!
                 // crew member have cargo index of -1, else > 0
                 if (_cargoIdx == -1) then 
                 {
-                    _killerTxt pushBack format["%1 (side: %2) (vehicle: %3)", NAME _unit, SIDE _unit, _killername];
                     _crewArray pushBack getPlayerUID _unit;
                     _crewArray pushBack name _unit;
                 };
             } forEach (fullCrew _source);
 
-            _killerTxt = _killerTxt joinString ", ";
-            _message = format[
-                "%1 von: %2", _message, _killerTxt
-            ];
             ["Vehicle", "DestroyByCrew", [_name, _category, _faction, netId _victim, getText (configFile >> "CfgVehicles" >> typeOf _source >> "displayName"), side _instigator, _victim distance2D _instigator, _crewArray joinString _separator]] call OPT_LOGGING_fnc_writelog;
         };
     } 
@@ -242,13 +145,7 @@ else // victim = vehicle!
         // Selbstverschulden?
         if (_vec == _source) then 
         {
-            _message = format["%1 von: Selbstverschulden", _message];
             ["Vehicle", "DestroyByAccident", [_name, _category, _faction, netId _victim]] call OPT_LOGGING_fnc_writelog;
         } 
     };
-
 };
-
-// Log
-private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
-diag_log format["[%1] (%2) Log: %3 --- %4","OPT", _cat, _timestamp, _message];

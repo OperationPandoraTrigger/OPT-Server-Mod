@@ -136,7 +136,7 @@ Flaggen-Seite loggen
             "(vehicle player == player and OPT_GELDZEIT_Spielzeitstart and ((OPT_GELDZEIT_PLAYTIME - (serverTime - OPT_GELDZEIT_startTime)) > 0) and (playerside != _target getVariable 'owner'))",                              
             GVAR(flagDistanceToPlayer)                                   // radius
         ]
-    ] remoteExecCall ["addAction", 0, true];
+    ] remoteExecCall ["addAction", -2, true];
    
     _flag allowDamage false;  // Flagge kann nicht beschaedigt werden
 

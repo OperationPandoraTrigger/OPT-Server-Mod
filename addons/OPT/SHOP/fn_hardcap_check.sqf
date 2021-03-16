@@ -29,9 +29,6 @@ private _Hardcaparray = [];
 private _Hardcap_pool = [];
 private _hardcapobj = "";
 private _hardcapinfo = 999;
-private _orderStatus = 0;
-private _cat = "Shop";
-private _message = "";
 
 // Auswahl Hardcap Array
 switch (_vehicleType) do 
@@ -246,23 +243,13 @@ if (_hardcapinfo > 0) then
             };
     };
 
-    //Statusfreigabe
-    _orderStatus = 1;
-
-    //Name Fahrzeug
-    private _unitName = (getText(configFile >> 'CfgVehicles' >> _class >> 'displayName'));
-
-    //Log Hardcap
-    _message = format["Freigabe Type: %1 Hardcap: %2",_unitName, (_hardcapinfo-1)];
-
-    private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
-    diag_log format["[%1] (%2) Log: %3 --- %4","OPT",_cat,_timestamp,_message];
-
-    [_orderStatus,_classSend,GVAR(vehicleType)] remoteExecCall [QFUNC(create), _user, false];
+    [1] remoteExecCall [QFUNC(create), _user, false];
 }
 else
 {
-    _orderStatus = 0;
-    [_orderStatus,_classSend,GVAR(vehicleType)] remoteExecCall [QFUNC(create), _user, false];
+    [0] remoteExecCall [QFUNC(create), _user, false];
 };
 
+// Log Hardcap Info
+private _unitName = (getText(configFile >> 'CfgVehicles' >> _class >> 'displayName'));
+["Hardcap", "Info", [_unitName, _hardcapinfo]] call OPT_LOGGING_fnc_writelog;
