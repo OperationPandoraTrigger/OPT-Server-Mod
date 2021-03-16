@@ -109,7 +109,6 @@ DFUNC(playerHandleDamage) =
 {
 	params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
 
-	systemChat format ["G:%1 D:%2 S:%3",(getDammage _unit),_damage,_source];
 	//Var übergabe
 	GVAR(playerHandleDamage_unit) = _unit; 
 	//_instigator kann oft nicht übergeben werden _source ist immer vorhanden. 
