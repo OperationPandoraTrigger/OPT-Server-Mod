@@ -24,9 +24,6 @@
 
 #include "macros.hpp"
 
-//Dateneinlesen
-#include "fn_config.sqf";
-
 if (GVAR(vehType) in (GVAR(vehclasswestWW) + GVAR(vehclasseastWW) + GVAR(vehClassindependentWW))) then 
 {
     switch (GVAR(vehType)) do 

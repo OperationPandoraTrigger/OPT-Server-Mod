@@ -23,8 +23,6 @@
 */
 #include "macros.hpp"
 
-#include "fn_config.sqf";
-
 /* PARAMS */
 params [
     ["_victim", objNull, [objNull], 1],

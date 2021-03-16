@@ -49,6 +49,7 @@ class CfgCLibModules {
             FNC(hardcap_send);
             FNC(hardcap_check);
             FNC(create);
+            FNC(Init);
         };
         MODULE(REVIVE) 
         {
