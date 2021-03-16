@@ -77,6 +77,18 @@ DFUNC(isUnconscious) =
 	1 enableChannel true;	
 }] call CFUNC(addEventhandler);
 
+
+// Avoid Handcuffing
+// by TeTeT for OPT
+inGameUISetEventHandler ["Action", '
+	params ["_target"];
+	private _actionID = _target getVariable [ "#rev_actionID_secure", -1 ];
+    if (_actionID isNotEqualTo -1) then {
+        [ _target, _actionID ] call bis_fnc_holdActionRemove;    
+        true;
+    };
+'];
+
 //EH für Spielerabschüsslog 
 //Event Aüslösung bei bewustlosen Spieler.
 DFUNC(playercheckINCAPACITATED) = 
