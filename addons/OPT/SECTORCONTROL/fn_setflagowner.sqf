@@ -46,40 +46,7 @@ switch (_side) do
     default {};
 };
 
-_side_calculated = [] call FUNC(calcDominator);
-GVAR(dominator) = _side_calculated;
+GVAR(dominator) = [] call FUNC(calcDominator);
 publicVariable QGVAR(dominator);
-
-switch (_side_calculated) do 
-{
-    case (east) : 
-	{
-        _log_msg = format["Dominator ist CSAT"];
-        private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
-        
-        //Log
-		diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_log_msg];
-
-    };
-    case (west) : 
-	{
-        _log_msg = format["Dominator ist NATO"];
-        private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
-        
-        //Log
-		diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_log_msg];
-
-    };
-	case (independent) : 
-	{
-        _log_msg = format["Dominator ist AAF"];
-        private _timestamp = [serverTime - OPT_GELDZEIT_startTime] call CBA_fnc_formatElapsedTime;
-        
-        //Log
-		diag_log format["[%1] (%2) Log: %3 --- %4","OPT","Fahne",_timestamp,_log_msg];
-
-    };
-    default {GVAR(dominator) = sideUnknown};
-};
 
 true

@@ -42,5 +42,3 @@ else
 {
    GVAR(playerList) pushBack [_uid, _name, _side];
 };
-
-publicVariable QGVAR(playerList);

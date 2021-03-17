@@ -159,7 +159,7 @@ player addEventHandler ["FiredMan",
 
 
 // UAV Drohenstation kontrolle
-[] call FUNC(uav);
+// [] call FUNC(uav);
 
 // Hint Meldung das Zuschauerslot besetzt wurde. 
 if ((Player isKindOf "VirtualSpectator_F") or (Player isKindOf "ace_spectator_virtual")) then 
