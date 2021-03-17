@@ -24,36 +24,20 @@
 
 #include "macros.hpp";
 
-GVAR(officer) = [
-    "OPT_NATO_Offizier_T",
-    "OPT_CSAT_Offizier_T",
-	"OPT_NATO_Offizier",
-	"OPT_CSAT_Offizier",
-	"I_officer_F"
-];
-
-// default GPS mode: all squad units are visible
-// Auf Wunsch der Comm solle alle alle sehen können, Normal Modus ist GVAR(mode) = 1;
-GVAR(mode) = 2;
-
-// GPS mode: all units are visible in mode 2
-if (typeOf player in GVAR(officer)) then 
-{
-    GVAR(mode) = 2;
-
-};
-
 //Erfassung der Einheiten beim Start
+
+GVAR(unitnumber) = 0;
+GVAR(unitnumber) = (count units Side player)+10;
+
 GVAR(unitsToMark) = [];
-GVAR(unitsToMark) = [] call FUNC(selectUnits);
 
 //Marker erstellen für die Spieler
 GVAR(markerPool) = [];
 
-for "_i" from 1 to (count GVAR(unitsToMark))  do 
-	{
-    	GVAR(markerPool) pushBack ([PLAYERSIDE, _i] call FUNC(createUnitMarker));
-	}; 
+for "_i" from 1 to GVAR(unitnumber)  do 
+{
+    GVAR(markerPool) pushBack ([PLAYERSIDE, _i] call FUNC(createUnitMarker));
+}; 
 
 // create special local player marker
 GVAR(markerplayer) = [];
@@ -61,26 +45,15 @@ GVAR(markerplayer) = [] call FUNC(createPlayerMarker);
 
 //
 [{
-	private _markerplayer = [];
 	private _unitsToMark = [];
+  
+    {
+        if (side _x == playerSide) then 
+        {
+            _unitsToMark pushBack _x;
 
-	//Erneuerung der Spielererfassung
-	_unitsToMark = [] call FUNC(selectUnits);
-
-	//Vergleich ob mehr Spieler da sind als Marker vonhanden
-	//bei mehr Spieler als Marker vorhanden sind, neue Marker erstellen
-	if ((count _unitsToMark) > (count GVAR(unitsToMark))) then 
-	{ 
-		private _neuemarker = 0;
-		_neuemarker = (count _unitsToMark) - (count GVAR(unitsToMark));
-
-		for "_i" from 1 to (_neuemarker)  do 
-		{
-			GVAR(markerPool) pushBack ([PLAYERSIDE, ((count GVAR(unitsToMark))+_i)] call FUNC(createUnitMarker));
-		};  
-
-		GVAR(unitsToMark) = _unitsToMark;
-	}; 
+        };
+    } foreach allUnits; 
 
     GVAR(markerPool) apply
     {
