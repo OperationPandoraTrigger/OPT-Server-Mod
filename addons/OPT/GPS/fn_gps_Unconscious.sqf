@@ -26,7 +26,6 @@
 
 GVAR(markerPoolisUnconscious) = [];
 
-GVAR(unitnumberUnconscious) = 0;
 GVAR(unitnumberUnconscious) = (count units Side player)+10;
 
 for "_i" from 1 to (GVAR(unitnumberUnconscious))  do 

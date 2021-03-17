@@ -26,7 +26,6 @@
 
 //Erfassung der Einheiten beim Start
 
-GVAR(unitnumber) = 0;
 GVAR(unitnumber) = (count units Side player)+10;
 
 GVAR(unitsToMark) = [];
@@ -40,7 +39,6 @@ for "_i" from 1 to GVAR(unitnumber)  do
 }; 
 
 // create special local player marker
-GVAR(markerplayer) = [];
 GVAR(markerplayer) = [] call FUNC(createPlayerMarker);
 
 //
