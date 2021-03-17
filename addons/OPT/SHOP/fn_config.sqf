@@ -1011,19 +1011,4 @@ GVAR(pad_air_independent) +
 GVAR(pad_sup_independent) +
 GVAR(pad_sea_independent);
 
-// for access from OPT_GELDZEIT
-publicVariable QGVAR(nato_vehicles);
-publicVariable QGVAR(csat_vehicles);
-publicVariable QGVAR(AAF_vehicles);
-publicVariable QGVAR(nato_vehicles_supply);
-publicVariable QGVAR(csat_vehicles_supply);
-publicVariable QGVAR(AAF_vehicles_supply);
-publicVariable QGVAR(nato_armored);
-publicVariable QGVAR(csat_armored);
-publicVariable QGVAR(AAF_armored);
-publicVariable QGVAR(nato_choppers);
-publicVariable QGVAR(csat_choppers);
-publicVariable QGVAR(AAF_choppers);
-publicVariable QGVAR(nato_sea);
-publicVariable QGVAR(csat_sea);
-publicVariable QGVAR(AAF_sea);
+

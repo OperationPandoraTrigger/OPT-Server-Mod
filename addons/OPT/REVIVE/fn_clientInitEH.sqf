@@ -101,11 +101,14 @@ DFUNC(playercheckINCAPACITATED) =
 		if (GVAR(playerHandleDamage_unit) == GVAR(playerHandleDamage_source)) then 
         {          
 			[MLOC(KILL_MSG), MLOC(KILL_SELF)] spawn BIS_fnc_infoText;
-        } 
-		else
-		{         
+        }; 
+		if (isNull GVAR(playerHandleDamage_source) or isNil QGVAR(playerHandleDamage_source)) then 
+        {          
+			[MLOC(KILL_MSG), MLOC(KILL_UNKNOWN)] spawn BIS_fnc_infoText;
+        }; 
+		if ((GVAR(playerHandleDamage_unit) != GVAR(playerHandleDamage_source)) and not(isNull GVAR(playerHandleDamage_source) or isNil QGVAR(playerHandleDamage_source))) then 
+		{   	     
 			[MLOC(KILL_MSG), format["%1",name GVAR(playerHandleDamage_instigator)]] spawn BIS_fnc_infoText;
-
         };
 
 		//Funktion starten wenn Spieler bewustlos ist. 
@@ -128,11 +131,11 @@ DFUNC(playerHandleDamage) =
 
 	private _resultingDamage = _damage;
 
-	if (getDammage _unit >= 0.65) then 
+	if ((getDammage _unit >= 0.65) or (_damage >= GVAR(MAX_DAMAGE))) then 
 	{
 		[FUNC(playercheckINCAPACITATED), 1,""] call CLib_fnc_wait;
-	};	
-
+	};
+	
 	if (_damage >= GVAR(MAX_DAMAGE)) then 
 	{   
 		// Player will be "down" from this point on. 

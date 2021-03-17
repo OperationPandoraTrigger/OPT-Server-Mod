@@ -37,4 +37,14 @@
 	missionNamespace setVariable ["ACE_maxWeightCarry", OPT_CARGO_ACE_maxWeightCarry];
 	missionNamespace setVariable ["ACE_maxWeightDrag", OPT_CARGO_ACE_maxWeightDrag];
 
+	/* INITIALIZE GLOBAL VARS*/
+	GVAR(canTransportCargo) = []; // holds cargo definitions for all objects with cargo space
+	GVAR(canBeTransported)  = []; // holds all objects that can be transported
+	GVAR(canBeDragged) = []; // holds all objects that can be dragged
+	GVAR(canBeCarried) = []; // holds all objects that can be carried
+
+	[] call FUNC(setupCargoSpaceAndSize);
+
+	[] call FUNC(cbaclassevents);
+
 }] call CFUNC(addEventhandler);

@@ -24,8 +24,14 @@
 
 #include "macros.hpp";
 
-GVAR(unitsToMarkisUnconsciousold) = [];
 GVAR(markerPoolisUnconscious) = [];
+
+GVAR(unitnumberUnconscious) = (count units Side player)+10;
+
+for "_i" from 1 to (GVAR(unitnumberUnconscious))  do 
+{
+	GVAR(markerPoolisUnconscious) pushBack ([PLAYERSIDE, _i] call FUNC(createunitmarker_Unconscious));
+};  
 
 //Seitenabfrage des Spieler per config
 //Bei ACE Medic wird Spieler zu CIV seite bei Side Abfrage
@@ -47,21 +53,6 @@ GVAR(markerPoolisUnconscious) = [];
 
         };
     } foreach playableUnits;   
-
-	//Vergleich ob mehr Spieler da sind als Marker vonhanden
-	//bei mehr Spieler als Marker vorhanden sind, neue Marker erstellen
-	if ((count _unitsToMarkisUnconscious) > (count GVAR(unitsToMarkisUnconsciousold))) then 
-	{ 
-		private _neuemarker = 0;
-		_neuemarker = (count _unitsToMarkisUnconscious) - (count GVAR(unitsToMarkisUnconsciousold));
-
-		for "_i" from 1 to (_neuemarker)  do 
-		{
-			GVAR(markerPoolisUnconscious) pushBack ([PLAYERSIDE, ((count _unitsToMarkisUnconscious)+_i)] call FUNC(createunitmarker_Unconscious));
-		};  
-
-		GVAR(unitsToMarkisUnconsciousold) = _unitsToMarkisUnconscious;
-	}; 
 
 	GVAR(markerPoolisUnconscious) apply
     {

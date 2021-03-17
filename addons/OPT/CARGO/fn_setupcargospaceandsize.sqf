@@ -167,6 +167,7 @@ GVAR(canTransportCargo) =
     ["OPT_O_T_Truck_02_box_F", 2],            // Zamack Repair
 	["OPT_O_T_Truck_02_ammo_F", 2],                 // Zamack Ammo
     ["OPT_O_T_Truck_02_fuel_F", 2],                 // Zamack Fuel
+	["OPT_O_T_Truck_02_Medical_F", 2],          // Zamack Medical
 	
 // CSAT Armored
 	["OPT4_O_MRAP_02_gmg_F", 4],                  // Ifrit GMG
@@ -240,6 +241,7 @@ GVAR(canTransportCargo) =
     ["OPT_I_Truck_02_transport_F", 10],               // Zamak  
 	["OPT_I_Truck_02_ammo_F", 2],               // Zamak Ammo
     ["OPT_I_Truck_02_fuel_F", 2],  		     // Zamak Fuel
+	["OPT_I_Truck_02_medical_F", 2],               // Zamak Medical
 // AAF Choppers
     ["OPT_I_Heli_light_03_F", 4],                 // WY-55 Hellcat
 	["OPT_I_Heli_light_03_v2_F", 4],                 // WY-55 Hellcat Cas Light

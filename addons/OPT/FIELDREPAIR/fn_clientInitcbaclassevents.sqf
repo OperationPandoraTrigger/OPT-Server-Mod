@@ -17,7 +17,7 @@
 ["LandVehicle", "init", 
 {
     params ["_vec"];
-    
+
     _vec addAction [
         format["<t color=""#ff0000"">%1</t>", MLOC(FIELD_REPAIR)], 
         {[_this select 0] call FUNC(repairVehicle)},
@@ -26,19 +26,19 @@
         false,
         true, 
         '',
-        QUOTE([_target] call FUNC(needRepair)),
+        format["[_target] call %1", QFUNC(needRepair)],
         10
     ];
 
     _vec addAction [
-        format["<t color=""#ff0000"">%1</t>", MLOC(FIELD_REPAIR)], 
+        format["<t color=""#ff0000"">%1</t>", MLOC(FIELD_REFUEL)], 
         {[_this select 0] call FUNC(refuelVehicle)},
         [], 
         -1, 
         false,
         true, 
         '',
-        QUOTE([_target] call FUNC(vehicleNoFuel)),
+        format["[_target] call %1", QFUNC(vehicleNoFuel)],
         10
     ];
 
@@ -83,7 +83,7 @@
         false,
         true, 
         '',
-        QUOTE([_target] call FUNC(needRepair)),
+        format["[_target] call %1", QFUNC(needRepair)],
         10
     ];
 
@@ -95,7 +95,7 @@
         false,
         true, 
         '',
-        QUOTE([_target] call FUNC(vehicleNoFuel)),
+        format["[_target] call %1", QFUNC(vehicleNoFuel)],
         10
     ];
 
@@ -110,4 +110,5 @@
         format["_truck = vehicle _this; ([_target] call %1 || damage _target > 0.01)  and _truck getVariable ['%2', -1] > 0 and {alive _target} and {speed _truck < 3} and (_truck distance _target) < 20", QFUNC(vehicleDamagedLight), QGVAR(repair_cargo)
         ]
     ];
-    }, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;   

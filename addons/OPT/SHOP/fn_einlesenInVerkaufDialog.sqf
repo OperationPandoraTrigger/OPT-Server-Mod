@@ -26,9 +26,6 @@
 
 #include "macros.hpp"
 
-//Dateneinlesen
-#include "fn_config.sqf";
-
 //Typ einlesen
 params 
 [

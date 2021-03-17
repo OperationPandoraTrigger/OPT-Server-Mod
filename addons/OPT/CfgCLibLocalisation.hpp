@@ -121,6 +121,10 @@ class CfgCLibLocalisation {
 				English = "self-caused";
 				German = "Selbstverschulden";
 			};
+			class KILL_UNKNOWN {
+				English = "unknown";
+				German = "Unbekannt";
+			};
 			class FIRST_AID {
 				English = "First Aid";
 				German = "Erste Hilfe";
