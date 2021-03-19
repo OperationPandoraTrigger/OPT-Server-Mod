@@ -113,7 +113,7 @@ This event happens every time a soldier enters a vehicle.
     turret: Array - turret path (since Arma 3 v1.36)
     */
 
-    // logge transport von Spielern, falls Spieler nicht Pilot und Strecke > 500m
+    // logge transport von Spielern
     _this call FUNC(writeTransportDistance);
 
 }] call CBA_fnc_addClassEventHandler;
