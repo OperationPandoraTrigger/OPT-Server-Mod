@@ -39,7 +39,7 @@ private _minDistance = 50;
 private _pilot = _vec getVariable [QGVAR(transport_pilot), objNull];
 
 // end script if either player or pilot is unconscious
-private _condition = (_unit getVariable "ACE_isUnconscious") or (_pilot getVariable "ACE_isUnconscious");
+private _condition = (lifeState _unit isEqualTo "INCAPACITATED") or (lifeState _pilot isEqualTo "INCAPACITATED");
 if (_condition) exitWith {};
 
 private _dis = (getPos _vec) distance2D (_unit getVariable QGVAR(transport_start_loc));
@@ -47,5 +47,5 @@ private _dis = (getPos _vec) distance2D (_unit getVariable QGVAR(transport_start
 if (_pos in ["cargo", "gunner"] and (_dis > _minDistance)) then 
 {
     // Log Flugdistanz
-    ["Transport", "Fly", [getPlayerUID _unit, name _unit, side _unit, getPlayerUID _pilot, name _pilot, side _pilot, _dis]] call OPT_LOGGING_fnc_writelog;
+    ["Transport", "Fly", [getPlayerUID _unit, name _unit, side _unit, getPlayerUID _pilot, name _pilot, side _pilot, _dis]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
 };
