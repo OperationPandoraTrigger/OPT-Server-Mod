@@ -25,11 +25,11 @@ switch (_action) do
 {
 	case "action_drag": 
 	{
-		[_target] spawn FUNC(drag);
+		[_target] call FUNC(drag);
 	};
 	case "action_release": 
 	{
-		[] spawn FUNC(release);
+		[] call FUNC(release);
 	};
 	default 
 	{
