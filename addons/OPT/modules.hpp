@@ -64,8 +64,8 @@ class CfgCLibModules {
             FNC(drag);
             FNC(handleaction);
             FNC(checkplaymove);
-            FNC(initcbaclassevents);
             FNC(release);
+            FNC(clientInitcbaclassevents);
         };
         MODULE(GELDZEIT) 
         {
