@@ -32,8 +32,8 @@ params
 // delete all wrecks within the base safezone
 switch OPT_GELDZEIT_Fraktionauswahl do 
 {
-    	case "AAFvsCSAT" : 
-		{
+        case "AAFvsCSAT" : 
+        {
             if (!(_vec isKindOf "CAManBase") and ((_vec distance2D (getmarkerPos "respawn_guerrila") < 200) or (_vec distance2D (getmarkerPos "respawn_east") < 200) or (_vec distance2D (getmarkerPos "CSAT_Basis2") < 200) or (_vec distance2D (getmarkerPos "AAF_Basis2") < 200))) then 
             {
                 [_vec] call 
@@ -47,10 +47,10 @@ switch OPT_GELDZEIT_Fraktionauswahl do
                     [_txt] remoteExecCall ["hint", playableUnits select {_x distance _vec < 200}, false];
                 };
             };     
-		};
+        };
 
-		case "NATOvsCSAT" : 
-		{
+        case "NATOvsCSAT" : 
+        {
             if (!(_vec isKindOf "CAManBase") and ((_vec distance2D (getmarkerPos "respawn_west") < 200) or (_vec distance2D (getmarkerPos "respawn_east") < 200) or (_vec distance2D (getmarkerPos "CSAT_Basis2") < 200) or (_vec distance2D (getmarkerPos "NATO_Basis2") < 200))) then 
             {
                 [_vec] call 
@@ -64,10 +64,10 @@ switch OPT_GELDZEIT_Fraktionauswahl do
                     [_txt] remoteExecCall ["hint", playableUnits select {_x distance _vec < 200}, false];
                 };
             };
-		};
+        };
 
-		case "NATOvsAAF" : 
-		{
+        case "NATOvsAAF" : 
+        {
             if (!(_vec isKindOf "CAManBase") and ((_vec distance2D (getmarkerPos "respawn_west") < 200) or (_vec distance2D (getmarkerPos "respawn_guerrila") < 200) or (_vec distance2D (getmarkerPos "Nato_Basis2") < 200) or (_vec distance2D (getmarkerPos "AAF_Basis2") < 200))) then 
             {
                 [_vec] call 
@@ -81,10 +81,10 @@ switch OPT_GELDZEIT_Fraktionauswahl do
                     [_txt] remoteExecCall ["hint", playableUnits select {_x distance _vec < 200}, false];
                 };
             };       
-		};
+        };
 
-   		default 
-		{
-			ERROR_LOG("handleDeadVehicle: Fehlehalte Datenübergabe keine Fraktionauswahl erkannt");
-		};
+           default 
+        {
+            ERROR_LOG("handleDeadVehicle: Fehlehalte Datenübergabe keine Fraktionauswahl erkannt");
+        };
 };

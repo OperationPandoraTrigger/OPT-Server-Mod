@@ -19,10 +19,10 @@
 
 params 
 [
-	["_user", 0],
+    ["_user", 0],
     ["_class", ""],
-	["_vehicleType", ""],
-	["_side", sideUnknown]
+    ["_vehicleType", ""],
+    ["_side", sideUnknown]
 ];
 
 private _Hardcaparray = [];
@@ -33,8 +33,8 @@ private _hardcapinfo = 999;
 // Auswahl Hardcap Array
 switch (_vehicleType) do 
 {
-	case "choppers" : 
-	{
+    case "choppers" : 
+    {
         switch (_side) do 
         {
             case west:
@@ -58,8 +58,8 @@ switch (_vehicleType) do
         };     
     };
 
-	case "vehicles" : 
-	{
+    case "vehicles" : 
+    {
         switch (_side) do 
         {
             case west:
@@ -82,8 +82,8 @@ switch (_vehicleType) do
             };        
         };     
     };
-	case "supplies" : 
-	{
+    case "supplies" : 
+    {
         switch (_side) do 
         {
             case west:
@@ -107,8 +107,8 @@ switch (_vehicleType) do
         };      
     };
 
-	case "sea" : 
-	{
+    case "sea" : 
+    {
         switch (_side) do 
         {
             case west:
@@ -139,14 +139,14 @@ switch (_vehicleType) do
 //Objekt suchen in Array
 _Hardcap_pool apply
 {
-	_hardcapobj = _x select 0;
-	if (_class isEqualTo _hardcapobj) then 
-	{
-		_hardcapinfo = _x select 1;
-		_Hardcaparray = _x;       
-	}; 
+    _hardcapobj = _x select 0;
+    if (_class isEqualTo _hardcapobj) then 
+    {
+        _hardcapinfo = _x select 1;
+        _Hardcaparray = _x;       
+    }; 
 };
-	
+    
 if (_hardcapinfo > 0) then 
 {
     // Hardcap Erneuerung in Datensatz

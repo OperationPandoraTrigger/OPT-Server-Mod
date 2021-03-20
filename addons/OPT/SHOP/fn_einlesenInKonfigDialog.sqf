@@ -30,7 +30,7 @@ params
 [
     ["_type", ""],
     ["_modus", ""],
-	["_unitCost", 0]
+    ["_unitCost", 0]
 ];
 
 //Dialog Initalisieren
@@ -101,7 +101,7 @@ _Munitext4 ctrlEnable false;
 _Munitext5 ctrlEnable false;
 _Munitext6 ctrlEnable false;
 
-_kosten ctrlSetText format["€:%1",_unitCost];	
+_kosten ctrlSetText format["€:%1",_unitCost];    
 
 GVAR(veh) = "";
 
@@ -124,7 +124,7 @@ else
     GVAR(veh) = vehicle player;
     GVAR(vehType) = typeOf GVAR(veh);
     GVAR(Modus) = "old";
-	GVAR(unitCost) = 0;
+    GVAR(unitCost) = 0;
 };
 
 //Nanen und Bild ermittlung
@@ -139,13 +139,13 @@ GVAR(side) = civilian;
 GVAR(pylon) = [];
 
 //Typ ermitteln
-[] call FUNC(typfestellung);	
+[] call FUNC(typfestellung);    
 
 private _waffenMagazinArry  = [];
 GVAR(weaponsVeh) =[];
 GVAR(magazineVeh) =[];
 private _magazineVehArryNew=[];
-		
+        
 //auslesen und filtern bei alt Fahrzeug
 
 if (GVAR(Modus) == "old") then 
@@ -157,7 +157,7 @@ if (GVAR(Modus) == "old") then
     _IDD_vehKonfigOrder ctrlEnable true;
 
     // Vorhandenen Bewaffnung Filtern
-    _waffenMagazinArry = [GVAR(veh)] call FUNC(filter);	
+    _waffenMagazinArry = [GVAR(veh)] call FUNC(filter);    
 
     // Fahrzeugbesetzt button ausblenden
     _moveInVeh ctrlShow false;
@@ -253,7 +253,7 @@ else
     private _datalink = GVAR(boxArry) select 3 select 0;
 
     if (GVAR(vehType) isKindOf "Air") then 
-	{
+    {
         //Box1+2
         private _heli = [];
 
@@ -277,7 +277,7 @@ else
         };
 
         {
-            _index =_IDD_box1 lbAdd 	
+            _index =_IDD_box1 lbAdd     
             format["%1 €%2", _heli select _x select 4, _heli select _x select 3];
 
             _index =_IDD_box2 lbAdd 
@@ -328,7 +328,7 @@ else
                     
         //Box5+6
         if (_Rakmag > 2) then  
-		{
+        {
             {
                 _index =_IDD_box5 lbAdd 
                 format["%1 €%2", _heli select _x select 4, _heli select _x select 3];
@@ -426,7 +426,7 @@ else
 
         //Box5            
         if (_draht > 0) then 
-		{    
+        {    
             _index =_IDD_box5 lbAdd  
             format ["Drahtkäfig €%1", GVAR(preisDrahtkafig)];
 
@@ -437,9 +437,9 @@ else
 
         //Box6            
         if (_tarnung > 0) then 
-		{
+        {
             _index =_IDD_box6 lbAdd 
-			format ["Tarnung €%1", GVAR(preisTarnung)];
+            format ["Tarnung €%1", GVAR(preisTarnung)];
 
             _index =_IDD_box6 lbAdd "Leer";    
 
@@ -449,7 +449,7 @@ else
     
     //Box7            
     if (_datalink > 0) then  
-	{
+    {
         _index =_IDD_box7 lbAdd 
         format ["Datalink €%1", GVAR(preisDatalink)];  
 
@@ -457,8 +457,8 @@ else
            
         _IDD_box_text7 ctrlSetText "Datalink";
     };
-	
-    _kosten ctrlSetText format["€:%1", GVAR(VorhandeneBewaffnunggeld)-GVAR(unitCost)];	
+    
+    _kosten ctrlSetText format["€:%1", GVAR(VorhandeneBewaffnunggeld)-GVAR(unitCost)];    
 };  
 
 //InfoBox Erneuern bei änderung
@@ -557,11 +557,11 @@ _IDD_vehKonfigOrder ctrlAddEventHandler [ "ButtonClick",
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
        
     if (GVAR(Modus) == "New") then  
-	{
+    {
         _Gesamtkosten = [_Datensatz,GVAR(orderPAD),GVAR(moveInVeh),GVAR(unitCost)] call FUNC(order);
     }
-	else
-	{
+    else
+    {
         private _class = _Datensatz select 0;
         private _airGunweapon = [];
         private _airGunmagazin = [];
@@ -571,7 +571,7 @@ _IDD_vehKonfigOrder ctrlAddEventHandler [ "ButtonClick",
         private _vehMagazin = [];
 
         if (GVAR(veh) isKindOf "Air") then 
-	    {
+        {
             _airRaktenweapon = _Datensatz select 1;
             _airRaktenmagazin = _Datensatz select 2;
             _airGunweapon = _Datensatz select 3;
@@ -594,28 +594,28 @@ _IDD_vehKonfigOrder ctrlAddEventHandler [ "ButtonClick",
         private _zusatz = _Datensatz select 9;
         private _waffenkosten = _Datensatz select 10;
 
-		[GVAR(veh),
-		_airRaktenweapon,
-		_airRaktenmagazin,
-		_airGunweapon,
-		_airGunmagazin,
-		_vehWeapon,
-		_vehMagazin,
-		_pylon,
-		_raketencontrol,
-		_zusatz,
-		GVAR(weaponsVeh),
-		GVAR(magazineVeh)] call FUNC(arm);			
-		
-		if ((GVAR(VorhandeneBewaffnunggeld) - _waffenkosten) > 0) then 
-		{                
-			[getPlayerUID player, Name Player, playerSide, 0, GVAR(vehType), (GVAR(VorhandeneBewaffnunggeld) - _waffenkosten), "+", "weapons"] remoteExecCall ["OPT_GELDZEIT_fnc_updateBudget", 2, false];
+        [GVAR(veh),
+        _airRaktenweapon,
+        _airRaktenmagazin,
+        _airGunweapon,
+        _airGunmagazin,
+        _vehWeapon,
+        _vehMagazin,
+        _pylon,
+        _raketencontrol,
+        _zusatz,
+        GVAR(weaponsVeh),
+        GVAR(magazineVeh)] call FUNC(arm);            
+        
+        if ((GVAR(VorhandeneBewaffnunggeld) - _waffenkosten) > 0) then 
+        {                
+            [getPlayerUID player, Name Player, playerSide, 0, GVAR(vehType), (GVAR(VorhandeneBewaffnunggeld) - _waffenkosten), "+", "weapons"] remoteExecCall ["OPT_GELDZEIT_fnc_updateBudget", 2, false];
         } 
-		else 
-		{
-			[getPlayerUID player, Name Player, playerSide, 0, GVAR(vehType), ((GVAR(VorhandeneBewaffnunggeld) - _waffenkosten) * (-1)), "-", "weapons"] remoteExecCall ["OPT_GELDZEIT_fnc_updateBudget", 2, false];
-		};
-	};
+        else 
+        {
+            [getPlayerUID player, Name Player, playerSide, 0, GVAR(vehType), ((GVAR(VorhandeneBewaffnunggeld) - _waffenkosten) * (-1)), "-", "weapons"] remoteExecCall ["OPT_GELDZEIT_fnc_updateBudget", 2, false];
+        };
+    };
     closeDialog 0;
 }];
 
@@ -630,7 +630,7 @@ GVAR(idPadCheckKonfig) = [{
     // check der Pads ob belegt
     GVAR(pads) apply
     {
-	    private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], GVAR(Checkbereich)];
+        private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], GVAR(Checkbereich)];
             
         if (count _ob == 0) then 
         {
@@ -656,7 +656,7 @@ GVAR(idPadCheckKonfig) = [{
     };
 
     if (GVAR(Modus) == "old") then  
-	{
+    {
         _IDD_vehKonfigOrder ctrlEnable true;
     };   
 }, 0] call CFUNC(addPerFrameHandler);

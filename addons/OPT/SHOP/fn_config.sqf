@@ -39,8 +39,8 @@ GVAR(nato_vehicles) =
     ["OPT_B_T_LSV_01_armed_F", DEF_PROD(0)],                 // Prowler armed
     ["OPT_B_G_Offroad_01_F", DEF_PROD(0)],                   // Pickup
     ["OPT_B_G_Offroad_01_armed_F", DEF_PROD(0)],             // Pickup HMG
-	["OPT_B_MRAP_01_F", DEF_PROD(0)],                        // Hunter
-	["OPT4_B_MRAP_01_hmg_F", DEF_PROD(0)],                   // Hunter HMG
+    ["OPT_B_MRAP_01_F", DEF_PROD(0)],                        // Hunter
+    ["OPT4_B_MRAP_01_hmg_F", DEF_PROD(0)],                   // Hunter HMG
     ["OPT_B_Truck_01_covered_F", DEF_PROD(0)],               // HEMTT Transport
     ["OPT_B_Truck_01_Repair_F", DEF_PROD(0)],               // HEMTT Repair
     ["OPT_B_Truck_01_medical_F", DEF_PROD(0)],              // HEMTT Medical
@@ -52,23 +52,23 @@ GVAR(nato_vehicles) =
     ["OPT_B_T_LSV_01_armed_ghex_F", DEF_PROD(30000)],            // Prowler armed
     ["OPT_B_G_Offroad_01_ghex_F", DEF_PROD(0)],              // Pickup
     ["OPT_B_G_Offroad_01_armed_ghex_F", DEF_PROD(0)],           // Pickup HMG
-	["OPT_B_MRAP_01_ghex_F", DEF_PROD(15000)],                    // Hunter
-	["OPT4_B_MRAP_01_hmg_ghex_F", DEF_PROD(25000)],             // Hunter HMG
+    ["OPT_B_MRAP_01_ghex_F", DEF_PROD(15000)],                    // Hunter
+    ["OPT4_B_MRAP_01_hmg_ghex_F", DEF_PROD(25000)],             // Hunter HMG
     ["OPT_B_Truck_01_covered_ghex_F", DEF_PROD(5000)],          // HEMTT Transport
     ["OPT_B_Truck_01_Repair_ghex_F",  10000, 5000, 20000],          // HEMTT Repair
     ["OPT_B_Truck_01_medical_ghex_F", 10000, 5000, 20000],         // HEMTT Medical
-    ["OPT_B_Truck_01_transport_ghex_F", DEF_PROD(5000)]        // HEMTT  	
+    ["OPT_B_Truck_01_transport_ghex_F", DEF_PROD(5000)]        // HEMTT      
 ];
 
 GVAR(nato_vehicles_supply) = 
 [
-    ["OPT_B_Truck_01_ammo_F", DEF_PROD(0)],             			// HEMTT Ammo
-    ["OPT_B_Truck_01_fuel_F", DEF_PROD(0)],              		// HEMTT Fuel
+    ["OPT_B_Truck_01_ammo_F", DEF_PROD(0)],                         // HEMTT Ammo
+    ["OPT_B_Truck_01_fuel_F", DEF_PROD(0)],                      // HEMTT Fuel
 
 //Tropentarn
     ["OPT_B_Truck_01_ammo_ghex_F", 50000, 5000, 20000],            // HEMTT Ammo
-    ["OPT_B_Truck_01_fuel_ghex_F", 10000, 5000, 20000]             // HEMTT Fuel	
-];	
+    ["OPT_B_Truck_01_fuel_ghex_F", 10000, 5000, 20000]             // HEMTT Fuel    
+];    
   
 GVAR(nato_choppers) = 
 [
@@ -76,28 +76,28 @@ GVAR(nato_choppers) =
     ["OPT4_B_Heli_Light_01_armed_F", DEF_PROD(0)],              // AH-9 Pawnee 
     ["OPT4_B_Heli_light_03_green_F", 50000, 10000, 100000],          // WY-55 Hellcat
     ["OPT_B_Heli_Transport_01_F", DEF_PROD(0)],             // UH-80 Ghosthawk
-	["OPT_B_Heli_Transport_02_F", DEF_PROD(0)],           	// CH-49 Mohawk (Transport+Lift)
+    ["OPT_B_Heli_Transport_02_F", DEF_PROD(0)],               // CH-49 Mohawk (Transport+Lift)
     ["OPT_B_Heli_Transport_03_unarmed_F", DEF_PROD(110000)],    // CH-67 Huron unarmed (Transport+Lift)
     ["OPT_B_Heli_Transport_03_F", DEF_PROD(150000)],            // CH-67 Huron armed (Transport+Lift)
     ["OPT_B_UAV_02_light_F", DEF_PROD(300000)],                 // Greyhawk unbewaffnet
     ["OPT_B_UAV_02_CAS_F", DEF_PROD(0)],                        // Greyhawk LGB
     ["OPT_B_UAV_02_F", DEF_PROD(0)],                            // Greyhawk Raketen    
-	["OPT4_B_Heli_Attack_01_F", DEF_PROD(0)],                   // AH-99 Blackfoot 
-	["OPT_B_T_VTOL_01_infantry_F", DEF_PROD(0)],                // VTOL Blackfish (Inf-Transport) 
-    ["OPT_B_T_VTOL_01_vehicle_F", DEF_PROD(0)],         	    // VTOL Blackfish (Fahrzeug-Transport)
-    ["OPT_B_T_VTOL_02_infantry_unarmed_F", DEF_PROD(0)],   		// VTOL Y-32 Xi'an (Inf-Transport)
+    ["OPT4_B_Heli_Attack_01_F", DEF_PROD(0)],                   // AH-99 Blackfoot 
+    ["OPT_B_T_VTOL_01_infantry_F", DEF_PROD(0)],                // VTOL Blackfish (Inf-Transport) 
+    ["OPT_B_T_VTOL_01_vehicle_F", DEF_PROD(0)],                 // VTOL Blackfish (Fahrzeug-Transport)
+    ["OPT_B_T_VTOL_02_infantry_unarmed_F", DEF_PROD(0)],           // VTOL Y-32 Xi'an (Inf-Transport)
     ["OPT_B_Plane_CAS_01_F", DEF_PROD(0)],                      // A-164 Wipeout
     ["OPT_B_Plane_Fighter_01_Stealth_F", DEF_PROD(0)]               // F/A-181 Black Wasp II   
 ];
      
 GVAR(nato_armored) = 
 [
-	["OPT4_B_LSV_01_AT_F", DEF_PROD(0)],                     // Prowler AT 
-	["OPT4_B_MRAP_01_gmg_F", DEF_PROD(0)],                		// Hunter GMG 
+    ["OPT4_B_LSV_01_AT_F", DEF_PROD(0)],                     // Prowler AT 
+    ["OPT4_B_MRAP_01_gmg_F", DEF_PROD(0)],                        // Hunter GMG 
     ["OPT4_B_APC_Tracked_01_rcws_F", DEF_PROD(0)],          // IFV-6c Panther
     ["OPT4_B_APC_Wheeled_01_cannon_F", DEF_PROD(0)],        // AMV-7 Marshall    
     ["OPT4_B_APC_tracked_03_cannon_F", DEF_PROD(0)],        // FV-720 Mora   
-    ["OPT4_B_APC_Tracked_01_AA_F", DEF_PROD(0)],           // IFV-6a Cheetah	
+    ["OPT4_B_APC_Tracked_01_AA_F", DEF_PROD(0)],           // IFV-6a Cheetah    
     ["OPT4_B_MBT_01_cannon_F", DEF_PROD(0)],                    // M2A4 Slammer
     ["OPT4_B_MBT_01_TUSK_F", DEF_PROD(0)],                 // M2A4 SlammerUp
     ["OPT4_B_MBT_03_cannon_F", DEF_PROD(0)],                     // MBT-52 Kuma
@@ -105,17 +105,17 @@ GVAR(nato_armored) =
     ["OPT_B_MBT_01_mlrs_F", DEF_PROD(0)],                      // M5 Sandstorm    
 
 //Tropentarn
-	["OPT4_B_LSV_01_AT_ghex_F", DEF_PROD(80000)],                     // Prowler AT
-	["OPT4_B_MRAP_01_gmg_ghex_F", DEF_PROD(0)],                		// Hunter GMG
+    ["OPT4_B_LSV_01_AT_ghex_F", DEF_PROD(80000)],                     // Prowler AT
+    ["OPT4_B_MRAP_01_gmg_ghex_F", DEF_PROD(0)],                        // Hunter GMG
     ["OPT4_B_APC_Tracked_01_rcws_ghex_F", DEF_PROD(25000)],          // IFV-6c Panther
     ["OPT4_B_APC_Wheeled_01_cannon_ghex_F", DEF_PROD(50000)],        // AMV-7 Marshall    
     ["OPT4_B_APC_tracked_03_cannon_ghex_F", DEF_PROD(60000)],        // FV-720 Mora   
-    ["OPT4_B_APC_Tracked_01_AA_ghex_F", DEF_PROD(125000)],           // IFV-6a Cheetah	
+    ["OPT4_B_APC_Tracked_01_AA_ghex_F", DEF_PROD(125000)],           // IFV-6a Cheetah    
     ["OPT4_B_MBT_01_cannon_ghex_F", DEF_PROD(0)],                    // M2A4 Slammer
     ["OPT4_B_MBT_01_TUSK_ghex_F", DEF_PROD(125000)],                 // M2A4 SlammerUp
     ["OPT4_B_MBT_03_cannon_ghex_F", DEF_PROD(0)],                     // MBT-52 Kuma
     ["OPT4_B_MBT_01_Arty_ghex_F", DEF_PROD(300000)],                       // M4 Scorcher
-    ["OPT_B_MBT_01_mlrs_ghex_F", DEF_PROD(400000)]                      // M5 Sandstorm  	
+    ["OPT_B_MBT_01_mlrs_ghex_F", DEF_PROD(400000)]                      // M5 Sandstorm      
 ];
 
 GVAR(nato_supplies) = 
@@ -127,8 +127,8 @@ GVAR(nato_supplies) =
     ["OPT_NATO_Minienkiste", 150000, 10000, 20000],              // Minenkiste
     ["OPT_Box_NATO_WpsSpecial_AT_L1", 225000, 10000, 20000],     // AT Raketenkiste (MRAWS)
     ["OPT_Box_NATO_WpsSpecial_AT_L1A", 250000, 10000, 20000],     // AT Raketenkiste (MRAWS)
-	["OPT_Box_NATO_WpsSpecial_AT_L2" ,DEF_PROD(0)],     // AT Raketenkiste (PCML)
-	["OPT_Box_NATO_WpsSpecial_AT_H1", 350000, 10000, 20000],     // AT Raketenkiste (Titan)
+    ["OPT_Box_NATO_WpsSpecial_AT_L2" ,DEF_PROD(0)],     // AT Raketenkiste (PCML)
+    ["OPT_Box_NATO_WpsSpecial_AT_H1", 350000, 10000, 20000],     // AT Raketenkiste (Titan)
     ["OPT_Box_NATO_WpsSpecial_AA_F", 140000, 10000, 20000],      // AA Raketenkiste
     ["OPT_B_supplyCrate_F", DEF_PROD(0)],                     // Transportkiste (leer)
     ["OPT_B_CargoNet_01_ammo_F", DEF_PROD(5000)],               // Ausrstungskiste
@@ -136,10 +136,10 @@ GVAR(nato_supplies) =
     ["OPT_B_UGV_01_F", DEF_PROD(0)],                         // UGV Stomper
 
 //Tropentarn
-	["OPT_B_UGV_01_ghex_F", DEF_PROD(2000)],                         // UGV Stomper
+    ["OPT_B_UGV_01_ghex_F", DEF_PROD(2000)],                         // UGV Stomper
     ["OPT_B_UAV_01_F", DEF_PROD(0)],                            // Darter AR-2
     ["OPT_FlexibleTank_01_forest_F", DEF_PROD(1000)],           // Treibstoff-Fass
-	["OPT_B_Slingload_01_Ammo_F", 90000, 10000, 20000],        			 // Munitionscontainer
+    ["OPT_B_Slingload_01_Ammo_F", 90000, 10000, 20000],                     // Munitionscontainer
     ["OPT_B_Slingload_01_Fuel_F", DEF_PROD(8000)],              // Fuelcontainer
     ["OPT_B_Slingload_01_Repair_F", DEF_PROD(8000)],            // Reparaturcontainer
     ["OPT_B_Slingload_01_Medevac_F", DEF_PROD(0)],              // Lazarettcontainer, 5000       
@@ -173,12 +173,12 @@ GVAR(csat_vehicles) =
     ["OPT_O_Quadbike_01_F", DEF_PROD(0)],                    // Quadbike-
     ["OPT_O_T_LSV_02_unarmed_F", DEF_PROD(0)],               // Quilin unarmed 
     ["OPT_O_T_LSV_02_armed_F", DEF_PROD(0)],                 // Quilin armed 
-	["OPT_O_G_Offroad_01_F", DEF_PROD(0)],                   // Pickup
+    ["OPT_O_G_Offroad_01_F", DEF_PROD(0)],                   // Pickup
     ["OPT_O_G_Offroad_01_armed_F", DEF_PROD(0)],                // Pickup HMG
-	["OPT_O_MRAP_02_F", DEF_PROD(0)],                        // Ifrit-
-	["OPT_O_MRAP_02_hmg_F", DEF_PROD(0)],                  // Ifrit HMG
+    ["OPT_O_MRAP_02_F", DEF_PROD(0)],                        // Ifrit-
+    ["OPT_O_MRAP_02_hmg_F", DEF_PROD(0)],                  // Ifrit HMG
     ["OPT_O_Truck_03_covered_F", DEF_PROD(0)],               // Tempest Infanterie
-	["OPT_O_Truck_03_transport_F", DEF_PROD(0)],         // Tempest Logistik
+    ["OPT_O_Truck_03_transport_F", DEF_PROD(0)],         // Tempest Logistik
     ["OPT_O_Truck_03_repair_F", DEF_PROD(0)],               // Tempest Repair
     ["OPT_O_Truck_03_medical_F", DEF_PROD(0)],              // Tempest Medicalasa
 
@@ -186,12 +186,12 @@ GVAR(csat_vehicles) =
     ["OPT_O_T_Quadbike_01_ghex_F", DEF_PROD(10000)],                // Quadbike 
     ["OPT_O_T_LSV_02_unarmed_ghex_F", DEF_PROD(25000)],                  // Quilin unarmed 
     ["OPT_O_T_LSV_02_armed_ghex_F", DEF_PROD(35000)],                    // Quilin armed 
-	["OPT_O_G_Offroad_01_ghex_F", DEF_PROD(0)],                      // Pickup
+    ["OPT_O_G_Offroad_01_ghex_F", DEF_PROD(0)],                      // Pickup
     ["OPT_O_G_Offroad_01_armed_F", DEF_PROD(0)],                // Pickup HMG
-	["OPT_O_T_MRAP_02_ghex_F", DEF_PROD(20000)],                    // Ifrit 
+    ["OPT_O_T_MRAP_02_ghex_F", DEF_PROD(20000)],                    // Ifrit 
     ["OPT_O_T_MRAP_02_hmg_ghex_F", DEF_PROD(80000)],                // Ifrit HMG 
     ["OPT_O_T_Truck_02_F", DEF_PROD(5000)],           // Zamack Infanterie
-	["OPT_O_T_Truck_02_transport_F", DEF_PROD(5000)],         // Zamack Logistik
+    ["OPT_O_T_Truck_02_transport_F", DEF_PROD(5000)],         // Zamack Logistik
     ["OPT_O_T_Truck_02_box_F", 10000,5000,10000],            // Zamack Repair
     ["OPT_O_T_Truck_02_Medical_F", DEF_PROD(6000)]          // Zamack Medical
 ];
@@ -212,54 +212,54 @@ GVAR(csat_choppers) =
     ["OPT_O_Heli_Light_03_unarmed_F", DEF_PROD(0)],             // WY-55 Hellcat
     ["OPT4_O_Heli_light_03_F", DEF_PROD(0)],                    // WY-55 Hellcat
     ["OPT_O_Heli_Light_02_unarmed_F", 40000,10000,20000],             // PO-30 Orca
-    ["OPT_O_Heli_Light_02_v2_F", 200000,10000,20000],       			// PO-30 Orca Cas Light
-    ["OPT_O_Heli_Light_02_v3_F", 400000,10000,20000],       			// PO-30 Orca Cas Heavy
+    ["OPT_O_Heli_Light_02_v2_F", 200000,10000,20000],                   // PO-30 Orca Cas Light
+    ["OPT_O_Heli_Light_02_v3_F", 400000,10000,20000],                   // PO-30 Orca Cas Heavy
     ["OPT_O_Heli_Transport_04_covered_F", 45000,10000,20000],    // Mi-290 Taru (Transport)
     ["OPT_O_Heli_Transport_04_F", DEF_PROD(0)],    // Mi-290 Taru (Lift)
     ["OPT_O_Heli_Transport_04_fuel_F", 15000,10000,20000],    // Mi-290 Taru (Fuel)
     ["OPT_O_Heli_Transport_04_box_F", 15000,10000,20000],    // Mi-290 Taru (Rep)
     ["OPT_O_Heli_Transport_04_ammo_F", 55000,10000,20000],    // Mi-290 Taru (Muni)
-	["OPT_O_Heli_Transport_02_F", DEF_PROD(0)],            // CH-49 Mohawk (Transport+Lift)
+    ["OPT_O_Heli_Transport_02_F", DEF_PROD(0)],            // CH-49 Mohawk (Transport+Lift)
     ["OPT_O_UAV_02_light_F", DEF_PROD(0)],                 // Ababil unbewaffnet
     ["OPT_O_UAV_02_CAS_F", DEF_PROD(0)],                        // Ababil GBU-12
     ["OPT_O_UAV_02_F", DEF_PROD(0)],                            // Ababil Scalpel 
     ["OPT4_O_Heli_Attack_02_F", DEF_PROD(0)],                   // Mi-48 Kajman    
-    ["OPT_O_T_VTOL_02_infantry_unarmed_F", DEF_PROD(0)],   		// VTOL Y-32 Xi'an (Inf-Transport)
+    ["OPT_O_T_VTOL_02_infantry_unarmed_F", DEF_PROD(0)],           // VTOL Y-32 Xi'an (Inf-Transport)
     ["OPT_O_T_VTOL_02_vehicle_unarmed_F", DEF_PROD(0)],         // VTOL Y-32 Xi'an (Fahrzeug-Transport) 
-    ["OPT_O_T_VTOL_01_vehicle_F", DEF_PROD(0)],            		// VTOL Blackfish (Fahrzeug-Transport)
+    ["OPT_O_T_VTOL_01_vehicle_F", DEF_PROD(0)],                    // VTOL Blackfish (Fahrzeug-Transport)
     ["OPT_O_Plane_CAS_02_F", DEF_PROD(0)],                      // To-199 Neophron
-	["OPT_O_Plane_Fighter_AA_02_F", DEF_PROD(0)],              	// To-201 Shikra 
+    ["OPT_O_Plane_Fighter_AA_02_F", DEF_PROD(0)],                  // To-201 Shikra 
     ["OPT_O_Plane_CAS_01_F_1" , DEF_PROD(0)],                  // Wipeout CAS 400000
-	["OPT_O_Plane_Fighter_01_Stealth_F", DEF_PROD(0)]          // F/A-181 Black Wasp II  
+    ["OPT_O_Plane_Fighter_01_Stealth_F", DEF_PROD(0)]          // F/A-181 Black Wasp II  
 ];
     
 GVAR(csat_armored) = 
 [
 //Vanilla
-	["OPT_O_MRAP_02_gmg_F", DEF_PROD(0)],                  // Ifrit GMG
-	["OPT_O_LSV_02_AT_F", DEF_PROD(0)],                    // Quilin AT 
+    ["OPT_O_MRAP_02_gmg_F", DEF_PROD(0)],                  // Ifrit GMG
+    ["OPT_O_LSV_02_AT_F", DEF_PROD(0)],                    // Quilin AT 
     ["OPT_O_APC_Wheeled_02_rcws_F", DEF_PROD(0)],          // MSE-3 Marid 
     ["OPT_O_APC_Wheeled_03_cannon_F", DEF_PROD(0)],       // AFV-4 Gorgon
-	["OPT_O_APC_Tracked_02_cannon_F", DEF_PROD(0)],       // BTR-K Kamysh
-	["OPT_O_APC_Tracked_02_AA_F", DEF_PROD(0)],           // ZSU-39 Tigris
+    ["OPT_O_APC_Tracked_02_cannon_F", DEF_PROD(0)],       // BTR-K Kamysh
+    ["OPT_O_APC_Tracked_02_AA_F", DEF_PROD(0)],           // ZSU-39 Tigris
     ["OPT_O_MBT_02_cannon_F", DEF_PROD(0)],               // T-100 Varsuk
     ["OPT_O_MBT_02_arty_F", DEF_PROD(0)],                 // 2S9 Sochor
     ["OPT_O_Truck_02_MRL_F", DEF_PROD(0)],                 // Zamark MRL 
     ["OPT_O_MBT_04_cannon_F", DEF_PROD(0)],               // T-140 Angara
 
 //Tropentarn
-	["OPT_O_MRAP_02_gmg_ghex_F", DEF_PROD(0)],                  // Ifrit GMG
-	["OPT_O_LSV_02_AT_GHEX_F", DEF_PROD(250000)],                    // Quilin AT 
+    ["OPT_O_MRAP_02_gmg_ghex_F", DEF_PROD(0)],                  // Ifrit GMG
+    ["OPT_O_LSV_02_AT_GHEX_F", DEF_PROD(250000)],                    // Quilin AT 
     ["OPT_O_T_APC_Wheeled_02_rcws_ghex_F", DEF_PROD(0)],       // MSE-3 Marid 
     ["OPT_O_T_APC_Wheeled_01_cannon_F_INF", DEF_PROD(300000)],       // Marchall Infanterie
-    ["OPT_O_APC_Wheeled_03_cannon_ghex_F", DEF_PROD(0)],       		// AFV-4 Gorgon 
-	["OPT_O_T_APC_Tracked_02_cannon_ghex_F_VEH", DEF_PROD(350000)],     // BTR-K Kamysh Fahrzeug
+    ["OPT_O_APC_Wheeled_03_cannon_ghex_F", DEF_PROD(0)],               // AFV-4 Gorgon 
+    ["OPT_O_T_APC_Tracked_02_cannon_ghex_F_VEH", DEF_PROD(350000)],     // BTR-K Kamysh Fahrzeug
     ["OPT_O_T_APC_Tracked_02_cannon_ghex_F_AT", DEF_PROD(400000)],     // BTR-K Kamysh Tank
     ["OPT_O_T_APC_Tracked_02_AA_ghex_F", DEF_PROD(320000)],         // ZSU-39 Tigris 
     ["OPT_O_T_MBT_02_cannon_ghex_F_INF", DEF_PROD(400000)],             // T-100 Varsuk Infanterie
     ["OPT_O_T_MBT_02_cannon_ghex_F_AT", DEF_PROD(500000)],             // T-100 Varsuk Fahrzeug
     ["OPT_O_T_MBT_02_arty_ghex_F", DEF_PROD(350000)],               // 2S9 Sochor 
-	["OPT_O_Truck_02_MRL_ghex_F", DEF_PROD(400000)]                 // Zamark MRL  
+    ["OPT_O_Truck_02_MRL_ghex_F", DEF_PROD(400000)]                 // Zamark MRL  
 ];
 
 GVAR(csat_supplies) = 
@@ -273,13 +273,13 @@ GVAR(csat_supplies) =
     ["OPT_Box_East_WpsSpecial_AT_L1", 200000, 1000, 2000],                         // AT Raketenkiste (RPG-42)
     ["OPT_Box_East_WpsSpecial_AT_L3", 225000, 1000, 2000],                         // AT Raketenkiste (MAAWS)
     ["OPT_Box_East_WpsSpecial_AT_L3A", 250000, 1000, 2000],                         // AT Raketenkiste (MAAWS)
-	["OPT_Box_East_WpsSpecial_AT_L2", 101000, 1000, 2000],                  // AT Raketenkiste (RPG-7)
-	["OPT_Box_East_WpsSpecial_AT_H1", DEF_PROD(0)],                  // AT Raketenkiste (9M135 Vorona)
+    ["OPT_Box_East_WpsSpecial_AT_L2", 101000, 1000, 2000],                  // AT Raketenkiste (RPG-7)
+    ["OPT_Box_East_WpsSpecial_AT_H1", DEF_PROD(0)],                  // AT Raketenkiste (9M135 Vorona)
     ["OPT_Box_East_WpsSpecial_AA_F", 150000, 1000, 2000],                  // AA Raketenkiste
     ["OPT_O_supplyCrate_F", DEF_PROD(0)],                                 // Transportkiste
     ["OPT_O_CargoNet_01_ammo_F", 5000,1000, 2000],                           // Ausrüstungskiste
     ["OPT_Box_East_WpsSpecial_Diver_F", 5000,1000, 2000],                    // Taucherkiste
-	["OPT_O_UGV_01_F", DEF_PROD(0)],                                     // UGV Saif
+    ["OPT_O_UGV_01_F", DEF_PROD(0)],                                     // UGV Saif
 
 //Tropentarn
     ["OPT_O_T_UGV_01_ghex_F", DEF_PROD(0)],                                 // UGV Saif    
@@ -288,7 +288,7 @@ GVAR(csat_supplies) =
     ["OPT_Land_Pod_Heli_Transport_04_fuel_F", DEF_PROD(0)],              // Fuelcontainer
     ["OPT_Land_Pod_Heli_Transport_04_ammo_F", DEF_PROD(0)],        // Munitionscontainer
     ["OPT_Land_Pod_Heli_Transport_04_repair_F", DEF_PROD(0)],            // Reparaturcontainer - 8000 aktuell raus wegen nix funktional!
-	["OPT_Land_Pod_Heli_Transport_04_medevac_F", DEF_PROD(0)]             // Lazarettcontainer
+    ["OPT_Land_Pod_Heli_Transport_04_medevac_F", DEF_PROD(0)]             // Lazarettcontainer
 ];
 
 GVAR(csat_static) = 
@@ -317,8 +317,8 @@ GVAR(AAF_vehicles) =
     ["OPT_I_Quadbike_01_F", DEF_PROD(10000)],                    // Quadbike
     ["OPT_I_C_Offroad_02_unarmed_F", DEF_PROD(18000)],               // Jeep unarmed 
     ["OPT_I_C_Offroad_02_LMG_F", DEF_PROD(25000)],                 // Jeeg MG
-	["OPT_I_MRAP_03_F", DEF_PROD(20000)],                        // Strider
-	["OPT_I_MRAP_03_hmg_F", DEF_PROD(80000)],                   // Strider HMG
+    ["OPT_I_MRAP_03_F", DEF_PROD(20000)],                        // Strider
+    ["OPT_I_MRAP_03_hmg_F", DEF_PROD(80000)],                   // Strider HMG
     ["OPT_I_Truck_02_covered_F", DEF_PROD(5000)],               // Zamak Transport
     ["OPT_I_Truck_02_box_F", 10000,5000,10000],               // Zamak Repair
     ["OPT_I_Truck_02_transport_F", DEF_PROD(5000)],               // Zamak   
@@ -328,34 +328,34 @@ GVAR(AAF_vehicles) =
 // Fahrzeuge dieser Liste können nicht verkauft werden!
 GVAR(AAF_vehicles_supply) = 
 [
-    ["OPT_I_Truck_02_ammo_F", 50000,5000,10000],             			// Zamak Ammo
-    ["OPT_I_Truck_02_fuel_F", 10000,5000,10000],              		// Zamak Fuel
-    ["OPT_B_Slingload_01_Ammo_F", 50000,5000,10000],              		// Slinglot Muni Container
-    ["OPT_B_Slingload_01_Repair_F", DEF_PROD(0)],              		// Slinglot Rep Container
-    ["OPT_B_Slingload_01_Fuel_F", 10000,5000,10000]              		// Slinglot Fuel Container
-];	
+    ["OPT_I_Truck_02_ammo_F", 50000,5000,10000],                         // Zamak Ammo
+    ["OPT_I_Truck_02_fuel_F", 10000,5000,10000],                      // Zamak Fuel
+    ["OPT_B_Slingload_01_Ammo_F", 50000,5000,10000],                      // Slinglot Muni Container
+    ["OPT_B_Slingload_01_Repair_F", DEF_PROD(0)],                      // Slinglot Rep Container
+    ["OPT_B_Slingload_01_Fuel_F", 10000,5000,10000]                      // Slinglot Fuel Container
+];    
   
 GVAR(AAF_choppers) = 
 [
     ["OPT_I_Heli_light_03_v2_F", 200000,10000,20000],                 // WY-55 Hellcat Cas Light
     ["OPT_I_Heli_light_03_v3_F", 400000,10000,20000],                 // WY-55 Hellcat Cas Heavy
     ["OPT_I_Heli_light_03_unarmed_F", 40000,10000,20000],          // WY-55 Hellcat Unbewaffnet
-	["OPT_I_Heli_Transport_02_F", 45000,10000,20000],           	    // CH-49 Mohawk (Transport+Lift)
+    ["OPT_I_Heli_Transport_02_F", 45000,10000,20000],                   // CH-49 Mohawk (Transport+Lift)
     ["OPT_I_UAV_02_light_F", DEF_PROD(0)]                 // Greyhawk unbewaffnet
 ];
      
 GVAR(AAF_armored) = 
 [
-	["OPT_I_LSV_01_AT_ghex_F", DEF_PROD(250000)],                     // Jeep AT 
-	["OPT_I_MRAP_03_gmg_F", DEF_PROD(0)],                		// Strider GMG 
+    ["OPT_I_LSV_01_AT_ghex_F", DEF_PROD(250000)],                     // Jeep AT 
+    ["OPT_I_MRAP_03_gmg_F", DEF_PROD(0)],                        // Strider GMG 
     ["OPT_I_APC_tracked_03_cannon_F_INF", DEF_PROD(300000)],        // FV-720 Mora Infanterie   
     ["OPT_I_APC_Wheeled_03_cannon_F_VEH", DEF_PROD(350000)],        // Gorgon Fahrzeug  
     ["OPT_I_APC_Wheeled_03_cannon_F_AT", DEF_PROD(400000)],        // Gorgon Tank
-    ["OPT_I_APC_Tracked_01_AA_ghex_F", DEF_PROD(320000)],                     // AA cheetah	
+    ["OPT_I_APC_Tracked_01_AA_ghex_F", DEF_PROD(320000)],                     // AA cheetah    
     ["OPT_I_MBT_03_cannon_F_INF", DEF_PROD(400000)],                     // MBT-52 Kuma Infanterie
     ["OPT_I_MBT_03_cannon_F_AT", DEF_PROD(500000)],                     // MBT-52 Kuma Fahrzeug
     ["OPT_I_MBT_01_arty_ghex_F", DEF_PROD(350000)],                     // Scorcher Arty
-    ["OPT_I_Truck_02_MRL_F", DEF_PROD(400000)]                      // Zamak Arty		
+    ["OPT_I_Truck_02_MRL_F", DEF_PROD(400000)]                      // Zamak Arty        
 ];
 
 GVAR(AAF_supplies) = 
@@ -367,7 +367,7 @@ GVAR(AAF_supplies) =
     ["OPT_EAF_Sprengstoffkiste", 200000, 1000, 2000],        // sprengstoffkiste
     ["OPT_EAF_Minenkiste", 80000, 1000, 2000],               // Minenkiste
     ["OPT_Box_EAF_WpsSpecial_AT_L2", 101000, 1000, 2000],     // AT Raketenkiste (RPG7)
-	["OPT_Box_EAF_WpsSpecial_AT_L1" ,225000, 1000, 2000],              // AT Raketenkiste (MAAWS)
+    ["OPT_Box_EAF_WpsSpecial_AT_L1" ,225000, 1000, 2000],              // AT Raketenkiste (MAAWS)
     ["OPT_Box_EAF_WpsSpecial_AT_L1A" ,250000, 1000, 2000],              // AT Raketenkiste (MAAWS)
     ["OPT_Box_EAF_WpsSpecial_AT_L3" ,200000, 1000, 2000],              // AT Raketenkiste (RPG-42)
     ["OPT_Box_EAF_WpsSpecial_AA_F", 150000, 1000, 2000],      // AA Raketenkiste
@@ -516,9 +516,9 @@ GVAR(gunVehWest) =
     ["6Rnd_155mm_Mo_smoke", "OPT_mortar_155mm_AMOS", 500, 3000, "6xSmoke"],  //  42.6xSmoke 
     ["Vorona_HEAT", "missiles_Vorona", 500, 250000, "1xVorona-HEAT"],  //  43.vorona-test KalleK 
     ["Vorona_HE", "missiles_Vorona", 500, 150000, "1xVorona-HE"],  //  44.vorona-test KalleK 
-	["28Rnd_120mm_APFSDS_shells", "cannon_120mm", 5000, 140000, "28x120mm APFSDS"],  //  45.28x120mm APFSDS
-	["20Rnd_125mm_APFSDS", "cannon_125mm", 6000, 120000, "20x125mm APFSDS"],  //  46.20x125mm APFSDS
-	["12Rnd_120mm_HE_shells", "cannon_120mm", 3000, 36000, "12x120mm HE"],  //  47.12x120mm HE
+    ["28Rnd_120mm_APFSDS_shells", "cannon_120mm", 5000, 140000, "28x120mm APFSDS"],  //  45.28x120mm APFSDS
+    ["20Rnd_125mm_APFSDS", "cannon_125mm", 6000, 120000, "20x125mm APFSDS"],  //  46.20x125mm APFSDS
+    ["12Rnd_120mm_HE_shells", "cannon_120mm", 3000, 36000, "12x120mm HE"],  //  47.12x120mm HE
     ["4Rnd_70mm_SAAMI_missiles", "missiles_SAAMI", 12500, 50000, "4xSAAMI Missile"]  //  48.4xSAAMI Missile
 ];
 
@@ -579,14 +579,14 @@ GVAR(gunVehEast) =
     ["60Rnd_30mm_APFSDS_shells", "OPT_autocannon_30mm_CTWS", 400, 24000, "60x30 mm APFSDS"],  //  13.60x30 mm APFSDS
     ["60Rnd_40mm_GPR_shells", "OPT_autocannon_40mm_CTWS", 200, 12000, "60x40 mm HE"],  //  14.60x40 mm HE
     ["40Rnd_40mm_APFSDS_shells", "OPT_autocannon_40mm_CTWS", 700, 28000, "40x40 mm APFSDS"],  //  15.40x40 mm APFSDS
-    ["2Rnd_GAT_missiles", "OPT_missiles_titan", 50000, 100000, "2xTitan AT"],  //  16.2xTitan AT  					
-    ["1Rnd_GAT_missiles", "OPT_missiles_titan_static", 50000, 50000, "1xTitan AT"],  //  17.1xTitan AT					
+    ["2Rnd_GAT_missiles", "OPT_missiles_titan", 50000, 100000, "2xTitan AT"],  //  16.2xTitan AT                      
+    ["1Rnd_GAT_missiles", "OPT_missiles_titan_static", 50000, 50000, "1xTitan AT"],  //  17.1xTitan AT                    
     ["SPG9_HEAT", "launcher_SPG9", 25000, 25000, "1xSPG-9 HEAT"],  //  18.1xSPG-9 HEAT
     ["SPG9_HE", "launcher_SPG9", 1000, 1000, "1xSPG-9 HE"],  //  19.1xSPG-9 HE
     ["OPT_680Rnd_35mm_AA_shells_Tracer_Red", "OPT_autocannon_35mm", 100, 68000, "680xFlak 35 mm"],  //  20.680xFlak 35 mm
     ["OPT_1200Rnd_35mm_AA_shells_Tracer_Red", "OPT_autocannon_35mm", 100, 120000, "1200xFlak 35 mm"],  //  20.1200xFlak 35 mm
-    ["4Rnd_Titan_long_missiles", "OPT_missiles_titan_AA", 12500, 50000, "4xTitan AA"],  //  22.4xTitan AA				
-    ["2Rnd_Titan_long_missiles", "OPT_missiles_titan_AA", 12500, 25000, "2xTitan AA"],  //  23.2xTitan AA				
+    ["4Rnd_Titan_long_missiles", "OPT_missiles_titan_AA", 12500, 50000, "4xTitan AA"],  //  22.4xTitan AA                
+    ["2Rnd_Titan_long_missiles", "OPT_missiles_titan_AA", 12500, 25000, "2xTitan AA"],  //  23.2xTitan AA                
     ["32Rnd_120mm_APFSDS_shells", "cannon_120mm", 5000, 160000, "32x120mm APFSDS"],  //  24.32x120mm APFSDS
     ["30Rnd_120mm_HE_shells", "cannon_120mm", 3000, 90000, "30x120mm HE"],  //  25.30x120mm HE
     ["20Rnd_120mm_HEAT_MP", "cannon_120mm", 4500, 90000, "20x120mm HEAT"],  //  26.20x120mm HEAT
@@ -608,9 +608,9 @@ GVAR(gunVehEast) =
     ["6Rnd_155mm_Mo_smoke", "OPT_mortar_155mm_AMOS", 500, 3000, "6xSmoke"],  //  42.6xSmoke 
     ["Vorona_HEAT", "missiles_Vorona", 500, 250000, "1xVorona-HEAT"],  //  43.vorona-test KalleK 
     ["Vorona_HE", "missiles_Vorona", 500, 150000, "1xVorona-HE"],  //  44.vorona-test KalleK 
-	["28Rnd_120mm_APFSDS_shells", "cannon_120mm", 5000, 140000, "28x120mm APFSDS"],  //  45.28x120mm APFSDS
-	["20Rnd_125mm_APFSDS", "cannon_125mm", 6000, 120000, "20x125mm APFSDS"],  //  46.20x125mm APFSDS
-	["12Rnd_120mm_HE_shells", "cannon_120mm", 3000, 36000, "12x120mm HE"],  //  47.12x120mm HE
+    ["28Rnd_120mm_APFSDS_shells", "cannon_120mm", 5000, 140000, "28x120mm APFSDS"],  //  45.28x120mm APFSDS
+    ["20Rnd_125mm_APFSDS", "cannon_125mm", 6000, 120000, "20x125mm APFSDS"],  //  46.20x125mm APFSDS
+    ["12Rnd_120mm_HE_shells", "cannon_120mm", 3000, 36000, "12x120mm HE"],  //  47.12x120mm HE
     ["4Rnd_70mm_SAAMI_missiles", "missiles_SAAMI", 12500, 50000, "4xSAAMI Missile"]  //  48.4xSAAMI Missile
 ];
 
@@ -700,9 +700,9 @@ GVAR(gunVehindependent) =
     ["6Rnd_155mm_Mo_smoke", "OPT_mortar_155mm_AMOS", 500, 3000, "6xSmoke"],  //  42.6xSmoke 
     ["Vorona_HEAT", "missiles_Vorona", 500, 250000, "1xVorona-HEAT"],  //  43.vorona-test KalleK 
     ["Vorona_HE", "missiles_Vorona", 500, 150000, "1xVorona-HE"],  //  44.vorona-test KalleK 
-	["28Rnd_120mm_APFSDS_shells", "cannon_120mm", 5000, 140000, "28x120mm APFSDS"],  //  45.28x120mm APFSDS
-	["20Rnd_125mm_APFSDS", "cannon_125mm", 6000, 120000, "20x125mm APFSDS"],  //  46.20x125mm APFSDS
-	["12Rnd_120mm_HE_shells", "cannon_120mm", 3000, 36000, "12x120mm HE"],  //  47.12x120mm HE
+    ["28Rnd_120mm_APFSDS_shells", "cannon_120mm", 5000, 140000, "28x120mm APFSDS"],  //  45.28x120mm APFSDS
+    ["20Rnd_125mm_APFSDS", "cannon_125mm", 6000, 120000, "20x125mm APFSDS"],  //  46.20x125mm APFSDS
+    ["12Rnd_120mm_HE_shells", "cannon_120mm", 3000, 36000, "12x120mm HE"],  //  47.12x120mm HE
     ["4Rnd_70mm_SAAMI_missiles", "missiles_SAAMI", 12500, 50000, "4xSAAMI Missile"]  //  48.4xSAAMI Missile
 ];
 
@@ -762,7 +762,7 @@ GVAR(vehClassWestWW) =
 [
    "OPT4_B_MRAP_01_gmg_F",
     "OPT4_B_MRAP_01_hmg_F",
-	"OPT4_B_LSV_01_AT_F",
+    "OPT4_B_LSV_01_AT_F",
     "OPT4_B_Heli_Light_01_armed_F",
     "OPT4_B_Heli_light_03_green_F",
     "OPT4_B_Heli_Attack_01_F",
@@ -778,7 +778,7 @@ GVAR(vehClassWestWW) =
 //Tropentarn
     "OPT4_B_MRAP_01_gmg_ghex_F",
     "OPT4_B_MRAP_01_hmg_ghex_F",
-	"OPT4_B_LSV_01_AT_ghex_F",
+    "OPT4_B_LSV_01_AT_ghex_F",
     "OPT4_B_Heli_Light_01_armed_F",
     "OPT4_B_Heli_light_03_green_F",
     "OPT4_B_Heli_Attack_01_F",
@@ -789,42 +789,42 @@ GVAR(vehClassWestWW) =
     "OPT4_B_MBT_01_cannon_ghex_F",
     "OPT4_B_MBT_01_TUSK_ghex_F",
     "OPT4_B_MBT_01_arty_ghex_F",
-    "OPT4_B_MBT_03_cannon_ghex_F"		
+    "OPT4_B_MBT_03_cannon_ghex_F"        
 ];
 
 GVAR(vehClassEastWW) = 
 [
     "OPT4_O_MRAP_02_hmg_F", 
     "OPT4_O_MRAP_02_gmg_F",
-	"OPT4_O_LSV_02_AT_F",	
+    "OPT4_O_LSV_02_AT_F",    
     "OPT4_O_Heli_light_03_F",
     "OPT4_O_Heli_Light_02_F",
-    "OPT4_O_Heli_Attack_02_F",	
+    "OPT4_O_Heli_Attack_02_F",    
     "OPT4_O_APC_Wheeled_02_rcws_F",
-	"OPT4_O_APC_Wheeled_03_cannon_F",
-	"OPT4_O_APC_Tracked_02_cannon_F",
-	"OPT4_O_APC_Tracked_02_AA_F",
-	"OPT4_O_MBT_02_cannon_F",
-	"OPT4_O_MBT_02_arty_F",
+    "OPT4_O_APC_Wheeled_03_cannon_F",
+    "OPT4_O_APC_Tracked_02_cannon_F",
+    "OPT4_O_APC_Tracked_02_AA_F",
+    "OPT4_O_MBT_02_cannon_F",
+    "OPT4_O_MBT_02_arty_F",
     "OPT4_O_MBT_04_cannon_F",
 
 //Tropentarn
-	"OPT4_O_T_MRAP_02_hmg_ghex_F", 
+    "OPT4_O_T_MRAP_02_hmg_ghex_F", 
     "OPT4_O_MRAP_02_gmg_ghex_F",
-	"OPT4_O_LSV_02_AT_GHEX_F",
+    "OPT4_O_LSV_02_AT_GHEX_F",
     "OPT4_O_T_APC_Wheeled_02_rcws_ghex_F",
-	"OPT4_O_APC_Wheeled_03_cannon_ghex_F",
+    "OPT4_O_APC_Wheeled_03_cannon_ghex_F",
     "OPT4_O_T_APC_Tracked_02_cannon_ghex_F",
     "OPT4_O_T_APC_Tracked_02_AA_ghex_F",
-    "OPT4_O_T_MBT_02_cannon_ghex_F",	
-    "OPT4_O_T_MBT_02_arty_ghex_F"	
+    "OPT4_O_T_MBT_02_cannon_ghex_F",    
+    "OPT4_O_T_MBT_02_arty_ghex_F"    
 ];
 
 GVAR(vehClassindependentWW) = 
 [
     "OPT4_I_MRAP_03_gmg_F",
     "OPT4_I_MRAP_03_hmg_F",
-	"OPT4_I_C_Offroad_02_AT_F",
+    "OPT4_I_C_Offroad_02_AT_F",
     "OPT_I_Heli_light_03_F",
     "OPT4_I_APC_tracked_03_cannon_F",
     "OPT4_I_APC_Wheeled_03_cannon_F",

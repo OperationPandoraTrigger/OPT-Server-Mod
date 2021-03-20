@@ -117,8 +117,8 @@ for "_i" from 0 to SHOPBUTTONANZAHL do
 
 switch (GVAR(vehicleType)) do 
 {
-	case "choppers" : 
-	{
+    case "choppers" : 
+    {
         switch (_side) do 
         {
             case west:
@@ -153,8 +153,8 @@ switch (GVAR(vehicleType)) do
         _konfig ctrlEnable true;       
     };
 
-	case "vehicles":
-	{
+    case "vehicles":
+    {
         switch (_side) do 
         {
             case west:
@@ -186,8 +186,8 @@ switch (GVAR(vehicleType)) do
         _konfig ctrlEnable true;       
     };
 
-	case "supplies" : 
-	{
+    case "supplies" : 
+    {
         switch (_side) do 
         {
             case west:
@@ -222,8 +222,8 @@ switch (GVAR(vehicleType)) do
         _moveInVeh ctrlShow false;        
     };
 
-	case "sea":
-	{
+    case "sea":
+    {
         switch (_side) do 
         {
             case west:
@@ -327,17 +327,17 @@ for "_i" from 0 to (_Objektanzahl-1) do
 switch (_side) do 
 {
     case west: 
-	{
+    {
         _rscPicture ctrlSetText "\A3\Data_F\Flags\Flag_NATO_CO.paa";
     };
 
     case east: 
-	{
+    {
         _rscPicture ctrlSetText "\A3\Data_F\Flags\Flag_CSAT_CO.paa";
     };  
 
     case independent: 
-	{
+    {
         _rscPicture ctrlSetText "\A3\Data_F\Flags\Flag_AAF_CO.paa";
     };    
 };
@@ -355,7 +355,7 @@ GVAR(idPadCheckShop) =
     // check der Pads ob belegt
     GVAR(pads) apply 
     {
-	    private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], GVAR(Checkbereich)];
+        private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], GVAR(Checkbereich)];
             
         if (count _ob == 0) then 
         {
@@ -384,7 +384,7 @@ GVAR(idPadCheckShop) =
 // Kauf ausführen  
 _order ctrlAddEventHandler [ "ButtonClick", 
 {
-	private _unitCost = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1);
+    private _unitCost = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1);
     private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
 
     private _Datensatz = [];
@@ -406,7 +406,7 @@ _order ctrlAddEventHandler [ "ButtonClick",
 // Konfig ausführen  
 _konfig ctrlAddEventHandler [ "ButtonClick", 
 {
-	private _unitCost = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1);
+    private _unitCost = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1);
     private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
 
     closeDialog 0;

@@ -49,7 +49,7 @@ GVAR(waffenruheFlagMarkers) = [];
             case "AAFvsCSAT" : 
             {
                 switch (playerSide) do 
-		        {
+                {
                     case east: 
                     {
                         // Flaggenpunkte die zur Auswahl stehen
@@ -101,7 +101,7 @@ GVAR(waffenruheFlagMarkers) = [];
             case "NATOvsCSAT" : 
             {
                 switch (playerSide) do 
-		        {
+                {
                     case west: 
                     {
                         // Flaggenpunkte die zur Auswahl stehen
@@ -153,7 +153,7 @@ GVAR(waffenruheFlagMarkers) = [];
             case "NATOvsAAF" : 
             {
                 switch (playerSide) do 
-		        {
+                {
                     case west: 
                     {
                         // Flaggenpunkte die zur Auswahl stehen

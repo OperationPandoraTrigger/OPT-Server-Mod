@@ -34,19 +34,19 @@ private _pcs = [AAF_Drohnenstation, CSAT_Drohnenstation];
                     player setVariable [QGVAR(loggedInStation), _terminal];
                     
                     if (PLAYERSIDE == west) then 
-					{
+                    {
                         player removeWeapon "ItemGPS";
                         player addWeapon "B_UavTerminal";
                     };
 
                     if (PLAYERSIDE == east) then 
-					{
+                    {
                         player removeWeapon "ItemGPS";
                         player addWeapon "O_UavTerminal";
                     };
 
-					if (PLAYERSIDE == independent) then 
-					{
+                    if (PLAYERSIDE == independent) then 
+                    {
                         player removeWeapon "ItemGPS";
                         player addWeapon "I_UavTerminal";
                     };
@@ -79,19 +79,19 @@ private _pcs = [AAF_Drohnenstation, CSAT_Drohnenstation];
                     player setVariable [QGVAR(loggedInStation), objNull];
                     
                     if (PLAYERSIDE == west) then 
-					{
+                    {
                         player removeWeapon "B_UavTerminal";
                         player addWeapon "ItemGPS";
                     };
 
                     if (PLAYERSIDE == east) then 
-					{
+                    {
                         player removeWeapon "O_UavTerminal";
                         player addWeapon "ItemGPS";
                     };
 
-					if (PLAYERSIDE == independent) then 
-					{
+                    if (PLAYERSIDE == independent) then 
+                    {
                         player removeWeapon "I_UavTerminal";
                         player addWeapon "ItemGPS";
                     };
@@ -146,7 +146,7 @@ DFUNC(UAV_check_player) =
                     player addWeapon "ItemGPS";
 
                 };
-                GVAR(checkuav) call CFUNC(removePerframeHandler);	
+                GVAR(checkuav) call CFUNC(removePerframeHandler);    
             };
         };
     }, 1] call CFUNC(addPerFrameHandler);

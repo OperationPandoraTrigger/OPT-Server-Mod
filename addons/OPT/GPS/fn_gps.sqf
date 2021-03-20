@@ -40,7 +40,7 @@ for "_i" from 1 to GVAR(unitnumber) do
 GVAR(markerplayer) = [] call FUNC(createPlayerMarker);
 
 [{
-	private _unitsToMark = [];
+    private _unitsToMark = [];
     {
         if (side _x == playerSide) then 
         {
@@ -54,21 +54,21 @@ GVAR(markerplayer) = [] call FUNC(createPlayerMarker);
         _x setMarkerPosLocal [0,0];             
     };
 
-	// update player marker
+    // update player marker
     GVAR(markerplayer) setMarkerPosLocal (getPosATLVisual (vehicle player));   
 
-	if ((count _unitsToMark) > 0) then 
-	{
+    if ((count _unitsToMark) > 0) then 
+    {
         for "_i" from 0 to (count _unitsToMark - 1) do 
-		{   
-			private _obj = objNull;
+        {   
+            private _obj = objNull;
             private _marker = "";
             _obj = _unitsToMark select _i;
             _marker = GVAR(markerPool) select _i;
-			_marker setMarkerAlphaLocal 0.6;      
+            _marker setMarkerAlphaLocal 0.6;      
 
             if (alive _obj) then 
-			{
+            {
                 private _name = NAME _obj;
 
                 // update unit marker
@@ -77,56 +77,56 @@ GVAR(markerplayer) = [] call FUNC(createPlayerMarker);
 
                 // vehicle info
                 if (vehicle _obj != _obj) then 
-				{
+                {
                     private _vec_name = getText (configFile >> "cfgVehicles" >> typeOf (vehicle _obj) >> "displayName");
 
                     // Spezialfall Drohne
                     if ((vehicle _obj) in allUnitsUAV) then 
-					{
+                    {
                         private _operator = (UAVControl vehicle _obj) select 0;
 
                         // UAV Operator ja/nein
                         if (!isNull _operator) then 
-						{
+                        {
                             _marker setMarkerTextLocal format["%1 (%2)", _vec_name, NAME _operator];
                         } 
-						else 
-						{
+                        else 
+                        {
                             _marker setMarkerTextLocal format["%1 (---)", _vec_name];
                         };
                     } 
-					else 
-					{
+                    else 
+                    {
                         _marker setMarkerTextLocal format["%1 (%2)", _vec_name, _name];
                     };
                 } 
-				else 
-				{
+                else 
+                {
                     if (isPlayer _obj) then 
-					{
+                    {
                         _marker setMarkerTextLocal _name;
                         
                         if ((lifeState _obj isEqualTo "INCAPACITATED") or (_obj getVariable "OPT_isUnconscious" == 1)) then 
-					    {
+                        {
                             _marker setMarkerTextLocal "";
                             _marker setMarkerPosLocal [0,0];
-                            _marker setMarkerAlphaLocal 1;						
+                            _marker setMarkerAlphaLocal 1;                        
                         } 
                         else 
-					    {                     
-                            _marker setMarkerTextLocal _name;	
-                        };					
+                        {                     
+                            _marker setMarkerTextLocal _name;    
+                        };                    
                     } 
-					else 
-					{
+                    else 
+                    {
                         _marker setMarkerTextLocal "";
                         _marker setMarkerPosLocal [0,0];
                         _marker setMarkerAlphaLocal 1;
                     };
                 };
             } 
-			else 
-			{
+            else 
+            {
                 _marker setMarkerTextLocal "";
                 _marker setMarkerPosLocal [0,0];
                 _marker setMarkerAlphaLocal 1;

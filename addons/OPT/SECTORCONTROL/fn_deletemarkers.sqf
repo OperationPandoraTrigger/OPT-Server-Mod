@@ -26,8 +26,8 @@
 
 allMapMarkers apply
 {
-	if (getMarkerType _x isEqualTo "selector_selectedMission") then
-	{
-		deleteMarkerLocal _x;
-	};
+    if (getMarkerType _x isEqualTo "selector_selectedMission") then
+    {
+        deleteMarkerLocal _x;
+    };
 };

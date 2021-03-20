@@ -63,21 +63,21 @@ GVAR(vehicleType) = _type;
 switch (_side) do 
 {
     case west: 
-	{
+    {
         _rscPicture ctrlSetText "\A3\Data_F\Flags\Flag_NATO_CO.paa";
 
         GVAR(pads) = [VerkaufsBoxWest];
     };
 
     case east: 
-	{
+    {
         _rscPicture ctrlSetText "\A3\Data_F\Flags\Flag_CSAT_CO.paa";
 
         GVAR(pads) = [VerkaufsBoxEast];
     }; 
 
     case independent: 
-	{
+    {
         _rscPicture ctrlSetText "\A3\Data_F\Flags\Flag_AAF_CO.paa";
 
         GVAR(pads) = [VerkaufsBoxindependent];
@@ -103,14 +103,14 @@ if (_type == "sell") then
     //Räumen Button Ausblenden
     _remove ctrlShow false;
 
-	// im Falle des Verkaufsbuttons -> Liste aller gefundenen Fahrzeuge
-	// alle Objekte Fahrzeuge die auf allen Pads gefunden wurden
+    // im Falle des Verkaufsbuttons -> Liste aller gefundenen Fahrzeuge
+    // alle Objekte Fahrzeuge die auf allen Pads gefunden wurden
 
     private _objs = [];
 
-	GVAR(pads) apply 
+    GVAR(pads) apply 
     {
-	    private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], 8];
+        private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], 8];
 
         if ((count _ob) != 0) then 
         {
@@ -120,8 +120,8 @@ if (_type == "sell") then
         };   
     };   
  
-	// Gehe alle gefundenen Objekte durch und lösche sie, falls nicht in pool, oder ergänze um Verkaufspreis
-	_objs apply 
+    // Gehe alle gefundenen Objekte durch und lösche sie, falls nicht in pool, oder ergänze um Verkaufspreis
+    _objs apply 
     {
         private _index = ((GVAR(all) apply {toLower (_x select 0)}) find (toLower (typeOf _x)));
 
@@ -135,7 +135,7 @@ if (_type == "sell") then
             _pool pushBack [_x, (GVAR(all) select _index) select 2, (GVAR(all) select _index) select 3]; // füge Fahrzeug und Verkaufspreis hinzu
             GVAR(sellVeh) append [_x];
         };
-	};
+    };
 
     // Anzeige Objekte die mehr wert sind als 0€
     _pool = _pool select {_x select 2 > 0};
@@ -143,13 +143,13 @@ if (_type == "sell") then
     //Sortierung der Fahrzeuge nach Preis
     GVAR(vehiclesToSell) = _pool;
 
-	{
-		_class = typeOf (_x select 0);
+    {
+        _class = typeOf (_x select 0);
         _displayName = getText (configFile >> "CfgVehicles" >> _class >> "displayName");
-		_listbox_vehicles lbAdd format ["%1", _displayName]; // Name
+        _listbox_vehicles lbAdd format ["%1", _displayName]; // Name
         _listbox_vehicles lbSetData [_forEachIndex, _class];
 
-		// Verkaufspreis berechnen saleReturnValue % vom Vollpreis
+        // Verkaufspreis berechnen saleReturnValue % vom Vollpreis
         _picture = "";
 
         _picture = getText (configFile >> "cfgVehicles" >> _class >> "editorPreview");
@@ -162,7 +162,7 @@ if (_type == "sell") then
 //InfoBox Erneuern bei änderung
 _listbox_vehicles ctrlAddEventHandler [ "LBSelChanged", 
 {
-	params ["_listbox_vehicles", "_sel_class"];
+    params ["_listbox_vehicles", "_sel_class"];
 
     private _display = findDisplay IDD_DLG_ORDER;
     private _listbox_vehicles = _display displayCtrl IDC_CTRL_VEHICLE_LIST;

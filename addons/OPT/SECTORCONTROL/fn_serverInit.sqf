@@ -59,21 +59,21 @@ publicVariable QGVAR(aaf_flags);
 
 DFUNC(startflagsetup) = 
 {
-	//Punkte Erfassung wärend der Spielzeit
-	[] call FUNC(punkte);
-	
-	// start flag setup (setting owner)
-	[] call FUNC(setupFlag);
+    //Punkte Erfassung wärend der Spielzeit
+    [] call FUNC(punkte);
+    
+    // start flag setup (setting owner)
+    [] call FUNC(setupFlag);
 
-	// calculate first time the dominator (it's needed if assynchrone number of flags are defined)
-    [sideUnknown, objNull] call FUNC(setFlagOwner);	
-};	
+    // calculate first time the dominator (it's needed if assynchrone number of flags are defined)
+    [sideUnknown, objNull] call FUNC(setFlagOwner);    
+};    
 
 ["missionStarted", {
 
-	// Finale Fahnenmasten und Markierungen setzen
-	[] call FUNC(setupflagpoles);
-	[FUNC(startflagsetup), {OPT_GELDZEIT_Spielzeitstart}, "Awesome Delay"] call CLib_fnc_waitUntil;
+    // Finale Fahnenmasten und Markierungen setzen
+    [] call FUNC(setupflagpoles);
+    [FUNC(startflagsetup), {OPT_GELDZEIT_Spielzeitstart}, "Awesome Delay"] call CLib_fnc_waitUntil;
 }] call CFUNC(addEventhandler);
 
 // Sektorenmarker auf die Karte zeichnen sobald die Mission durchgeladen ist

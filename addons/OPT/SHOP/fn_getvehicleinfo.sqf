@@ -101,7 +101,7 @@ if (_index != -1) then
 
 _index = (opt_cargo_canBeCarried apply {_x select 0}) find _class;
 if (_index != -1) then {
-	_Dragged_Carried = _Dragged_Carried + "Ziehbar" + ", ";
+    _Dragged_Carried = _Dragged_Carried + "Ziehbar" + ", ";
 };
 
 _index = (opt_cargo_canBeCarried apply {_x select 0}) find _class;
@@ -269,45 +269,45 @@ if (_class isKindOf "StaticWeapon") then
 //Nur für Boxen,Kisten
 if (_class isKindOf "ThingX") then 
 {
-	private _config = (configfile >> "CfgVehicles" >> _class >> "TransportItems"); 
-	private _transportItems = [];
-	private _items = "";
-	
-	for "_i" from 0 to ((count _config)-1) do 
+    private _config = (configfile >> "CfgVehicles" >> _class >> "TransportItems"); 
+    private _transportItems = [];
+    private _items = "";
+    
+    for "_i" from 0 to ((count _config)-1) do 
     {  
         private _class = _config select _i; 
         _transportItems = (getText (_class >> "name")); 
-	    private _count =  (getNumber (_class >> "count"));
-	    private _displayName = getText (configFile >> "CfgWeapons" >> _transportItems >> "displayName");
-	    _items =_items + format["%1 (%2), ", _displayName, _count];
-	};
-			
-	private _config = (configfile >> "CfgVehicles" >> _class >> "TransportMagazines"); 
-	private _transportMagazines = [];
-	private _magazines = "";
-	
-	for "_i" from 0 to ((count _config)-1) do 
+        private _count =  (getNumber (_class >> "count"));
+        private _displayName = getText (configFile >> "CfgWeapons" >> _transportItems >> "displayName");
+        _items =_items + format["%1 (%2), ", _displayName, _count];
+    };
+            
+    private _config = (configfile >> "CfgVehicles" >> _class >> "TransportMagazines"); 
+    private _transportMagazines = [];
+    private _magazines = "";
+    
+    for "_i" from 0 to ((count _config)-1) do 
     {  
         private _class = _config select _i; 
         _transportMagazines = (getText (_class >> "magazine")); 
-    	private _count =  (getNumber (_class >> "count"));
-    	private _displayName = getText (configFile >> "CfgMagazines" >> _transportMagazines >> "displayName");
-    	_magazines =_magazines + format["%1 (%2), ", _displayName, _count];	
-	};
-	
-	private _config = (configfile >> "CfgVehicles" >> _class >> "TransportWeapons"); 
-	private _transportWeapons = [];
-	private _weapons = "";
-	
-	for "_i" from 0 to ((count _config)-1) do 
+        private _count =  (getNumber (_class >> "count"));
+        private _displayName = getText (configFile >> "CfgMagazines" >> _transportMagazines >> "displayName");
+        _magazines =_magazines + format["%1 (%2), ", _displayName, _count];    
+    };
+    
+    private _config = (configfile >> "CfgVehicles" >> _class >> "TransportWeapons"); 
+    private _transportWeapons = [];
+    private _weapons = "";
+    
+    for "_i" from 0 to ((count _config)-1) do 
     {  
         private _class = _config select _i; 
         _transportWeapons = (getText (_class >> "weapon")); 
-    	private _count =  (getNumber (_class >> "count"));
-    	private _displayName = getText (configFile >> "CfgWeapons" >> _transportWeapons >> "displayName");
-    	_weapons =_weapons + format["%1 (%2), ", _displayName, _count];	
-	};
-	
+        private _count =  (getNumber (_class >> "count"));
+        private _displayName = getText (configFile >> "CfgWeapons" >> _transportWeapons >> "displayName");
+        _weapons =_weapons + format["%1 (%2), ", _displayName, _count];    
+    };
+    
     _return = format 
     [
         "<t size='0.9'><t align='left'>%1:</t> <t align='right' color='#00ff00'>%2</t><br/>

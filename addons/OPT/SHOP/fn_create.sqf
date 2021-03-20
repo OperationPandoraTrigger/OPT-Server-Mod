@@ -27,7 +27,7 @@
 
 params 
 [
-	["_status", 0]
+    ["_status", 0]
 ];
 
 GVAR(idPadCheckCreate) =
@@ -37,7 +37,7 @@ GVAR(idPadCheckCreate) =
     // check der Pads ob belegt
     GVAR(pads) apply 
     {
-	    private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], GVAR(Checkbereich)];
+        private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], GVAR(Checkbereich)];
             
         if (count _ob == 0) then 
         {
