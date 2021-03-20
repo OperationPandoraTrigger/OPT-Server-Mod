@@ -147,7 +147,6 @@ if (_class isKindOf "AllVehicles" and !(_class isKindOf "StaticWeapon")) then
     if (isClass (configFile >> "cfgVehicles" >> _class >> "Turrets" >> "M2_Turret")) then 
     {
         _weapArray = getArray(configFile >> "cfgVehicles" >> _class >> "Turrets" >> "M2_Turret" >> "weapons");
-
     } 
     else 
     {
@@ -184,14 +183,17 @@ if (_class isKindOf "AllVehicles" and !(_class isKindOf "StaticWeapon")) then
    
     if (_class isKindOf "Helicopter") then {_fuelCapacity = 20;};
     if (_class isKindOf "Plane") then {_fuelCapacity = 32;};
+
     if (_class isKindOf "car") then 
     {
         _fuelCapacity = round ((getNumber(configFile >> "cfgVehicles" >> _class >> "fuelCapacity")) /(_redRpm * TREIBSTOFFKONSTANTE));
     };
+
     if (_class isKindOf "APC") then 
     {
         _fuelCapacity = round ((getNumber(configFile >> "cfgVehicles" >> _class >> "fuelCapacity"))/(_redRpm * TREIBSTOFFKONSTANTE));
     };
+
     if (_class isKindOf "Tank") then 
     {
         _fuelCapacity = round ((getNumber(configFile >> "cfgVehicles" >> _class >> "fuelCapacity"))/(_redRpm * TREIBSTOFFKONSTANTE));
@@ -201,14 +203,14 @@ if (_class isKindOf "AllVehicles" and !(_class isKindOf "StaticWeapon")) then
 
     _return = format 
     [
-        "<t size='0.9'><t align='left'>%1:</t> <t align='right' color='#00ff00'>%2</t><br/>
-        <t align='left'>Waffen:</t><br/>
-        <t align='left' color='#00ff00'>%3</t><br/>
-        <t align='left'>Sitzplätze:</t> <t align='right' color='#00ff00'>%4</t><br/>
-        <t align='left'>Max. Geschwindigkeit:</t> <t align='right' color='#00ff00'>%5</t><br/>
-        <t align='left'>Treibstoffmenge:</t> <t align='right' color='#00ff00'>%6 Min</t><br/>
-        <t align='left'>Panzerung:</t> <t align='right' color='#00ff00'>%7</t><br/>
-        <t align='left'>Laderaum:</t> <t align='right' color='#00ff00'>%8 l</t><br/></t>",
+        "<t size='0.9'><t align='left'>%1:</t> <t align='right' color='#00ff00'>%2</t><br/>" +
+        "<t align='left'>Waffen:</t><br/>" +
+        "<t align='left' color='#00ff00'>%3</t><br/>" +
+        "<t align='left'>Sitzplätze:</t> <t align='right' color='#00ff00'>%4</t><br/>" +
+        "<t align='left'>Max. Geschwindigkeit:</t> <t align='right' color='#00ff00'>%5</t><br/>" +
+        "<t align='left'>Treibstoffmenge:</t> <t align='right' color='#00ff00'>%6 Min</t><br/>" +
+        "<t align='left'>Panzerung:</t> <t align='right' color='#00ff00'>%7</t><br/>" +
+        "<t align='left'>Laderaum:</t> <t align='right' color='#00ff00'>%8 l</t><br/></t>",
         _priceTxt, _preis, _newweapons, _crewCount, _maxSpeed, _fuelCapacity, _armor, _cargo_space
     ];
 };
@@ -256,12 +258,12 @@ if (_class isKindOf "StaticWeapon") then
 
     _return = format 
     [
-        "<t size='0.9'><t align='left'>%1:</t> <t align='right' color='#00ff00'>%2</t><br/>
-        <t align='left'>Waffen:</t><br/>
-        <t align='left' color='#00ff00'>%3</t><br/>
-        <t align='left'>Sitzplätze:</t> <t align='right' color='#00ff00'>%4</t><br/>
-        <t align='left'>Volumen:</t> <t align='right' color='#00ff00'>%5 l</t><br/>
-        <t align='left'>Bewegbarkeit:</t> <t align='right' color='#00ff00'>%6</t><br/></t>",
+        "<t size='0.9'><t align='left'>%1:</t> <t align='right' color='#00ff00'>%2</t><br/>" +
+        "<t align='left'>Waffen:</t><br/>" +
+        "<t align='left' color='#00ff00'>%3</t><br/>" +
+        "<t align='left'>Sitzplätze:</t> <t align='right' color='#00ff00'>%4</t><br/>" +
+        "<t align='left'>Volumen:</t> <t align='right' color='#00ff00'>%5 l</t><br/>" +
+        "<t align='left'>Bewegbarkeit:</t> <t align='right' color='#00ff00'>%6</t><br/></t>",
         _priceTxt, _preis, _newweapons, _crewCount, _cargo_size, _Dragged_Carried
     ];
 };
@@ -310,12 +312,12 @@ if (_class isKindOf "ThingX") then
     
     _return = format 
     [
-        "<t size='0.9'><t align='left'>%1:</t> <t align='right' color='#00ff00'>%2</t><br/>
-        <t align='left'>Volumen:</t> <t align='right' color='#00ff00'>%6 l</t><br/>
-        <t align='left'>Bewegbarkeit:</t> <t align='right' color='#00ff00'>%7</t><br/>
-        <t align='left'>Waffen:</t> <t align='right' color='#00ff00'>%3</t><br/>
-        <t align='left'>Magazine:</t> <t align='right' color='#00ff00'>%4</t><br/>
-        <t align='left'>Items:</t> <t align='right' color='#00ff00'>%5</t><br/></t>",
+        "<t size='0.9'><t align='left'>%1:</t> <t align='right' color='#00ff00'>%2</t><br/>" +
+        "<t align='left'>Volumen:</t> <t align='right' color='#00ff00'>%6 l</t><br/>" +
+        "<t align='left'>Bewegbarkeit:</t> <t align='right' color='#00ff00'>%7</t><br/>" +
+        "<t align='left'>Waffen:</t> <t align='right' color='#00ff00'>%3</t><br/>" +
+        "<t align='left'>Magazine:</t> <t align='right' color='#00ff00'>%4</t><br/>" +
+        "<t align='left'>Items:</t> <t align='right' color='#00ff00'>%5</t><br/></t>",
         _priceTxt, _preis,  _weapons, _magazines, _items, _cargo_size, _Dragged_Carried
     ];
 };
