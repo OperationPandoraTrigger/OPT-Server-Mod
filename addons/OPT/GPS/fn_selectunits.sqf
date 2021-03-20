@@ -31,14 +31,12 @@
 
 
 private _unitsToMark = [];
-
 private _leaderUnits = [];  
 
 {
     if (side (leader _x) == playerSide) then 
     {    
         _leaderUnits pushBack (leader _x);
-
     };                        
 } forEach allGroups;
 
@@ -52,21 +50,17 @@ switch (GVAR(mode)) do
         {
             _unitsToMark append _leaderUnits;
             _unitsToMark append _groupUnits;   
-
         } 
         else 
         {                        
             _unitsToMark append _leaderUnits;
-
         };
-
     };
 
     case 1: 
     {
         _unitsToMark append _leaderUnits;
         _unitsToMark append _groupUnits;  
-
     };
 
     case 2: 
@@ -75,10 +69,8 @@ switch (GVAR(mode)) do
             if (side _x == playerSide) then 
             {
                 _unitsToMark pushBack _x;
-
             };
         } foreach allUnits;    // Drohnen für HL sichtbar machen
-
     };
 };
 

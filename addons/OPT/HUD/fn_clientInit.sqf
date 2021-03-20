@@ -29,9 +29,6 @@
 #include "macros.hpp"
 
 ["missionStarted", {
-
-(["OPT_HUD"] call BIS_fnc_rscLayer) cutRsc ["opt_hud_DefaultMenu", "PLAIN", 1];
-
-[] call FUNC(updateHUD);
-
+	(["OPT_HUD"] call BIS_fnc_rscLayer) cutRsc ["opt_hud_DefaultMenu", "PLAIN", 1];
+	[] call FUNC(updateHUD);
 }] call CFUNC(addEventhandler);

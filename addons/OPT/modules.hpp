@@ -1,11 +1,9 @@
-// include the required addons directly from CLib
 #include "\tc\CLib\addons\CLib\ModuleMacros.hpp"
 
 class CfgCLibModules {
     class PREFIX {
         path = "OPT\OPT\addons\OPT";
-		
-		dependency[] = {};
+        dependency[] = {};
 
         MODULE(GPS) 
         {
@@ -14,17 +12,18 @@ class CfgCLibModules {
             FNC(gps);
             FNC(selectUnits);
             FNC(createPlayerMarker);
-            FNC(createUnitMarker);	
-            FNC(gps_Unconscious);	
-            FNC(createunitmarker_Unconscious);				
+            FNC(createUnitMarker);    
+            FNC(gps_Unconscious);    
+            FNC(createunitmarker_Unconscious);                
         };
-		MODULE(SHOP) 
-		{
+
+        MODULE(SHOP) 
+        {
             dependency[] = {"CLib/PerFrame", "Clib/Events"};
             FNC(clientInit);
             FNC(initCBASettings);
             FNC(config);
-            FNC(einlesenInShopDialog);	
+            FNC(einlesenInShopDialog);    
             FNC(fillLB);
             FNC(getvehicleinfo);
             FNC(getprice);
@@ -51,6 +50,7 @@ class CfgCLibModules {
             FNC(create);
             FNC(Init);
         };
+
         MODULE(REVIVE) 
         {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
@@ -67,6 +67,7 @@ class CfgCLibModules {
             FNC(release);
             FNC(clientInitcbaclassevents);
         };
+
         MODULE(GELDZEIT) 
         {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
@@ -86,7 +87,8 @@ class CfgCLibModules {
             FNC(init);
             FNC(beam);
         };
-		MODULE(SECTORCONTROL) 
+
+        MODULE(SECTORCONTROL) 
         {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
             FNC(clientInit);
@@ -110,6 +112,7 @@ class CfgCLibModules {
             FNC(drawsectormarkers);
             FNC(deletesectormarkers);
         };
+
         MODULE(FIELDREPAIR) 
         {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
@@ -130,12 +133,14 @@ class CfgCLibModules {
             FNC(Init);
             FNC(checkRepairs);
         };
+
         MODULE(HUD) 
         {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
             FNC(clientInit);
             FNC(updatehud);
         };
+
         MODULE(CARGO) 
         {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
@@ -148,6 +153,7 @@ class CfgCLibModules {
             FNC(cbaclassevents);
             FNC(setupcargospaceandsize);
         };
+
         MODULE(RULES) 
         {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
@@ -156,10 +162,12 @@ class CfgCLibModules {
             FNC(weaponcheck);
             FNC(uav);
         };
+
         MODULE(LOGGING)
         {
             FNC(writelog);
         };
+
         MODULE(WEATHERTIME)
         {
             FNC(initCBASettings);

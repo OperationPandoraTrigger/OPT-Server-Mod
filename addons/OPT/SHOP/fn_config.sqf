@@ -58,7 +58,6 @@ GVAR(nato_vehicles) =
     ["OPT_B_Truck_01_Repair_ghex_F",  10000, 5000, 20000],          // HEMTT Repair
     ["OPT_B_Truck_01_medical_ghex_F", 10000, 5000, 20000],         // HEMTT Medical
     ["OPT_B_Truck_01_transport_ghex_F", DEF_PROD(5000)]        // HEMTT  	
-	
 ];
 
 GVAR(nato_vehicles_supply) = 
@@ -191,7 +190,6 @@ GVAR(csat_vehicles) =
 	["OPT_O_T_Truck_02_transport_F", DEF_PROD(5000)],         // Zamack Logistik
     ["OPT_O_T_Truck_02_box_F", 10000,5000,10000],            // Zamack Repair
     ["OPT_O_T_Truck_02_Medical_F", DEF_PROD(6000)]          // Zamack Medical
-
 ];
 
 GVAR(csat_vehicles_supply) = 
@@ -228,7 +226,6 @@ GVAR(csat_choppers) =
 	["OPT_O_Plane_Fighter_AA_02_F", DEF_PROD(0)],              	// To-201 Shikra 
     ["OPT_O_Plane_CAS_01_F_1" , DEF_PROD(0)],                  // Wipeout CAS 400000
 	["OPT_O_Plane_Fighter_01_Stealth_F", DEF_PROD(0)]          // F/A-181 Black Wasp II  
-
 ];
     
 GVAR(csat_armored) = 
@@ -319,7 +316,6 @@ GVAR(AAF_vehicles) =
     ["OPT_I_Truck_02_box_F", 10000,5000,10000],               // Zamak Repair
     ["OPT_I_Truck_02_transport_F", DEF_PROD(5000)],               // Zamak   
     ["OPT_I_Truck_02_medical_F", DEF_PROD(6000)]               // Zamak Medical
-	
 ];
 
 // Fahrzeuge dieser Liste können nicht verkauft werden!
@@ -395,31 +391,37 @@ GVAR(AAF_sea) =
     ["OPT_I_C_Boat_Transport_02_F", DEF_PROD(12000)]             // Rhib unbewaffnet
 ];
 
-GVAR(allNato) = GVAR(nato_vehicles) +
-GVAR(nato_vehicles_supply) +
-GVAR(nato_choppers) +
-GVAR(nato_armored) +
-GVAR(nato_supplies) +
-GVAR(nato_static) +
-GVAR(nato_sea);
+GVAR(allNato) =
+    GVAR(nato_vehicles) +
+    GVAR(nato_vehicles_supply) +
+    GVAR(nato_choppers) +
+    GVAR(nato_armored) +
+    GVAR(nato_supplies) +
+    GVAR(nato_static) +
+    GVAR(nato_sea);
 
-GVAR(allCsat) = GVAR(csat_vehicles) +
-GVAR(csat_vehicles_supply) +
-GVAR(csat_choppers) +
-GVAR(csat_armored) +
-GVAR(csat_supplies) +
-GVAR(csat_static) + 
-GVAR(csat_sea);
+GVAR(allCsat) =
+    GVAR(csat_vehicles) +
+    GVAR(csat_vehicles_supply) +
+    GVAR(csat_choppers) +
+    GVAR(csat_armored) +
+    GVAR(csat_supplies) +
+    GVAR(csat_static) + 
+    GVAR(csat_sea);
 
-GVAR(allAAF) = GVAR(AAF_vehicles) +
-GVAR(AAF_vehicles_supply) +
-GVAR(AAF_choppers) +
-GVAR(AAF_armored) +
-GVAR(AAF_supplies) +
-GVAR(AAF_static) +
-GVAR(AAF_sea);
+GVAR(allAAF) =
+    GVAR(AAF_vehicles) +
+    GVAR(AAF_vehicles_supply) +
+    GVAR(AAF_choppers) +
+    GVAR(AAF_armored) +
+    GVAR(AAF_supplies) +
+    GVAR(AAF_static) +
+    GVAR(AAF_sea);
 
-GVAR(all) = GVAR(allNato) + GVAR(allCsat) + GVAR(allAAF);
+GVAR(all) =
+    GVAR(allNato) +
+    GVAR(allCsat) +
+    GVAR(allAAF);
 
 //Waffenkonfiguation
 //Raketen Heli Nato
@@ -511,7 +513,6 @@ GVAR(gunVehWest) =
 	["20Rnd_125mm_APFSDS", "cannon_125mm", 6000, 120000, "20x125mm APFSDS"],  //  46.20x125mm APFSDS
 	["12Rnd_120mm_HE_shells", "cannon_120mm", 3000, 36000, "12x120mm HE"],  //  47.12x120mm HE
     ["4Rnd_70mm_SAAMI_missiles", "missiles_SAAMI", 12500, 50000, "4xSAAMI Missile"]  //  48.4xSAAMI Missile
-
 ];
 
 //Raketen CSAT
@@ -604,7 +605,6 @@ GVAR(gunVehEast) =
 	["20Rnd_125mm_APFSDS", "cannon_125mm", 6000, 120000, "20x125mm APFSDS"],  //  46.20x125mm APFSDS
 	["12Rnd_120mm_HE_shells", "cannon_120mm", 3000, 36000, "12x120mm HE"],  //  47.12x120mm HE
     ["4Rnd_70mm_SAAMI_missiles", "missiles_SAAMI", 12500, 50000, "4xSAAMI Missile"]  //  48.4xSAAMI Missile
-
 ];
 
 //Raketen Heli AAF
@@ -697,7 +697,6 @@ GVAR(gunVehindependent) =
 	["20Rnd_125mm_APFSDS", "cannon_125mm", 6000, 120000, "20x125mm APFSDS"],  //  46.20x125mm APFSDS
 	["12Rnd_120mm_HE_shells", "cannon_120mm", 3000, 36000, "12x120mm HE"],  //  47.12x120mm HE
     ["4Rnd_70mm_SAAMI_missiles", "missiles_SAAMI", 12500, 50000, "4xSAAMI Missile"]  //  48.4xSAAMI Missile
-
 ];
 
 //Preis Tarnung, Drahtkäfig, Datalinksystem
@@ -823,8 +822,6 @@ GVAR(vehClassindependentWW) =
     "OPT4_I_LT_01_AT_F",
     "OPT4_I_LT_01_AA_F",
     "OPT4_I_MBT_03_cannon_F"
-
-	
 ];
 
 GVAR(textSlotWest) = 
@@ -890,125 +887,126 @@ GVAR(KumaLoadout) = [[], [3, 45, 28, 29], [0, 0], [0]];
 //Pads für Bestellung und Verkauf
 GVAR(pad_veh_east) =
 [
-FahrzeugBoxEast1,
-FahrzeugBoxEast2,
-FahrzeugBoxEast3,
-FahrzeugBoxEast4,
-FahrzeugBoxEast5,
-FahrzeugBoxEast6,
-FahrzeugBoxEast7,
-FahrzeugBoxEast8
+    FahrzeugBoxEast1,
+    FahrzeugBoxEast2,
+    FahrzeugBoxEast3,
+    FahrzeugBoxEast4,
+    FahrzeugBoxEast5,
+    FahrzeugBoxEast6,
+    FahrzeugBoxEast7,
+    FahrzeugBoxEast8
 ];
 
 GVAR(pad_veh_west) =
 [
-FahrzeugBoxWest1,
-FahrzeugBoxWest2,
-FahrzeugBoxWest3,
-FahrzeugBoxWest4,
-FahrzeugBoxWest5,
-FahrzeugBoxWest6,
-FahrzeugBoxWest7,
-FahrzeugBoxWest8
+    FahrzeugBoxWest1,
+    FahrzeugBoxWest2,
+    FahrzeugBoxWest3,
+    FahrzeugBoxWest4,
+    FahrzeugBoxWest5,
+    FahrzeugBoxWest6,
+    FahrzeugBoxWest7,
+    FahrzeugBoxWest8
 ];
 
 GVAR(pad_veh_independent) =
 [
-FahrzeugBoxindependent1,
-FahrzeugBoxindependent2,
-FahrzeugBoxindependent3,
-FahrzeugBoxindependent4,
-FahrzeugBoxindependent5,
-FahrzeugBoxindependent6,
-FahrzeugBoxindependent7,
-FahrzeugBoxindependent8
+    FahrzeugBoxindependent1,
+    FahrzeugBoxindependent2,
+    FahrzeugBoxindependent3,
+    FahrzeugBoxindependent4,
+    FahrzeugBoxindependent5,
+    FahrzeugBoxindependent6,
+    FahrzeugBoxindependent7,
+    FahrzeugBoxindependent8
 ];
 
 GVAR(pad_air_east) =
 [
-HeliBoxEast1,
-HeliBoxEast2
+    HeliBoxEast1,
+    HeliBoxEast2
 ];
 
 GVAR(pad_air_west) =
 [
-HeliBoxWest1,
-HeliBoxWest2
+    HeliBoxWest1,
+    HeliBoxWest2
 ];
 
 GVAR(pad_air_independent) =
 [
-HeliBoxindependent1,
-HeliBoxindependent2
+    HeliBoxindependent1,
+    HeliBoxindependent2
 ];
 
 GVAR(pad_sup_east) =
 [
-AusruestungBoxEast1,
-AusruestungBoxEast2,
-AusruestungBoxEast3,
-AusruestungBoxEast4,
-AusruestungBoxEast5,
-AusruestungBoxEast6,
-AusruestungBoxEast7,
-AusruestungBoxEast8
+    AusruestungBoxEast1,
+    AusruestungBoxEast2,
+    AusruestungBoxEast3,
+    AusruestungBoxEast4,
+    AusruestungBoxEast5,
+    AusruestungBoxEast6,
+    AusruestungBoxEast7,
+    AusruestungBoxEast8
 ];
 
 GVAR(pad_sup_west) =
 [
-AusruestungBoxWest1,
-AusruestungBoxWest2,
-AusruestungBoxWest3,
-AusruestungBoxWest4,
-AusruestungBoxWest5,
-AusruestungBoxWest6,
-AusruestungBoxWest7,
-AusruestungBoxWest8
+    AusruestungBoxWest1,
+    AusruestungBoxWest2,
+    AusruestungBoxWest3,
+    AusruestungBoxWest4,
+    AusruestungBoxWest5,
+    AusruestungBoxWest6,
+    AusruestungBoxWest7,
+    AusruestungBoxWest8
 ];
 
 GVAR(pad_sup_independent) =
 [
-AusruestungBoxindependent1,
-AusruestungBoxindependent2,
-AusruestungBoxindependent3,
-AusruestungBoxindependent4,
-AusruestungBoxindependent5,
-AusruestungBoxindependent6,
-AusruestungBoxindependent7,
-AusruestungBoxindependent8
+    AusruestungBoxindependent1,
+    AusruestungBoxindependent2,
+    AusruestungBoxindependent3,
+    AusruestungBoxindependent4,
+    AusruestungBoxindependent5,
+    AusruestungBoxindependent6,
+    AusruestungBoxindependent7,
+    AusruestungBoxindependent8
 ];
 
 GVAR(pad_sea_west) =
 [
-SeaBoxWest1,
-SeaBoxWest2
+    SeaBoxWest1,
+    SeaBoxWest2
 ];
 
 GVAR(pad_sea_east) =
 [
-SeaBoxEast1,
-SeaBoxEast2
+    SeaBoxEast1,
+    SeaBoxEast2
 ];
 
 GVAR(pad_sea_independent) =
 [
-SeaBoxindependent1,
-SeaBoxindependent2
+    SeaBoxindependent1,
+    SeaBoxindependent2
 ];
 
-GVAR(pad_all_west) = GVAR(pad_veh_west) +
-GVAR(pad_air_west) +
-GVAR(pad_sup_west) +
-GVAR(pad_sea_west);
+GVAR(pad_all_west) =
+    GVAR(pad_veh_west) +
+    GVAR(pad_air_west) +
+    GVAR(pad_sup_west) +
+    GVAR(pad_sea_west);
 
-GVAR(pad_all_east) = GVAR(pad_veh_east) +
-GVAR(pad_air_east) + 
-GVAR(pad_sup_east) +
-GVAR(pad_sea_east);
+GVAR(pad_all_east) =
+    GVAR(pad_veh_east) +
+    GVAR(pad_air_east) + 
+    GVAR(pad_sup_east) +
+    GVAR(pad_sea_east);
 
-GVAR(pad_all_independent) = GVAR(pad_veh_independent) +
-GVAR(pad_air_independent) +
-GVAR(pad_sup_independent) +
-GVAR(pad_sea_independent);
-
-
+GVAR(pad_all_independent) =
+    GVAR(pad_veh_independent) +
+    GVAR(pad_air_independent) +
+    GVAR(pad_sup_independent) +
+    GVAR(pad_sea_independent);

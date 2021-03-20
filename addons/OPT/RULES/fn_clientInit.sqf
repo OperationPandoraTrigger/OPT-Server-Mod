@@ -28,10 +28,6 @@
 */
 #include "macros.hpp"
 
-#define PLACE_WAITING -1
-#define PLACE_CANCEL 0
-#define PLACE_APPROVE 1
-
 ["missionStarted", {
 
 [] call FUNC(setup_classnames);

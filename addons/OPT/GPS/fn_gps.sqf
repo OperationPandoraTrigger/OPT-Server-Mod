@@ -44,7 +44,6 @@ GVAR(markerplayer) = [] call FUNC(createPlayerMarker);
 //
 [{
 	private _unitsToMark = [];
-  
     {
         if (side _x == playerSide) then 
         {
@@ -83,7 +82,6 @@ GVAR(markerplayer) = [] call FUNC(createPlayerMarker);
                 // vehicle info
                 if (vehicle _obj != _obj) then 
 				{
-
                     private _vec_name = getText (configFile >> "cfgVehicles" >> typeOf (vehicle _obj) >> "displayName");
 
                     // Spezialfall Drohne
@@ -102,14 +100,12 @@ GVAR(markerplayer) = [] call FUNC(createPlayerMarker);
                             _marker setMarkerTextLocal format["%1 (---)", _vec_name];
 
                         };
-
                     } 
 					else 
 					{
                         _marker setMarkerTextLocal format["%1 (%2)", _vec_name, _name];
 
                     };
-
                 } 
 				else 
 				{
@@ -126,16 +122,14 @@ GVAR(markerplayer) = [] call FUNC(createPlayerMarker);
                         else 
 					    {                     
                             _marker setMarkerTextLocal _name;	
-                         };					
+                        };					
                     } 
 					else 
 					{
                         _marker setMarkerTextLocal "";
                         _marker setMarkerPosLocal [0,0];
                         _marker setMarkerAlphaLocal 1;
-
                     };
-
                 };
             } 
 			else 
@@ -143,7 +137,6 @@ GVAR(markerplayer) = [] call FUNC(createPlayerMarker);
                 _marker setMarkerTextLocal "";
                 _marker setMarkerPosLocal [0,0];
                 _marker setMarkerAlphaLocal 1;
-
             };
         };
     };      

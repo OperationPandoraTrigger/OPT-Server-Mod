@@ -50,7 +50,6 @@ for "_i" from 1 to (GVAR(unitnumberUnconscious))  do
         if ((_Sideidunit == _sideidplayer) and ((lifeState _x isEqualTo "INCAPACITATED") or (_x getVariable "OPT_isUnconscious" == 1))) then 
         {
             _unitsToMarkisUnconscious pushBack _x;
-
         };
     } foreach playableUnits;   
 
@@ -79,6 +78,4 @@ for "_i" from 1 to (GVAR(unitnumberUnconscious))  do
 			_marker setMarkerTextLocal format [MLOC(PLAYER_INJURED),_name];
         };
     };      
-
 }, 1, _this] call CFUNC(addPerFrameHandler);
-

@@ -37,23 +37,21 @@ switch GVAR(Fraktionauswahl) do
         if ((PLAYERSIDE == east) and (player distance2D (getPos Teleport_CSAT_Basis1) < 20)) then
         {
             _Basis = Teleport_CSAT_Basis2;
-
         };
+
         if ((PLAYERSIDE == independent) and (player distance2D (getPos Teleport_AAF_Basis1) < 20)) then
         {
             _Basis = Teleport_AAF_Basis2;
-
         };
 
         if ((PLAYERSIDE == east) and (player distance2D (getPos Teleport_CSAT_Basis2) < 20)) then
         {
             _Basis = Teleport_CSAT_Basis1;
-
         };
+
         if ((PLAYERSIDE == independent) and (player distance2D (getPos Teleport_AAF_Basis2) < 20)) then
         {
             _Basis = Teleport_AAF_Basis1;
-
         };
 	};
 
@@ -62,23 +60,21 @@ switch GVAR(Fraktionauswahl) do
         if ((PLAYERSIDE == east) and (player distance2D (getPos Teleport_CSAT_Basis1) < 20)) then
         {
             _Basis = Teleport_CSAT_Basis2;
-
         };
+
         if ((PLAYERSIDE == west) and (player distance2D (getPos Teleport_Nato_Basis1) < 20)) then
         {
             _Basis = Teleport_NATO_Basis2;
-
         };
 
         if ((PLAYERSIDE == east) and (player distance2D (getPos Teleport_CSAT_Basis2) < 20)) then
         {
             _Basis = Teleport_CSAT_Basis1;
-
         };
+
         if ((PLAYERSIDE == west) and (player distance2D (getPos Teleport_Nato_Basis2) < 20)) then
         {
             _Basis = Teleport_NATO_Basis1;
-
         };	
 	};
 
@@ -87,23 +83,21 @@ switch GVAR(Fraktionauswahl) do
         if ((PLAYERSIDE == west) and (player distance2D (getPos Teleport_Nato_Basis1) < 20)) then
         {
             _Basis = Teleport_NATO_Basis2;
-
         };
+
         if ((PLAYERSIDE == independent) and (player distance2D (getPos Teleport_AAF_Basis1) < 20)) then
         {
             _Basis = Teleport_AAF_Basis2;
-
         };
 
         if ((PLAYERSIDE == west) and (player distance2D (getPos Teleport_Nato_Basis2) < 20)) then
         {
             _Basis = Teleport_NATO_Basis1;
-
         };
+
         if ((PLAYERSIDE == independent) and (player distance2D (getPos Teleport_AAF_Basis2) < 20)) then
         {
             _Basis = Teleport_AAF_Basis1;
-
         };			
 	};
 

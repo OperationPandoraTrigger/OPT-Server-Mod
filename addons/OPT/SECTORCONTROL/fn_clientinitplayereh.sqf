@@ -14,10 +14,6 @@
 */
 #include "macros.hpp"
 
-#define PLACE_WAITING -1
-#define PLACE_CANCEL 0
-#define PLACE_APPROVE 1
-
 /* EH für das Versetzen der Flaggen im Trainingsmodus */
 if (GVAR(trainingon)) then 
 {

@@ -34,14 +34,14 @@ DFUNC(isUnconscious) =
 		//Var für GPS setzen 
 		_unit setVariable ["OPT_isUnconscious", 1, true];
 
-		//Einheit aus Fahrzeug endfernen
+		//Einheit aus Fahrzeug entfernen
 		if (vehicle _unit != _unit) then 
 		{
 			unAssignVehicle _unit;
 			_unit action ["GetOut", vehicle _unit];
 		};
 
-		//Sprengladungen mit Todmanschalter zünden
+		//Sprengladungen mit Todmannschalter zünden
 		[_unit] call ace_explosives_fnc_onIncapacitated;
 
 		//TFAR ausschalten
