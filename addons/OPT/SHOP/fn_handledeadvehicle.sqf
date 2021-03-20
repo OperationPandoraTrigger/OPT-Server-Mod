@@ -18,7 +18,8 @@
 #include "macros.hpp"
 
 // rewrite into killed and damagged EH so we have the source parameter available
-params [
+params
+[
     ["_vec", objNull, [objNull], 1],
     ["_source", objNull, [objNull], 1],
     ["_instigator", objNull, [objNull], 1],
@@ -29,7 +30,6 @@ params [
 [_vec, _instigator, _source] call FUNC(writeKill);
 
 // delete all wrecks within the base safezone
-
 switch OPT_GELDZEIT_Fraktionauswahl do 
 {
     	case "AAFvsCSAT" : 
@@ -88,5 +88,3 @@ switch OPT_GELDZEIT_Fraktionauswahl do
 			ERROR_LOG("handleDeadVehicle: Fehlehalte Datenübergabe keine Fraktionauswahl erkannt");
 		};
 };
-
-

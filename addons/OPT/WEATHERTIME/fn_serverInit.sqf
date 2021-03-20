@@ -21,12 +21,12 @@
 * Example:
 * [] call FUNC(serverInit);
 */
-
 #include "macros.hpp"
 
 #define TRANSITION_INTERVAL 60	// interval in seconds for framehandler to refresh weather transitions
 
-["missionStarted", {
+["missionStarted",
+{
 	// update mission time
 	private _newdate = missionStart select [0,3]; // keep current date from "real life"
 	_newdate append [round OPT_WEATHERTIME_timeslider_hours, round OPT_WEATHERTIME_timeslider_minutes];

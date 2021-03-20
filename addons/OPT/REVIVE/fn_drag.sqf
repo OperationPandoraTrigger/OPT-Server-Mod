@@ -66,9 +66,5 @@ GVAR(PLAYER_AnimChanged_EH_ID) = player addEventHandler ["AnimChanged", {[_this 
 
 		// PFH entfernen
 		_handle call CFUNC(removePerframeHandler);
-
 	};
-
 }, 1, _this] call CFUNC(addPerFrameHandler);
-
-

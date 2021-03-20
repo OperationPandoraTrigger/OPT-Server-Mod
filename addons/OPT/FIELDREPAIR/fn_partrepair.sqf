@@ -14,7 +14,6 @@
 */
 #include "macros.hpp"
 
-
 params [["_veh", objNull]];
 
 if (_veh isEqualTo objNull) exitWith {false}; 
@@ -27,7 +26,6 @@ if (_veh isEqualTo objNull) exitWith {false};
 				_veh setHitPointDamage [_x, 0.1];
 		};
 	};
-
 } foreach GVAR(repair_hps);
 
 true

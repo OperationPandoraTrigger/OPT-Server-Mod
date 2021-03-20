@@ -31,7 +31,6 @@ private _isTargetUnconscious = false;
 private _isDragged = _target getVariable "OPT_isDragged"; 
 private _isPlayerUnconscioustarget = _target getVariable "OPT_isUnconscious";
 
-
 if (_isPlayerUnconscioustarget == 1) then
 {
 	_isTargetUnconscious = 	true;

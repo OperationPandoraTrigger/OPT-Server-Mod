@@ -12,7 +12,6 @@
 * [] call func(updateHUD);
 *
 */
-
 #include "macros.hpp"
 
 disableSerialization;

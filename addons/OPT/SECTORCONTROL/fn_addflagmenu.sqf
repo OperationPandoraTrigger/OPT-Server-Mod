@@ -28,7 +28,6 @@ GVAR(officer) =
     "O_officer_F"
 ];
 
-
 // Mausradmenüeinträge für HL und PL
 if (typeOf player in GVAR(officer)) then 
 {
@@ -46,5 +45,5 @@ if (typeOf player in GVAR(officer)) then
     // inform player
     private _txt = MLOC(FLAG_INST);
     private _header = MLOC(FLAG_CHOOSE);
-    hint format["%1 \n\n %2",_header,_txt];
+    hint format["%1\n\n%2", _header, _txt];
 };

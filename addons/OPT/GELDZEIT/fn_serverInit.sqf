@@ -24,26 +24,32 @@
 
 #include "macros.hpp"
 
+#define LOGGING_VERSION 7
+
 private _time = systemTime;
-["Logging", "Start", [7, OPT_GELDZEIT_Fraktionauswahl, format ["%1-%2-%3 %4:%5:%6", _time select 0, _time select 1, _time select 2, _time select 3, _time select 4, _time select 5]]] call OPT_LOGGING_fnc_writelog;
+["Logging", "Start", [LOGGING_VERSION, OPT_GELDZEIT_Fraktionauswahl, format ["%1-%2-%3 %4:%5:%6", _time select 0, _time select 1, _time select 2, _time select 3, _time select 4, _time select 5]]] call OPT_LOGGING_fnc_writelog;
 ["Mission", "Load", [0, 0, 0, missionName]] call OPT_LOGGING_fnc_writelog;
 
 //Init Statussignale
-
 GVAR(Mission_start) = false;
-GVAR(FreeztimeEnde) = false;
-GVAR(Waffenruhestart) = false;
-GVAR(WaffenruheEnde) = false;
-GVAR(Spielzeitstart) = false;
-GVAR(SpielzeitEnde) = false;
-GVAR(Endestart) = false;
-
 publicVariable QGVAR(Mission_start);
+
+GVAR(FreeztimeEnde) = false;
 publicVariable QGVAR(FreeztimeEnde);
+
+GVAR(Waffenruhestart) = false;
 publicVariable QGVAR(Waffenruhestart);
+
+GVAR(WaffenruheEnde) = false;
 publicVariable QGVAR(WaffenruheEnde);
+
+GVAR(Spielzeitstart) = false;
 publicVariable QGVAR(Spielzeitstart);
+
+GVAR(SpielzeitEnde) = false;
 publicVariable QGVAR(SpielzeitEnde);
+
+GVAR(Endestart) = false;
 publicVariable QGVAR(Endestart);
 
 GVAR(playerList) = [];
@@ -118,5 +124,4 @@ DFUNC(Mission_Ende) =
 
 	// Nach Ablauf der Freeztime die Waffenruhe auslösen
 	[FUNC(Waffenruhe), GVAR(FREEZETIME),""] call CLib_fnc_wait;
-
 }] call CFUNC(addEventhandler);

@@ -30,8 +30,6 @@
 
 #include "macros.hpp"
 
-
-
 params 
 [
     "_side",
@@ -45,28 +43,29 @@ private _vehiclePool = [];
 if (_side isEqualTo west) then 
 {    
     _vehiclePool = GVAR(Raktenheliwest) + GVAR(Gunheliwest) + GVAR(Gunvehwest);
-               
 } 
 else 
 {    
     _vehiclePool = GVAR(Raktenhelieast)  + GVAR(Gunhelieast) + GVAR(Gunveheast);
-
 };
 
 switch (_side) do 
 {
-    case west : 
+    case west:
     {    
         _vehiclePool = GVAR(Raktenheliwest) + GVAR(Gunheliwest) + GVAR(Gunvehwest);
     };
-    case east : 
+
+    case east:
     {    
         _vehiclePool = GVAR(Raktenhelieast)  + GVAR(Gunhelieast) + GVAR(Gunveheast);
     };
-    case independent : 
+
+    case independent:
     {    
         _vehiclePool = GVAR(Raktenheliindependent)  + GVAR(Gunheliindependent) + GVAR(Gunvehindependent);
     };
+
     default 
     {
     };        
@@ -83,7 +82,6 @@ for "_i" from 1 to (count _vehiclePool) do
             private _magazinePrice = _vehiclePool select (_i - 1) select 2;
             _bewaffnungPreis = _bewaffnungPreis + (_magazinePrice * (_x select 1));
         };
-
     } forEach _magazineVehArryNew;                
 };
 

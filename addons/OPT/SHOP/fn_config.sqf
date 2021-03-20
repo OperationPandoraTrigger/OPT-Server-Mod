@@ -23,7 +23,6 @@
 * Example:
 * 
 */
-
 #include "macros.hpp"
 
 #define saleReturnValueForOwn 0.50
@@ -46,7 +45,8 @@ GVAR(nato_vehicles) =
     ["OPT_B_Truck_01_Repair_F", DEF_PROD(0)],               // HEMTT Repair
     ["OPT_B_Truck_01_medical_F", DEF_PROD(0)],              // HEMTT Medical
     ["OPT_B_Truck_01_transport_F", DEF_PROD(0)],             // HEMTT  
-	//Tropentarn
+
+//Tropentarn
     ["OPT_B_Quadbike_01_ghex_F", DEF_PROD(15000)],               // Quadbike
     ["OPT_B_T_LSV_01_unarmed_ghex_F", DEF_PROD(25000)],          // Prowler unarmed 
     ["OPT_B_T_LSV_01_armed_ghex_F", DEF_PROD(30000)],            // Prowler armed
@@ -64,7 +64,8 @@ GVAR(nato_vehicles_supply) =
 [
     ["OPT_B_Truck_01_ammo_F", DEF_PROD(0)],             			// HEMTT Ammo
     ["OPT_B_Truck_01_fuel_F", DEF_PROD(0)],              		// HEMTT Fuel
-	//Tropentarn
+
+//Tropentarn
     ["OPT_B_Truck_01_ammo_ghex_F", 50000, 5000, 20000],            // HEMTT Ammo
     ["OPT_B_Truck_01_fuel_ghex_F", 10000, 5000, 20000]             // HEMTT Fuel	
 ];	
@@ -102,7 +103,8 @@ GVAR(nato_armored) =
     ["OPT4_B_MBT_03_cannon_F", DEF_PROD(0)],                     // MBT-52 Kuma
     ["OPT4_B_MBT_01_Arty_F", DEF_PROD(0)],                       // M4 Scorcher
     ["OPT_B_MBT_01_mlrs_F", DEF_PROD(0)],                      // M5 Sandstorm    
-	//Tropentarn
+
+//Tropentarn
 	["OPT4_B_LSV_01_AT_ghex_F", DEF_PROD(80000)],                     // Prowler AT
 	["OPT4_B_MRAP_01_gmg_ghex_F", DEF_PROD(0)],                		// Hunter GMG
     ["OPT4_B_APC_Tracked_01_rcws_ghex_F", DEF_PROD(25000)],          // IFV-6c Panther
@@ -132,7 +134,8 @@ GVAR(nato_supplies) =
     ["OPT_B_CargoNet_01_ammo_F", DEF_PROD(5000)],               // Ausrstungskiste
     ["OPT_Box_NATO_WpsSpecial_Diver_F", DEF_PROD(5000)],        // Taucherkiste    
     ["OPT_B_UGV_01_F", DEF_PROD(0)],                         // UGV Stomper
-	//Tropentarn
+
+//Tropentarn
 	["OPT_B_UGV_01_ghex_F", DEF_PROD(2000)],                         // UGV Stomper
     ["OPT_B_UAV_01_F", DEF_PROD(0)],                            // Darter AR-2
     ["OPT_FlexibleTank_01_forest_F", DEF_PROD(1000)],           // Treibstoff-Fass
@@ -178,7 +181,8 @@ GVAR(csat_vehicles) =
 	["OPT_O_Truck_03_transport_F", DEF_PROD(0)],         // Tempest Logistik
     ["OPT_O_Truck_03_repair_F", DEF_PROD(0)],               // Tempest Repair
     ["OPT_O_Truck_03_medical_F", DEF_PROD(0)],              // Tempest Medicalasa
-    //Tropentarn
+
+//Tropentarn
     ["OPT_O_T_Quadbike_01_ghex_F", DEF_PROD(10000)],                // Quadbike 
     ["OPT_O_T_LSV_02_unarmed_ghex_F", DEF_PROD(25000)],                  // Quilin unarmed 
     ["OPT_O_T_LSV_02_armed_ghex_F", DEF_PROD(35000)],                    // Quilin armed 
@@ -196,7 +200,8 @@ GVAR(csat_vehicles_supply) =
 [
     ["OPT_O_Truck_03_ammo_F", DEF_PROD(0)],              // Zamack Ammo
     ["OPT_O_Truck_03_fuel_F", DEF_PROD(0)],              // Zamack Fuel
-	//Tropentarn
+
+//Tropentarn
     ["OPT_O_T_Truck_02_ammo_F", 50000,5000,10000],                 // Zamack Ammo
     ["OPT_O_T_Truck_02_fuel_F", 10000,5000,10000]                  // Zamack Fuel
 ];
@@ -241,7 +246,8 @@ GVAR(csat_armored) =
     ["OPT_O_MBT_02_arty_F", DEF_PROD(0)],                 // 2S9 Sochor
     ["OPT_O_Truck_02_MRL_F", DEF_PROD(0)],                 // Zamark MRL 
     ["OPT_O_MBT_04_cannon_F", DEF_PROD(0)],               // T-140 Angara
-	//Tropentarn
+
+//Tropentarn
 	["OPT_O_MRAP_02_gmg_ghex_F", DEF_PROD(0)],                  // Ifrit GMG
 	["OPT_O_LSV_02_AT_GHEX_F", DEF_PROD(250000)],                    // Quilin AT 
     ["OPT_O_T_APC_Wheeled_02_rcws_ghex_F", DEF_PROD(0)],       // MSE-3 Marid 
@@ -274,7 +280,8 @@ GVAR(csat_supplies) =
     ["OPT_O_CargoNet_01_ammo_F", 5000,1000, 2000],                           // Ausrüstungskiste
     ["OPT_Box_East_WpsSpecial_Diver_F", 5000,1000, 2000],                    // Taucherkiste
 	["OPT_O_UGV_01_F", DEF_PROD(0)],                                     // UGV Saif
-	//Tropentarn
+
+//Tropentarn
     ["OPT_O_T_UGV_01_ghex_F", DEF_PROD(0)],                                 // UGV Saif    
     ["OPT_O_UAV_01_F", DEF_PROD(0)],                                        // Tayran AR-2
     ["OPT_FlexibleTank_01_sand_F", DEF_PROD(1000)],                         // Treibstoff-Fass
@@ -767,7 +774,8 @@ GVAR(vehClassWestWW) =
     "OPT4_B_MBT_01_TUSK_F",
     "OPT4_B_MBT_01_arty_F",
     "OPT4_B_MBT_03_cannon_F",
-	//Tropentarn
+
+//Tropentarn
     "OPT4_B_MRAP_01_gmg_ghex_F",
     "OPT4_B_MRAP_01_hmg_ghex_F",
 	"OPT4_B_LSV_01_AT_ghex_F",
@@ -799,7 +807,8 @@ GVAR(vehClassEastWW) =
 	"OPT4_O_MBT_02_cannon_F",
 	"OPT4_O_MBT_02_arty_F",
     "OPT4_O_MBT_04_cannon_F",
-	//Tropentarn
+
+//Tropentarn
 	"OPT4_O_T_MRAP_02_hmg_ghex_F", 
     "OPT4_O_MRAP_02_gmg_ghex_F",
 	"OPT4_O_LSV_02_AT_GHEX_F",

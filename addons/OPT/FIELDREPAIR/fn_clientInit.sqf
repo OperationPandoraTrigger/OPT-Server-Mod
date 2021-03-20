@@ -26,11 +26,10 @@
 * Example:
 * [] call FUNC(clientInit);
 */
-
 #include "macros.hpp"
 
-["missionStarted", {
-
+["missionStarted",
+{
 	GVAR(mutexAction) = false;
 
 	//pioniers
@@ -45,5 +44,4 @@
 		"I_engineer_F",
 		"O_engineer_F"
 	];
-
 }] call CFUNC(addEventhandler);

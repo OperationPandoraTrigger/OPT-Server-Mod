@@ -21,28 +21,30 @@
 * Example:
 * [] call FUNC(serverInit);
 */
-
 #include "macros.hpp"
 
 //Nato Hardcap
 // Heli / Fahrzeuge / Ausrüstung / See
-
 GVAR(Hardcap_nato_choppers) = [];
+publicVariable QGVAR(Hardcap_nato_choppers);
 
 GVAR(Hardcap_nato_vehicles) = [];
+publicVariable QGVAR(Hardcap_nato_vehicles);
 
 GVAR(Hardcap_nato_supplies) = [];
+publicVariable QGVAR(Hardcap_nato_supplies);
 
 GVAR(Hardcap_nato_sea) = [];
+publicVariable QGVAR(Hardcap_nato_sea);
+
 
 //CSAT Hardcap
 // Heli / Fahrzeuge / Ausrüstung / See
-
-
 GVAR(Hardcap_csat_choppers) = [];
+publicVariable QGVAR(Hardcap_csat_choppers);
 
 GVAR(Hardcap_csat_vehicles) = [];
-
+publicVariable QGVAR(Hardcap_csat_vehicles);
 
 GVAR(Hardcap_csat_supplies) = 
 [
@@ -52,16 +54,19 @@ GVAR(Hardcap_csat_supplies) =
 	["OPT_O_static_AA_F",2],
 	["OPT_O_static_AT_F",2]
 ];
+publicVariable QGVAR(Hardcap_csat_supplies);
 
 GVAR(Hardcap_csat_sea) = [];
+publicVariable QGVAR(Hardcap_csat_sea);
+
 
 //AAF Hardcap
 // Heli / Fahrzeuge / Ausrüstung / See 
-
-
 GVAR(Hardcap_aaf_choppers) = [];
+publicVariable QGVAR(Hardcap_aaf_choppers);
 
 GVAR(Hardcap_aaf_vehicles) = [];
+publicVariable QGVAR(Hardcap_aaf_vehicles);
 
 GVAR(Hardcap_aaf_supplies) = 
 [
@@ -71,8 +76,10 @@ GVAR(Hardcap_aaf_supplies) =
 	["OPT_I_static_AA_F",2],
 	["OPT_I_static_AT_F",2]
 ];
+publicVariable QGVAR(Hardcap_aaf_supplies);
 
 GVAR(Hardcap_aaf_sea) = [];
+publicVariable QGVAR(Hardcap_aaf_sea);
 
 switch (GVAR(hardcaplist)) do 
 {
@@ -176,20 +183,4 @@ switch (GVAR(hardcaplist)) do
 	default 
     {
 	};
-	
 };
-
-publicVariable QGVAR(Hardcap_nato_choppers);
-publicVariable QGVAR(Hardcap_nato_vehicles);
-publicVariable QGVAR(Hardcap_nato_supplies);
-publicVariable QGVAR(Hardcap_nato_sea);
-
-publicVariable QGVAR(Hardcap_csat_choppers);
-publicVariable QGVAR(Hardcap_csat_vehicles);
-publicVariable QGVAR(Hardcap_csat_supplies);
-publicVariable QGVAR(Hardcap_csat_sea);
-
-publicVariable QGVAR(Hardcap_aaf_choppers);
-publicVariable QGVAR(Hardcap_aaf_vehicles);
-publicVariable QGVAR(Hardcap_aaf_supplies);
-publicVariable QGVAR(Hardcap_aaf_sea);

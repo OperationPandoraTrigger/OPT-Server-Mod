@@ -22,7 +22,6 @@
 * Example:
 * remoteExecCall [QFUNC(deleteMarkers)];
 */
-
 #include "macros.hpp"
 
 allMapMarkers apply

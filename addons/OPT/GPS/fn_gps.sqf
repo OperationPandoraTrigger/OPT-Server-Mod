@@ -25,15 +25,13 @@
 #include "macros.hpp";
 
 //Erfassung der Einheiten beim Start
-
-GVAR(unitnumber) = (count units Side player)+10;
-
+GVAR(unitnumber) = (count units Side player) + 10;
 GVAR(unitsToMark) = [];
 
 //Marker erstellen für die Spieler
 GVAR(markerPool) = [];
 
-for "_i" from 1 to GVAR(unitnumber)  do 
+for "_i" from 1 to GVAR(unitnumber) do
 {
     GVAR(markerPool) pushBack ([PLAYERSIDE, _i] call FUNC(createUnitMarker));
 }; 
@@ -41,14 +39,12 @@ for "_i" from 1 to GVAR(unitnumber)  do
 // create special local player marker
 GVAR(markerplayer) = [] call FUNC(createPlayerMarker);
 
-//
 [{
 	private _unitsToMark = [];
     {
         if (side _x == playerSide) then 
         {
             _unitsToMark pushBack _x;
-
         };
     } foreach allUnits; 
 
@@ -93,18 +89,15 @@ GVAR(markerplayer) = [] call FUNC(createPlayerMarker);
                         if (!isNull _operator) then 
 						{
                             _marker setMarkerTextLocal format["%1 (%2)", _vec_name, NAME _operator];
-
                         } 
 						else 
 						{
                             _marker setMarkerTextLocal format["%1 (---)", _vec_name];
-
                         };
                     } 
 					else 
 					{
                         _marker setMarkerTextLocal format["%1 (%2)", _vec_name, _name];
-
                     };
                 } 
 				else 
@@ -140,5 +133,4 @@ GVAR(markerplayer) = [] call FUNC(createPlayerMarker);
             };
         };
     };      
-
 }, 1, _this] call CFUNC(addPerFrameHandler);

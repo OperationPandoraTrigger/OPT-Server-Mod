@@ -1,5 +1,5 @@
 /**
-* Author: James
+* Author: form
 * log all player/clients that have connected since beginning.
 * log name, side, and UID
 *
@@ -18,7 +18,6 @@
 * Public:
 * yes
 */
-
 #include "macros.hpp"
 
 {

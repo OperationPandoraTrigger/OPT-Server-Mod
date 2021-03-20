@@ -66,7 +66,8 @@ GVAR(canTransportCargo) =
     ["OPT_B_Truck_01_transport_F", 10],             // HEMTT  
 	["OPT_B_Truck_01_ammo_F", 2],             		// HEMTT Ammo
     ["OPT_B_Truck_01_fuel_F", 2],              		// HEMTT Fuel
-	//Tropentarn
+
+//Tropentarn
     ["OPT_B_Quadbike_01_ghex_F", 2],               // Quadbike
     ["OPT_B_T_LSV_01_unarmed_ghex_F", 4],          // Prowler unarmed 
     ["OPT_B_T_LSV_01_armed_ghex_F", 4],            // Prowler armed
@@ -93,7 +94,8 @@ GVAR(canTransportCargo) =
     ["OPT4_B_MBT_03_cannon_F", 2],                     // MBT-52 Kuma
     ["OPT4_B_MBT_01_Arty_F", 2],                       // M4 Scorcher
     ["OPT_B_MBT_01_mlrs_F", 2],                      // M5 Sandstorm    
-	//Tropentarn
+
+//Tropentarn
 	["OPT4_B_LSV_01_AT_ghex_F", 4],                     // Prowler AT
 	["OPT4_B_MRAP_01_gmg_ghex_F", 4],                		// Hunter GMG
     ["OPT4_B_APC_Tracked_01_rcws_ghex_F", 4],          // IFV-6c Panther
@@ -131,7 +133,8 @@ GVAR(canTransportCargo) =
 	
 // NATO supplies/drohnen	
 	["OPT_B_UGV_01_F", 6],								// UGV Stomper
-	//Tropentarn
+
+//Tropentarn
 	["OPT_B_UGV_01_ghex_F", 6],                         // UGV Stomper
 	
 // CSAT Vehicles	
@@ -148,7 +151,8 @@ GVAR(canTransportCargo) =
     ["OPT_O_Truck_03_medical_F", 2],              // Tempest Medicalasa
 	["OPT_O_Truck_03_ammo_F", 2],              // Tempest Ammo
     ["OPT_O_Truck_03_fuel_F", 2],              // Tempest Fuel
-    //Tropentarn
+
+//Tropentarn
     ["OPT_O_T_Quadbike_01_ghex_F", 2],                // Quadbike 
     ["OPT_O_T_LSV_02_unarmed_ghex_F", 4],                  // Quilin unarmed 
     ["OPT_O_T_LSV_02_armed_ghex_F", 4],                    // Quilin armed 
@@ -180,7 +184,8 @@ GVAR(canTransportCargo) =
 	["OPT4_O_MBT_04_cannon_F", 2],               // T-140 Angara
     ["OPT4_O_MBT_02_arty_F", 2],                 // 2S9 Sochor
     ["OPT_O_Truck_02_MRL_F", 2],                 // Zamark MRL    
-	//Tropentarn
+
+//Tropentarn
 	["OPT_O_MRAP_02_gmg_ghex_F", 4],                  // Ifrit GMG
 	["OPT_O_LSV_02_AT_GHEX_F", 4],                    // Quilin AT 
     ["OPT_O_T_APC_Wheeled_02_rcws_ghex_F", 4],       // MSE-3 Marid 
@@ -224,12 +229,15 @@ GVAR(canTransportCargo) =
 	
 // CSAT Supplies	
 	["OPT_O_T_UGV_01_ghex_F", 6],						// UGV Saif	
-//vanilla
+
+// Vanilla
 	["OPT_O_UGV_01_F", 6],					        	// UGV Saif	
+
 // CSAT Ships
 	["OPT_O_Boat_Transport_01_F", 4],					// Assault Boat
 	["OPT_O_Boat_Armed_01_hmg_F", 4],					// Speedboat HMG
 	["OPT_O_C_Boat_Transport_02_F", 4],				    // rhib unbewaffnet	
+
 // AAF Vehicles
     ["OPT_I_Quadbike_01_F", 2],                    // Quadbike
     ["OPT_I_C_Offroad_02_unarmed_F", 4],               // Jeep unarmed 
@@ -242,6 +250,7 @@ GVAR(canTransportCargo) =
 	["OPT_I_Truck_02_ammo_F", 2],               // Zamak Ammo
     ["OPT_I_Truck_02_fuel_F", 2],  		     // Zamak Fuel
 	["OPT_I_Truck_02_medical_F", 2],               // Zamak Medical
+
 // AAF Choppers
     ["OPT_I_Heli_light_03_F", 4],                 // WY-55 Hellcat
 	["OPT_I_Heli_light_03_v2_F", 4],                 // WY-55 Hellcat Cas Light
@@ -249,6 +258,7 @@ GVAR(canTransportCargo) =
     ["OPT_I_Heli_light_03_unarmed_F", 4],          // WY-55 Hellcat Unbewaffnet
 	["OPT_I_Heli_Transport_02_F", 10],           	    // CH-49 Mohawk (Transport+Lift)
     ["OPT_I_UAV_02_light_F", 0],                 // Greyhawk unbewaffnet
+
 // AAF Armored
 	["OPT4_I_C_Offroad_02_AT_F", 4],                     // Jeep AT 
 	["OPT_I_LSV_01_AT_ghex_F", 4],                     // Prowler AT 
@@ -267,8 +277,10 @@ GVAR(canTransportCargo) =
 	["OPT_I_MBT_03_cannon_F_AT", 2],                     // MBT-52 Kuma Fahrzeug
     ["OPT_I_MBT_01_arty_ghex_F", 2],                      // Scorcher Arty 
 	["OPT_I_Truck_02_MRL_F", 2],                      // Zamak Arty 
+
 // AAF Stomper	
     ["OPT_I_UGV_01_F", 6],                         // UGV Stomper   	
+
 // AAF Ships
     ["OPT_I_Boat_Armed_01_minigun_F", 4],         // Speedboat Minigun
     ["OPT_I_Boat_Transport_01_F", 4],               // Assault Boat
@@ -298,7 +310,8 @@ GVAR(canBeTransported) =
     ["OPT_B_Truck_01_transport_F", 10],             // HEMTT  
 	["OPT_B_Truck_01_ammo_F", 10],             		// HEMTT Ammo
     ["OPT_B_Truck_01_fuel_F", 10],              		// HEMTT Fuel
-	//Tropentarn
+
+//Tropentarn
     ["OPT_B_Quadbike_01_ghex_F", 4],               // Quadbike
     ["OPT_B_T_LSV_01_unarmed_ghex_F", 5],          // Prowler unarmed 
     ["OPT_B_T_LSV_01_armed_ghex_F", 5],            // Prowler armed
@@ -325,7 +338,8 @@ GVAR(canBeTransported) =
     ["OPT4_B_MBT_03_cannon_F", 10],                     // MBT-52 Kuma
     ["OPT4_B_MBT_01_Arty_F", 10],                       // M4 Scorcher
     ["OPT_B_MBT_01_mlrs_F", 10],                      // M5 Sandstorm    
-	//Tropentarn
+
+//Tropentarn
 	["OPT4_B_LSV_01_AT_ghex_F", 5],                     // Prowler AT
 	["OPT4_B_MRAP_01_gmg_ghex_F", 5],                		// Hunter GMG
     ["OPT4_B_APC_Tracked_01_rcws_ghex_F", 10],          // IFV-6c Panther
@@ -340,8 +354,10 @@ GVAR(canBeTransported) =
 	
 // NATO supplies/drohnen	
 	["OPT_B_UGV_01_F", 4],								// UGV Stomper   
-    //Tropentarn
+ 
+//Tropentarn
 	["OPT_B_UGV_01_ghex_F", 4],                         // UGV Stomper  	
+
 // NATO supplies
 	["OPT_B_supplyCrate_F", 2],							    // Transportkiste (leer)
 	["OPT_Box_NATO_Ammo_F", 2],          				    // Munitionskiste	
@@ -371,10 +387,12 @@ GVAR(canBeTransported) =
 	["OPT_Box_NATO_WpsSpecial_Diver_F", 2],				    // Taucherkiste
 	["OPT_FlexibleTank_01_forest_F", 1],				    //Spritfass
 	["ACE_Box_82mm_Mo_HE", 4],				    //Mörsermuni
+
 // NATO ships
 	["OPT_B_Boat_Transport_01_F", 5],			    	// Assault Boat     - hinzugefügt
 	["OPT_B_Boat_Armed_01_minigun_F", 5],		    	// Speedboat Minigun    - hinzugefügt
 	["OPT_B_C_Boat_Transport_02_F", 5],			    	// Rhib unbewaffnet      - hinzugefügt	
+
 // CSAT Vehicles	
     ["OPT_O_Quadbike_01_F", 4],                    // Quadbike-
     ["OPT_O_T_LSV_02_unarmed_F", 5],               // Quilin unarmed 
@@ -389,7 +407,8 @@ GVAR(canBeTransported) =
     ["OPT_O_Truck_03_medical_F", 10],              // Tempest Medicalasa
 	["OPT_O_Truck_03_ammo_F", 10],              // Tempest Ammo
     ["OPT_O_Truck_03_fuel_F", 10],              // Tempest Fuel
-    //Tropentarn
+
+//Tropentarn
     ["OPT_O_T_Quadbike_01_ghex_F", 4],                // Quadbike 
     ["OPT_O_T_LSV_02_unarmed_ghex_F", 5],                  // Quilin unarmed 
     ["OPT_O_T_LSV_02_armed_ghex_F", 5],                    // Quilin armed 
@@ -420,7 +439,8 @@ GVAR(canBeTransported) =
 	["OPT4_O_MBT_04_cannon_F", 10],               // T-140 Angara
     ["OPT4_O_MBT_02_arty_F", 10],                 // 2S9 Sochor
     ["OPT_O_Truck_02_MRL_F", 10],                 // Zamark MRL    
-	//Tropentarn
+
+//Tropentarn
 	["OPT_O_MRAP_02_gmg_ghex_F", 5],                  // Ifrit GMG
 	["OPT_O_LSV_02_AT_ghex_F", 5],                    // Quilin AT 
     ["OPT_O_T_APC_Wheeled_02_rcws_ghex_F", 10],       // MSE-3 Marid 
@@ -468,14 +488,18 @@ GVAR(canBeTransported) =
     ["OPT_Land_Pod_Heli_Transport_04_repair_F", 10],		    // Reparaturcontainer
 	["OPT_Land_Pod_Heli_Transport_04_repair_black_F", 10],	// Repcontainer schwarz
 	["OPT_Land_Pod_Heli_Transport_04_repair_radar_F", 10],	// Radar Container NEU
+
 // CSAT Supplies	
 	["OPT_O_T_UGV_01_ghex_F", 4],						// UGV Saif	
-//vanilla
+
+// Vanilla
 	["OPT_O_UGV_01_F", 4],	
+
 // CSAT Ships
 	["OPT_O_Boat_Transport_01_F", 4],					// Assault Boat
 	["OPT_O_Boat_Armed_01_hmg_F", 4],					// Speedboat HMG
 	["OPT_O_C_Boat_Transport_02_F", 4],				    // rhib unbewaffnet	
+
 // AAF Vehicles
     ["OPT_I_Quadbike_01_F", 4],                    // Quadbike
     ["OPT_I_C_Offroad_02_unarmed_F", 5],               // Jeep unarmed 
@@ -487,6 +511,7 @@ GVAR(canBeTransported) =
     ["OPT_I_Truck_02_transport_F", 10],               // Zamak  
 	["OPT_I_Truck_02_ammo_F", 10],               // Zamak Ammo
     ["OPT_I_Truck_02_fuel_F", 10],  		     // Zamak Fuel              
+
 // AAF Armored
 	["OPT_I_C_Offroad_02_AT_F", 5],                     // Jeep AT 
 	["OPT_I_LSV_01_AT_ghex_F", 5],                     // Prowler AT 
@@ -505,6 +530,7 @@ GVAR(canBeTransported) =
 	["OPT_I_MBT_03_cannon_F_INF", 10],                     // MBT-52 Kuma Infanterie
 	["OPT_I_MBT_03_cannon_F_AT", 10],                     // MBT-52 Kuma Fahrzeug
     ["OPT_O_T_MBT_02_arty_ghex_F", 10],                      // Scorcher Arty 
+
 // AAF supplies
 	["OPT_I_supplyCrate_F", 2],							    // Transportkiste (leer)
 	["OPT_Box_EFA_Ammo_F", 2],         				    // Munitionskiste
@@ -532,8 +558,10 @@ GVAR(canBeTransported) =
 	["OPT_B_Slingload_01_Ammo_F", 10],					    // Slinglot Muni Container	
 	["OPT_B_Slingload_01_Repair_F", 10],					    // Slinglot Rep Container	
 	["OPT_B_Slingload_01_Fuel_F", 10],					    // Slinglot Fuel Container	
+
 // AAF Stomper	
     ["OPT_I_UGV_01_F", 4],                         // UGV Stomper  		
+
 // AAF Ships
     ["OPT_I_Boat_Armed_01_minigun_F", 4],         // Speedboat Minigun
     ["OPT_I_Boat_Transport_01_F", 4],               // Assault Boat
@@ -547,7 +575,7 @@ GVAR(canBeTransported) =
  // e.g. : [classname, offset in [x,y,z] from model center, direction]
 GVAR(canBeDragged) = 
 [											
-    // NATO supplies	
+// NATO supplies	
     ["OPT_B_CargoNet_01_ammo_F", [0, 2, 0.1], 0],                         	// Ausrüstungskiste
     ["OPT_B_supplyCrate_F", [0, 2, 0.1], 0],			                    // Transportkiste (leer),500
 	["OPT_Box_NATO_WpsSpecial_Diver_F"],				                    // Taucherkiste,5000	
@@ -567,20 +595,22 @@ GVAR(canBeDragged) =
 	["OPT_B_static_AA_F"],						    	                    // Stand-AA,25000
 	["OPT_B_static_AT_F"],						    	                    // Stand-AT,200000	
 	["OPT_B_Mortar_01_F"],							                        // MK6 - Mörser,200000
-	["B_Mortar_01_F"],						// MK6 - Mrser
+	["B_Mortar_01_F"],														// MK6 - Mörser
 	["OPT_FlexibleTank_01_forest_F"],					                    //Spritfass
 	["OPT_B_Static_Designator_01_F"],					                    // Remote Designator,10000
-	["OPT_B_Slingload_01_Fuel_F",  [0, 5, 0.05], 0],                         // Fuelcontainer,5000
-	["OPT_B_Slingload_01_Ammo_F",  [0, 5, 0.05], 0],                         // Munitionscontainer,50000
-	["OPT_B_Slingload_01_Repair_F",  [0, 5, 0.05], 0],                       // Reparaturcontainer,5000
+	["OPT_B_Slingload_01_Fuel_F",  [0, 5, 0.05], 0],                        // Fuelcontainer,5000
+	["OPT_B_Slingload_01_Ammo_F",  [0, 5, 0.05], 0],                        // Munitionscontainer,50000
+	["OPT_B_Slingload_01_Repair_F",  [0, 5, 0.05], 0],                      // Reparaturcontainer,5000
 	["OPT_B_Slingload_01_Repair_radar_F",  [0, 5, 0.05], 0],
-	["Land_Cargo10_military_green_F"],	// NATO Radar Container
-	["OPT_B_Slingload_01_Medevac_F",  [0, 5, 0.05], 0], // Lazarettcontainer,5000			//psycho, dieser container verursacht Probleme mit den Load-Scripts und wird durch den weissen Container ersetzt welcher zum Lazarett ausgebaut werden kann
+	["Land_Cargo10_military_green_F"],										// NATO Radar Container
+	["OPT_B_Slingload_01_Medevac_F",  [0, 5, 0.05], 0], 					// Lazarettcontainer,5000			//psycho, dieser container verursacht Probleme mit den Load-Scripts und wird durch den weissen Container ersetzt welcher zum Lazarett ausgebaut werden kann
+
 // NATO ships	
 	["OPT_B_Boat_Transport_01_F", [0, 2, 0.1], 0],					        // Assault Boat,500
 	["OPT_B_C_Boat_Transport_02_F", [0, 2, 0.1], 0],				    	// Rhib unbewaffnet,2000
-	["OPT_B_Boat_Armed_01_minigun_F",[0, 2, 0.1], 0],				                        // Speedboat Minigun,10000
-	["OPT_B_SDV_01_F",[0, 2, 0.1], 0],								                        // Submarine,2000
+	["OPT_B_Boat_Armed_01_minigun_F",[0, 2, 0.1], 0],				        // Speedboat Minigun,10000
+	["OPT_B_SDV_01_F",[0, 2, 0.1], 0],								        // Submarine,2000
+
 //CSAT supplies
     ["OPT_O_CargoNet_01_ammo_F", [0, 2, 0.1], 0],                        	// Ausrüstungskiste
 	["OPT_O_supplyCrate_F", [0, 2, 0.1], 0],							    // Transportkiste,500
@@ -595,7 +625,7 @@ GVAR(canBeDragged) =
 	["OPT_Box_East_WpsSpecial_F"],            			                    // Munition spezial kiste NEUE KISTE!
     ["OPT_Box_East_Grenades_F"],            		                        // granatenkiste,75000
     ["OPT_CSAT_Sprengstoffkiste"],            		                        // sprengstoffkiste,75000 NEUE KISTE!
-	["OPT_CSAT_Minenkiste"],            		                        // Minenkiste,75000 NEUE KISTE!
+	["OPT_CSAT_Minenkiste"],            		                        	// Minenkiste,75000 NEUE KISTE!
 	["OPT_Box_East_WpsLaunch_F"],					                		// HAT-Kiste (Titan),400000
 	["OPT_O_HMG_01_F"],								                        // Stand-MG niedrig,10000
 	["OPT_O_HMG_01_high_F"],							                    // Stand-MG hoch,10000
@@ -604,7 +634,7 @@ GVAR(canBeDragged) =
 	["OPT_O_static_AA_F"],							                        // Stand-AA,25000
 	["OPT_O_static_AT_F"],							                        // Stand-AT,200000
 	["OPT_O_Mortar_01_F"],							                        // MK6 Mörser,200000
-	["B_Mortar_01_F"],						// MK6 - Mrser
+	["B_Mortar_01_F"],														// MK6 - Mörser
 	["OPT_FlexibleTank_01_sand_F"],					                        // Treibstoff-Fass
 	["OPT_O_Static_Designator_02_F"],					                    // Remote Designator,10000
 	["OPT_Land_Pod_Heli_Transport_04_fuel_F",  [0, 5, 0.05], 0],			    // Fuelcontainer,5000
@@ -616,11 +646,13 @@ GVAR(canBeDragged) =
 	["OPT_Land_Pod_Heli_Transport_04_repair_radar_F", [0, 5, 0.05], 0],      // CSAT Radar Container
 	["Land_Cargo10_grey_F"],										        // Radar Container NEU
 	["OPT_Land_Pod_Heli_Transport_04_medevac_F", [0, 5, 0.05], 0],			// Lazarettcontainer,5000 //psycho, dieser container verursacht Probleme mit den Load-Scripts und wird durch den weißen Container ersetzt welcher zum Lazarett ausgebaut werden kann
+
 //CSAT ships
 	["OPT_O_Boat_Transport_01_F", [0, 2, 0.1], 0], 		    // Assault Boat,500
 	["OPT_O_Boat_Armed_01_hmg_F", [0, 2, 0.1], 0],					        // Speedboat HMG,14000
 	["OPT_O_C_Boat_Transport_02_F", [0, 2, 0.1], 0],			// rhib unbewaffnet,7000
 	["OPT_O_SDV_01_F", [0, 2, 0.1], 0],			// Submarine,2000										    
+
 // AAF supplies
     ["OPT_I_CargoNet_01_ammo_F", [0, 2, 0.1], 0],                        	// Ausrüstungskiste
 	["OPT_I_supplyCrate_F", [0, 2, 0.1], 0],			// Transportkiste (leer)
@@ -644,6 +676,7 @@ GVAR(canBeDragged) =
 	["I_Mortar_01_F"],						// MK6 - Mrser
 	["OPT_FlexibleTank_01_forest_F"],					    // Treibstoff-Fass	
 	["OPT_I_Static_Designator_01_F"],					    // Remote Designator
+
 // AAF Ships
     ["OPT_I_Boat_Armed_01_minigun_F", [0, 2, 0.1], 0],         // Speedboat Minigun
     ["OPT_I_Boat_Transport_01_F", [0, 2, 0.1], 0],               // Assault Boat
@@ -653,7 +686,7 @@ GVAR(canBeDragged) =
 // Trag und Ziehbare Objekte
 GVAR(canBeCarried) = 
 [
- // NATO supplies	
+// NATO supplies	
     ["OPT_B_supplyCrate_F"],							// Transportkiste (leer),500
 	["OPT_Box_NATO_WpsSpecial_Diver_F"],				// Taucherkiste,5000	
 	["OPT_Box_NATO_Ammo_F"],            				// Munitionskiste,40000
@@ -681,6 +714,7 @@ GVAR(canBeCarried) =
 	["OPT_B_Slingload_01_Repair_radar_F", [0, 5, 0.05], 0],    	        // NATO Radar Container
 	["Land_Cargo10_military_green_F"],
 	["OPT_B_Static_Designator_01_F"],					// Remote Designator,
+
 //CSAT supplies
 	["OPT_O_supplyCrate_F"],							// Transportkiste,
 	["OPT_Box_East_WpsSpecial_Diver_F"],				// Taucherkiste,
@@ -714,6 +748,7 @@ GVAR(canBeCarried) =
 	["OPT_Land_Pod_Heli_Transport_04_repair_radar_F", [0, 5, 0.05], 0],  // CSAT Radar Container
 	["Land_Cargo10_grey_F"],					        // CSAT Radar Container NEU
 	["OPT_FlexibleTank_01_sand_F"],				    	// Treibstoff-Fass
+
 // AAF supplies
  	["OPT_I_supplyCrate_F"],			// Transportkiste (leer)
 	["OPT_Box_EFA_Ammo_F"],         				    // Munitionskiste

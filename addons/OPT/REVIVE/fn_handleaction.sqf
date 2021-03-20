@@ -27,10 +27,12 @@ switch (_action) do
 	{
 		[_target] call FUNC(drag);
 	};
+
 	case "action_release": 
 	{
 		[] call FUNC(release);
 	};
+
 	default 
 	{
 

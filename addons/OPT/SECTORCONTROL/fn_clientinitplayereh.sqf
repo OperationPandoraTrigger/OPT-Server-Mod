@@ -17,7 +17,6 @@
 /* EH für das Versetzen der Flaggen im Trainingsmodus */
 if (GVAR(trainingon)) then 
 {
-
     // use stackedEH, cannot override default behavior
     [QGVAR(move_flag), "onMapSingleClick", 
     {
@@ -40,7 +39,6 @@ if (GVAR(trainingon)) then
 
         if (_flag isEqualTo objNull) then 
         {
-
             // check for flag nearby
             _obj = nearestObjects [_pos, ["FlagPole_F"], 100];
             if (count _obj == 0) exitWith {};
@@ -68,11 +66,8 @@ if (GVAR(trainingon)) then
     player addAction [("<t color=""#f0bfbfbf"">" + ("Teleport") + "</t>"), {[] call FUNC(teleport)}, [], 0, false, true, '', "alive _target"];
 
     ["Respawn", {
-
         player addAction [("<t color=""#f0bfbfbf"">" + ("Teleport") + "</t>"), {[] call FUNC(teleport)}, [], 0, false, true, '', "alive _target"];
-
     }] call CFUNC(addEventhandler);
-
 };
 
 // EH für Minensperre
@@ -99,10 +94,7 @@ if (GVAR(flagFreeMineZoneOn)) then
             // Warnhinweis
             private _txt = MLOC(MINE_VIOLATION);
             private _header = MLOC(MINE_VIOLATION_HEADER);
-            hint Format ["%1 \n\n %2",_header,_txt];
+            hint format ["%1\n\n%2", _header, _txt];
     	};  
 	}];
 };
-
-
-

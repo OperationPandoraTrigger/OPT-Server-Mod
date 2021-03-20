@@ -21,14 +21,13 @@
 * Example:
 * 
 */
-
 #include "macros.hpp"
 
 if (GVAR(vehType) in (GVAR(vehclasswestWW) + GVAR(vehclasseastWW) + GVAR(vehClassindependentWW))) then 
 {
     switch (GVAR(vehType)) do 
 	{
-        // WEST
+// WEST
         case "OPT4_B_Heli_Light_01_armed_F": 
 		{
             GVAR(boxArry) = GVAR(Pawnee);
@@ -180,7 +179,7 @@ if (GVAR(vehType) in (GVAR(vehclasswestWW) + GVAR(vehclasseastWW) + GVAR(vehClas
             GVAR(pylon) = [];
         }; 
         
-        // EAST
+// EAST
         case "OPT4_O_Heli_Light_02_F": 
 		{
             GVAR(boxArry) = GVAR(Orca);
@@ -325,7 +324,8 @@ if (GVAR(vehType) in (GVAR(vehclasswestWW) + GVAR(vehclasseastWW) + GVAR(vehClas
             GVAR(side) = east;
             GVAR(pylon) = [];
         };
-        //AAF
+
+//AAF
         case "OPT_I_Heli_light_03_F": 
 		{
             GVAR(boxArry) = GVAR(hellcat2);
@@ -388,4 +388,3 @@ if (GVAR(vehType) in (GVAR(vehclasswestWW) + GVAR(vehclasseastWW) + GVAR(vehClas
         };
     };
 };
-

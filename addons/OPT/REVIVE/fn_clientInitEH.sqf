@@ -114,7 +114,6 @@ DFUNC(playercheckINCAPACITATED) =
 		//Funktion starten wenn Spieler bewustlos ist. 
 		[player] call FUNC(isUnconscious);	
 	};
-
 };
 
 DFUNC(playerHandleDamage) = 
@@ -144,9 +143,9 @@ DFUNC(playerHandleDamage) =
 		// the Revive-Function should set the desired damage after reviving the body.
 		_resultingDamage = GVAR(MAX_DAMAGE); 
 	};
-
 	_resultingDamage;
 };
+
 // The initial EHs are not needed and resulting in strange problems adding a new EH, so we remove any.
 // still very bad practise that screams for sideeffects. 
 // Just look away.

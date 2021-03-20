@@ -6,7 +6,7 @@
 #define MAJOR 1
 #define MINOR 8
 #define PATCHLVL 8
-#define BUILD 105
+#define BUILD 106
 
 #ifdef VERSION
     #undef VERSION
@@ -18,13 +18,11 @@
 #define VERSION_AR MAJOR,MINOR,PATCHLVL,BUILD
 #define VERSION MAJOR.MINOR.PATCHLVL.BUILD
 
-
 // Do not release with this setting enabled!
 #include "isDev.hpp"
 // #define DEBUGFULL // Enable all debug methods
 // #define ENABLEPERFORMANCECOUNTER // Enable performance counter for function calls
 // #define ENABLEFUNCTIONTRACE // Enable SQF based function tracer
-
 
 #define DISABLECOMPRESSION
 
@@ -48,7 +46,6 @@
     #define OFUNC(var) DOFUNC(var)
 #endif
 
-
 // expand the IS_XYZ macros from CLib (https://github.com/TaktiCool/CLib/blob/master/addons/CLib/supportMacros.hpp#L7)
 #define IS_ARRAY_LENGTH(var, length) if (IS_ARRAY(var)) then {count var == length} else {false}
 #define IS_POSITION2D(var) IS_ARRAY_LENGTH(var,2)
@@ -56,11 +53,9 @@
 #define IS_POSITION(var) IS_POSITION2D(var) || IS_POSITION3D(var)
 #define IS_NULL(var) isNull var
 
-
 // Makros for assertions
 #ifdef ISDEV
     #define ASSERTION_FAILED(msg) SYSLOGGING("FAILED ASSERTION",msg)
-
     #define ASSERT_IS_TYPE(var, type) ASSERT_IS_NOT_NIL(var); if !(var isEqualType type) then {private _errMsg = format["Expected %1 but got %2", typeName type, typeName var]; ASSERTION_FAILED(_errMsg);};
     #define ASSERT_IS_ARRAY(var) ASSERT_IS_TYPE(var,[])
     #define ASSERT_IS_BOOL(var) ASSERT_IS_TYPE(var,true)
@@ -95,7 +90,6 @@
 #else
     // Disable all assertions
     #define ASSERTION_FAILED(msg)
-
     #define ASSERT_IS_TYPE(var, type)
     #define ASSERT_IS_ARRAY(var)
     #define ASSERT_IS_BOOL(var)

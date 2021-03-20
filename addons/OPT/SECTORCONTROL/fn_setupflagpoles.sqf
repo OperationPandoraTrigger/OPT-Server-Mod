@@ -23,7 +23,6 @@
 
 Diese Datei erzeugt für alle gewählten Sektoren die Fahnenmasten sowie Markierungen der MinenZonen.
 */
-
 #include "macros.hpp"
 
 CreateFlags = {

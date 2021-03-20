@@ -21,7 +21,6 @@ if (_veh isEqualTo objNull) exitWith {false};
 private _flag = false;
 
 // 20% Fuel is the threshold
-
 if (fuel _veh < 0.2 && alive player && (player distance _veh) <= 7 && vehicle player == player && speed _veh < 3 && ! GVAR(mutexAction) && alive _veh) then 
 {
 	_flag = true;

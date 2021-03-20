@@ -28,7 +28,6 @@
 * [[10051.7, 9771.2], [8891.66, 9520.1], "ColorRed", 8, "marker_15"] call FUNC(drawline);
 *
 */
-
 #include "macros.hpp"
 
 // read parameters 
@@ -43,16 +42,16 @@ _center = [(_start select 0) + sin(_ang) * _dist, (_start select 1) + cos(_ang) 
  
 // create marker 
 _mrk = createMarker [_id, _center]; 
-if (_mrk != "") then {
+if (_mrk != "") then
+{
+	// define marker 
+	_mrk setMarkerDir _ang; 
+	_mrk setMarkerPos _center; 
+	_mrk setMarkerShape "RECTANGLE"; 
+	_mrk setMarkerBrush "SOLID"; 
+	_mrk setMarkerColor _color; 
+	_mrk setMarkerSize [_size, _dist]; 
  
-// define marker 
-_mrk setMarkerDir _ang; 
-_mrk setMarkerPos _center; 
-_mrk setMarkerShape "RECTANGLE"; 
-_mrk setMarkerBrush "SOLID"; 
-_mrk setMarkerColor _color; 
-_mrk setMarkerSize [_size, _dist]; 
- 
-// return marker 
-_mrk 
+	// return marker 
+	_mrk 
 };

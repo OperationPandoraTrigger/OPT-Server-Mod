@@ -21,7 +21,6 @@
 * Example:
 * [] call FUNC(serverInit);
 */
-
 #include "macros.hpp"
 
 //init Startwerte
@@ -74,9 +73,7 @@ DFUNC(startflagsetup) =
 
 	// Finale Fahnenmasten und Markierungen setzen
 	[] call FUNC(setupflagpoles);
-		
 	[FUNC(startflagsetup), {OPT_GELDZEIT_Spielzeitstart}, "Awesome Delay"] call CLib_fnc_waitUntil;
-
 }] call CFUNC(addEventhandler);
 
 // Sektorenmarker auf die Karte zeichnen sobald die Mission durchgeladen ist

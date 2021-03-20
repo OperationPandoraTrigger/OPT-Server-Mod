@@ -24,7 +24,6 @@
 * Example:
 * 
 */
-
 #include "macros.hpp"
 
 params 

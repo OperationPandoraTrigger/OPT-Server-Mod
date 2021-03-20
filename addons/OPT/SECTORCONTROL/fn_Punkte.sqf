@@ -12,7 +12,6 @@
 * [] call FUNC(punkte);
 *
 */
-
 #include "macros.hpp"
 
 //Init

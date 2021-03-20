@@ -29,7 +29,6 @@
 */
 #include "macros.hpp";
 
-
 private _unitsToMark = [];
 private _leaderUnits = [];  
 

@@ -21,7 +21,6 @@ if (count (getAllHitPointsDamage _veh) < 3) exitWith {false};
 if ((getAllHitPointsDamage _veh select 2) isEqualTo objNull) exitWith {false};
 
 private _flag = false;
-
 {
 	if (_x > 0.01) exitWith 
 	{

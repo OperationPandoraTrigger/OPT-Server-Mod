@@ -51,7 +51,6 @@ DFUNC(eigenversorgung) =
 		}, 
 		MLOC(SELF_CARE)
 	] call ace_common_fnc_progressBar;
-
 };
 
 ["missionStarted",

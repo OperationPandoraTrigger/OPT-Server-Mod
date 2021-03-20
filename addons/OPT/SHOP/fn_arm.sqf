@@ -34,7 +34,6 @@
 * Example:
 *
 */
-
 #include "macros.hpp"
 
 params 
@@ -105,8 +104,7 @@ if (_veh isKindOf "Air") then
             {
                 _veh addWeaponTurret [_x, [0]]
             } forEach _airGunweaponNew;         
-                                       
-        } 
+        }
 		else 
 		{    
             {
@@ -134,7 +132,6 @@ if (_veh isKindOf "Air") then
 				{
                      _veh setPylonLoadOut [_pylon select (_i - 1), _airRaktenmagazinNew select (_i - 1)];     
                 };
-
             } 
 			else 
 			{    
@@ -157,7 +154,3 @@ else
         } forEach _vehWeaponNew;
     };
 };
-
- 
-    
-  

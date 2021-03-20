@@ -23,11 +23,11 @@
 * Example:
 * 
 */
-
 #include "macros.hpp"
 
 //Typ einlesen
-params [
+params
+[
     ["_type", ""],
     ["_modus", ""],
 	["_unitCost", 0]
@@ -112,7 +112,6 @@ GVAR(Checkbereich) = 7;
 private _moveInVeh = _display displayCtrl 22044;
 _moveInVeh ctrlSetTextColor [0.0, 1.0, 0.0, 1];
 
-
 //Fahrzeugfeststellung
 if (_modus == "New") then 
 {
@@ -183,16 +182,13 @@ if (GVAR(Modus) == "old") then
                 if (getNumber (configFile >> "cfgMagazines" >> (_x select 0) >> "count") > 30) then 
                 {
                     _anzeige pushBack _MuniKugel;
-
                 } 
                 else 
                 {
                     _anzeige pushBack _MuniRakete;
-
                 };
 
             } forEach _magazineVehArryNew;
-
         } 
         else 
         {
@@ -244,11 +240,9 @@ if (GVAR(side) isEqualTo civilian) then
     _index =_IDD_box7 lbAdd "Leer";    
 
     _IDD_box_text7 ctrlSetText "Datalink";
-
 } 
 else 
 {
-
     GVAR(VorhandeneBewaffnunggeld) = [GVAR(side), _magazineVehArryNew] call FUNC(geldVorhandeneBewaffnung);
     
     //Boxen füllen
@@ -324,7 +318,6 @@ else
 
             _index =_IDD_box4 lbAdd 
             format["%1 €%2", _heli select _x select 4, _heli select _x select 3];
-
         } forEach (GVAR(boxArry) select 0);
 
         _index =_IDD_box3 lbAdd "Leer";    
@@ -342,7 +335,6 @@ else
 
                 _index =_IDD_box6 lbAdd 
                 format["%1 €%2", _heli select _x select 4, _heli select _x select 3];
-
             } forEach (GVAR(boxArry) select 0);
 
             _index =_IDD_box5 lbAdd "Leer";    
@@ -350,7 +342,6 @@ else
 
             _IDD_box_text5 ctrlSetText "Magazin Raketen";
             _IDD_box_text6 ctrlSetText "Magazin Raketen";
-
         };    
     } 
     else 
@@ -359,19 +350,22 @@ else
         private _vehSelect = [];
         switch (GVAR(side)) do 
         {
-            case west : 
+            case west:
             {    
                 _vehSelect = GVAR(Gunvehwest);
             };
-            case east : 
+
+            case east:
             {    
                 _vehSelect = GVAR(Gunveheast);
             };
-            case independent : 
+
+            case independent:
             {    
                 _vehSelect = GVAR(Gunvehindependent);
             };
-            default 
+
+            default
             {
             };        
         }; 
@@ -385,7 +379,6 @@ else
 
         } forEach (GVAR(boxArry) select 1);
         
-
         _index =_IDD_box1 lbAdd "Leer";    
         _index =_IDD_box2 lbAdd "Leer";
 
@@ -396,18 +389,21 @@ else
         _vehSelect = []; 
         switch (GVAR(side)) do 
         {
-            case west : 
+            case west:
             {    
                 _vehSelect = GVAR(Gunvehwest);
             };
-            case east : 
+
+            case east:
             {    
                 _vehSelect = GVAR(Gunveheast);
             };
-            case independent : 
+
+            case independent:
             {    
                 _vehSelect = GVAR(Gunvehindependent);
             };
+
             default 
             {
             };        
@@ -476,7 +472,6 @@ _IDD_box1 ctrlAddEventHandler [ "LBSelChanged",
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
     _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10) - GVAR(unitCost))];  
-
 }];
 
 _IDD_box2 ctrlAddEventHandler [ "LBSelChanged", 
@@ -489,7 +484,6 @@ _IDD_box2 ctrlAddEventHandler [ "LBSelChanged",
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
     _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10) - GVAR(unitCost))]; 
-
 }];
 
 _IDD_box3 ctrlAddEventHandler [ "LBSelChanged", 
@@ -502,7 +496,6 @@ _IDD_box3 ctrlAddEventHandler [ "LBSelChanged",
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
     _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10) - GVAR(unitCost))]; 
-
 }];
 
 _IDD_box4 ctrlAddEventHandler [ "LBSelChanged", 
@@ -515,7 +508,6 @@ _IDD_box4 ctrlAddEventHandler [ "LBSelChanged",
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
     _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10) - GVAR(unitCost))];  
-
 }];
 
 _IDD_box5 ctrlAddEventHandler [ "LBSelChanged", 
@@ -528,7 +520,6 @@ _IDD_box5 ctrlAddEventHandler [ "LBSelChanged",
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
     _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10) - GVAR(unitCost))]; 
-
 }];
 
 _IDD_box6 ctrlAddEventHandler [ "LBSelChanged", 
@@ -541,7 +532,6 @@ _IDD_box6 ctrlAddEventHandler [ "LBSelChanged",
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
     _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10) - GVAR(unitCost))];  
-
 }];
 
 _IDD_box7 ctrlAddEventHandler [ "LBSelChanged", 
@@ -554,7 +544,6 @@ _IDD_box7 ctrlAddEventHandler [ "LBSelChanged",
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
     
     _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10) - GVAR(unitCost))];  
-    
 }];
 
 // Kauf Konfig ausführen  
@@ -570,7 +559,6 @@ _IDD_vehKonfigOrder ctrlAddEventHandler [ "ButtonClick",
     if (GVAR(Modus) == "New") then  
 	{
         _Gesamtkosten = [_Datensatz,GVAR(orderPAD),GVAR(moveInVeh),GVAR(unitCost)] call FUNC(order);
-		
     }
 	else
 	{
@@ -599,7 +587,6 @@ _IDD_vehKonfigOrder ctrlAddEventHandler [ "ButtonClick",
             _airRaktenmagazin = [];
             _vehWeapon = _Datensatz select 5;
             _vehMagazin = _Datensatz select 6;
-
         };
 
         private _pylon = _Datensatz select 7;
@@ -628,9 +615,7 @@ _IDD_vehKonfigOrder ctrlAddEventHandler [ "ButtonClick",
 		{
 			[getPlayerUID player, Name Player, playerSide, 0, GVAR(vehType), ((GVAR(VorhandeneBewaffnunggeld) - _waffenkosten) * (-1)), "-", "weapons"] remoteExecCall ["OPT_GELDZEIT_fnc_updateBudget", 2, false];
 		};
-		
 	};
-	
     closeDialog 0;
 }];
 
@@ -674,7 +659,6 @@ GVAR(idPadCheckKonfig) = [{
 	{
         _IDD_vehKonfigOrder ctrlEnable true;
     };   
-
 }, 0] call CFUNC(addPerFrameHandler);
 
 // Festlegen ob Spieler in Fahrzeug nach kauf
@@ -695,6 +679,4 @@ _moveInVeh ctrlAddEventHandler [ "ButtonClick",
         _moveInVeh ctrlSetText "[X] Fahrzeug besetzen"; 
         _moveInVeh ctrlSetTextColor [0.0, 1.0, 0.0, 1];             
     };
-
 }];
-

@@ -144,7 +144,7 @@ GVAR(crew) =
 
 GVAR(crew_vecs) = 
 [	
-	//NATO
+//NATO
 	"OPT4_B_LSV_01_AT_F",
 	"OPT4_B_MRAP_01_gmg_F",
     "OPT4_B_APC_tracked_03_cannon_F",
@@ -156,7 +156,8 @@ GVAR(crew_vecs) =
     "OPT4_B_MBT_01_arty_F",
     "OPT4_B_MBT_03_cannon_F",
 	"OPT_B_MBT_01_mlrs_F",
-	//Tropentarn
+
+//Tropentarn
 	"OPT4_B_LSV_01_AT_ghex_F"
     "OPT4_B_MRAP_01_gmg_ghex_F",
     "OPT4_B_APC_tracked_03_cannon_ghex_F",
@@ -169,7 +170,8 @@ GVAR(crew_vecs) =
     "OPT4_B_MBT_03_cannon_ghex_F",
 	"OPT_B_MBT_01_mlrs_ghex_F",
 	
-	//CSAT 
+
+//CSAT 
 	"OPT4_O_LSV_02_AT_F",
     "OPT4_O_MRAP_02_gmg_F",	
     "OPT4_O_APC_Wheeled_02_rcws_F",
@@ -179,7 +181,8 @@ GVAR(crew_vecs) =
 	"OPT4_O_MBT_02_cannon_F",
 	"OPT4_O_MBT_02_arty_F",
 	"OPT_O_Truck_02_MRL_F",
-	//Tropentarn
+
+//Tropentarn
 	"OPT4_O_LSV_02_AT_GHEX_F",
     "OPT4_O_MRAP_02_gmg_ghex_F",
     "OPT4_O_T_APC_Wheeled_02_rcws_ghex_F",
@@ -198,7 +201,7 @@ GVAR(crew_vecs) =
 	"OPT_O_T_MBT_02_cannon_ghex_F_INF",
 	"OPT_O_T_MBT_02_cannon_ghex_F_AT",
 
-	//AAF
+//AAF
 	"OPT4_I_C_Offroad_02_AT_F",
 	"OPT4_I_MRAP_03_gmg_F",	
 	"OPT4_I_APC_Wheeled_03_cannon_F",

@@ -23,10 +23,10 @@
 * Example:
 * 
 */
-
 #include "macros.hpp"
 
-params [
+params
+[
     ["_class", ""]
 ];
 
@@ -52,12 +52,11 @@ private _raketencontrol = [];
 private _kosten = 0;
 private _auswertungLoadout = [];
 
-
 if (_class in (GVAR(vehClassWestWW) + GVAR(vehClassEastWW) + GVAR(vehClassindependentWW))) then 
 {
     switch (_class) do 
 	{
-        // WEST
+// WEST
         case "OPT4_B_Heli_Light_01_armed_F": 
 		{
             _boxArry = GVAR(pawnee);
@@ -264,7 +263,7 @@ if (_class in (GVAR(vehClassWestWW) + GVAR(vehClassEastWW) + GVAR(vehClassindepe
             _gunVehArry = GVAR(gunVehWest);
         }; 
   
-        // EAST
+// EAST
         case "OPT4_O_Heli_Light_02_F": 
 		{
             _boxArry = GVAR(orca);
@@ -460,7 +459,8 @@ if (_class in (GVAR(vehClassWestWW) + GVAR(vehClassEastWW) + GVAR(vehClassindepe
 			_loadouts = GVAR(Sochorloadout);
             _gunVehArry = GVAR(gunVehEast);
         };
-        //AAF
+
+//AAF
         case "OPT_I_Heli_light_03_F": 
 		{
             _boxArry = GVAR(hellcat2);
@@ -593,7 +593,6 @@ if (_class in (GVAR(vehClassWestWW) + GVAR(vehClassEastWW) + GVAR(vehClassindepe
             _airGunmagazin pushBack (_x select 0);
             _kosten = _kosten + (_x select 3);
         };
-
     }
     else    
     {    
@@ -619,4 +618,3 @@ _auswertungLoadout pushBack _Zusatz;
 _auswertungLoadout append [_kosten];
 
 _auswertungLoadout
-

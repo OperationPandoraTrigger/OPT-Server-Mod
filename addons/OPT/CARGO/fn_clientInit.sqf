@@ -31,8 +31,8 @@
 #define OPT_CARGO_ACE_maxWeightCarry 30000
 #define OPT_CARGO_ACE_maxWeightDrag  30000
 
-["missionStarted", {
-	
+["missionStarted",
+{
 	/* set maximal weight values */
 	missionNamespace setVariable ["ACE_maxWeightCarry", OPT_CARGO_ACE_maxWeightCarry];
 	missionNamespace setVariable ["ACE_maxWeightDrag", OPT_CARGO_ACE_maxWeightDrag];
@@ -44,7 +44,5 @@
 	GVAR(canBeCarried) = []; // holds all objects that can be carried
 
 	[] call FUNC(setupCargoSpaceAndSize);
-
 	[] call FUNC(cbaclassevents);
-
 }] call CFUNC(addEventhandler);

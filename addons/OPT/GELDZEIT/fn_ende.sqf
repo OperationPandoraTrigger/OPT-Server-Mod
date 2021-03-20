@@ -120,19 +120,19 @@ DFUNC(endscreen) =
 	// Auswahl Bildschirmanzeige und Ende der Mission
 	private _end = switch (true) do 
 	{
-    case (_sideidplayer == 1 && {GVAR(nato_win) == 1}) : {["END1",true,true]};
-    case (_sideidplayer == 1 && {GVAR(csat_win) == 1}) : {["END2",false,true]};
-	case (_sideidplayer == 1 && {GVAR(aaf_win) == 1}) : {["END3",false,true]};
+    	case (_sideidplayer == 1 && {GVAR(nato_win) == 1}) : {["END1",true,true]};
+    	case (_sideidplayer == 1 && {GVAR(csat_win) == 1}) : {["END2",false,true]};
+		case (_sideidplayer == 1 && {GVAR(aaf_win) == 1}) : {["END3",false,true]};
 
-    case (_sideidplayer == 0 && {GVAR(nato_win) == 1}) : {["END1",false,true]};
-    case (_sideidplayer == 0 && {GVAR(csat_win) == 1}) : {["END2",true,true]};
-	case (_sideidplayer == 0 && {GVAR(aaf_win) == 1}) : {["END3",false,true]};
+    	case (_sideidplayer == 0 && {GVAR(nato_win) == 1}) : {["END1",false,true]};
+    	case (_sideidplayer == 0 && {GVAR(csat_win) == 1}) : {["END2",true,true]};
+		case (_sideidplayer == 0 && {GVAR(aaf_win) == 1}) : {["END3",false,true]};
 
-	case (_sideidplayer == 2 && {GVAR(aaf_win) == 1}) : {["END3",true,true]};
-	case (_sideidplayer == 2 && {GVAR(csat_win) == 1}) : {["END2",false,true]};
-	case (_sideidplayer == 2 && {GVAR(nato_win) == 1}) : {["END1",false,true]};
+		case (_sideidplayer == 2 && {GVAR(aaf_win) == 1}) : {["END3",true,true]};
+		case (_sideidplayer == 2 && {GVAR(csat_win) == 1}) : {["END2",false,true]};
+		case (_sideidplayer == 2 && {GVAR(nato_win) == 1}) : {["END1",false,true]};
 
-    default {["END4",true,true]};
+    	default {["END4",true,true]};
 	};
 	
 	_end spawn BIS_fnc_endMission;

@@ -56,7 +56,7 @@ player addEventHandler ["GetInMan",
                     _unit action ["GetOut", _vec];
                     private _txt = MLOC(SLOT_LOCK_PILOT);
 					private _header = MLOC(SLOT_LOCK);
-    				hint Format ["%1 \n\n %2",_header,_txt];
+    				hint format ["%1\n\n%2", _header, _txt];
                 };
             };
         };
@@ -73,7 +73,7 @@ player addEventHandler ["GetInMan",
                     _unit action ["GetOut", _vec];
                     private _txt = MLOC(SLOT_LOCK_CREW);
                     private _header = MLOC(SLOT_LOCK);
-    				hint Format ["%1 \n\n %2",_header,_txt];
+    				hint format ["%1\n\n%2", _header, _txt];
                 };
             };
         };
@@ -101,7 +101,7 @@ player addEventHandler ["SeatSwitchedMan",
                     _unit1 action ["GetOut", _vec];
                     _txt = MLOC(SLOT_LOCK_PILOT);
                     private _header = MLOC(SLOT_LOCK);
-    				hint Format ["%1 \n\n %2",_header,_txt];
+    				hint format ["%1\n\n%2", _header, _txt];
                 };
             };
         };
@@ -118,12 +118,11 @@ player addEventHandler ["SeatSwitchedMan",
                     _unit1 action ["GetOut", _vec];
                     _txt = MLOC(SLOT_LOCK_CREW);
                     private _header = MLOC(SLOT_LOCK);
-    				hint Format ["%1 \n\n %2",_header,_txt];
+    				hint format ["%1\n\n%2", _header, _txt];
                 };
             };
         };
     };
-
 }];
 
 // EH für Sprengmeister
@@ -148,11 +147,9 @@ player addEventHandler ["FiredMan",
             // Warnhinweis
             private _txt = MLOC(PLACE_MINE);
             private _header = MLOC(RULE_VIOLATION);
-            hint Format ["%1 \n\n %2",_header,_txt];
+            hint format ["%1\n\n%2", _header, _txt];
     	};  
 }];
-
-
 
 // UAV Drohenstation kontrolle
 // [] call FUNC(uav);
@@ -163,5 +160,4 @@ if ((Player isKindOf "VirtualSpectator_F") or (Player isKindOf "ace_spectator_vi
         private _txt = format["Spieler %1 hat einen Zuschauerslot ausgewählt.", name Player];
         [_txt] remoteExecCall ["hint", 0, false];
     };    
-
 }] call CFUNC(addEventhandler);

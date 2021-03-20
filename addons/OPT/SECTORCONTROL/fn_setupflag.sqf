@@ -21,7 +21,6 @@
 * Example:
 * [] call func(setupFlag);
 */
-
 #include "macros.hpp"
 
 /* BY JAMES */
@@ -42,7 +41,7 @@ while {(count GVAR(nato_flags) < round GVAR(flagCountNATO)) && _maxTries > 0} do
 };
 publicVariable QGVAR(nato_flags);
 
-private _maxTries = 100;
+_maxTries = 100;
 while {(count GVAR(csat_flags) < round GVAR(flagCountCSAT)) && _maxTries > 0} do
 {
     GVAR(csat_flags) pushBackUnique selectRandom _all_csat_flags;
@@ -50,6 +49,7 @@ while {(count GVAR(csat_flags) < round GVAR(flagCountCSAT)) && _maxTries > 0} do
 };
 publicVariable QGVAR(csat_flags);
 
+_maxTries = 100;
 while {(count GVAR(aaf_flags) < round GVAR(flagCountAAF)) && _maxTries > 0} do
 {
     GVAR(aaf_flags) pushBackUnique selectRandom _all_aaf_flags;
@@ -98,10 +98,12 @@ Flaggen-Seite loggen
 		{
             _marker setMarkerType "flag_CSAT";
         }; 
-		if (GVAR(nato_flags) find _x >= 0) then 
+
+        if (GVAR(nato_flags) find _x >= 0) then 
 		{
             _marker setMarkerType "flag_NATO";
         }; 
+
 		if (GVAR(aaf_flags) find _x >= 0) then 
 		{
             _marker setMarkerType "flag_AAF";

@@ -16,7 +16,7 @@
 
 private _txt = MLOC(TELEPORT_MSG);
 private _header = MLOC(TELEPORT_MSG_HEADER);
-hint Format ["%1\n\n%2", _header, _txt];
+hint format ["%1\n\n%2", _header, _txt];
 
 openMap true;
 

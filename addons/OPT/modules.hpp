@@ -1,7 +1,9 @@
 #include "\tc\CLib\addons\CLib\ModuleMacros.hpp"
 
-class CfgCLibModules {
-    class PREFIX {
+class CfgCLibModules
+{
+    class PREFIX
+    {
         path = "OPT\OPT\addons\OPT";
         dependency[] = {};
 

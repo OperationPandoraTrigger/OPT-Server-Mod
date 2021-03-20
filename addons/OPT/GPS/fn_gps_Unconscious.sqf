@@ -25,10 +25,9 @@
 #include "macros.hpp";
 
 GVAR(markerPoolisUnconscious) = [];
+GVAR(unitnumberUnconscious) = (count units Side player) + 10;
 
-GVAR(unitnumberUnconscious) = (count units Side player)+10;
-
-for "_i" from 1 to (GVAR(unitnumberUnconscious))  do 
+for "_i" from 1 to (GVAR(unitnumberUnconscious)) do
 {
 	GVAR(markerPoolisUnconscious) pushBack ([PLAYERSIDE, _i] call FUNC(createunitmarker_Unconscious));
 };  

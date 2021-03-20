@@ -37,39 +37,46 @@ switch (_vehicleType) do
 	{
         switch (_side) do 
         {
-            case west : 
+            case west:
             {    
                 _Hardcap_pool = GVAR(Hardcap_nato_choppers);
             };
-            case east : 
+
+            case east:
             {    
                  _Hardcap_pool = GVAR(Hardcap_csat_choppers);
             };
-            case independent : 
+
+            case independent:
             {    
                 _Hardcap_pool = GVAR(Hardcap_aaf_choppers);
             };
+
             default 
             {
             };        
         };     
     };
+
 	case "vehicles" : 
 	{
         switch (_side) do 
         {
-            case west : 
+            case west:
             {    
                 _Hardcap_pool = GVAR(Hardcap_nato_vehicles);
             };
-            case east : 
+
+            case east:
             {    
                 _Hardcap_pool = GVAR(Hardcap_csat_vehicles);
             };
-            case independent : 
+
+            case independent:
             {    
                 _Hardcap_pool = GVAR(Hardcap_aaf_vehicles);
             };
+
             default 
             {
             };        
@@ -79,39 +86,46 @@ switch (_vehicleType) do
 	{
         switch (_side) do 
         {
-            case west : 
+            case west:
             {    
                 _Hardcap_pool = GVAR(Hardcap_nato_supplies);
             };
-            case east : 
+
+            case east:
             {    
                 _Hardcap_pool = GVAR(Hardcap_csat_supplies);
             };
-            case independent : 
+
+            case independent:
             {    
                 _Hardcap_pool = GVAR(Hardcap_aaf_supplies);
             };
+
             default 
             {
             };        
         };      
     };
+
 	case "sea" : 
 	{
         switch (_side) do 
         {
-            case west : 
+            case west:
             {    
                 _Hardcap_pool = GVAR(Hardcap_nato_sea);
             };
-            case east : 
+
+            case east:
             {    
                 _Hardcap_pool = GVAR(Hardcap_csat_sea);
             };
-            case independent : 
+
+            case independent:
             {    
                 _Hardcap_pool = GVAR(Hardcap_aaf_sea);
             };
+
             default 
             {
             };        
@@ -146,21 +160,24 @@ if (_hardcapinfo > 0) then
             {
                 switch (_side) do 
                 {
-                    case west : 
+                    case west:
                     {    
                         GVAR(Hardcap_nato_choppers) = _Hardcap_pool;
                         publicVariable QGVAR(Hardcap_nato_choppers);
                     };
-                    case east : 
+
+                    case east:
                     {    
                         GVAR(Hardcap_csat_choppers) = _Hardcap_pool;
                         publicVariable QGVAR(Hardcap_csat_choppers);
                     };
-                    case independent : 
+
+                    case independent:
                     {    
                         GVAR(Hardcap_aaf_choppers) = _Hardcap_pool;
                         publicVariable QGVAR(Hardcap_aaf_choppers);
                     };
+
                     default 
                     {
                     };        
@@ -170,21 +187,24 @@ if (_hardcapinfo > 0) then
             {
                 switch (_side) do 
                 {
-                    case west : 
+                    case west:
                     {    
                         GVAR(Hardcap_nato_vehicles) = _Hardcap_pool;
                         publicVariable QGVAR(Hardcap_nato_vehicles);
                     };
-                    case east : 
+
+                    case east:
                     {    
                         GVAR(Hardcap_csat_vehicles) = _Hardcap_pool;
                         publicVariable QGVAR(Hardcap_csat_vehicles);
                     };
-                    case independent : 
+
+                    case independent:
                     {    
                         GVAR(Hardcap_aaf_vehicles) = _Hardcap_pool;
                         publicVariable QGVAR(Hardcap_aaf_vehicles);
                     };
+
                     default 
                     {
                     };        
@@ -194,21 +214,24 @@ if (_hardcapinfo > 0) then
             {
                 switch (_side) do 
                 {
-                    case west : 
+                    case west:
                     {    
                         GVAR(Hardcap_nato_supplies) = _Hardcap_pool;
                         publicVariable QGVAR(Hardcap_nato_supplies);
                     };
-                    case east : 
+
+                    case east:
                     {    
                         GVAR(Hardcap_csat_supplies) = _Hardcap_pool;
                         publicVariable QGVAR(Hardcap_csat_supplies);
                     };
-                    case independent : 
+
+                    case independent:
                     {    
                         GVAR(Hardcap_aaf_supplies) = _Hardcap_pool;
                         publicVariable QGVAR(Hardcap_aaf_supplies);
                     };
+
                     default 
                     {
                     };        
@@ -218,31 +241,34 @@ if (_hardcapinfo > 0) then
             {
                 switch (_side) do 
                 {
-                    case west : 
+                    case west:
                     {    
                         GVAR(Hardcap_nato_sea) = _Hardcap_pool;
                         publicVariable QGVAR(Hardcap_nato_sea);
                     };
-                    case east : 
+
+                    case east:
                     {    
                         GVAR(Hardcap_csat_sea) = _Hardcap_pool;
                         publicVariable QGVAR(Hardcap_csat_sea);
                     };
-                    case independent : 
+
+                    case independent:
                     {    
                         GVAR(Hardcap_aaf_sea) = _Hardcap_pool;
                         publicVariable QGVAR(Hardcap_aaf_sea);
                     };
+
                     default 
                     {
                     };        
                 };     
             };
+
             default 
             {
             };
     };
-
     [1] remoteExecCall [QFUNC(create), _user, false];
 }
 else

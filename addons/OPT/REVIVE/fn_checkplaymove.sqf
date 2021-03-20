@@ -20,5 +20,3 @@ if (!(animationState _target == "AcinPknlMwlkSnonWnonDb") and alive _target and 
 {
 	_target playMove "AcinPknlMwlkSnonWnonDb";
 };
-
-

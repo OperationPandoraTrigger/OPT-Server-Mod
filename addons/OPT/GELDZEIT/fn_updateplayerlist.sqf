@@ -1,5 +1,5 @@
 /**
-* Author: James
+* Author: James, form
 * add a new player to the player list that is managed by the server
 *
 * Arguments:
@@ -21,7 +21,8 @@
 */
 #include "macros.hpp"
 
-params [
+params
+[
    ["_uid", "s", ["s"], 1],
    ["_name", "s", ["s"], 1],
    ["_side", sideUnknown, [sideUnknown], 1]

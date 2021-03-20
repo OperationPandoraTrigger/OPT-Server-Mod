@@ -23,7 +23,6 @@
 * Example:
 * 
 */
-
 #include "macros.hpp"
 
 //Typ einlesen
@@ -69,12 +68,14 @@ switch (_side) do
 
         GVAR(pads) = [VerkaufsBoxWest];
     };
+
     case east: 
 	{
         _rscPicture ctrlSetText "\A3\Data_F\Flags\Flag_CSAT_CO.paa";
 
         GVAR(pads) = [VerkaufsBoxEast];
     }; 
+
     case independent: 
 	{
         _rscPicture ctrlSetText "\A3\Data_F\Flags\Flag_AAF_CO.paa";
@@ -122,7 +123,6 @@ if (_type == "sell") then
 	// Gehe alle gefundenen Objekte durch und lösche sie, falls nicht in pool, oder ergänze um Verkaufspreis
 	_objs apply 
     {
-		
         private _index = ((GVAR(all) apply {toLower (_x select 0)}) find (toLower (typeOf _x)));
 
         if (_index == -1) then 
@@ -135,7 +135,6 @@ if (_type == "sell") then
             _pool pushBack [_x, (GVAR(all) select _index) select 2, (GVAR(all) select _index) select 3]; // füge Fahrzeug und Verkaufspreis hinzu
             GVAR(sellVeh) append [_x];
         };
-
 	};
 
     // Anzeige Objekte die mehr wert sind als 0€
@@ -156,9 +155,7 @@ if (_type == "sell") then
         _picture = getText (configFile >> "cfgVehicles" >> _class >> "editorPreview");
 
         _listbox_vehicles lbSetPicture [_forEachIndex, _picture];
-
     } foreach GVAR(vehiclesToSell);
-  
 };
 
 // Button Listbox Events 
@@ -179,9 +176,7 @@ _listbox_vehicles ctrlAddEventHandler [ "LBSelChanged",
 
     // Budget 
     [_budget] call OPT_GELDZEIT_fnc_renderbudget;
-
 }];
-
 
 // Verkaufs Ausführen
 _sell ctrlAddEventHandler [ "ButtonClick", 
@@ -235,6 +230,4 @@ _sell ctrlAddEventHandler [ "ButtonClick",
 
     // lösche Fahrzeug aus vehicleToSell!
     GVAR(sellVeh) deleteAt _sel_class;
-
 }];
-

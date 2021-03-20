@@ -42,16 +42,16 @@ enableTeamswitch false;
 
 [] call FUNC(briefing);
 
-["missionStarted", {
-
+["missionStarted",
+{
 	// setup earplug ace menu
-	private _action_earplug = [
+	private _action_earplug =
+	[
 		MLOC(ACE_EQIP),
 		MLOC(ACE_EQIP_EARPLUGS),
 		"",
 		{
 			params ["_target", "_player", "_params"]; 
-
 			[] call FUNC(earplugs);
 		},
 		{

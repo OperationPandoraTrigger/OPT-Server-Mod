@@ -23,7 +23,6 @@
 * Example:
 * 
 */
-
 #include "macros.hpp"
 
 DUMP("Successfully loaded the OPT/Shop module on the client");
@@ -32,44 +31,33 @@ GVAR(Daten_send) = false;
 GVAR(eventArgs) = [];
 
 // Events
-
 [
 	EVENT_SHOP_KAUF_ONLOAD, 
 	{
 		_this params ["_eventArgs"];
-
 		GVAR(eventArgs) = _eventArgs;
-
 		_this remoteExecCall [QFUNC(hardcap_send), 2, false];
-
 		[{GVAR(eventArgs) call FUNC(einlesenInShopDialog)}, {GVAR(Daten_send)}, "Awesome Delay"] call CLib_fnc_waitUntil;
-
 	},
 	[]
-	
 ] call CFUNC(addEventHandler);
 
 [
 	EVENT_SHOP_KONFIG_ONLOAD, 
 	{
 		_this params ["_eventArgs"];
-
 		_eventArgs call FUNC(einlesenInKonfigDialog);
-
 	},
 	[]
-	
 ] call CFUNC(addEventHandler);
 
 [
 	EVENT_SHOP_VERKAUF_ORDER, 
 	{
 		_this params ["_eventArgs"];
-
 		_eventArgs call FUNC(einlesenInVerkaufDialog);
 	},
 	[]
-	
 ] call CFUNC(addEventHandler);
 
 // Entfernung des Boxchecks PFH Shop
@@ -78,7 +66,6 @@ GVAR(eventArgs) = [];
 	{
 		GVAR(idPadCheckShop) call CFUNC(removePerframeHandler);	
 	};
-
 }, 1] call CFUNC(addPerFrameHandler);
 
 // Entfernung des Boxchecks PFH Konfig
@@ -87,12 +74,10 @@ GVAR(eventArgs) = [];
 	{
 		GVAR(idPadCheckKonfig) call CFUNC(removePerframeHandler);	
 	};
-
 }, 1] call CFUNC(addPerFrameHandler);
 
 ["missionStarted", 
 {
-
 	switch OPT_GELDZEIT_Fraktionauswahl do 
 	{
 			case "AAFvsCSAT" : 
@@ -123,20 +108,20 @@ GVAR(eventArgs) = [];
 					["Shop-Dialog öffnen", "Öffnet den Shop-Dialog im Fahnenbereich."], 
 					{
 						private _triggerUnitsair = 
-						(list csat_trigger_Shop_Air1) 
-						+ (list aaf_trigger_Shop_Air1);
+							(list csat_trigger_Shop_Air1) +
+							(list aaf_trigger_Shop_Air1);
 
 						private _triggerUnitsveh = 
-						(list csat_trigger_Shop_veh1) 
-						+ (list aaf_trigger_Shop_veh1);
+							(list csat_trigger_Shop_veh1) +
+							(list aaf_trigger_Shop_veh1);
 
 						private _triggerUnitssup = 
-						(list csat_trigger_Shop_Sup1) 
-						+ (list aaf_trigger_Shop_Sup1);
+							(list csat_trigger_Shop_Sup1) +
+							(list aaf_trigger_Shop_Sup1);
 
 						private _triggerUnitssea = 
-						(list csat_trigger_Shop_Sea1) 
-						+ (list aaf_trigger_Shop_Sea1);
+							(list csat_trigger_Shop_Sea1) +
+							(list aaf_trigger_Shop_Sea1);
 
 						if (player in _triggerUnitsair) then 
 						{
@@ -164,8 +149,6 @@ GVAR(eventArgs) = [];
 						[false, false, false] // [shift, ctrl, alt]
 					]
 				] call CBA_fnc_addKeybind;
-
-     
 			};
 
 			case "NATOvsCSAT" : 
@@ -196,20 +179,20 @@ GVAR(eventArgs) = [];
 					["Shop-Dialog öffnen", "Öffnet den Shop-Dialog im Fahnenbereich."], 
 					{
 						private _triggerUnitsair = 
-						(list csat_trigger_Shop_Air1) 
-						+ (list nato_trigger_Shop_Air1);
+							(list csat_trigger_Shop_Air1) +
+							(list nato_trigger_Shop_Air1);
 
 						private _triggerUnitsveh = 
-						(list csat_trigger_Shop_veh1) 
-						+ (list nato_trigger_Shop_veh1);
+							(list csat_trigger_Shop_veh1) +
+							(list nato_trigger_Shop_veh1);
 
 						private _triggerUnitssup = 
-						(list csat_trigger_Shop_Sup1) 
-						+ (list nato_trigger_Shop_Sup1);
+							(list csat_trigger_Shop_Sup1) +
+							(list nato_trigger_Shop_Sup1);
 
 						private _triggerUnitssea = 
-						(list csat_trigger_Shop_Sea1) 
-						+ (list nato_trigger_Shop_Sea1);
+							(list csat_trigger_Shop_Sea1) +
+							(list nato_trigger_Shop_Sea1);
 
 						if (player in _triggerUnitsair) then 
 						{
@@ -267,20 +250,20 @@ GVAR(eventArgs) = [];
 					["Shop-Dialog öffnen", "Öffnet den Shop-Dialog im Fahnenbereich."], 
 					{
 						private _triggerUnitsair = 
-						(list nato_trigger_Shop_Air1)
-						+ (list aaf_trigger_Shop_Air1);
+							(list nato_trigger_Shop_Air1) +
+							(list aaf_trigger_Shop_Air1);
 
 						private _triggerUnitsveh = 
-						(list nato_trigger_Shop_veh1)
-						+ (list aaf_trigger_Shop_veh1);
+							(list nato_trigger_Shop_veh1) +
+							(list aaf_trigger_Shop_veh1);
 
 						private _triggerUnitssup = 
-						(list nato_trigger_Shop_Sup1)
-						+ (list aaf_trigger_Shop_Sup1);
+							(list nato_trigger_Shop_Sup1) +
+							(list aaf_trigger_Shop_Sup1);
 
 						private _triggerUnitssea = 
-						(list nato_trigger_Shop_Sea1)
-						+ (list aaf_trigger_Shop_Sea1);
+							(list nato_trigger_Shop_Sea1) +
+							(list aaf_trigger_Shop_Sea1);
 
 						if (player in _triggerUnitsair) then 
 						{
@@ -308,7 +291,6 @@ GVAR(eventArgs) = [];
 						[false, false, false] // [shift, ctrl, alt]
 					]
 				] call CBA_fnc_addKeybind;
-
 			};
 
 			default 
@@ -318,54 +300,54 @@ GVAR(eventArgs) = [];
 			};
 	};
 
-//TFAR Verschlüsselung bei Fahrzeugen
+	//TFAR Verschlüsselung bei Fahrzeugen
 
-player addEventHandler ["GetInMan", {
-    /*
-    unit: Object - Unit the event handler is assigned to
-    position: String - Can be either "driver", "gunner" or "cargo"
-    vehicle: Object - Vehicle the unit entered
-    turret: Array - turret path
-    */
-    params ["_unit", "_pos", "_veh", "_turret"];
-
-    // check if there is a radio in the vehicle
-    if (_veh call TFAR_fnc_hasVehicleRadio) then 
+	player addEventHandler ["GetInMan",
 	{
-        _VehicleLR = player call TFAR_fnc_VehicleLR;
-        _encryption = _VehicleLR call TFAR_fnc_getLrRadioCode;
-        
-        // Check if vehicle was occupied by other team. IF so, we change the encryption to match the team again.
-        switch (PLAYERSIDE) do 
+	    /*
+	    unit: Object - Unit the event handler is assigned to
+	    position: String - Can be either "driver", "gunner" or "cargo"
+	    vehicle: Object - Vehicle the unit entered
+	    turret: Array - turret path
+	    */
+	    params ["_unit", "_pos", "_veh", "_turret"];
+
+	    // check if there is a radio in the vehicle
+	    if (_veh call TFAR_fnc_hasVehicleRadio) then 
 		{
-            case west: 
+        	_VehicleLR = player call TFAR_fnc_VehicleLR;
+        	_encryption = _VehicleLR call TFAR_fnc_getLrRadioCode;
+        
+        	// Check if vehicle was occupied by other team. IF so, we change the encryption to match the team again.
+        	switch (PLAYERSIDE) do 
 			{
-                if ((toLower(_encryption) == "_opfor") or (toLower(_encryption) == "_independent")) then 
+	            case west: 
 				{
-                    [_VehicleLR, "_bluefor"] call TFAR_fnc_setLrRadioCode;
-                    systemChat "Die Funk-Verschlüsselung wurde geändert.";
-                };
-            };
-            case east:  
-			{
-                if ((toLower(_encryption) == "_bluefor") or (toLower(_encryption) == "_independent")) then 
+	                if ((toLower(_encryption) == "_opfor") or (toLower(_encryption) == "_independent")) then 
+					{
+	                    [_VehicleLR, "_bluefor"] call TFAR_fnc_setLrRadioCode;
+                    	systemChat "Die Funk-Verschlüsselung wurde geändert.";
+                	};
+            	};
+
+            	case east:  
 				{
-                    [_VehicleLR, "_opfor"] call TFAR_fnc_setLrRadioCode;
-                    systemChat "Die Funk-Verschlüsselung wurde geändert.";
-                };            
-            };
-			case independent: 
-			{
-                if ((toLower(_encryption) == "_bluefor") or (toLower(_encryption) == "_opfor")) then 
+	                if ((toLower(_encryption) == "_bluefor") or (toLower(_encryption) == "_independent")) then 
+					{
+	                    [_VehicleLR, "_opfor"] call TFAR_fnc_setLrRadioCode;
+                    	systemChat "Die Funk-Verschlüsselung wurde geändert.";
+                	};            
+            	};
+
+				case independent: 
 				{
-                    [_VehicleLR, "independent"] call TFAR_fnc_setLrRadioCode;
-                    systemChat "Die Funk-Verschlüsselung wurde geändert.";
-                };
-            };
-        };
-    };
-
-}];
-
-
-}, []] call CFUNC(addEventHandler); 	
+	                if ((toLower(_encryption) == "_bluefor") or (toLower(_encryption) == "_opfor")) then 
+					{
+	                    [_VehicleLR, "independent"] call TFAR_fnc_setLrRadioCode;
+                    	systemChat "Die Funk-Verschlüsselung wurde geändert.";
+                	};
+            	};
+        	};
+    	};
+	}];
+}, []] call CFUNC(addEventHandler);

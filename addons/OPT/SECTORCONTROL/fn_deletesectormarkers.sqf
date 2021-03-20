@@ -24,7 +24,6 @@
 * [] call FUNC(deletesectormarkers);
 *
 */
-
 #include "macros.hpp"
 
 {

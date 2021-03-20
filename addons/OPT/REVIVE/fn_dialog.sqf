@@ -113,7 +113,6 @@ GVAR(startzeit) = time;
 
 	if (count _poolplayer > 0) then 
 	{
-		
 		_next_poolplayer = (_poolplayer select 0 select 1);
 
 		if (!isNull _next_poolplayer)  then 
@@ -127,7 +126,6 @@ GVAR(startzeit) = time;
 	{
 		_hintMsg = MLOC(NO_MEDIC);
 	};
-
 
 	// Textausgabe über MEdic entfernung
 	_MedicNearLabel_Meter ctrlSetText format ["%1",_hintMsg]; 
