@@ -23,22 +23,21 @@
 * Example:
 * [] call Func(create);
 */
-
 #include "macros.hpp"
 
 params 
 [
-	["_status", 0]
+    ["_status", 0]
 ];
 
-GVAR(idPadCheckCreate) = [{
-
+GVAR(idPadCheckCreate) =
+[{
     private _freiePads = [];
  
     // check der Pads ob belegt
     GVAR(pads) apply 
     {
-	    private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], GVAR(Checkbereich)];
+        private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], GVAR(Checkbereich)];
             
         if (count _ob == 0) then 
         {
@@ -49,20 +48,17 @@ GVAR(idPadCheckCreate) = [{
 
     // erstes Freies Pad zuordnen
     if ((count _freiePads) > 0) then 
-        {
-            GVAR(order_box) = _freiePads select 0;
-        }
+    {
+        GVAR(order_box) = _freiePads select 0;
+    }
     else 
-        {
-            GVAR(order_box) = player;
-        };
-
+    {
+        GVAR(order_box) = player;
+    };
 }, 0] call CFUNC(addPerFrameHandler);
-
 
 DFUNC(createOrder) = 
 {
-
     //Hardcap Send Auslösung Zurücksetzen
     GVAR(Daten_send) = false;
 
@@ -100,88 +96,87 @@ DFUNC(createOrder) =
     #define HEIGHT_OFFSET_GROUND 0.1
     #define HEIGHT_OFFSET_WATER 0.2
 
-        //Objekt Erstellung 
-        private _posi = getPosASL GVAR(order_box) vectorAdd [0, 0, HEIGHT_OFFSET_GROUND];
-        private _veh = createVehicle [_class, _posi, [], 0, "NONE"];
-        _veh setdir getdir GVAR(order_box);
-        _veh setPosASL _posi;
+    //Objekt Erstellung 
+    private _posi = getPosASL GVAR(order_box) vectorAdd [0, 0, HEIGHT_OFFSET_GROUND];
+    private _veh = createVehicle [_class, _posi, [], 0, "NONE"];
+    _veh setdir getdir GVAR(order_box);
+    _veh setPosASL _posi;
 
-        //check Box liegt im Wasser
-        if ((surfaceIsWater (position GVAR(order_box))) and (_veh isKindOf "Ship")) then 
-        {
-            _veh setPos [(position GVAR(order_box) select 0),(position GVAR(order_box) select 1), HEIGHT_OFFSET_WATER]; 
-        };
+    //check Box liegt im Wasser
+    if ((surfaceIsWater (position GVAR(order_box))) and (_veh isKindOf "Ship")) then 
+    {
+        _veh setPos [(position GVAR(order_box) select 0),(position GVAR(order_box) select 1), HEIGHT_OFFSET_WATER]; 
+    };
 
-        _veh setDamage 0;
+    _veh setDamage 0;
 
-        //Fahrzeug bewaffnen
-        if (((count _airRaketenmagazin) > 0) or 
-            ((count _airGunmagazin) > 0) or 
-            ((count _vehMagazin) > 0)) then 
-        {
-            [_veh,
-            _airRaketenweapon,
-            _airRaketenmagazin,
-            _airGunweapon,
-            _airGunmagazin,
-            _vehWeapon,
-            _vehMagazin,
-            _pylon,
-            _raketencontrol,
-            _zusatz,
-            _weaponold,
-            _magazinold] call FUNC(arm);
-        };    
+    //Fahrzeug bewaffnen
+    if (((count _airRaketenmagazin) > 0) or 
+        ((count _airGunmagazin) > 0) or 
+        ((count _vehMagazin) > 0)) then 
+    {
+        [_veh,
+        _airRaketenweapon,
+        _airRaketenmagazin,
+        _airGunweapon,
+        _airGunmagazin,
+        _vehWeapon,
+        _vehMagazin,
+        _pylon,
+        _raketencontrol,
+        _zusatz,
+        _weaponold,
+        _magazinold] call FUNC(arm);
+    };    
 
-        // Spieler in Fahrzeug setzen
-        if (GVAR(order_moveInVeh)) then 
-        {
-            Player moveInDriver _veh;
+    // Spieler in Fahrzeug setzen
+    if (GVAR(order_moveInVeh)) then 
+    {
+        Player moveInDriver _veh;
 
-        };
+    };
 
-        // Erzeugt Crew für Drohnen
-        private _uavs = [
-            "OPT_B_UGV_01_F",
-            "OPT_B_UGV_01_rcws_F",
-            "OPT_O_UGV_01_F",
-            "OPT_O_UGV_01_rcws_F",
-            "B_UCSV_01",
-            "OPT_B_UAV_02_light_F",
-            "OPT_B_UAV_02_CAS_F",
-            "OPT_B_UAV_02_CAS_F",
-            "OPT_B_UAV_02_F",
-            "OPT_B_UAV_01_F",
-            "OPT_O_UAV_01_F",
-            "OPT_O_UAV_02_light_F",
-            "OPT_O_UAV_02_CAS_F",
-            "OPT_O_UAV_02_F",
-            "OPT_B_Static_Designator_01_F",
-            "OPT_O_Static_Designator_02_F",
-            "OPT_I_Static_Designator_01_F",
-            "OPT_B_UGV_01_ghex_F",
-            "OPT_O_T_UGV_01_ghex_F",
-            "OPT_I_UAV_02_light_F",
-            "OPT_I_UGV_01_F"
-            ];
+    // Erzeugt Crew für Drohnen
+    private _uavs =
+    [
+        "OPT_B_UGV_01_F",
+        "OPT_B_UGV_01_rcws_F",
+        "OPT_O_UGV_01_F",
+        "OPT_O_UGV_01_rcws_F",
+        "B_UCSV_01",
+        "OPT_B_UAV_02_light_F",
+        "OPT_B_UAV_02_CAS_F",
+        "OPT_B_UAV_02_CAS_F",
+        "OPT_B_UAV_02_F",
+        "OPT_B_UAV_01_F",
+        "OPT_O_UAV_01_F",
+        "OPT_O_UAV_02_light_F",
+        "OPT_O_UAV_02_CAS_F",
+        "OPT_O_UAV_02_F",
+        "OPT_B_Static_Designator_01_F",
+        "OPT_O_Static_Designator_02_F",
+        "OPT_I_Static_Designator_01_F",
+        "OPT_B_UGV_01_ghex_F",
+        "OPT_O_T_UGV_01_ghex_F",
+        "OPT_I_UAV_02_light_F",
+        "OPT_I_UGV_01_F"
+    ];
 
-        if (_class in (_uavs)) then 
-        {
-            createVehicleCrew (_veh);
-            _veh setSkill 1.0;
-                    
-        };
+    if (_class in (_uavs)) then 
+    {
+        createVehicleCrew (_veh);
+        _veh setSkill 1.0;
+    };
 
-        GVAR(order_kosten) = GVAR(order_unitCost) + _waffenkosten;
+    GVAR(order_kosten) = GVAR(order_unitCost) + _waffenkosten;
 
-        [getPlayerUID player, Name Player, playerSide, netId _veh, typeOf _veh, GVAR(order_kosten), "-"] remoteExecCall ["OPT_GELDZEIT_fnc_updateBudget", 2, false];
-    
+    [getPlayerUID player, Name Player, playerSide, netId _veh, typeOf _veh, GVAR(order_kosten), "-"] remoteExecCall ["OPT_GELDZEIT_fnc_updateBudget", 2, false];
 };
 
 //Hardcap Check und Padbox check
 if (_status isEqualTo 1) then 
 {
-    if (GVAR(order_box) != Player)  then 
+    if (GVAR(order_box) != Player) then 
     {
         [] Call FUNC(createOrder);
     }                 
@@ -189,15 +184,14 @@ if (_status isEqualTo 1) then
     {
         private _txt = MLOC(BOX_CHECK_Empty);
         private _header = MLOC(BOX_CHECK);
-        hint Format ["%1 \n\n %2",_header,_txt];    
+        hint format["%1\n\n%2", _header, _txt];    
     };        
 }                   
 else 
 {
     private _txt = MLOC(HARDCAP_TEXT);
     private _header = MLOC(HARDCAP);
-    hint Format ["%1 \n\n %2",_header,_txt];
-}; 
+    hint format["%1\n\n%2", _header, _txt];
+};
 
-GVAR(idPadCheckCreate) call CFUNC(removePerframeHandler);	
-
+GVAR(idPadCheckCreate) call CFUNC(removePerframeHandler);

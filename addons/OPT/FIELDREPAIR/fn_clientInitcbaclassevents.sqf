@@ -111,4 +111,4 @@
         ]
     ];
 
-}, nil, nil, true] call CBA_fnc_addClassEventHandler;   
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;

@@ -12,7 +12,6 @@
 * [] call FUNC(initCBASettings);
 *
 */
-
 #include "macros.hpp"
 
 [

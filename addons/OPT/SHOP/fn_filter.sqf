@@ -26,7 +26,6 @@
 * Example:
 *
 */
-
 #include "macros.hpp"
 
 params 
@@ -68,7 +67,6 @@ _weaponsVeh = _weaponsVeh select {_x != ""};
 };
 
 _magazineVeh = _magazineVeh select {_x != ""};
-
 _waffenMagazinArray =[_weaponsVeh,_magazineVeh];
 
 _waffenMagazinArray

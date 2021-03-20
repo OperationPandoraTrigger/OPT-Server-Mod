@@ -23,16 +23,18 @@ params ["_target", "_caller", "_action"];
 ////////////////////////////////////////////////
 switch (_action) do 
 {
-	case "action_drag": 
-	{
-		[_target] call FUNC(drag);
-	};
-	case "action_release": 
-	{
-		[] call FUNC(release);
-	};
-	default 
-	{
+    case "action_drag": 
+    {
+        [_target] call FUNC(drag);
+    };
 
-	};
+    case "action_release": 
+    {
+        [] call FUNC(release);
+    };
+
+    default 
+    {
+
+    };
 };

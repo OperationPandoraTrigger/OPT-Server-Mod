@@ -34,7 +34,6 @@
 * Example:
 *
 */
-
 #include "macros.hpp"
 
 params 
@@ -95,9 +94,9 @@ if (_veh isKindOf "Air") then
 {    
     //Hauptgeschütz
     if ((count _airGunmagazinNew) > 0) then 
-	{    
+    {    
         if ((_veh isKindOf "OPT_B_Heli_Attack_01_F_un") or (_veh isKindOf "OPT_O_Heli_Attack_02_F_un")) then 
-		{
+        {
             {
                 _veh addMagazineTurret [_x, [0]]                    
             } forEach _airGunmagazinNew;
@@ -105,10 +104,9 @@ if (_veh isKindOf "Air") then
             {
                 _veh addWeaponTurret [_x, [0]]
             } forEach _airGunweaponNew;         
-                                       
-        } 
-		else 
-		{    
+        }
+        else 
+        {    
             {
                 _veh addMagazine [_x, 9999];
             } forEach _airGunmagazinNew;
@@ -121,23 +119,22 @@ if (_veh isKindOf "Air") then
 
     //Raketen
     if ((count _airRaktenmagazinNew) > 0) then 
-	{
+    {
         for "_i" from 1 to (count _airRaktenmagazinNew) do 
-		{
+        {
             if ((_veh isKindOf "OPT_B_Heli_Attack_01_F_un") or (_veh isKindOf "OPT_O_Heli_Attack_02_F_un")) then 
-			{
+            {
                 if (_raketencontrol select (_i - 1) == 0) then 
-				{                            
+                {                            
                     _veh setPylonLoadOut [_pylon select (_i - 1), _airRaktenmagazinNew select (_i - 1), true, [0]];                                 
                 } 
-				else 
-				{
+                else 
+                {
                      _veh setPylonLoadOut [_pylon select (_i - 1), _airRaktenmagazinNew select (_i - 1)];     
                 };
-
             } 
-			else 
-			{    
+            else 
+            {    
                 _veh setPylonLoadOut [_pylon select (_i - 1), _airRaktenmagazinNew select (_i - 1)];     
             };
         };    
@@ -147,7 +144,7 @@ else
 {
     // Fahrzeug Geschütze
     if ((count _vehMagazinNew) > 0) then 
-	{                
+    {                
         {
             _veh addMagazine [_x, 9999];
         } forEach _vehMagazinNew;
@@ -157,7 +154,3 @@ else
         } forEach _vehWeaponNew;
     };
 };
-
- 
-    
-  

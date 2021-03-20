@@ -29,7 +29,6 @@
 * Example:
 *
 */
-
 #include "macros.hpp"
 
 params 
@@ -76,206 +75,64 @@ private _Datensatz = [];
 if (_side isEqualTo civilian) then 
 {
     if ((lbCurSel _IDD_box7) > -1) then 
-	{    
+    {    
         if (lbCurSel _IDD_box7  == 0) then 
-		{
+        {
              _wert = _wert + GVAR(preisDatalink);
             _Zusatz set [2,1];
         };
-
     };    
-
 } 
 else 
 {         
     if (_veh isKindOf "Air") then 
-	{
+    {
         switch (_side) do 
         {
-            case west : 
+            case west:
             {    
                 _waffenauswahlarry1 = GVAR(Gunheliwest);
                 _waffenauswahlarry2 = GVAR(Raktenheliwest);
             };
-            case east : 
+
+            case east:
             {    
                 _waffenauswahlarry1 = GVAR(Gunhelieast);
                 _waffenauswahlarry2 = GVAR(Raktenhelieast);
             };
-            case independent : 
+
+            case independent:
             {    
                 _waffenauswahlarry1 = GVAR(Gunheliindependent);
                 _waffenauswahlarry2 = GVAR(Raktenheliindependent);
             };
+
             default 
             {
             };        
         };
-
-                if ((lbCurSel _IDD_box1) > -1) then 
-                {    
-                    if ((lbCurSel _IDD_box1) < (count (_boxArry select 1))) then 
-                    {
-                        _boxindex = (_boxArry select 1) select lbCurSel _IDD_box1;
-                        _wert = _wert +((_waffenauswahlarry1 select _boxindex) select 3);
-                        _magazin = ((_waffenauswahlarry1 select _boxindex) select 0);
-                        _weapon = ((_waffenauswahlarry1 select _boxindex) select 1);
-                    
-                        _buygunmagazine pushBack _magazin;
-
-                        if (!(_weapon in _buygunweapon)) then 
-                        {
-                            _buygunweapon pushBack _weapon;
-                        };
-
-                    };
-
-                };    
-
-                if ((lbCurSel _IDD_box2) > -1) then 
-                {    
-                    if ((lbCurSel _IDD_box2) < (count (_boxArry select 1))) then 
-                    {
-                        _boxindex = (_boxArry select 1) select lbCurSel _IDD_box2;
-                        _wert = _wert + ((_waffenauswahlarry1 select _boxindex) select 3);
-                        _magazin = ((_waffenauswahlarry1 select _boxindex) select 0);
-                        _weapon = ((_waffenauswahlarry1 select _boxindex) select 1);
-                    
-                        _buygunmagazine pushBack _magazin;
-
-                        if (!(_weapon in _buygunweapon)) then 
-                        {
-                            _buygunweapon pushBack _weapon;
-                        };
-
-                    };
-
-                };    
-
-                if ((lbCurSel _IDD_box3) > -1) then 
-                {    
-                    if ((lbCurSel _IDD_box3) < (count (_boxArry select 0))) then 
-                    {
-                        _boxindex = (_boxArry select 0) select lbCurSel _IDD_box3;
-                        _wert = _wert + ((_waffenauswahlarry2 select _boxindex) select 3);
-                        _magazin = ((_waffenauswahlarry2 select _boxindex) select 0);
-                        _weapon = ((_waffenauswahlarry2 select _boxindex) select 1);
-                        _kontrolle = ((_waffenauswahlarry2 select _boxindex) select 5);
-                    
-                        _buyrakmagazine pushBack _magazin;
-                        _buyrakweapon pushBack _weapon;
-                        _buykontrolle pushBack _kontrolle;                                    
-                    };
-
-                };    
-
-                if ((lbCurSel _IDD_box4) > -1) then 
-                {    
-                    if ((lbCurSel _IDD_box4) < (count (_boxArry select 0))) then 
-                    {
-                        _boxindex = (_boxArry select 0) select lbCurSel _IDD_box4;
-                        _wert = _wert + ((_waffenauswahlarry2 select _boxindex) select 3);
-                        _magazin = ((_waffenauswahlarry2 select _boxindex) select 0);
-                        _weapon = ((_waffenauswahlarry2 select _boxindex) select 1);
-                        _kontrolle = ((_waffenauswahlarry2 select _boxindex) select 5);
-                                                
-                        _buyrakmagazine pushBack _magazin;
-                        _buyrakweapon pushBack _weapon;
-                        _buykontrolle pushBack _kontrolle;    
-                    };
-
-                };
-
-                if ((lbCurSel _IDD_box5) > -1) then 
-                {    
-                    if ((lbCurSel _IDD_box5) < (count (_boxArry select 0))) then 
-                    {
-                        _boxindex = (_boxArry select 0) select lbCurSel _IDD_box5;
-                        _wert = _wert + ((_waffenauswahlarry2 select _boxindex) select 3);
-                        _magazin = ((_waffenauswahlarry2 select _boxindex) select 0);
-                        _weapon = ((_waffenauswahlarry2 select _boxindex) select 1);
-                        _kontrolle = ((_waffenauswahlarry2 select _boxindex) select 5);
-                                                
-                        _buyrakmagazine pushBack _magazin;
-                        _buyrakweapon pushBack _weapon;
-                        _buykontrolle pushBack _kontrolle;    
-                    };
-                        
-                };    
-
-                if ((lbCurSel _IDD_box6) > -1) then 
-                {
-                    if ((lbCurSel _IDD_box6) < (count (_boxArry select 0))) then 
-                    {
-                        _boxindex = (_boxArry select 0) select lbCurSel _IDD_box6;
-                        _wert = _wert + ((_waffenauswahlarry2 select _boxindex) select 3);
-                        _magazin = ((_waffenauswahlarry2 select _boxindex) select 0);
-                        _weapon = ((_waffenauswahlarry2 select _boxindex) select 1);
-                        _kontrolle = ((_waffenauswahlarry2 select _boxindex) select 5);
-                                                        
-                        _buyrakmagazine pushBack _magazin;
-                        _buyrakweapon pushBack _weapon;
-                        _buykontrolle pushBack _kontrolle;    
-
-                    };
-
-                };
-
-                if ((lbCurSel _IDD_box7) > -1) then  
-                {    
-                    if (lbCurSel _IDD_box7 == 0) then 
-                    {
-                        _wert = _wert + GVAR(preisDatalink);
-                        _Zusatz set [2,1];
-                    };
-
-                };
-    } 
-	else 
-	{
-        switch (_side) do 
-        {
-            case west : 
-            {    
-                _waffenauswahlarry1 = GVAR(Gunvehwest);
-            };
-            case east : 
-            {    
-                _waffenauswahlarry1 = GVAR(Gunveheast);
-            };
-            case independent : 
-            {    
-                _waffenauswahlarry1 = GVAR(Gunvehindependent);
-            };
-            default 
-            {
-            };        
-        };
-  
         if ((lbCurSel _IDD_box1) > -1) then 
-		{    
+        {    
             if ((lbCurSel _IDD_box1) < (count (_boxArry select 1))) then 
-			{
+            {
                 _boxindex = (_boxArry select 1) select lbCurSel _IDD_box1;
-                _wert = _wert + ((_waffenauswahlarry1 select _boxindex) select 3);
+                _wert = _wert +((_waffenauswahlarry1 select _boxindex) select 3);
                 _magazin = ((_waffenauswahlarry1 select _boxindex) select 0);
                 _weapon = ((_waffenauswahlarry1 select _boxindex) select 1);
             
                 _buygunmagazine pushBack _magazin;
 
                 if (!(_weapon in _buygunweapon)) then 
-				{
+                {
                     _buygunweapon pushBack _weapon;
                 };
-
             };
-
         };    
 
         if ((lbCurSel _IDD_box2) > -1) then 
-		{    
+        {    
             if ((lbCurSel _IDD_box2) < (count (_boxArry select 1))) then 
-			{
+            {
                 _boxindex = (_boxArry select 1) select lbCurSel _IDD_box2;
                 _wert = _wert + ((_waffenauswahlarry1 select _boxindex) select 3);
                 _magazin = ((_waffenauswahlarry1 select _boxindex) select 0);
@@ -284,18 +141,149 @@ else
                 _buygunmagazine pushBack _magazin;
 
                 if (!(_weapon in _buygunweapon)) then 
-				{
+                {
                     _buygunweapon pushBack _weapon;
                 };
-
             };
-
         };    
 
         if ((lbCurSel _IDD_box3) > -1) then 
-		{    
+        {    
+            if ((lbCurSel _IDD_box3) < (count (_boxArry select 0))) then 
+            {
+                _boxindex = (_boxArry select 0) select lbCurSel _IDD_box3;
+                _wert = _wert + ((_waffenauswahlarry2 select _boxindex) select 3);
+                _magazin = ((_waffenauswahlarry2 select _boxindex) select 0);
+                _weapon = ((_waffenauswahlarry2 select _boxindex) select 1);
+                _kontrolle = ((_waffenauswahlarry2 select _boxindex) select 5);
+            
+                _buyrakmagazine pushBack _magazin;
+                _buyrakweapon pushBack _weapon;
+                _buykontrolle pushBack _kontrolle;                                    
+            };
+        };    
+
+        if ((lbCurSel _IDD_box4) > -1) then 
+        {    
+            if ((lbCurSel _IDD_box4) < (count (_boxArry select 0))) then 
+            {
+                _boxindex = (_boxArry select 0) select lbCurSel _IDD_box4;
+                _wert = _wert + ((_waffenauswahlarry2 select _boxindex) select 3);
+                _magazin = ((_waffenauswahlarry2 select _boxindex) select 0);
+                _weapon = ((_waffenauswahlarry2 select _boxindex) select 1);
+                _kontrolle = ((_waffenauswahlarry2 select _boxindex) select 5);
+                                        
+                _buyrakmagazine pushBack _magazin;
+                _buyrakweapon pushBack _weapon;
+                _buykontrolle pushBack _kontrolle;    
+            };
+        };
+
+        if ((lbCurSel _IDD_box5) > -1) then 
+        {    
+            if ((lbCurSel _IDD_box5) < (count (_boxArry select 0))) then 
+            {
+                _boxindex = (_boxArry select 0) select lbCurSel _IDD_box5;
+                _wert = _wert + ((_waffenauswahlarry2 select _boxindex) select 3);
+                _magazin = ((_waffenauswahlarry2 select _boxindex) select 0);
+                _weapon = ((_waffenauswahlarry2 select _boxindex) select 1);
+                _kontrolle = ((_waffenauswahlarry2 select _boxindex) select 5);
+                                        
+                _buyrakmagazine pushBack _magazin;
+                _buyrakweapon pushBack _weapon;
+                _buykontrolle pushBack _kontrolle;    
+            };
+        };    
+
+        if ((lbCurSel _IDD_box6) > -1) then 
+        {
+            if ((lbCurSel _IDD_box6) < (count (_boxArry select 0))) then 
+            {
+                _boxindex = (_boxArry select 0) select lbCurSel _IDD_box6;
+                _wert = _wert + ((_waffenauswahlarry2 select _boxindex) select 3);
+                _magazin = ((_waffenauswahlarry2 select _boxindex) select 0);
+                _weapon = ((_waffenauswahlarry2 select _boxindex) select 1);
+                _kontrolle = ((_waffenauswahlarry2 select _boxindex) select 5);
+                                                
+                _buyrakmagazine pushBack _magazin;
+                _buyrakweapon pushBack _weapon;
+                _buykontrolle pushBack _kontrolle;    
+            };
+        };
+
+        if ((lbCurSel _IDD_box7) > -1) then  
+        {    
+            if (lbCurSel _IDD_box7 == 0) then 
+            {
+                _wert = _wert + GVAR(preisDatalink);
+                _Zusatz set [2,1];
+            };
+        };
+    } 
+    else 
+    {
+        switch (_side) do 
+        {
+            case west:
+            {    
+                _waffenauswahlarry1 = GVAR(Gunvehwest);
+            };
+
+            case east:
+            {    
+                _waffenauswahlarry1 = GVAR(Gunveheast);
+            };
+
+            case independent:
+            {    
+                _waffenauswahlarry1 = GVAR(Gunvehindependent);
+            };
+
+            default 
+            {
+            };        
+        };
+  
+        if ((lbCurSel _IDD_box1) > -1) then 
+        {    
+            if ((lbCurSel _IDD_box1) < (count (_boxArry select 1))) then 
+            {
+                _boxindex = (_boxArry select 1) select lbCurSel _IDD_box1;
+                _wert = _wert + ((_waffenauswahlarry1 select _boxindex) select 3);
+                _magazin = ((_waffenauswahlarry1 select _boxindex) select 0);
+                _weapon = ((_waffenauswahlarry1 select _boxindex) select 1);
+            
+                _buygunmagazine pushBack _magazin;
+
+                if (!(_weapon in _buygunweapon)) then 
+                {
+                    _buygunweapon pushBack _weapon;
+                };
+            };
+        };    
+
+        if ((lbCurSel _IDD_box2) > -1) then 
+        {    
+            if ((lbCurSel _IDD_box2) < (count (_boxArry select 1))) then 
+            {
+                _boxindex = (_boxArry select 1) select lbCurSel _IDD_box2;
+                _wert = _wert + ((_waffenauswahlarry1 select _boxindex) select 3);
+                _magazin = ((_waffenauswahlarry1 select _boxindex) select 0);
+                _weapon = ((_waffenauswahlarry1 select _boxindex) select 1);
+            
+                _buygunmagazine pushBack _magazin;
+
+                if (!(_weapon in _buygunweapon)) then 
+                {
+                    _buygunweapon pushBack _weapon;
+                };
+            };
+        };    
+
+        if ((lbCurSel _IDD_box3) > -1) then 
+        {    
             if ((lbCurSel _IDD_box3) < (count (_boxArry select 1))) then 
-			{
+            {
                 _boxindex = (_boxArry select 1)select lbCurSel _IDD_box3;
                 _wert = _wert + ((_waffenauswahlarry1 select _boxindex) select 3);
                 _magazin = ((_waffenauswahlarry1 select _boxindex) select 0);
@@ -304,18 +292,16 @@ else
                 _buygunmagazine pushBack _magazin;
 
                 if (!(_weapon in _buygunweapon)) then 
-				{
+                {
                     _buygunweapon pushBack _weapon;
                 };
-
             };
-
         };    
 
         if ((lbCurSel _IDD_box4) > -1) then 
-		{    
+        {    
             if ((lbCurSel _IDD_box4) < (count (_boxArry select 1))) then 
-			{
+            {
                 _boxindex = (_boxArry select 1)select lbCurSel _IDD_box4;
                 _wert = _wert + ((_waffenauswahlarry1 select _boxindex) select 3);
                 _magazin = ((_waffenauswahlarry1 select _boxindex) select 0);
@@ -324,42 +310,37 @@ else
                 _buygunmagazine pushBack _magazin;
 
                 if (!(_weapon in _buygunweapon)) then 
-				{
+                {
                     _buygunweapon pushBack _weapon;
                 };
-
             };
-
         };
 
         if ((lbCurSel _IDD_box5) > -1) then 
-		{    
+        {    
             if ((lbCurSel _IDD_box5) == 0) then 
-			{
+            {
                 _wert = _wert + GVAR(preisDrahtkafig);
                 _Zusatz set [0,1];
             };
-
         };    
 
         if ((lbCurSel _IDD_box6) > -1) then 
-		{    
+        {    
             if ((lbCurSel _IDD_box6) == 0) then 
-			{
+            {
                 _wert = _wert + GVAR(preisTarnung);
                 _Zusatz set [1,1];
             };
-
         };
 
         if ((lbCurSel _IDD_box7) > -1) then 
-		{    
+        {    
             if (lbCurSel _IDD_box7 == 0) then 
-			{
+            {
                 _wert = _wert + GVAR(preisDatalink);                            
                 _Zusatz set [2,1];
             };
-
         };            
     };
 };  
@@ -368,7 +349,6 @@ if (_veh isKindOf "Air") then
 {
     _vehWeapon = [];
     _vehMagazin = [];
-
 }
 else
 {
@@ -378,7 +358,6 @@ else
     _buygunmagazine = [];
     _buyrakweapon = [];
     _buyrakmagazine = [];
-
 };
 
 _Datensatz append [_veh];
@@ -393,4 +372,4 @@ _Datensatz pushBack _buykontrolle;
 _Datensatz pushBack _Zusatz; 
 _Datensatz append [_wert];  
 
-_Datensatz                               
+_Datensatz
