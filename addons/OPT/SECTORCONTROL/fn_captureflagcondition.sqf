@@ -21,8 +21,7 @@
 #include "macros.hpp"
 
 /* PARAMS */
-params
-[
+params [
    ["_flag", objNull, [objNull], 1],
    ["_unit", objNull, [objNull], 1]
 ];
@@ -33,6 +32,7 @@ if (_flag isEqualTo objNull or _unit isEqualTo objNull) exitWith{false};
 // ausserhalb eines Fahrzeugs 
 // in Restspielzeit gezogen werden 
 // nur von der anderen Seite
+
 vehicle _unit == _unit and
 OPT_GELDZEIT_Spielzeitstart and
 (_flag distance player) <= GVAR(flagDistanceToPlayer) and

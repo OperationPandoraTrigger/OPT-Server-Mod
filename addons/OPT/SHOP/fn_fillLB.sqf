@@ -27,10 +27,10 @@
 * Example:
 * 
 */
+
 #include "macros.hpp"
 
-params
-[
+params [
     ["_idd", 0, [1], 1], 
     ["_idc", 0, [1], 1],
     ["_txtToAdd", "", [["s"]]],

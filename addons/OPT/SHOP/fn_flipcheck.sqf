@@ -18,8 +18,7 @@
 params ["_target", "_caller"];
 
 private _ret = false;
-private _cond =
-(
+private _cond = (
     (speed _target < 1) and 
     ((_target distance _caller) < 10) and 
     (_target isKindOf 'landVehicle') and 
@@ -27,8 +26,7 @@ private _cond =
     ((vectorUp _target) select 2 < 0.4)
 );
 
-if (_cond) then
-{
+if (_cond) then {
     _ret = true;
 };
 

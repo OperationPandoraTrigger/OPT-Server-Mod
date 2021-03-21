@@ -1,5 +1,5 @@
 /**
-* Author: James, Lord, form
+* Author: James
 * log transport distance from a unit that has left a transport helicopter
 *
 * Arguments:
@@ -14,7 +14,7 @@
 * [heli, "cargo", player] call func(writeTransportDistance);
 *
 * Server only:
-* no
+* yes
 *
 * Global:
 * no
@@ -24,27 +24,27 @@
 */
 #include "macros.hpp"
 
-params
-[
+params [
    ["_vec", objNull, [objNull], 1],
    ["_pos", "s", ["s"], 1],
    ["_unit", objNull, [objNull], 1]
 ];
 
-// Minimum transportation distance to allow logging
-#define MinDistance 50
+private _minDistance = 50;
 
-if (_vec isEqualTo objNull or _unit isEqualTo objNull) exitWith{};
+//if (_vec isEqualTo objNull or _unit isEqualTo objNull) exitWith{};
+
+//if (isPlayer) exitWith{};
 
 private _pilot = _vec getVariable [QGVAR(transport_pilot), objNull];
-if (_pilot isEqualTo objNull) exitWith{};
 
 // end script if either player or pilot is unconscious
-if ((lifeState _unit isEqualTo "INCAPACITATED") or (lifeState _pilot isEqualTo "INCAPACITATED")) exitWith {};
+private _condition = (lifeState _unit isEqualTo "INCAPACITATED") or (lifeState _pilot isEqualTo "INCAPACITATED");
+if (_condition) exitWith {};
 
 private _dis = (getPos _vec) distance2D (_unit getVariable QGVAR(transport_start_loc));
 
-if (_pos in ["cargo", "gunner"] and (_dis > MinDistance)) then 
+if (_pos in ["cargo", "gunner"] and (_dis > _minDistance)) then 
 {
     // Log Flugdistanz
     ["Transport", "Fly", [getPlayerUID _unit, name _unit, side _unit, getPlayerUID _pilot, name _pilot, side _pilot, _dis]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];

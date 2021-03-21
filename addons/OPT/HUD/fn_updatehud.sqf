@@ -12,6 +12,7 @@
 * [] call func(updateHUD);
 *
 */
+
 #include "macros.hpp"
 
 disableSerialization;
@@ -48,6 +49,7 @@ disableSerialization;
     };
 
     // Anzeige updaten
+    // Update Text
     _control ctrlSetText _playersStr;  
     _control ctrlShow true;  
 
@@ -100,40 +102,46 @@ disableSerialization;
 
     if (OPT_GELDZEIT_Spielzeitstart) then 
     {
+
         // Mission gestartet - Zeige verbleibende Spielzeit
         _timeLeft = [_playTime] call CBA_fnc_formatElapsedTime;
 
         if (_playTime > 0) then 
         {
+
             _timeStr = format [MLOC(TIME_LEFT), _timeLeft];
             _control ctrlSetTextColor [0.7, 0.7, 0.7, 1];
         } 
         else
         {
+
             _timeStr = MLOC(TIME_END);
             _control ctrlSetTextColor [1, 0, 0, 0.9];
         };
     } 
     else 
     {
+
         // Mission noch nicht gestartet - Zeige verbleibende Zeit der Waffenruhe
         _timeLeft = [_truceTime] call CBA_fnc_formatElapsedTime;
 
         if (_truceTime > 0) then 
         {
+
             _timeStr = format [MLOC(TIME_CEASEFIRE), _timeLeft];
             _control ctrlSetTextColor [0.6, 0.1, 0, 1];
         } 
         else
         {
+
             _timeStr = MLOC(TIME_CEASEFIRE_END);
             _control ctrlSetTextColor [0.7, 0.7, 0.7, 1];
         }
     };
 
     // Anzeige updaten
+    // Update Text
     _control ctrlSetText _timeStr;
-
     // Färbe Uhr in den letzten 5 Minuten rot
     if (_playTime < 300) then 
     {
@@ -141,4 +149,5 @@ disableSerialization;
     };
 
     _control ctrlShow true;
+
 }, 1, _this] call CFUNC(addPerFrameHandler);
