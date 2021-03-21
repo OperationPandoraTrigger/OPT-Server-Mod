@@ -31,8 +31,7 @@
 #include "macros.hpp";
 
 /* PARAMS */
-params
-[
+params [
     ["_playerSide", sideUnknown, [sideUnknown], 1],
     ["_markerNo", -1, [0], 1]
 ];
@@ -48,20 +47,15 @@ switch (_playerSide) do
     { 
         _marker = createMarkerLocal [format["%1_W%2", "unit_marker_uncomscious", _markerNo], [0,0]];
     };
-
     case east: 
     { 
         _marker = createMarkerLocal [format["%1_E%2", "unit_marker_uncomscious", _markerNo], [0,0]];
     };
-
     case independent: 
     { 
         _marker = createMarkerLocal [format["%1_I%2", "unit_marker_uncomscious", _markerNo], [0,0]];
     };
-
-    default
-    {
-    };
+    default { };
 };
 
 _marker setMarkerTypeLocal "loc_Hospital";

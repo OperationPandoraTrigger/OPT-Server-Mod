@@ -40,6 +40,7 @@
     {} // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
 
+
 [
     QGVAR(weather_overcast), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "SLIDER", // setting type
@@ -54,6 +55,7 @@
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {} // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
+
 
 [
     QGVAR(weather_rain_start), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
@@ -110,6 +112,7 @@
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {} // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
+
 
 [
     QGVAR(weather_rain_end), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.

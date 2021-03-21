@@ -33,7 +33,7 @@ openMap [true, false];
  // instructions for player
 private _txt = MLOC(SECTORCONTROL_INSTRUCTION);
 private _header = MLOC(SECTORCONTROL_INSTRUCTION_HEADER);
-hint format ["%1\n\n%2", _header, _txt];
+hint Format ["%1 \n\n %2",_header,_txt];
 
 // Memory for markers which are deleted on map-close
 GVAR(waffenruheFlagMarkers) = [];
@@ -49,7 +49,7 @@ GVAR(waffenruheFlagMarkers) = [];
             case "AAFvsCSAT" : 
             {
                 switch (playerSide) do 
-                {
+		        {
                     case east: 
                     {
                         // Flaggenpunkte die zur Auswahl stehen
@@ -101,7 +101,7 @@ GVAR(waffenruheFlagMarkers) = [];
             case "NATOvsCSAT" : 
             {
                 switch (playerSide) do 
-                {
+		        {
                     case west: 
                     {
                         // Flaggenpunkte die zur Auswahl stehen
@@ -153,7 +153,7 @@ GVAR(waffenruheFlagMarkers) = [];
             case "NATOvsAAF" : 
             {
                 switch (playerSide) do 
-                {
+		        {
                     case west: 
                     {
                         // Flaggenpunkte die zur Auswahl stehen
@@ -201,7 +201,7 @@ GVAR(waffenruheFlagMarkers) = [];
                 };     
             };
 
-            default
+            default 
             {
                 ERROR_LOG("chooseflag: Fehlehalte Datenübergabe keine Fraktionauswahl erkannt");
                 private _side = sideUnknown;
@@ -482,11 +482,15 @@ GVAR(waffenruheFlagMarkers) = [];
 
 DFUNC(REH) = 
 {
+    
     ["sectorMap", "onMapSingleClick"] call BIS_fnc_removeStackedEventHandler;
 
     // Alle Marker beim Schließen der Karte entfernen und Array löschen
     GVAR(waffenruheFlagMarkers) apply { deleteMarkerLocal _x; };
     GVAR(waffenruheFlagMarkers) = nil;
-};
+
+ };
 
 [FUNC(REH), {!visibleMap}, "Awesome Delay"] call CLib_fnc_waitUntil;
+
+

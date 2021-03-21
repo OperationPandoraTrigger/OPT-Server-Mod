@@ -23,7 +23,7 @@ private _isPlayerUnconscious = _caller getVariable "OPT_isUnconscious";
 
 if (!alive _caller || {_isPlayerUnconscious == 1} || {GVAR(OPT_isDragging)} || {isNil "_target"} || {!alive _target}  || {(_target distance _caller) > 5}) exitWith 
 {
-    _return;
+	_return;
 };
 
 // Target of the action
@@ -31,14 +31,15 @@ private _isTargetUnconscious = false;
 private _isDragged = _target getVariable "OPT_isDragged"; 
 private _isPlayerUnconscioustarget = _target getVariable "OPT_isUnconscious";
 
+
 if (_isPlayerUnconscioustarget == 1) then
 {
-    _isTargetUnconscious =     true;
-};    
+	_isTargetUnconscious = 	true;
+};	
 
 if (_isTargetUnconscious && (_isDragged == 0)) then 
 {
-    _return = true;
+	_return = true;
 };
 
 _return

@@ -31,8 +31,7 @@
 #include "macros.hpp";
 
 /* PARAMS */
-params
-[
+params [
     ["_playerSide", sideUnknown, [sideUnknown], 1],
     ["_markerNo", -1, [0], 1]
 ];
@@ -44,24 +43,21 @@ if (_playerSide isEqualTo sideUnknown or _markerNo isEqualTo -1) exitWith {};
 private _marker = '';
 switch (_playerSide) do 
 {
-    case west:
+    case west: 
     { 
         _marker = createMarkerLocal [format["%1_W%2", "unit_marker", _markerNo], [0,0]];
         _marker setMarkerColorLocal "ColorBLUFOR";
     };
-
-    case east:
+    case east: 
     { 
         _marker = createMarkerLocal [format["%1_E%2", "unit_marker", _markerNo], [0,0]];
         _marker setMarkerColorLocal "ColorOPFOR";
     };
-
-    case independent:
+    case independent: 
     { 
         _marker = createMarkerLocal [format["%1_I%2", "unit_marker", _markerNo], [0,0]];
         _marker setMarkerColorLocal "colorIndependent";
     };
-
     default { };
 };
 

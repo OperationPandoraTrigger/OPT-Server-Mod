@@ -37,8 +37,9 @@ _return = false;
         _return = (_key == (actionkeys _x) select 0);
         private _txt = MLOC(CHAT_DEACTIVATED);
         private _header = MLOC(SAN_SYS);
-        hint format["%1\n\n%2", _header, _txt];
+        hint Format ["%1 \n\n %2",_header,_txt];
     };
 } forEach ['Chat'];
+
 
 _return
