@@ -12,6 +12,7 @@
 * ["Mission", "Start", [0, 0, 0, "MissionName"]] call OPT_LOGGING_fnc_writelog;
 *
 */
+
 #include "macros.hpp"
 
 params ["_class", "_event", "_array"];

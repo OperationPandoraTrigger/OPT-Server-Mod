@@ -21,6 +21,7 @@
 * Example:
 * [] call func(setupFlag);
 */
+
 #include "macros.hpp"
 
 /* BY JAMES */
@@ -41,7 +42,7 @@ while {(count GVAR(nato_flags) < round GVAR(flagCountNATO)) && _maxTries > 0} do
 };
 publicVariable QGVAR(nato_flags);
 
-_maxTries = 100;
+private _maxTries = 100;
 while {(count GVAR(csat_flags) < round GVAR(flagCountCSAT)) && _maxTries > 0} do
 {
     GVAR(csat_flags) pushBackUnique selectRandom _all_csat_flags;
@@ -49,7 +50,6 @@ while {(count GVAR(csat_flags) < round GVAR(flagCountCSAT)) && _maxTries > 0} do
 };
 publicVariable QGVAR(csat_flags);
 
-_maxTries = 100;
 while {(count GVAR(aaf_flags) < round GVAR(flagCountAAF)) && _maxTries > 0} do
 {
     GVAR(aaf_flags) pushBackUnique selectRandom _all_aaf_flags;
@@ -95,26 +95,24 @@ Flaggen-Seite loggen
         private _marker = createMarker [_markerName, getPos _flag];
 
         if (GVAR(csat_flags) find _x >= 0) then 
-        {
+		{
             _marker setMarkerType "flag_CSAT";
         }; 
-
-        if (GVAR(nato_flags) find _x >= 0) then 
-        {
+		if (GVAR(nato_flags) find _x >= 0) then 
+		{
             _marker setMarkerType "flag_NATO";
         }; 
-
-        if (GVAR(aaf_flags) find _x >= 0) then 
-        {
+		if (GVAR(aaf_flags) find _x >= 0) then 
+		{
             _marker setMarkerType "flag_AAF";
         }; 
-        
+		
         _flag setVariable [QGVAR(flagMarker), _marker, true];
     };
 
     // mark free mine zone around flag
     if (GVAR(flagFreeMineZoneMarkerOn)) then 
-    {
+	{
         private _markerName = format["MineZoneMarker_%1_%2", _forEachIndex, _flag];
         private _marker = createMarker [_markerName, getPos _flag];
         _marker setMarkerShape "ELLIPSE";
@@ -142,6 +140,6 @@ Flaggen-Seite loggen
    
     _flag allowDamage false;  // Flagge kann nicht beschaedigt werden
 
-        // Bei Missionsstart alle ursprünglichen Flaggenowner loggen
-        ["Flag", "StartState", [_flag, _flag getVariable ["start_owner", sideUnknown]]] call OPT_LOGGING_fnc_writelog;
+    	// Bei Missionsstart alle ursprünglichen Flaggenowner loggen
+		["Flag", "StartState", [_flag, _flag getVariable ["start_owner", sideUnknown]]] call OPT_LOGGING_fnc_writelog;
 } foreach GVAR(csat_flags) + GVAR(nato_flags) + GVAR(aaf_flags);

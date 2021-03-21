@@ -32,17 +32,18 @@
     * 9: Other parameters [showDisabled,enableInside,canCollapse,runOnHover,doNotCheckLOS] <ARRAY> (Optional)
     * 10: Modifier function <CODE> (Optional)
     */
-    _action_drag =
-    [
+    _action_drag = [
         "OPT_REVIVE_DRAG",
         MLOC(DRAG),
         "",
         {
             params ["_target", "_player", "_params"]; 
+
             [_target, _player, "action_drag"] call FUNC(handleAction);
         },
         {
             params ["_target", "_player", "_params"];
+
             [_target, _player] call FUNC(checkDragging);
         }
     ] call ace_interact_menu_fnc_createAction;

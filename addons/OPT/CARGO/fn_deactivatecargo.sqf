@@ -14,8 +14,7 @@
 */
 #include "macros.hpp"
 
-params
-[
+params [
     ["_item", objNull, [objNull], 1]
 ];
 

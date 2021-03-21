@@ -14,9 +14,14 @@
 */
 #include "macros.hpp"
 
+#define PLACE_WAITING -1
+#define PLACE_CANCEL 0
+#define PLACE_APPROVE 1
+
 /* EH für das Versetzen der Flaggen im Trainingsmodus */
 if (GVAR(trainingon)) then 
 {
+
     // use stackedEH, cannot override default behavior
     [QGVAR(move_flag), "onMapSingleClick", 
     {
@@ -39,6 +44,7 @@ if (GVAR(trainingon)) then
 
         if (_flag isEqualTo objNull) then 
         {
+
             // check for flag nearby
             _obj = nearestObjects [_pos, ["FlagPole_F"], 100];
             if (count _obj == 0) exitWith {};
@@ -52,7 +58,7 @@ if (GVAR(trainingon)) then
             _flag setpos _pos;
             _flag setVariable [QGVAR(isFlagMovable), false];
 
-            // flaggenmarker verschieben
+	        // flaggenmarker verschieben
             _marker = _flag getVariable QGVAR(flagMarker);
             _marker setMarkerPos _pos;
 
@@ -66,25 +72,28 @@ if (GVAR(trainingon)) then
     player addAction [("<t color=""#f0bfbfbf"">" + ("Teleport") + "</t>"), {[] call FUNC(teleport)}, [], 0, false, true, '', "alive _target"];
 
     ["Respawn", {
+
         player addAction [("<t color=""#f0bfbfbf"">" + ("Teleport") + "</t>"), {[] call FUNC(teleport)}, [], 0, false, true, '', "alive _target"];
+
     }] call CFUNC(addEventhandler);
+
 };
 
 // EH für Minensperre
 if (GVAR(flagFreeMineZoneOn)) then 
 {
-    player addEventHandler ["FiredMan", 
+	player addEventHandler ["FiredMan", 
     {
-        /* 
-            0 unit: Object - Unit the event handler is assigned to (the instigator)
-            1 weapon: String - Fired weapon
+		/* 
+			0 unit: Object - Unit the event handler is assigned to (the instigator)
+		    1 weapon: String - Fired weapon
             2 muzzle: String - Muzzle that was used
             3 mode: String - Current mode of the fired weapon
             4 ammo: String - Ammo used
             5 magazine: String - magazine name which was used
             6 projectile: Object - Object of the projectile that was shot out
             7 vehicle: Object - Vehicle, if weapon is vehicle weapon, otherwise objNull
-        */
+    	*/
         if (_this select 1 == "Put" && ({(_x distance player) <= GVAR(flagFreeMineZoneRadius)} count (GVAR(nato_flags) + GVAR(csat_flags) + GVAR(aaf_flags)) > 0)) then 
         {
             // lösche Mine
@@ -94,7 +103,10 @@ if (GVAR(flagFreeMineZoneOn)) then
             // Warnhinweis
             private _txt = MLOC(MINE_VIOLATION);
             private _header = MLOC(MINE_VIOLATION_HEADER);
-            hint format ["%1\n\n%2", _header, _txt];
-        };  
-    }];
+            hint Format ["%1 \n\n %2",_header,_txt];
+    	};  
+	}];
 };
+
+
+
