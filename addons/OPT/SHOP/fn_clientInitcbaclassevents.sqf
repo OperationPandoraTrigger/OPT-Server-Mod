@@ -113,7 +113,12 @@ This event happens every time a soldier enters a vehicle.
     turret: Array - turret path (since Arma 3 v1.36)
     */
 
-    // logge transport von Spielern
-    _this call FUNC(writeTransportDistance);
+    params ["_vec", "_pos", "_unit","_turret"];
+
+    if (_unit isEqualTo player) then 
+    {
+        // logge transport von Spielern
+        _this call FUNC(writeTransportDistance);
+    };
 
 }] call CBA_fnc_addClassEventHandler;
