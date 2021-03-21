@@ -23,14 +23,12 @@ This will show a chat message every time a soldier fires a weapon. It is advised
 This event happens every time a soldier enters a vehicle.
 */ 
 
-
 // fügt auf allen clients einen Add Action Eintrag für umgekippte Fahrzeuge hinzu
 // ersetzt player add action in onPlayerRespawn (viel performanter, da kein pulling)
-
 ["LandVehicle", "init", 
 {
     params ["_vec"];
-   
+
     _vec addAction [
         format["<t color='#00D3BF'>%1</t>", MLOC(FLIP_VEH)], 
         {[] call FUNC(unFlip);},
@@ -41,7 +39,6 @@ This event happens every time a soldier enters a vehicle.
         "", 
         format["[_target, player] call %1", QFUNC(flipCheck)]
     ];
-
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
 ["Air", "init", 
@@ -58,7 +55,6 @@ This event happens every time a soldier enters a vehicle.
         "", 
         format["[_target, player] call %1", QFUNC(flipCheck)]
     ];
-
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
 // add killed EH to all kind of vehicles, either on map or later spawned via crteateVehicle arrayIntersect
@@ -66,19 +62,16 @@ This event happens every time a soldier enters a vehicle.
 ["LandVehicle", "killed", 
 {
     _this remoteExecCall [QFUNC(handleDeadVehicle), 2, false];
-
 }] call CBA_fnc_addClassEventHandler;
 
 ["Air", "killed", 
 {
     _this remoteExecCall [QFUNC(handleDeadVehicle), 2, false];
-
 }] call CBA_fnc_addClassEventHandler;
 
 ["Ship", "killed", 
 {
     _this remoteExecCall [QFUNC(handleDeadVehicle), 2, false];
-
 }] call CBA_fnc_addClassEventHandler;
 
 // Engine EH für Piloten -> Log transportierte Soldaten
@@ -101,7 +94,6 @@ This event happens every time a soldier enters a vehicle.
 
     // speichere aktuellen Ort an der Einheit
     _unit setVariable [QGVAR(transport_start_loc), getPosASL _vec];
-            
 }] call CBA_fnc_addClassEventHandler;
 
 ["Air", "GetOut", 
@@ -112,8 +104,10 @@ This event happens every time a soldier enters a vehicle.
     unit: Object - Unit that left the vehicle
     turret: Array - turret path (since Arma 3 v1.36)
     */
-
-    // logge transport von Spielern
-    _this call FUNC(writeTransportDistance);
-
+    params ["_vec", "_pos", "_unit", "_turret"];
+    if (_unit isEqualTo player) then 
+    {
+        // logge transport von Spielern
+        _this call FUNC(writeTransportDistance);
+    };
 }] call CBA_fnc_addClassEventHandler;
