@@ -28,90 +28,96 @@
 */
 #include "macros.hpp"
 
-private _Basis = "";
+// Minimalentfernung zum Beam-Platz
+#define MIN_DISTANCE_TO_BEAMSPOT 20
+
+private _Basis = objNull;
 
 switch GVAR(Fraktionauswahl) do 
 {
-    case "AAFvsCSAT" : 
+    case "AAFvsCSAT":
     {
-        if ((PLAYERSIDE == east) and (player distance2D (getPos Teleport_CSAT_Basis1) < 20)) then
+        if ((playerSide == east) and ((player distance Teleport_CSAT_Basis1) < MIN_DISTANCE_TO_BEAMSPOT)) then
         {
             _Basis = Teleport_CSAT_Basis2;
         };
 
-        if ((PLAYERSIDE == independent) and (player distance2D (getPos Teleport_AAF_Basis1) < 20)) then
+        if ((playerSide == independent) and ((player distance Teleport_AAF_Basis1) < MIN_DISTANCE_TO_BEAMSPOT)) then
         {
             _Basis = Teleport_AAF_Basis2;
         };
 
-        if ((PLAYERSIDE == east) and (player distance2D (getPos Teleport_CSAT_Basis2) < 20)) then
+        if ((playerSide == east) and ((player distance Teleport_CSAT_Basis2) < MIN_DISTANCE_TO_BEAMSPOT)) then
         {
             _Basis = Teleport_CSAT_Basis1;
         };
 
-        if ((PLAYERSIDE == independent) and (player distance2D (getPos Teleport_AAF_Basis2) < 20)) then
+        if ((playerSide == independent) and ((player distance Teleport_AAF_Basis2) < MIN_DISTANCE_TO_BEAMSPOT)) then
         {
             _Basis = Teleport_AAF_Basis1;
         };
     };
 
-    case "NATOvsCSAT" : 
+    case "NATOvsCSAT":
     {
-        if ((PLAYERSIDE == east) and (player distance2D (getPos Teleport_CSAT_Basis1) < 20)) then
+        if ((playerSide == east) and ((player distance Teleport_CSAT_Basis1) < MIN_DISTANCE_TO_BEAMSPOT)) then
         {
             _Basis = Teleport_CSAT_Basis2;
         };
 
-        if ((PLAYERSIDE == west) and (player distance2D (getPos Teleport_Nato_Basis1) < 20)) then
+        if ((playerSide == west) and ((player distance Teleport_Nato_Basis1) < MIN_DISTANCE_TO_BEAMSPOT)) then
         {
             _Basis = Teleport_NATO_Basis2;
         };
 
-        if ((PLAYERSIDE == east) and (player distance2D (getPos Teleport_CSAT_Basis2) < 20)) then
+        if ((playerSide == east) and ((player distance Teleport_CSAT_Basis2) < MIN_DISTANCE_TO_BEAMSPOT)) then
         {
             _Basis = Teleport_CSAT_Basis1;
         };
 
-        if ((PLAYERSIDE == west) and (player distance2D (getPos Teleport_Nato_Basis2) < 20)) then
+        if ((playerSide == west) and ((player distance Teleport_Nato_Basis2) < MIN_DISTANCE_TO_BEAMSPOT)) then
         {
             _Basis = Teleport_NATO_Basis1;
         };    
     };
 
-    case "NATOvsAAF" : 
+    case "NATOvsAAF":
     {
-        if ((PLAYERSIDE == west) and (player distance2D (getPos Teleport_Nato_Basis1) < 20)) then
+        if ((playerSide == west) and ((player distance Teleport_Nato_Basis1) < MIN_DISTANCE_TO_BEAMSPOT)) then
         {
             _Basis = Teleport_NATO_Basis2;
         };
 
-        if ((PLAYERSIDE == independent) and (player distance2D (getPos Teleport_AAF_Basis1) < 20)) then
+        if ((playerSide == independent) and ((player distance Teleport_AAF_Basis1) < MIN_DISTANCE_TO_BEAMSPOT)) then
         {
             _Basis = Teleport_AAF_Basis2;
         };
 
-        if ((PLAYERSIDE == west) and (player distance2D (getPos Teleport_Nato_Basis2) < 20)) then
+        if ((playerSide == west) and ((player distance Teleport_Nato_Basis2) < MIN_DISTANCE_TO_BEAMSPOT)) then
         {
             _Basis = Teleport_NATO_Basis1;
         };
 
-        if ((PLAYERSIDE == independent) and (player distance2D (getPos Teleport_AAF_Basis2) < 20)) then
+        if ((playerSide == independent) and ((player distance Teleport_AAF_Basis2) < MIN_DISTANCE_TO_BEAMSPOT)) then
         {
             _Basis = Teleport_AAF_Basis1;
-        };            
+        };
     };
 
-    default 
+    default
     {
-        ERROR_LOG("clientinit: Fehlehalte Datenübergabe keine Fraktionauswahl erkannt");    
+        ERROR_LOG("GeldzeitBeam: Fehlehalte Datenübergabe keine Fraktionauswahl erkannt");
     };
 };
 
-(["Basis"] call BIS_fnc_rscLayer) cutText ["Teleport...", "BLACK OUT", 3]; // fade out in black
+if !(isNull _Basis) then
+{
+    (["Basis"] call BIS_fnc_rscLayer) cutText ["Teleport...", "BLACK OUT", 3]; // fade out in black
 
-// beam player
-vehicle player setPosASL [(random 100) - 50, (random 100) - 50, 1000 + random 100];
-vehicle player setVectorUp [0,0,1];
-vehicle player setPosASL (getPosASL _Basis vectorAdd [(random 2) + 2, (random 2) + 2, 0.2]);
+    // beam player
+    vehicle player setPosASL [(random 100) - 50, (random 100) - 50, 1000 + random 100];
+    vehicle player setVectorUp [0,0,1];
+    vehicle player setPosASL (getPosASL _Basis vectorAdd [(random 2) + 2, (random 2) + 2, 0.2]);
 
-(["Basis"] call BIS_fnc_rscLayer) cutText ["", "BLACK IN", 3];
+    (["Basis"] call BIS_fnc_rscLayer) cutText ["", "BLACK IN", 3];
+};

@@ -32,7 +32,7 @@ params
 // delete all wrecks within the base safezone
 switch OPT_GELDZEIT_Fraktionauswahl do 
 {
-        case "AAFvsCSAT" : 
+        case "AAFvsCSAT":
         {
             if (!(_vec isKindOf "CAManBase") and ((_vec distance2D (getmarkerPos "respawn_guerrila") < 200) or (_vec distance2D (getmarkerPos "respawn_east") < 200) or (_vec distance2D (getmarkerPos "CSAT_Basis2") < 200) or (_vec distance2D (getmarkerPos "AAF_Basis2") < 200))) then 
             {
@@ -49,7 +49,7 @@ switch OPT_GELDZEIT_Fraktionauswahl do
             };     
         };
 
-        case "NATOvsCSAT" : 
+        case "NATOvsCSAT":
         {
             if (!(_vec isKindOf "CAManBase") and ((_vec distance2D (getmarkerPos "respawn_west") < 200) or (_vec distance2D (getmarkerPos "respawn_east") < 200) or (_vec distance2D (getmarkerPos "CSAT_Basis2") < 200) or (_vec distance2D (getmarkerPos "NATO_Basis2") < 200))) then 
             {
@@ -66,7 +66,7 @@ switch OPT_GELDZEIT_Fraktionauswahl do
             };
         };
 
-        case "NATOvsAAF" : 
+        case "NATOvsAAF":
         {
             if (!(_vec isKindOf "CAManBase") and ((_vec distance2D (getmarkerPos "respawn_west") < 200) or (_vec distance2D (getmarkerPos "respawn_guerrila") < 200) or (_vec distance2D (getmarkerPos "Nato_Basis2") < 200) or (_vec distance2D (getmarkerPos "AAF_Basis2") < 200))) then 
             {

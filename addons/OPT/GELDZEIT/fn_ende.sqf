@@ -30,7 +30,7 @@
 
 switch (GVAR(Fraktionauswahl)) do 
 {
-    case "AAFvsCSAT" : 
+    case "AAFvsCSAT":
     {
         private _points1 = OPT_SECTORCONTROL_aaf_points;
         private _points2 = OPT_SECTORCONTROL_csat_points;
@@ -55,7 +55,7 @@ switch (GVAR(Fraktionauswahl)) do
         };    
     };
 
-    case "NATOvsCSAT" : 
+    case "NATOvsCSAT":
     {
         private _points1 = OPT_SECTORCONTROL_nato_points;
         private _points2 = OPT_SECTORCONTROL_csat_points;
@@ -80,7 +80,7 @@ switch (GVAR(Fraktionauswahl)) do
         };        
     };
 
-    case "NATOvsAAF" : 
+    case "NATOvsAAF":
     {
         private _points1 = OPT_SECTORCONTROL_nato_points;
         private _points2 = OPT_SECTORCONTROL_aaf_points;

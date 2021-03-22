@@ -26,17 +26,17 @@ disableSerialization;
 
     switch OPT_GELDZEIT_Fraktionauswahl do 
     {
-        case "AAFvsCSAT" : 
+        case "AAFvsCSAT":
         {
             _playersStr = format [MLOC(AAFvCSAT), playersNumber independent, playersNumber east];
         };
 
-        case "NATOvsCSAT" : 
+        case "NATOvsCSAT":
         {
             _playersStr = format [MLOC(NATOvCSAT), playersNumber west, playersNumber east];
         };
 
-        case "NATOvsAAF" : 
+        case "NATOvsAAF":
         {
             _playersStr = format [MLOC(NATOvAAF), playersNumber west, playersNumber independent];         
         };
@@ -64,17 +64,17 @@ disableSerialization;
 
     switch OPT_GELDZEIT_Fraktionauswahl do 
     {
-        case "AAFvsCSAT" : 
+        case "AAFvsCSAT":
         {
             _scoreStr = format [MLOC(AAFvCSAT_POINT),  OPT_SECTORCONTROL_aaf_points, OPT_SECTORCONTROL_csat_points];
         };
 
-        case "NATOvsCSAT" : 
+        case "NATOvsCSAT":
         {
             _scoreStr = format [MLOC(NATOvCSAT_POINT), OPT_SECTORCONTROL_nato_points, OPT_SECTORCONTROL_csat_points];
         };
 
-        case "NATOvsAAF" : 
+        case "NATOvsAAF":
         {
             _scoreStr = format [MLOC(NATOvAAF_POINT), OPT_SECTORCONTROL_nato_points, OPT_SECTORCONTROL_aaf_points];          
         };

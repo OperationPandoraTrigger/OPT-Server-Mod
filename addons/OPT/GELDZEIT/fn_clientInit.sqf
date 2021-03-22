@@ -55,7 +55,7 @@
             {
                 switch GVAR(Fraktionauswahl) do 
                 {
-                    case "AAFvsCSAT" : 
+                    case "AAFvsCSAT":
                     {
                         private _en_pa = if (playerSide == independent) then {playersNumber opfor} else {playersNumber independent};
 
@@ -70,7 +70,7 @@
                         };
                     };
 
-                    case "NATOvsCSAT" : 
+                    case "NATOvsCSAT":
                     {    
                         private _en_pa = if (playerSide == blufor) then {playersNumber opfor} else {playersNumber blufor};
 
@@ -85,7 +85,7 @@
                         };
                     };
 
-                    case "NATOvsAAF" : 
+                    case "NATOvsAAF":
                     {
                         private _en_pa = if (playerSide == blufor) then {playersNumber independent} else {playersNumber blufor};
 
@@ -97,7 +97,7 @@
                                 case (independent) : {"balanceindependent"};
                                 default {"LOSER"};
                             });
-                        };                
+                        };
                     };
 
                     default 
@@ -109,67 +109,54 @@
         };
     };
 
-    // friere Spieler, falls freezeTime aktiv
+    // Freeze-Time
     [] call FUNC(frezztime);
 
-    //Beam ausführen zur zweiten Basis
-    GVAR(beam_trigger) = [];
+    // Hotkey fürs Basis-Beamen
+    [
+        "OPT",
+        QGVAR(cba_addKeybind_beam_dialog),
+        ["Beam-Funktion", "Beamen im Teleportbereich zur anderen Basis."],
+        {
+            [] call FUNC(beam);
+        },
+        {},
+        [
+            DIK_F2,
+            [false, false, false] // [shift, ctrl, alt]
+        ]
+    ] call CBA_fnc_addKeybind;
 
+    // Init Beam-Schilder
     switch GVAR(Fraktionauswahl) do 
     {
-        case "AAFvsCSAT" : 
+        case "AAFvsCSAT":
         {
-            GVAR(beam_trigger) = 
-            [
-                AAF_trigger_beam_basis1,
-                AAF_trigger_beam_basis2,
-                csat_trigger_beam_basis1,
-                csat_trigger_beam_basis2
-            ];
+            independent_Basis_Teleport1 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];    
+            independent_Basis_Teleport2 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];    
+            east_Basis_Teleport1 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];    
+            east_Basis_Teleport2 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];    
         };
 
-        case "NATOvsCSAT" : 
-        {
-            GVAR(beam_trigger) = 
-            [
-                nato_trigger_beam_basis1,
-                nato_trigger_beam_basis2,
-                csat_trigger_beam_basis1,
-                csat_trigger_beam_basis2
-            ];    
+        case "NATOvsCSAT":
+        {    
+            west_Basis_Teleport1 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];    
+            west_Basis_Teleport2 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];    
+            east_Basis_Teleport1 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];    
+            east_Basis_Teleport2 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];    
         };
 
-        case "NATOvsAAF" : 
+        case "NATOvsAAF":
         {
-            GVAR(beam_trigger) = 
-            [
-                AAF_trigger_beam_basis1,
-                AAF_trigger_beam_basis2,
-                nato_trigger_beam_basis1,
-                nato_trigger_beam_basis2
-            ];            
+            west_Basis_Teleport1 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];    
+            west_Basis_Teleport2 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];    
+            independent_Basis_Teleport1 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];    
+            independent_Basis_Teleport2 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];    
         };
 
         default 
         {
-            ERROR_LOG("clientinit: Fehlehalte Datenübergabe keine Fraktionauswahl erkannt");    
+            ERROR_LOG("GeldzeitClientInit: Fehlehalte Datenübergabe keine Fraktionauswahl erkannt");    
         };
     };
-
-    [
-        "OPT", 
-        QGVAR(cba_addKeybind_beam_dialog), 
-        ["Beam-Funktion", "Beamen im Teleportbereich zur anderen Basis."], 
-        {
-            if ( ({vehicle player in list _x} count GVAR(beam_trigger)) > 0 ) then 
-            {
-                [] call FUNC(beam);
-            };
-        }, 
-        {}, 
-        [
-            DIK_F2, 
-            [false, false, false] // [shift, ctrl, alt]
-        ]
-    ] call CBA_fnc_addKeybind;
 }] call CFUNC(addEventhandler);

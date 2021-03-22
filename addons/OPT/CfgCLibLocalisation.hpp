@@ -427,6 +427,12 @@ class CfgCLibLocalisation
                 English = "Overdraft: %1 €";
                 German = "Dispo: %1 €";
             };
+
+            class BEAM
+            {
+                English = "Beam to other base";
+                German = "Beam zur anderen Basis";
+            };
         };
 
         class FIELDREPAIR

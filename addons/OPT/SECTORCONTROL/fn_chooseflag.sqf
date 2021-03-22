@@ -46,7 +46,7 @@ GVAR(waffenruheFlagMarkers) = [];
         // only show attack flags
         switch OPT_GELDZEIT_Fraktionauswahl do 
         {
-            case "AAFvsCSAT" : 
+            case "AAFvsCSAT":
             {
                 switch (playerSide) do 
                 {
@@ -98,7 +98,7 @@ GVAR(waffenruheFlagMarkers) = [];
                 };          
             };
 
-            case "NATOvsCSAT" : 
+            case "NATOvsCSAT":
             {
                 switch (playerSide) do 
                 {
@@ -150,7 +150,7 @@ GVAR(waffenruheFlagMarkers) = [];
                 };    
             };
 
-            case "NATOvsAAF" : 
+            case "NATOvsAAF":
             {
                 switch (playerSide) do 
                 {
@@ -225,7 +225,7 @@ GVAR(waffenruheFlagMarkers) = [];
 
         switch OPT_GELDZEIT_Fraktionauswahl do 
         {
-            case "AAFvsCSAT" : 
+            case "AAFvsCSAT":
             {
                 switch (playerside) do
                 {
@@ -307,7 +307,7 @@ GVAR(waffenruheFlagMarkers) = [];
                 };   
             };
 
-            case "NATOvsCSAT" : 
+            case "NATOvsCSAT":
             {
                 switch (playerside) do
                 {
@@ -389,7 +389,7 @@ GVAR(waffenruheFlagMarkers) = [];
                 };                 
             };
 
-            case "NATOvsAAF" : 
+            case "NATOvsAAF":
             {
                 switch (playerside) do
                 {

@@ -25,7 +25,7 @@ private _aaf_owner = 0;
 
 switch OPT_GELDZEIT_Fraktionauswahl do 
 {
-        case "AAFvsCSAT" : 
+        case "AAFvsCSAT":
         {
             _side = switch (true) do 
             {
@@ -35,7 +35,7 @@ switch OPT_GELDZEIT_Fraktionauswahl do
             };
         };
 
-        case "NATOvsCSAT" : 
+        case "NATOvsCSAT":
         {
             _side = switch (true) do 
             {
@@ -45,7 +45,7 @@ switch OPT_GELDZEIT_Fraktionauswahl do
             };            
         };
 
-        case "NATOvsAAF" : 
+        case "NATOvsAAF":
         {
             _side = switch (true) do 
             {

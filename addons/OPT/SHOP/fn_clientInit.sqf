@@ -83,7 +83,7 @@ GVAR(eventArgs) = [];
 {
     switch OPT_GELDZEIT_Fraktionauswahl do 
     {
-            case "AAFvsCSAT" : 
+            case "AAFvsCSAT":
             {
                 //AddAction für Dialog öffnen
                 east_shop_air addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["choppers"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
@@ -136,8 +136,8 @@ GVAR(eventArgs) = [];
                                 };
                             };
                         };
-                    }, 
-                    {}, 
+                    },
+                    {},
                     [
                         DIK_F3, 
                         [false, false, false] // [shift, ctrl, alt]
@@ -145,7 +145,7 @@ GVAR(eventArgs) = [];
                 ] call CBA_fnc_addKeybind;
             };
 
-            case "NATOvsCSAT" : 
+            case "NATOvsCSAT":
             {
                 //AddAction für Dialog öffnen
                 east_shop_air addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["choppers"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
@@ -198,8 +198,8 @@ GVAR(eventArgs) = [];
                                 };
                             };
                         };
-                    }, 
-                    {}, 
+                    },
+                    {},
                     [
                         DIK_F3, 
                         [false, false, false] // [shift, ctrl, alt]
@@ -207,7 +207,7 @@ GVAR(eventArgs) = [];
                 ] call CBA_fnc_addKeybind;
             };
 
-            case "NATOvsAAF" : 
+            case "NATOvsAAF":
             {
                 //AddAction für Dialog öffnen
                 west_shop_air addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["choppers"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];    
@@ -260,8 +260,8 @@ GVAR(eventArgs) = [];
                                 };
                             };
                         };
-                    }, 
-                    {}, 
+                    },
+                    {},
                     [
                         DIK_F3, 
                         [false, false, false] // [shift, ctrl, alt]
@@ -271,8 +271,7 @@ GVAR(eventArgs) = [];
 
             default 
             {
-                ERROR_LOG("calcDominator: Fehlehalte Datenübergabe keine Fraktionauswahl erkannt");
-                private _side = sideUnknown;
+                ERROR_LOG("ShopClientInit: Fehlehalte Datenübergabe keine Fraktionauswahl erkannt");
             };
     };
 
@@ -295,7 +294,7 @@ GVAR(eventArgs) = [];
             _encryption = _VehicleLR call TFAR_fnc_getLrRadioCode;
         
             // Check if vehicle was occupied by other team. IF so, we change the encryption to match the team again.
-            switch (PLAYERSIDE) do 
+            switch (playerSide) do 
             {
                 case west: 
                 {
