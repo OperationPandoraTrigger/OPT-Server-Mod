@@ -271,7 +271,7 @@ GVAR(eventArgs) = [];
 
             default 
             {
-                ERROR_LOG("ShopClientInit: Fehlehalte DatenÃ¼bergabe keine Fraktionauswahl erkannt");
+                ERROR_LOG("ShopClientInit: Fehlerhafte Datenübergabe - Keine Fraktionauswahl erkannt");
             };
     };
 

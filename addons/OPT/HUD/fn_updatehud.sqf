@@ -1,4 +1,4 @@
-ï»¿/**
+/**
 * Author: James
 * script for updating HUD information each forEachMember
 *
@@ -43,7 +43,7 @@ disableSerialization;
 
         default 
         {
-            ERROR_LOG("Updatehud: Fehlehalte DatenÃ¼bergabe keine Fraktionauswahl erkannt");
+            ERROR_LOG("Updatehud: Fehlerhafte Datenübergabe - Keine Fraktionauswahl erkannt");
         };
     };
 
@@ -81,7 +81,7 @@ disableSerialization;
 
         default 
         {
-            ERROR_LOG("Updatehud: Fehlehalte DatenÃ¼bergabe keine Fraktionauswahl erkannt");
+            ERROR_LOG("Updatehud: Fehlerhafte Datenübergabe - Keine Fraktionauswahl erkannt");
         };
     };
 

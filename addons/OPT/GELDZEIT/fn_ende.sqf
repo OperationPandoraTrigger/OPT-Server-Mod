@@ -107,7 +107,7 @@ switch (GVAR(Fraktionauswahl)) do
 
        default 
     {
-        ERROR_LOG("Missionende: Fehlehalte DatenÃ¼bergabe keine Fraktionauswahl erkannt");    
+        ERROR_LOG("Missionende: Fehlerhafte Datenübergabe - Keine Fraktionauswahl erkannt");    
     };
 };
 

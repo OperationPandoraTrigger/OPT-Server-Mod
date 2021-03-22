@@ -203,7 +203,7 @@ GVAR(waffenruheFlagMarkers) = [];
 
             default
             {
-                ERROR_LOG("chooseflag: Fehlehalte DatenÃ¼bergabe keine Fraktionauswahl erkannt");
+                ERROR_LOG("chooseflag: Fehlerhafte Datenübergabe - Keine Fraktionauswahl erkannt");
                 private _side = sideUnknown;
             };
         };
@@ -473,7 +473,7 @@ GVAR(waffenruheFlagMarkers) = [];
 
             default 
             {
-                ERROR_LOG("chooseflag: Fehlehalte DatenÃ¼bergabe keine Fraktionauswahl erkannt");
+                ERROR_LOG("chooseflag: Fehlerhafte Datenübergabe - Keine Fraktionauswahl erkannt");
                 private _side = sideUnknown;
             };
         };    

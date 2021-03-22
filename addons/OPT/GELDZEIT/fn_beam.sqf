@@ -106,7 +106,7 @@ switch GVAR(Fraktionauswahl) do
 
     default
     {
-        ERROR_LOG("GeldzeitBeam: Fehlehalte DatenÃ¼bergabe keine Fraktionauswahl erkannt");
+        ERROR_LOG("GeldzeitBeam: Fehlerhafte Datenübergabe - Keine Fraktionauswahl erkannt");
     };
 };
 

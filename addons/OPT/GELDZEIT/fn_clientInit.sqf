@@ -102,7 +102,7 @@
 
                     default 
                     {
-                        ERROR_LOG("clientinit: Fehlehalte DatenÃ¼bergabe keine Fraktionauswahl erkannt");    
+                        ERROR_LOG("clientinit: Fehlerhafte Datenübergabe - Keine Fraktionauswahl erkannt");    
                     };
                 };
             };
@@ -156,7 +156,7 @@
 
         default 
         {
-            ERROR_LOG("GeldzeitClientInit: Fehlehalte DatenÃ¼bergabe keine Fraktionauswahl erkannt");    
+            ERROR_LOG("GeldzeitClientInit: Fehlerhafte Datenübergabe - Keine Fraktionauswahl erkannt");    
         };
     };
 }] call CFUNC(addEventhandler);
