@@ -27,6 +27,9 @@
 
 DUMP("Successfully loaded the OPT/Shop module on the client");
 
+// Innerhalb dieser Entfernung zum Shop-Schild kann der Spieler den Shop via Hotkey öffnen
+#define MAX_DISTANCE_TO_SHOP 6
+
 GVAR(Daten_send) = false;
 GVAR(eventArgs) = [];
 
@@ -107,40 +110,31 @@ GVAR(eventArgs) = [];
                     "OPT Shop System", 
                     ["Shop-Dialog öffnen", "Öffnet den Shop-Dialog im Fahnenbereich."], 
                     {
-                        private _triggerUnitsair = 
-                            (list csat_trigger_Shop_Air1) +
-                            (list aaf_trigger_Shop_Air1);
-
-                        private _triggerUnitsveh = 
-                            (list csat_trigger_Shop_veh1) +
-                            (list aaf_trigger_Shop_veh1);
-
-                        private _triggerUnitssup = 
-                            (list csat_trigger_Shop_Sup1) +
-                            (list aaf_trigger_Shop_Sup1);
-
-                        private _triggerUnitssea = 
-                            (list csat_trigger_Shop_Sea1) +
-                            (list aaf_trigger_Shop_Sea1);
-
-                        if (player in _triggerUnitsair) then 
+                        // Entfernungsabfragen zu den einzelnen Shop-Schildern. Verschachtelt für Performancebringenden Abbruch.
+                        if (((player distance east_shop_air) < MAX_DISTANCE_TO_SHOP) or ((player distance independent_shop_air) < MAX_DISTANCE_TO_SHOP)) then
                         {
-                            [EVENT_SHOP_KAUF_ONLOAD,["choppers"]] call CFUNC(localEvent);
-                        };
-
-                        if (player in _triggerUnitsveh) then 
+                            [EVENT_SHOP_KAUF_ONLOAD, ["choppers"]] call CFUNC(localEvent);
+                        }
+                        else
                         {
-                            [EVENT_SHOP_KAUF_ONLOAD,["vehicles"]] call CFUNC(localEvent);
-                        };
-
-                        if (player in _triggerUnitssup) then 
-                        {
-                            [EVENT_SHOP_KAUF_ONLOAD,["supplies"]] call CFUNC(localEvent);
-                        };
-
-                        if (player in _triggerUnitssea) then 
-                        {
-                            [EVENT_SHOP_KAUF_ONLOAD,["sea"]] call CFUNC(localEvent);
+                            if (((player distance east_shop_veh) < MAX_DISTANCE_TO_SHOP) or ((player distance independent_shop_veh) < MAX_DISTANCE_TO_SHOP)) then
+                            {
+                                [EVENT_SHOP_KAUF_ONLOAD, ["vehicles"]] call CFUNC(localEvent);
+                            }
+                            else
+                            {
+                                if (((player distance east_shop_sup) < MAX_DISTANCE_TO_SHOP) or ((player distance independent_shop_sup) < MAX_DISTANCE_TO_SHOP)) then
+                                {
+                                    [EVENT_SHOP_KAUF_ONLOAD, ["supplies"]] call CFUNC(localEvent);
+                                }
+                                else
+                                {
+                                    if (((player distance east_shop_sea) < MAX_DISTANCE_TO_SHOP) or ((player distance independent_shop_sea) < MAX_DISTANCE_TO_SHOP)) then
+                                    {
+                                        [EVENT_SHOP_KAUF_ONLOAD, ["sea"]] call CFUNC(localEvent);
+                                    };
+                                };
+                            };
                         };
                     }, 
                     {}, 
@@ -178,40 +172,31 @@ GVAR(eventArgs) = [];
                     "OPT Shop System", 
                     ["Shop-Dialog öffnen", "Öffnet den Shop-Dialog im Fahnenbereich."], 
                     {
-                        private _triggerUnitsair = 
-                            (list csat_trigger_Shop_Air1) +
-                            (list nato_trigger_Shop_Air1);
-
-                        private _triggerUnitsveh = 
-                            (list csat_trigger_Shop_veh1) +
-                            (list nato_trigger_Shop_veh1);
-
-                        private _triggerUnitssup = 
-                            (list csat_trigger_Shop_Sup1) +
-                            (list nato_trigger_Shop_Sup1);
-
-                        private _triggerUnitssea = 
-                            (list csat_trigger_Shop_Sea1) +
-                            (list nato_trigger_Shop_Sea1);
-
-                        if (player in _triggerUnitsair) then 
+                        // Entfernungsabfragen zu den einzelnen Shop-Schildern. Verschachtelt für Performancebringenden Abbruch.
+                        if (((player distance east_shop_air) < MAX_DISTANCE_TO_SHOP) or ((player distance west_shop_air) < MAX_DISTANCE_TO_SHOP)) then
                         {
-                            [EVENT_SHOP_KAUF_ONLOAD,["choppers"]] call CFUNC(localEvent);
-                        };
-
-                        if (player in _triggerUnitsveh) then 
+                            [EVENT_SHOP_KAUF_ONLOAD, ["choppers"]] call CFUNC(localEvent);
+                        }
+                        else
                         {
-                            [EVENT_SHOP_KAUF_ONLOAD,["vehicles"]] call CFUNC(localEvent);
-                        };
-
-                        if (player in _triggerUnitssup) then 
-                        {
-                            [EVENT_SHOP_KAUF_ONLOAD,["supplies"]] call CFUNC(localEvent);
-                        };
-
-                        if (player in _triggerUnitssea) then 
-                        {
-                            [EVENT_SHOP_KAUF_ONLOAD,["sea"]] call CFUNC(localEvent);
+                            if (((player distance east_shop_veh) < MAX_DISTANCE_TO_SHOP) or ((player distance west_shop_veh) < MAX_DISTANCE_TO_SHOP)) then
+                            {
+                                [EVENT_SHOP_KAUF_ONLOAD, ["vehicles"]] call CFUNC(localEvent);
+                            }
+                            else
+                            {
+                                if (((player distance east_shop_sup) < MAX_DISTANCE_TO_SHOP) or ((player distance west_shop_sup) < MAX_DISTANCE_TO_SHOP)) then
+                                {
+                                    [EVENT_SHOP_KAUF_ONLOAD, ["supplies"]] call CFUNC(localEvent);
+                                }
+                                else
+                                {
+                                    if (((player distance east_shop_sea) < MAX_DISTANCE_TO_SHOP) or ((player distance west_shop_sea) < MAX_DISTANCE_TO_SHOP)) then
+                                    {
+                                        [EVENT_SHOP_KAUF_ONLOAD, ["sea"]] call CFUNC(localEvent);
+                                    };
+                                };
+                            };
                         };
                     }, 
                     {}, 
@@ -249,40 +234,31 @@ GVAR(eventArgs) = [];
                     "OPT Shop System", 
                     ["Shop-Dialog öffnen", "Öffnet den Shop-Dialog im Fahnenbereich."], 
                     {
-                        private _triggerUnitsair = 
-                            (list nato_trigger_Shop_Air1) +
-                            (list aaf_trigger_Shop_Air1);
-
-                        private _triggerUnitsveh = 
-                            (list nato_trigger_Shop_veh1) +
-                            (list aaf_trigger_Shop_veh1);
-
-                        private _triggerUnitssup = 
-                            (list nato_trigger_Shop_Sup1) +
-                            (list aaf_trigger_Shop_Sup1);
-
-                        private _triggerUnitssea = 
-                            (list nato_trigger_Shop_Sea1) +
-                            (list aaf_trigger_Shop_Sea1);
-
-                        if (player in _triggerUnitsair) then 
+                        // Entfernungsabfragen zu den einzelnen Shop-Schildern. Verschachtelt für Performancebringenden Abbruch.
+                        if (((player distance west_shop_air) < MAX_DISTANCE_TO_SHOP) or ((player distance independent_shop_air) < MAX_DISTANCE_TO_SHOP)) then
                         {
-                            [EVENT_SHOP_KAUF_ONLOAD,["choppers"]] call CFUNC(localEvent);
-                        };
-
-                        if (player in _triggerUnitsveh) then 
+                            [EVENT_SHOP_KAUF_ONLOAD, ["choppers"]] call CFUNC(localEvent);
+                        }
+                        else
                         {
-                            [EVENT_SHOP_KAUF_ONLOAD,["vehicles"]] call CFUNC(localEvent);
-                        };
-
-                        if (player in _triggerUnitssup) then 
-                        {
-                            [EVENT_SHOP_KAUF_ONLOAD,["supplies"]] call CFUNC(localEvent);
-                        };
-
-                        if (player in _triggerUnitssea) then 
-                        {
-                            [EVENT_SHOP_KAUF_ONLOAD,["sea"]] call CFUNC(localEvent);
+                            if (((player distance west_shop_veh) < MAX_DISTANCE_TO_SHOP) or ((player distance independent_shop_veh) < MAX_DISTANCE_TO_SHOP)) then
+                            {
+                                [EVENT_SHOP_KAUF_ONLOAD, ["vehicles"]] call CFUNC(localEvent);
+                            }
+                            else
+                            {
+                                if (((player distance west_shop_sup) < MAX_DISTANCE_TO_SHOP) or ((player distance independent_shop_sup) < MAX_DISTANCE_TO_SHOP)) then
+                                {
+                                    [EVENT_SHOP_KAUF_ONLOAD, ["supplies"]] call CFUNC(localEvent);
+                                }
+                                else
+                                {
+                                    if (((player distance west_shop_sea) < MAX_DISTANCE_TO_SHOP) or ((player distance independent_shop_sea) < MAX_DISTANCE_TO_SHOP)) then
+                                    {
+                                        [EVENT_SHOP_KAUF_ONLOAD, ["sea"]] call CFUNC(localEvent);
+                                    };
+                                };
+                            };
                         };
                     }, 
                     {}, 
