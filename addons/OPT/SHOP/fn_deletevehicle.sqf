@@ -23,20 +23,16 @@
 * Example:
 * 
 */
-
 #include "macros.hpp"
 
 params 
 [
     ["_pads", []]
-
 ];
 
 // alle Objekte im auf den Pads erfassen
-
 _pads apply
 {
-
     private _spawnpos = _x;
     private _objs = [];
     
@@ -53,7 +49,5 @@ _pads apply
         {
             deleteVehicle _x;
         };    
-
     } forEach _objs;
-
 };

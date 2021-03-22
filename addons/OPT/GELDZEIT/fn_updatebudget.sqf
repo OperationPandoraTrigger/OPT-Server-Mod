@@ -23,7 +23,8 @@
 #include "macros.hpp"
 
 /* PARAMS */
-params [
+params
+[
     ["_buyerUID", "", [""], 1], 
     ["_buyerName", "", [""], 1], 
     ["_side", sideUnknown, [sideUnknown], 1],

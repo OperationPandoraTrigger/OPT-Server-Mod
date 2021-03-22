@@ -23,7 +23,7 @@ if (GVAR(mutexAction)) exitWith
 {
     private _txt = MLOC(ANOTHER_ACTION);
     private _header = MLOC(FIELD_REPAIR_HEADER);
-    hint Format ["%1 \n\n %2",_header,_txt];
+    hint format ["%1\n\n%2", _header, _txt];
 };
 
 // if conditions are not met
@@ -31,7 +31,7 @@ if (not alive player or (player distance _veh) > 10 or (vehicle player != player
 {
     private _txt = MLOC(REPAIR_CONDITIONS);
     private _header = MLOC(FIELD_REPAIR_HEADER);
-    hint Format ["%1 \n\n %2",_header,_txt];
+    hint format ["%1\n\n%2", _header, _txt];
 };
 
 // if player has no tool kit or vehicle was repaired more often than free repair
@@ -39,7 +39,7 @@ if (!(typeOf player in GVAR(pioniers)) and (_veh getVariable [QGVAR(freeRefuelCo
 {
     private _txt = MLOC(NEED_TOOLKIT);
     private _header = MLOC(FIELD_REPAIR_HEADER);
-    hint Format ["%1 \n\n %2",_header,_txt];
+    hint format ["%1\n\n%2", _header, _txt];
 };
 
 GVAR(mutexAction) = true;
@@ -80,7 +80,7 @@ if (_veh getVariable [QGVAR(refuelTimeLeft), 0] > 0) then
         player switchMove "";
         private _txt = MLOC(REFUEL_FINISHED);
         private _header = MLOC(FIELD_REPAIR_HEADER);
-        hint Format ["%1 \n\n %2",_header,_txt];
+        hint format ["%1\n\n%2", _header, _txt];
 
         [_veh] remoteExecCall [QFUNC(setMinFuel), _veh, false]; // called where vehicle is local!
 
@@ -91,7 +91,7 @@ if (_veh getVariable [QGVAR(refuelTimeLeft), 0] > 0) then
 
         private _txt = MLOC(REFUEL_INTERRUPTED);
         private _header = MLOC(FIELD_REPAIR_HEADER);
-        hint Format ["%1 \n\n %2",_header,_txt];
+        hint format ["%1\n\n%2", _header, _txt];
 
         _veh setVariable [QGVAR(refuelTimeLeft), _maxlength - (time - _startTime), true];
     },

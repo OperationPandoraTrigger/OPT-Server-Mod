@@ -23,7 +23,6 @@
 * Example:
 * 
 */
-
 #include "macros.hpp"
 
 //Typ einlesen
@@ -118,60 +117,67 @@ for "_i" from 0 to SHOPBUTTONANZAHL do
 
 switch (GVAR(vehicleType)) do 
 {
-	case "choppers" : 
-	{
+    case "choppers" : 
+    {
         switch (_side) do 
         {
-            case west : 
+            case west:
             {    
                 _pool = GVAR(nato_choppers);
                 GVAR(pads) = GVAR(pad_air_west);
                 GVAR(Checkbereich) = 13;
                 GVAR(Hardcap_pool) = GVAR(Hardcap_nato_choppers);
             };
-            case east : 
+
+            case east:
             {    
                 _pool = GVAR(csat_choppers);
                  GVAR(pads) = GVAR(pad_air_east);
                  GVAR(Checkbereich) = 13;
                  GVAR(Hardcap_pool) = GVAR(Hardcap_csat_choppers);
             };
-            case independent : 
+
+            case independent:
             {    
                 _pool = GVAR(AAF_choppers);
                 GVAR(pads) = GVAR(pad_air_independent);
                 GVAR(Checkbereich) = 13;
                 GVAR(Hardcap_pool) = GVAR(Hardcap_aaf_choppers);
             };
-            default 
+
+            default
             {
             };        
         }; 
         GVAR(moveInVeh) = true;
         _konfig ctrlEnable true;       
     };
-	case "vehicles" : 
-	{
+
+    case "vehicles":
+    {
         switch (_side) do 
         {
-            case west : 
+            case west:
             {    
                 _pool = GVAR(nato_armored) + GVAR(nato_vehicles) + GVAR(nato_vehicles_supply);
                 GVAR(pads) = GVAR(pad_veh_west);
                 GVAR(Hardcap_pool) = GVAR(Hardcap_nato_vehicles);
             };
-            case east : 
+
+            case east:
             {    
                 _pool = GVAR(csat_armored) + GVAR(csat_vehicles) + GVAR(csat_vehicles_supply);
                 GVAR(pads) = GVAR(pad_veh_east);
                 GVAR(Hardcap_pool) = GVAR(Hardcap_csat_vehicles);
             };
-            case independent : 
+
+            case independent:
             {    
                 _pool = GVAR(AAF_armored) + GVAR(AAF_vehicles) + GVAR(AAF_vehicles_supply);
                 GVAR(pads) = GVAR(pad_veh_independent);
                 GVAR(Hardcap_pool) = GVAR(Hardcap_aaf_vehicles);
             };
+
             default 
             {
             };        
@@ -179,31 +185,35 @@ switch (GVAR(vehicleType)) do
         GVAR(moveInVeh) = true;
         _konfig ctrlEnable true;       
     };
-	case "supplies" : 
-	{
+
+    case "supplies" : 
+    {
         switch (_side) do 
         {
-            case west : 
+            case west:
             {    
                 _pool = GVAR(nato_supplies) + GVAR(nato_static);
                 GVAR(pads) = GVAR(pad_sup_west);
                 GVAR(Checkbereich) = 4;
                 GVAR(Hardcap_pool) = GVAR(Hardcap_nato_supplies);
             };
-            case east : 
+
+            case east:
             {    
                 _pool = GVAR(csat_supplies) + GVAR(csat_static);
                 GVAR(pads) = GVAR(pad_sup_east);
                 GVAR(Checkbereich) = 4;
                 GVAR(Hardcap_pool) = GVAR(Hardcap_csat_supplies);
             };
-            case independent : 
+
+            case independent:
             {    
                 _pool = GVAR(AAF_supplies) + GVAR(AAF_static);
                 GVAR(pads) = GVAR(pad_sup_independent);
                 GVAR(Checkbereich) = 4;
                 GVAR(Hardcap_pool) = GVAR(Hardcap_aaf_supplies);
             };
+
             default 
             {
             };        
@@ -211,23 +221,26 @@ switch (GVAR(vehicleType)) do
         GVAR(moveInVeh) = false;
         _moveInVeh ctrlShow false;        
     };
-	case "sea" : 
-	{
+
+    case "sea":
+    {
         switch (_side) do 
         {
-            case west : 
+            case west:
             {    
                 _pool = GVAR(nato_sea);
                 GVAR(pads) = GVAR(pad_sea_west);
                 GVAR(Hardcap_pool) = GVAR(Hardcap_nato_sea);
             };
-            case east : 
+
+            case east:
             {    
                 _pool = GVAR(csat_sea);
                 GVAR(pads) = GVAR(pad_sea_east);
                 GVAR(Hardcap_pool) = GVAR(Hardcap_csat_sea);
             };
-            case independent : 
+
+            case independent:
             {    
                 _pool = GVAR(AAF_sea);
                 GVAR(pads) = GVAR(pad_sea_independent);
@@ -244,21 +257,24 @@ switch (GVAR(vehicleType)) do
     {
         switch (_side) do 
         {
-            case west : 
+            case west:
             {    
                 _pool = [];
                 GVAR(pads) = GVAR(pad_all_west);
             };
-            case east : 
+
+            case east:
             {    
                 _pool = [];
                 GVAR(pads) = GVAR(pad_all_east);
             };
-            case independent : 
+
+            case independent:
             {    
                 _pool = [];
                 GVAR(pads) = GVAR(pad_all_independent);
             };
+
             default 
             {
             };        
@@ -311,15 +327,17 @@ for "_i" from 0 to (_Objektanzahl-1) do
 switch (_side) do 
 {
     case west: 
-	{
+    {
         _rscPicture ctrlSetText "\A3\Data_F\Flags\Flag_NATO_CO.paa";
     };
+
     case east: 
-	{
+    {
         _rscPicture ctrlSetText "\A3\Data_F\Flags\Flag_CSAT_CO.paa";
     };  
+
     case independent: 
-	{
+    {
         _rscPicture ctrlSetText "\A3\Data_F\Flags\Flag_AAF_CO.paa";
     };    
 };
@@ -327,8 +345,8 @@ switch (_side) do
 GVAR(orderPAD) = [];
 
 //Kaufbutton Aktivschlaten bei Freiem Pad
-GVAR(idPadCheckShop) = [{
-
+GVAR(idPadCheckShop) =
+[{
     private _freiePads = [];
     private _display = findDisplay 20000;
     private _order = _display displayCtrl 20004;
@@ -337,39 +355,36 @@ GVAR(idPadCheckShop) = [{
     // check der Pads ob belegt
     GVAR(pads) apply 
     {
-	    private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], GVAR(Checkbereich)];
+        private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], GVAR(Checkbereich)];
             
         if (count _ob == 0) then 
         {
             _freiePads append [_x]; 
         };       
-
     };  
 
     // Kaufbuttuon Freischalten und erstes Pad zuordnen
     if ((count _freiePads) > 0) then 
-        {
-            _order ctrlEnable true;
-            GVAR(orderPAD) = _freiePads select 0;
-            _padBox ctrlSetTextColor [0.0, 1.0, 0.0, 1];
-            _padBox ctrlSetText format ["BOX:%1",GVAR(orderPAD)];
-        }
+    {
+        _order ctrlEnable true;
+        GVAR(orderPAD) = _freiePads select 0;
+        _padBox ctrlSetTextColor [0.0, 1.0, 0.0, 1];
+        _padBox ctrlSetText format ["BOX:%1",GVAR(orderPAD)];
+    }
     else 
-        {
-            _order ctrlEnable false;
-            GVAR(orderPAD) = "Kein freie Box vorhanden";
-            _padBox ctrlSetTextColor [1.0, 0.0, 0.0, 1];
-            _padBox ctrlSetText format ["BOX:%1",GVAR(orderPAD)];
-        };
-
+    {
+        _order ctrlEnable false;
+        GVAR(orderPAD) = "Kein freie Box vorhanden";
+        _padBox ctrlSetTextColor [1.0, 0.0, 0.0, 1];
+        _padBox ctrlSetText format ["BOX:%1",GVAR(orderPAD)];
+    };
 }, 0] call CFUNC(addPerFrameHandler);
 
 // Button Listbox Events 
 // Kauf ausführen  
 _order ctrlAddEventHandler [ "ButtonClick", 
 {
-
-	private _unitCost = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1);
+    private _unitCost = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1);
     private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
 
     private _Datensatz = [];
@@ -386,13 +401,12 @@ _order ctrlAddEventHandler [ "ButtonClick",
     private _display = findDisplay IDD_DLG_ORDER;
     private _budget = _display displayCtrl 20009;
     [_budget] call OPT_GELDZEIT_fnc_renderbudget;   
-
 }];
 
 // Konfig ausführen  
 _konfig ctrlAddEventHandler [ "ButtonClick", 
 {
-	private _unitCost = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1);
+    private _unitCost = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1);
     private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
 
     closeDialog 0;
@@ -432,7 +446,6 @@ _remove ctrlAddEventHandler [ "ButtonClick",
         GVAR(removecount) = 0;
     };
     GVAR(removecount) = GVAR(removecount)+1;
-
 }];
 
 //Kaufbutton EH

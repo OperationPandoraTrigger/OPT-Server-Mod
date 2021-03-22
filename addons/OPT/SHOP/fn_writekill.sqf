@@ -24,7 +24,8 @@
 #include "macros.hpp"
 
 /* PARAMS */
-params [
+params
+[
     ["_victim", objNull, [objNull], 1],
     ["_instigator", objNull, [objNull], 1], // instigator: Object - Person who pulled the trigger
     ["_source", objNull, [objNull], 1], // The source unit that caused the damage
@@ -38,8 +39,6 @@ params [
 if (_victim isEqualTo objNull) exitWith{};
 //if ((_instigator isEqualTo objNull) and (_projectile isEqualTo "")) exitWith{};
 
-/* CODE BODY */
-
 // victim = man?
 if (_victim isKindOf "Man") then 
 {
@@ -47,7 +46,6 @@ if (_victim isKindOf "Man") then
     private _projectileName = "";
     if !(_projectile isEqualTo "") then 
     {
-        
         // find display name of magazine
         private _name = "";
         {
@@ -62,9 +60,7 @@ if (_victim isKindOf "Man") then
                 _name = getText (_parent >> "displayName");
                 _projectileName = _name;
             };  
-        
         } forEach ([configFile >> "CfgMagazines", 0, true] call BIS_fnc_returnChildren);
-        
     };
     ["Health", "Kill", [getPlayerUID _victim, name _victim, side _victim, getPlayerUID _instigator, name _instigator, side _instigator, _victim distance2D _instigator, _projectileName]] call OPT_LOGGING_fnc_writelog;
 } 
@@ -134,7 +130,6 @@ else // victim = vehicle!
                     _crewArray pushBack name _unit;
                 };
             } forEach (fullCrew _source);
-
             ["Vehicle", "DestroyByCrew", [_name, _category, _faction, netId _victim, getText (configFile >> "CfgVehicles" >> typeOf _source >> "displayName"), side _instigator, _victim distance2D _instigator, _crewArray joinString _separator]] call OPT_LOGGING_fnc_writelog;
         };
     } 

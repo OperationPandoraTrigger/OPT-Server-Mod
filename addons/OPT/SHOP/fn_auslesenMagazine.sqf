@@ -23,7 +23,6 @@
 * Example:
 * 
 */
-
 #include "macros.hpp"
 
 params 
@@ -55,9 +54,7 @@ private _magazineVehArry = magazinesAmmo _veh;
     ["SmokeLauncherMag", 2]
 ] apply
 {
-
     _magazineVehArry deleteAt (_magazineVehArry find _x);                
 };
-
 
 _magazineVehArry

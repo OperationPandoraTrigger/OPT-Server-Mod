@@ -22,12 +22,11 @@ GVAR(officer) =
 [
     "OPT_NATO_Offizier_T",
     "OPT_CSAT_Offizier_T",
-	"OPT_NATO_Offizier",
-	"OPT_CSAT_Offizier",
+    "OPT_NATO_Offizier",
+    "OPT_CSAT_Offizier",
     "I_officer_F",
     "O_officer_F"
 ];
-
 
 // Mausradmenüeinträge für HL und PL
 if (typeOf player in GVAR(officer)) then 
@@ -46,5 +45,5 @@ if (typeOf player in GVAR(officer)) then
     // inform player
     private _txt = MLOC(FLAG_INST);
     private _header = MLOC(FLAG_CHOOSE);
-    hint format["%1 \n\n %2",_header,_txt];
+    hint format["%1\n\n%2", _header, _txt];
 };

@@ -32,85 +32,79 @@ private _Basis = "";
 
 switch GVAR(Fraktionauswahl) do 
 {
-	case "AAFvsCSAT" : 
-	{
+    case "AAFvsCSAT" : 
+    {
         if ((PLAYERSIDE == east) and (player distance2D (getPos Teleport_CSAT_Basis1) < 20)) then
         {
             _Basis = Teleport_CSAT_Basis2;
-
         };
+
         if ((PLAYERSIDE == independent) and (player distance2D (getPos Teleport_AAF_Basis1) < 20)) then
         {
             _Basis = Teleport_AAF_Basis2;
-
         };
 
         if ((PLAYERSIDE == east) and (player distance2D (getPos Teleport_CSAT_Basis2) < 20)) then
         {
             _Basis = Teleport_CSAT_Basis1;
-
         };
+
         if ((PLAYERSIDE == independent) and (player distance2D (getPos Teleport_AAF_Basis2) < 20)) then
         {
             _Basis = Teleport_AAF_Basis1;
-
         };
-	};
+    };
 
-	case "NATOvsCSAT" : 
-	{
+    case "NATOvsCSAT" : 
+    {
         if ((PLAYERSIDE == east) and (player distance2D (getPos Teleport_CSAT_Basis1) < 20)) then
         {
             _Basis = Teleport_CSAT_Basis2;
-
         };
+
         if ((PLAYERSIDE == west) and (player distance2D (getPos Teleport_Nato_Basis1) < 20)) then
         {
             _Basis = Teleport_NATO_Basis2;
-
         };
 
         if ((PLAYERSIDE == east) and (player distance2D (getPos Teleport_CSAT_Basis2) < 20)) then
         {
             _Basis = Teleport_CSAT_Basis1;
-
         };
+
         if ((PLAYERSIDE == west) and (player distance2D (getPos Teleport_Nato_Basis2) < 20)) then
         {
             _Basis = Teleport_NATO_Basis1;
+        };    
+    };
 
-        };	
-	};
-
-	case "NATOvsAAF" : 
-	{
+    case "NATOvsAAF" : 
+    {
         if ((PLAYERSIDE == west) and (player distance2D (getPos Teleport_Nato_Basis1) < 20)) then
         {
             _Basis = Teleport_NATO_Basis2;
-
         };
+
         if ((PLAYERSIDE == independent) and (player distance2D (getPos Teleport_AAF_Basis1) < 20)) then
         {
             _Basis = Teleport_AAF_Basis2;
-
         };
 
         if ((PLAYERSIDE == west) and (player distance2D (getPos Teleport_Nato_Basis2) < 20)) then
         {
             _Basis = Teleport_NATO_Basis1;
-
         };
+
         if ((PLAYERSIDE == independent) and (player distance2D (getPos Teleport_AAF_Basis2) < 20)) then
         {
             _Basis = Teleport_AAF_Basis1;
+        };            
+    };
 
-        };			
-	};
-
-	default 
-	{
-		ERROR_LOG("clientinit: Fehlehalte Datenübergabe keine Fraktionauswahl erkannt");	
-	};
+    default 
+    {
+        ERROR_LOG("clientinit: Fehlehalte Datenübergabe keine Fraktionauswahl erkannt");    
+    };
 };
 
 (["Basis"] call BIS_fnc_rscLayer) cutText ["Teleport...", "BLACK OUT", 3]; // fade out in black

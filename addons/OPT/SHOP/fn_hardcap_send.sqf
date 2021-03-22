@@ -32,4 +32,3 @@ publicVariable QGVAR(Hardcap_aaf_supplies);
 publicVariable QGVAR(Hardcap_aaf_sea);
 
 publicVariable QGVAR(Daten_send);
-

@@ -18,11 +18,11 @@
 * Public:
 * no
 */
-
 #include "macros.hpp"
 
 /* PARAMS */
-params [
+params
+[
    ["_flag", objNull, [objNull], 1],
    ["_unit", objNull, [objNull], 1]
 ];

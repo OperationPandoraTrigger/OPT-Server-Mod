@@ -132,4 +132,3 @@
         GVAR(dispo) = parseNumber _value;
     } // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
-

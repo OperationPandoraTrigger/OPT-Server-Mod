@@ -24,9 +24,8 @@
 * [] call FUNC(deletesectormarkers);
 *
 */
-
 #include "macros.hpp"
 
 {
-	deleteMarker (_x select 4);
+    deleteMarker (_x select 4);
 } forEach GVAR(SectorMarkers);

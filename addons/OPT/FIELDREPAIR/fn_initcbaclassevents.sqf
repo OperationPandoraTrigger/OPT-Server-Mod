@@ -129,3 +129,4 @@
     };
 
     }, nil, nil, true] call CBA_fnc_addClassEventHandler;
+    

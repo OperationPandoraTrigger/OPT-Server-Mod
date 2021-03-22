@@ -24,4 +24,3 @@ _veh setVariable [QGVAR(longRepairTimes), 0 , true ]; // Reset free repairs
 _veh setVariable [QGVAR(freeRefuelCount), 0 , true ]; // Reset reserve fuel
 
 true
-
