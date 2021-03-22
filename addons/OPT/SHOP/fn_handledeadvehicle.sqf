@@ -18,7 +18,8 @@
 #include "macros.hpp"
 
 // rewrite into killed and damagged EH so we have the source parameter available
-params [
+params
+[
     ["_vec", objNull, [objNull], 1],
     ["_source", objNull, [objNull], 1],
     ["_instigator", objNull, [objNull], 1],
@@ -29,11 +30,10 @@ params [
 [_vec, _instigator, _source] call FUNC(writeKill);
 
 // delete all wrecks within the base safezone
-
 switch OPT_GELDZEIT_Fraktionauswahl do 
 {
-    	case "AAFvsCSAT" : 
-		{
+        case "AAFvsCSAT":
+        {
             if (!(_vec isKindOf "CAManBase") and ((_vec distance2D (getmarkerPos "respawn_guerrila") < 200) or (_vec distance2D (getmarkerPos "respawn_east") < 200) or (_vec distance2D (getmarkerPos "CSAT_Basis2") < 200) or (_vec distance2D (getmarkerPos "AAF_Basis2") < 200))) then 
             {
                 [_vec] call 
@@ -47,10 +47,10 @@ switch OPT_GELDZEIT_Fraktionauswahl do
                     [_txt] remoteExecCall ["hint", playableUnits select {_x distance _vec < 200}, false];
                 };
             };     
-		};
+        };
 
-		case "NATOvsCSAT" : 
-		{
+        case "NATOvsCSAT":
+        {
             if (!(_vec isKindOf "CAManBase") and ((_vec distance2D (getmarkerPos "respawn_west") < 200) or (_vec distance2D (getmarkerPos "respawn_east") < 200) or (_vec distance2D (getmarkerPos "CSAT_Basis2") < 200) or (_vec distance2D (getmarkerPos "NATO_Basis2") < 200))) then 
             {
                 [_vec] call 
@@ -64,10 +64,10 @@ switch OPT_GELDZEIT_Fraktionauswahl do
                     [_txt] remoteExecCall ["hint", playableUnits select {_x distance _vec < 200}, false];
                 };
             };
-		};
+        };
 
-		case "NATOvsAAF" : 
-		{
+        case "NATOvsAAF":
+        {
             if (!(_vec isKindOf "CAManBase") and ((_vec distance2D (getmarkerPos "respawn_west") < 200) or (_vec distance2D (getmarkerPos "respawn_guerrila") < 200) or (_vec distance2D (getmarkerPos "Nato_Basis2") < 200) or (_vec distance2D (getmarkerPos "AAF_Basis2") < 200))) then 
             {
                 [_vec] call 
@@ -81,12 +81,10 @@ switch OPT_GELDZEIT_Fraktionauswahl do
                     [_txt] remoteExecCall ["hint", playableUnits select {_x distance _vec < 200}, false];
                 };
             };       
-		};
+        };
 
-   		default 
-		{
-			ERROR_LOG("handleDeadVehicle: Fehlehalte DatenÃ¼bergabe keine Fraktionauswahl erkannt");
-		};
+           default 
+        {
+            ERROR_LOG("handleDeadVehicle: Fehlerhafte Datenübergabe - Keine Fraktionauswahl erkannt");
+        };
 };
-
-

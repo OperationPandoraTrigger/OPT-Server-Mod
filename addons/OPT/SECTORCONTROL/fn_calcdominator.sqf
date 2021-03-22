@@ -20,46 +20,46 @@ private _aaf_owner = 0;
 {
     if (_x getVariable ["owner", sideUnknown] isEqualTo west) then { _nato_owner = _nato_owner + 1; };
     if (_x getVariable ["owner", sideUnknown] isEqualTo east) then { _csat_owner = _csat_owner + 1; };
-	if (_x getVariable ["owner", sideUnknown] isEqualTo independent) then { _aaf_owner = _aaf_owner + 1; };
+    if (_x getVariable ["owner", sideUnknown] isEqualTo independent) then { _aaf_owner = _aaf_owner + 1; };
 } forEach GVAR(nato_flags) + GVAR(csat_flags) + GVAR(aaf_flags);
 
 switch OPT_GELDZEIT_Fraktionauswahl do 
 {
-    	case "AAFvsCSAT" : 
-		{
+        case "AAFvsCSAT":
+        {
             _side = switch (true) do 
             {
                 case (_csat_owner > _aaf_owner) : {east};
                 case (_aaf_owner > _csat_owner) : {independent};
                 case (_aaf_owner == _csat_owner) : {sideUnknown};   
             };
-		};
+        };
 
-		case "NATOvsCSAT" : 
-		{
+        case "NATOvsCSAT":
+        {
             _side = switch (true) do 
             {
                 case (_csat_owner > _nato_owner) : {east};
                 case (_nato_owner > _csat_owner) : {west};
                 case (_aaf_owner == _csat_owner) : {sideUnknown};   
             };            
-		};
+        };
 
-		case "NATOvsAAF" : 
-		{
+        case "NATOvsAAF":
+        {
             _side = switch (true) do 
             {
                 case (_aaf_owner > _nato_owner) : {independent};
                 case (_nato_owner > _aaf_owner) : {west};
                 case (_aaf_owner == _nato_owner) : {sideUnknown};   
             };                   
-		};
+        };
 
-   		default 
-		{
-			ERROR_LOG("calcDominator: Fehlehalte DatenÃ¼bergabe keine Fraktionauswahl erkannt");
+           default 
+        {
+            ERROR_LOG("calcDominator: Fehlerhafte Datenübergabe - Keine Fraktionauswahl erkannt");
             private _side = sideUnknown;
-		};
+        };
 };
 
 _side  

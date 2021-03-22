@@ -28,8 +28,8 @@ This event happens every time a soldier enters a vehicle.
 ["LandVehicle", "init", 
 {
     params ["_vec"];
-
-    _vec addAction [
+    _vec addAction
+    [
         format["<t color='#00D3BF'>%1</t>", MLOC(FLIP_VEH)], 
         {[] call FUNC(unFlip);},
         [], 
@@ -44,8 +44,8 @@ This event happens every time a soldier enters a vehicle.
 ["Air", "init", 
 {
     params ["_vec"]; 
-        
-    _vec addAction [
+    _vec addAction
+    [
         format["<t color='#00D3BF'>%1</t>", MLOC(FLIP_VEH)],
         {[] call FUNC(unFlip);}, 
         [], 

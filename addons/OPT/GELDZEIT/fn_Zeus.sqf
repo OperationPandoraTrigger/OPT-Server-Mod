@@ -35,6 +35,6 @@
     _unit assignCurator _curator;
 
     "Zeusmodus verfügbar." remoteExec ["systemChat", _unit];
-}] call CBA_fnc_addEventHandler;				
+}] call CBA_fnc_addEventHandler;                
 
 ["commy_registerCurator", player] call CBA_fnc_serverEvent;

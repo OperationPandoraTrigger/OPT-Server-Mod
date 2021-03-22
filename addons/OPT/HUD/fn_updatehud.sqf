@@ -1,4 +1,4 @@
-﻿/**
+/**
 * Author: James
 * script for updating HUD information each forEachMember
 *
@@ -12,7 +12,6 @@
 * [] call func(updateHUD);
 *
 */
-
 #include "macros.hpp"
 
 disableSerialization;
@@ -27,29 +26,28 @@ disableSerialization;
 
     switch OPT_GELDZEIT_Fraktionauswahl do 
     {
-        case "AAFvsCSAT" : 
+        case "AAFvsCSAT":
         {
             _playersStr = format [MLOC(AAFvCSAT), playersNumber independent, playersNumber east];
         };
 
-        case "NATOvsCSAT" : 
+        case "NATOvsCSAT":
         {
             _playersStr = format [MLOC(NATOvCSAT), playersNumber west, playersNumber east];
         };
 
-        case "NATOvsAAF" : 
+        case "NATOvsAAF":
         {
             _playersStr = format [MLOC(NATOvAAF), playersNumber west, playersNumber independent];         
         };
 
         default 
         {
-            ERROR_LOG("Updatehud: Fehlehalte Datenübergabe keine Fraktionauswahl erkannt");
+            ERROR_LOG("Updatehud: Fehlerhafte Daten�bergabe - Keine Fraktionauswahl erkannt");
         };
     };
 
     // Anzeige updaten
-    // Update Text
     _control ctrlSetText _playersStr;  
     _control ctrlShow true;  
 
@@ -66,24 +64,24 @@ disableSerialization;
 
     switch OPT_GELDZEIT_Fraktionauswahl do 
     {
-        case "AAFvsCSAT" : 
+        case "AAFvsCSAT":
         {
             _scoreStr = format [MLOC(AAFvCSAT_POINT),  OPT_SECTORCONTROL_aaf_points, OPT_SECTORCONTROL_csat_points];
         };
 
-        case "NATOvsCSAT" : 
+        case "NATOvsCSAT":
         {
             _scoreStr = format [MLOC(NATOvCSAT_POINT), OPT_SECTORCONTROL_nato_points, OPT_SECTORCONTROL_csat_points];
         };
 
-        case "NATOvsAAF" : 
+        case "NATOvsAAF":
         {
             _scoreStr = format [MLOC(NATOvAAF_POINT), OPT_SECTORCONTROL_nato_points, OPT_SECTORCONTROL_aaf_points];          
         };
 
         default 
         {
-            ERROR_LOG("Updatehud: Fehlehalte Datenübergabe keine Fraktionauswahl erkannt");
+            ERROR_LOG("Updatehud: Fehlerhafte Daten�bergabe - Keine Fraktionauswahl erkannt");
         };
     };
 
@@ -102,46 +100,40 @@ disableSerialization;
 
     if (OPT_GELDZEIT_Spielzeitstart) then 
     {
-
         // Mission gestartet - Zeige verbleibende Spielzeit
         _timeLeft = [_playTime] call CBA_fnc_formatElapsedTime;
 
         if (_playTime > 0) then 
         {
-
             _timeStr = format [MLOC(TIME_LEFT), _timeLeft];
             _control ctrlSetTextColor [0.7, 0.7, 0.7, 1];
         } 
         else
         {
-
             _timeStr = MLOC(TIME_END);
             _control ctrlSetTextColor [1, 0, 0, 0.9];
         };
     } 
     else 
     {
-
         // Mission noch nicht gestartet - Zeige verbleibende Zeit der Waffenruhe
         _timeLeft = [_truceTime] call CBA_fnc_formatElapsedTime;
 
         if (_truceTime > 0) then 
         {
-
             _timeStr = format [MLOC(TIME_CEASEFIRE), _timeLeft];
             _control ctrlSetTextColor [0.6, 0.1, 0, 1];
         } 
         else
         {
-
             _timeStr = MLOC(TIME_CEASEFIRE_END);
             _control ctrlSetTextColor [0.7, 0.7, 0.7, 1];
         }
     };
 
     // Anzeige updaten
-    // Update Text
     _control ctrlSetText _timeStr;
+
     // Färbe Uhr in den letzten 5 Minuten rot
     if (_playTime < 300) then 
     {
@@ -149,5 +141,4 @@ disableSerialization;
     };
 
     _control ctrlShow true;
-
 }, 1, _this] call CFUNC(addPerFrameHandler);

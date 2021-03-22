@@ -25,7 +25,6 @@
 * [flag, caller, ID, arguments] call fnc_captureFlag.sqf;
 *
 */
-
 #include "macros.hpp"
 
 if (!hasInterface) exitWith {};

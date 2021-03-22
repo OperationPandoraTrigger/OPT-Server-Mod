@@ -25,19 +25,21 @@ if (GVAR(mutexAction)) exitWith
 {
     private _txt = MLOC(ANOTHER_ACTION);
     private _header = MLOC(FIELD_REPAIR_HEADER);
-    hint Format ["%1 \n\n %2",_header,_txt];
+    hint format ["%1\n\n%2", _header, _txt];
 };
+
 if (_truck getVariable [QGVAR(repair_cargo), 0] <= 0) then 
 {
     private _txt = MLOC(REPAIR_TRUCK_DEPLETED);
     private _header = MLOC(FIELD_REPAIR_HEADER);
-    hint Format ["%1 \n\n %2",_header,_txt];
+    hint format ["%1\n\n%2", _header, _txt];
 };    
+
 if (not alive player or vehicle player == player or speed _veh > 3 or _veh distance _truck > 20 ) exitWith 
 {
     private _txt = MLOC(REPAIR_CONDITIONS);
     private _header = MLOC(FIELD_REPAIR_HEADER);
-    hint Format ["%1 \n\n %2",_header,_txt];
+    hint format ["%1\n\n%2", _header, _txt];
 };
 
 GVAR(mutexAction) = true;    
@@ -63,7 +65,7 @@ private _length = _maxlength;
 
         private _txt = MLOC(REPAIR_FINISHED);
         private _header = MLOC(FIELD_REPAIR_HEADER);
-        hint Format ["%1 \n\n %2",_header,_txt];
+        hint format ["%1\n\n%2", _header, _txt];
         
         [_veh] remoteExecCall [QFUNC(fullRepair), _veh, false]; // called where vehicle is local!
         
@@ -72,11 +74,9 @@ private _length = _maxlength;
             (_truck getVariable [QGVAR(repair_cargo), 0]) - 1, 
             true
         ];
-        
     },
     {
         [MLOC(FIELD_REPAIR_HEADER), MLOC(REPAIR_INTERRUPTED), "red"] call EFUNC(gui,message);
-
     },
     format[MLOC(REPAIR_MSG_STRNG), _length, _vehname],
     {

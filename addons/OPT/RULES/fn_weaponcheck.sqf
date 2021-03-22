@@ -179,12 +179,11 @@ if !(_typeOfPlayer in GVAR(pioniers)) then
             _bad_item_used = true;
         };
     } forEach (magazines _unit);
-
 };
 
 if (_bad_item_used) then 
 {
     private _txt = MLOC(WEAPON_LOCK);
     private _header = MLOC(RULE_VIOLATION);
-    hint Format ["%1 \n\n %2",_header,_txt];
+    hint format ["%1\n\n%2", _header, _txt];
 };
