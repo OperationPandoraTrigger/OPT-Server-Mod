@@ -1,3 +1,4 @@
 [submodule "dependencies/CLib"]
 	path = dependencies/CLib
 	url = https://github.com/OperationPandoraTrigger/CLib.git
+	branch = main
