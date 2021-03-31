@@ -6,7 +6,7 @@
 #define MAJOR 1
 #define MINOR 8
 #define PATCHLVL 9
-#define BUILD 110
+#define BUILD 122
 
 #ifdef VERSION
     #undef VERSION
@@ -121,3 +121,9 @@
     #define ASSERT_ALIVE(var)
     #define ASSERT_DEAD(var)
 #endif
+
+// Die 4 möglichen Spielabschnitte
+#define GAMESTAGE_FREEZE    0
+#define GAMESTAGE_TRUCE     1
+#define GAMESTAGE_WAR       2
+#define GAMESTAGE_END       3

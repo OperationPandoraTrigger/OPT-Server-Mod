@@ -43,7 +43,7 @@ disableSerialization;
 
         default 
         {
-            ERROR_LOG("Updatehud: Fehlerhafte Datenübergabe - Keine Fraktionauswahl erkannt");
+            ERROR_LOG("Updatehud: Fehlerhafte Datenï¿½bergabe - Keine Fraktionauswahl erkannt");
         };
     };
 
@@ -81,7 +81,7 @@ disableSerialization;
 
         default 
         {
-            ERROR_LOG("Updatehud: Fehlerhafte Datenübergabe - Keine Fraktionauswahl erkannt");
+            ERROR_LOG("UpdateHUD: Fehlerhafte DatenÃ¼bergabe - Keine Fraktionauswahl erkannt");
         };
     };
 
@@ -94,11 +94,11 @@ disableSerialization;
     _control = _currentCutDisplay displayCtrl 5105;
 
     private "_timeStr";
-    private _timeElapsed = (serverTime - OPT_GELDZEIT_startTime);
+    private _timeElapsed = serverTime - OPT_GELDZEIT_startTime;
     private _playTime = OPT_GELDZEIT_PLAYTIME - _timeElapsed;
-    private _truceTime = (OPT_GELDZEIT_TRUCETIME + OPT_GELDZEIT_FREEZETIME) - _timeElapsed;
+    private _truceTime = OPT_GELDZEIT_TRUCETIME + OPT_GELDZEIT_FREEZETIME - _timeElapsed;
 
-    if (OPT_GELDZEIT_Spielzeitstart) then 
+    if (OPT_GELDZEIT_GAMESTAGE >= GAMESTAGE_WAR) then 
     {
         // Mission gestartet - Zeige verbleibende Spielzeit
         _timeLeft = [_playTime] call CBA_fnc_formatElapsedTime;

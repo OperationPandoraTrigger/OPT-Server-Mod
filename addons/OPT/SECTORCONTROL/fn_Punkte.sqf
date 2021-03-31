@@ -23,7 +23,7 @@ GVAR(points_logtime) = 0;
 GVAR(Punktecount) = [
 {
     // Logge und übertrage Punktestand, solange Spiel noch läuft
-    if ((OPT_GELDZEIT_Spielzeitstart) and (OPT_GELDZEIT_PLAYTIME - (serverTime - OPT_GELDZEIT_startTime) > 0)) then
+    if ((OPT_GELDZEIT_GAMESTAGE == GAMESTAGE_WAR) and (OPT_GELDZEIT_PLAYTIME - (serverTime - OPT_GELDZEIT_startTime) > 0)) then
     {
         // Falls es einen Dominator gibt -> Erhöhe Punkte +1, ansonsten spätestens alls 60 Sekunden einen Logeintrag
         switch (GVAR(dominator)) do 
