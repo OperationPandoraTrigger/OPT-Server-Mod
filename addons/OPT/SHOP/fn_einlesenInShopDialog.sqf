@@ -150,7 +150,7 @@ switch (GVAR(vehicleType)) do
             };        
         }; 
         GVAR(moveInVeh) = true;
-        _konfig ctrlEnable true;       
+        _konfig ctrlEnable false;       
     };
 
     case "vehicles":
@@ -183,7 +183,7 @@ switch (GVAR(vehicleType)) do
             };        
         }; 
         GVAR(moveInVeh) = true;
-        _konfig ctrlEnable true;       
+        _konfig ctrlEnable false;       
     };
 
     case "supplies" : 
@@ -251,7 +251,7 @@ switch (GVAR(vehicleType)) do
             };        
         }; 
         GVAR(moveInVeh) = true;
-        _konfig ctrlEnable true;       
+        _konfig ctrlEnable false;       
     };
     default 
     {
