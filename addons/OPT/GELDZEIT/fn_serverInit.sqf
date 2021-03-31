@@ -3,7 +3,7 @@
 * Init Server Zeit und Geldsystem
 * 
 * Author:
-* Lord-MDB
+* Lord-MDB, form
 *
 * Arguments:
 *
@@ -31,97 +31,69 @@ private _time = systemTime;
 ["Mission", "Load", [0, 0, 0, missionName]] call OPT_LOGGING_fnc_writelog;
 
 //Init Statussignale
-GVAR(Mission_start) = false;
-publicVariable QGVAR(Mission_start);
-
 GVAR(FreeztimeEnde) = false;
 publicVariable QGVAR(FreeztimeEnde);
 
 GVAR(Waffenruhestart) = false;
 publicVariable QGVAR(Waffenruhestart);
 
-GVAR(WaffenruheEnde) = false;
-publicVariable QGVAR(WaffenruheEnde);
-
 GVAR(Spielzeitstart) = false;
 publicVariable QGVAR(Spielzeitstart);
 
 GVAR(SpielzeitEnde) = false;
-publicVariable QGVAR(SpielzeitEnde);
-
-GVAR(Endestart) = false;
-publicVariable QGVAR(Endestart);
 
 GVAR(playerList) = [];
 
-//Waffenruhe 
-DFUNC(Waffenruhe) = 
-{
-    // Logeintrag
-    GVAR(FreeztimeEnde) = true;
-    publicVariable QGVAR(FreeztimeEnde);
-
-    GVAR(Waffenruhestart) = true;
-    publicVariable QGVAR(Waffenruhestart);
-
-    ["Mission", "Truce", [0, 0, 0, missionName]] call OPT_LOGGING_fnc_writelog;
-
-    //Nachablauf Waffenruhe Spielzeit auslösen
-    [FUNC(Spielzeit), GVAR(TRUCETIME),""] call CLib_fnc_wait;
-};
-
-//Spielzeit
-DFUNC(Spielzeit) = 
-{
-    // Logeintrag
-    GVAR(WaffenruheEnde) = true;
-    publicVariable QGVAR(WaffenruheEnde);
-
-    GVAR(Spielzeitstart) = true;
-    publicVariable QGVAR(Spielzeitstart);
-
-    // Missionsstart loggen
-    ["Mission", "Start", [0, 0, 0, missionName]] call OPT_LOGGING_fnc_writelog;
-
-    // Nach Ablauf der Waffenruhe die Sektorenmarker von der Karte entfernen
-    [] call OPT_SECTORCONTROL_fnc_deletesectormarkers;
-
-    GVAR(PLAYTIMENETTO) = 0;
-
-    GVAR(PLAYTIMENETTO) = (GVAR(PLAYTIME) - GVAR(TRUCETIME) - GVAR(FREEZETIME));    
-
-    //Nachablauf Spielzeit Ende auslösen
-    [FUNC(Mission_Ende), GVAR(PLAYTIMENETTO),""] call CLib_fnc_wait;
-};
-
-//Mission Ende
-DFUNC(Mission_Ende) = 
-{
-    GVAR(SpielzeitEnde) = true;
-    publicVariable QGVAR(SpielzeitEnde);
-
-    GVAR(Endestart) = true;
-    publicVariable QGVAR(Endestart);
-
-    [] call FUNC(writePlayerList);
-
-    // Endpunktestand loggen
-    ["Mission", "End", [OPT_SECTORCONTROL_nato_points, OPT_SECTORCONTROL_csat_points, OPT_SECTORCONTROL_aaf_points, missionName]] call OPT_LOGGING_fnc_writelog;
-
-    [EVENT_SPIELUHR_ENDBILDSCHIRM,[]] call CFUNC(globalEvent);
-};
-
 ["missionStarted", {
-    // SERVER ONLY
-    // nicht time! time ist 0, da time Zeit von Missionsbeginn mitteilt. serverTime hingegen wird
-    // immer synchronisiert und beinhaltet Zeit seit Serverstart
-
     GVAR(startTime) = serverTime;
-    publicVariable QGVAR(startTime); // gibt allen Clients die Startzeit des Servers bekannt
+    publicVariable QGVAR(startTime);
 
-    GVAR(Mission_start) = true;
-    publicVariable QGVAR(Mission_start);
+    GVAR(Timestamp_Waffenruhestart) = GVAR(startTime) + GVAR(FREEZETIME);
+    GVAR(Timestamp_Spielzeitstart) = GVAR(startTime) + GVAR(FREEZETIME) + GVAR(TRUCETIME);
+    GVAR(Timestamp_Spielzeitende) = GVAR(startTime) + GVAR(PLAYTIME);   // Freeze- & Trucetime zählt zur Spielzeit dazu!
 
-    // Nach Ablauf der Freeztime die Waffenruhe auslösen
-    [FUNC(Waffenruhe), GVAR(FREEZETIME),""] call CLib_fnc_wait;
+    // Aktuellen Spielabschnitt setzen
+    [{
+        private _timeElapsed = serverTime - GVAR(startTime); 
+
+        // Nach Ablauf der Freezetime die Waffenruhe auslösen
+        if (!GVAR(FreeztimeEnde) && serverTime > GVAR(Timestamp_Waffenruhestart)) then
+        {
+            GVAR(FreeztimeEnde) = true;
+            publicVariable QGVAR(FreeztimeEnde);
+
+            GVAR(Waffenruhestart) = true;
+            publicVariable QGVAR(Waffenruhestart);
+
+            // Logeintrag
+            ["Mission", "Truce", [0, 0, 0, missionName]] call OPT_LOGGING_fnc_writelog;
+        };
+
+        // Nach Ablauf der Waffenruhe die Spielzeit auslösen
+        if (GVAR(Waffenruhestart) && !GVAR(Spielzeitstart) && serverTime > GVAR(Timestamp_Spielzeitstart)) then
+        {
+            GVAR(Spielzeitstart) = true;
+            publicVariable QGVAR(Spielzeitstart);
+
+            // Missionsstart loggen
+            ["Mission", "Start", [0, 0, 0, missionName]] call OPT_LOGGING_fnc_writelog;
+
+            // Nach Ablauf der Waffenruhe die Sektorenmarker von der Karte entfernen
+            [] call OPT_SECTORCONTROL_fnc_deletesectormarkers;
+        };
+
+        // Nach Ablauf der Spielzeit das Ende auslösen
+        if (GVAR(Spielzeitstart) && !GVAR(SpielzeitEnde) && serverTime > GVAR(Timestamp_Spielzeitende)) then
+        {
+            GVAR(SpielzeitEnde) = true;
+
+            // Spielerliste loggen
+            [] call FUNC(writePlayerList);
+
+            // Endpunktestand loggen
+            ["Mission", "End", [OPT_SECTORCONTROL_nato_points, OPT_SECTORCONTROL_csat_points, OPT_SECTORCONTROL_aaf_points, missionName]] call OPT_LOGGING_fnc_writelog;
+
+            [EVENT_SPIELUHR_ENDBILDSCHIRM,[]] call CFUNC(globalEvent);
+        };
+    }, 1, _this] call CFUNC(addPerFrameHandler);
 }] call CFUNC(addEventhandler);
