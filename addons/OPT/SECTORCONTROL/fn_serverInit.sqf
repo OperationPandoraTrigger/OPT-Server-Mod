@@ -73,7 +73,7 @@ DFUNC(startflagsetup) =
 {
     // Finale Fahnenmasten und Markierungen setzen
     [] call FUNC(setupflagpoles);
-    [FUNC(startflagsetup), {OPT_GELDZEIT_GAMESTAGE == GAMESTAGE_WAR}, "Awesome Delay"] call CLib_fnc_waitUntil;
+    [FUNC(startflagsetup), {(OPT_GELDZEIT_GAMESTAGE == GAMESTAGE_WAR)}, "Awesome Delay"] call CLib_fnc_waitUntil;
 }] call CFUNC(addEventhandler);
 
 // Sektorenmarker auf die Karte zeichnen sobald die Mission durchgeladen ist

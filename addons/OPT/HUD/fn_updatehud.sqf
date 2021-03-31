@@ -43,7 +43,7 @@ disableSerialization;
 
         default 
         {
-            ERROR_LOG("Updatehud: Fehlerhafte Daten�bergabe - Keine Fraktionauswahl erkannt");
+            ERROR_LOG("Updatehud: Fehlerhafte Datenübergabe - Keine Fraktionauswahl erkannt");
         };
     };
 

@@ -85,6 +85,6 @@ switch OPT_GELDZEIT_Fraktionauswahl do
 
            default 
         {
-            ERROR_LOG("handleDeadVehicle: Fehlerhafte Daten�bergabe - Keine Fraktionauswahl erkannt");
+            ERROR_LOG("handleDeadVehicle: Fehlerhafte Datenübergabe - Keine Fraktionauswahl erkannt");
         };
 };
