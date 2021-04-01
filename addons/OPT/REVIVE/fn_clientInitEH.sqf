@@ -162,10 +162,12 @@ GVAR(missionEH_draw3D) = addMissionEventHandler ["Draw3D",
 {
     private _nearbyUnits = playableUnits select 
     {
+    _sideidplayer = playerSide call BIS_fnc_sideID;  
         (_x distance player) < 30 and
         lifeState _x isEqualTo "INCAPACITATED" and
+        !(incapacitatedState _x == "") and
         _x != player and
-        SIDE _x == PLAYERSIDE
+        ((getnumber (configFile >> "CfgVehicles" >> (typeof _x) >> "side")) isEqualTo (playerSide call BIS_fnc_sideID))
     };
     {
         private _name = NAME _x;
