@@ -28,19 +28,9 @@
 */
 #include "macros.hpp"
 
-DFUNC(Player_freeze_time) = 
+// Spieler in der Freezetime einfrieren
+if (GVAR(GAMESTAGE) == GAMESTAGE_FREEZE) then 
 {
-    // gib Spieler frei
-    player enableSimulation true;
-};
-
-// friere Spieler, falls freezeTime aktiv
-if (!GVAR(Waffenruhestart)) then 
-{
-    // freeze Spieler zu Beginn
+    // Spieler zu Beginn einfrieren
     player enableSimulation false;
-
-    // warte OPT_PARAM_FREEZE_TIME
-    //[FUNC(Player_freeze_time), GVAR(FREEZETIME),""] call CLib_fnc_wait;
-    [FUNC(Player_freeze_time), {(GVAR(FreeztimeEnde))}, "Awesome Delay"] call CLib_fnc_waitUntil;
 };
