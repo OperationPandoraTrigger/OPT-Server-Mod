@@ -114,7 +114,7 @@ if !(isNull _Basis) then
 {
     (["Basis"] call BIS_fnc_rscLayer) cutText ["Teleport...", "BLACK OUT", 3]; // fade out in black
     // beam player
-    private _TempLogic = "Land_HelipadEmpty_F" createvehicle [(getPos _Basis select 0)-20*sin(random 360),(getPos _Basis select 1)-20*cos(random 360)];
+    private _TempLogic = "Land_HelipadEmpty_F" createvehicle [(getPos _Basis select 0) - 20 * sin(random 360), (getPos _Basis select 1) - 20 * cos(random 360)];
     vehicle player setPosASL (getPosASL _TempLogic vectorAdd [0, 0, 10]);
     vehicle player setVectorUp surfaceNormal position _TempLogic;
     vehicle player setPosASL (getPosASL _TempLogic vectorAdd [0, 0, 0.2]);

@@ -31,9 +31,9 @@ openMap true;
     // Teleport für Boote auf Wasserhöhe + 0,2m
     if (surfaceIsWater _pos) then
     {
-        vehicle player setPosASL [(random 100) - 50, (random 100) - 50, 1000 + random 100];
-        vehicle player setVectorUp [0,0,1];
-        vehicle player setPosASL [_pos vectorAdd [0, 0, 0.2]];
+        vehicle player setPosASL [(random 100) + 1000, (random 100) + 1000, (random 100) + 1000];
+        vehicle player setVectorUp [0, 0, 1];
+        vehicle player setPosASL (_pos vectorAdd [0, 0, 0.2]);
     }
     else
     {
