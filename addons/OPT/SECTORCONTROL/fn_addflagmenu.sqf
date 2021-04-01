@@ -39,7 +39,7 @@ if (typeOf player in GVAR(officer)) then
         true, 
         true, 
         "", 
-        "(OPT_GELDZEIT_GAMESTAGE <= GAMESTAGE_TRUCE)"
+        "(OPT_GELDZEIT_GAMESTAGE <= 1)"
     ];
 
     // inform player
