@@ -1,8 +1,8 @@
 // Define version information of this mod
 #define MAJOR 1
-#define MINOR 8
-#define PATCHLVL 9
-#define BUILD 125
+#define MINOR 9
+#define PATCHLVL 1
+#define BUILD 0
 
 #ifdef VERSION
     #undef VERSION
