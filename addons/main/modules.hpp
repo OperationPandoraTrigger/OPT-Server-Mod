@@ -4,7 +4,7 @@ class CfgCLibModules
 {
     class PREFIX
     {
-        path = "OPT\OPT\addons\OPT";
+        path = "opt\opt_server\addons\main";
         dependency[] = {};
 
         MODULE(GPS) 
