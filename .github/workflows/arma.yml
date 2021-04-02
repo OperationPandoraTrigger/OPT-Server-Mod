@@ -37,6 +37,8 @@ jobs:
     steps:
     - name: Checkout the source code
       uses: actions/checkout@master
+    - name: Checkout submodules
+      run: git submodule update --init --recursive
     - name: Build using HEMTT
       uses: arma-actions/hemtt@master
       with:
