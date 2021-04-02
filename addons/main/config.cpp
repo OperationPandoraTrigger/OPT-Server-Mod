@@ -6,8 +6,8 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = 1.70;
         author = "OPT";
-        authors[] = {"Raven"};
-        authorUrl = "";
+        authors[] = {"Raven", "Lord", "form"};
+        authorUrl = "https://opt4.net";
         version = VERSION;
         versionStr = QUOTE(VERSION);
         versionAr[] = {VERSION_AR};
