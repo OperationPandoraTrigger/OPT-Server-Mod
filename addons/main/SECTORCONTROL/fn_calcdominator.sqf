@@ -57,7 +57,7 @@ switch OPT_GELDZEIT_Fraktionauswahl do
 
            default 
         {
-            ERROR_LOG("calcDominator: Fehlerhafte Datenübergabe - Keine Fraktionauswahl erkannt");
+            ERROR_LOG("calcDominator: Fehlerhafte Datenuebergabe - Keine Fraktionauswahl erkannt");
             private _side = sideUnknown;
         };
 };
