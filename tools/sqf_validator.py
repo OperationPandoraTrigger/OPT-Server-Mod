@@ -119,6 +119,7 @@ def check_sqf_syntax(filepath):
                         if (c not in [' ', '\t', '\n']):
                             onlyWhitespace = False
 
+                        checkForSemicolon = False
                         if (checkForSemicolon):
                             if (c not in [' ', '\t', '\n', '/']): # keep reading until no white space or comments
                                 checkForSemicolon = False
