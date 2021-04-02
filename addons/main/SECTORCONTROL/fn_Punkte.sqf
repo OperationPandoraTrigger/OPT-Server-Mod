@@ -1,4 +1,4 @@
-﻿/**
+/**
 * Author: [GNC]Lord-MDB
 * Punkte erfassung in der Spielzeit
 *

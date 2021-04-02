@@ -46,7 +46,7 @@
     player action ["WeaponOnBack", player];
 
     // TEAM BALANCE - end mission for player if side is full
-    // nicht in onPlayerRespawn, da nur zu Missionsbeginn prÃ¼fen
+    // nicht in onPlayerRespawn, da nur zu Missionsbeginn pruefen
     if (!(OPT_SECTORCONTROL_trainingon)) then 
     {    
         if (isMultiplayer && hasInterface) then 
@@ -102,7 +102,7 @@
 
                     default 
                     {
-                        ERROR_LOG("clientinit: Fehlerhafte Datenübergabe - Keine Fraktionauswahl erkannt");    
+                        ERROR_LOG("clientinit: Fehlerhafte Datenuebergabe - Keine Fraktionauswahl erkannt");    
                     };
                 };
             };
@@ -156,7 +156,7 @@
 
         default 
         {
-            ERROR_LOG("GeldzeitClientInit: Fehlerhafte Datenübergabe - Keine Fraktionauswahl erkannt");    
+            ERROR_LOG("GeldzeitClientInit: Fehlerhafte Datenuebergabe - Keine Fraktionauswahl erkannt");    
         };
     };
 }] call CFUNC(addEventhandler);

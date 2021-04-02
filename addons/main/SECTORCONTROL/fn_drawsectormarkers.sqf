@@ -1,4 +1,4 @@
-﻿/**
+/**
 * Author: form
 * draws sectormarkers on the map
 *

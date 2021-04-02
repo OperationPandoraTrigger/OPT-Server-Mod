@@ -1,4 +1,4 @@
-﻿/**
+/**
 * Author: James
 * reformat budget text and write it in the control field
 *

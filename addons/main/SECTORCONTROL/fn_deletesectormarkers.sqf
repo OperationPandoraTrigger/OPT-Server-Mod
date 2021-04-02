@@ -1,4 +1,4 @@
-﻿/**
+/**
 * Author: form
 * deletes sectormarkers from the map
 *

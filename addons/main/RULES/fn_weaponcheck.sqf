@@ -1,4 +1,4 @@
-﻿/**
+/**
 * Author: James
 * handle taken weapon according to player class
 *
