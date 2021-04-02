@@ -1,4 +1,7 @@
-# ignore the PBOs folder
+*.pbo
 PBOs/
-setMetaData.bat
 *.lnk
+releases/*
+*.biprivatekey
+keys/*
+.hemtt/local
