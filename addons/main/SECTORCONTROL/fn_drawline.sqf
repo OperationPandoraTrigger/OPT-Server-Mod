@@ -1,4 +1,4 @@
-﻿/**
+/**
 * Author: form / möhre
 * draw straight line on map using rotated marker symbol
 *

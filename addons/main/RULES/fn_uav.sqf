@@ -1,4 +1,4 @@
-﻿/**
+/**
 * Author: James
 * initialize UAV script. Adds addAction menu entries to all laptops and handles logic
 *

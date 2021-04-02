@@ -1,4 +1,4 @@
-﻿/**
+/**
 * Author: form
 * function to write an log-entry to the report-file
 *

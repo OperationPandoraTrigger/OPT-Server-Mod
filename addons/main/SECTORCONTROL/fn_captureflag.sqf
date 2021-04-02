@@ -1,4 +1,4 @@
-﻿/**
+/**
 * Author: James
 * script triggered when player captures flag. Write to server log and call setFlagOwner
 *
