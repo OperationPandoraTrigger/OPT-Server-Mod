@@ -1,6 +1,6 @@
 /**
 * Author: James
-* initialize server side CBA Class Handler
+* initialize Client side CBA Class Handler
 *
 * Arguments:
 * None
@@ -56,23 +56,6 @@ This event happens every time a soldier enters a vehicle.
         format["[_target, player] call %1", QFUNC(flipCheck)]
     ];
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
-
-// add killed EH to all kind of vehicles, either on map or later spawned via crteateVehicle arrayIntersect
-// -> log kill and delete if near base
-["LandVehicle", "killed", 
-{
-    _this remoteExecCall [QFUNC(handleDeadVehicle), 2, false];
-}] call CBA_fnc_addClassEventHandler;
-
-["Air", "killed", 
-{
-    _this remoteExecCall [QFUNC(handleDeadVehicle), 2, false];
-}] call CBA_fnc_addClassEventHandler;
-
-["Ship", "killed", 
-{
-    _this remoteExecCall [QFUNC(handleDeadVehicle), 2, false];
-}] call CBA_fnc_addClassEventHandler;
 
 // Engine EH für Piloten -> Log transportierte Soldaten
 ["Air", "GetIn", 
