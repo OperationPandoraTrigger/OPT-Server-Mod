@@ -1,9 +1,9 @@
-/**
+/*
 * Description:
-* GPS Steuerung für Spieler
+* Spieler-Anzeige auf Karte und GPS
 * 
 * Author:
-* [GNC]Lord-MDB
+* [GNC]Lord-MDB, form
 *
 * Arguments:
 *
@@ -26,119 +26,103 @@
 
 #define GPS_UPDATE_INTERVAL 1
 
-GVAR(markerPool) = [];
+// Nur, wenn via CBA aktiviert
+if (GVAR(SHOW_MARKERS)) then
+{
+    GVAR(markerPool) = [];
 
-// create special local player marker
-GVAR(markerplayer) = createMarkerLocal ["GPS_MARKER_OWN", [0, 0]];
-GVAR(markerplayer) setMarkerTypeLocal "mil_circle";
-GVAR(markerplayer) setMarkerColorLocal "ColorBrown";
-GVAR(markerplayer) setMarkerSizeLocal [0.8, 0.8];
-GVAR(markerplayer) setMarkerAlphaLocal 0.6;
+    // create special local player marker
+    GVAR(markerplayer) = createMarkerLocal ["GPS_MARKER_OWN", position (vehicle player)];
+    GVAR(markerplayer) setMarkerTypeLocal "mil_circle_noShadow";  
+    GVAR(markerplayer) setMarkerColorLocal "ColorYellow";  
+    GVAR(markerplayer) setMarkerSizeLocal [0.7, 0.7];
+    GVAR(markerplayer) setMarkerAlphaLocal 1;
 
-[{
-    private _unitsToMark = [];
-    {
-        private _Sideidunit = getnumber (configFile >> "CfgVehicles" >> (typeof _x) >> "side");
-        private _sideidplayer = playerSide call BIS_fnc_sideID;   
-
-        if (_Sideidunit == _sideidplayer) then
+    [{
+        private _unitsToMark = [];
         {
-            _unitsToMark pushBack _x;
-        };
-    } foreach playableUnits;
+            private _sideIdUnit = getnumber (configFile >> "CfgVehicles" >> (typeof _x) >> "side");
+            private _sideIdPlayer = playerSide call BIS_fnc_sideID;   
 
-    // alle Marker zum Ursprung zurueck
-    GVAR(markerPool) apply
-    {
-        _x setMarkerTextLocal "";
-        _x setMarkerPosLocal [0, 0];             
-        _x setMarkerAlphaLocal 1;
-        _x setMarkerTypeLocal "mil_triangle";
-    };
-
-    // update own player marker
-    GVAR(markerplayer) setMarkerPosLocal (vehicle player);   
-
-    // update others markers
-    {
-        private _marker = format["GPS_MARKER_%1_%2", getPlayerUID _x, getPlayerID _x];
-        private _newmarker = createMarkerLocal [_marker, [0, 0]];
-
-        // Neuen Marker erstmalig initialisieren
-        if !(_newmarker isEqualTo "") then
-        {
-            GVAR(markerPool) pushBackUnique _marker;
-
-            switch (playerSide) do 
+            if (_sideIdUnit == _sideIdPlayer) then
             {
-                case west:
-                { 
-                    _marker setMarkerColorLocal "colorBLUFOR";
-                };
+                _unitsToMark pushBack _x;
+            };
+        } foreach playableUnits;
 
-                case east:
-                { 
-                    _marker setMarkerColorLocal "colorOPFOR";
-                };
+        // alle Marker zum Ursprung zurueck und Grundeinstellungen als Marker für einzelne Spieler
+        GVAR(markerPool) apply
+        {
+            _x setMarkerAlphaLocal 0;
+            _x setMarkerTextLocal "";
+            _x setMarkerPosLocal [0, 0];
+            _x setMarkerSizeLocal [0.5, 0.5];
+            _x setMarkerTypeLocal "MemoryFragment"; // brauchbare Spielermarker: MemoryFragment, mil_triangle_noShadow, mil_start_noShadow, mil_arrow_noShadow
+        };
 
-                case independent:
-                { 
-                    _marker setMarkerColorLocal "colorIndependent";
-                };
+        // update own player marker
+        GVAR(markerplayer) setMarkerPosLocal (vehicle player);
 
-                default { };
+        // update others markers
+        {
+            private _marker = format["OPT_GPS_MARKER_%1_%2", getPlayerUID _x, getPlayerID _x];
+            private _newmarker = createMarkerLocal [_marker, [0, 0]];
+
+            // Neuen Marker nur einmalig initialisieren
+            if !(_newmarker isEqualTo "") then
+            {
+                GVAR(markerPool) pushBackUnique _marker;
             };
 
-            _marker setMarkerSizeLocal [0.8, 0.8];
-        };
-
-        private _name = name _x;
-
-        if !((lifeState _x isEqualTo "INCAPACITATED") and !(incapacitatedState _x == "")) then 
-        {   // Spieler lebt
+            private _name = name _x;
             _marker setMarkerPosLocal (vehicle _x);
-            _marker setMarkerDirLocal (getDirVisual (vehicle _x));
+            _marker setMarkerDirLocal getDirVisual (vehicle _x) + 90;
+            _marker setMarkerAlphaLocal 1;
+        
+            if (!(GVAR(SHOW_PLAYERNAMES)) || _x == player) then
+            {
+                // keinen Spielernamen beim eigenen Marker oder wenn es deaktiviert ist anhängen
+                continue;
+            };
 
-            if (vehicle _x != _x) then 
-            {   // Spieler in Fahrzeug
-                private _vec_name = getText (configFile >> "cfgVehicles" >> typeOf (vehicle _x) >> "displayName");
+            if (getDammage _x > 0.9) then   // Alte Methode aus Schlacht <= 6: if ((lifeState _x isEqualTo "INCAPACITATED") and !(incapacitatedState _x == "")) then
+            {   // Spieler ist bewusstlos
+                _marker setMarkerDirLocal getDirVisual (vehicle _x);
+                _marker setMarkerTypeLocal "loc_Hospital";  // brauchbare Todesmarker: loc_Hospital, KIA
+                _marker setMarkerSizeLocal [0.8, 0.8];
+                _marker setMarkerTextLocal format [MLOC(PLAYER_INJURED), _name];
+            }
+            else
+            {   // Spieler lebt
+                if (vehicle _x != _x) then 
+                {   // Spieler in Fahrzeug
+                    private _vec_name = getText (configFile >> "cfgVehicles" >> typeOf (vehicle _x) >> "displayName");
 
-                // Spezialfall Drohne
-                if ((vehicle _x) in allUnitsUAV) then 
-                {
-                    private _operator = (UAVControl vehicle _x) select 0;
-
-                    // UAV Operator ja/nein
-                    if (!isNull _operator) then 
+                    // Spezialfall Drohne
+                    if ((vehicle _x) in allUnitsUAV) then 
                     {
-                        _marker setMarkerTextLocal format["%1 (%2)", _vec_name, name _operator];
+                        private _operator = (UAVControl vehicle _x) select 0;
+
+                        // UAV Operator ja/nein
+                        if (!isNull _operator) then 
+                        {
+                            _marker setMarkerTextLocal format["%1 (%2)", _vec_name, name _operator];
+                        } 
+                        else
+                        {
+                            _marker setMarkerTextLocal format["%1 (---)", _vec_name];
+                        };
                     } 
-                    else 
+                    else
                     {
-                        _marker setMarkerTextLocal format["%1 (---)", _vec_name];
+                        _marker setMarkerTextLocal format["%1 (%2)", _vec_name, _name];
                     };
-                } 
-                else 
-                {
-                    _marker setMarkerTextLocal format["%1 (%2)", _vec_name, _name];
-                };
-                _marker setMarkerAlphaLocal 0.6;
-            } 
-            else 
-            {   // Spieler zu Fuß
-                if (isPlayer _x) then 
-                {
+                }
+                else
+                {   // Spieler zu Fuß
                     _marker setMarkerTextLocal _name;
                 };
             };
-        }
-        else
-        {   // Spieler ist bewusstlos
-            _marker setMarkerAlphaLocal 0.6;      
-            _marker setMarkerPosLocal (vehicle _x);
-            _marker setMarkerDirLocal (getDirVisual (vehicle _x));
-            _marker setMarkerTextLocal format [MLOC(PLAYER_INJURED), _name];
-            _marker setMarkerTypeLocal "loc_Hospital";
-        };
-    } forEach _unitsToMark;
-}, GPS_UPDATE_INTERVAL, _this] call CFUNC(addPerFrameHandler);
+        } forEach _unitsToMark;
+    }, GPS_UPDATE_INTERVAL, _this] call CFUNC(addPerFrameHandler);
+};
