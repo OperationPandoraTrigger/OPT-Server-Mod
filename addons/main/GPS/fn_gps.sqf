@@ -24,7 +24,7 @@
 
 #include "macros.hpp";
 
-#define GPS_UPDATE_INTERVAL 1
+private _updateInterval = 1 / GVAR(FPS);
 
 // Nur, wenn via CBA aktiviert
 if (GVAR(SHOW_MARKERS)) then
@@ -124,5 +124,5 @@ if (GVAR(SHOW_MARKERS)) then
                 };
             };
         } forEach _unitsToMark;
-    }, GPS_UPDATE_INTERVAL, _this] call CFUNC(addPerFrameHandler);
+    }, _updateInterval, _this] call CFUNC(addPerFrameHandler);
 };
