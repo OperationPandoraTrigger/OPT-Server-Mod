@@ -84,15 +84,15 @@ DFUNC(isUnconscious) =
     {
         case west:
         {
-            _radio_key = "_bluefor2";
+            _radio_key = "_bluefor";
         };
         case east:
         { 
-            _radio_key = "_opfor2";
+            _radio_key = "_opfor";
         };
         case independent:
         { 
-            _radio_key = "_independent2";
+            _radio_key = "_independent";
         };
         default { };
     };
