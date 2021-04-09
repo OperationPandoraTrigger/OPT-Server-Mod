@@ -55,7 +55,8 @@ DFUNC(isUnconscious) =
     };
 };
 
-["Respawn", {
+["Respawn",
+{
     params ["_data", "_args"];
     _data params ["_newPlayer", "_oldPlayer"];
     _oldPlayer removeEventHandler ["HandleDamage", GVAR(PLAYER_HANDLE_DAMAGE_EH_ID)];
@@ -74,7 +75,37 @@ DFUNC(isUnconscious) =
     OPT_REVIVE_unconsciousHandler = nil;
     OPT_REVIVE_respawnedHandler = nil;
     
-    1 enableChannel true;    
+    1 enableChannel true;
+
+    // TFAR Encryption beim Joinen neu setzen
+    private _radio_key = "";
+
+    switch (playerSide) do 
+    {
+        case west:
+        {
+            _radio_key = "_bluefor2";
+        };
+        case east:
+        { 
+            _radio_key = "_opfor2";
+        };
+        case independent:
+        { 
+            _radio_key = "_independent2";
+        };
+        default { };
+    };
+
+    if (call TFAR_fnc_haveSWRadio) then
+    {
+        [call TFAR_fnc_activeSwRadio, _radio_key] call TFAR_fnc_setSwRadioCode;
+    };
+
+    if (call TFAR_fnc_haveLRRadio) then
+    {
+        [call TFAR_fnc_activeLrRadio, _radio_key] call TFAR_fnc_setLrRadioCode;
+    };
 }] call CFUNC(addEventhandler);
 
 
