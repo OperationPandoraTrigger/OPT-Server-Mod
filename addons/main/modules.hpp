@@ -10,13 +10,9 @@ class CfgCLibModules
         MODULE(GPS) 
         {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
+            FNC(initCBASettings);
             FNC(clientInit);
             FNC(gps);
-            FNC(selectUnits);
-            FNC(createPlayerMarker);
-            FNC(createUnitMarker);    
-            FNC(gps_Unconscious);    
-            FNC(createunitmarker_Unconscious);                
         };
 
         MODULE(SHOP) 

@@ -158,7 +158,7 @@ GVAR(crew_vecs) =
     "OPT_B_MBT_01_mlrs_F",
 
 //Tropentarn
-    "OPT4_B_LSV_01_AT_ghex_F"
+    "OPT4_B_LSV_01_AT_ghex_F",
     "OPT4_B_MRAP_01_gmg_ghex_F",
     "OPT4_B_APC_tracked_03_cannon_ghex_F",
     "OPT4_B_APC_Wheeled_01_cannon_ghex_F",
