@@ -64,6 +64,16 @@ _Respawn_button ctrlAddEventHandler [ "ButtonClick",
     player setDamage 1;
     1 enableChannel true;
     player allowDamage true;
+
+    // Spieler in der Spielerliste als Disconnected flaggen, damit der Todesmarker während der Respawnzeit von der Karte verschwindet
+    private _pos = (OPT_GELDZEIT_playerList apply {_x select 0}) find (getPlayerUID player);
+    if (_pos != -1) then
+    {
+        // Alten Eintrag aus der Liste holen, Connected-Flag löschen und zurückschicken
+        private _entry = OPT_GELDZEIT_playerList select _pos;
+        _entry set [4, false];
+        _entry remoteExecCall ["OPT_GELDZEIT_fnc_updatePlayerList", 2, false]; 
+    };
 }];
 
 GVAR(startzeit) = time;
@@ -136,6 +146,16 @@ GVAR(startzeit) = time;
         OPT_REVIVE_respawnedHandler = true;
         ["Health", "Respawn", [getPlayerUID player, name player, side player, "RespawnTimeout"]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
         player setDamage 1;
+
+        // Spieler in der Spielerliste als Disconnected flaggen, damit der Todesmarker während der Respawnzeit von der Karte verschwindet
+        private _pos = (OPT_GELDZEIT_playerList apply {_x select 0}) find (getPlayerUID player);
+        if (_pos != -1) then
+        {
+            // Alten Eintrag aus der Liste holen, Connected-Flag löschen und zurückschicken
+            private _entry = OPT_GELDZEIT_playerList select _pos;
+            _entry set [4, false];
+            _entry remoteExecCall ["OPT_GELDZEIT_fnc_updatePlayerList", 2, false]; 
+        };
     };    
 
     // Zeitausgabe bis Auto Respwan

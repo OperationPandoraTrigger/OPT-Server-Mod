@@ -41,7 +41,7 @@
 
 ["missionStarted",
 {
-    [getPlayerUID player, profileName, playerSide] remoteExecCall [QFUNC(updatePlayerList), 2, false]; 
+    [getPlayerUID player, profileName, playerSide, player, true] remoteExecCall [QFUNC(updatePlayerList), 2, false]; 
 
     player action ["WeaponOnBack", player];
 

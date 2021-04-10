@@ -77,9 +77,19 @@ DFUNC(isUnconscious) =
     
     1 enableChannel true;
 
+    // Player Objekt in der Spielerliste aktualisieren
+    private _pos = (OPT_GELDZEIT_playerList apply {_x select 0}) find (getPlayerUID _newPlayer);
+    if (_pos != -1) then
+    {
+        // Alten Eintrag aus der Liste holen, Spielerobjekt und Connected-Flag setzen und zurückschicken
+        private _entry = OPT_GELDZEIT_playerList select _pos;
+        _entry set [3, _newPlayer];
+        _entry set [4, true];
+        _entry remoteExecCall ["OPT_GELDZEIT_fnc_updatePlayerList", 2, false]; 
+    };
+
     // TFAR Encryption beim Joinen neu setzen
     private _radio_key = "";
-
     switch (playerSide) do 
     {
         case west:
