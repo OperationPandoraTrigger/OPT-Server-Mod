@@ -35,8 +35,9 @@ if (GVAR(SHOW_MARKERS)) then
             _x setMarkerAlphaLocal 0;
             _x setMarkerTextLocal "";
             _x setMarkerPosLocal [0, 0];
-            _x setMarkerSizeLocal [0.5, 0.5];
             _x setMarkerTypeLocal "MemoryFragment"; // brauchbare Spielermarker: MemoryFragment, mil_triangle_noShadow, mil_start_noShadow, mil_arrow_noShadow
+            _x setMarkerSizeLocal [0.5, 0.5];
+            _x setMarkerColor "ColorWhite";
         };
 
         // update own player marker
@@ -65,7 +66,8 @@ if (GVAR(SHOW_MARKERS)) then
             _marker setMarkerDirLocal getDirVisual _vehicleplayer;
             _marker setMarkerTypeLocal "loc_Hospital";  // brauchbare Todesmarker: loc_Hospital, KIA
             _marker setMarkerSizeLocal [0.8, 0.8];
-            
+            _marker setMarkerColor "ColorRed";
+
             // keinen Verwundeten-Namen beim eigenen Marker oder wenn es deaktiviert ist anhängen
             if (GVAR(SHOW_PLAYERNAMES) && _player != player) then
             {
@@ -76,8 +78,8 @@ if (GVAR(SHOW_MARKERS)) then
         }
         else
         {   // Spieler lebt
-            _marker setMarkerDirLocal getDirVisual _vehicleplayer + 90;
-            _marker setMarkerAlphaLocal 1;
+            _marker setMarkerDirLocal getDirVisual _vehicleplayer + 90; // Um 90 Grad drehen damit die Ausrichtung vom "MemoryFragment" Icon zur Blickrichtung passt
+            _marker setMarkerAlphaLocal 0.7;
 
             if (!(GVAR(SHOW_PLAYERNAMES)) || _player == player) then
             {
@@ -85,17 +87,17 @@ if (GVAR(SHOW_MARKERS)) then
                 continue;
             };
 
-            if (_vehicleplayer != _player) then 
+            if (_vehicleplayer != _player) then
             {   // Spieler in Fahrzeug
                 private _vec_name = getText (configFile >> "cfgVehicles" >> typeOf _vehicleplayer >> "displayName");
 
                 // Spezialfall Drohne
-                if (_vehicleplayer in allUnitsUAV) then 
+                if (_vehicleplayer in allUnitsUAV) then
                 {
                     private _operator = (UAVControl _vehicleplayer) select 0;
 
                     // UAV Operator ja/nein
-                    if (!isNull _operator) then 
+                    if (!isNull _operator) then
                     {
                         _marker setMarkerTextLocal format["%1 (%2)", _vec_name, name _operator];
                     } 
@@ -121,8 +123,8 @@ if (GVAR(SHOW_MARKERS)) then
     // create special local player marker
     private _ownmarker = format["OPT_GPS_MARKER_OWN_%1", getPLayerUID player];
     GVAR(markerplayer) = createMarkerLocal [_ownmarker, position (vehicle player)];
-    GVAR(markerplayer) setMarkerTypeLocal "mil_circle_noShadow";  
-    GVAR(markerplayer) setMarkerColorLocal "ColorYellow";  
+    GVAR(markerplayer) setMarkerTypeLocal "mil_circle_noShadow";
+    GVAR(markerplayer) setMarkerColorLocal "ColorYellow";
     GVAR(markerplayer) setMarkerSizeLocal [0.7, 0.7];
     GVAR(markerplayer) setMarkerAlphaLocal 1;
 
