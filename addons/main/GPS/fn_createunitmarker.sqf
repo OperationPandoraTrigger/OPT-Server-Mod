@@ -65,7 +65,7 @@ switch (_playerSide) do
     default { };
 };
 
-_marker setMarkerTypeLocal "mil_triangle";
+_marker setMarkerTypeLocal "mil_arrow_noShadow";
 _marker setMarkerSizeLocal [0.8, 0.8];
 _marker setMarkerAlphaLocal 1;
 
