@@ -11,6 +11,7 @@ class CfgCLibModules
         {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
             FNC(initCBASettings);
+            FNC(init);
             FNC(clientInit);
             FNC(gps);
         };

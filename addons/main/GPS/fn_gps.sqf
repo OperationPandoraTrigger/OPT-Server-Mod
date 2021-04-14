@@ -27,10 +27,8 @@
 // Nur, wenn via CBA aktiviert
 if (GVAR(SHOW_MARKERS)) then
 {
-    GVAR(markerPool) = [];
-
     // create special local player marker
-    private _ownmarker = format["OPT_GPS_MARKER_OWN_%1_%2", getPLayerUID player, getPlayerID player];
+    private _ownmarker = format["OPT_GPS_MARKER_OWN_%1", getPLayerUID player];
     GVAR(markerplayer) = createMarkerLocal [_ownmarker, position (vehicle player)];
     GVAR(markerplayer) setMarkerTypeLocal "mil_circle_noShadow";  
     GVAR(markerplayer) setMarkerColorLocal "ColorYellow";  
@@ -49,38 +47,29 @@ if (GVAR(SHOW_MARKERS)) then
             };
         } forEach playableUnits;
 
-        // alle Marker zum Ursprung zurueck und Grundeinstellungen als Marker für einzelne Spieler
-        GVAR(markerPool) apply
-        {
-            _x setMarkerAlphaLocal 0;
-            _x setMarkerTextLocal "";
-            _x setMarkerPosLocal [0, 0];
-            _x setMarkerTypeLocal "MemoryFragment"; // brauchbare Spielermarker: MemoryFragment, mil_triangle_noShadow, mil_start_noShadow, mil_arrow_noShadow
-            _x setMarkerSizeLocal [0.5, 0.5];
-            _x setMarkerColor "ColorWhite";
-        };
-
         // update own player marker
         GVAR(markerplayer) setMarkerPosLocal (vehicle player);
 
         // update others markers
         {
-            private _marker = format["OPT_GPS_MARKER_%1_%2", getPlayerUID _x, getPlayerID _x];
-            private _newmarker = createMarkerLocal [_marker, [0, 0]];
-
-            // Neuen Marker nur einmalig initialisieren
-            if !(_newmarker isEqualTo "") then
+            private _uid = getPlayerUID _x;
+            if (_uid isEqualTo "") then
             {
-                GVAR(markerPool) pushBackUnique _marker;
+                // In some cases, the identity of certain player units might fail to propagate to other clients and the server, which causes isPlayer and
+                // getPlayerUID to incorrectly return false and "", respectively, where the affected units are not local. Therefore, beware of false negatives.
+                continue;
             };
+
+            private _marker = format["OPT_GPS_MARKER_%1", _uid];
+            private _newmarker = createMarkerLocal [_marker, (vehicle _x)]; // ist nur beim 1. Mal erfolgreich - Daher arbeiten wir einfach mit dem Wunschnamen weiter
 
             _marker setMarkerPosLocal (vehicle _x);
             private _name = name _x;
 
             if (getDammage _x > 0.9) then   // Alte Methode aus Schlacht <= 6: if ((lifeState _x isEqualTo "INCAPACITATED") and !(incapacitatedState _x == "")) then
             {   // Spieler ist bewusstlos
-                _marker setMarkerDirLocal getDirVisual (vehicle _x);
                 _marker setMarkerTypeLocal "loc_Hospital";  // brauchbare Todesmarker: loc_Hospital, KIA
+                _marker setMarkerDirLocal getDirVisual (vehicle _x);
                 _marker setMarkerSizeLocal [0.8, 0.8];
                 _marker setMarkerColor "ColorRed";
                 _marker setMarkerAlphaLocal 1;
@@ -93,7 +82,10 @@ if (GVAR(SHOW_MARKERS)) then
             }
             else
             {   // Spieler lebt
+                _marker setMarkerTypeLocal "MemoryFragment"; // brauchbare Spielermarker: MemoryFragment, mil_triangle_noShadow, mil_start_noShadow, mil_arrow_noShadow
                 _marker setMarkerDirLocal getDirVisual (vehicle _x) + 90; // Um 90 Grad drehen damit die Ausrichtung vom "MemoryFragment" Icon zur Blickrichtung passt
+                _marker setMarkerSizeLocal [0.5, 0.5];
+                _marker setMarkerColor "ColorWhite";
                 _marker setMarkerAlphaLocal 0.7;
 
                 if (!(GVAR(SHOW_PLAYERNAMES)) || _x == player) then
