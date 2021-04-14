@@ -80,7 +80,8 @@ private _Sideidplayer = 0;
                 _marker = GVAR(markerPool) select _i;
                 _marker setMarkerAlphaLocal 0.6;      
 
-                if ((getDammage _obj < 0.9) and ) then 
+                // Alte Methode aus Schlacht <= 6: if (!(lifeState _x isEqualTo "INCAPACITATED") and (incapacitatedState _x == "")) then 
+                if (getDammage _obj < 0.9) then 
                 {
                     private _name = NAME _obj;
 
