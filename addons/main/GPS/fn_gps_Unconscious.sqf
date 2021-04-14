@@ -46,7 +46,7 @@ for "_i" from 1 to (GVAR(unitnumberUnconscious)) do
         _Sideidunit = getnumber (configFile >> "CfgVehicles" >> (typeof _x) >> "side");
         _sideidplayer = playerSide call BIS_fnc_sideID;   
 
-        if ((_Sideidunit == _sideidplayer) and (lifeState _x isEqualTo "INCAPACITATED") and !(incapacitatedState _x == "")) then 
+        if ((_Sideidunit == _sideidplayer) and (getDammage _x > 0.9)) then 
         {
             _unitsToMarkisUnconscious pushBack _x;
         };
