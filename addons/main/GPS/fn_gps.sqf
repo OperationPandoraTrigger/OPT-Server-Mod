@@ -39,10 +39,21 @@ for "_i" from 1 to GVAR(unitnumber) do
 // create special local player marker
 GVAR(markerplayer) = [] call FUNC(createPlayerMarker);
 
+private _Sideidunit = 0;
+private _Sideidplayer = 0;
+
 [{
+    //Seitenabfrage des Spieler per config
+    //Bei ACE Medic wird Spieler zu CIV seite bei Side Abfrage
+    //_sidesoldat =getnumber (configFile >> "CfgVehicles" >> (typeof player) >> "side"); 
+    // 0=East, 1=West, 2=independent
+
     private _unitsToMark = [];
     {
-        if (side _x == playerSide) then 
+        _Sideidunit = getnumber (configFile >> "CfgVehicles" >> (typeof _x) >> "side");
+        _sideidplayer = playerSide call BIS_fnc_sideID;   
+
+        if (_Sideidunit == _sideidplayer) then 
         {
             _unitsToMark pushBack _x;
         };
@@ -67,7 +78,7 @@ GVAR(markerplayer) = [] call FUNC(createPlayerMarker);
             _marker = GVAR(markerPool) select _i;
             _marker setMarkerAlphaLocal 0.6;      
 
-            if (alive _obj) then 
+            if (getDammage _obj < 0.9) then 
             {
                 private _name = NAME _obj;
 
@@ -102,27 +113,7 @@ GVAR(markerplayer) = [] call FUNC(createPlayerMarker);
                 } 
                 else 
                 {
-                    if (isPlayer _obj) then 
-                    {
-                        _marker setMarkerTextLocal _name;
-                        
-                        if ((lifeState _obj isEqualTo "INCAPACITATED") and !(incapacitatedState _obj == "")) then 
-                        {
-                            _marker setMarkerTextLocal "";
-                            _marker setMarkerPosLocal [0,0];
-                            _marker setMarkerAlphaLocal 1;                        
-                        } 
-                        else 
-                        {                     
-                            _marker setMarkerTextLocal _name;    
-                        };                    
-                    } 
-                    else 
-                    {
-                        _marker setMarkerTextLocal "";
-                        _marker setMarkerPosLocal [0,0];
-                        _marker setMarkerAlphaLocal 1;
-                    };
+                    _marker setMarkerTextLocal _name;                                        
                 };
             } 
             else 
