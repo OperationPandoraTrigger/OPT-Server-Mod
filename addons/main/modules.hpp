@@ -16,7 +16,8 @@ class CfgCLibModules
             FNC(createPlayerMarker);
             FNC(createUnitMarker);    
             FNC(gps_Unconscious);    
-            FNC(createunitmarker_Unconscious);                
+            FNC(createunitmarker_Unconscious); 
+            FNC(initCBASettings);               
         };
 
         MODULE(SHOP) 
