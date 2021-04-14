@@ -133,4 +133,4 @@ private _Sideidplayer = 0;
         }; 
     };     
 
-}, GVAR(FPS), _this] call CFUNC(addPerFrameHandler);
+}, (1 / GVAR(FPS)), _this] call CFUNC(addPerFrameHandler);

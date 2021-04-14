@@ -77,4 +77,4 @@ for "_i" from 1 to (GVAR(unitnumberUnconscious)) do
             _marker setMarkerTextLocal format [MLOC(PLAYER_INJURED),_name];
         };
     };      
-}, 1, _this] call CFUNC(addPerFrameHandler);
+}, (1 / GVAR(FPS)), _this] call CFUNC(addPerFrameHandler);
