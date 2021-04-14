@@ -65,8 +65,8 @@ switch (_playerSide) do
     default { };
 };
 
-_marker setMarkerTypeLocal "mil_arrow_noShadow";
-_marker setMarkerSizeLocal [0.8, 0.8];
+_marker setMarkerTypeLocal "mil_arrow2";
+_marker setMarkerSizeLocal [0.6, 0.6];
 _marker setMarkerAlphaLocal 1;
 
 _marker
