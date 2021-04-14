@@ -43,85 +43,93 @@ private _Sideidunit = 0;
 private _Sideidplayer = 0;
 
 [{
-    //Seitenabfrage des Spieler per config
-    //Bei ACE Medic wird Spieler zu CIV seite bei Side Abfrage
-    //_sidesoldat =getnumber (configFile >> "CfgVehicles" >> (typeof player) >> "side"); 
-    // 0=East, 1=West, 2=independent
+    if (GVAR(SHOW_MARKERS)) then 
+    {    
+        //Seitenabfrage des Spieler per config
+        //Bei ACE Medic wird Spieler zu CIV seite bei Side Abfrage
+        //_sidesoldat =getnumber (configFile >> "CfgVehicles" >> (typeof player) >> "side"); 
+        // 0=East, 1=West, 2=independent
 
-    private _unitsToMark = [];
-    {
-        _Sideidunit = getnumber (configFile >> "CfgVehicles" >> (typeof _x) >> "side");
-        _sideidplayer = playerSide call BIS_fnc_sideID;   
-
-        if (_Sideidunit == _sideidplayer) then 
+        private _unitsToMark = [];
         {
-            _unitsToMark pushBack _x;
-        };
-    } foreach allUnits; 
+            _Sideidunit = getnumber (configFile >> "CfgVehicles" >> (typeof _x) >> "side");
+            _sideidplayer = playerSide call BIS_fnc_sideID;   
 
-    GVAR(markerPool) apply
-    {
-        _x setMarkerTextLocal "";
-        _x setMarkerPosLocal [0,0];             
-    };
-
-    // update player marker
-    GVAR(markerplayer) setMarkerPosLocal (getPosATLVisual (vehicle player));   
-
-    if ((count _unitsToMark) > 0) then 
-    {
-        for "_i" from 0 to (count _unitsToMark - 1) do 
-        {   
-            private _obj = objNull;
-            private _marker = "";
-            _obj = _unitsToMark select _i;
-            _marker = GVAR(markerPool) select _i;
-            _marker setMarkerAlphaLocal 0.6;      
-
-            if (getDammage _obj < 0.9) then 
+            if (_Sideidunit == _sideidplayer) then 
             {
-                private _name = NAME _obj;
+                _unitsToMark pushBack _x;
+            };
+        } foreach allUnits; 
 
-                // update unit marker
-                _marker setMarkerPosLocal (getPosATLVisual (vehicle _obj));
-                _marker setMarkerDirLocal (getDirVisual (vehicle _obj));
+        GVAR(markerPool) apply
+        {
+            _x setMarkerTextLocal "";
+            _x setMarkerPosLocal [0,0];             
+        };
 
-                // vehicle info
-                if (vehicle _obj != _obj) then 
+        // update player marker
+        GVAR(markerplayer) setMarkerPosLocal (getPosATLVisual (vehicle player));   
+
+        if ((count _unitsToMark) > 0) then 
+        {
+            for "_i" from 0 to (count _unitsToMark - 1) do 
+            {   
+                private _obj = objNull;
+                private _marker = "";
+                _obj = _unitsToMark select _i;
+                _marker = GVAR(markerPool) select _i;
+                _marker setMarkerAlphaLocal 0.6;      
+
+                if ((getDammage _obj < 0.9) and ) then 
                 {
-                    private _vec_name = getText (configFile >> "cfgVehicles" >> typeOf (vehicle _obj) >> "displayName");
+                    private _name = NAME _obj;
 
-                    // Spezialfall Drohne
-                    if ((vehicle _obj) in allUnitsUAV) then 
-                    {
-                        private _operator = (UAVControl vehicle _obj) select 0;
+                    // update unit marker
+                    _marker setMarkerPosLocal (getPosATLVisual (vehicle _obj));
+                    _marker setMarkerDirLocal (getDirVisual (vehicle _obj));
 
-                        // UAV Operator ja/nein
-                        if (!isNull _operator) then 
+                    // Marker mit Namen anzeigen lassen
+                    if (GVAR(SHOW_PLAYERNAMES)) then 
                         {
-                            _marker setMarkerTextLocal format["%1 (%2)", _vec_name, NAME _operator];
+                        // vehicle info
+                        if (vehicle _obj != _obj) then 
+                        {
+                            private _vec_name = getText (configFile >> "cfgVehicles" >> typeOf (vehicle _obj) >> "displayName");
+
+                            // Spezialfall Drohne
+                            if ((vehicle _obj) in allUnitsUAV) then 
+                            {
+                                private _operator = (UAVControl vehicle _obj) select 0;
+
+                                // UAV Operator ja/nein
+                                if (!isNull _operator) then 
+                                {
+                                    _marker setMarkerTextLocal format["%1 (%2)", _vec_name, NAME _operator];
+                                } 
+                                else 
+                                {
+                                    _marker setMarkerTextLocal format["%1 (---)", _vec_name];
+                                };
+                            } 
+                            else 
+                            {
+                                _marker setMarkerTextLocal format["%1 (%2)", _vec_name, _name];
+                            };
                         } 
                         else 
                         {
-                            _marker setMarkerTextLocal format["%1 (---)", _vec_name];
+                            _marker setMarkerTextLocal _name;                                        
                         };
-                    } 
-                    else 
-                    {
-                        _marker setMarkerTextLocal format["%1 (%2)", _vec_name, _name];
-                    };
+                    };    
                 } 
                 else 
                 {
-                    _marker setMarkerTextLocal _name;                                        
+                    _marker setMarkerTextLocal "";
+                    _marker setMarkerPosLocal [0,0];
+                    _marker setMarkerAlphaLocal 1;
                 };
-            } 
-            else 
-            {
-                _marker setMarkerTextLocal "";
-                _marker setMarkerPosLocal [0,0];
-                _marker setMarkerAlphaLocal 1;
             };
-        };
-    };      
-}, 1, _this] call CFUNC(addPerFrameHandler);
+        }; 
+    };     
+
+}, GVAR(FPS), _this] call CFUNC(addPerFrameHandler);
