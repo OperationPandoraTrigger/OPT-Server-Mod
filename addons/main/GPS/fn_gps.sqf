@@ -45,7 +45,7 @@ if (GVAR(SHOW_MARKERS)) then
             {
                 _unitsToMark pushBack _x;
             };
-        } forEach playableUnits;
+        } forEach (playableUnits select {isPlayer _x});
 
         // update own player marker
         GVAR(markerplayer) setMarkerPosLocal (vehicle player);
@@ -75,9 +75,13 @@ if (GVAR(SHOW_MARKERS)) then
                 _marker setMarkerAlphaLocal 1;
 
                 // keinen Verwundeten-Namen beim eigenen Marker oder wenn es deaktiviert ist anhängen
-                if (GVAR(SHOW_PLAYERNAMES) && _x != player) then
+                if (GVAR(SHOW_PLAYERNAMES) && _x isNotEqualTo player) then
                 {
                     _marker setMarkerTextLocal format [MLOC(PLAYER_INJURED), _name];
+                }
+                else
+                {
+                    _marker setMarkerTextLocal "";
                 };
             }
             else
@@ -88,9 +92,10 @@ if (GVAR(SHOW_MARKERS)) then
                 _marker setMarkerColor "ColorWhite";
                 _marker setMarkerAlphaLocal 0.7;
 
-                if (!(GVAR(SHOW_PLAYERNAMES)) || _x == player) then
+                if (!(GVAR(SHOW_PLAYERNAMES)) || _x isEqualTo player) then
                 {
                     // keinen Spielernamen beim eigenen Marker oder wenn es deaktiviert ist anhängen
+                    _marker setMarkerTextLocal "";
                     continue;
                 };
 
@@ -107,7 +112,7 @@ if (GVAR(SHOW_MARKERS)) then
                         if (!isNull _operator) then
                         {
                             _marker setMarkerTextLocal format["%1 (%2)", _vec_name, name _operator];
-                        } 
+                        }
                         else
                         {
                             _marker setMarkerTextLocal format["%1 (---)", _vec_name];
