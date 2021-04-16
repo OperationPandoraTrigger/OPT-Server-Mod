@@ -39,9 +39,6 @@ for "_i" from 1 to GVAR(unitnumber) do
 // create special local player marker
 GVAR(markerplayer) = [] call FUNC(createPlayerMarker);
 
-private _Sideidunit = 0;
-private _Sideidplayer = 0;
-
 [{
   
     //Seitenabfrage des Spieler per config
@@ -51,8 +48,8 @@ private _Sideidplayer = 0;
 
     private _unitsToMark = [];
     {
-        _Sideidunit = getnumber (configFile >> "CfgVehicles" >> (typeof _x) >> "side");
-        _sideidplayer = playerSide call BIS_fnc_sideID;   
+        private _Sideidunit = getnumber (configFile >> "CfgVehicles" >> (typeof _x) >> "side");
+        private _sideidplayer = playerSide call BIS_fnc_sideID;   
 
         if (_Sideidunit == _sideidplayer) then 
         {
