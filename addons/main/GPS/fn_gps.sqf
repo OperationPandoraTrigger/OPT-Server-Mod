@@ -44,23 +44,26 @@ private _Sideidplayer = 0;
 
 [{
   
-    Seitenabfrage des Spieler per config
-    Bei ACE Medic wird Spieler zu CIV seite bei Side Abfrage
-    _sidesoldat =getnumber (configFile >> "CfgVehicles" >> (typeof player) >> "side"); 
-     0=East, 1=West, 2=independent
-    ivate _unitsToMark = [];
+    //Seitenabfrage des Spieler per config
+    //Bei ACE Medic wird Spieler zu CIV seite bei Side Abfrage
+    //_sidesoldat =getnumber (configFile >> "CfgVehicles" >> (typeof player) >> "side"); 
+    // 0=East, 1=West, 2=independent
+
+    private _unitsToMark = [];
     {
-      _Sideidunit = getnumber (configFile >> "CfgVehicles" >> (typeof _x) >> "side");
-      _sideidplayer = playerSide call BIS_fnc_sideID;   
-      if (_Sideidunit == _sideidplayer) then 
-      {
-          _unitsToMark pushBack _x;
-      };
-    foreach allUnits; 
-    AR(markerPool) apply
+        _Sideidunit = getnumber (configFile >> "CfgVehicles" >> (typeof _x) >> "side");
+        _sideidplayer = playerSide call BIS_fnc_sideID;   
+
+        if (_Sideidunit == _sideidplayer) then 
+        {
+            _unitsToMark pushBack _x;
+        };
+    } foreach allUnits; 
+
+    GVAR(markerPool) apply
     {
-      _x setMarkerTextLocal "";
-      _x setMarkerPosLocal [0,0];             
+        _x setMarkerTextLocal "";
+        _x setMarkerPosLocal [0,0];             
     };
 
     // update player marker
