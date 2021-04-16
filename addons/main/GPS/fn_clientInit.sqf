@@ -24,7 +24,14 @@
 #include "macros.hpp"
 
 ["missionStarted", {
-    [] call FUNC(gps);
-    [] call FUNC(gps_Unconscious);
+
+    if (GVAR(SHOW_MARKERS)) then 
+    { 
+
+        [] call FUNC(gps);
+        [] call FUNC(gps_Unconscious);
+    };
+
     ace_maptools_mapGpsShow = false;    // disable GPS on map - can be reactivated by user via ace-menu
+    
 }] call CFUNC(addEventhandler);
