@@ -36,16 +36,8 @@ if (GVAR(SHOW_MARKERS)) then
     GVAR(markerplayer) setMarkerAlphaLocal 1;
 
     [{
-        private _unitsToMark = [];
-        {
-            private _sideIdUnit = getnumber (configFile >> "CfgVehicles" >> (typeof _x) >> "side");
-            private _sideIdPlayer = playerSide call BIS_fnc_sideID;   
-
-            if (_sideIdUnit == _sideIdPlayer) then
-            {
-                _unitsToMark pushBack _x;
-            };
-        } forEach (playableUnits select {isPlayer _x});
+        // get all players from own side (dead or alive)
+        private _unitsToMark = allPlayers select {(side group _x) isEqualTo (side group player)};
 
         // update own player marker
         GVAR(markerplayer) setMarkerPosLocal (vehicle player);
@@ -66,7 +58,7 @@ if (GVAR(SHOW_MARKERS)) then
             _marker setMarkerPosLocal (vehicle _x);
             private _name = name _x;
 
-            if (getDammage _x > 0.9) then   // Alte Methode aus Schlacht <= 6: if ((lifeState _x isEqualTo "INCAPACITATED") and !(incapacitatedState _x == "")) then
+            if (damage _x > 0.9) then
             {   // Spieler ist bewusstlos
                 _marker setMarkerTypeLocal "loc_Hospital";  // brauchbare Todesmarker: loc_Hospital, KIA
                 _marker setMarkerDirLocal getDirVisual (vehicle _x);
