@@ -7,20 +7,7 @@ class CfgCLibModules
         path = "opt\opt_server\addons\main";
         dependency[] = {};
 
-        MODULE(GPS) 
-        {
-            dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
-            FNC(clientInit);
-            FNC(gps);
-            FNC(selectUnits);
-            FNC(createPlayerMarker);
-            FNC(createUnitMarker);    
-            FNC(gps_Unconscious);    
-            FNC(createunitmarker_Unconscious); 
-            FNC(initCBASettings);               
-        };
-
-        MODULE(GPS2)
+        MODULE(GPS)
         {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
             FNC(initCBASettings);
