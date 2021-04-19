@@ -94,3 +94,54 @@ This event happens every time a soldier enters a vehicle.
         _this call FUNC(writeTransportDistance);
     };
 }] call CBA_fnc_addClassEventHandler;
+
+// Engine EH für Fahrer -> Log transportierte Soldaten
+["LandVehicle", "GetIn", 
+{
+    /*
+    vehicle: Object - Vehicle the event handler is assigned to
+    position: String - Can be either "driver", "gunner" or "cargo"
+    unit: Object - Unit that entered the vehicle
+    (Since Arma 3 v1.36)
+    turret: Array - turret path
+    */
+    params ["_vec", "_pos", "_unit"];
+
+    // speichere Fahrer als Variable des Objekts
+    if (_pos isEqualTo "driver") then 
+    {
+        _vec setVariable [QGVAR(transport_driver), _unit];
+    };
+
+    // speichere aktuellen Ort an der Einheit
+    _unit setVariable [QGVAR(transport_start_loc), getPosASL _vec];
+}] call CBA_fnc_addClassEventHandler;
+
+["LandVehicle", "GetOut", 
+{
+    /*
+    vehicle: Object - Vehicle the event handler is assigned to
+    position: String - Can be either "driver", "gunner" or "cargo"
+    unit: Object - Unit that left the vehicle
+    turret: Array - turret path (since Arma 3 v1.36)
+    */
+    params ["_vec", "_pos", "_unit", "_turret"];
+    if (_unit isEqualTo player) then 
+    {
+        // logge transport von Spielern
+        #define MinDistance 50
+
+        private _driver = _vec getVariable [QGVAR(transport_driver), objNull];
+
+        // end script if either player or pilot is unconscious
+        if ((lifeState _unit isEqualTo "INCAPACITATED") or (lifeState _driver isEqualTo "INCAPACITATED")) exitWith {};
+
+        private _dis = (getPos _vec) distance2D (_unit getVariable QGVAR(transport_start_loc));
+
+        if (_pos in ["cargo", "gunner"] and (_dis > MinDistance)) then 
+        {
+            // Log Distanz
+            ["Transport", "Drive", [getPlayerUID _unit, name _unit, side _unit, getPlayerUID _driver, name _driver, side _driver, _dis]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
+        };
+    };
+}] call CBA_fnc_addClassEventHandler;
