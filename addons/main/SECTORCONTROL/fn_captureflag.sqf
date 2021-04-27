@@ -37,3 +37,6 @@ _side = side _caller;
 
 // log player
 [_flag, _caller] remoteExecCall [QFUNC(writeFlagCaptured), 2, false];
+
+// player feedback
+hint "Flagge gezogen";
