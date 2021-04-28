@@ -39,4 +39,5 @@ _side = side _caller;
 [_flag, _caller] remoteExecCall [QFUNC(writeFlagCaptured), 2, false];
 
 // player feedback
-hint "Flagge gezogen";
+playSound "addItemFailed";
+systemChat MLOC(FLAG_CAPTURED);
