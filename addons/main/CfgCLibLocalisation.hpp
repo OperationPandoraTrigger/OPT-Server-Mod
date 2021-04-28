@@ -64,6 +64,12 @@ class CfgCLibLocalisation
                 English = "Capture the flag";
                 German = "Flagge ziehen";
             };
+
+            class FLAG_CAPTURED
+            {
+                English = "Flag captured";
+                German = "Flagge gezogen";
+            };
             
             class TELEPORT_MSG_HEADER
             {
