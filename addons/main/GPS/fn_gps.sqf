@@ -60,13 +60,13 @@ GVAR(markerOwn) setMarkerAlphaLocal 1;
             _markerAlive setMarkerAlphaLocal 0;
             _markerAlive setMarkerTypeLocal "loc_ViewTower"; // brauchbare Spielermarker: MemoryFragment, mil_triangle_noShadow, mil_start_noShadow, mil_arrow_noShadow, loc_ViewTower
             _markerAlive setMarkerSizeLocal [1.2, 1.2];
-            _markerAlive setMarkerColor "ColorWhite";
+            _markerAlive setMarkerColorLocal "ColorWhite";
 
             createMarkerLocal [_markerDead, _playerVehicle];
             _markerDead setMarkerAlphaLocal 0;
             _markerDead setMarkerTypeLocal "loc_Hospital";  // brauchbare Todesmarker: loc_Hospital, KIA
             _markerDead setMarkerSizeLocal [0.8, 0.8];
-            _markerDead setMarkerColor "ColorRed";
+            _markerDead setMarkerColorLocal "ColorRed";
         };
 
         // Zeit des letzten Updates speichern (für späteren Cleanup)
