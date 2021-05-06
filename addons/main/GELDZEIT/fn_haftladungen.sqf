@@ -44,7 +44,7 @@ private _lis = lineIntersectsSurfaces [_start, _end, objNull, objNull, true, -1]
 private _intersection = _lis param [0, []] select 0;
 
 private _vDir = _start vectorFromTo _end;
-private _position = _intersection vectorAdd (_vDir vectorMultiply +0.55); // 60 cm heran
+private _position = _intersection vectorAdd (_vDir vectorMultiply +0.55); // 55 cm heran
 private _offset = _veh worldToModel ASLToAGL _position;
 
 private _xoffset = (_offset select 0);
