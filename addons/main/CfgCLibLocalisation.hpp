@@ -444,6 +444,26 @@ class CfgCLibLocalisation
                 English = "Beam to other base";
                 German = "Beam zur anderen Basis";
             };
+            class HAFTLADUNG
+            {
+                English = "Attach explosive charge";
+                German = "Sprengladung anbringen";
+            };
+            class HAFTLADUNGNOBOMBE
+            {
+                English = "no explosive charge ready to be attached";
+                German = "keine Sprengladung bereit zum anbringen";
+            };
+            class HAFTLADUNGNOVEH
+            {
+                English = "no explosive charge ready to be attached";
+                German = "keine Sprengladung bereit zum anbringen";
+            };
+            class HAFTLADUNGATTACH
+            {
+                English = "no explosive charge ready to be attached";
+                German = "keine Sprengladung bereit zum anbringen";
+            };
         };
 
         class FIELDREPAIR
