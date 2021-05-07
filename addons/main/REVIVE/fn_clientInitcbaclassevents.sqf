@@ -36,7 +36,7 @@
     [
         "OPT_REVIVE_DRAG",
         MLOC(DRAG),
-        "",
+        "z\ace\addons\dragging\UI\icons\person_drag.paa",
         {
             params ["_target", "_player", "_params"]; 
             [_target, _player, "action_drag"] call FUNC(handleAction);
