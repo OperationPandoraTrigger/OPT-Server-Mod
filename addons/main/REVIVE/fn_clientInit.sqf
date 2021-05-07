@@ -77,5 +77,6 @@ DFUNC(eigenversorgung) =
 
     [(typeOf player), 1, ["ACE_SelfActions"], GVAR(revive_Action_eigen)] call ace_interact_menu_fnc_addActionToClass;
 
+    // Spielerbeitritt loggen, bei Spielstart und wenn über die Lobby ein neuer Slot gewählt wird
     ["Player", "Joined", [getPlayerUID player, name player, side player]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
 }] call CFUNC(addEventhandler);
