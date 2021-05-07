@@ -2,7 +2,7 @@
 #define MAJOR 1
 #define MINOR 9
 #define PATCHLVL 1
-#define BUILD 50
+#define BUILD 51
 
 #ifdef VERSION
     #undef VERSION
