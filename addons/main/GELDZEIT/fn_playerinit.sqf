@@ -45,25 +45,5 @@ enableTeamswitch false;
 ["missionStarted",
 {
     // setup earplug ace menu
-    private _action_earplug =
-    [
-        MLOC(ACE_EQIP),
-        MLOC(ACE_EQIP_EARPLUGS),
-        "",
-        {
-            params ["_target", "_player", "_params"]; 
-            [] call FUNC(earplugs);
-        },
-        {
-            true
-        }
-    ] call ace_interact_menu_fnc_createAction;
-
-    [
-        player, 
-        1, 
-        ["ACE_SelfActions", "ACE_Equipment"],
-        _action_earplug
-    ] call ace_interact_menu_fnc_addActionToObject;
-
+    [] call FUNC(earplugs);
 }] call CFUNC(addEventhandler);
