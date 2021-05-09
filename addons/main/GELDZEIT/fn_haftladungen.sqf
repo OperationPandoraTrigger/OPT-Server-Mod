@@ -40,13 +40,17 @@ if (isNull _bomb) exitWith {Hint format["%1",MLOC(HAFTLADUNGNOBOMBE)];};
 
 //Roherfassung Objekt
 private _start = AGLToASL positionCameraToWorld [0,0,0];
-private _end   = AGLToASL positionCameraToWorld [0,0,1];
+private _end   = AGLToASL positionCameraToWorld [0,0,10];
 private _lis = lineIntersectsSurfaces [_start, _end, _unit, objNull, true, -1];
 private _intersection = _lis param [0, []] select 0;
 
+//Check Fahrzeug gefunden wurde
+if (isNil "_intersection") exitWith {Hint format["%1",MLOC(HAFTLADUNGNOVEH)];};
+if (_intersection isEqualTo []) exitWith {Hint format["%1",MLOC(HAFTLADUNGNOVEH)];};
+
 //Netto Position des Fahrzeugs
 private _vDir = _start vectorFromTo _end;
-private _position = _intersection vectorAdd (_vDir vectorMultiply +(0.8*(cos (getDir _veh + 90)))); //80cm abstand 
+private _position = _intersection vectorAdd (_vDir vectorMultiply +(0.9 * abs(cos (getDir _veh + 90)))); //90cm abstand 
 private _offset = _veh worldToModel ASLToAGL _position;
 
 private _xoffset = (_offset select 0);
