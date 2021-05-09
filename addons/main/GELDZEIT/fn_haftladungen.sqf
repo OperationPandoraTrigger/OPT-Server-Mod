@@ -31,7 +31,7 @@ private _bomb = nil;
 private _pic = "A3\Weapons_F\Data\UI\gear_c4_charge_small_CA.paa";
 
 // Fahrzeug und Bomben ermittlung 
-_veh = (nearestObjects[_unit,["car","truck","tank","wheeled_apc"],5]) select 0;
+_veh = (nearestObjects[_unit,["car","truck","tank","wheeled_apc"],8]) select 0;
 _bomb = (nearestObject [_unit, 'PipeBombBase']);
 
 //check ob Beide nötigen Dinge vorhanden sind
@@ -40,11 +40,11 @@ if (isNull _bomb) exitWith {Hint format["%1",MLOC(HAFTLADUNGNOBOMBE)];};
 
 private _start = AGLToASL positionCameraToWorld [0,0,0];
 private _end   = AGLToASL positionCameraToWorld [0,0,1];
-private _lis = lineIntersectsSurfaces [_start, _end, objNull, objNull, true, -1];
+private _lis = lineIntersectsSurfaces [_start, _end, _unit, objNull, true, -1];
 private _intersection = _lis param [0, []] select 0;
 
 private _vDir = _start vectorFromTo _end;
-private _position = _intersection vectorAdd (_vDir vectorMultiply +0.55); // 55 cm heran
+private _position = _intersection vectorAdd (_vDir vectorMultiply +(0.8*(cos (getDir _veh + 90)))); 
 private _offset = _veh worldToModel ASLToAGL _position;
 
 private _xoffset = (_offset select 0);
@@ -57,5 +57,3 @@ _bomb setVectorDirAndUp [[0,(cos (getDir _veh + 90)),0],[(cos (getDir _veh - 90 
 
 _pic = "A3\Weapons_F\Data\UI\gear_c4_charge_small_CA.paa";
 hint composeText [parseText format ["<t align='left' size='%4'><img image='%3'></t>" +"<t align='center' size='1.25' shadow='true'>%1</t><t align='right' size='%4'><img image='%3'></t>" +"<br/>" +"<t align='center' size='1.0' shadow='true'>%2</t>","C4",MLOC(HAFTLADUNGATTACH),_pic,3.0]];
-
-systemChat format ["%1 | %2 | %3 | %4",_intersection,[_xoffset,_yoffset,_zoffset],_position,_vDir];

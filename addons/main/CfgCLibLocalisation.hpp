@@ -456,13 +456,13 @@ class CfgCLibLocalisation
             };
             class HAFTLADUNGNOVEH
             {
-                English = "no explosive charge ready to be attached";
-                German = "keine Sprengladung bereit zum anbringen";
+                English = "no vehicle ready to mount";
+                German = "keine Fahrzeug bereit zum anbringen";
             };
             class HAFTLADUNGATTACH
             {
-                English = "no explosive charge ready to be attached";
-                German = "keine Sprengladung bereit zum anbringen";
+                English = "Explosive charge attached to vehicle";
+                German = "Sprengladung an Fahrzeug angebracht";
             };
         };
 
