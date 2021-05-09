@@ -38,6 +38,8 @@ _bomb = (nearestObject [_unit, 'PipeBombBase']);
 if (isNull _veh) exitWith {Hint format["%1",MLOC(HAFTLADUNGNOVEH)];};
 if (isNull _bomb) exitWith {Hint format["%1",MLOC(HAFTLADUNGNOBOMBE)];};
 
+if ((_bomb distance _veh) > 8) exitWith {Hint format["%1",MLOC(HAFTLADUNGNOBOMBE)];};
+
 //Roherfassung Objekt
 private _start = AGLToASL positionCameraToWorld [0,0,0];
 private _end   = AGLToASL positionCameraToWorld [0,0,10];
