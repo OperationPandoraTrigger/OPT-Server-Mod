@@ -29,6 +29,16 @@ params
 // log destroyed vehicle and killer
 [_vec, _instigator, _source] call FUNC(writeKill);
 
+//Loging Besatzung bei HEli Abschuss
+//Heli abschusse werden sonst nicht dem AA gut geschrieben. 
+if (_vec isKindOf "Air") then 
+{
+    (crew _vec) apply 
+    {
+        [_x, _instigator, _source] remoteExecCall ["OPT_SHOP_fnc_writeKill", 2, false];
+    };
+ };   
+
 // delete all wrecks within the base safezone
 switch OPT_GELDZEIT_Fraktionauswahl do 
 {

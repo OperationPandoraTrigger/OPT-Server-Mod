@@ -71,7 +71,6 @@ DFUNC(isUnconscious) =
     _newPlayer setVariable ["tf_unable_to_use_radio", false];
     
     GVAR(OPT_isDragging) = false;
-    OPT_GELDZEIT_earplugsInUse = 1;
     OPT_REVIVE_unconsciousHandler = nil;
     OPT_REVIVE_respawnedHandler = nil;
     
