@@ -69,7 +69,7 @@ DFUNC(eigenversorgung) =
     [
         MLOC(FIRST_AID),
         MLOC(FIRST_AID),
-        "",
+        "a3\ui_f\data\igui\cfg\simpletasks\types\heal_ca.paa",
         {[] call FUNC(eigenversorgung)},
         {((vehicle player == player) and (getdammage player > 0.2))},
         {}

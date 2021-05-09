@@ -391,28 +391,22 @@ class CfgCLibLocalisation
                 German = "Ausrüstung";
             };
             
-            class ACE_EQIP_EARPLUGS
-            {
-                English = "Earplugs";
-                German = "Ohrenstöpsel";
-            };
-            
             class EARPLUGS_25
             {
-                English = "Earplugs 25%";
-                German = "Ohrstoepsel 25%";
+                English = "Earplugs in";
+                German = "Ohrenstöpsel rein";
             };
             
             class EARPLUGS_50
             {
                 English = "Earplugs 50%";
-                German = "Ohrstoepsel 50%";
+                German = "Ohrenstöpsel 50%";
             };
             
-            class EARPLUGS_OUT
+            class EARPLUGS_100
             {
                 English = "Earplugs out";
-                German = "Ohrstoepsel raus";
+                German = "Ohrenstöpsel raus";
             };
             
             class BUDGET_MIO
