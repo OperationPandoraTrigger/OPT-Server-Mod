@@ -44,7 +44,7 @@ private _lis = lineIntersectsSurfaces [_start, _end, _unit, objNull, true, -1];
 private _intersection = _lis param [0, []] select 0;
 
 private _vDir = _start vectorFromTo _end;
-private _position = _intersection vectorAdd (_vDir vectorMultiply +(0.8*(cos (getDir _veh + 90)))); 
+private _position = _intersection vectorAdd (_vDir vectorMultiply +(0.8*(cos (getDir _veh + 90)))); //80cm abstand 
 private _offset = _veh worldToModel ASLToAGL _position;
 
 private _xoffset = (_offset select 0);
