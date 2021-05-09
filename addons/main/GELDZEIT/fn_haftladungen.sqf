@@ -38,11 +38,13 @@ _bomb = (nearestObject [_unit, 'PipeBombBase']);
 if (isNull _veh) exitWith {Hint format["%1",MLOC(HAFTLADUNGNOVEH)];};
 if (isNull _bomb) exitWith {Hint format["%1",MLOC(HAFTLADUNGNOBOMBE)];};
 
+//Roherfassung Objekt
 private _start = AGLToASL positionCameraToWorld [0,0,0];
 private _end   = AGLToASL positionCameraToWorld [0,0,1];
 private _lis = lineIntersectsSurfaces [_start, _end, _unit, objNull, true, -1];
 private _intersection = _lis param [0, []] select 0;
 
+//Netto Position des Fahrzeugs
 private _vDir = _start vectorFromTo _end;
 private _position = _intersection vectorAdd (_vDir vectorMultiply +(0.8*(cos (getDir _veh + 90)))); //80cm abstand 
 private _offset = _veh worldToModel ASLToAGL _position;
@@ -51,9 +53,13 @@ private _xoffset = (_offset select 0);
 private _yoffset = (_offset select 1);
 private _zoffset = _offset select 2;
 
+// Anheften der Sprengladung mit Offset
 _bomb attachTo [_veh, [_xoffset,_yoffset,_zoffset]];
+
+//Ausrichten der Sprengladung 
 private _unitdir = getDir _unit;
 _bomb setVectorDirAndUp [[0,(cos (getDir _veh + 90)),0],[(cos (getDir _veh - 90 +_unitdir)),(cos (getDir _veh + 90 + _unitdir)),0]];
 
+//Ausgabe an den Spieler
 _pic = "A3\Weapons_F\Data\UI\gear_c4_charge_small_CA.paa";
 hint composeText [parseText format ["<t align='left' size='%4'><img image='%3'></t>" +"<t align='center' size='1.25' shadow='true'>%1</t><t align='right' size='%4'><img image='%3'></t>" +"<br/>" +"<t align='center' size='1.0' shadow='true'>%2</t>","C4",MLOC(HAFTLADUNGATTACH),_pic,3.0]];
