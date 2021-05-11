@@ -3,7 +3,7 @@
 * Initialisierung Rules System 
 *
 * Author:
-* Lord-MDB
+* Lord-MDB, form
 *
 * Arguments:
 * None
@@ -38,21 +38,32 @@
 {
     [] call FUNC(setup_classnames);
 
-    player addEventHandler ["Take", {_this call FUNC(weaponCheck)}];
+    // UAV Drohnenstation
+    [] call FUNC(uav);
 
-    // EH für Positionssperre in Fahrzeugen beim Einsteigen
-    player addEventHandler ["GetInMan", 
+    // Hint Meldung das Zuschauerslot besetzt wurde. 
+    if ((player isKindOf "VirtualSpectator_F") or (player isKindOf "ace_spectator_virtual")) then 
     {
-        /*  
-            unit: Object - Unit the event handler is assigned to
-            position: String - Can be either "driver", "gunner" or "cargo"
-            vehicle: Object - Vehicle the unit entered
-            turret: Array - turret path
-        */
-        params ["_unit", "_pos", "_vec", "_turret"];
+        private _txt = format["%1 hat einen Zuschauerslot ausgewählt.", name player];
+        [_txt] remoteExecCall ["hint", 0, false];
+    };
 
-        if (!(OPT_SECTORCONTROL_trainingon)) then 
+    if (!(OPT_SECTORCONTROL_trainingon)) then 
+    {
+        // EH für Waffencheck
+        player addEventHandler ["Take", {_this call FUNC(weaponCheck)}];
+
+        // EH für Positionssperre in Fahrzeugen beim Einsteigen
+        player addEventHandler ["GetInMan", 
         {
+            /*  
+                unit: Object - Unit the event handler is assigned to
+                position: String - Can be either "driver", "gunner" or "cargo"
+                vehicle: Object - Vehicle the unit entered
+                turret: Array - turret path
+            */
+            params ["_unit", "_pos", "_vec", "_turret"];
+
             if (!(typeOf _unit in GVAR(pilots))) then 
             {
                 if (_vec isKindOf "Air" && _pos in GVAR(blockedVehiclePositions_air)) then 
@@ -66,10 +77,7 @@
                     };
                 };
             };
-        };
 
-        if (!(OPT_SECTORCONTROL_trainingon)) then 
-        {
             if (!(typeOf _unit in GVAR(crew))) then 
             {
                 if (_pos in GVAR(blockedVehiclePositions_veh)) then 
@@ -83,21 +91,18 @@
                     };
                 };
             };
-        };
-    }];
-    
-    // EH für Positionssperre in Fahrzeugen bei Platztausch
-    player addEventHandler ["SeatSwitchedMan", 
-    {
-        /*  
-            unit1: Object - Unit switching seat.
-            unit2: Object - Unit with which unit1 is switching seat.
-            vehicle: Object - Vehicle where switching seats is taking place.
-        */
-        params ["_unit1", "_unit2", "_vec"];
+        }];
 
-        if (!(OPT_SECTORCONTROL_trainingon)) then 
+        // EH für Positionssperre in Fahrzeugen bei Platztausch
+        player addEventHandler ["SeatSwitchedMan", 
         {
+            /*  
+                unit1: Object - Unit switching seat.
+                unit2: Object - Unit with which unit1 is switching seat.
+                vehicle: Object - Vehicle where switching seats is taking place.
+            */
+            params ["_unit1", "_unit2", "_vec"];
+
             if (!(typeOf _unit1 in GVAR(pilots))) then 
             {
                 if (_vec isKindOf "Air" && (assignedVehicleRole  _unit1 select 0) in GVAR(blockedVehiclePositions_air)) then 
@@ -125,146 +130,138 @@
                     };
                 };
             };
-        };
-    }];
+        }];
 
-    // EH für Sprengmeister
-    player addEventHandler ["FiredMan", 
-    {
-        /* 
-            0 unit: Object - Unit the event handler is assigned to (the instigator)
-            1 weapon: String - Fired weapon
-            2 muzzle: String - Muzzle that was used
-            3 mode: String - Current mode of the fired weapon
-            4 ammo: String - Ammo used
-            5 magazine: String - magazine name which was used
-            6 projectile: Object - Object of the projectile that was shot out
-            7 vehicle: Object - Vehicle, if weapon is vehicle weapon, otherwise objNull
-        */
-        if ((_this select 1 == "Put") and !(typeOf player in GVAR(pioniers)) and !(((_this select 5) isEqualTo "SatchelCharge_Remote_Mag") or ((_this select 5) isEqualTo "DemoCharge_Remote_Mag") or ((_this select 5) isEqualTo "ClaymoreDirectionalMine_Remote_Mag"))) then
+        // EH für Sprengmeister
+        player addEventHandler ["FiredMan", 
         {
-            // lösche Mine
-            deleteVehicle (_this select 6);
-            // gib Spieler Mine zurück
-            player addMagazine (_this select 5);
-            // Warnhinweis
-            private _txt = MLOC(PLACE_MINE);
-            private _header = MLOC(RULE_VIOLATION);
-            hint format ["%1\n\n%2", _header, _txt];
-        };  
-    }];
-
-    // UAV Drohenstation kontrolle
-    // [] call FUNC(uav);
-
-    // Hint Meldung das Zuschauerslot besetzt wurde. 
-    if ((player isKindOf "VirtualSpectator_F") or (player isKindOf "ace_spectator_virtual")) then 
-    {
-        private _txt = format["Spieler %1 hat einen Zuschauerslot ausgewählt.", name player];
-        [_txt] remoteExecCall ["hint", 0, false];
-    };
-
-    // Regelmäßig checken ob sich der Spieler außerhalb der Karte aufhält (Livonia = 12800 x 12800)
-    [{
-        private _posX = (getPos player) select 0;
-        private _posY = (getPos player) select 1;
-        if ((_posX < 0) or (_posX > 12800) or (_posY < 0) or (_posY > 12800)) then
-        {
-            player setDamage 1;
-            [MLOC(PLAYER_OUT_OF_MAP)] remoteExecCall ["hint", -2]; 
-        };
-    }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
-
-    // Regelmäßig checken ob sich der Spieler in einem verbotenen Bereich in der nähe einer Feindlichen Basis aufhält
-    switch OPT_GELDZEIT_Fraktionauswahl do 
-    {
-        case "AAFvsCSAT":
-        {
-            switch playerSide do
+            /* 
+                0 unit: Object - Unit the event handler is assigned to (the instigator)
+                1 weapon: String - Fired weapon
+                2 muzzle: String - Muzzle that was used
+                3 mode: String - Current mode of the fired weapon
+                4 ammo: String - Ammo used
+                5 magazine: String - magazine name which was used
+                6 projectile: Object - Object of the projectile that was shot out
+                7 vehicle: Object - Vehicle, if weapon is vehicle weapon, otherwise objNull
+            */
+            if ((_this select 1 == "Put") and !(typeOf player in GVAR(pioniers)) and !(((_this select 5) isEqualTo "SatchelCharge_Remote_Mag") or ((_this select 5) isEqualTo "DemoCharge_Remote_Mag") or ((_this select 5) isEqualTo "ClaymoreDirectionalMine_Remote_Mag"))) then
             {
-                case east:
-                {
-                    [{
-                        if (((player distance2D getMarkerPos "AAF_T_Zone1") < MIN_DISTANCE_TO_ENEMYBASE) or ((player distance2D getMarkerPos "AAF_T_Zone2") < MIN_DISTANCE_TO_ENEMYBASE)) then
-                        {
-                            player setDamage 1;
-                            [MLOC(BASE_DISTANCE)] remoteExecCall ["hint", -2]; 
-                        };
-                    }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
-                };
+                // lösche Mine
+                deleteVehicle (_this select 6);
+                // gib Spieler Mine zurück
+                player addMagazine (_this select 5);
+                // Warnhinweis
+                private _txt = MLOC(PLACE_MINE);
+                private _header = MLOC(RULE_VIOLATION);
+                hint format ["%1\n\n%2", _header, _txt];
+            };  
+        }];
 
-                case independent:
+        // Regelmäßig checken ob sich der Spieler außerhalb der Karte aufhält
+        [{
+            private _mapSize = worldSize;
+            private _pos = getPos player;
+            private _posX = _pos select 0;
+            private _posY = _pos select 1;
+            if ((_posX < 0) or (_posX > _mapSize) or (_posY < 0) or (_posY > _mapSize)) then
+            {
+                player setDamage 1;
+                [MLOC(PLAYER_OUT_OF_MAP)] remoteExecCall ["hint", -2]; 
+            };
+        }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
+
+        // Regelmäßig checken ob sich der Spieler in einem verbotenen Bereich in der nähe einer Feindlichen Basis aufhält
+        switch OPT_GELDZEIT_Fraktionauswahl do 
+        {
+            case "AAFvsCSAT":
+            {
+                switch playerSide do
                 {
-                    [{
-                        if (((player distance2D getMarkerPos "CSAT_T_Zone1") < MIN_DISTANCE_TO_ENEMYBASE) or ((player distance2D getMarkerPos "CSAT_T_Zone2") < MIN_DISTANCE_TO_ENEMYBASE)) then
-                        {
-                            player setDamage 1;
-                            [MLOC(BASE_DISTANCE)] remoteExecCall ["hint", -2]; 
-                        };
-                    }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
+                    case east:
+                    {
+                        [{
+                            if (((player distance2D getMarkerPos "AAF_T_Zone1") < MIN_DISTANCE_TO_ENEMYBASE) or ((player distance2D getMarkerPos "AAF_T_Zone2") < MIN_DISTANCE_TO_ENEMYBASE)) then
+                            {
+                                player setDamage 1;
+                                [MLOC(BASE_DISTANCE)] remoteExecCall ["hint", -2]; 
+                            };
+                        }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
+                    };
+
+                    case independent:
+                    {
+                        [{
+                            if (((player distance2D getMarkerPos "CSAT_T_Zone1") < MIN_DISTANCE_TO_ENEMYBASE) or ((player distance2D getMarkerPos "CSAT_T_Zone2") < MIN_DISTANCE_TO_ENEMYBASE)) then
+                            {
+                                player setDamage 1;
+                                [MLOC(BASE_DISTANCE)] remoteExecCall ["hint", -2]; 
+                            };
+                        }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
+                    };
                 };
             };
-        };
 
-        case "NATOvsCSAT":
-        {
-            switch playerSide do
+            case "NATOvsCSAT":
             {
-                case east:
+                switch playerSide do
                 {
-                    [{
-                        if (((player distance2D getMarkerPos "NATO_T_Zone1") < MIN_DISTANCE_TO_ENEMYBASE) or ((player distance2D getMarkerPos "NATO_T_Zone2") < MIN_DISTANCE_TO_ENEMYBASE)) then
-                        {
-                            player setDamage 1;
-                            [MLOC(BASE_DISTANCE)] remoteExecCall ["hint", -2]; 
-                        };
-                    }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
-                };
+                    case east:
+                    {
+                        [{
+                            if (((player distance2D getMarkerPos "NATO_T_Zone1") < MIN_DISTANCE_TO_ENEMYBASE) or ((player distance2D getMarkerPos "NATO_T_Zone2") < MIN_DISTANCE_TO_ENEMYBASE)) then
+                            {
+                                player setDamage 1;
+                                [MLOC(BASE_DISTANCE)] remoteExecCall ["hint", -2]; 
+                            };
+                        }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
+                    };
 
-                case west:
-                {
-                    [{
-                        if (((player distance2D getMarkerPos "CSAT_T_Zone1") < MIN_DISTANCE_TO_ENEMYBASE) or ((player distance2D getMarkerPos "CSAT_T_Zone2") < MIN_DISTANCE_TO_ENEMYBASE)) then
-                        {
-                            player setDamage 1;
-                            [MLOC(BASE_DISTANCE)] remoteExecCall ["hint", -2]; 
-                        };
-                    }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
+                    case west:
+                    {
+                        [{
+                            if (((player distance2D getMarkerPos "CSAT_T_Zone1") < MIN_DISTANCE_TO_ENEMYBASE) or ((player distance2D getMarkerPos "CSAT_T_Zone2") < MIN_DISTANCE_TO_ENEMYBASE)) then
+                            {
+                                player setDamage 1;
+                                [MLOC(BASE_DISTANCE)] remoteExecCall ["hint", -2]; 
+                            };
+                        }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
+                    };
                 };
             };
-        };
 
-        case "NATOvsAAF":
-        {
-            switch playerSide do
+            case "NATOvsAAF":
             {
-                case independent:
+                switch playerSide do
                 {
-                    [{
-                        if (((player distance2D getMarkerPos "NATO_T_Zone1") < MIN_DISTANCE_TO_ENEMYBASE) or ((player distance2D getMarkerPos "NATO_T_Zone2") < MIN_DISTANCE_TO_ENEMYBASE)) then
-                        {
-                            player setDamage 1;
-                            [MLOC(BASE_DISTANCE)] remoteExecCall ["hint", -2]; 
-                        };
-                    }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
-                };
+                    case independent:
+                    {
+                        [{
+                            if (((player distance2D getMarkerPos "NATO_T_Zone1") < MIN_DISTANCE_TO_ENEMYBASE) or ((player distance2D getMarkerPos "NATO_T_Zone2") < MIN_DISTANCE_TO_ENEMYBASE)) then
+                            {
+                                player setDamage 1;
+                                [MLOC(BASE_DISTANCE)] remoteExecCall ["hint", -2]; 
+                            };
+                        }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
+                    };
 
-                case west:
-                {
-                    [{
-                        if (((player distance2D getMarkerPos "AAF_T_Zone1") < MIN_DISTANCE_TO_ENEMYBASE) or ((player distance2D getMarkerPos "AAF_T_Zone2") < MIN_DISTANCE_TO_ENEMYBASE)) then
-                        {
-                            player setDamage 1;
-                            [MLOC(BASE_DISTANCE)] remoteExecCall ["hint", -2]; 
-                        };
-                    }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
+                    case west:
+                    {
+                        [{
+                            if (((player distance2D getMarkerPos "AAF_T_Zone1") < MIN_DISTANCE_TO_ENEMYBASE) or ((player distance2D getMarkerPos "AAF_T_Zone2") < MIN_DISTANCE_TO_ENEMYBASE)) then
+                            {
+                                player setDamage 1;
+                                [MLOC(BASE_DISTANCE)] remoteExecCall ["hint", -2]; 
+                            };
+                        }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
+                    };
                 };
             };
-        };
 
-        default 
-        {
-            ERROR_LOG("RulesClientInit: Fehlerhafte Datenübergabe - Keine Fraktionauswahl erkannt");
+            default 
+            {
+                ERROR_LOG("RulesClientInit: Fehlerhafte Datenübergabe - Keine Fraktionauswahl erkannt");
+            };
         };
-    };
+    };  // if (!(OPT_SECTORCONTROL_trainingon))
 }] call CFUNC(addEventhandler);
