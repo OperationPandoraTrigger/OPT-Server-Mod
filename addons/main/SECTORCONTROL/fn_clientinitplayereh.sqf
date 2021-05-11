@@ -14,9 +14,9 @@
 */
 #include "macros.hpp"
 
-/* EH für das Versetzen der Flaggen im Trainingsmodus */
 if (GVAR(trainingon)) then 
 {
+    // EH für das Versetzen der Flaggen im Trainingsmodus
     // use stackedEH, cannot override default behavior
     [QGVAR(move_flag), "onMapSingleClick", 
     {
@@ -64,9 +64,12 @@ if (GVAR(trainingon)) then
     }] call BIS_fnc_addStackedEventHandler;
 
     player addAction [("<t color=""#f0bfbfbf"">" + ("Teleport") + "</t>"), {[] call FUNC(teleport)}, [], 0, false, true, '', "alive _target"];
+    player addAction ["<t color='#FF0000'>Virtual Arsenal</t>", {["Open", true] spawn BIS_fnc_arsenal;}, [], 5, false, true];
 
-    ["Respawn", {
+    ["Respawn",
+    {
         player addAction [("<t color=""#f0bfbfbf"">" + ("Teleport") + "</t>"), {[] call FUNC(teleport)}, [], 0, false, true, '', "alive _target"];
+        player addAction ["<t color='#FF0000'>Virtual Arsenal</t>", {["Open", true] spawn BIS_fnc_arsenal;}, [], 5, false, true];
     }] call CFUNC(addEventhandler);
 };
 
