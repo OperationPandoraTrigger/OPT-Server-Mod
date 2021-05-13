@@ -67,7 +67,7 @@ if (GVAR(trainingon)) then
     player addAction [("<t color=""#f0bfbfbf"">" + ("Teleport") + "</t>"), {[] call FUNC(teleport)}, [], 0, false, true, '', "alive _target"];
     
     // Virtuelles Arsenal (aber nicht auf der Livonia-Karte!)
-    if !("Enoch" isEqualTo worldName) then
+    if (worldName != "Enoch") then
     {
         player addAction ["<t color='#FF0000'>Virtual Arsenal</t>", {["Open", true] spawn BIS_fnc_arsenal;}, [], 5, false, true];
     };
@@ -78,7 +78,7 @@ if (GVAR(trainingon)) then
         player addAction [("<t color=""#f0bfbfbf"">" + ("Teleport") + "</t>"), {[] call FUNC(teleport)}, [], 0, false, true, '', "alive _target"];
 
         // Virtuelles Arsenal (aber nicht auf der Livonia-Karte!)
-        if !("Enoch" isEqualTo worldName) then
+        if (worldName != "Enoch") then
         {
             player addAction ["<t color='#FF0000'>Virtual Arsenal</t>", {["Open", true] spawn BIS_fnc_arsenal;}, [], 5, false, true];
         };

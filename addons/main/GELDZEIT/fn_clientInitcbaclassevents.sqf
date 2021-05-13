@@ -15,7 +15,7 @@
 #include "macros.hpp"
 
 // Haftladungen (aber nicht auf der Livonia-Karte!)
-if !("Enoch" isEqualTo worldName) then
+if (worldName != "Enoch") then
 {
     ["LandVehicle", "init", 
     {

@@ -28,7 +28,7 @@
 #include "macros.hpp"
 
 // Livonia Sektorenmarker
-if ("Enoch" isEqualTo worldName) then
+if (worldName == "Enoch") then
 {
     GVAR(SectorMarkers) =
     [
