@@ -28,9 +28,6 @@
 */
 #include "macros.hpp"
 
-// Spieler wird getötet wenn er sich zu nah an eine Feindbasis wagt
-#define MIN_DISTANCE_TO_ENEMYBASE 2000
-
 // Wie oft (in Sekunden) wird die Spielerposition geprüft
 #define INTERVAL_DISTANCE_CHECK 15
 
@@ -181,7 +178,7 @@
                     case east:
                     {
                         [{
-                            if (((player distance2D getMarkerPos "AAF_T_Zone1") < MIN_DISTANCE_TO_ENEMYBASE) or ((player distance2D getMarkerPos "AAF_T_Zone2") < MIN_DISTANCE_TO_ENEMYBASE)) then
+                            if ((position player inArea "AAF_T_Zone1") or (position player inArea "AAF_T_Zone2")) then
                             {
                                 player setDamage 1;
                                 [MLOC(BASE_DISTANCE)] remoteExecCall ["hint", -2]; 
@@ -192,7 +189,7 @@
                     case independent:
                     {
                         [{
-                            if (((player distance2D getMarkerPos "CSAT_T_Zone1") < MIN_DISTANCE_TO_ENEMYBASE) or ((player distance2D getMarkerPos "CSAT_T_Zone2") < MIN_DISTANCE_TO_ENEMYBASE)) then
+                            if ((position player inArea "CSAT_T_Zone1") or (position player inArea "CSAT_T_Zone2")) then
                             {
                                 player setDamage 1;
                                 [MLOC(BASE_DISTANCE)] remoteExecCall ["hint", -2]; 
@@ -209,7 +206,7 @@
                     case east:
                     {
                         [{
-                            if (((player distance2D getMarkerPos "NATO_T_Zone1") < MIN_DISTANCE_TO_ENEMYBASE) or ((player distance2D getMarkerPos "NATO_T_Zone2") < MIN_DISTANCE_TO_ENEMYBASE)) then
+                            if ((position player inArea "NATO_T_Zone1") or (position player inArea "NATO_T_Zone2")) then
                             {
                                 player setDamage 1;
                                 [MLOC(BASE_DISTANCE)] remoteExecCall ["hint", -2]; 
@@ -220,7 +217,7 @@
                     case west:
                     {
                         [{
-                            if (((player distance2D getMarkerPos "CSAT_T_Zone1") < MIN_DISTANCE_TO_ENEMYBASE) or ((player distance2D getMarkerPos "CSAT_T_Zone2") < MIN_DISTANCE_TO_ENEMYBASE)) then
+                            if ((position player inArea "CSAT_T_Zone1") or (position player inArea "CSAT_T_Zone2")) then
                             {
                                 player setDamage 1;
                                 [MLOC(BASE_DISTANCE)] remoteExecCall ["hint", -2]; 
@@ -237,7 +234,7 @@
                     case independent:
                     {
                         [{
-                            if (((player distance2D getMarkerPos "NATO_T_Zone1") < MIN_DISTANCE_TO_ENEMYBASE) or ((player distance2D getMarkerPos "NATO_T_Zone2") < MIN_DISTANCE_TO_ENEMYBASE)) then
+                            if ((position player inArea "NATO_T_Zone1") or (position player inArea "NATO_T_Zone2")) then
                             {
                                 player setDamage 1;
                                 [MLOC(BASE_DISTANCE)] remoteExecCall ["hint", -2]; 
@@ -248,7 +245,7 @@
                     case west:
                     {
                         [{
-                            if (((player distance2D getMarkerPos "AAF_T_Zone1") < MIN_DISTANCE_TO_ENEMYBASE) or ((player distance2D getMarkerPos "AAF_T_Zone2") < MIN_DISTANCE_TO_ENEMYBASE)) then
+                            if ((position player inArea "AAF_T_Zone1") or (position player inArea "AAF_T_Zone2")) then
                             {
                                 player setDamage 1;
                                 [MLOC(BASE_DISTANCE)] remoteExecCall ["hint", -2]; 

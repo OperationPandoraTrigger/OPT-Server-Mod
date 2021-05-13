@@ -63,13 +63,25 @@ if (GVAR(trainingon)) then
         
     }] call BIS_fnc_addStackedEventHandler;
 
+    // Teleport funktion
     player addAction [("<t color=""#f0bfbfbf"">" + ("Teleport") + "</t>"), {[] call FUNC(teleport)}, [], 0, false, true, '', "alive _target"];
-    player addAction ["<t color='#FF0000'>Virtual Arsenal</t>", {["Open", true] spawn BIS_fnc_arsenal;}, [], 5, false, true];
+    
+    // Virtuelles Arsenal (aber nicht auf der Livonia-Karte!)
+    if !("Enoch" isEqualTo worldName) then
+    {
+        player addAction ["<t color='#FF0000'>Virtual Arsenal</t>", {["Open", true] spawn BIS_fnc_arsenal;}, [], 5, false, true];
+    };
 
     ["Respawn",
     {
+        // Teleport funktion
         player addAction [("<t color=""#f0bfbfbf"">" + ("Teleport") + "</t>"), {[] call FUNC(teleport)}, [], 0, false, true, '', "alive _target"];
-        player addAction ["<t color='#FF0000'>Virtual Arsenal</t>", {["Open", true] spawn BIS_fnc_arsenal;}, [], 5, false, true];
+
+        // Virtuelles Arsenal (aber nicht auf der Livonia-Karte!)
+        if !("Enoch" isEqualTo worldName) then
+        {
+            player addAction ["<t color='#FF0000'>Virtual Arsenal</t>", {["Open", true] spawn BIS_fnc_arsenal;}, [], 5, false, true];
+        };
     }] call CFUNC(addEventhandler);
 };
 
