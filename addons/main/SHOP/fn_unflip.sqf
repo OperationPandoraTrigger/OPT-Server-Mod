@@ -56,13 +56,13 @@ else
             {
                 if (toLower (typeOf _veh) in _supplies) then 
                 {
-                    "Ausrüstung"
+                    "Ausruestung"
                 } 
                 else 
                 {
                     if (toLower (typeOf _veh) in _static) then 
                     {
-                        "Stationär"
+                        "Stationaer"
                     } 
                     else
                     {
