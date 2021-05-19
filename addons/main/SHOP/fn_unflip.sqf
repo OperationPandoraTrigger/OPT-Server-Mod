@@ -27,35 +27,43 @@ private _light = (opt_shop_nato_vehicles + opt_shop_csat_vehicles + opt_shop_AAF
 private _heavy = (opt_shop_nato_armored + opt_shop_csat_armored + opt_shop_AAF_armored) apply {toLower (_x select 0)};
 private _air = (opt_shop_nato_choppers + opt_shop_csat_choppers + opt_shop_AAF_choppers) apply {toLower (_x select 0)};
 private _boat = (opt_shop_nato_sea + opt_shop_csat_sea + opt_shop_AAF_sea) apply {toLower (_x select 0)};
+private _supplies = (opt_shop_nato_supplies + opt_shop_nato_static + opt_shop_csat_supplies + opt_shop_csat_static + opt_shop_AAF_supplies + opt_shop_AAF_static) apply {toLower (_x select 0)};
 
 _category = if (toLower (typeOf _veh) in _light) then 
+{
+    "Leicht"
+} 
+else 
+{
+    if (toLower (typeOf _veh) in _heavy) then 
     {
-        "Leicht"
+        "Schwer"
     } 
     else 
     {
-        if (toLower (typeOf _veh) in _heavy) then 
+        if (toLower (typeOf _veh) in _air) then 
         {
-            "Schwer"
+            "Flug"
         } 
         else 
         {
-            if (toLower (typeOf _veh) in _air) then 
+            if (toLower (typeOf _veh) in _boat) then 
             {
-                "Flug"
+                "Boot"
             } 
             else 
             {
-                if (toLower (typeOf _veh) in _boat) then 
+                if (toLower (typeOf _veh) in _supplies) then 
                 {
-                    "Boot"
+                    "Ausruestung"
                 } 
                 else 
                 {
                     "Unbekannt"
-                }                
-            };
+                };   
+            };                
         };
     };
+};
 
 ["Vehicle", "Unflipped", [_name, _category, _faction, getPlayerUID player, name player, side player]] call OPT_LOGGING_fnc_writelog;
