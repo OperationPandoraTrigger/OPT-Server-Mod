@@ -66,42 +66,58 @@ if (_victim isKindOf "Man") then
 } 
 else // victim = vehicle!
 {
-    private _vec = _victim;
+    private _veh = _victim;
     private _category ="";
 
-    private _faction = (getText(configFile >> 'CfgVehicles' >> typeOf _vec >> 'faction'));
-    private _name = (getText(configFile >> 'CfgVehicles' >> typeOf _vec >> 'displayName'));
+    private _faction = (getText(configFile >> 'CfgVehicles' >> typeOf _veh >> 'faction'));
+    private _name = (getText(configFile >> 'CfgVehicles' >> typeOf _veh >> 'displayName'));
     private _light = (opt_shop_nato_vehicles + opt_shop_csat_vehicles + opt_shop_AAF_vehicles + opt_shop_nato_vehicles_supply + opt_shop_csat_vehicles_supply + opt_shop_AAF_vehicles_supply) apply {toLower (_x select 0)};
     private _heavy = (opt_shop_nato_armored + opt_shop_csat_armored + opt_shop_AAF_armored) apply {toLower (_x select 0)};
     private _air = (opt_shop_nato_choppers + opt_shop_csat_choppers + opt_shop_AAF_choppers) apply {toLower (_x select 0)};
     private _boat = (opt_shop_nato_sea + opt_shop_csat_sea + opt_shop_AAF_sea) apply {toLower (_x select 0)};
-    
-    _category = if (toLower (typeOf _vec) in _light) then 
+    private _supplies = (opt_shop_nato_supplies + opt_shop_csat_supplies + opt_shop_AAF_supplies) apply {toLower (_x select 0)};
+    private _static = (opt_shop_nato_static + opt_shop_csat_static + opt_shop_AAF_static) apply {toLower (_x select 0)};
+
+    _category = if (toLower (typeOf _veh) in _light) then 
     {
         "Leicht"
     } 
     else 
     {
-        if (toLower (typeOf _vec) in _heavy) then 
+        if (toLower (typeOf _veh) in _heavy) then 
         {
             "Schwer"
         } 
         else 
         {
-            if (toLower (typeOf _vec) in _air) then 
+            if (toLower (typeOf _veh) in _air) then 
             {
                 "Flug"
             } 
             else 
             {
-                if (toLower (typeOf _vec) in _boat) then 
+                if (toLower (typeOf _veh) in _boat) then 
                 {
                     "Boot"
                 } 
                 else 
                 {
-                    "Unbekannt"
-                }                
+                    if (toLower (typeOf _veh) in _supplies) then 
+                    {
+                        "Ausruestung"
+                    } 
+                    else 
+                    {
+                        if (toLower (typeOf _veh) in _static) then 
+                        {
+                            "Stationaer"
+                        } 
+                        else
+                        {
+                            "Unbekannt"
+                        };
+                    };
+                };
             };
         };
     };
@@ -136,7 +152,7 @@ else // victim = vehicle!
     else // Täter nicht bekannt
     {
         // Selbstverschulden?
-        if (_vec == _source) then 
+        if (_veh == _source) then 
         {
             ["Vehicle", "DestroyByAccident", [_name, _category, _faction, netId _victim]] call OPT_LOGGING_fnc_writelog;
         } 
