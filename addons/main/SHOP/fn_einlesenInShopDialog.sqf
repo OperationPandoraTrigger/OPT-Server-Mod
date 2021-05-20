@@ -153,6 +153,42 @@ switch (GVAR(vehicleType)) do
         _konfig ctrlEnable false;       
     };
 
+    case "planes" : 
+    {
+        switch (_side) do 
+        {
+            case west:
+            {    
+                _pool = GVAR(nato_planes);
+                GVAR(pads) = GVAR(pad_plane_west);
+                GVAR(Checkbereich) = 13;
+                GVAR(Hardcap_pool) = GVAR(Hardcap_nato_planes);
+            };
+
+            case east:
+            {    
+                _pool = GVAR(csat_planes);
+                 GVAR(pads) = GVAR(pad_plane_east);
+                 GVAR(Checkbereich) = 13;
+                 GVAR(Hardcap_pool) = GVAR(Hardcap_csat_planes);
+            };
+
+            case independent:
+            {    
+                _pool = GVAR(AAF_planes);
+                GVAR(pads) = GVAR(pad_plane_independent);
+                GVAR(Checkbereich) = 13;
+                GVAR(Hardcap_pool) = GVAR(Hardcap_aaf_planes);
+            };
+
+            default
+            {
+            };        
+        }; 
+        GVAR(moveInVeh) = true;
+        _konfig ctrlEnable false;       
+    };
+
     case "vehicles":
     {
         switch (_side) do 
@@ -283,7 +319,7 @@ switch (GVAR(vehicleType)) do
 };
 
 // Objekte größer 0€ bestimmen 
-_pool = _pool select {_x select 1 > 0};
+//_pool = _pool select {_x select 1 > 0};
 
 // Objekte Sortieren 
 GVAR(orderDialogObjects) = [_pool, 1] call CBA_fnc_sortNestedArray; // billigste zuerst

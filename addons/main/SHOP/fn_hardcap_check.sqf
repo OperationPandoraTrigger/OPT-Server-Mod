@@ -58,6 +58,31 @@ switch (_vehicleType) do
         };     
     };
 
+    case "planes" : 
+    {
+        switch (_side) do 
+        {
+            case west:
+            {    
+                _Hardcap_pool = GVAR(Hardcap_nato_planes);
+            };
+
+            case east:
+            {    
+                 _Hardcap_pool = GVAR(Hardcap_csat_planes);
+            };
+
+            case independent:
+            {    
+                _Hardcap_pool = GVAR(Hardcap_aaf_planes);
+            };
+
+            default 
+            {
+            };        
+        };     
+    };
+
     case "vehicles" : 
     {
         switch (_side) do 
@@ -183,6 +208,35 @@ if (_hardcapinfo > 0) then
                     };        
                 };  
             };
+
+            case "planes" : 
+            {
+                switch (_side) do 
+                {
+                    case west:
+                    {    
+                        GVAR(Hardcap_nato_planes) = _Hardcap_pool;
+                        publicVariable QGVAR(Hardcap_nato_planes);
+                    };
+
+                    case east:
+                    {    
+                        GVAR(Hardcap_csat_planes) = _Hardcap_pool;
+                        publicVariable QGVAR(Hardcap_csat_planes);
+                    };
+
+                    case independent:
+                    {    
+                        GVAR(Hardcap_aaf_planes) = _Hardcap_pool;
+                        publicVariable QGVAR(Hardcap_aaf_planes);
+                    };
+
+                    default 
+                    {
+                    };        
+                };  
+            };
+
             case "vehicles" : 
             {
                 switch (_side) do 
@@ -210,6 +264,7 @@ if (_hardcapinfo > 0) then
                     };        
                 };     
             };
+
             case "supplies" : 
             {
                 switch (_side) do 
@@ -237,6 +292,7 @@ if (_hardcapinfo > 0) then
                     };        
                 };     
             };
+
             case "sea" : 
             {
                 switch (_side) do 
