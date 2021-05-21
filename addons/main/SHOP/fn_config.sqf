@@ -92,9 +92,9 @@ GVAR(nato_choppers) =
 
 GVAR(nato_planes) = 
 [
-    ["C_Plane_Civil_01_F", 0, 0, 0],                            // Caesar BTT
-    ["CUP_C_AN2_CIV", 0, 0, 0],                                 // Antonov An-2
-    ["CUP_C_C47_CIV", 0, 0, 0]                                  // C-47 Skytrain
+    ["C_Plane_Civil_01_F", 1, 0, 0],                            // Caesar BTT
+    ["CUP_C_AN2_CIV", 1, 0, 0],                                 // Antonov An-2
+    ["CUP_C_C47_CIV", 1, 0, 0]                                  // C-47 Skytrain
 ];
 
 GVAR(nato_armored) = 
@@ -242,9 +242,9 @@ GVAR(csat_choppers) =
 
 GVAR(csat_planes) = 
 [
-    ["C_Plane_Civil_01_F", 0, 0, 0],                            // Caesar BTT
-    ["CUP_C_AN2_CIV", 0, 0, 0],                                 // Antonov An-2
-    ["CUP_C_C47_CIV", 0, 0, 0]                                  // C-47 Skytrain
+    ["C_Plane_Civil_01_F", 1, 0, 0],                            // Caesar BTT
+    ["CUP_C_AN2_CIV", 1, 0, 0],                                 // Antonov An-2
+    ["CUP_C_C47_CIV", 1, 0, 0]                                  // C-47 Skytrain
 ];
 
 GVAR(csat_armored) = 
@@ -360,9 +360,9 @@ GVAR(AAF_choppers) =
 
 GVAR(AAF_planes) = 
 [
-    ["C_Plane_Civil_01_F", 0, 0, 0],                            // Caesar BTT
-    ["CUP_C_AN2_CIV", 0, 0, 0],                                 // Antonov An-2
-    ["CUP_C_C47_CIV", 0, 0, 0]                                  // C-47 Skytrain
+    ["C_Plane_Civil_01_F", 1, 0, 0],                            // Caesar BTT
+    ["CUP_C_AN2_CIV", 1, 0, 0],                                 // Antonov An-2
+    ["CUP_C_C47_CIV", 1, 0, 0]                                  // C-47 Skytrain
 ];
 
 GVAR(AAF_armored) = 
@@ -1061,3 +1061,8 @@ GVAR(pad_all_independent) =
     GVAR(pad_plane_independent) +
     GVAR(pad_sup_independent) +
     GVAR(pad_sea_independent);
+
+GVAR(all_item_classnames) = [];
+{
+    GVAR(all_item_classnames) pushBackUnique (_x select 0);
+} forEach GVAR(all);

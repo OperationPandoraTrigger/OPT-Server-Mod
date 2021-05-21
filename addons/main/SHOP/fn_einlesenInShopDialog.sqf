@@ -319,7 +319,7 @@ switch (GVAR(vehicleType)) do
 };
 
 // Objekte größer 0€ bestimmen 
-//_pool = _pool select {_x select 1 > 0};
+_pool = _pool select {_x select 1 > 0};
 
 // Objekte Sortieren 
 GVAR(orderDialogObjects) = [_pool, 1] call CBA_fnc_sortNestedArray; // billigste zuerst
@@ -388,16 +388,39 @@ GVAR(idPadCheckShop) =
     private _order = _display displayCtrl 20004;
     private _padBox = _display displayCtrl 20003;
    
-    // check der Pads ob belegt
-    GVAR(pads) apply 
+    // freie Pads suchen
     {
-        private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], GVAR(Checkbereich)];
-            
-        if (count _ob == 0) then 
+        // Objekte in der Nähe suchen
+        private _objects = nearestObjects [_x, ["AllVehicles", "Thing"], GVAR(Checkbereich)];
+
+        // Objekte in Classnames umwandeln
+        private _classnames = [];
+        {
+            _classnames pushBackUnique typeOf _x;
+        } forEach _objects;
+
+        // Nur Übereinstimmungen mit Shop-Kaufobjekten speichern
+        private _seriousObjects = _classnames arrayIntersect GVAR(all_item_classnames);
+
+        // Jetzt noch lebende Soldaten suchen
+        _objects = nearestObjects [_x, ["CAManBase"], GVAR(Checkbereich)];
+        _classnames = [];
+        {
+            if (alive _x) then
+            {
+                _classnames pushBackUnique typeOf _x;
+            };
+        } forEach _objects;
+     
+        // Soldaten zur Liste hinzufügen
+        _seriousObjects = _seriousObjects + _classnames;
+
+        // Wenn Liste leer -> Pad ist frei!
+        if (count _seriousObjects == 0) then 
         {
             _freiePads append [_x]; 
         };       
-    };  
+    } forEach GVAR(pads);
 
     // Kaufbuttuon Freischalten und erstes Pad zuordnen
     if ((count _freiePads) > 0) then 
