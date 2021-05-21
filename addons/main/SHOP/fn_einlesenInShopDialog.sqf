@@ -390,33 +390,20 @@ GVAR(idPadCheckShop) =
    
     // freie Pads suchen
     {
-        // Objekte in der Nähe suchen
-        private _objects = nearestObjects [_x, ["AllVehicles", "Thing"], GVAR(Checkbereich)];
-
-        // Objekte in Classnames umwandeln
-        private _classnames = [];
-        {
-            _classnames pushBackUnique typeOf _x;
-        } forEach _objects;
-
-        // Nur Übereinstimmungen mit Shop-Kaufobjekten speichern
-        private _seriousObjects = _classnames arrayIntersect GVAR(all_item_classnames);
+        // Bekannte Objekte in der Nähe suchen
+        private _objects = nearestObjects [_x, GVAR(all_item_classnames), GVAR(Checkbereich)];
 
         // Jetzt noch lebende Soldaten suchen
-        _objects = nearestObjects [_x, ["CAManBase"], GVAR(Checkbereich)];
-        _classnames = [];
+        private _soldiers = nearestObjects [_x, ["CAManBase"], GVAR(Checkbereich)];
         {
             if (alive _x) then
             {
-                _classnames pushBackUnique typeOf _x;
+                _objects pushBackUnique _x;
             };
-        } forEach _objects;
+        } forEach _soldiers;
      
-        // Soldaten zur Liste hinzufügen
-        _seriousObjects = _seriousObjects + _classnames;
-
         // Wenn Liste leer -> Pad ist frei!
-        if (count _seriousObjects == 0) then 
+        if (count _objects == 0) then 
         {
             _freiePads append [_x]; 
         };       
