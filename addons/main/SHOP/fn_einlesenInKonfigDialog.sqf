@@ -627,17 +627,26 @@ GVAR(idPadCheckKonfig) = [{
     private _IDD_vehKonfigOrder = _display displayCtrl 22020;
     private _padBox = _display displayCtrl 22018;
    
-    // check der Pads ob belegt
-    GVAR(pads) apply
+    // freie Pads suchen
     {
-        private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], GVAR(Checkbereich)];
-            
-        if (count _ob == 0) then 
+        // Bekannte Objekte in der Nähe suchen
+        private _objects = nearestObjects [_x, GVAR(all_item_classnames), GVAR(Checkbereich)];
+
+        // Jetzt noch lebende Soldaten suchen
+        private _soldiers = nearestObjects [_x, ["CAManBase"], GVAR(Checkbereich)];
+        {
+            if (alive _x) then
+            {
+                _objects pushBackUnique _x;
+            };
+        } forEach _soldiers;
+     
+        // Wenn Liste leer -> Pad ist frei!
+        if (count _objects == 0) then 
         {
             _freiePads append [_x]; 
         };       
-
-    };  
+    } forEach GVAR(pads);
 
     // Kaufbuttuon Freischalten und erstes Pad zuordnen
     if (((count _freiePads) > 0) and (GVAR(Modus) == "New")) then 

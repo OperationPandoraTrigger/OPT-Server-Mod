@@ -28,6 +28,9 @@
 GVAR(Hardcap_nato_choppers) = [];
 publicVariable QGVAR(Hardcap_nato_choppers);
 
+GVAR(Hardcap_nato_planes) = [];
+publicVariable QGVAR(Hardcap_nato_planes);
+
 GVAR(Hardcap_nato_vehicles) = [];
 publicVariable QGVAR(Hardcap_nato_vehicles);
 
@@ -42,6 +45,9 @@ publicVariable QGVAR(Hardcap_nato_sea);
 // Heli / Fahrzeuge / Ausrüstung / See
 GVAR(Hardcap_csat_choppers) = [];
 publicVariable QGVAR(Hardcap_csat_choppers);
+
+GVAR(Hardcap_csat_planes) = [];
+publicVariable QGVAR(Hardcap_csat_planes);
 
 GVAR(Hardcap_csat_vehicles) = [];
 publicVariable QGVAR(Hardcap_csat_vehicles);
@@ -64,6 +70,9 @@ publicVariable QGVAR(Hardcap_csat_sea);
 // Heli / Fahrzeuge / Ausrüstung / See 
 GVAR(Hardcap_aaf_choppers) = [];
 publicVariable QGVAR(Hardcap_aaf_choppers);
+
+GVAR(Hardcap_aaf_planes) = [];
+publicVariable QGVAR(Hardcap_aaf_planes);
 
 GVAR(Hardcap_aaf_vehicles) = [];
 publicVariable QGVAR(Hardcap_aaf_vehicles);

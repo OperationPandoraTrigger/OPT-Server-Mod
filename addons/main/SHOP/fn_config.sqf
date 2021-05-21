@@ -89,7 +89,14 @@ GVAR(nato_choppers) =
     ["OPT_B_Plane_CAS_01_F", DEF_PROD(0)],                      // A-164 Wipeout
     ["OPT_B_Plane_Fighter_01_Stealth_F", DEF_PROD(0)]               // F/A-181 Black Wasp II   
 ];
-     
+
+GVAR(nato_planes) = 
+[
+    ["C_Plane_Civil_01_F", 1, 0, 0],                            // Caesar BTT
+    ["CUP_C_AN2_CIV", 1, 0, 0],                                 // Antonov An-2
+    ["CUP_C_C47_CIV", 1, 0, 0]                                  // C-47 Skytrain
+];
+
 GVAR(nato_armored) = 
 [
     ["OPT4_B_LSV_01_AT_F", DEF_PROD(0)],                     // Prowler AT 
@@ -232,7 +239,14 @@ GVAR(csat_choppers) =
     ["OPT_O_Plane_CAS_01_F_1" , DEF_PROD(0)],                  // Wipeout CAS 400000
     ["OPT_O_Plane_Fighter_01_Stealth_F", DEF_PROD(0)]          // F/A-181 Black Wasp II  
 ];
-    
+
+GVAR(csat_planes) = 
+[
+    ["C_Plane_Civil_01_F", 1, 0, 0],                            // Caesar BTT
+    ["CUP_C_AN2_CIV", 1, 0, 0],                                 // Antonov An-2
+    ["CUP_C_C47_CIV", 1, 0, 0]                                  // C-47 Skytrain
+];
+
 GVAR(csat_armored) = 
 [
 //Vanilla
@@ -343,7 +357,14 @@ GVAR(AAF_choppers) =
     ["OPT_I_Heli_Transport_02_F", 45000,10000,20000],                   // CH-49 Mohawk (Transport+Lift)
     ["OPT_I_UAV_02_light_F", DEF_PROD(0)]                 // Greyhawk unbewaffnet
 ];
-     
+
+GVAR(AAF_planes) = 
+[
+    ["C_Plane_Civil_01_F", 1, 0, 0],                            // Caesar BTT
+    ["CUP_C_AN2_CIV", 1, 0, 0],                                 // Antonov An-2
+    ["CUP_C_C47_CIV", 1, 0, 0]                                  // C-47 Skytrain
+];
+
 GVAR(AAF_armored) = 
 [
     ["OPT_I_LSV_01_AT_ghex_F", DEF_PROD(250000)],                     // Jeep AT 
@@ -402,6 +423,7 @@ GVAR(allNato) =
     GVAR(nato_vehicles) +
     GVAR(nato_vehicles_supply) +
     GVAR(nato_choppers) +
+    GVAR(nato_planes) +
     GVAR(nato_armored) +
     GVAR(nato_supplies) +
     GVAR(nato_static) +
@@ -411,6 +433,7 @@ GVAR(allCsat) =
     GVAR(csat_vehicles) +
     GVAR(csat_vehicles_supply) +
     GVAR(csat_choppers) +
+    GVAR(csat_planes) +
     GVAR(csat_armored) +
     GVAR(csat_supplies) +
     GVAR(csat_static) + 
@@ -420,6 +443,7 @@ GVAR(allAAF) =
     GVAR(AAF_vehicles) +
     GVAR(AAF_vehicles_supply) +
     GVAR(AAF_choppers) +
+    GVAR(AAF_planes) +
     GVAR(AAF_armored) +
     GVAR(AAF_supplies) +
     GVAR(AAF_static) +
@@ -948,6 +972,21 @@ GVAR(pad_air_independent) =
     HeliBoxindependent2
 ];
 
+GVAR(pad_plane_east) =
+[
+    PlaneBoxEast
+];
+
+GVAR(pad_plane_west) =
+[
+    PlaneBoxWest
+];
+
+GVAR(pad_plane_independent) =
+[
+    PlaneBoxIndependent
+];
+
 GVAR(pad_sup_east) =
 [
     AusruestungBoxEast1,
@@ -1005,17 +1044,25 @@ GVAR(pad_sea_independent) =
 GVAR(pad_all_west) =
     GVAR(pad_veh_west) +
     GVAR(pad_air_west) +
+    GVAR(pad_plane_west) +
     GVAR(pad_sup_west) +
     GVAR(pad_sea_west);
 
 GVAR(pad_all_east) =
     GVAR(pad_veh_east) +
     GVAR(pad_air_east) + 
+    GVAR(pad_plane_east) + 
     GVAR(pad_sup_east) +
     GVAR(pad_sea_east);
 
 GVAR(pad_all_independent) =
     GVAR(pad_veh_independent) +
     GVAR(pad_air_independent) +
+    GVAR(pad_plane_independent) +
     GVAR(pad_sup_independent) +
     GVAR(pad_sea_independent);
+
+GVAR(all_item_classnames) = [];
+{
+    GVAR(all_item_classnames) pushBackUnique (_x select 0);
+} forEach GVAR(all);
