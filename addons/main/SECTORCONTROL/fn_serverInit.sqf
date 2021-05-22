@@ -76,8 +76,5 @@ DFUNC(startflagsetup) =
     [FUNC(startflagsetup), {(OPT_GELDZEIT_GAMESTAGE == GAMESTAGE_WAR)}, "Awesome Delay"] call CLib_fnc_waitUntil;
 }] call CFUNC(addEventhandler);
 
-// Sektorenmarker auf die Karte zeichnen sobald die Mission durchgeladen ist
-[] call FUNC(drawsectormarkers);
-
-// Flaggen Arrays und Markierungen setzen sobald die Mission durchgeladen ist
-[] call FUNC(setupflagpositions);
+// Sektoren initialisieren (Sektormarker, Flaggenpositionen, Beampunkte)
+[] call FUNC(setupsectors);

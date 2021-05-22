@@ -27,5 +27,5 @@
 #include "macros.hpp"
 
 {
-    deleteMarker (_x select 4);
+    deleteMarker _x;
 } forEach GVAR(SectorMarkers);

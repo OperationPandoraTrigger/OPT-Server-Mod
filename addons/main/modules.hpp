@@ -103,13 +103,12 @@ class CfgCLibModules
             FNC(clientinitplayereh);
             FNC(addflagmenu);
             FNC(chooseflag);
-            FNC(setupflagpositions);
+            FNC(setupsectors);
             FNC(setupflagpoles);
             FNC(Punkte);
             FNC(captureflag);
             FNC(teleport);
             FNC(drawline);
-            FNC(drawsectormarkers);
             FNC(deletesectormarkers);
         };
 
