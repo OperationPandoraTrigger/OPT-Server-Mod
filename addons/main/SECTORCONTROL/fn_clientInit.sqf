@@ -55,7 +55,7 @@
     [] call FUNC(addflagmenu);
 
     //Positon für Spectatormodus 
-    DFUNC(PositonSpectator) = 
+    DFUNC(SetupSpectatorPositions) = 
     {
         ["AddLocation", ["1", "CSAT BASIS", "CSAT Basis", "\A3\Data_F\Flags\flag_CSAT_CO.paa", [[12369.8,12012.1,94.202],[0,0],[0,0,0],[94.202,true]],[10,true]]] call BIS_fnc_EGSpectator;
         ["AddLocation", ["2", "AAF BASIS", "AAF Basis","\A3\Data_F\Flags\flag_AAF_CO.paa", [[716.676,12256.3,344.832],[0,0],[0,0,0],[333.487,true]],[10,true]]] call BIS_fnc_EGSpectator;
@@ -71,5 +71,5 @@
         ["AddLocation", ["5", "AAF Flagge 1", "AAF Flagge 1","\A3\Data_F\Flags\flag_armex_CO.paa", [_Flag1positionAAF,[0,0],[0,0,0],[100,true]],[10,true]]] call BIS_fnc_EGSpectator;
         ["AddLocation", ["6", "AAF Flagge 2", "AAF Flagge 2","\A3\Data_F\Flags\flag_armex_CO.paa", [_Flag2positionAAF,[0,0],[0,0,0],[100,true]],[10,true]]] call BIS_fnc_EGSpectator;
     }; 
-    [FUNC(PositonSpectator), 2,""] call CLib_fnc_wait;   
+    [FUNC(SetupSpectatorPositions), 2, ""] call CLib_fnc_wait;   
 }] call CFUNC(addEventhandler);

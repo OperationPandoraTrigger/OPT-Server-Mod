@@ -77,7 +77,7 @@ GVAR(nato_flags_pos) = [];
         GVAR(nato_flags_pos) pushBack [_posX, _posY, west, _name, _aktiv];
         [_posX, _posY, _aktiv, _name, west, GVAR(westflag)] call CreateFlags;
     }
-    forEach (GVAR(AllFlags) select _x);
+    forEach ((GVAR(AllSectors) select _x) select 1);
 }
 forEach GVAR(nato_sectors);
 publicVariable QGVAR(nato_flags_pos);
@@ -90,7 +90,7 @@ GVAR(csat_flags_pos) = [];
         GVAR(csat_flags_pos) pushBack [_posX, _posY, east, _name, _aktiv];
         [_posX, _posY, _aktiv, _name, east, GVAR(eastflag)] call CreateFlags;
     }
-    forEach (GVAR(AllFlags) select _x);
+    forEach ((GVAR(AllSectors) select _x) select 1);
 }
 forEach GVAR(csat_sectors);
 publicVariable QGVAR(csat_flags_pos);
@@ -103,7 +103,7 @@ GVAR(aaf_flags_pos) = [];
          GVAR(aaf_flags_pos) pushBack [_posX, _posY, independent, _name, _aktiv];
         [_posX, _posY, _aktiv, _name, independent, GVAR(independentflag)] call CreateFlags;
     }
-    forEach (GVAR(AllFlags) select _x);
+    forEach ((GVAR(AllSectors) select _x) select 1);
 }
 forEach GVAR(aaf_sectors);
 publicVariable QGVAR(aaf_flags_pos);

@@ -25,33 +25,33 @@
 * No
 *
 * Example:
-* [[10051.7, 9771.2], [8891.66, 9520.1], "ColorRed", 8, "marker_15"] call FUNC(drawline);
+* [[[10051.7, 9771.2], [8891.66, 9520.1]], "ColorRed", 8, "marker_15"] call FUNC(drawline);
 *
 */
 #include "macros.hpp"
 
 // read parameters 
-params ["_start", "_end", "_color", "_size", "_id"]; 
-
+params ["_pos", "_color", "_size", "_id"]; 
+private _start = _pos select 0;
+private _end = _pos select 1;
 private ["_mrk", "_size", "_dist", "_ang", "_center"]; 
- 
+
 // calculate line 
 _dist = sqrt(((_end select 0) - (_start select 0))^2 + ((_end select 1) - (_start select 1))^2) * 0.5; 
 _ang = ((_end select 0) - (_start select 0)) atan2((_end select 1) - (_start select 1)); 
 _center = [(_start select 0) + sin(_ang) * _dist, (_start select 1) + cos(_ang) * _dist]; 
  
 // create marker 
-_mrk = createMarker [_id, _center]; 
+_mrk = createMarkerLocal [_id, _center]; 
 if (_mrk != "") then
 {
     // define marker 
-    _mrk setMarkerDir _ang; 
-    _mrk setMarkerPos _center; 
-    _mrk setMarkerShape "RECTANGLE"; 
-    _mrk setMarkerBrush "SOLID"; 
-    _mrk setMarkerColor _color; 
-    _mrk setMarkerSize [_size, _dist]; 
+    _mrk setMarkerDirLocal _ang; 
+    _mrk setMarkerShapeLocal "RECTANGLE"; 
+    _mrk setMarkerBrushLocal "Solid"; 
+    _mrk setMarkerColorLocal _color; 
+    _mrk setMarkerSize [_size, _dist];   // Letzter Markerbefehl nicht-local (für serverweiten Broadcast)
  
     // return marker 
-    _mrk 
+    _mrk
 };
