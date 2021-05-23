@@ -50,7 +50,7 @@ if (_mrk != "") then
     _mrk setMarkerShapeLocal "RECTANGLE"; 
     _mrk setMarkerBrushLocal "Solid"; 
     _mrk setMarkerColorLocal _color; 
-    _mrk setMarkerSize [_size, _dist]; 
+    _mrk setMarkerSize [_size, _dist];   // Letzter Markerbefehl nicht-local (für serverweiten Broadcast)
  
     // return marker 
     _mrk
