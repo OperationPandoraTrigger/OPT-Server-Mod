@@ -19,15 +19,14 @@
     "EDITBOX", // setting type
     [
         "NATO Sektoren", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
-        "Alle derzeit von der NATO besetzten Sektoren." + endl + "0: Keine" + endl + "Zahl: Sektornummer" + endl + "Mehrere Sektoren können durch Komma getrennt angegeben werden." + endl // Mouse-Over description of the above
+        "Alle derzeit von der NATO besetzten Sektoren." + endl + "Leer: Keine" + endl + "Zahl: Sektornummer" + endl + "Mehrere Sektoren können durch ein Komma getrennt angegeben werden." + endl // Mouse-Over description of the above
     ],
     ["OPT Sektorkontrolle", "1 - NATO Sektoren"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
     "0", // Default value <STRING>
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {
         params ["_value"];
-        GVAR(nato_allsectors) = parseSimpleArray format ["[%1]", _value]; 
-
+        GVAR(nato_allsectors) = parseSimpleArray format ["[%1]", _value];
     }, // function that will be executed once on mission start and every time the setting is changed.
     true    // Setting will be marked as needing mission restart after being changed. (optional, default false) <BOOL>
 ] call CBA_Settings_fnc_init;
@@ -37,7 +36,7 @@
     "EDITBOX", // setting type
     [
         "NATO Verteidigungssektor", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
-        "Sektoren in denen Fahnen gewählt werden können." + endl + "0: Keine" + endl + "Zahl: Sektornummer" + endl + "Mehrere Sektoren können durch Komma getrennt angegeben werden." + endl // Mouse-Over description of the above
+        "Sektoren in denen Fahnen gewählt werden können." + endl + "Leer: Keine" + endl + "Zahl: Sektornummer" + endl + "Mehrere Sektoren können durch ein Komma getrennt angegeben werden." + endl // Mouse-Over description of the above
     ],
     ["OPT Sektorkontrolle", "1 - NATO Sektoren"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
     "0", // Default value <STRING>
@@ -45,7 +44,6 @@
     {
         params ["_value"];
         GVAR(nato_sectors) = parseSimpleArray format ["[%1]", _value]; 
-
     }, // function that will be executed once on mission start and every time the setting is changed.
     true    // Setting will be marked as needing mission restart after being changed. (optional, default false) <BOOL>
 ] call CBA_Settings_fnc_init;
@@ -56,7 +54,7 @@
     "EDITBOX", // setting type
     [
         "CSAT Sektoren", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
-        "Alle derzeit von der CSAT besetzten Sektoren." + endl + "0: Keine" + endl + "Zahl: Sektornummer" + endl + "Mehrere Sektoren können durch Komma getrennt angegeben werden." + endl // Mouse-Over description of the above
+        "Alle derzeit von der CSAT besetzten Sektoren." + endl + "Leer: Keine" + endl + "Zahl: Sektornummer" + endl + "Mehrere Sektoren können durch ein Komma getrennt angegeben werden." + endl // Mouse-Over description of the above
     ],
     ["OPT Sektorkontrolle", "2 - CSAT Sektoren"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
     "0", // Default value <STRING>
@@ -73,7 +71,7 @@
     "EDITBOX", // setting type
     [
         "CSAT Verteidigungssektor", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
-        "Sektoren in denen Fahnen gewählt werden können." + endl + "0: Keine" + endl + "Zahl: Sektornummer" + endl + "Mehrere Sektoren können durch Komma getrennt angegeben werden." + endl // Mouse-Over description of the above
+        "Sektoren in denen Fahnen gewählt werden können." + endl + "Leer: Keine" + endl + "Zahl: Sektornummer" + endl + "Mehrere Sektoren können durch ein Komma getrennt angegeben werden." + endl // Mouse-Over description of the above
     ],
     ["OPT Sektorkontrolle", "2 - CSAT Sektoren"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
     "0", // Default value <STRING>
@@ -91,7 +89,7 @@
     "EDITBOX", // setting type
     [
         "AAF Sektoren", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
-        "Alle derzeit von der NATO besetzten Sektoren." + endl + "0: Keine" + endl + "Zahl: Sektornummer" + endl + "Mehrere Sektoren können durch Komma getrennt angegeben werden." + endl // Mouse-Over description of the above
+        "Alle derzeit von der NATO besetzten Sektoren." + endl + "Leer: Keine" + endl + "Zahl: Sektornummer" + endl + "Mehrere Sektoren können durch ein Komma getrennt angegeben werden." + endl // Mouse-Over description of the above
     ],
     ["OPT Sektorkontrolle", "3 - AAF Sektoren"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
     "0", // Default value <STRING>
@@ -109,7 +107,7 @@
     "EDITBOX", // setting type
     [
         "AAF Verteidigungssektor", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
-        "Sektoren in denen Fahnen gewählt werden können." + endl + "0: Keine" + endl + "Zahl: Sektornummer" + endl + "Mehrere Sektoren können durch Komma getrennt angegeben werden." + endl // Mouse-Over description of the above
+        "Sektoren in denen Fahnen gewählt werden können." + endl + "Leer: Keine" + endl + "Zahl: Sektornummer" + endl + "Mehrere Sektoren können durch ein Komma getrennt angegeben werden." + endl // Mouse-Over description of the above
     ],
     ["OPT Sektorkontrolle", "3 - AAF Sektoren"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
     "0", // Default value <STRING>
@@ -128,7 +126,7 @@
     "SLIDER", // setting type
     [
         "Anzahl der NATO-Flaggen",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.  
-        "Die Anzahl der NATO-Flaggen, die für die Gegenseite zum Angriff stehen."   // Mouse-Over description of the above
+        "Die Anzahl der NATO-Flaggen, die für die Gegenseite zum Angriff stehen." + endl  // Mouse-Over description of the above
     ],
     ["OPT Sektorkontrolle", "4 - Flaggenanzahl"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
     [0, 5, 1, 0], // [_min, _max, _default, _trailingDecimals]
@@ -141,7 +139,7 @@
     "SLIDER", // setting type
     [
         "Anzahl der CSAT-Flaggen",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.  
-        "Die Anzahl der CSAT-Flaggen, die für die Gegenseite zum Angriff stehen."   // Mouse-Over description of the above
+        "Die Anzahl der CSAT-Flaggen, die für die Gegenseite zum Angriff stehen." + endl  // Mouse-Over description of the above
     ],
     ["OPT Sektorkontrolle", "4 - Flaggenanzahl"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
     [0, 5, 1, 0], // [_min, _max, _default, _trailingDecimals]
@@ -154,7 +152,7 @@
     "SLIDER", // setting type
     [
         "Anzahl der AAF-Flaggen",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.  
-        "Die Anzahl der AAF-Flaggen, die für die Gegenseite zum Angriff stehen."   // Mouse-Over description of the above
+        "Die Anzahl der AAF-Flaggen, die für die Gegenseite zum Angriff stehen." + endl  // Mouse-Over description of the above
     ],
     ["OPT Sektorkontrolle", "4 - Flaggenanzahl"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
     [0, 5, 1, 0], // [_min, _max, _default, _trailingDecimals]
@@ -174,11 +172,24 @@
 ] call CBA_Settings_fnc_init;
 
 [
+    QGVAR(trainingDontDeleteSectormarkers), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    "CHECKBOX", // setting type
+    [
+        "Im Trainingsmodus die Sektorenmarker nicht löschen", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+        "Nach Ablauf der Waffenruhe können die Sektorenmarker für eine bessere Übersicht beibehalten werden." + endl // Mouse-Over description of the above
+    ],
+    ["OPT Sektorkontrolle", "5 - Diverses"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
+    true, // Default value <BOOLEAN>
+    1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
+    {} // function that will be executed once on mission start and every time the setting is changed.
+] call CBA_Settings_fnc_init;
+
+[
     QGVAR(flagStartNeutral), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "CHECKBOX", // setting type
     [
         "Start mit neutralen Flaggen",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.  
-        "Die zu Missionsstart gewählten Flaggen tragen noch keine Fahne und müssen erst erobert werden."   // Mouse-Over description of the above
+        "Die zu Missionsstart gewählten Flaggen tragen noch keine Fahne und müssen erst erobert werden." + endl  // Mouse-Over description of the above
     ],
     ["OPT Sektorkontrolle", "5 - Diverses"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
     false, // Default value <BOOLEAN>
@@ -201,7 +212,7 @@
     "SLIDER", // setting type
     "Entfernung zur Flagge für Menü-Eintrag.", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     ["OPT Sektorkontrolle", "5 - Diverses"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
-    [1, 20, 5, 0], // Default value <BOOLEAN>
+    [1, 20, 5, 0], // [_min, _max, _default, _trailingDecimals]
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {} // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
@@ -232,7 +243,7 @@
     "SLIDER", // setting type
     "Radius in Metern der Minen-Sperrzone um die Flagge.", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     ["OPT Sektorkontrolle", "6 - Minen-Sperrzone"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
-    [5, 50, 20, 0], // Default value <BOOLEAN>
+    [5, 50, 20, 0], // [_min, _max, _default, _trailingDecimals]
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {} // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
@@ -241,7 +252,7 @@
 [
     QGVAR(westflag), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "EDITBOX", // setting type
-    "Flaggentextur der NATO Faktion", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+    "Flaggentextur der NATO Fraktion", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     ["OPT Sektorkontrolle", "7 - Flaggentexturen"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
     "\opt\opt_client\addons\core\bilder\arf_fahne.paa", // data for this setting: [min, max, default, number of shown trailing decimals]
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
@@ -254,7 +265,7 @@
 [
     QGVAR(eastflag), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "EDITBOX", // setting type
-    "Flaggentextur der CSAT Faktion", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+    "Flaggentextur der CSAT Fraktion", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     ["OPT Sektorkontrolle", "7 - Flaggentexturen"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
     "\opt\opt_client\addons\core\bilder\sword_fahne.paa", // data for this setting: [min, max, default, number of shown trailing decimals]
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
@@ -267,7 +278,7 @@
 [
     QGVAR(independentflag), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "EDITBOX", // setting type
-    "Flaggentextur der AAF Faktion", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+    "Flaggentextur der AAF Fraktion", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     ["OPT Sektorkontrolle", "7 - Flaggentexturen"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
     "\opt\opt_client\addons\core\bilder\arf_fahne.paa", // data for this setting: [min, max, default, number of shown trailing decimals]
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
