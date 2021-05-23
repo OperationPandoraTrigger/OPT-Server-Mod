@@ -383,7 +383,8 @@ if (worldName == "Enoch") then
 
         [    // Sektor 18
             [   // Sektormarker
-                [[9063.08, 5826.4], [10180.7, 5826.42]],
+                [[9063.08, 5826.4], [9610, 5826.42]],
+                [[9610, 5826.42], [10180.7, 5826.42]],
                 [[10180.7, 5826.42], [12791.8, 5947.08]],
                 [[12791.8, 5947.08], [12790.9, 4079.74]],
                 [[12790.9, 4079.74], [10285.3, 4773.76]],
@@ -634,7 +635,10 @@ if (isServer && GVAR(flagFreeMineZoneMarkerOn)) then
 publicVariable QGVAR(PreMineZoneMarkers);
 
 // Sector-Markers
-GVAR(SectorMarkers) = [];
+GVAR(NATOSectorMarkers) = [];
+GVAR(CSATSectorMarkers) = [];
+GVAR(AAFSectorMarkers) = [];
+GVAR(BorderMarkers) = [];
 private _markerID = 0;
 
 // CBA-Settings parsen, da dies sonst erst nach dem "Durchdrücken" geschieht
@@ -642,13 +646,13 @@ GVAR(nato_allsectors) = parseSimpleArray format ["[%1]", GVAR(nato_allsectors_st
 GVAR(csat_allsectors) = parseSimpleArray format ["[%1]", GVAR(csat_allsectors_str)]; 
 GVAR(aaf_allsectors) = parseSimpleArray format ["[%1]", GVAR(aaf_allsectors_str)]; 
 
-// Sektormarker zeichnen (in unterschiedlichen Farben je Fraktion)
+// Sektormarker zeichnen
 {
     {
         _markerID = _markerID + 1;
         private _markername = format ["SectorMarker_%1", _markerID];
-        [_x, "colorBLUFOR", 8, _markername] call FUNC(drawline);
-        GVAR(SectorMarkers) pushBack _markername;
+        [_x, "ColorBlack", 8, _markername] call FUNC(drawline);
+        GVAR(NATOSectorMarkers) pushBack _markername;
     } forEach ((GVAR(AllSectors) select _x) select 0);
 } forEach GVAR(nato_allsectors);
 
@@ -656,8 +660,8 @@ GVAR(aaf_allsectors) = parseSimpleArray format ["[%1]", GVAR(aaf_allsectors_str)
     {
         _markerID = _markerID + 1;
         private _markername = format ["SectorMarker_%1", _markerID];
-        [_x, "ColorRed", 8, _markername] call FUNC(drawline);
-        GVAR(SectorMarkers) pushBack _markername;
+        [_x, "ColorBlack", 8, _markername] call FUNC(drawline);
+        GVAR(CSATSectorMarkers) pushBack _markername;
     } forEach ((GVAR(AllSectors) select _x) select 0);
 } forEach GVAR(csat_allsectors);
 
@@ -665,10 +669,65 @@ GVAR(aaf_allsectors) = parseSimpleArray format ["[%1]", GVAR(aaf_allsectors_str)
     {
         _markerID = _markerID + 1;
         private _markername = format ["SectorMarker_%1", _markerID];
-        [_x, "colorIndependent", 8, _markername] call FUNC(drawline);
-        GVAR(SectorMarkers) pushBack _markername;
+        [_x, "ColorBlack", 8, _markername] call FUNC(drawline);
+        GVAR(AAFSectorMarkers) pushBack _markername;
     } forEach ((GVAR(AllSectors) select _x) select 0);
 } forEach GVAR(aaf_allsectors);
+
+// Grenzlinien
+switch OPT_GELDZEIT_Fraktionauswahl do 
+{
+        case "AAFvsCSAT":
+        {
+            GVAR(Side1SectorMarkers) = GVAR(AAFSectorMarkers);
+            GVAR(Side2SectorMarkers) = GVAR(CSATSectorMarkers);
+        };
+
+        case "NATOvsCSAT":
+        {
+            GVAR(Side1SectorMarkers) = GVAR(NATOSectorMarkers);
+            GVAR(Side2SectorMarkers) = GVAR(CSATSectorMarkers);
+        };
+
+        case "NATOvsAAF":
+        {
+            GVAR(Side1SectorMarkers) = GVAR(NATOSectorMarkers);
+            GVAR(Side2SectorMarkers) = GVAR(AAFSectorMarkers);
+        };
+
+           default 
+        {
+            ERROR_LOG("setupsectors: Fehlerhafte Datenuebergabe - Keine Fraktionauswahl erkannt");
+        };
+};
+
+{
+    private _pos1 = getMarkerPos _x;
+    {
+        private _pos2 = getMarkerPos _x;
+        if ((_pos1 distance2D _pos2) < 100) then
+        {
+            private _x1 = _pos1 select 0;
+            private _y1 = _pos1 select 1;
+            private _x2 = _pos2 select 0;
+            private _y2 = _pos2 select 1;
+            private _x3 = (((_x1 max _x2) - (_x1 min _x2)) / 2) + (_x1 min _x2);
+            private _y3 = (((_y1 max _y2) - (_y1 min _y2)) / 2) + (_y1 min _y2);
+            private _grenzlinie = [_x3, _y3, 0];
+
+            _markerID = _markerID + 1;
+            private _markername = format ["BorderMarker_%1", _markerID];
+            GVAR(BorderMarkers) pushBack _markername;
+
+            private _mrk = createMarkerLocal [_markername, _grenzlinie];
+            _mrk setMarkerDirLocal markerDir _x;
+            _mrk setMarkerShapeLocal "RECTANGLE";
+            _mrk setMarkerBrushLocal "SolidFull";
+            _mrk setMarkerColorLocal "ColorRed";
+            _mrk setMarkerSize markerSize _x;
+        };
+    } forEach GVAR(Side2SectorMarkers)
+} forEach GVAR(Side1SectorMarkers);
 
 // Karten Umrandung
 [[[0, worldSize], [worldSize, worldSize]], "ColorBlack", 8, "MapBorder1"] call FUNC(drawline);

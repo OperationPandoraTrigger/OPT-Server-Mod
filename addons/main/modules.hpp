@@ -109,7 +109,6 @@ class CfgCLibModules
             FNC(captureflag);
             FNC(teleport);
             FNC(drawline);
-            FNC(deletesectormarkers);
         };
 
         MODULE(FIELDREPAIR) 

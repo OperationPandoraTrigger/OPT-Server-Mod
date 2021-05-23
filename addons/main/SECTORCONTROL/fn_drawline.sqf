@@ -42,15 +42,14 @@ _ang = ((_end select 0) - (_start select 0)) atan2((_end select 1) - (_start sel
 _center = [(_start select 0) + sin(_ang) * _dist, (_start select 1) + cos(_ang) * _dist]; 
  
 // create marker 
-_mrk = createMarker [_id, _center]; 
+_mrk = createMarkerLocal [_id, _center]; 
 if (_mrk != "") then
 {
     // define marker 
-    _mrk setMarkerDir _ang; 
-    _mrk setMarkerPos _center; 
-    _mrk setMarkerShape "RECTANGLE"; 
-    _mrk setMarkerBrush "SOLID"; 
-    _mrk setMarkerColor _color; 
+    _mrk setMarkerDirLocal _ang; 
+    _mrk setMarkerShapeLocal "RECTANGLE"; 
+    _mrk setMarkerBrushLocal "Solid"; 
+    _mrk setMarkerColorLocal _color; 
     _mrk setMarkerSize [_size, _dist]; 
  
     // return marker 

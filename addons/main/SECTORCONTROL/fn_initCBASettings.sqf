@@ -172,11 +172,11 @@
 ] call CBA_Settings_fnc_init;
 
 [
-    QGVAR(trainingDontDeleteSectormarkers), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    QGVAR(trainingDontDeleteBorderMarkers), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "CHECKBOX", // setting type
     [
-        "Im Trainingsmodus die Sektorenmarker nicht löschen", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
-        "Nach Ablauf der Waffenruhe können die Sektorenmarker für eine bessere Übersicht beibehalten werden." + endl // Mouse-Over description of the above
+        "Im Trainingsmodus die Grenzlinien nicht löschen", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+        "Nach Ablauf der Waffenruhe können die Grenzlinien für eine bessere Übersicht beibehalten werden." + endl // Mouse-Over description of the above
     ],
     ["OPT Sektorkontrolle", "5 - Diverses"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
     true, // Default value <BOOLEAN>
