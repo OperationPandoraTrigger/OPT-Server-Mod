@@ -86,6 +86,7 @@ class CfgCLibModules
             FNC(beam);
             FNC(haftladungen);
             FNC(clientInitcbaclassevents);
+            FNC(spritverbrauch.sqf);
         };
 
         MODULE(SECTORCONTROL) 
