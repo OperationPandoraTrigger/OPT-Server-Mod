@@ -57,7 +57,7 @@ This event happens every time a soldier enters a vehicle.
     ];
 
     //erhöhter Treibstoffverbrauch bei Lufteinheiten
-    [_veh] call OPT_GELDZEIT_fnc_spritverbrauch;
+    [_vec] call OPT_GELDZEIT_fnc_spritverbrauch;
 
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
