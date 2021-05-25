@@ -30,33 +30,72 @@ params
     ["_veh", objNull]
 ];
 
-[{
+if (_veh isKindOf "Helicopter") then 
+{
 
-    params ["_veh", "_handle"];   
+    //Helikopter Verbrauch
+    [{
 
-    // Flughöhe erfassen
-    private _hohe = position _veh select 2;
+        params ["_veh", "_handle"];   
+        
+        // Flughöhe erfassen
+        private _hohe = position _veh select 2;
 
-    // Kontrolle ob Objekt über der Null Höhe sich bewegt.
-    if (_hohe > GVAR(flughohenull)) then 
-    {
-        // Vorhandener Treibstoff
-        private Treibstoffmenge = fuel _veh;
+        // Kontrolle ob Objekt über der Null Höhe sich bewegt.
+        if (_hohe > GVAR(helibasisflughohe)) then 
+        {
+            // Vorhandener Treibstoff
+            private _Treibstoffmenge = fuel _veh;
+            
+            // Verbrauchsberechnung pro 1sek
+            // Formel Fuel-Verbrauchswert
+            // Verbrauchtwert (((Flughöhe-basisflughohe)/basisflughohe)*Treibstofffaktor*(Verbraucsfaktor/100))
+            private _Treibstoffmengeneu = _Treibstoffmenge-((((_hohe - GVAR(helibasisflughohe)) / GVAR(helibasisflughohe)) * 0.0055) * (GVAR(heliverbrauchsfaktor) / 100));       
 
-        // Verbrauchsberechnung pro 1sek
-        // Formel Fuel-Verbrauchswert
-        // Verbrauchtwert (((Flughöhe-Nullhöhe)/Nullhöhe)*Treibstofffaktor*(Verbraucsfaktor/100))
-        private Treibstoffmengeneu = Treibstoffmenge-((((_hohe-GVAR(flughohenull))/GVAR(flughohenull))*0,0055)*(GVAR(verbrauchsfaktor)/100));       
+            _veh  setFuel _Treibstoffmengeneu;
+        };    
 
-        _veh  setFuel Treibstoffmengeneu;
-    };    
+        // PFH löschen wenn Objekt zerstört wurde.
+        if (! alive _veh) then 
+        {
 
-    // PFH löschen wenn Objekt zerstört wurde.
-    if (! alive _veh) then 
-    {
+            _handle call CFUNC(removePerframeHandler);
+        };
 
-        _handle call CFUNC(removePerframeHandler);
-    };
+    }, 1,_veh] call CFUNC(addPerFrameHandler);
 
-}, 1,[_veh]] call CFUNC(addPerFrameHandler);
+}
+else
+{
 
+    //Flugzeug Verbrauch
+    [{
+
+        params ["_veh", "_handle"];   
+
+        // Flughöhe erfassen
+        private _hohe = position _veh select 2;
+
+        // Kontrolle ob Objekt über der Null Höhe sich bewegt.
+        if (_hohe > GVAR(flugzeugbasisflughohe)) then 
+        {
+            // Vorhandener Treibstoff
+            private _Treibstoffmenge = fuel _veh;
+
+            // Verbrauchsberechnung pro 1sek
+            // Formel Fuel-Verbrauchswert
+            // Verbrauchtwert (((Flughöhe-basisflughohe)/basisflughohe)*Treibstofffaktor*(Verbraucsfaktor/100))
+            private _Treibstoffmengeneu = _Treibstoffmenge-((((_hohe - GVAR(flugzeugbasisflughohe)) / GVAR(flugzeugbasisflughohe)) * 0.0055) * (GVAR(flugzeugverbrauchsfaktor) / 100));       
+
+            _veh  setFuel _Treibstoffmengeneu;
+        };    
+
+        // PFH löschen wenn Objekt zerstört wurde.
+        if (! alive _veh) then 
+        {
+
+            _handle call CFUNC(removePerframeHandler);
+        };
+
+    }, 1,_veh] call CFUNC(addPerFrameHandler);
+};
