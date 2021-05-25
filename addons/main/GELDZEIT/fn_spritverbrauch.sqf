@@ -45,8 +45,8 @@ params
 
         // Verbrauchsberechnung pro 1sek
         // Formel Fuel-Verbrauchswert
-        // Verbrauchtwert (((Flughöhe-Nullhöhe)/Nullhöhe)*0.55)/Verbrauchsfaktor
-        private Treibstoffmengeneu = Treibstoffmenge-((((_hohe-GVAR(flughohenull))/GVAR(flughohenull))*0.55)/GVAR(verbrauchsfaktor));       
+        // Verbrauchtwert (((Flughöhe-Nullhöhe)/Nullhöhe)*Treibstofffaktor*(Verbraucsfaktor/100))
+        private Treibstoffmengeneu = Treibstoffmenge-((((_hohe-GVAR(flughohenull))/GVAR(flughohenull))*0,0055)*(GVAR(verbrauchsfaktor)/100));       
 
         _veh  setFuel Treibstoffmengeneu;
     };    
