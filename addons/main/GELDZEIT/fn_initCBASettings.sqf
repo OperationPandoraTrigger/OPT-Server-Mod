@@ -134,27 +134,41 @@
 ] call CBA_Settings_fnc_init;
 
 [
-    QGVAR(flughohenull), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
-    "EDITBOX", // setting type
-    "Flughöhe Null Wert in Meter", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
-    "OPT Treibstoffmanagement", // Pretty name of the category where the setting can be found. Can be stringtable entry.
-    "100", // data for this setting: [min, max, default, number of shown trailing decimals]
+    QGVAR(helibasisflughohe), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    "SLIDER", // setting type
+    ["Flughöhe M","Flughöhe ab dem der erhöhte Verbraucht anliegt in Meter"], // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+    ["OPT Treibstoffmanagement","Helikopter"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
+    [0, 1000, 100, 0], // data for this setting: [min, max, default, number of shown trailing decimals]
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
-    {
-        params ["_value"];
-        QGVAR(flughohenull) = parseNumber _value;
-    } // function that will be executed once on mission start and every time the setting is changed.
+    {} // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
 
 [
-    QGVAR(verbrauchsfaktor), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
-    "EDITBOX", // setting type
-    "Faktor für den Verbrauch über Null Wert in %", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
-    "OPT Treibstoffmanagement", // Pretty name of the category where the setting can be found. Can be stringtable entry.
-    "2", // data for this setting: [min, max, default, number of shown trailing decimals]
+    QGVAR(heliverbrauchsfaktor), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    "SLIDER", // setting type
+    ["Verbrauchsfaktor %","Faktor für den erhöhten Verbrauch über Basisflughöhe in %"], // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+    ["OPT Treibstoffmanagement","Helikopter"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
+    [0, 500, 200, 0], // data for this setting: [min, max, default, number of shown trailing decimals]
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
-    {
-        params ["_value"];
-        QGVAR(verbrauchsfaktor) = parseNumber _value;
-    } // function that will be executed once on mission start and every time the setting is changed.
+    {} // function that will be executed once on mission start and every time the setting is changed.
+] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(flugzeugbasisflughohe), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    "SLIDER", // setting type
+    ["Flughöhe M","Flughöhe ab dem der erhöhte Verbraucht anliegt in Meter"], // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+    ["OPT Treibstoffmanagement","Flugzeug"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
+    [0, 1000, 100, 0], // data for this setting: [min, max, default, number of shown trailing decimals]
+    1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
+    {} // function that will be executed once on mission start and every time the setting is changed.
+] call CBA_Settings_fnc_init;
+
+[
+    QGVAR(flugzeugverbrauchsfaktor), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    "SLIDER", // setting type
+    ["Verbrauchsfaktor %","Faktor für den erhöhten Verbrauch über Basisflughöhe in %"], // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+    ["OPT Treibstoffmanagement","Flugzeug"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
+    [0, 500, 200, 0], // data for this setting: [min, max, default, number of shown trailing decimals]
+    1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
+    {} // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
