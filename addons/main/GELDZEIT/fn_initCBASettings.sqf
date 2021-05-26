@@ -136,7 +136,7 @@
 [
     QGVAR(helibasisflughohe), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "SLIDER", // setting type
-    ["Flughöhe M","Flughöhe ab dem der erhöhte Verbraucht anliegt in Meter"], // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+    ["Basishöhe [m]","Ab Überschreitung dieser Flughöhe erhöht sich der Verbrauch anteilig zur zusätzlichen Höhe."], // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     ["OPT Treibstoffmanagement","Helikopter"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
     [0, 1000, 100, 0], // data for this setting: [min, max, default, number of shown trailing decimals]
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
@@ -146,7 +146,7 @@
 [
     QGVAR(heliverbrauchsfaktor), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "SLIDER", // setting type
-    ["Verbrauchsfaktor %","Faktor für den erhöhten Verbrauch über Basisflughöhe in %"], // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+    ["Verbrauchsfaktor [%]","Zusätzlicher Faktor für den erhöhten Verbrauch."], // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     ["OPT Treibstoffmanagement","Helikopter"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
     [0, 500, 200, 0], // data for this setting: [min, max, default, number of shown trailing decimals]
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
@@ -156,7 +156,7 @@
 [
     QGVAR(flugzeugbasisflughohe), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "SLIDER", // setting type
-    ["Flughöhe M","Flughöhe ab dem der erhöhte Verbraucht anliegt in Meter"], // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+    ["Basishöhe [m]","Ab Überschreitung dieser Flughöhe erhöht sich der Verbrauch anteilig zur zusätzlichen Höhe."], // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     ["OPT Treibstoffmanagement","Flugzeug"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
     [0, 1000, 100, 0], // data for this setting: [min, max, default, number of shown trailing decimals]
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
@@ -166,7 +166,7 @@
 [
     QGVAR(flugzeugverbrauchsfaktor), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "SLIDER", // setting type
-    ["Verbrauchsfaktor %","Faktor für den erhöhten Verbrauch über Basisflughöhe in %"], // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+    ["Verbrauchsfaktor [%]","Zusätzlicher Faktor für den erhöhten Verbrauch."], // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     ["OPT Treibstoffmanagement","Flugzeug"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
     [0, 500, 200, 0], // data for this setting: [min, max, default, number of shown trailing decimals]
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
