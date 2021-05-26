@@ -56,7 +56,8 @@ if (_veh isKindOf "Helicopter") then
         };    
 
         // PFH löschen wenn Objekt zerstört wurde.
-        if (! alive _veh) then 
+        // oder Pilot aussteigt aus dem Flugzeug
+        if ((! alive _veh) or (vehicle player isEqualTo player)) then 
         {
 
             _handle call CFUNC(removePerframeHandler);
@@ -91,7 +92,8 @@ else
         };    
 
         // PFH löschen wenn Objekt zerstört wurde.
-        if (! alive _veh) then 
+        // oder Pilot aussteigt aus dem Flugzeug
+        if ((! alive _veh) or (vehicle player isEqualTo player)) then 
         {
 
             _handle call CFUNC(removePerframeHandler);
