@@ -56,9 +56,6 @@ This event happens every time a soldier enters a vehicle.
         format["[_target, player] call %1", QFUNC(flipCheck)]
     ];
 
-    //erhöhter Treibstoffverbrauch bei Lufteinheiten
-    [_vec] call OPT_GELDZEIT_fnc_spritverbrauch;
-
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
 // Engine EH für Piloten -> Log transportierte Soldaten
@@ -77,6 +74,9 @@ This event happens every time a soldier enters a vehicle.
     if (_pos isEqualTo "driver") then 
     {
         _vec setVariable [QGVAR(transport_pilot), _unit];
+
+        //erhöhter Treibstoffverbrauch bei Lufteinheiten
+        [_vec] call OPT_GELDZEIT_fnc_spritverbrauch;
     };
 
     // speichere aktuellen Ort an der Einheit
