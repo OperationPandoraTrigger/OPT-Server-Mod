@@ -231,7 +231,9 @@ GVAR(SMG) =
 [
     "OPT_SMG_01_F",
     "OPT_SMG_02_F",
-    "OPT_hgun_PDW2000_F"
+    "OPT_hgun_PDW2000_F",
+    "CUP_smg_Mac10",
+    "CUP_smg_SA61"
 ];
 
 /* Light AT-Schützen UND LAUNCHER */
@@ -251,7 +253,9 @@ GVAR(Lightrocketmen) =
 
 GVAR(lightlaunchers) = 
 [
-    "launch_RPG7_F"
+    "launch_RPG7_F",
+    "CUP_launch_M72A6_Loaded",
+    "CUP_launch_RPG18"
 ];
 
 /* Heavy AT-Schützen UND LAUNCHER */
@@ -265,7 +269,9 @@ GVAR(Heavylaunchers) =
 [
     "OPT_launch_MRAWS_green_rail_F",
     "OPT_launch_RPG32_F",
-    "OPT_launch_MRAWS_green_F"
+    "OPT_launch_MRAWS_green_F",
+    "CUP_launch_MAAWS",
+    "CUP_launch_Mk153Mod0"
 ];
 
 /* AA-Schützen UND LAUNCHER */
@@ -282,7 +288,9 @@ GVAR(AAlaunchers) =
     "OPT_launch_B_Titan_F",
     "OPT_launch_B_Titan_tna_F",
     "OPT_launch_O_Titan_F",
-    "OPT_launch_O_Titan_ghex_F"
+    "OPT_launch_O_Titan_ghex_F",
+    "CUP_launch_FIM92Stinger",
+    "CUP_launch_Igla"
 ];
 
 
@@ -354,7 +362,8 @@ GVAR(sniperRifles) =
     "OPT_srifle_LRR_tna_F",
     "OPT_srifle_GM6_ghex_F",
     "srifle_GM6_ghex_F",
-    "srifle_LRR_F"
+    "srifle_LRR_F",
+    "CUP_srifle_AS50"
 ];
 
 /* DMR SNIPER+waffen */
@@ -373,7 +382,9 @@ GVAR(DMRsniperRifles) =
     "srifle_DMR_03_woodland_F",
     "OPT_srifle_DMR_03_F",
     "OPT_srifle_EBR_F",
-    "OPT_srifle_DMR_06_olive_F"
+    "OPT_srifle_DMR_06_olive_F",
+    "CUP_arifle_HK417_20",
+    "CUP_arifle_FNFAL5061_railed"
 ];
 
 /* MG */
@@ -390,7 +401,9 @@ GVAR(soldatMG) =
 GVAR(MG) = 
 [
     "OPT_LMG_Zafir_F",
-    "OPT_LMG_Mk200_F"
+    "OPT_LMG_Mk200_F",
+    "CUP_lmg_M240_B",
+    "CUP_lmg_PKM_top_rail"
 ];
 
 
@@ -405,7 +418,9 @@ GVAR(LMG) =
 [
     "OPT_arifle_CTARS_blk_F",
     "OPT_LMG_03_F",
-    "OPT_arifle_SPAR_02_blk_F"
+    "OPT_arifle_SPAR_02_blk_F",
+    "CUP_arifle_RPK74M_top_rail",
+    "CUP_lmg_m249_pip3"
 ];
 
 /* GRENADIER */
@@ -435,7 +450,9 @@ GVAR(grenadelaunchers) =
     "OPT_arifle_Katiba_GL_F",
     "OPT_arifle_SPAR_01_GL_blk_F",
     "OPT_arifle_CTAR_GL_blk_F",
-    "OPT_arifle_Mk20_GL_F"
+    "OPT_arifle_Mk20_GL_F",
+    "CUP_arifle_HK416_M203_Black",
+    "CUP_arifle_AK101_GL_railed"
 ];
 
 
