@@ -155,14 +155,14 @@ GVAR(nato_supplies) =
 
 GVAR(nato_static) = 
 [
-    ["OPT_B_HMG_01_high_F", DEF_PROD(10000)],                   // Stand-MG hoch
-    ["OPT_B_HMG_01_F", DEF_PROD(10000)],                        // Stand-MG niedrig
-    ["OPT_B_GMG_01_high_F", DEF_PROD(75000)],                   // Stand-GMG hoch
-    ["OPT_B_GMG_01_F", DEF_PROD(75000)],                        // Stand-GMG niedrig
-    ["OPT_B_static_AA_F", DEF_PROD(50000)],                     // Stand-AA
-    ["OPT_B_static_AT_F", DEF_PROD(150000)],                    // Stand-AT
-    ["OPT_B_Mortar_01_F", DEF_PROD(50000)],                    // MK6 - Mörser
-    ["OPT_B_Static_Designator_01_F", DEF_PROD(10000)]           // Remote Designator
+    ["CUP_B_M2StaticMG_USMC", DEF_PROD(10000)],                 // Stand-MG hoch
+    ["CUP_B_M2StaticMG_MiniTripod_USMC", DEF_PROD(10000)],      // Stand-MG niedrig
+    ["OPT_CUP_B_D30_AT_USMC", DEF_PROD(150000)],                // D30-AT
+    ["OPT_CUP_B_M119_USMC", DEF_PROD(150000)],                  // M119
+    ["CUP_B_Stinger_AA_pod_Base_USMC", DEF_PROD(50000)],        // FIM-92 AA
+    ["CUP_B_TOW2_TriPod_USMC", DEF_PROD(150000)],               // TOW-2 AT
+    ["CUP_B_M252_USMC", DEF_PROD(50000)],                       // M252 81mm Mörser
+    ["CUP_B_SearchLight_static_USMC", DEF_PROD(10000)]          // Suchscheinwerfer
 ];
 
 GVAR(nato_sea) = 
@@ -307,14 +307,14 @@ GVAR(csat_supplies) =
 
 GVAR(csat_static) = 
 [
-    ["OPT_O_HMG_01_high_F", DEF_PROD(10000)],                       // Stand-MG hoch
-    ["OPT_O_HMG_01_F", DEF_PROD(10000)],                            // Stand-MG niedrig
-    ["OPT_O_GMG_01_high_F", DEF_PROD(75000)],                       // Stand-GMG hoch
-    ["OPT_O_GMG_01_F", DEF_PROD(75000)],                            // Stand-GMG niedrig
-    ["OPT_O_static_AA_F", DEF_PROD(20000)],                         // Stand-AA
-    ["OPT_O_static_AT_F", DEF_PROD(150000)],                        // Stand-AT
-    ["OPT_O_Mortar_01_F", DEF_PROD(50000)],                         // MK6 Mrser
-    ["OPT_O_Static_Designator_02_F", DEF_PROD(10000)]               // Remote Designator
+    ["CUP_O_DSHKM_SLA", DEF_PROD(10000)],                           // Stand-MG hoch
+    ["CUP_O_KORD_RU", DEF_PROD(10000)],                             // Stand-MG niedrig
+    ["CUP_O_D30_AT_RU", DEF_PROD(150000)],                          // D30-AT
+    ["OPT_CUP_O_D30_RU", DEF_PROD(150000)],                         // D30
+    ["CUP_O_Igla_AA_pod_RU", DEF_PROD(20000)],                      // Igla Luftabwehrstellung
+    ["CUP_O_Kornet_RU", DEF_PROD(150000)],                          // Kornet AT14
+    ["CUP_O_2b14_82mm_RU", DEF_PROD(50000)],                        // Podnos 2b14 Mörser
+    ["CUP_O_SearchLight_static_RU", DEF_PROD(10000)]                // Suchscheinwerfer
 ];
 
 GVAR(csat_sea) = 
