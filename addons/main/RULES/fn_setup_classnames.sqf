@@ -34,24 +34,28 @@
 /* HL UND PL */
 GVAR(officer) = 
 [
+    /* UNUSED
     "OPT_NATO_Offizier_T",
     "OPT_CSAT_Offizier_T",
+    "I_officer_F",
+    */
     "OPT_NATO_Offizier",
-    "OPT_CSAT_Offizier",
-    "I_officer_F"
+    "OPT_CSAT_Offizier"
 ];
 
 /* PILOTS */
 // hier sind alle Classnames aufgelistet, welche als Piloten definiert werden um fliegen zu drfen
 GVAR(pilots) = 
 [
+    /* UNUSED
     "OPT_NATO_Pilot_T",
     "OPT_CSAT_Pilot_T",
-    "OPT_NATO_Pilot",
-    "OPT_CSAT_Pilot",
     "O_Pilot_F",
     "I_helipilot_F",
-    "O_helipilot_F"
+    "O_helipilot_F",
+    */
+    "OPT_NATO_Pilot",
+    "OPT_CSAT_Pilot"
 ];
 
 GVAR(pilots_vecs) = 
@@ -134,12 +138,14 @@ GVAR(blockedVehiclePositions_air) =
     // hier sind alle Classnames aufgelistet, welche als Crew definiert werden um gepanzerte Fahrzeuge fahren zu drfen (und Schtzenposition)
 GVAR(crew) = 
 [
+    /* UNUSED
     "OPT_NATO_Besatzungsmitglied_T",
     "OPT_CSAT_Besatzungsmitglied_T",
-    "OPT_NATO_Besatzungsmitglied",
-    "OPT_CSAT_Besatzungsmitglied",
     "O_crew_F",
-    "I_crew_F"
+    "I_crew_F",
+    */
+    "OPT_NATO_Besatzungsmitglied",
+    "OPT_CSAT_Besatzungsmitglied"
 ];
 
 GVAR(crew_vecs) = 
@@ -229,14 +235,17 @@ GVAR(blockedVehiclePositions_veh) =
 /* Waffenabfrage Pilot/Crew*/
 GVAR(SMG) = 
 [
+    /* UNUSED
     "OPT_SMG_01_F",
     "OPT_SMG_02_F",
     "OPT_hgun_PDW2000_F",
-    "CUP_smg_Mac10",
-    "CUP_smg_SA61"
+    */
+    "OPT_CUP_smg_Mac10",
+    "OPT_CUP_smg_SA61"
 ];
 
-/* Light AT-Schützen UND LAUNCHER */
+/* Light AT-Schützen UND LAUNCHER  
+ * UNUSED
 GVAR(Lightrocketmen) = 
 [
     "OPT_NATO_PA_Schuetze",
@@ -253,23 +262,28 @@ GVAR(Lightrocketmen) =
 
 GVAR(lightlaunchers) = 
 [
-    "launch_RPG7_F",
-    "CUP_launch_M72A6_Loaded",
-    "CUP_launch_RPG18"
+    "launch_RPG7_F"
 ];
+*/
 
 /* Heavy AT-Schützen UND LAUNCHER */
 GVAR(Heavyrocketmen) = 
 [
+    /* UNUSED
     "O_Soldier_HAT_F",
-    "I_Soldier_LAT_F"
+    "I_Soldier_LAT_F",
+    */
+    "OPT_NATO_PA_Schuetze",
+    "OPT_CSAT_PA_Schuetze"
 ];
 
 GVAR(Heavylaunchers) = 
 [
+    /* UNUSED
     "OPT_launch_MRAWS_green_rail_F",
     "OPT_launch_RPG32_F",
     "OPT_launch_MRAWS_green_F",
+    */
     "CUP_launch_MAAWS",
     "CUP_launch_Mk153Mod0"
 ];
@@ -277,24 +291,29 @@ GVAR(Heavylaunchers) =
 /* AA-Schützen UND LAUNCHER */
 GVAR(AArocketmen) = 
 [
-    "OPT_NATO_Luftabwehrspezialist",
-    "OPT_CSAT_Luftabwehrspezialist",
+    /* UNUSED
     "O_Soldier_AA_F",
-    "I_Soldier_AA_F"
+    "I_Soldier_AA_F",
+    */
+    "OPT_NATO_Luftabwehrspezialist",
+    "OPT_CSAT_Luftabwehrspezialist"
 ];
 
 GVAR(AAlaunchers) = 
 [
+    /* UNUSED
     "OPT_launch_B_Titan_F",
     "OPT_launch_B_Titan_tna_F",
     "OPT_launch_O_Titan_F",
     "OPT_launch_O_Titan_ghex_F",
+    */
     "CUP_launch_FIM92Stinger",
     "CUP_launch_Igla"
 ];
 
 
-/* OPERATOR */
+/* OPERATOR 
+ * UNUSED
 GVAR(operator) = 
 [
     "OPT_NATO_Operator_T",
@@ -302,26 +321,32 @@ GVAR(operator) =
     "OPT_NATO_Operator",
     "OPT_CSAT_Operator"
 ];
+*/
 
 /* MEDIC */
 GVAR(medic) = 
 [
+    /* UNUSED
     "OPT_NATO_Sanitaeter_T",
     "OPT_CSAT_Sanitaeter_T",
-    "OPT_NATO_Sanitaeter",
-    "OPT_CSAT_Sanitaeter",
     "I_medic_F",
-    "O_medic_F"
+    "O_medic_F",
+    */
+    "OPT_NATO_Sanitaeter",
+    "OPT_CSAT_Sanitaeter"
 ];
 
-/* spaeher */
+/* spaeher 
+ * UNUSED
 GVAR(spaeher) = 
 [
     "OPT_NATO_Aufklaerung_JTAC",
     "OPT_CSAT_Aufklaerung_JTAC"
 ];
+*/
 
-/* RECONSNIPER+waffen */
+/* RECONSNIPER+waffen
+ * UNUSED
 GVAR(reconSnipers) = 
 [
     "OPT_NATO_Aufklaerung_Scharfschutze_T",
@@ -337,24 +362,26 @@ GVAR(reconSniperRifles) =
     "OPT_arifle_MXM_Black_F",
     "OPT_srifle_DMR_07_blk_F"    
 ];    
+*/
                         
 /* SNIPER+waffen */
 GVAR(snipers) = 
 [
+    /* UNUSED
     "OPT_NATO_Scharfschuetze_T",
-    "OPT_NATO_Scharfschuetze_2",
     "OPT_CSAT_Scharfschuetze_T",
-    "OPT_CSAT_Scharfschuetze_2",
     "OPT_NATO_Scharfschuetze_2_T",
     "OPT_CSAT_Scharfschuetze_2_T",
-    "OPT_NATO_Scharfschuetze",
-    "OPT_CSAT_Scharfschuetze",
     "O_sniper_F",
-    "I_Sniper_F"
+    "I_Sniper_F",
+    */
+    "OPT_NATO_Scharfschuetze",
+    "OPT_CSAT_Scharfschuetze"
 ];
 
 GVAR(sniperRifles) = 
 [
+    /* UNUSED
     "OPT_srifle_DMR_02_F",
     "OPT_srifle_DMR_05_hex_F",
     "OPT_srifle_GM6_camo_F",
@@ -363,77 +390,93 @@ GVAR(sniperRifles) =
     "OPT_srifle_GM6_ghex_F",
     "srifle_GM6_ghex_F",
     "srifle_LRR_F",
-    "CUP_srifle_AS50"
+    */
+    "OPT_CUP_srifle_AS50"
 ];
 
 /* DMR SNIPER+waffen */
 GVAR(DMRsnipers) = 
 [
+    /* UNUSED
     "OPT_CSAT_Beobachter",
     "OPT_NATO_Beobachter",
     "OPT_CSAT_Beobachter_T",
     "OPT_NATO_Beobachter_T",
     "O_soldier_M_F",
-    "I_Soldier_M_F"
+    "I_Soldier_M_F",
+    */
+    "OPT_NATO_Scharfschuetze_2",
+    "OPT_CSAT_Scharfschuetze_2"
 ];
 
 GVAR(DMRsniperRifles) = 
 [
+    /* UNUSED
     "srifle_DMR_03_woodland_F",
     "OPT_srifle_DMR_03_F",
     "OPT_srifle_EBR_F",
     "OPT_srifle_DMR_06_olive_F",
-    "CUP_arifle_HK417_20",
-    "CUP_arifle_FNFAL5061_railed"
+    */
+    "OPT_CUP_arifle_HK417_20",
+    "OPT_CUP_arifle_FNFAL5061_railed"
 ];
 
 /* MG */
 GVAR(soldatMG) = 
 [
+    /* UNUSED
     "OPT_CSAT_MG_Schuetze_T",
     "OPT_NATO_MG_Schuetze_T",
-    "OPT_CSAT_MG_Schuetze",
-    "OPT_NATO_MG_Schuetze",
     "O_HeavyGunner_F",
-    "I_support_MG_F"
+    "I_support_MG_F",
+    */
+    "OPT_CSAT_MG_Schuetze",
+    "OPT_NATO_MG_Schuetze"
 ];
 
 GVAR(MG) = 
 [
+    /* UNUSED
     "OPT_LMG_Zafir_F",
     "OPT_LMG_Mk200_F",
-    "CUP_lmg_M240_B",
-    "CUP_lmg_PKM_top_rail"
+    */
+    "OPT_CUP_lmg_M240_B",
+    "OPT_CUP_lmg_PKM_top_rail"
 ];
 
 
 /* LMG */
 GVAR(soldatLMG) = 
 [
+    /* UNUSED
     "O_Soldier_AR_F",
-    "I_Soldier_AR_F"
+    "I_Soldier_AR_F",
+    */
+    "OPT_NATO_LMG_Schuetze",
+    "OPT_CSAT_LMG_Schuetze"
 ];
 
 GVAR(LMG) = 
 [
+    /* UNUSED
     "OPT_arifle_CTARS_blk_F",
     "OPT_LMG_03_F",
     "OPT_arifle_SPAR_02_blk_F",
-    "CUP_arifle_RPK74M_top_rail",
-    "CUP_lmg_m249_pip3"
+    */
+    "OPT_CUP_arifle_RPK74M_top_rail",
+    "OPT_CUP_lmg_m249_pip3"
 ];
 
 /* GRENADIER */
 GVAR(grenadiers) = 
 [
+    /* UNUSED
     "OPT_CSAT_Grenadier_T",
     "OPT_NATO_Grenadier_T",
     "OPT_CSAT_Aufklaerung_JTAC",
     "OPT_NATO_Aufklaerung_JTAC",
     "OPT_NATO_Aufklaerung_JTAC_T",
     "OPT_CSAT_Aufklaerung_JTAC_T",
-    "OPT_CSAT_Grenadier",
-    "OPT_NATO_Grenadier",
     "OPT_NATO_Gruppenfuehrer",
     "OPT_CSAT_Gruppenfuehrer",
     "OPT_NATO_Aufklaerung_Truppfuehrer",
@@ -441,36 +484,43 @@ GVAR(grenadiers) =
     "OPT_CSAT_Aufklaerung_Truppfuehrer",
     "OPT_CSAT_Aufklaerung_Truppfuehrer_T",
     "O_Soldier_GL_F",
-    "I_Soldier_GL_F"
+    "I_Soldier_GL_F",
+    */
+    "OPT_CSAT_Grenadier",
+    "OPT_NATO_Grenadier"
 ];
 
 GVAR(grenadelaunchers) = 
 [
+    /* UNUSED
     "OPT_arifle_MX_GL_Black_F",
     "OPT_arifle_Katiba_GL_F",
     "OPT_arifle_SPAR_01_GL_blk_F",
     "OPT_arifle_CTAR_GL_blk_F",
     "OPT_arifle_Mk20_GL_F",
-    "CUP_arifle_HK416_M203_Black",
-    "CUP_arifle_AK101_GL_railed"
+    */
+    "OPT_CUP_arifle_HK416_M203_Black",
+    "OPT_CUP_arifle_AK101_GL_railed"
 ];
 
 
 /* PIONIER */
 GVAR(pioniers) = 
 [
+    /* UNUSED
     "OPT_NATO_Pionier_T",
     "OPT_CSAT_Pionier_T",
-    "OPT_CSAT_Sprengmeister",
     "OPT_CSAT_Aufklaerung_Sprengmeister_T",
     "OPT_NATO_Aufklaerung_Sprengmeister_T",
     "OPT_NATO_Pionier",
     "OPT_CSAT_Pionier",
-    "OPT_NATO_Sprengmeister",
     "OPT_CSAT_Aufklaerung_Sprengmeister",
     "OPT_NATO_Aufklaerung_Sprengmeister",
     "O_soldier_exp_F",
-    "I_Soldier_exp_F"
+    "I_Soldier_exp_F",
+    */
+    "OPT_CSAT_Sprengmeister",
+    "OPT_NATO_Sprengmeister"
 ];
 
 GVAR(Sprengmittel) = 
@@ -479,7 +529,8 @@ GVAR(Sprengmittel) =
     "ATMine_Range_Mag"
 ];    
 
-/* RECON */
+/* RECON 
+ * UNUSED
 GVAR(recon) = 
 [
     "OPT_CSAT_Aufklaerung_Scharfschutze_T",
@@ -513,6 +564,7 @@ GVAR(reconRifles) =
     "OPT_arifle_MX_Black_F",
     "OPT_arifle_MX_GL_Black_F"
 ];
+*/
 
 /* UAV */
 GVAR(big_uavs) = 
