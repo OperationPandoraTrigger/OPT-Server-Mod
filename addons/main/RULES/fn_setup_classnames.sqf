@@ -307,8 +307,8 @@ GVAR(AAlaunchers) =
     "OPT_launch_O_Titan_F",
     "OPT_launch_O_Titan_ghex_F",
     */
-    "CUP_launch_FIM92Stinger",
-    "CUP_launch_Igla"
+    "OPT_CUP_launch_FIM92Stinger",
+    "OPT_CUP_launch_Igla"
 ];
 
 
