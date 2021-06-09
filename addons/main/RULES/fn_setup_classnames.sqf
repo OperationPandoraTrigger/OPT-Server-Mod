@@ -244,10 +244,10 @@ GVAR(SMG) =
     "OPT_CUP_smg_SA61"
 ];
 
-/* Light AT-Schützen UND LAUNCHER  
- * UNUSED
+/* Light AT-Schützen UND LAUNCHER */
 GVAR(Lightrocketmen) = 
 [
+    /* UNUSED
     "OPT_NATO_PA_Schuetze",
     "OPT_NATO_PA_Schuetze_T",
     "OPT_CSAT_PA_Schuetze_T",
@@ -258,13 +258,19 @@ GVAR(Lightrocketmen) =
     "OPT_CSAT_Aufklaerung_Spaeher_AT_T",
     "O_Soldier_LAT_F",
     "I_Soldier_LAT2_F"
+    */
+    "OPT_NATO_Soldat",
+    "OPT_CSAT_Soldat"
 ];
 
 GVAR(lightlaunchers) = 
 [
+    /* UNUSED
     "launch_RPG7_F"
+    */
+    "CUP_launch_M72A6_Loaded",
+    "CUP_launch_RPG18"
 ];
-*/
 
 /* Heavy AT-Schützen UND LAUNCHER */
 GVAR(Heavyrocketmen) = 
