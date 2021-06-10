@@ -126,7 +126,20 @@ GVAR(pilots_vecs) =
     "OPT_O_Heli_Light_02_v2_F",                // PO-30 Orca Cas light
     "OPT_O_Heli_Light_02_v3_F",                // PO-30 Orca Cas Heavy 
     "OPT_I_Heli_light_03_v2_F",                // WY-55 Hellcat Cas light
-    "OPT_I_Heli_light_03_v3_F"                // WY-55 Hellcat Cas Heavy
+    "OPT_I_Heli_light_03_v3_F",                // WY-55 Hellcat Cas Heavy
+
+    // NATO - CUP
+    "OPT_CUP_MH60S_Unarmed_USN",            // MH-60S Seahawk
+    "OPT_CUP_B_UH1D_armed_GER_KSK",         // UH-1D
+    "OPT_CUP_B_CH53E_USMC",                 // CH-53G Super Stallion
+    "OPT_CUP_B_AH64D_DL_USA",               // AH-64
+
+    // CSAT - CUP
+    "OPT_CUP_O_SA330_Puma_HC1_BAF",         // SA-330 Puma
+    "OPT_CUP_O_Ka60_Grey_RU",               // KA-60 Katsaka
+    "OPT_CUP_O_Merlin_HC3_GB",              // Merlin HC3A
+    "OPT_CUP_O_Mi24_V_Dynamic_RU"           // MI-24V
+
 ];
 
 GVAR(blockedVehiclePositions_air) = 
