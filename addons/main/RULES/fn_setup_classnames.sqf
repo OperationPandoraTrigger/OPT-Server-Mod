@@ -163,6 +163,15 @@ GVAR(crew_vecs) =
     "OPT4_B_MBT_03_cannon_F",
     "OPT_B_MBT_01_mlrs_F",
 
+// NATO - CUP
+    "OPT_CUP_B_LAV25_HQ_USMC",
+    "OPT_CUP_B_M2Bradley_USA_W",
+    "OPT_CUP_B_M163_USA",
+    "OPT_CUP_B_M60A3_TTS_USMC",
+    "OPT_CUP_B_Leopard2A6_GER",
+    "OPT_CUP_B_HMMWV_TOW_USMC",
+    "OPT_CUP_B_RM70_CZ"
+
 //Tropentarn
     "OPT4_B_LSV_01_AT_ghex_F",
     "OPT4_B_MRAP_01_gmg_ghex_F",
@@ -187,6 +196,15 @@ GVAR(crew_vecs) =
     "OPT4_O_MBT_02_cannon_F",
     "OPT4_O_MBT_02_arty_F",
     "OPT_O_Truck_02_MRL_F",
+
+// CSAT - CUP
+    "OPT_CUP_O_ZSU23_Afghan_SLA",
+    "OPT_CUP_O_T72_RU",
+    "OPT_CUP_O_T90_RU",
+    "OPT_CUP_O_BTR60_RU",
+    "OPT_CUP_O_BTR90_RU",
+    "OPT_CUP_O_BRDM2_ATGM_RUS",
+    "OPT_CUP_O_BM21_RU"
 
 //Tropentarn
     "OPT4_O_LSV_02_AT_GHEX_F",
