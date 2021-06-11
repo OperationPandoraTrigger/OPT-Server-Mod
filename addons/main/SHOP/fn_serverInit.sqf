@@ -126,69 +126,7 @@ switch (GVAR(hardcaplist)) do
         GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_MBT_03_cannon_F_INF",0];
         GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_MBT_03_cannon_F_AT",0];
     };
-
-    case "2": 
-    {
-        GVAR(Hardcap_csat_choppers) pushBack ["OPT_O_Heli_Light_02_v2_F",2];
-        GVAR(Hardcap_csat_choppers) pushBack ["OPT_O_Heli_Light_02_v3_F",1];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_T_MRAP_02_ghex_F",5];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_T_MRAP_02_hmg_ghex_F",4];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_LSV_02_AT_GHEX_F",2];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_T_MBT_02_arty_ghex_F",1];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_Truck_02_MRL_ghex_F",1];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_T_APC_Tracked_02_AA_ghex_F",1];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_T_APC_Wheeled_01_cannon_F_INF",2];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_T_APC_Tracked_02_cannon_ghex_F_VEH",2];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_T_APC_Tracked_02_cannon_ghex_F_AT",1];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_T_MBT_02_cannon_ghex_F_INF",0];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_T_MBT_02_cannon_ghex_F_AT",0];
-
-        GVAR(Hardcap_aaf_choppers) pushBack ["OPT_I_Heli_light_03_v2_F",2];
-        GVAR(Hardcap_aaf_choppers) pushBack ["OPT_I_Heli_light_03_v3_F",1];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_MRAP_03_F",5];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_MRAP_03_hmg_F",4];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_LSV_01_AT_ghex_F",2];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_MBT_01_arty_ghex_F",1];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_Truck_02_MRL_F",1];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_APC_Tracked_01_AA_ghex_F",1];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_APC_tracked_03_cannon_F_INF",2];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_APC_Wheeled_03_cannon_F_VEH",2];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_APC_Wheeled_03_cannon_F_AT",1];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_MBT_03_cannon_F_INF",0];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_MBT_03_cannon_F_AT",0];
-    };
-
-    case "3": 
-    {
-        GVAR(Hardcap_csat_choppers) pushBack ["OPT_O_Heli_Light_02_v2_F",3];
-        GVAR(Hardcap_csat_choppers) pushBack ["OPT_O_Heli_Light_02_v3_F",2];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_T_MRAP_02_ghex_F",5];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_T_MRAP_02_hmg_ghex_F",4];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_LSV_02_AT_GHEX_F",3];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_T_MBT_02_arty_ghex_F",1];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_Truck_02_MRL_ghex_F",1];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_T_APC_Tracked_02_AA_ghex_F",2];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_T_APC_Wheeled_01_cannon_F_INF",4];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_T_APC_Tracked_02_cannon_ghex_F_VEH",4];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_T_APC_Tracked_02_cannon_ghex_F_AT",2];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_T_MBT_02_cannon_ghex_F_INF",2];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_T_MBT_02_cannon_ghex_F_AT",2];
-
-        GVAR(Hardcap_aaf_choppers) pushBack ["OPT_I_Heli_light_03_v2_F",3];
-        GVAR(Hardcap_aaf_choppers) pushBack ["OPT_I_Heli_light_03_v3_F",2];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_MRAP_03_F",5];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_MRAP_03_hmg_F",4];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_LSV_01_AT_ghex_F",3];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_MBT_01_arty_ghex_F",1];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_Truck_02_MRL_F",1];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_APC_Tracked_01_AA_ghex_F",2];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_APC_tracked_03_cannon_F_INF",4];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_APC_Wheeled_03_cannon_F_VEH",4];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_APC_Wheeled_03_cannon_F_AT",2];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_MBT_03_cannon_F_INF",2];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_MBT_03_cannon_F_AT",2];
-    };
-
+    
     default 
     {
     };
