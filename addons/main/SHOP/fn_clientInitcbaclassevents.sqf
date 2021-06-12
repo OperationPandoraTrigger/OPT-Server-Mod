@@ -103,8 +103,7 @@ This event happens every time a soldier enters a vehicle.
         // logge transport von Spielern
         _this call FUNC(writeTransportDistance);
     };
-
-    if (local _vec and (count (crew _vec)) == 0) then
+    if (local _vec) then
     {
         _vec remoteExecCall ["OPT_HC_fnc_transfer", 2];
     };
@@ -159,27 +158,17 @@ This event happens every time a soldier enters a vehicle.
             ["Transport", "Drive", [getPlayerUID _unit, name _unit, side _unit, getPlayerUID _driver, name _driver, side _driver, _dis]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
         };
     };
-
-    if (local _vec and (count (crew _vec)) == 0) then
+    if (local _vec) then
     {
         _vec remoteExecCall ["OPT_HC_fnc_transfer", 2];
     };
 }] call CBA_fnc_addClassEventHandler;
 
-["LandVehicle", "Killed",
+["Ship", "GetOut",
 {
-    params ["_unit", "_killer", "_instigator", "_useEffects"];
-    if (local _unit) then
+    params ["_vec", "_pos", "_unit", "_turret"];
+    if (local _vec) then
     {
-        _unit remoteExecCall ["OPT_HC_fnc_transfer", 2];
-    };
-}] call CBA_fnc_addClassEventHandler;
-
-["Air", "Killed",
-{
-    params ["_unit", "_killer", "_instigator", "_useEffects"];
-    if (local _unit) then
-    {
-        _unit remoteExecCall ["OPT_HC_fnc_transfer", 2];
+        _vec remoteExecCall ["OPT_HC_fnc_transfer", 2];
     };
 }] call CBA_fnc_addClassEventHandler;
