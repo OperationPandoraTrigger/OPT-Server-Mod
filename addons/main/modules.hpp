@@ -13,15 +13,15 @@ class CfgCLibModules
             FNC(initCBASettings);
             FNC(clientInit);
             FNC(gps);
-        }; 
+        };
 
-        MODULE(SHOP) 
+        MODULE(SHOP)
         {
             dependency[] = {"CLib/PerFrame", "Clib/Events"};
             FNC(clientInit);
             FNC(initCBASettings);
             FNC(config);
-            FNC(einlesenInShopDialog);    
+            FNC(einlesenInShopDialog);
             FNC(fillLB);
             FNC(getvehicleinfo);
             FNC(getprice);
@@ -49,7 +49,7 @@ class CfgCLibModules
             FNC(Init);
         };
 
-        MODULE(REVIVE) 
+        MODULE(REVIVE)
         {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
             FNC(clientInit);
@@ -66,7 +66,7 @@ class CfgCLibModules
             FNC(clientInitcbaclassevents);
         };
 
-        MODULE(GELDZEIT) 
+        MODULE(GELDZEIT)
         {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
             FNC(clientInit);
@@ -88,7 +88,7 @@ class CfgCLibModules
             FNC(clientInitcbaclassevents);
         };
 
-        MODULE(SECTORCONTROL) 
+        MODULE(SECTORCONTROL)
         {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
             FNC(clientInit);
@@ -111,7 +111,7 @@ class CfgCLibModules
             FNC(drawline);
         };
 
-        MODULE(FIELDREPAIR) 
+        MODULE(FIELDREPAIR)
         {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
             FNC(clientInit);
@@ -132,14 +132,14 @@ class CfgCLibModules
             FNC(checkRepairs);
         };
 
-        MODULE(HUD) 
+        MODULE(HUD)
         {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
             FNC(clientInit);
             FNC(updatehud);
         };
 
-        MODULE(CARGO) 
+        MODULE(CARGO)
         {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
             FNC(clientInit);
@@ -152,7 +152,7 @@ class CfgCLibModules
             FNC(setupcargospaceandsize);
         };
 
-        MODULE(RULES) 
+        MODULE(RULES)
         {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
             FNC(clientInit);
@@ -170,6 +170,13 @@ class CfgCLibModules
         {
             FNC(initCBASettings);
             FNC(serverInit);
+        };
+
+        MODULE(HC)
+        {
+            dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
+            FNC(transfer);
+            FNC(check);
         };
     };
 };
