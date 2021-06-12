@@ -52,14 +52,7 @@ publicVariable QGVAR(Hardcap_csat_planes);
 GVAR(Hardcap_csat_vehicles) = [];
 publicVariable QGVAR(Hardcap_csat_vehicles);
 
-GVAR(Hardcap_csat_supplies) = 
-[
-    ["OPT_O_Mortar_01_F",1],
-    ["OPT_CSAT_Minenkiste",4],
-    ["OPT_O_Static_Designator_02_F",1],
-    ["OPT_O_static_AA_F",2],
-    ["OPT_O_static_AT_F",2]
-];
+GVAR(Hardcap_csat_supplies) = [];
 publicVariable QGVAR(Hardcap_csat_supplies);
 
 GVAR(Hardcap_csat_sea) = [];
@@ -77,14 +70,7 @@ publicVariable QGVAR(Hardcap_aaf_planes);
 GVAR(Hardcap_aaf_vehicles) = [];
 publicVariable QGVAR(Hardcap_aaf_vehicles);
 
-GVAR(Hardcap_aaf_supplies) = 
-[
-    ["OPT_I_Mortar_01_F",1],
-    ["OPT_EAF_Minenkiste",4],
-    ["OPT_I_Static_Designator_01_F",1],
-    ["OPT_I_static_AA_F",2],
-    ["OPT_I_static_AT_F",2]
-];
+GVAR(Hardcap_aaf_supplies) = [];
 publicVariable QGVAR(Hardcap_aaf_supplies);
 
 GVAR(Hardcap_aaf_sea) = [];
@@ -98,33 +84,53 @@ switch (GVAR(hardcaplist)) do
 
     case "1": 
     {
-        GVAR(Hardcap_csat_choppers) pushBack ["OPT_O_Heli_Light_02_v2_F",0];
-        GVAR(Hardcap_csat_choppers) pushBack ["OPT_O_Heli_Light_02_v3_F",0];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_T_MRAP_02_ghex_F",5];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_T_MRAP_02_hmg_ghex_F",5];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_LSV_02_AT_GHEX_F",0];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_T_MBT_02_arty_ghex_F",0];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_Truck_02_MRL_ghex_F",0];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_T_APC_Tracked_02_AA_ghex_F",0];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_T_APC_Wheeled_01_cannon_F_INF",0];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_T_APC_Tracked_02_cannon_ghex_F_VEH",0];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_T_APC_Tracked_02_cannon_ghex_F_AT",0];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_T_MBT_02_cannon_ghex_F_INF",0];
-        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_O_T_MBT_02_cannon_ghex_F_AT",0];
+        /* CSAT Choppers */
+        GVAR(Hardcap_csat_choppers) pushBack ["OPT_CUP_O_Ka60_Grey_RU",5];
+        GVAR(Hardcap_csat_choppers) pushBack ["OPT_CUP_O_Mi24_V_Dynamic_RU",2];
 
-        GVAR(Hardcap_aaf_choppers) pushBack ["OPT_I_Heli_light_03_v2_F",0];
-        GVAR(Hardcap_aaf_choppers) pushBack ["OPT_I_Heli_light_03_v3_F",0];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_MRAP_03_F",5];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_MRAP_03_hmg_F",5];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_LSV_01_AT_ghex_F",0];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_MBT_01_arty_ghex_F",0];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_Truck_02_MRL_F",0];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_APC_Tracked_01_AA_ghex_F",0];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_APC_tracked_03_cannon_F_INF",0];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_APC_Wheeled_03_cannon_F_VEH",0];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_APC_Wheeled_03_cannon_F_AT",0];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_MBT_03_cannon_F_INF",0];
-        GVAR(Hardcap_aaf_vehicles) pushBack ["OPT_I_MBT_03_cannon_F_AT",0];
+        /* CSAT Vehicles */
+        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_CUP_O_GAZ_Vodnik_Unarmed_RU",6];
+        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_CUP_O_GAZ_Vodnik_PK_RU",5];
+        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_CUP_O_GAZ_Vodnik_MedEvac_RU",3];
+        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_CUP_O_BTR60_RU",3];
+        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_CUP_O_BTR90_RU",2];
+        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_CUP_O_LR_AA_TKA",3];
+        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_CUP_O_ZSU23_Afghan_SLA",2];
+        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_CUP_O_T72_RU",3];
+        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_CUP_O_T90_RU",2];
+        GVAR(Hardcap_csat_vehicles) pushBack ["OPT_CUP_O_BM21_RU",3];
+
+        /* CSAT Supplies */
+        GVAR(Hardcap_csat_supplies) pushBack ["CUP_O_2b14_82mm_RU",2];
+        GVAR(Hardcap_csat_supplies) pushBack ["OPT_CUP_O_D30_RU",1];
+        GVAR(Hardcap_csat_supplies) pushBack ["CUP_O_SearchLight_static_RU",3];
+        GVAR(Hardcap_csat_supplies) pushBack ["CUP_O_Igla_AA_pod_RU",2];
+        GVAR(Hardcap_csat_supplies) pushBack ["CUP_O_D30_AT_RU",3];
+        GVAR(Hardcap_csat_supplies) pushBack ["CUP_O_Kornet_RU",2];
+
+        /* NATO Choppers */
+        GVAR(Hardcap_nato_choppers) pushBack ["OPT_CUP_B_UH1D_armed_GER_KSK",5];
+        GVAR(Hardcap_nato_choppers) pushBack ["OPT_CUP_B_AH64D_DL_USA",2];
+
+        /* NATO Vehicles */
+        GVAR(Hardcap_nato_vehicles) pushBack ["OPT_CUP_B_HMMWV_Unarmed_USMC",6];
+        GVAR(Hardcap_nato_vehicles) pushBack ["OPT_CUP_B_HMMWV_M2_USMC",5];
+        GVAR(Hardcap_nato_vehicles) pushBack ["OPT_CUP_B_HMMWV_Ambulance_USMC",3];
+        GVAR(Hardcap_nato_vehicles) pushBack ["OPT_CUP_B_LAV25_HQ_USMC",3];
+        GVAR(Hardcap_nato_vehicles) pushBack ["OPT_CUP_B_M2Bradley_USA_W",2];
+        GVAR(Hardcap_nato_vehicles) pushBack ["OPT_CUP_B_LR_AA_RACS",3];
+        GVAR(Hardcap_nato_vehicles) pushBack ["OPT_CUP_B_M163_USA",2];
+        GVAR(Hardcap_nato_vehicles) pushBack ["OPT_CUP_B_M60A3_TTS_USMC",3];
+        GVAR(Hardcap_nato_vehicles) pushBack ["OPT_CUP_B_Leopard2A6_GER",2];
+        GVAR(Hardcap_nato_vehicles) pushBack ["OPT_CUP_B_RM70_CZ",3];
+
+        /* NATO Supplies */
+        GVAR(Hardcap_nato_supplies) pushBack ["CUP_B_M252_USMC",2];
+        GVAR(Hardcap_nato_supplies) pushBack ["OPT_CUP_B_M119_USMC",1];
+        GVAR(Hardcap_nato_supplies) pushBack ["CUP_B_M252_USMC",3];
+        GVAR(Hardcap_nato_supplies) pushBack ["CUP_B_Stinger_AA_pod_Base_USMC",2];
+        GVAR(Hardcap_nato_supplies) pushBack ["OPT_CUP_B_D30_AT_USMC",3];
+        GVAR(Hardcap_nato_supplies) pushBack ["CUP_B_TOW2_TriPod_USMC",2];
     };
     
     default 
