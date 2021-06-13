@@ -9,8 +9,6 @@ if (_hcOwner == 0 || isNull _obj || _hcOwner == _currentOwner) exitWith {};
 private _changed = false;
 private _group = group _obj;
 
-["HC", "TRANSFER", [_obj, local _obj, _group, !isNull _group]] call OPT_LOGGING_fnc_writelog;
-
 if (!isNull _group) then {
     _changed = _group setGroupOwner (owner HC1);
 } else {
@@ -28,4 +26,4 @@ private _targetName = "N/A";
     };
 } forEach allPlayers;
 
-["HC", "TRANSFER_2", [format ["Transferred '%1' from '%2' to '%3'.", _obj, _sourceName, _targetName], _changed]] call OPT_LOGGING_fnc_writelog;
+["HC", "TRANSFER", [format ["Transferred '%1' from '%2' to '%3'.", _obj, _sourceName, _targetName], _changed]] call OPT_LOGGING_fnc_writelog;

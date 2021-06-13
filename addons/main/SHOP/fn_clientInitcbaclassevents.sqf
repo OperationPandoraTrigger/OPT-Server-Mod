@@ -39,11 +39,13 @@ This event happens every time a soldier enters a vehicle.
         "",
         format["[_target, player] call %1", QFUNC(flipCheck)]
     ];
+    /*
     _vec addAction
     [
         "<t color='#00D3BF'>OWNER</t>",
         { cursorTarget remoteExecCall ["OPT_HC_fnc_check", 2]; }
     ];
+    */
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
 ["Air", "init",
@@ -60,11 +62,13 @@ This event happens every time a soldier enters a vehicle.
         "",
         format["[_target, player] call %1", QFUNC(flipCheck)]
     ];
+    /*
     _vec addAction
     [
         "<t color='#00D3BF'>OWNER</t>",
         { cursorTarget remoteExecCall ["OPT_HC_fnc_check", 2]; }
     ];
+    */
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
 // Engine EH für Piloten -> Log transportierte Soldaten
