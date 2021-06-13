@@ -10,4 +10,4 @@ private _name = "N/A";
     };
 } forEach allPlayers;
 
-["HC", "OWNER", [_id, _name]] call OPT_LOGGING_fnc_writelog;
+["HC", "OWNER", [_obj, _id, _name]] call OPT_LOGGING_fnc_writelog;

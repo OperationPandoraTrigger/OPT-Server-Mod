@@ -28,4 +28,4 @@ private _targetName = "N/A";
     };
 } forEach allPlayers;
 
-["HC", "TRANSFER_2", [format ["From '%1' to '%2'", _sourceName, _targetName], _changed]] call OPT_LOGGING_fnc_writelog;
+["HC", "TRANSFER_2", [format ["Transferred '%1' from '%2' to '%3'.", _obj, _sourceName, _targetName], _changed]] call OPT_LOGGING_fnc_writelog;
