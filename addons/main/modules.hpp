@@ -175,8 +175,11 @@ class CfgCLibModules
         MODULE(HC)
         {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
-            FNC(transfer);
             FNC(check);
+            FNC(stats);
+            FNC(transfer);
+            FNC(transfer_all);
+            FNC(transfer_all_vehicles);
         };
     };
 };
