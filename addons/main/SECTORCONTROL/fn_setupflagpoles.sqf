@@ -31,8 +31,16 @@ CreateFlags = {
         _this params ["_posX", "_posY", "_aktiv", "_name", "_side", "_texture"];
         if (_aktiv) then
         {
+            private _pos = [_posX, _posY, 0];
+
+            // Bei Positionen über Wasser (z.B. auf Brücken) die Zielhöhe der Oberfläche suchen
+            if (surfaceIsWater _pos) then
+            {
+                _pos = ASLToATL (lineIntersectsSurfaces [_pos vectorAdd [0, 0, 2500], _pos vectorAdd [0, 0, -2500]] select 0 select 0);
+            };
+
             // Objekt erzeugen
-            private _flag = createVehicle ["FlagPole_F", [_posX, _posY],  [], 0, "CAN_COLLIDE"];
+            private _flag = createVehicle ["FlagPole_F", _pos, [], 0, "CAN_COLLIDE"];
             _flag setVariable ["opt_flag", true, true];
             _flag setVariable ["start_owner", _side, true];
 

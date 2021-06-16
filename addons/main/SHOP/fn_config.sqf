@@ -34,6 +34,8 @@
 //Nato Einheiten
 GVAR(nato_vehicles) = 
 [
+/**
+ * TeTeT: do be deleted
     ["OPT_B_Quadbike_01_F", DEF_PROD(0)],                    // Quadbike
     ["OPT_B_T_LSV_01_unarmed_F", DEF_PROD(0)],               // Prowler unarmed 
     ["OPT_B_T_LSV_01_armed_F", DEF_PROD(0)],                 // Prowler armed
@@ -58,20 +60,37 @@ GVAR(nato_vehicles) =
     ["OPT_B_Truck_01_Repair_ghex_F",  10000, 5000, 20000],          // HEMTT Repair
     ["OPT_B_Truck_01_medical_ghex_F", 10000, 5000, 20000],         // HEMTT Medical
     ["OPT_B_Truck_01_transport_ghex_F", DEF_PROD(5000)]        // HEMTT      
+**/
+// CUP
+    ["OPT_CUP_B_M1030_USA", DEF_PROD(15000)],               // Motorrad M1030 (0)
+    ["OPT_CUP_B_LR_Transport_GB_W", DEF_PROD(25000)],       // Land Rover 110
+    ["OPT_CUP_B_LR_MG_GB_W", DEF_PROD(30000)],              // Land Rover M2
+    ["OPT_CUP_B_HMMWV_Unarmed_USMC", DEF_PROD(15000)],      // HMMWV
+    ["OPT_CUP_B_HMMWV_M2_USMC", DEF_PROD(25000)],           // HMMWV M2
+    ["OPT_CUP_B_MTVR_USMC", DEF_PROD(5000)],                // MTVR
+    ["OPT_CUP_B_MTVR_Repair_USMC", 10000, 5000, 20000],     // MTVR Rep
+    ["OPT_CUP_B_HMMWV_Ambulance_USMC", 10000, 5000, 20000]  // HMMWV Ambulance (0)
 ];
 
 GVAR(nato_vehicles_supply) = 
 [
+/**
+ * TeTeT: to be deleted
     ["OPT_B_Truck_01_ammo_F", DEF_PROD(0)],                         // HEMTT Ammo
     ["OPT_B_Truck_01_fuel_F", DEF_PROD(0)],                      // HEMTT Fuel
 
 //Tropentarn
     ["OPT_B_Truck_01_ammo_ghex_F", 50000, 5000, 20000],            // HEMTT Ammo
-    ["OPT_B_Truck_01_fuel_ghex_F", 10000, 5000, 20000]             // HEMTT Fuel    
+    ["OPT_B_Truck_01_fuel_ghex_F", 10000, 5000, 20000]             // HEMTT Fuel
+**/
+    ["OPT_CUP_B_MTVR_Ammo_USMC",  50000, 5000, 20000],      // MTVR Ammo
+    ["OPT_CUP_B_MTVR_Refuel_USMC", 10000, 5000, 20000]      // MTVR Tank
 ];    
   
 GVAR(nato_choppers) = 
 [
+/**
+ * TeTeT: to be deleted
     ["OPT_B_Heli_Light_01_F", DEF_PROD(0)],                 // MH-9 Hummingbird
     ["OPT4_B_Heli_Light_01_armed_F", DEF_PROD(0)],              // AH-9 Pawnee 
     ["OPT4_B_Heli_light_03_green_F", 50000, 10000, 100000],          // WY-55 Hellcat
@@ -88,17 +107,25 @@ GVAR(nato_choppers) =
     ["OPT_B_T_VTOL_02_infantry_unarmed_F", DEF_PROD(0)],           // VTOL Y-32 Xi'an (Inf-Transport)
     ["OPT_B_Plane_CAS_01_F", DEF_PROD(0)],                      // A-164 Wipeout
     ["OPT_B_Plane_Fighter_01_Stealth_F", DEF_PROD(0)]               // F/A-181 Black Wasp II   
+**/
+    ["OPT_CUP_MH60S_Unarmed_USN", DEF_PROD(110000)],        // MH-60S Seahawk
+    ["OPT_CUP_B_UH1D_armed_GER_KSK", DEF_PROD(150000)],     // UH-1D
+    ["OPT_CUP_B_CH53E_USMC", DEF_PROD(150000)],             // CH53G Super Stallion
+    ["OPT_CUP_B_AH64D_DL_USA", DEF_PROD(300000)]            // AH-64
 ];
 
 GVAR(nato_planes) = 
 [
     ["C_Plane_Civil_01_F", 1, 0, 0],                            // Caesar BTT
     ["CUP_C_AN2_CIV", 1, 0, 0],                                 // Antonov An-2
-    ["CUP_C_C47_CIV", 1, 0, 0]                                  // C-47 Skytrain
+    ["CUP_C_C47_CIV", 1, 0, 0],                                 // C-47 Skytrain
+    ["OPT_CUP_B_L39_CZ_GREY", 1, 0, 0]                          // L-39AZ
 ];
 
 GVAR(nato_armored) = 
 [
+/**
+ * TeTeT: do be deleted
     ["OPT4_B_LSV_01_AT_F", DEF_PROD(0)],                     // Prowler AT 
     ["OPT4_B_MRAP_01_gmg_F", DEF_PROD(0)],                        // Hunter GMG 
     ["OPT4_B_APC_Tracked_01_rcws_F", DEF_PROD(0)],          // IFV-6c Panther
@@ -122,7 +149,18 @@ GVAR(nato_armored) =
     ["OPT4_B_MBT_01_TUSK_ghex_F", DEF_PROD(125000)],                 // M2A4 SlammerUp
     ["OPT4_B_MBT_03_cannon_ghex_F", DEF_PROD(0)],                     // MBT-52 Kuma
     ["OPT4_B_MBT_01_Arty_ghex_F", DEF_PROD(300000)],                       // M4 Scorcher
-    ["OPT_B_MBT_01_mlrs_ghex_F", DEF_PROD(400000)]                      // M5 Sandstorm      
+    ["OPT_B_MBT_01_mlrs_ghex_F", DEF_PROD(400000)]                      // M5 Sandstorm   
+**/
+// CUP
+    ["OPT_CUP_B_LAV25_HQ_USMC", DEF_PROD(25000)],           // LAV C2
+    ["OPT_CUP_B_M2Bradley_USA_W", DEF_PROD(60000)],         // M2A2 Bradley IFV
+    ["OPT_CUP_B_M163_USA", DEF_PROD(125000)],               // M163A1 VADS (50er Magazine)
+    ["OPT_CUP_B_M60A3_TTS_USMC", DEF_PROD(125000)],         // M60A3 TTS
+    ["OPT_CUP_B_Leopard2A6_GER", DEF_PROD(125000)],         // Leopard2A6
+    ["OPT_CUP_B_HMMWV_TOW_USMC", DEF_PROD(25000)],          // HMMWV TOW
+    ["OPT_CUP_B_LR_AA_RACS", DEF_PROD(30000)],              // Landrover AA
+    ["OPT_CUP_B_RM70_CZ", DEF_PROD(300000)]                 // RM-70 nicht nachladbar PREIS?
+
 ];
 
 GVAR(nato_supplies) = 
@@ -155,14 +193,14 @@ GVAR(nato_supplies) =
 
 GVAR(nato_static) = 
 [
-    ["OPT_B_HMG_01_high_F", DEF_PROD(10000)],                   // Stand-MG hoch
-    ["OPT_B_HMG_01_F", DEF_PROD(10000)],                        // Stand-MG niedrig
-    ["OPT_B_GMG_01_high_F", DEF_PROD(75000)],                   // Stand-GMG hoch
-    ["OPT_B_GMG_01_F", DEF_PROD(75000)],                        // Stand-GMG niedrig
-    ["OPT_B_static_AA_F", DEF_PROD(50000)],                     // Stand-AA
-    ["OPT_B_static_AT_F", DEF_PROD(150000)],                    // Stand-AT
-    ["OPT_B_Mortar_01_F", DEF_PROD(50000)],                    // MK6 - Mörser
-    ["OPT_B_Static_Designator_01_F", DEF_PROD(10000)]           // Remote Designator
+    ["CUP_B_M2StaticMG_USMC", DEF_PROD(10000)],                 // Stand-MG hoch
+    ["CUP_B_M2StaticMG_MiniTripod_USMC", DEF_PROD(10000)],      // Stand-MG niedrig
+    ["OPT_CUP_B_D30_AT_USMC", DEF_PROD(150000)],                // D30-AT
+    ["OPT_CUP_B_M119_USMC", DEF_PROD(150000)],                  // M119
+    ["CUP_B_Stinger_AA_pod_Base_USMC", DEF_PROD(50000)],        // FIM-92 AA
+    ["CUP_B_TOW2_TriPod_USMC", DEF_PROD(150000)],               // TOW-2 AT
+    ["CUP_B_M252_USMC", DEF_PROD(50000)],                       // M252 81mm Mörser
+    ["CUP_B_SearchLight_static_USMC", DEF_PROD(10000)]          // Suchscheinwerfer
 ];
 
 GVAR(nato_sea) = 
@@ -176,6 +214,8 @@ GVAR(nato_sea) =
 //CSAT Einheiten
 GVAR(csat_vehicles) = 
 [
+/**
+ * TeTeT: to be deleted
 //Vanilla
     ["OPT_O_Quadbike_01_F", DEF_PROD(0)],                    // Quadbike-
     ["OPT_O_T_LSV_02_unarmed_F", DEF_PROD(0)],               // Quilin unarmed 
@@ -201,20 +241,38 @@ GVAR(csat_vehicles) =
     ["OPT_O_T_Truck_02_transport_F", DEF_PROD(5000)],         // Zamack Logistik
     ["OPT_O_T_Truck_02_box_F", 10000,5000,10000],            // Zamack Repair
     ["OPT_O_T_Truck_02_Medical_F", DEF_PROD(6000)]          // Zamack Medical
+**/
+// CUP
+    ["OPT_CUP_O_TT650_TKA", DEF_PROD(10000)],               // Motorrad TT650 (0)  
+    ["OPT_CUP_O_UAZ_Unarmed_RU", DEF_PROD(25000)],          // UAZ 469
+    ["OPT_CUP_O_UAZ_MG_RU", DEF_PROD(35000)],               // UAZ 469 DShKM
+    ["OPT_CUP_O_GAZ_Vodnik_Unarmed_RU", DEF_PROD(20000)],   // GAZ 3937 Vodnik
+    ["OPT_CUP_O_GAZ_Vodnik_PK_RU", DEF_PROD(35000)],        // GAZ 3937 Vodnik 2xPKM
+    ["OPT_CUP_O_Ural_TKA", DEF_PROD(5000)],                 // Ural
+    ["OPT_CUP_O_Ural_Repair_TKA", 10000,5000,10000],        // Ural Rep
+    ["OPT_CUP_O_GAZ_Vodnik_MedEvac_RU", DEF_PROD(6000)]     // GAZ 3937 Vodnik Medic (0)
 ];
 
 GVAR(csat_vehicles_supply) = 
 [
+/**
+ * TeTeT: to be deleted
     ["OPT_O_Truck_03_ammo_F", DEF_PROD(0)],              // Zamack Ammo
     ["OPT_O_Truck_03_fuel_F", DEF_PROD(0)],              // Zamack Fuel
 
 //Tropentarn
     ["OPT_O_T_Truck_02_ammo_F", 50000,5000,10000],                 // Zamack Ammo
     ["OPT_O_T_Truck_02_fuel_F", 10000,5000,10000]                  // Zamack Fuel
+**/
+// CUP
+    ["OPT_CUP_O_Ural_Reammo_TKA", 50000,5000,10000],        // Ural Ammo
+    ["OPT_CUP_O_Ural_Refuel_TKA", 10000,5000,10000],        // Ural Tank
 ];
 
 GVAR(csat_choppers) = 
 [
+/**
+ * TeTeT: to be deleted
     ["OPT_O_Heli_Light_01_F", DEF_PROD(0)],                 // MH6
     ["OPT_O_Heli_Light_03_unarmed_F", DEF_PROD(0)],             // WY-55 Hellcat
     ["OPT4_O_Heli_light_03_F", DEF_PROD(0)],                    // WY-55 Hellcat
@@ -237,18 +295,27 @@ GVAR(csat_choppers) =
     ["OPT_O_Plane_CAS_02_F", DEF_PROD(0)],                      // To-199 Neophron
     ["OPT_O_Plane_Fighter_AA_02_F", DEF_PROD(0)],                  // To-201 Shikra 
     ["OPT_O_Plane_CAS_01_F_1" , DEF_PROD(0)],                  // Wipeout CAS 400000
-    ["OPT_O_Plane_Fighter_01_Stealth_F", DEF_PROD(0)]          // F/A-181 Black Wasp II  
+    ["OPT_O_Plane_Fighter_01_Stealth_F", DEF_PROD(0)]          // F/A-181 Black Wasp II
+**/
+// CUP
+    ["OPT_CUP_O_SA330_Puma_HC1_BAF", 40000,10000,20000],        // SA-330 Puma 
+    ["OPT_CUP_O_Ka60_Grey_RU", 200000,10000,20000],             // KA-60 Kataska
+    ["OPT_CUP_O_Merlin_HC3_GB", 45000,10000,20000],             // Merlin HC3A
+    ["OPT_CUP_O_Mi24_V_Dynamic_RU",  DEF_PROD(300000)]          // MI-24V
 ];
 
 GVAR(csat_planes) = 
 [
     ["C_Plane_Civil_01_F", 1, 0, 0],                            // Caesar BTT
     ["CUP_C_AN2_CIV", 1, 0, 0],                                 // Antonov An-2
-    ["CUP_C_C47_CIV", 1, 0, 0]                                  // C-47 Skytrain
+    ["CUP_C_C47_CIV", 1, 0, 0],                                 // C-47 Skytrain
+    ["OPT_CUP_O_Su25_Dyn_RU", 1, 0, 0]                          // SU-25T
 ];
 
 GVAR(csat_armored) = 
 [
+/**
+ * TeTeT: to be deleted
 //Vanilla
     ["OPT_O_MRAP_02_gmg_F", DEF_PROD(0)],                  // Ifrit GMG
     ["OPT_O_LSV_02_AT_F", DEF_PROD(0)],                    // Quilin AT 
@@ -274,6 +341,17 @@ GVAR(csat_armored) =
     ["OPT_O_T_MBT_02_cannon_ghex_F_AT", DEF_PROD(500000)],             // T-100 Varsuk Fahrzeug
     ["OPT_O_T_MBT_02_arty_ghex_F", DEF_PROD(350000)],               // 2S9 Sochor 
     ["OPT_O_Truck_02_MRL_ghex_F", DEF_PROD(400000)]                 // Zamark MRL  
+**/
+
+    ["OPT_CUP_O_ZSU23_Afghan_SLA", DEF_PROD(320000)],           // ZSU-23-4 Afghanski (50er Magazine)
+    ["OPT_CUP_O_T72_RU", DEF_PROD(400000)],                     // T72
+    ["OPT_CUP_O_T90_RU", DEF_PROD(500000)],                     // T90
+    ["OPT_CUP_O_BTR60_RU", DEF_PROD(80000)],                // BTR-60 PB
+    ["OPT_CUP_O_BTR90_RU", DEF_PROD(80000)],                // BTR90 ohne GMG, Preis?    
+    ["OPT_CUP_O_BRDM2_ATGM_RUS", DEF_PROD(80000)],              // BRDM-2 ATGM    
+    ["OPT_CUP_O_LR_AA_TKA", DEF_PROD(30000)],                   // UAZ AA
+    ["OPT_CUP_O_BM21_RU", DEF_PROD(400000)]                     // BM21 nicht nachladbar
+
 ];
 
 GVAR(csat_supplies) = 
@@ -307,14 +385,14 @@ GVAR(csat_supplies) =
 
 GVAR(csat_static) = 
 [
-    ["OPT_O_HMG_01_high_F", DEF_PROD(10000)],                       // Stand-MG hoch
-    ["OPT_O_HMG_01_F", DEF_PROD(10000)],                            // Stand-MG niedrig
-    ["OPT_O_GMG_01_high_F", DEF_PROD(75000)],                       // Stand-GMG hoch
-    ["OPT_O_GMG_01_F", DEF_PROD(75000)],                            // Stand-GMG niedrig
-    ["OPT_O_static_AA_F", DEF_PROD(20000)],                         // Stand-AA
-    ["OPT_O_static_AT_F", DEF_PROD(150000)],                        // Stand-AT
-    ["OPT_O_Mortar_01_F", DEF_PROD(50000)],                         // MK6 Mrser
-    ["OPT_O_Static_Designator_02_F", DEF_PROD(10000)]               // Remote Designator
+    ["CUP_O_DSHKM_SLA", DEF_PROD(10000)],                           // Stand-MG hoch
+    ["CUP_O_KORD_RU", DEF_PROD(10000)],                             // Stand-MG niedrig
+    ["CUP_O_D30_AT_RU", DEF_PROD(150000)],                          // D30-AT
+    ["OPT_CUP_O_D30_RU", DEF_PROD(150000)],                         // D30
+    ["CUP_O_Igla_AA_pod_RU", DEF_PROD(20000)],                      // Igla Luftabwehrstellung
+    ["CUP_O_Kornet_RU", DEF_PROD(150000)],                          // Kornet AT14
+    ["CUP_O_2b14_82mm_RU", DEF_PROD(50000)],                        // Podnos 2b14 Mörser
+    ["CUP_O_SearchLight_static_RU", DEF_PROD(10000)]                // Suchscheinwerfer
 ];
 
 GVAR(csat_sea) = 

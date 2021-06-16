@@ -76,6 +76,12 @@ class CfgCLibLocalisation
                 English = "Select position to teleport with left click.";
                 German = "Position zum Teleport mit Linksklick auswählen.";
             };
+            
+            class TELEPORT_FAIL
+            {
+                English = "Teleporting failed. Too much trees in that area.";
+                German = "Teleport gescheitert. Zuviele Bäume in der Umgebung.";
+            };
         };
 
         class RULES
