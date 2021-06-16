@@ -31,4 +31,5 @@
     };
 
     ace_maptools_mapGpsShow = false;    // disable GPS on map - can be reactivated by user via ace-menu
+    uiNamespace setVariable ["ace_markers_timestampChecked", true];    // enable ACE marker timestamping - can be disabled by user via checkbox
 }] call CFUNC(addEventhandler);
