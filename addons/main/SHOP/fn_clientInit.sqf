@@ -91,6 +91,8 @@ GVAR(eventArgs) = [];
 
                 east_shop_plane addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["planes"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
                 independent_shop_plane addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["planes"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];    
+                civ1_shop_plane addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["planes"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
+                civ2_shop_plane addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["planes"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
 
                 east_shop_veh addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_GROUND)], {[EVENT_SHOP_KAUF_ONLOAD,["vehicles"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
                 independent_shop_veh addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_GROUND)], {[EVENT_SHOP_KAUF_ONLOAD,["vehicles"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];    
@@ -138,7 +140,7 @@ GVAR(eventArgs) = [];
                                     }
                                     else
                                     {
-                                        if (((player distance east_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance independent_shop_plane) < MAX_DISTANCE_TO_SHOP)) then
+                                        if (((player distance east_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance independent_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance civ1_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance civ2_shop_plane) < MAX_DISTANCE_TO_SHOP)) then
                                         {
                                             [EVENT_SHOP_KAUF_ONLOAD, ["planes"]] call CFUNC(localEvent);
                                         };
@@ -163,6 +165,8 @@ GVAR(eventArgs) = [];
 
                 east_shop_plane addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["planes"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
                 west_shop_plane addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["planes"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];    
+                civ1_shop_plane addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["planes"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
+                civ2_shop_plane addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["planes"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
 
                 east_shop_veh addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_GROUND)], {[EVENT_SHOP_KAUF_ONLOAD,["vehicles"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
                 west_shop_veh addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_GROUND)], {[EVENT_SHOP_KAUF_ONLOAD,["vehicles"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];    
@@ -210,7 +214,7 @@ GVAR(eventArgs) = [];
                                     }
                                     else
                                     {
-                                        if (((player distance east_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance west_shop_plane) < MAX_DISTANCE_TO_SHOP)) then
+                                        if (((player distance east_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance west_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance civ1_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance civ2_shop_plane) < MAX_DISTANCE_TO_SHOP)) then
                                         {
                                             [EVENT_SHOP_KAUF_ONLOAD, ["planes"]] call CFUNC(localEvent);
                                         };
@@ -233,8 +237,10 @@ GVAR(eventArgs) = [];
                 west_shop_air addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["choppers"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];    
                 independent_shop_air addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["choppers"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];    
 
-                east_shop_plane addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["planes"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
+                west_shop_plane addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["planes"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
                 independent_shop_plane addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["planes"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];    
+                civ1_shop_plane addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["planes"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
+                civ2_shop_plane addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["planes"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
 
                 west_shop_veh addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_GROUND)], {[EVENT_SHOP_KAUF_ONLOAD,["vehicles"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];    
                 independent_shop_veh addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_GROUND)], {[EVENT_SHOP_KAUF_ONLOAD,["vehicles"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];    
@@ -282,7 +288,7 @@ GVAR(eventArgs) = [];
                                     }
                                     else
                                     {
-                                        if (((player distance west_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance independent_shop_plane) < MAX_DISTANCE_TO_SHOP)) then
+                                        if (((player distance west_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance independent_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance civ1_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance civ2_shop_plane) < MAX_DISTANCE_TO_SHOP)) then
                                         {
                                             [EVENT_SHOP_KAUF_ONLOAD, ["planes"]] call CFUNC(localEvent);
                                         };

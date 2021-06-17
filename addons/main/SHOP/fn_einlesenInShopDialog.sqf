@@ -184,7 +184,19 @@ switch (GVAR(vehicleType)) do
             default
             {
             };        
-        }; 
+        };
+
+        // Zivilflughafen
+        if ((player distance civ1_shop_plane) < 10) then
+        {
+            GVAR(pads) = [PlaneBoxCiv1];
+        };
+
+        if ((player distance civ2_shop_plane) < 10) then
+        {
+            GVAR(pads) = [PlaneBoxCiv2];
+        };
+
         GVAR(moveInVeh) = true;
         _konfig ctrlEnable false;       
     };
