@@ -26,7 +26,6 @@
 */
 #include "macros.hpp"
 
-scopeName "checkpad";
 params 
 [
     ["_pads", [objNull]],
@@ -43,10 +42,10 @@ private _freiePads = [];
     private _objects = _x nearObjects _distance;
     {
         // Objekt bekannt? (Shop-Objekt oder lebender Soldat)
-        if (_x in GVAR(all_item_classnames) || (_x isKindOf "CAManBase" && alive _x)) then
+        if (typeOf _x in GVAR(all_item_classnames) || (_x isKindOf "CAManBase" && alive _x)) then
         {
             _things pushBack _x;
-            continue;
+            break;
         };
     } forEach _objects;
 
@@ -54,7 +53,7 @@ private _freiePads = [];
     if (count _things == 0) then 
     {
         _freiePads append [_x];
-        breakTo "checkpad";
+        break;
     };
 } forEach _pads;
 

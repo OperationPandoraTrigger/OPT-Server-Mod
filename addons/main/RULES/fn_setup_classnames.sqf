@@ -139,18 +139,20 @@ GVAR(pilots_vecs) =
     "OPT_CUP_B_UH1D_armed_GER_KSK",         // UH-1D
     "OPT_CUP_B_CH53E_USMC",                 // CH-53G Super Stallion
     "OPT_CUP_B_AH64D_DL_USA",               // AH-64
-    "C_Plane_Civil_01_F",                   // Caesar BTT
-    "CUP_C_AN2_CIV",                        // Antonov An-2
-    "CUP_C_C47_CIV",                        // C-47 Skytrain
+    "OPT_CUP_C_Cessna_172_CIV_BLUE",        // Cessna
+    "OPT_CUP_C_AN2_CIV",                    // Antonov An-2
+    "OPT_CUP_C_DC3_ChernAvia_CIV",          // Li-2
+    "OPT_CUP_B_C130J_USMC",                 // C130J
 
     // CSAT - CUP
     "OPT_CUP_O_SA330_Puma_HC1_BAF",         // SA-330 Puma
     "OPT_CUP_O_Ka60_Grey_RU",               // KA-60 Katsaka
     "OPT_CUP_O_Merlin_HC3_GB",              // Merlin HC3A
     "OPT_CUP_O_Mi24_V_Dynamic_RU"           // MI-24V
-    "C_Plane_Civil_01_F",                   // Caesar BTT
-    "CUP_C_AN2_CIV",                        // Antonov An-2
-    "CUP_C_C47_CIV"                         // C-47 Skytrain
+    "OPT_CUP_C_Cessna_172_CIV_GREEN",       // Cessna
+    "OPT_CUP_O_AN2_TK",                     // Antonov An-2
+    "OPT_CUP_O_C47_SLA",                    // Li-2
+    "OPT_CUP_O_C130J_TKA"                   // C130J
 ];
 
 GVAR(jetpilots_vecs) = 
