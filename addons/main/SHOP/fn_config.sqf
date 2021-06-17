@@ -266,7 +266,7 @@ GVAR(csat_vehicles_supply) =
 **/
 // CUP
     ["OPT_CUP_O_Ural_Reammo_TKA", 50000,5000,10000],        // Ural Ammo
-    ["OPT_CUP_O_Ural_Refuel_TKA", 10000,5000,10000],        // Ural Tank
+    ["OPT_CUP_O_Ural_Refuel_TKA", 10000,5000,10000]        // Ural Tank
 ];
 
 GVAR(csat_choppers) = 

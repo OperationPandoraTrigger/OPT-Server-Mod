@@ -183,7 +183,7 @@ GVAR(crew_vecs) =
     "OPT_CUP_B_M60A3_TTS_USMC",             // M60A3 TTS
     "OPT_CUP_B_Leopard2A6_GER",             // Leopard 2A6
     "OPT_CUP_B_HMMWV_TOW_USMC",             // HMMWV TOW
-    "OPT_CUP_B_RM70_CZ"                     // RM-70 
+    "OPT_CUP_B_RM70_CZ",                     // RM-70 
 
 //Tropentarn
     "OPT4_B_LSV_01_AT_ghex_F",
@@ -217,7 +217,7 @@ GVAR(crew_vecs) =
     "OPT_CUP_O_BTR60_RU",                   // BTR-60 PB
     "OPT_CUP_O_BTR90_RU",                   // BTR-90
     "OPT_CUP_O_BRDM2_ATGM_RUS",             // BRDM-2 ATGM
-    "OPT_CUP_O_BM21_RU"                     // BM21
+    "OPT_CUP_O_BM21_RU",                     // BM21
 
 //Tropentarn
     "OPT4_O_LSV_02_AT_GHEX_F",
