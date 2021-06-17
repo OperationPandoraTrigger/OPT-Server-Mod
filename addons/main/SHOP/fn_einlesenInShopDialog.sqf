@@ -383,31 +383,12 @@ GVAR(orderPAD) = [];
 //Kaufbutton Aktivschlaten bei Freiem Pad
 GVAR(idPadCheckShop) =
 [{
-    private _freiePads = [];
     private _display = findDisplay 20000;
     private _order = _display displayCtrl 20004;
     private _padBox = _display displayCtrl 20003;
    
     // freie Pads suchen
-    {
-        // Bekannte Objekte in der Nähe suchen
-        private _objects = nearestObjects [_x, GVAR(all_item_classnames), GVAR(Checkbereich)];
-
-        // Jetzt noch lebende Soldaten suchen
-        private _soldiers = nearestObjects [_x, ["CAManBase"], GVAR(Checkbereich)];
-        {
-            if (alive _x) then
-            {
-                _objects pushBackUnique _x;
-            };
-        } forEach _soldiers;
-     
-        // Wenn Liste leer -> Pad ist frei!
-        if (count _objects == 0) then 
-        {
-            _freiePads append [_x]; 
-        };       
-    } forEach GVAR(pads);
+    private _freiePads = [GVAR(pads), GVAR(Checkbereich)] call FUNC(checkpad);
 
     // Kaufbuttuon Freischalten und erstes Pad zuordnen
     if ((count _freiePads) > 0) then 
