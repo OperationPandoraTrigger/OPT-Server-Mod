@@ -21,7 +21,7 @@ private _typeOfPlayer = typeOf _unit;
 private _bad_item_used = false;
 
 // check SMG
-if !(_typeOfPlayer in (GVAR(pilots) + (GVAR(jetpilots) + GVAR(crew))) then 
+if !(_typeOfPlayer in (GVAR(pilots) + GVAR(jetpilots) + GVAR(crew))) then 
 {
     {
         if (_x in GVAR(SMG)) then 
