@@ -58,6 +58,12 @@ GVAR(pilots) =
     "OPT_CSAT_Pilot"
 ];
 
+GVAR(jetpilots) = 
+[
+    "OPT_NATO_Pilot_jet",
+    "OPT_CSAT_Pilot_jet"
+];
+
 GVAR(pilots_vecs) = 
 [
     "OPT4_B_Heli_light_03_green_F",                    // WY-55 Hellcat (Unbewaffnet)
@@ -133,13 +139,27 @@ GVAR(pilots_vecs) =
     "OPT_CUP_B_UH1D_armed_GER_KSK",         // UH-1D
     "OPT_CUP_B_CH53E_USMC",                 // CH-53G Super Stallion
     "OPT_CUP_B_AH64D_DL_USA",               // AH-64
+    "C_Plane_Civil_01_F",                   // Caesar BTT
+    "CUP_C_AN2_CIV",                        // Antonov An-2
+    "CUP_C_C47_CIV",                        // C-47 Skytrain
 
     // CSAT - CUP
     "OPT_CUP_O_SA330_Puma_HC1_BAF",         // SA-330 Puma
     "OPT_CUP_O_Ka60_Grey_RU",               // KA-60 Katsaka
     "OPT_CUP_O_Merlin_HC3_GB",              // Merlin HC3A
     "OPT_CUP_O_Mi24_V_Dynamic_RU"           // MI-24V
+    "C_Plane_Civil_01_F",                   // Caesar BTT
+    "CUP_C_AN2_CIV",                        // Antonov An-2
+    "CUP_C_C47_CIV"                         // C-47 Skytrain
+];
 
+GVAR(jetpilots_vecs) = 
+[
+    // NATO - CUP
+    "OPT_CUP_B_L39_CZ_GREY",                // L-39AZ
+
+    // CSAT - CUP
+    "OPT_CUP_O_Su25_Dyn_RU"                 // SU-25T
 ];
 
 GVAR(blockedVehiclePositions_air) = 
