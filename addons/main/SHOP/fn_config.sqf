@@ -302,7 +302,7 @@ GVAR(csat_choppers) =
     ["OPT_CUP_O_SA330_Puma_HC1_BAF", 40000, 10000, 20000],        // SA-330 Puma 
     ["OPT_CUP_O_Ka60_Grey_RU", 200000, 10000, 20000],             // KA-60 Kataska
     ["OPT_CUP_O_Merlin_HC3_GB", 45000, 10000, 20000],             // Merlin HC3A
-    ["OPT_CUP_O_Mi24_V_Dynamic_RU", DEF_PROD(300000)]          // MI-24V
+    ["OPT_CUP_O_Mi24_V_Dynamic_RU", DEF_PROD(300000)]             // MI-24V
 ];
 
 GVAR(csat_planes) = 

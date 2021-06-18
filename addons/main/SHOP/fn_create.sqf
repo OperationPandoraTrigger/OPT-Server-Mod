@@ -82,19 +82,20 @@ DFUNC(createOrder) =
     _waffenkosten = GVAR(order_Datensatz) select 10;
 
     //Konstanten für Fahrzeugerstellung
-    #define HEIGHT_OFFSET_GROUND 0.1
-    #define HEIGHT_OFFSET_WATER 0.2
-
+    #define HEIGHT_OFFSET 0.2
+    
     //Objekt Erstellung 
-    private _posi = getPosASL GVAR(order_box) vectorAdd [0, 0, HEIGHT_OFFSET_GROUND];
+    private _posi = getPosASL GVAR(order_box) vectorAdd [0, 0, 1000];
     private _veh = createVehicle [_class, _posi, [], 0, "NONE"];
     _veh setdir getdir GVAR(order_box);
+    _veh setVectorUp vectorUp GVAR(order_box);
+    _posi = getPosASL GVAR(order_box) vectorAdd [0, 0, HEIGHT_OFFSET];
     _veh setPosASL _posi;
 
     //check Box liegt im Wasser
     if ((surfaceIsWater (position GVAR(order_box))) and (_veh isKindOf "Ship")) then 
     {
-        _veh setPos [(position GVAR(order_box) select 0),(position GVAR(order_box) select 1), HEIGHT_OFFSET_WATER]; 
+        _veh setPos [(position GVAR(order_box) select 0), (position GVAR(order_box) select 1), HEIGHT_OFFSET]; 
     };
 
     _veh setDamage 0;

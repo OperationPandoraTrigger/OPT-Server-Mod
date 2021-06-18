@@ -44,7 +44,7 @@ GVAR(officer) =
 ];
 
 /* PILOTS */
-// hier sind alle Classnames aufgelistet, welche als Piloten definiert werden um fliegen zu drfen
+// hier sind alle Classnames aufgelistet, welche als Piloten definiert werden um fliegen zu duerfen
 GVAR(pilots) = 
 [
     /* UNUSED
@@ -64,7 +64,7 @@ GVAR(jetpilots) =
     "OPT_CSAT_Pilot_jet"
 ];
 
-GVAR(pilots_vecs) = 
+GVAR(pilot_vehicles) = 
 [
     "OPT4_B_Heli_light_03_green_F",                    // WY-55 Hellcat (Unbewaffnet)
     "OPT_B_Heli_Light_01_F",                    // MH-9 Hummingbird
@@ -148,14 +148,14 @@ GVAR(pilots_vecs) =
     "OPT_CUP_O_SA330_Puma_HC1_BAF",         // SA-330 Puma
     "OPT_CUP_O_Ka60_Grey_RU",               // KA-60 Katsaka
     "OPT_CUP_O_Merlin_HC3_GB",              // Merlin HC3A
-    "OPT_CUP_O_Mi24_V_Dynamic_RU"           // MI-24V
+    "OPT_CUP_O_Mi24_V_Dynamic_RU",          // MI-24V
     "OPT_CUP_C_Cessna_172_CIV_GREEN",       // Cessna
     "OPT_CUP_O_AN2_TK",                     // Antonov An-2
     "OPT_CUP_O_C47_SLA",                    // Li-2
     "OPT_CUP_O_C130J_TKA"                   // C130J
 ];
 
-GVAR(jetpilots_vecs) = 
+GVAR(jetpilot_vehicles) = 
 [
     // NATO - CUP
     "OPT_CUP_B_L39_CZ_GREY",                // L-39AZ
@@ -170,7 +170,7 @@ GVAR(blockedVehiclePositions_air) =
 ];
 
 /* FAHRZEUGE UND CREW */
-    // hier sind alle Classnames aufgelistet, welche als Crew definiert werden um gepanzerte Fahrzeuge fahren zu drfen (und Schtzenposition)
+    // hier sind alle Classnames aufgelistet, welche als Crew definiert werden um gepanzerte Fahrzeuge fahren zu duerfen (und Schuetzenposition)
 GVAR(crew) = 
 [
     /* UNUSED
@@ -183,7 +183,7 @@ GVAR(crew) =
     "OPT_CSAT_Besatzungsmitglied"
 ];
 
-GVAR(crew_vecs) = 
+GVAR(crew_vehicles) = 
 [    
 //NATO
     "OPT4_B_LSV_01_AT_F",
@@ -205,7 +205,7 @@ GVAR(crew_vecs) =
     "OPT_CUP_B_M60A3_TTS_USMC",             // M60A3 TTS
     "OPT_CUP_B_Leopard2A6_GER",             // Leopard 2A6
     "OPT_CUP_B_HMMWV_TOW_USMC",             // HMMWV TOW
-    "OPT_CUP_B_RM70_CZ",                     // RM-70 
+    "OPT_CUP_B_RM70_CZ",                    // RM-70 
 
 //Tropentarn
     "OPT4_B_LSV_01_AT_ghex_F",
@@ -239,7 +239,7 @@ GVAR(crew_vecs) =
     "OPT_CUP_O_BTR60_RU",                   // BTR-60 PB
     "OPT_CUP_O_BTR90_RU",                   // BTR-90
     "OPT_CUP_O_BRDM2_ATGM_RUS",             // BRDM-2 ATGM
-    "OPT_CUP_O_BM21_RU",                     // BM21
+    "OPT_CUP_O_BM21_RU",                    // BM21
 
 //Tropentarn
     "OPT4_O_LSV_02_AT_GHEX_F",
@@ -282,6 +282,7 @@ GVAR(crew_vecs) =
 GVAR(blockedVehiclePositions_veh) = 
 [
     "gunner",
+    "turret",
     "Turret"
 ];
 
