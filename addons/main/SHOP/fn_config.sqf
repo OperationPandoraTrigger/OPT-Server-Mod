@@ -62,14 +62,16 @@ GVAR(nato_vehicles) =
     ["OPT_B_Truck_01_transport_ghex_F", DEF_PROD(5000)]        // HEMTT      
 **/
 // CUP
-    ["OPT_CUP_B_M1030_USA", DEF_PROD(15000)],               // Motorrad M1030 (0)
-    ["OPT_CUP_B_LR_Transport_GB_W", DEF_PROD(25000)],       // Land Rover 110
-    ["OPT_CUP_B_LR_MG_GB_W", DEF_PROD(30000)],              // Land Rover M2
-    ["OPT_CUP_B_HMMWV_Unarmed_USMC", DEF_PROD(15000)],      // HMMWV
-    ["OPT_CUP_B_HMMWV_M2_USMC", DEF_PROD(25000)],           // HMMWV M2
+    ["OPT_CUP_B_M1030_USA", DEF_PROD(10000)],               // Motorrad M1030 (0)
+    ["OPT_CUP_B_LR_Transport_GB_W", DEF_PROD(18000)],       // Land Rover 110
+    ["OPT_CUP_B_LR_MG_GB_W", DEF_PROD(25000)],              // Land Rover M2
+    ["OPT_CUP_B_LR_AA_RACS", DEF_PROD(80000)],              // Landrover AA
+    ["OPT_CUP_B_HMMWV_Unarmed_USMC", DEF_PROD(25000)],      // HMMWV
+    ["OPT_CUP_B_HMMWV_M2_USMC", DEF_PROD(32000)],           // HMMWV M2
     ["OPT_CUP_B_MTVR_USMC", DEF_PROD(5000)],                // MTVR
     ["OPT_CUP_B_MTVR_Repair_USMC", 10000, 5000, 20000],     // MTVR Rep
-    ["OPT_CUP_B_HMMWV_Ambulance_USMC", 10000, 5000, 20000]  // HMMWV Ambulance (0)
+    ["OPT_CUP_B_HMMWV_Ambulance_USMC", 27000, 5000, 20000]  // HMMWV Ambulance (0)
+
 ];
 
 GVAR(nato_vehicles_supply) = 
@@ -108,19 +110,19 @@ GVAR(nato_choppers) =
     ["OPT_B_Plane_CAS_01_F", DEF_PROD(0)],                      // A-164 Wipeout
     ["OPT_B_Plane_Fighter_01_Stealth_F", DEF_PROD(0)]               // F/A-181 Black Wasp II   
 **/
-    ["OPT_CUP_MH60S_Unarmed_USN", DEF_PROD(110000)],        // MH-60S Seahawk
-    ["OPT_CUP_B_UH1D_armed_GER_KSK", DEF_PROD(150000)],     // UH-1D
-    ["OPT_CUP_B_CH53E_USMC", DEF_PROD(150000)],             // CH53G Super Stallion
+    ["OPT_CUP_MH60S_Unarmed_USN", DEF_PROD(40000)],        // MH-60S Seahawk
+    ["OPT_CUP_B_UH1D_armed_GER_KSK", DEF_PROD(100000)],     // UH-1D
+    ["OPT_CUP_B_CH53E_USMC", DEF_PROD(40000)],             // CH53G Super Stallion
     ["OPT_CUP_B_AH64D_DL_USA", DEF_PROD(300000)]            // AH-64
 ];
 
 GVAR(nato_planes) = 
 [
-    ["OPT_CUP_C_Cessna_172_CIV_BLUE", 1, 0, 0],             // Caesar BTT
-    ["OPT_CUP_C_AN2_CIV", 1, 0, 0],                         // Antonov An-2
-    ["OPT_CUP_C_DC3_ChernAvia_CIV", 1, 0, 0],               // Li-2
-    ["OPT_CUP_B_C130J_USMC", 1, 0, 0],                      // C130J
-    ["OPT_CUP_B_L39_CZ_GREY", 1, 0, 0]                      // L-39AZ
+    ["OPT_CUP_C_Cessna_172_CIV_BLUE", DEF_PROD(30000)],     // Caesar BTT
+    ["OPT_CUP_C_AN2_CIV", DEF_PROD(30000)],                         // Antonov An-2
+    ["OPT_CUP_C_DC3_ChernAvia_CIV", DEF_PROD(30000)],               // Li-2
+    ["OPT_CUP_B_C130J_USMC", DEF_PROD(40000)],                      // C130J
+    ["OPT_CUP_B_L39_CZ_GREY", DEF_PROD(200000)]                      // L-39AZ
 ];
 
 GVAR(nato_armored) = 
@@ -153,14 +155,13 @@ GVAR(nato_armored) =
     ["OPT_B_MBT_01_mlrs_ghex_F", DEF_PROD(400000)]                      // M5 Sandstorm   
 **/
 // CUP
-    ["OPT_CUP_B_LAV25_HQ_USMC", DEF_PROD(25000)],           // LAV C2
-    ["OPT_CUP_B_M2Bradley_USA_W", DEF_PROD(60000)],         // M2A2 Bradley IFV
-    ["OPT_CUP_B_M163_USA", DEF_PROD(125000)],               // M163A1 VADS (50er Magazine)
-    ["OPT_CUP_B_M60A3_TTS_USMC", DEF_PROD(125000)],         // M60A3 TTS
-    ["OPT_CUP_B_Leopard2A6_GER", DEF_PROD(125000)],         // Leopard2A6
-    ["OPT_CUP_B_HMMWV_TOW_USMC", DEF_PROD(25000)],          // HMMWV TOW
-    ["OPT_CUP_B_LR_AA_RACS", DEF_PROD(30000)],              // Landrover AA
-    ["OPT_CUP_B_RM70_CZ", DEF_PROD(300000)]                 // RM-70 nicht nachladbar PREIS?
+    ["OPT_CUP_B_LAV25_HQ_USMC", DEF_PROD(130000)],           // LAV C2
+    ["OPT_CUP_B_M2Bradley_USA_W", DEF_PROD(200000)],         // M2A2 Bradley IFV
+    ["OPT_CUP_B_M163_USA", DEF_PROD(200000)],               // M163A1 VADS (50er Magazine)
+    ["OPT_CUP_B_M60A3_TTS_USMC", DEF_PROD(300000)],         // M60A3 TTS
+    ["OPT_CUP_B_Leopard2A6_GER", DEF_PROD(450000)],         // Leopard2A6
+    ["OPT_CUP_B_HMMWV_TOW_USMC", DEF_PROD(200000)],          // HMMWV TOW
+    ["OPT_CUP_B_RM70_CZ", DEF_PROD(300000)]                 // RM-70 nicht nachladbar
 
 ];
 
@@ -168,14 +169,15 @@ GVAR(nato_supplies) =
 [
     ["OPT_Box_NATO_Ammo_F", 40000, 10000, 20000],               // Munitionskiste
     ["OPT_Box_NATO_WpsSpecial_F", 60000, 10000, 20000],         // Munition spezial
-    ["OPT_Box_NATO_Grenades_F", 75000, 10000, 20000],           // granatenkiste
-    ["OPT_NATO_Sprengstoffkiste", 150000, 10000, 20000],        // sprengstoffkiste
-    ["OPT_NATO_Minienkiste", 150000, 10000, 20000],              // Minenkiste
+    ["OPT_Box_NATO_Grenades_F", 50000, 10000, 20000],           // granatenkiste
+    ["OPT_Box_NATO_UGL_F", 60000, 1000, 2000],                  // Unterlaufgranatenkiste
+    ["OPT_NATO_Sprengstoffkiste", 200000, 10000, 20000],        // sprengstoffkiste
+    ["OPT_NATO_Minenkiste", 80000, 10000, 20000],              // Minenkiste
     ["OPT_Box_NATO_WpsSpecial_AT_L1", 225000, 10000, 20000],     // AT Raketenkiste (MRAWS)
-    ["OPT_Box_NATO_WpsSpecial_AT_L1A", 250000, 10000, 20000],     // AT Raketenkiste (MRAWS)
-    ["OPT_Box_NATO_WpsSpecial_AT_L2" ,DEF_PROD(0)],     // AT Raketenkiste (PCML)
-    ["OPT_Box_NATO_WpsSpecial_AT_H1", 350000, 10000, 20000],     // AT Raketenkiste (Titan)
-    ["OPT_Box_NATO_WpsSpecial_AA_F", 140000, 10000, 20000],      // AA Raketenkiste
+    ["OPT_Box_NATO_WpsSpecial_AT_L1A", 100000, 10000, 20000],     // AT Raketenkiste (MRAWS)
+    ["OPT_Box_NATO_WpsSpecial_AT_L2", DEF_PROD(0)],     // AT Raketenkiste (PCML)
+    ["OPT_Box_NATO_WpsSpecial_AT_H1", DEF_PROD(0)],     // AT Raketenkiste (Titan)
+    ["OPT_Box_NATO_WpsSpecial_AA_F", 150000, 10000, 20000],      // AA Raketenkiste
     ["OPT_B_supplyCrate_F", DEF_PROD(0)],                     // Transportkiste (leer)
     ["OPT_B_CargoNet_01_ammo_F", DEF_PROD(5000)],               // Ausrstungskiste
     ["OPT_Box_NATO_WpsSpecial_Diver_F", DEF_PROD(5000)],        // Taucherkiste    
@@ -196,10 +198,10 @@ GVAR(nato_static) =
 [
     ["CUP_B_M2StaticMG_USMC", DEF_PROD(10000)],                 // Stand-MG hoch
     ["CUP_B_M2StaticMG_MiniTripod_USMC", DEF_PROD(10000)],      // Stand-MG niedrig
-    ["OPT_CUP_B_D30_AT_USMC", DEF_PROD(150000)],                // D30-AT
-    ["OPT_CUP_B_M119_USMC", DEF_PROD(150000)],                  // M119
-    ["CUP_B_Stinger_AA_pod_Base_USMC", DEF_PROD(50000)],        // FIM-92 AA
-    ["CUP_B_TOW2_TriPod_USMC", DEF_PROD(150000)],               // TOW-2 AT
+    ["OPT_CUP_B_M119_AT_USMC", DEF_PROD(150000)],                // D30-AT
+    ["OPT_CUP_B_M119_USMC", DEF_PROD(130000)],                  // M119
+    ["CUP_B_Stinger_AA_pod_Base_USMC", DEF_PROD(40000)],        // FIM-92 AA
+    ["CUP_B_TOW2_TriPod_USMC", DEF_PROD(50000)],               // TOW-2 AT
     ["CUP_B_M252_USMC", DEF_PROD(50000)],                       // M252 81mm Mörser
     ["CUP_B_SearchLight_static_USMC", DEF_PROD(10000)]          // Suchscheinwerfer
 ];
@@ -245,13 +247,14 @@ GVAR(csat_vehicles) =
 **/
 // CUP
     ["OPT_CUP_O_TT650_TKA", DEF_PROD(10000)],               // Motorrad TT650 (0)  
-    ["OPT_CUP_O_UAZ_Unarmed_RU", DEF_PROD(25000)],          // UAZ 469
-    ["OPT_CUP_O_UAZ_MG_RU", DEF_PROD(35000)],               // UAZ 469 DShKM
-    ["OPT_CUP_O_GAZ_Vodnik_Unarmed_RU", DEF_PROD(20000)],   // GAZ 3937 Vodnik
-    ["OPT_CUP_O_GAZ_Vodnik_PK_RU", DEF_PROD(35000)],        // GAZ 3937 Vodnik 2xPKM
+    ["OPT_CUP_O_UAZ_Unarmed_RU", DEF_PROD(18000)],          // UAZ 469
+    ["OPT_CUP_O_UAZ_MG_RU", DEF_PROD(25000)],               // UAZ 469 DShKM
+    ["OPT_CUP_O_LR_AA_TKA", DEF_PROD(30000)],               // UAZ AA    
+    ["OPT_CUP_O_GAZ_Vodnik_Unarmed_RU", DEF_PROD(25000)],   // GAZ 3937 Vodnik
+    ["OPT_CUP_O_GAZ_Vodnik_PK_RU", DEF_PROD(32000)],        // GAZ 3937 Vodnik 2xPKM
     ["OPT_CUP_O_Ural_TKA", DEF_PROD(5000)],                 // Ural
     ["OPT_CUP_O_Ural_Repair_TKA", 10000,5000,10000],        // Ural Rep
-    ["OPT_CUP_O_GAZ_Vodnik_MedEvac_RU", DEF_PROD(6000)]     // GAZ 3937 Vodnik Medic (0)
+    ["OPT_CUP_O_GAZ_Vodnik_MedEvac_RU", DEF_PROD(27000)]     // GAZ 3937 Vodnik Medic (0)
 ];
 
 GVAR(csat_vehicles_supply) = 
@@ -300,18 +303,18 @@ GVAR(csat_choppers) =
 **/
 // CUP
     ["OPT_CUP_O_SA330_Puma_HC1_BAF", 40000, 10000, 20000],        // SA-330 Puma 
-    ["OPT_CUP_O_Ka60_Grey_RU", 200000, 10000, 20000],             // KA-60 Kataska
-    ["OPT_CUP_O_Merlin_HC3_GB", 45000, 10000, 20000],             // Merlin HC3A
+    ["OPT_CUP_O_Ka60_Grey_RU", 100000, 10000, 20000],             // KA-60 Kataska
+    ["OPT_CUP_O_Merlin_HC3_GB", 40000, 10000, 20000],             // Merlin HC3A
     ["OPT_CUP_O_Mi24_V_Dynamic_RU", DEF_PROD(300000)]             // MI-24V
 ];
 
 GVAR(csat_planes) = 
 [
-    ["OPT_CUP_C_Cessna_172_CIV_GREEN", 1, 0, 0],                // Cessna
-    ["OPT_CUP_O_AN2_TK", 1, 0, 0],                              // Antonov An-2
-    ["OPT_CUP_O_C47_SLA", 1, 0, 0],                             // Li-2
-    ["OPT_CUP_O_C130J_TKA", 1, 0, 0],                           // C130J
-    ["OPT_CUP_O_Su25_Dyn_RU", 1, 0, 0]                          // SU-25T
+    ["OPT_CUP_C_Cessna_172_CIV_GREEN", DEF_PROD(30000)],                // Cessna
+    ["OPT_CUP_O_AN2_TK", DEF_PROD(30000)],                              // Antonov An-2
+    ["OPT_CUP_O_C47_SLA", DEF_PROD(30000)],                             // Li-2
+    ["OPT_CUP_O_C130J_TKA", DEF_PROD(40000)],                           // C130J
+    ["OPT_CUP_O_Su25_Dyn_RU", DEF_PROD(200000)]                          // SU-25T
 ];
 
 GVAR(csat_armored) = 
@@ -345,14 +348,13 @@ GVAR(csat_armored) =
     ["OPT_O_Truck_02_MRL_ghex_F", DEF_PROD(400000)]                 // Zamark MRL  
 **/
 
-    ["OPT_CUP_O_ZSU23_Afghan_SLA", DEF_PROD(320000)],           // ZSU-23-4 Afghanski (50er Magazine)
-    ["OPT_CUP_O_T72_RU", DEF_PROD(400000)],                     // T72
-    ["OPT_CUP_O_T90_RU", DEF_PROD(500000)],                     // T90
+    ["OPT_CUP_O_ZSU23_Afghan_SLA", DEF_PROD(200000)],           // ZSU-23-4 Afghanski (50er Magazine)
+    ["OPT_CUP_O_T72_RU", DEF_PROD(300000)],                     // T72
+    ["OPT_CUP_O_T90_RU", DEF_PROD(450000)],                     // T90
     ["OPT_CUP_O_BTR60_RU", DEF_PROD(80000)],                // BTR-60 PB
     ["OPT_CUP_O_BTR90_RU", DEF_PROD(80000)],                // BTR90 ohne GMG, Preis?    
-    ["OPT_CUP_O_BRDM2_ATGM_RUS", DEF_PROD(80000)],              // BRDM-2 ATGM    
-    ["OPT_CUP_O_LR_AA_TKA", DEF_PROD(30000)],                   // UAZ AA
-    ["OPT_CUP_O_BM21_RU", DEF_PROD(400000)]                     // BM21 nicht nachladbar
+    ["OPT_CUP_O_BRDM2_ATGM_RUS", DEF_PROD(200000)],              // BRDM-2 ATGM    
+    ["OPT_CUP_O_BM21_RU", DEF_PROD(300000)]                     // BM21 nicht nachladbar
 
 ];
 
@@ -361,13 +363,13 @@ GVAR(csat_supplies) =
     ["OPT_Box_East_Ammo_F", 40000, 1000, 2000],                           // Munitionskiste
     ["OPT_Box_East_WpsSpecial_F", 60000, 1000, 2000],                     // Munition spezial kiste
     ["OPT_Box_East_Grenades_F", 50000, 1000, 2000],                       // granatenkiste
-    ["OPT_Box_CSAT_UGL_F", 21000, 1000, 2000],                       // Unterlaufgranatenkiste
+    ["OPT_Box_CSAT_UGL_F", 60000, 1000, 2000],                       // Unterlaufgranatenkiste
     ["OPT_CSAT_Sprengstoffkiste", 200000, 1000, 2000],                    // sprengstoffkiste
     ["OPT_CSAT_Minenkiste", 80000, 1000, 2000],                      // Minenkiste
-    ["OPT_Box_East_WpsSpecial_AT_L1", 200000, 1000, 2000],                         // AT Raketenkiste (RPG-42)
-    ["OPT_Box_East_WpsSpecial_AT_L3", 225000, 1000, 2000],                         // AT Raketenkiste (MAAWS)
-    ["OPT_Box_East_WpsSpecial_AT_L3A", 250000, 1000, 2000],                         // AT Raketenkiste (MAAWS)
-    ["OPT_Box_East_WpsSpecial_AT_L2", 101000, 1000, 2000],                  // AT Raketenkiste (RPG-7)
+    ["OPT_Box_East_WpsSpecial_AT_L1", 225000, 1000, 2000],                         // AT Raketenkiste (RPG-42)
+    ["OPT_Box_East_WpsSpecial_AT_L3", DEF_PROD(0)],                         // AT Raketenkiste (MAAWS)
+    ["OPT_Box_East_WpsSpecial_AT_L3A", DEF_PROD(0)],                         // AT Raketenkiste (MAAWS)
+    ["OPT_Box_East_WpsSpecial_AT_L2", 100000, 1000, 2000],                  // AT Raketenkiste (RPG-7)
     ["OPT_Box_East_WpsSpecial_AT_H1", DEF_PROD(0)],                  // AT Raketenkiste (9M135 Vorona)
     ["OPT_Box_East_WpsSpecial_AA_F", 150000, 1000, 2000],                  // AA Raketenkiste
     ["OPT_O_supplyCrate_F", DEF_PROD(0)],                                 // Transportkiste
@@ -390,9 +392,9 @@ GVAR(csat_static) =
     ["CUP_O_DSHKM_SLA", DEF_PROD(10000)],                           // Stand-MG hoch
     ["CUP_O_KORD_RU", DEF_PROD(10000)],                             // Stand-MG niedrig
     ["CUP_O_D30_AT_RU", DEF_PROD(150000)],                          // D30-AT
-    ["OPT_CUP_O_D30_RU", DEF_PROD(150000)],                         // D30
-    ["CUP_O_Igla_AA_pod_RU", DEF_PROD(20000)],                      // Igla Luftabwehrstellung
-    ["CUP_O_Kornet_RU", DEF_PROD(150000)],                          // Kornet AT14
+    ["OPT_CUP_O_D30_RU", DEF_PROD(130000)],                         // D30
+    ["CUP_O_Igla_AA_pod_RU", DEF_PROD(40000)],                      // Igla Luftabwehrstellung
+    ["CUP_O_Kornet_RU", DEF_PROD(50000)],                          // Kornet AT14
     ["CUP_O_2b14_82mm_RU", DEF_PROD(50000)],                        // Podnos 2b14 Mörser
     ["CUP_O_SearchLight_static_RU", DEF_PROD(10000)]                // Suchscheinwerfer
 ];
