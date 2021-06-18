@@ -65,6 +65,7 @@ openMap true;
                 private _header = MLOC(TELEPORT_MSG_HEADER);
                 private _txt = MLOC(TELEPORT_FAIL);
                 hint format ["%1\n\n%2", _header, _txt];
+                playSound "additemok";
                 _fail = true;
             };
 
