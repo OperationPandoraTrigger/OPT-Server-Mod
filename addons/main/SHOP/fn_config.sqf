@@ -65,11 +65,13 @@ GVAR(nato_vehicles) =
     ["OPT_CUP_B_M1030_USA", DEF_PROD(10000)],               // Motorrad M1030 (0)
     ["OPT_CUP_B_LR_Transport_GB_W", DEF_PROD(18000)],       // Land Rover 110
     ["OPT_CUP_B_LR_MG_GB_W", DEF_PROD(25000)],              // Land Rover M2
+    ["OPT_CUP_B_LR_AA_RACS", DEF_PROD(80000)],              // Landrover AA
     ["OPT_CUP_B_HMMWV_Unarmed_USMC", DEF_PROD(25000)],      // HMMWV
     ["OPT_CUP_B_HMMWV_M2_USMC", DEF_PROD(32000)],           // HMMWV M2
     ["OPT_CUP_B_MTVR_USMC", DEF_PROD(5000)],                // MTVR
     ["OPT_CUP_B_MTVR_Repair_USMC", 10000, 5000, 20000],     // MTVR Rep
     ["OPT_CUP_B_HMMWV_Ambulance_USMC", 27000, 5000, 20000]  // HMMWV Ambulance (0)
+
 ];
 
 GVAR(nato_vehicles_supply) = 
@@ -159,7 +161,6 @@ GVAR(nato_armored) =
     ["OPT_CUP_B_M60A3_TTS_USMC", DEF_PROD(300000)],         // M60A3 TTS
     ["OPT_CUP_B_Leopard2A6_GER", DEF_PROD(450000)],         // Leopard2A6
     ["OPT_CUP_B_HMMWV_TOW_USMC", DEF_PROD(200000)],          // HMMWV TOW
-    ["OPT_CUP_B_LR_AA_RACS", DEF_PROD(80000)],              // Landrover AA
     ["OPT_CUP_B_RM70_CZ", DEF_PROD(300000)]                 // RM-70 nicht nachladbar
 
 ];
@@ -248,6 +249,7 @@ GVAR(csat_vehicles) =
     ["OPT_CUP_O_TT650_TKA", DEF_PROD(10000)],               // Motorrad TT650 (0)  
     ["OPT_CUP_O_UAZ_Unarmed_RU", DEF_PROD(18000)],          // UAZ 469
     ["OPT_CUP_O_UAZ_MG_RU", DEF_PROD(25000)],               // UAZ 469 DShKM
+    ["OPT_CUP_O_LR_AA_TKA", DEF_PROD(30000)],               // UAZ AA    
     ["OPT_CUP_O_GAZ_Vodnik_Unarmed_RU", DEF_PROD(25000)],   // GAZ 3937 Vodnik
     ["OPT_CUP_O_GAZ_Vodnik_PK_RU", DEF_PROD(32000)],        // GAZ 3937 Vodnik 2xPKM
     ["OPT_CUP_O_Ural_TKA", DEF_PROD(5000)],                 // Ural
@@ -352,7 +354,6 @@ GVAR(csat_armored) =
     ["OPT_CUP_O_BTR60_RU", DEF_PROD(80000)],                // BTR-60 PB
     ["OPT_CUP_O_BTR90_RU", DEF_PROD(80000)],                // BTR90 ohne GMG, Preis?    
     ["OPT_CUP_O_BRDM2_ATGM_RUS", DEF_PROD(200000)],              // BRDM-2 ATGM    
-    ["OPT_CUP_O_LR_AA_TKA", DEF_PROD(30000)],                   // UAZ AA
     ["OPT_CUP_O_BM21_RU", DEF_PROD(300000)]                     // BM21 nicht nachladbar
 
 ];
