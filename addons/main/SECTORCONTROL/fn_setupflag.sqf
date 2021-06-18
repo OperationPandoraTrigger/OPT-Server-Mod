@@ -33,7 +33,7 @@ private _all_nato_flags = _all_flags select {_x getVariable "start_owner" == wes
 private _all_csat_flags = _all_flags select {_x getVariable "start_owner" == east};
 private _all_aaf_flags = _all_flags select {_x getVariable "start_owner" == independent};
 
-private _maxTries = 100;
+private _maxTries = 1000;
 while {(count GVAR(nato_flags) < round GVAR(flagCountNATO)) && _maxTries > 0} do
 {
     GVAR(nato_flags) pushBackUnique selectRandom _all_nato_flags;
@@ -41,7 +41,7 @@ while {(count GVAR(nato_flags) < round GVAR(flagCountNATO)) && _maxTries > 0} do
 };
 publicVariable QGVAR(nato_flags);
 
-_maxTries = 100;
+_maxTries = 1000;
 while {(count GVAR(csat_flags) < round GVAR(flagCountCSAT)) && _maxTries > 0} do
 {
     GVAR(csat_flags) pushBackUnique selectRandom _all_csat_flags;
@@ -49,7 +49,7 @@ while {(count GVAR(csat_flags) < round GVAR(flagCountCSAT)) && _maxTries > 0} do
 };
 publicVariable QGVAR(csat_flags);
 
-_maxTries = 100;
+_maxTries = 1000;
 while {(count GVAR(aaf_flags) < round GVAR(flagCountAAF)) && _maxTries > 0} do
 {
     GVAR(aaf_flags) pushBackUnique selectRandom _all_aaf_flags;
