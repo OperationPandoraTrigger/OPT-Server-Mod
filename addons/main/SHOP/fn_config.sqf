@@ -116,10 +116,11 @@ GVAR(nato_choppers) =
 
 GVAR(nato_planes) = 
 [
-    ["C_Plane_Civil_01_F", 1, 0, 0],                            // Caesar BTT
-    ["CUP_C_AN2_CIV", 1, 0, 0],                                 // Antonov An-2
-    ["CUP_C_C47_CIV", 1, 0, 0],                                 // C-47 Skytrain
-    ["OPT_CUP_B_L39_CZ_GREY", 1, 0, 0]                          // L-39AZ
+    ["OPT_CUP_C_Cessna_172_CIV_BLUE", 1, 0, 0],             // Caesar BTT
+    ["OPT_CUP_C_AN2_CIV", 1, 0, 0],                         // Antonov An-2
+    ["OPT_CUP_C_DC3_ChernAvia_CIV", 1, 0, 0],               // Li-2
+    ["OPT_CUP_B_C130J_USMC", 1, 0, 0],                      // C130J
+    ["OPT_CUP_B_L39_CZ_GREY", 1, 0, 0]                      // L-39AZ
 ];
 
 GVAR(nato_armored) = 
@@ -266,7 +267,7 @@ GVAR(csat_vehicles_supply) =
 **/
 // CUP
     ["OPT_CUP_O_Ural_Reammo_TKA", 50000,5000,10000],        // Ural Ammo
-    ["OPT_CUP_O_Ural_Refuel_TKA", 10000,5000,10000],        // Ural Tank
+    ["OPT_CUP_O_Ural_Refuel_TKA", 10000,5000,10000]        // Ural Tank
 ];
 
 GVAR(csat_choppers) = 
@@ -298,17 +299,18 @@ GVAR(csat_choppers) =
     ["OPT_O_Plane_Fighter_01_Stealth_F", DEF_PROD(0)]          // F/A-181 Black Wasp II
 **/
 // CUP
-    ["OPT_CUP_O_SA330_Puma_HC1_BAF", 40000,10000,20000],        // SA-330 Puma 
-    ["OPT_CUP_O_Ka60_Grey_RU", 200000,10000,20000],             // KA-60 Kataska
-    ["OPT_CUP_O_Merlin_HC3_GB", 45000,10000,20000],             // Merlin HC3A
-    ["OPT_CUP_O_Mi24_V_Dynamic_RU",  DEF_PROD(300000)]          // MI-24V
+    ["OPT_CUP_O_SA330_Puma_HC1_BAF", 40000, 10000, 20000],        // SA-330 Puma 
+    ["OPT_CUP_O_Ka60_Grey_RU", 200000, 10000, 20000],             // KA-60 Kataska
+    ["OPT_CUP_O_Merlin_HC3_GB", 45000, 10000, 20000],             // Merlin HC3A
+    ["OPT_CUP_O_Mi24_V_Dynamic_RU", DEF_PROD(300000)]             // MI-24V
 ];
 
 GVAR(csat_planes) = 
 [
-    ["C_Plane_Civil_01_F", 1, 0, 0],                            // Caesar BTT
-    ["CUP_C_AN2_CIV", 1, 0, 0],                                 // Antonov An-2
-    ["CUP_C_C47_CIV", 1, 0, 0],                                 // C-47 Skytrain
+    ["OPT_CUP_C_Cessna_172_CIV_GREEN", 1, 0, 0],                // Cessna
+    ["OPT_CUP_O_AN2_TK", 1, 0, 0],                              // Antonov An-2
+    ["OPT_CUP_O_C47_SLA", 1, 0, 0],                             // Li-2
+    ["OPT_CUP_O_C130J_TKA", 1, 0, 0],                           // C130J
     ["OPT_CUP_O_Su25_Dyn_RU", 1, 0, 0]                          // SU-25T
 ];
 
@@ -438,9 +440,6 @@ GVAR(AAF_choppers) =
 
 GVAR(AAF_planes) = 
 [
-    ["C_Plane_Civil_01_F", 1, 0, 0],                            // Caesar BTT
-    ["CUP_C_AN2_CIV", 1, 0, 0],                                 // Antonov An-2
-    ["CUP_C_C47_CIV", 1, 0, 0]                                  // C-47 Skytrain
 ];
 
 GVAR(AAF_armored) = 

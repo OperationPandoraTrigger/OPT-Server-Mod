@@ -59,34 +59,31 @@
                 vehicle: Object - Vehicle the unit entered
                 turret: Array - turret path
             */
-            params ["_unit", "_pos", "_vec", "_turret"];
+            params ["_unit", "_pos", "_veh", "_turret"];
+            private _pos2 = assignedVehicleRole _unit select 0;
 
-            if (!(typeOf _unit in GVAR(pilots))) then 
+            if (typeOf _veh in GVAR(pilot_vehicles) && !(typeOf _unit in GVAR(pilots) + GVAR(jetpilots)) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then 
             {
-                if (_vec isKindOf "Air" && _pos in GVAR(blockedVehiclePositions_air)) then 
-                {
-                    if (!(typeOf _vec in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then 
-                    {
-                        _unit action ["GetOut", _vec];
-                        private _txt = MLOC(SLOT_LOCK_PILOT);
-                        private _header = MLOC(SLOT_LOCK);
-                        hint format ["%1\n\n%2", _header, _txt];
-                    };
-                };
+                _unit action ["GetOut", _veh];
+                private _txt = MLOC(SLOT_LOCK_PILOT);
+                private _header = MLOC(SLOT_LOCK);
+                hint format ["%1\n\n%2", _header, _txt];
             };
 
-            if (!(typeOf _unit in GVAR(crew))) then 
+            if (typeOf _veh in GVAR(jetpilot_vehicles) && !(typeOf _unit in GVAR(jetpilots)) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then 
             {
-                if (_pos in GVAR(blockedVehiclePositions_veh)) then 
-                {
-                    if (typeOf _vec in GVAR(crew_vecs) || _vec isKindOf "Tank") then 
-                    {
-                        _unit action ["GetOut", _vec];
-                        private _txt = MLOC(SLOT_LOCK_CREW);
-                        private _header = MLOC(SLOT_LOCK);
-                        hint format ["%1\n\n%2", _header, _txt];
-                    };
-                };
+                _unit action ["GetOut", _veh];
+                private _txt = MLOC(SLOT_LOCK_PILOT);
+                private _header = MLOC(SLOT_LOCK);
+                hint format ["%1\n\n%2", _header, _txt];
+            };
+
+            if ((typeOf _veh in GVAR(crew_vehicles) || _veh isKindOf "Tank") && !(typeOf _unit in GVAR(crew)) && _pos2 in GVAR(blockedVehiclePositions_veh)) then 
+            {
+                _unit action ["GetOut", _veh];
+                private _txt = MLOC(SLOT_LOCK_CREW);
+                private _header = MLOC(SLOT_LOCK);
+                hint format ["%1\n\n%2", _header, _txt];
             };
         }];
 
@@ -98,61 +95,32 @@
                 unit2: Object - Unit with which unit1 is switching seat.
                 vehicle: Object - Vehicle where switching seats is taking place.
             */
-            params ["_unit1", "_unit2", "_vec"];
+            params ["_unit", "_unit2", "_veh"];
+            private _pos2 = assignedVehicleRole _unit select 0;
 
-            if (!(typeOf _unit1 in GVAR(pilots))) then 
+            if (typeOf _veh in GVAR(pilot_vehicles) && !(typeOf _unit in GVAR(pilots) + GVAR(jetpilots)) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then 
             {
-                if (_vec isKindOf "Air" && (assignedVehicleRole  _unit1 select 0) in GVAR(blockedVehiclePositions_air)) then 
-                {
-                    if (!(typeOf _vec in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then 
-                    {
-                        _unit1 action ["GetOut", _vec];
-                        _txt = MLOC(SLOT_LOCK_PILOT);
-                        private _header = MLOC(SLOT_LOCK);
-                        hint format ["%1\n\n%2", _header, _txt];
-                    };
-                };
-            };
-
-            if (!(typeOf _unit1 in GVAR(crew))) then 
-            {
-                if ( (assignedVehicleRole _unit1 select 0) in GVAR(blockedVehiclePositions_veh)) then 
-                {
-                    if (typeOf _vec in GVAR(crew_vecs) || _vec isKindOf "Tank") then 
-                    {
-                        _unit1 action ["GetOut", _vec];
-                        _txt = MLOC(SLOT_LOCK_CREW);
-                        private _header = MLOC(SLOT_LOCK);
-                        hint format ["%1\n\n%2", _header, _txt];
-                    };
-                };
-            };
-        }];
-
-        // EH für Sprengmeister
-        player addEventHandler ["FiredMan", 
-        {
-            /* 
-                0 unit: Object - Unit the event handler is assigned to (the instigator)
-                1 weapon: String - Fired weapon
-                2 muzzle: String - Muzzle that was used
-                3 mode: String - Current mode of the fired weapon
-                4 ammo: String - Ammo used
-                5 magazine: String - magazine name which was used
-                6 projectile: Object - Object of the projectile that was shot out
-                7 vehicle: Object - Vehicle, if weapon is vehicle weapon, otherwise objNull
-            */
-            if ((_this select 1 == "Put") and !(typeOf player in GVAR(pioniers)) and !(((_this select 5) isEqualTo "SatchelCharge_Remote_Mag") or ((_this select 5) isEqualTo "DemoCharge_Remote_Mag") or ((_this select 5) isEqualTo "ClaymoreDirectionalMine_Remote_Mag"))) then
-            {
-                // lösche Mine
-                deleteVehicle (_this select 6);
-                // gib Spieler Mine zurück
-                player addMagazine (_this select 5);
-                // Warnhinweis
-                private _txt = MLOC(PLACE_MINE);
-                private _header = MLOC(RULE_VIOLATION);
+                _unit action ["GetOut", _veh];
+                _txt = MLOC(SLOT_LOCK_PILOT);
+                private _header = MLOC(SLOT_LOCK);
                 hint format ["%1\n\n%2", _header, _txt];
-            };  
+            };
+
+            if (typeOf _veh in GVAR(jetpilot_vehicles) && !(typeOf _unit in GVAR(jetpilots)) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then 
+            {
+                _unit action ["GetOut", _veh];
+                _txt = MLOC(SLOT_LOCK_PILOT);
+                private _header = MLOC(SLOT_LOCK);
+                hint format ["%1\n\n%2", _header, _txt];
+            };
+
+            if ((typeOf _veh in GVAR(crew_vehicles) || _veh isKindOf "Tank") && !(typeOf _unit in GVAR(crew)) && _pos2 in GVAR(blockedVehiclePositions_veh)) then 
+            {
+                _unit action ["GetOut", _veh];
+                _txt = MLOC(SLOT_LOCK_CREW);
+                private _header = MLOC(SLOT_LOCK);
+                hint format ["%1\n\n%2", _header, _txt];
+            };
         }];
 
         // Regelmäßig checken ob sich der Spieler außerhalb der Karte aufhält
@@ -161,8 +129,9 @@
             private _pos = getPos player;
             private _posX = _pos select 0;
             private _posY = _pos select 1;
-            if ((_posX < 0) or (_posX > _mapSize) or (_posY < 0) or (_posY > _mapSize)) then
+            if (((_posX < 0) || (_posX > _mapSize) || (_posY < 0) || (_posY > _mapSize)) && !(typeOf vehicle player in GVAR(jetpilot_vehicles))) then
             {
+                ["Cheat", "OutOfMap", [getPlayerUID player, name player, side player, _pos, typeOf vehicle player]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
                 player setDamage 1;
                 [MLOC(PLAYER_OUT_OF_MAP)] remoteExecCall ["hint", -2]; 
             };
@@ -180,6 +149,7 @@
                         [{
                             if ((position player inArea "AAF_T_Zone1") or (position player inArea "AAF_T_Zone2")) then
                             {
+                                ["Cheat", "KillZone", [getPlayerUID player, name player, side player, position player, typeOf vehicle player]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
                                 player setDamage 1;
                                 [MLOC(BASE_DISTANCE)] remoteExecCall ["hint", -2]; 
                             };
@@ -191,6 +161,7 @@
                         [{
                             if ((position player inArea "CSAT_T_Zone1") or (position player inArea "CSAT_T_Zone2")) then
                             {
+                                ["Cheat", "KillZone", [getPlayerUID player, name player, side player, position player, typeOf vehicle player]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
                                 player setDamage 1;
                                 [MLOC(BASE_DISTANCE)] remoteExecCall ["hint", -2]; 
                             };
@@ -208,6 +179,7 @@
                         [{
                             if ((position player inArea "NATO_T_Zone1") or (position player inArea "NATO_T_Zone2")) then
                             {
+                                ["Cheat", "KillZone", [getPlayerUID player, name player, side player, position player, typeOf vehicle player]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
                                 player setDamage 1;
                                 [MLOC(BASE_DISTANCE)] remoteExecCall ["hint", -2]; 
                             };
@@ -219,6 +191,7 @@
                         [{
                             if ((position player inArea "CSAT_T_Zone1") or (position player inArea "CSAT_T_Zone2")) then
                             {
+                                ["Cheat", "KillZone", [getPlayerUID player, name player, side player, position player, typeOf vehicle player]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
                                 player setDamage 1;
                                 [MLOC(BASE_DISTANCE)] remoteExecCall ["hint", -2]; 
                             };
@@ -236,6 +209,7 @@
                         [{
                             if ((position player inArea "NATO_T_Zone1") or (position player inArea "NATO_T_Zone2")) then
                             {
+                                ["Cheat", "KillZone", [getPlayerUID player, name player, side player, position player, typeOf vehicle player]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
                                 player setDamage 1;
                                 [MLOC(BASE_DISTANCE)] remoteExecCall ["hint", -2]; 
                             };
@@ -247,6 +221,7 @@
                         [{
                             if ((position player inArea "AAF_T_Zone1") or (position player inArea "AAF_T_Zone2")) then
                             {
+                                ["Cheat", "KillZone", [getPlayerUID player, name player, side player, position player, typeOf vehicle player]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
                                 player setDamage 1;
                                 [MLOC(BASE_DISTANCE)] remoteExecCall ["hint", -2]; 
                             };
