@@ -20,75 +20,75 @@
 // rewrite into killed and damagged EH so we have the source parameter available
 params
 [
-    ["_vec", objNull, [objNull], 1],
+    ["_veh", objNull, [objNull], 1],
     ["_source", objNull, [objNull], 1],
     ["_instigator", objNull, [objNull], 1],
     "_useEffects"
 ];
 
 // log destroyed vehicle and killer
-[_vec, _instigator, _source] call FUNC(writeKill);
+[_veh, _instigator, _source] call FUNC(writeKill);
 
-//Loging Besatzung bei HEli Abschuss
-//Heli abschusse werden sonst nicht dem AA gut geschrieben. 
-if (_vec isKindOf "Air") then 
+//Loging Besatzung bei Heli Abschuss
+//Heli abschuwsse werden sonst nicht dem AA gutgeschrieben. 
+if (_veh isKindOf "Air") then 
 {
-    (crew _vec) apply 
+    (crew _veh) apply 
     {
         [_x, _instigator, _source] remoteExecCall ["OPT_SHOP_fnc_writeKill", 2, false];
     };
  };   
 
-// delete all wrecks within the base safezone
+// delete all wrecks within the base safezones
 switch OPT_GELDZEIT_Fraktionauswahl do 
 {
         case "AAFvsCSAT":
         {
-            if (!(_vec isKindOf "CAManBase") and ((_vec distance2D (getmarkerPos "respawn_guerrila") < 200) or (_vec distance2D (getmarkerPos "respawn_east") < 200) or (_vec distance2D (getmarkerPos "Marker_CSAT_Basis2") < 200) or (_vec distance2D (getmarkerPos "Marker_AAF_Basis2") < 200))) then 
+            if (!(_veh isKindOf "CAManBase") && {position _veh inArea "AAF_T_Zone1" || position _veh inArea "AAF_T_Zone2" || position _veh inArea "CSAT_T_Zone1" || position _veh inArea "CSAT_T_Zone2"}) then 
             {
-                [_vec] call 
+                [_veh] call 
                 {
-                    params ["_vec"];
-                    deleteVehicle _vec;
+                    params ["_veh"];
+                    deleteVehicle _veh;
 
                     // message only for those within a 200m radius
-                    _name = getText(configFile >> "CfgVehicles" >> typeOf _vec >> "displayName");
+                    _name = getText(configFile >> "CfgVehicles" >> typeOf _veh >> "displayName");
                     _txt = format["Es gab einen Unfall in der Basis.\n\n Das Wrack von %1 wurde entsorgt.", _name];
-                    [_txt] remoteExecCall ["hint", playableUnits select {_x distance _vec < 200}, false];
+                    [_txt] remoteExecCall ["hint", playableUnits select {_x distance _veh < 200}, false];
                 };
             };     
         };
 
         case "NATOvsCSAT":
         {
-            if (!(_vec isKindOf "CAManBase") and ((_vec distance2D (getmarkerPos "respawn_west") < 200) or (_vec distance2D (getmarkerPos "respawn_east") < 200) or (_vec distance2D (getmarkerPos "Marker_CSAT_Basis2") < 200) or (_vec distance2D (getmarkerPos "Marker_NATO_Basis2") < 200))) then 
+            if (!(_veh isKindOf "CAManBase") && {position _veh inArea "NATO_T_Zone1" || position _veh inArea "NATO_T_Zone2" || position _veh inArea "CSAT_T_Zone1" || position _veh inArea "CSAT_T_Zone2"}) then 
             {
-                [_vec] call 
+                [_veh] call 
                 {
-                    params ["_vec"];
-                    deleteVehicle _vec;
+                    params ["_veh"];
+                    deleteVehicle _veh;
 
                     // message only for those within a 200m radius
-                    _name = getText(configFile >> "CfgVehicles" >> typeOf _vec >> "displayName");
+                    _name = getText(configFile >> "CfgVehicles" >> typeOf _veh >> "displayName");
                     _txt = format["Es gab einen Unfall in der Basis.\n\n Das Wrack von %1 wurde entsorgt.", _name];
-                    [_txt] remoteExecCall ["hint", playableUnits select {_x distance _vec < 200}, false];
+                    [_txt] remoteExecCall ["hint", playableUnits select {_x distance _veh < 200}, false];
                 };
             };
         };
 
         case "NATOvsAAF":
         {
-            if (!(_vec isKindOf "CAManBase") and ((_vec distance2D (getmarkerPos "respawn_west") < 200) or (_vec distance2D (getmarkerPos "respawn_guerrila") < 200) or (_vec distance2D (getmarkerPos "Marker_NATO_Basis2") < 200) or (_vec distance2D (getmarkerPos "Marker_AAF_Basis2") < 200))) then 
+            if (!(_veh isKindOf "CAManBase") && {position _veh inArea "NATO_T_Zone1" || position _veh inArea "NATO_T_Zone2" || position _veh inArea "AAF_T_Zone1" || position _veh inArea "AAF_T_Zone2"}) then 
             {
-                [_vec] call 
+                [_veh] call 
                 {
-                    params ["_vec"];
-                    deleteVehicle _vec;
+                    params ["_veh"];
+                    deleteVehicle _veh;
 
                     // message only for those within a 200m radius
-                    _name = getText(configFile >> "CfgVehicles" >> typeOf _vec >> "displayName");
+                    _name = getText(configFile >> "CfgVehicles" >> typeOf _veh >> "displayName");
                     _txt = format["Es gab einen Unfall in der Basis.\n\n Das Wrack von %1 wurde entsorgt.", _name];
-                    [_txt] remoteExecCall ["hint", playableUnits select {_x distance _vec < 200}, false];
+                    [_txt] remoteExecCall ["hint", playableUnits select {_x distance _veh < 200}, false];
                 };
             };       
         };
