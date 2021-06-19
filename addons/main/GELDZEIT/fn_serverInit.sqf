@@ -121,3 +121,43 @@ GVAR(playerList) = [];
         }; 
     }, 1, _this] call CFUNC(addPerFrameHandler);
 }] call CFUNC(addEventhandler);
+
+// Beam-System (Serverseitiger Teil)
+GVAR(BEAMJOBS) = [];
+GVAR(BEAMJOB) = [];
+publicVariable QGVAR(BEAMJOB);
+
+QGVAR(BEAMJOB) addPublicVariableEventHandler
+{
+    ["DEBUG", "BEAM", ["EH fired.", _this]] call OPT_LOGGING_fnc_writelog;
+
+    GVAR(BEAMJOBS) pushBackUnique GVAR(BEAMJOB);
+    while {count GVAR(BEAMJOBS) > 0} do
+    {
+        // Ersten Job aus dem Array ziehen
+        private _beamjob = GVAR(BEAMJOBS) deleteAt 0;   // FIFO
+        private _player = _beamjob select 0;
+        private _destination = _beamjob select 1;
+
+        // Checken ob das Ziel frei ist
+        private _freiePads = [[_destination], 15] call OPT_SHOP_fnc_checkpad;
+        if ((count _freiePads) > 0) then 
+        {
+            // Beamen
+            {cutText ["Teleport...", "BLACK OUT", 0.1];} remoteExec ["call", _player];
+            vehicle _player setPosASL (getPosASL _destination vectorAdd [0, 0, 1000]);
+            vehicle _player setVectorUp vectorUp _destination;
+            vehicle _player setdir getdir _destination;
+            vehicle _player setPosASL (getPosASL _destination vectorAdd [0, 0, 0.2]);
+            {cutText ["Teleport...", "BLACK IN", 0.5];} remoteExec ["call", _player];
+        }
+        else
+        {
+            // Das Ziel ist belegt
+            {
+                hint "BEAM\n\nDie Zielposition ist derzeit leider belegt.";
+                playSound "additemok";
+            } remoteExec ["call", _player];
+        };
+    };
+};
