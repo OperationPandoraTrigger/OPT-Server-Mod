@@ -143,6 +143,13 @@ GVAR(eventArgs) = [];
                                         if (((player distance east_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance independent_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance civ1_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance civ2_shop_plane) < MAX_DISTANCE_TO_SHOP)) then
                                         {
                                             [EVENT_SHOP_KAUF_ONLOAD, ["planes"]] call CFUNC(localEvent);
+                                        }
+                                        else
+                                        {
+                                            if (((player distance east_shop_verkauf) < MAX_DISTANCE_TO_SHOP) or ((player distance independent_shop_verkauf) < MAX_DISTANCE_TO_SHOP)) then
+                                            {
+                                                [EVENT_SHOP_VERKAUF_ORDER, ["sell"]] call CFUNC(localEvent);
+                                            };
                                         };
                                     };
                                 };
@@ -217,6 +224,13 @@ GVAR(eventArgs) = [];
                                         if (((player distance east_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance west_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance civ1_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance civ2_shop_plane) < MAX_DISTANCE_TO_SHOP)) then
                                         {
                                             [EVENT_SHOP_KAUF_ONLOAD, ["planes"]] call CFUNC(localEvent);
+                                        }
+                                        else
+                                        {
+                                            if (((player distance east_shop_verkauf) < MAX_DISTANCE_TO_SHOP) or ((player distance west_shop_verkauf) < MAX_DISTANCE_TO_SHOP)) then
+                                            {
+                                                [EVENT_SHOP_VERKAUF_ORDER, ["sell"]] call CFUNC(localEvent);
+                                            };
                                         };
                                     };
                                 };
@@ -291,6 +305,13 @@ GVAR(eventArgs) = [];
                                         if (((player distance west_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance independent_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance civ1_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance civ2_shop_plane) < MAX_DISTANCE_TO_SHOP)) then
                                         {
                                             [EVENT_SHOP_KAUF_ONLOAD, ["planes"]] call CFUNC(localEvent);
+                                        }
+                                        else
+                                        {
+                                            if (((player distance west_shop_verkauf) < MAX_DISTANCE_TO_SHOP) or ((player distance independent_shop_verkauf) < MAX_DISTANCE_TO_SHOP)) then
+                                            {
+                                                [EVENT_SHOP_VERKAUF_ORDER, ["sell"]] call CFUNC(localEvent);
+                                            };
                                         };
                                     };
                                 };
