@@ -65,7 +65,7 @@
             if (typeOf _veh in GVAR(choppers) && !(typeOf _unit in GVAR(pilots)) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then 
             {
                 _unit action ["GetOut", _veh];
-                _txt = MLOC(SLOT_LOCK_PILOT);
+                private _txt = MLOC(SLOT_LOCK_PILOT);
                 private _header = MLOC(SLOT_LOCK);
                 hint format ["%1\n\n%2", _header, _txt];
             };
@@ -73,7 +73,7 @@
             if (typeOf _veh in GVAR(planes) && !(typeOf _unit in (GVAR(pilots) + GVAR(jetpilots))) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then 
             {
                 _unit action ["GetOut", _veh];
-                _txt = MLOC(SLOT_LOCK_PILOT);
+                private _txt = MLOC(SLOT_LOCK_PILOT);
                 private _header = MLOC(SLOT_LOCK);
                 hint format ["%1\n\n%2", _header, _txt];
             };
@@ -81,7 +81,7 @@
             if (typeOf _veh in GVAR(jets) && !(typeOf _unit in GVAR(jetpilots)) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then 
             {
                 _unit action ["GetOut", _veh];
-                _txt = MLOC(SLOT_LOCK_PILOT);
+                private _txt = MLOC(SLOT_LOCK_PILOT);
                 private _header = MLOC(SLOT_LOCK);
                 hint format ["%1\n\n%2", _header, _txt];
             };
@@ -89,7 +89,7 @@
             if ((typeOf _veh in GVAR(crew_vehicles) || _veh isKindOf "Tank") && !(typeOf _unit in GVAR(crew)) && _pos2 in GVAR(blockedVehiclePositions_veh)) then 
             {
                 _unit action ["GetOut", _veh];
-                _txt = MLOC(SLOT_LOCK_CREW);
+                private _txt = MLOC(SLOT_LOCK_CREW);
                 private _header = MLOC(SLOT_LOCK);
                 hint format ["%1\n\n%2", _header, _txt];
             };
@@ -109,7 +109,7 @@
             if (typeOf _veh in GVAR(choppers) && !(typeOf _unit in GVAR(pilots)) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then 
             {
                 _unit action ["GetOut", _veh];
-                _txt = MLOC(SLOT_LOCK_PILOT);
+                private _txt = MLOC(SLOT_LOCK_PILOT);
                 private _header = MLOC(SLOT_LOCK);
                 hint format ["%1\n\n%2", _header, _txt];
             };
@@ -117,7 +117,7 @@
             if (typeOf _veh in GVAR(planes) && !(typeOf _unit in (GVAR(pilots) + GVAR(jetpilots))) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then 
             {
                 _unit action ["GetOut", _veh];
-                _txt = MLOC(SLOT_LOCK_PILOT);
+                private _txt = MLOC(SLOT_LOCK_PILOT);
                 private _header = MLOC(SLOT_LOCK);
                 hint format ["%1\n\n%2", _header, _txt];
             };
@@ -125,7 +125,7 @@
             if (typeOf _veh in GVAR(jets) && !(typeOf _unit in GVAR(jetpilots)) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then 
             {
                 _unit action ["GetOut", _veh];
-                _txt = MLOC(SLOT_LOCK_PILOT);
+                private _txt = MLOC(SLOT_LOCK_PILOT);
                 private _header = MLOC(SLOT_LOCK);
                 hint format ["%1\n\n%2", _header, _txt];
             };
@@ -133,7 +133,7 @@
             if ((typeOf _veh in GVAR(crew_vehicles) || _veh isKindOf "Tank") && !(typeOf _unit in GVAR(crew)) && _pos2 in GVAR(blockedVehiclePositions_veh)) then 
             {
                 _unit action ["GetOut", _veh];
-                _txt = MLOC(SLOT_LOCK_CREW);
+                private _txt = MLOC(SLOT_LOCK_CREW);
                 private _header = MLOC(SLOT_LOCK);
                 hint format ["%1\n\n%2", _header, _txt];
             };
