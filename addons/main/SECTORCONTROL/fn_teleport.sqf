@@ -59,8 +59,11 @@ openMap true;
         }
         else
         {
-            // sonst normaler Teleport, aber Abbruch bei Bäumen am Zielort
-            if (count nearestTerrainObjects [_pos select [0, 2], ["TREE", "SMALL TREE"], 10] > 0) then
+            // sonst normaler Teleport, aber sicheren Ort suchen
+            _newPos = [_pos, 0, 20, 3, 0, 1] call BIS_fnc_findSafePos;
+
+            // Abbruch, wenn kein sicherer Ort gefunden wird. (BIS_fnc_findSafePos gibt dann die Kartenmitte zurück. Die Rundung ist nötig da worldSize nicht ganz exakt ist)
+            if ((_newPos select 0) == (round (worldSize / 10) * 5) && (_newPos select 1) == (round (worldSize / 10) * 5)) then
             {
                 private _header = MLOC(TELEPORT_MSG_HEADER);
                 private _txt = MLOC(TELEPORT_FAIL);
@@ -69,7 +72,8 @@ openMap true;
                 _fail = true;
             };
 
-            _newPos = _pos vectorAdd [0, 0, 0.2];
+            _newPos set [2, 0];
+            _newPos = AGLToASL _newPos;
         };
     };
 

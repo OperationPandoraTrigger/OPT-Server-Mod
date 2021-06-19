@@ -79,8 +79,8 @@ class CfgCLibLocalisation
             
             class TELEPORT_FAIL
             {
-                English = "Teleporting failed. Too much trees in that area.";
-                German = "Teleport gescheitert. Zuviele Bäume in der Umgebung.";
+                English = "Teleporting failed. The chosen destination is too unsafe.";
+                German = "Teleport gescheitert. Der gewählte Zielort ist zu unsicher.";
             };
         };
 
