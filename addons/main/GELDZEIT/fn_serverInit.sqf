@@ -44,6 +44,13 @@ GVAR(playerList) = [];
     GVAR(Timestamp_Spielzeitstart) = GVAR(startTime) + GVAR(FREEZETIME) + GVAR(TRUCETIME);
     GVAR(Timestamp_Spielzeitende) = GVAR(startTime) + GVAR(PLAYTIME);   // Freeze- & Trucetime zählt zur Spielzeit dazu!
 
+    // DynamicSimulation
+    enableDynamicSimulationSystem true;
+    "Group" setDynamicSimulationDistance 250;
+    "Vehicle" setDynamicSimulationDistance 200;
+    "EmptyVehicle" setDynamicSimulationDistance 150;
+    "Prop" setDynamicSimulationDistance 50;
+
     // Aktuellen Spielabschnitt setzen
     [{
         switch (GVAR(GAMESTAGE)) do 
