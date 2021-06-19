@@ -151,12 +151,26 @@ QGVAR(BEAMJOB) addPublicVariableEventHandler
         if ((count _freiePads) > 0) then 
         {
             // Beamen
-            private _velocity = velocityModelSpace vehicle _player;
             {cutText ["Teleport...", "BLACK OUT", 0.1];} remoteExec ["call", _player];
+            private _velocity = velocityModelSpace vehicle _player;
+            private _playerHeight = getPosASL vehicle _player select 2;
+            private _playerSurfaceHeight = lineIntersectsSurfaces [getPosASL vehicle _player, (getposASL vehicle _player) vectorAdd [0, 0, -5000], vehicle _player] select 0 select 0 select 2;
+            private _heightAboveGround = _playerHeight - _playerSurfaceHeight;
+
             vehicle _player setPosASL (getPosASL _destination vectorAdd [0, 0, 1000]);
-            vehicle _player setVectorUp vectorUp _destination;
             vehicle _player setdir getdir _destination;
-            vehicle _player setPosASL (getPosASL _destination vectorAdd [0, 0, 0.2]);
+            
+            if ((vehicle _player isKindOf "Air") && (_heightAboveGround > 2)) then
+            {
+                vehicle _player setVectorUp [0, 0, 1];
+                vehicle _player setPosASL (getPosASL _destination vectorAdd [0, 0, _heightAboveGround + 20]);
+            }
+            else
+            {
+                vehicle _player setVectorUp vectorUp _destination;
+                vehicle _player setPosASL (getPosASL _destination vectorAdd [0, 0, 0.2]);
+            };
+    
             [vehicle _player, _velocity] remoteExec ["setVelocityModelSpace", _player];
             {cutText ["Teleport...", "BLACK IN", 0.5];} remoteExec ["call", _player];
         }
