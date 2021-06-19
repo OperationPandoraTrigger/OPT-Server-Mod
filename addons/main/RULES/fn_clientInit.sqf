@@ -149,7 +149,7 @@
             {
                 ["Cheat", "OutOfMap", [getPlayerUID player, name player, side player, _pos, typeOf vehicle player]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
                 player setDamage 1;
-                [MLOC(PLAYER_OUT_OF_MAP)] remoteExecCall ["hint", -2]; 
+                {hint format ["%1", MLOC(PLAYER_OUT_OF_MAP)];} remoteExec ["call", -2];
             };
         }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
 
@@ -167,7 +167,7 @@
                             {
                                 ["Cheat", "KillZone", [getPlayerUID player, name player, side player, position player, typeOf vehicle player]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
                                 player setDamage 1;
-                                [MLOC(BASE_DISTANCE)] remoteExecCall ["hint", -2]; 
+                                {hint format ["%1", MLOC(BASE_DISTANCE)];} remoteExec ["call", -2];
                             };
                         }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
                     };
@@ -179,7 +179,7 @@
                             {
                                 ["Cheat", "KillZone", [getPlayerUID player, name player, side player, position player, typeOf vehicle player]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
                                 player setDamage 1;
-                                [MLOC(BASE_DISTANCE)] remoteExecCall ["hint", -2]; 
+                                {hint format ["%1", MLOC(BASE_DISTANCE)];} remoteExec ["call", -2];
                             };
                         }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
                     };
@@ -197,7 +197,7 @@
                             {
                                 ["Cheat", "KillZone", [getPlayerUID player, name player, side player, position player, typeOf vehicle player]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
                                 player setDamage 1;
-                                [MLOC(BASE_DISTANCE)] remoteExecCall ["hint", -2]; 
+                                {hint format ["%1", MLOC(BASE_DISTANCE)];} remoteExec ["call", -2];
                             };
                         }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
                     };
@@ -209,7 +209,7 @@
                             {
                                 ["Cheat", "KillZone", [getPlayerUID player, name player, side player, position player, typeOf vehicle player]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
                                 player setDamage 1;
-                                [MLOC(BASE_DISTANCE)] remoteExecCall ["hint", -2]; 
+                                {hint format ["%1", MLOC(BASE_DISTANCE)];} remoteExec ["call", -2];
                             };
                         }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
                     };
@@ -227,7 +227,7 @@
                             {
                                 ["Cheat", "KillZone", [getPlayerUID player, name player, side player, position player, typeOf vehicle player]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
                                 player setDamage 1;
-                                [MLOC(BASE_DISTANCE)] remoteExecCall ["hint", -2]; 
+                                {hint format ["%1", MLOC(BASE_DISTANCE)];} remoteExec ["call", -2];
                             };
                         }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
                     };
@@ -239,7 +239,7 @@
                             {
                                 ["Cheat", "KillZone", [getPlayerUID player, name player, side player, position player, typeOf vehicle player]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
                                 player setDamage 1;
-                                [MLOC(BASE_DISTANCE)] remoteExecCall ["hint", -2]; 
+                                {hint format ["%1", MLOC(BASE_DISTANCE)];} remoteExec ["call", -2];
                             };
                         }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
                     };

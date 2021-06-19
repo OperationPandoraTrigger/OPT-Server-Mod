@@ -77,6 +77,7 @@ openMap true;
     {
         // Den Teleport durchführen. (Zuerst in die Luft zum sicheren Ausrichten und dann final platzieren)
         vehicle player setPosASL (_newPos vectorAdd [0, 0, 100]);
+        vehicle player setVelocity [0, 0, 0];
         vehicle player setVectorUp surfaceNormal _newPos;
         vehicle player setPosASL _newPos;
 

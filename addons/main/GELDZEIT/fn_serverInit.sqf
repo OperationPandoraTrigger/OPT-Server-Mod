@@ -151,18 +151,20 @@ QGVAR(BEAMJOB) addPublicVariableEventHandler
         if ((count _freiePads) > 0) then 
         {
             // Beamen
+            private _velocity = velocityModelSpace vehicle _player;
             {cutText ["Teleport...", "BLACK OUT", 0.1];} remoteExec ["call", _player];
             vehicle _player setPosASL (getPosASL _destination vectorAdd [0, 0, 1000]);
             vehicle _player setVectorUp vectorUp _destination;
             vehicle _player setdir getdir _destination;
             vehicle _player setPosASL (getPosASL _destination vectorAdd [0, 0, 0.2]);
+            [vehicle _player, _velocity] remoteExec ["setVelocityModelSpace", _player];
             {cutText ["Teleport...", "BLACK IN", 0.5];} remoteExec ["call", _player];
         }
         else
         {
             // Das Ziel ist belegt
             {
-                hint "BEAM\n\nDie Zielposition ist derzeit leider belegt.";
+                hint format ["%1\n\n%2", MLOC(BEAM), MLOC(BEAM_BUSY)];
                 playSound "additemok";
             } remoteExec ["call", _player];
         };
