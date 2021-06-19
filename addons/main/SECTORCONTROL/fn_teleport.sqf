@@ -60,7 +60,8 @@ openMap true;
         else
         {
             // sonst normaler Teleport, aber sicheren Ort suchen
-            _newPos = [_pos, 0, 20, 3, 0, 1] call BIS_fnc_findSafePos;
+            private _size = (sizeOf typeOf (vehicle player)) / 2;
+            _newPos = [_pos, 0, 20, _size, 0, 1] call BIS_fnc_findSafePos;
 
             // Abbruch, wenn kein sicherer Ort gefunden wird. (BIS_fnc_findSafePos gibt dann die Kartenmitte zurück. Die Rundung ist nötig da worldSize nicht ganz exakt ist)
             if ((_newPos select 0) == (round (worldSize / 10) * 5) && (_newPos select 1) == (round (worldSize / 10) * 5)) then
