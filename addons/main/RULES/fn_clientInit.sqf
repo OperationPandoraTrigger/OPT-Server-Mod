@@ -62,18 +62,26 @@
             params ["_unit", "_pos", "_veh", "_turret"];
             private _pos2 = assignedVehicleRole _unit select 0;
 
-            if (typeOf _veh in GVAR(pilot_vehicles) && !(typeOf _unit in GVAR(pilots) + GVAR(jetpilots)) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then 
+            if (typeOf _veh in GVAR(choppers) && !(typeOf _unit in GVAR(pilots)) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then 
             {
                 _unit action ["GetOut", _veh];
-                private _txt = MLOC(SLOT_LOCK_PILOT);
+                _txt = MLOC(SLOT_LOCK_PILOT);
                 private _header = MLOC(SLOT_LOCK);
                 hint format ["%1\n\n%2", _header, _txt];
             };
 
-            if (typeOf _veh in GVAR(jetpilot_vehicles) && !(typeOf _unit in GVAR(jetpilots)) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then 
+            if (typeOf _veh in GVAR(planes) && !(typeOf _unit in (GVAR(pilots) + GVAR(jetpilots))) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then 
             {
                 _unit action ["GetOut", _veh];
-                private _txt = MLOC(SLOT_LOCK_PILOT);
+                _txt = MLOC(SLOT_LOCK_PILOT);
+                private _header = MLOC(SLOT_LOCK);
+                hint format ["%1\n\n%2", _header, _txt];
+            };
+
+            if (typeOf _veh in GVAR(jets) && !(typeOf _unit in GVAR(jetpilots)) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then 
+            {
+                _unit action ["GetOut", _veh];
+                _txt = MLOC(SLOT_LOCK_PILOT);
                 private _header = MLOC(SLOT_LOCK);
                 hint format ["%1\n\n%2", _header, _txt];
             };
@@ -81,7 +89,7 @@
             if ((typeOf _veh in GVAR(crew_vehicles) || _veh isKindOf "Tank") && !(typeOf _unit in GVAR(crew)) && _pos2 in GVAR(blockedVehiclePositions_veh)) then 
             {
                 _unit action ["GetOut", _veh];
-                private _txt = MLOC(SLOT_LOCK_CREW);
+                _txt = MLOC(SLOT_LOCK_CREW);
                 private _header = MLOC(SLOT_LOCK);
                 hint format ["%1\n\n%2", _header, _txt];
             };
@@ -98,7 +106,7 @@
             params ["_unit", "_unit2", "_veh"];
             private _pos2 = assignedVehicleRole _unit select 0;
 
-            if (typeOf _veh in GVAR(pilot_vehicles) && !(typeOf _unit in GVAR(pilots) + GVAR(jetpilots)) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then 
+            if (typeOf _veh in GVAR(choppers) && !(typeOf _unit in GVAR(pilots)) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then 
             {
                 _unit action ["GetOut", _veh];
                 _txt = MLOC(SLOT_LOCK_PILOT);
@@ -106,7 +114,15 @@
                 hint format ["%1\n\n%2", _header, _txt];
             };
 
-            if (typeOf _veh in GVAR(jetpilot_vehicles) && !(typeOf _unit in GVAR(jetpilots)) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then 
+            if (typeOf _veh in GVAR(planes) && !(typeOf _unit in (GVAR(pilots) + GVAR(jetpilots))) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then 
+            {
+                _unit action ["GetOut", _veh];
+                _txt = MLOC(SLOT_LOCK_PILOT);
+                private _header = MLOC(SLOT_LOCK);
+                hint format ["%1\n\n%2", _header, _txt];
+            };
+
+            if (typeOf _veh in GVAR(jets) && !(typeOf _unit in GVAR(jetpilots)) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then 
             {
                 _unit action ["GetOut", _veh];
                 _txt = MLOC(SLOT_LOCK_PILOT);
@@ -129,7 +145,7 @@
             private _pos = getPos player;
             private _posX = _pos select 0;
             private _posY = _pos select 1;
-            if (((_posX < 0) || (_posX > _mapSize) || (_posY < 0) || (_posY > _mapSize)) && !(typeOf vehicle player in GVAR(jetpilot_vehicles))) then
+            if (((_posX < 0) || (_posX > _mapSize) || (_posY < 0) || (_posY > _mapSize)) && !(typeOf vehicle player in (GVAR(planes) + GVAR(jets)))) then
             {
                 ["Cheat", "OutOfMap", [getPlayerUID player, name player, side player, _pos, typeOf vehicle player]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
                 player setDamage 1;
