@@ -75,21 +75,21 @@ switch (_side) do
 {
     case west: 
     {
-        _rscPicture ctrlSetText "\A3\Data_F\Flags\Flag_NATO_CO.paa";
+        _rscPicture ctrlSetText "\opt\opt_client\addons\core\bilder\NATO-Logo.paa";
 
         GVAR(pads) = [VerkaufsBoxWest];
     };
 
     case east: 
     {
-        _rscPicture ctrlSetText "\A3\Data_F\Flags\Flag_CSAT_CO.paa";
+        _rscPicture ctrlSetText "\opt\opt_client\addons\core\bilder\WP_Logo.paa";
 
         GVAR(pads) = [VerkaufsBoxEast];
     }; 
 
     case independent: 
     {
-        _rscPicture ctrlSetText "\A3\Data_F\Flags\Flag_AAF_CO.paa";
+        _rscPicture ctrlSetText "\opt\opt_client\addons\core\bilder\xxx-Logo.paa";
 
         GVAR(pads) = [VerkaufsBoxindependent];
     };   
