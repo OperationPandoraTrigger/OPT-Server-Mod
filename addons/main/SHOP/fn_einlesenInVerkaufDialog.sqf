@@ -31,6 +31,10 @@ params
     ["_type", ""]
 ];
 
+// Shop gegen erneutes öffnen sperren (per Hotkey sonst mehrfach moeglich)
+if (GVAR(LOCK)) exitWith {};
+GVAR(LOCK) = true;
+
 //Spieler Seite bestimmen
 private _side = playerside;
 
@@ -50,6 +54,13 @@ private _sell = _display displayCtrl 23103;
 private _rscPicture = _display displayCtrl IDC_PLAYER_FLAG;
 private _listbox_vehicles = _display displayCtrl IDC_CTRL_VEHICLE_LIST;
 private _editbox_info = _display displayCtrl IDC_CTRL_PRICE_LIST;
+
+// ESC-Taste zum schliessen benutzt -> Dialog wieder freigeben
+_display displayAddEventhandler["KeyDown",
+{
+    params ["_display", "_key"];
+    if (_key == 1) exitWith {GVAR(LOCK) = false;};
+}];
 
 _order ctrlEnable false;
 _sell ctrlShow false;

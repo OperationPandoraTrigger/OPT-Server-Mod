@@ -105,6 +105,9 @@ DFUNC(isUnconscious) =
     {
         [call TFAR_fnc_activeLrRadio, _radio_key] call TFAR_fnc_setLrRadioCode;
     };
+
+    // Shop Dialoge freigeben
+    OPT_SHOP_LOCK = false;
 }] call CFUNC(addEventhandler);
 
 
