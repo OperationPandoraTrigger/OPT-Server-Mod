@@ -29,7 +29,7 @@
 #include "macros.hpp"
 
 // Minimalentfernung zum Beam-Platz
-#define MIN_DISTANCE_TO_BEAMSPOT 20
+#define MIN_DISTANCE_TO_BEAMSPOT 10
 
 private _Basis = objNull;
 

@@ -63,8 +63,9 @@ openMap true;
             private _size = (sizeOf typeOf (vehicle player)) / 2;
             _newPos = [_pos, 0, 20, _size, 0, 1] call BIS_fnc_findSafePos;
 
-            // Abbruch, wenn kein sicherer Ort gefunden wird. (BIS_fnc_findSafePos gibt dann die Kartenmitte zurück. Die Rundung ist nötig da worldSize nicht ganz exakt ist)
-            if ((_newPos select 0) == (round (worldSize / 10) * 5) && (_newPos select 1) == (round (worldSize / 10) * 5)) then
+            // Abbruch, wenn kein sicherer Ort gefunden wird. (BIS_fnc_findSafePos gibt dann die Kartenmitte zurück)
+            private _worldsize = (worldName call BIS_fnc_mapSize);
+            if ((_newPos select 0) == (_worldsize / 2) && (_newPos select 1) == (_worldsize / 2)) then
             {
                 private _header = MLOC(TELEPORT_MSG_HEADER);
                 private _txt = MLOC(TELEPORT_FAIL);

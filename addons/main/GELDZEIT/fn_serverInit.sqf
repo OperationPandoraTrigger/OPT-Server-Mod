@@ -136,8 +136,6 @@ publicVariable QGVAR(BEAMJOB);
 
 QGVAR(BEAMJOB) addPublicVariableEventHandler
 {
-    ["DEBUG", "BEAM", ["EH fired.", _this]] call OPT_LOGGING_fnc_writelog;
-
     GVAR(BEAMJOBS) pushBackUnique GVAR(BEAMJOB);
     while {count GVAR(BEAMJOBS) > 0} do
     {
