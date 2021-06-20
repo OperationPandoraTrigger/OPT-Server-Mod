@@ -727,7 +727,8 @@ switch OPT_GELDZEIT_Fraktionauswahl do
 } forEach GVAR(Side1SectorMarkers);
 
 // Karten Umrandung
-[[[0, worldSize], [worldSize, worldSize]], "ColorBlack", 16, "MapBorder1"] call FUNC(drawline);
-[[[worldSize, worldSize], [worldSize, 0]], "ColorBlack", 16, "MapBorder2"] call FUNC(drawline);
-[[[worldSize, 0], [0, 0]], "ColorBlack", 16, "MapBorder3"] call FUNC(drawline);
-[[[0, 0], [0, worldSize]], "ColorBlack", 16, "MapBorder4"] call FUNC(drawline);
+private _worldsize = (worldName call BIS_fnc_mapSize);
+[[[0, _worldsize], [_worldsize, _worldsize]], "ColorRed", 24, "MapBorder1"] call FUNC(drawline);
+[[[_worldsize, _worldsize], [_worldsize, 0]], "ColorRed", 24, "MapBorder2"] call FUNC(drawline);
+[[[_worldsize, 0], [0, 0]], "ColorRed", 24, "MapBorder3"] call FUNC(drawline);
+[[[0, 0], [0, _worldsize]], "ColorRed", 24, "MapBorder4"] call FUNC(drawline);

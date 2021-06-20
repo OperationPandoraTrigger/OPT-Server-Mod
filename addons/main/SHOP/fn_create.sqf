@@ -87,6 +87,7 @@ DFUNC(createOrder) =
     //Objekt Erstellung 
     private _posi = getPosASL GVAR(order_box) vectorAdd [0, 0, 1000];
     private _veh = createVehicle [_class, _posi, [], 0, "NONE"];
+    _veh enableDynamicSimulation true;
     _veh setdir getdir GVAR(order_box);
     _veh setVectorUp vectorUp GVAR(order_box);
     _posi = getPosASL GVAR(order_box) vectorAdd [0, 0, HEIGHT_OFFSET];

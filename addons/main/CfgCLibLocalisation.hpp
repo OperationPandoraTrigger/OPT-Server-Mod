@@ -79,8 +79,8 @@ class CfgCLibLocalisation
             
             class TELEPORT_FAIL
             {
-                English = "Teleporting failed. Too much trees in that area.";
-                German = "Teleport gescheitert. Zuviele Bäume in der Umgebung.";
+                English = "Teleporting failed. There is not enough space at the selected destination.";
+                German = "Teleport gescheitert. Am gewählten Ziel ist nicht genügend Platz vorhanden.";
             };
         };
 
@@ -444,21 +444,31 @@ class CfgCLibLocalisation
                 English = "Beam to other base";
                 German = "Beam zur anderen Basis";
             };
+
+            class BEAM_BUSY
+            {
+                English = "Unfortunately, the target position is currently occupied.";
+                German = "Die Zielposition ist derzeit leider belegt.";
+            };
+
             class HAFTLADUNG
             {
                 English = "Attach explosive charge";
                 German = "Sprengladung anbringen";
             };
+
             class HAFTLADUNGNOBOMBE
             {
                 English = "no explosive charge ready to be attached";
                 German = "keine Sprengladung bereit zum anbringen";
             };
+
             class HAFTLADUNGNOVEH
             {
                 English = "no vehicle ready to mount";
                 German = "keine Fahrzeug bereit zum anbringen";
             };
+
             class HAFTLADUNGATTACH
             {
                 English = "Explosive charge attached to vehicle";

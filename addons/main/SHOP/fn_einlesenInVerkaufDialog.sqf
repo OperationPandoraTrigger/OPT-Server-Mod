@@ -31,6 +31,10 @@ params
     ["_type", ""]
 ];
 
+// Shop gegen erneutes öffnen sperren (per Hotkey sonst mehrfach moeglich)
+if (GVAR(LOCK)) exitWith {};
+GVAR(LOCK) = true;
+
 //Spieler Seite bestimmen
 private _side = playerside;
 
@@ -51,6 +55,13 @@ private _rscPicture = _display displayCtrl IDC_PLAYER_FLAG;
 private _listbox_vehicles = _display displayCtrl IDC_CTRL_VEHICLE_LIST;
 private _editbox_info = _display displayCtrl IDC_CTRL_PRICE_LIST;
 
+// ESC-Taste zum schliessen benutzt -> Dialog wieder freigeben
+_display displayAddEventhandler["KeyDown",
+{
+    params ["_display", "_key"];
+    if (_key == 1) exitWith {GVAR(LOCK) = false;};
+}];
+
 _order ctrlEnable false;
 _sell ctrlShow false;
 GVAR(pads) = [];
@@ -64,21 +75,21 @@ switch (_side) do
 {
     case west: 
     {
-        _rscPicture ctrlSetText "\A3\Data_F\Flags\Flag_NATO_CO.paa";
+        _rscPicture ctrlSetText "\opt\opt_client\addons\core\bilder\NATO-Logo.paa";
 
         GVAR(pads) = [VerkaufsBoxWest];
     };
 
     case east: 
     {
-        _rscPicture ctrlSetText "\A3\Data_F\Flags\Flag_CSAT_CO.paa";
+        _rscPicture ctrlSetText "\opt\opt_client\addons\core\bilder\WP_Logo.paa";
 
         GVAR(pads) = [VerkaufsBoxEast];
     }; 
 
     case independent: 
     {
-        _rscPicture ctrlSetText "\A3\Data_F\Flags\Flag_AAF_CO.paa";
+        _rscPicture ctrlSetText "\opt\opt_client\addons\core\bilder\xxx-Logo.paa";
 
         GVAR(pads) = [VerkaufsBoxindependent];
     };   

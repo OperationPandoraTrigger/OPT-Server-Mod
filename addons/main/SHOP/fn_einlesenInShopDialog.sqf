@@ -31,6 +31,10 @@ params
     ["_type", ""]
 ];
 
+// Shop gegen erneutes öffnen sperren (per Hotkey sonst mehrfach moeglich)
+if (GVAR(LOCK)) exitWith {};
+GVAR(LOCK) = true;
+
 //Hardcap Send Auslösung Zurücksetzen
 GVAR(Daten_send) = false;
 GVAR(Hardcap_pool) = [];
@@ -88,6 +92,13 @@ private _button21 = _display displayCtrl 20030;
 private _button22 = _display displayCtrl 20031;
 private _button23 = _display displayCtrl 20032;
 private _button24 = _display displayCtrl 20033;
+
+// ESC-Taste zum schliessen benutzt -> Dialog wieder freigeben
+_display displayAddEventhandler["KeyDown",
+{
+    params ["_display", "_key"];
+    if (_key == 1) exitWith {GVAR(LOCK) = false;};
+}];
 
 _order ctrlEnable false;
 _konfig ctrlEnable false;
@@ -376,17 +387,17 @@ switch (_side) do
 {
     case west: 
     {
-        _rscPicture ctrlSetText "\A3\Data_F\Flags\Flag_NATO_CO.paa";
+        _rscPicture ctrlSetText "\opt\opt_client\addons\core\bilder\NATO-Logo.paa";
     };
 
     case east: 
     {
-        _rscPicture ctrlSetText "\A3\Data_F\Flags\Flag_CSAT_CO.paa";
+        _rscPicture ctrlSetText "\opt\opt_client\addons\core\bilder\WP_Logo.paa";
     };  
 
     case independent: 
     {
-        _rscPicture ctrlSetText "\A3\Data_F\Flags\Flag_AAF_CO.paa";
+        _rscPicture ctrlSetText "\opt\opt_client\addons\core\bilder\xxx-Logo.paa";
     };    
 };
 
@@ -434,6 +445,7 @@ _order ctrlAddEventHandler [ "ButtonClick",
     
     if (GVAR(moveInVeh)) then 
     {
+        GVAR(LOCK) = false;
         closeDialog 0;
     };
 
@@ -462,7 +474,7 @@ _moveInVeh ctrlAddEventHandler [ "ButtonClick",
     if (GVAR(moveInVeh)) then 
     {
         GVAR(moveInVeh) = false;         
-        _moveInVeh ctrlSetText "[_] Fahrzeug besetzen";   
+        _moveInVeh ctrlSetText "[  ] Fahrzeug besetzen";   
         _moveInVeh ctrlSetTextColor [1.0, 0.0, 0.0, 1];       
     }
     else
