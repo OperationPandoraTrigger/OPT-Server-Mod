@@ -74,4 +74,16 @@
     }; 
     [FUNC(SetupSpectatorPositions), 2, ""] call CLib_fnc_wait;   
 */
+
+    // Beim Karte-Schließen den Teleport-EH entfernen, damit man später aus versehen nicht teleportieren kann
+    (finddisplay 12) displayAddEventhandler["KeyDown", 
+    { 
+        params ["_display", "_key"]; 
+        // ESC oder M gedrückt?
+        if (_key == 1 || _key == 50) then
+        {
+            [QGVAR(onMapSingleClick), "onMapSingleClick"] call BIS_fnc_removeStackedEventHandler;
+            openMap false;
+        };
+    }]; 
 }] call CFUNC(addEventhandler);
