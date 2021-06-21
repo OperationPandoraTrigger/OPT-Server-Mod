@@ -1,6 +1,6 @@
 /**
 * Author: James
-* initialize all opt objects with correct ACE Cargo setLightnings
+* initialize all opt objects with correct ACE Cargo settings
 *
 * Arguments:
 * None
@@ -52,6 +52,35 @@ DUMP("Successfully loaded the OPT/CARGO fn_setupCargoSpaceAndSize module");
 // Laderaum den ein Objekt hat
 GVAR(canTransportCargo) = 
 [
+// NATO CUP
+    ["OPT_CUP_B_M1030_USA", 0],               // Motorrad M1030 (0)
+    ["OPT_CUP_B_LR_Transport_GB_W", 4],       // Land Rover 110
+    ["OPT_CUP_B_LR_MG_GB_W", 4],              // Land Rover M2
+    ["OPT_CUP_B_LR_AA_RACS", 1],              // Landrover AA
+    ["OPT_CUP_B_HMMWV_Unarmed_USMC", 4],      // HMMWV
+    ["OPT_CUP_B_HMMWV_M2_USMC", 4],           // HMMWV M2
+    ["OPT_CUP_B_MTVR_USMC", 8],               // MTVR
+    ["OPT_CUP_B_MTVR_Repair_USMC", 4],        // MTVR Rep
+    ["OPT_CUP_B_HMMWV_Ambulance_USMC", 0],    // HMMWV Ambulance (0)
+    ["OPT_CUP_B_MTVR_Ammo_USMC",  4],         // MTVR Ammo
+    ["OPT_CUP_B_MTVR_Refuel_USMC", 4],        // MTVR Tank
+    ["OPT_CUP_MH60S_Unarmed_USN", 4],         // MH-60S Seahawk
+    ["OPT_CUP_B_UH1D_armed_GER_KSK", 4],      // UH-1D
+    ["OPT_CUP_B_CH53E_USMC", 4],              // CH53G Super Stallion
+    ["OPT_CUP_B_AH64D_DL_USA", 1],            // AH-64
+    ["OPT_CUP_C_Cessna_172_CIV_BLUE", 0],     // Caesar BTT
+    ["OPT_CUP_C_AN2_CIV", 2],                 // Antonov An-2
+    ["OPT_CUP_C_DC3_ChernAvia_CIV", 2],       // Li-2
+    ["OPT_CUP_B_C130J_USMC", 4],              // C130J
+    ["OPT_CUP_B_L39_CZ_GREY", 0],             // L-39AZ
+    ["OPT_CUP_B_LAV25_HQ_USMC", 1],           // LAV C2
+    ["OPT_CUP_B_M2Bradley_USA_W", 1],         // M2A2 Bradley IFV
+    ["OPT_CUP_B_M163_USA", 1],                // M163A1 VADS (50er Magazine)
+    ["OPT_CUP_B_M60A3_TTS_USMC", 1],          // M60A3 TTS
+    ["OPT_CUP_B_Leopard2A6_GER", 1],          // Leopard2A6
+    ["OPT_CUP_B_HMMWV_TOW_USMC", 1],          // HMMWV TOW
+    ["OPT_CUP_B_RM70_CZ", 0],                 // RM-70 nicht nachladbar
+
 // NATO Vehicles    
     ["OPT_B_Quadbike_01_F", 2],                    // Quadbike
     ["OPT_B_T_LSV_01_unarmed_F", 4],               // Prowler unarmed 
@@ -136,6 +165,36 @@ GVAR(canTransportCargo) =
 
 //Tropentarn
     ["OPT_B_UGV_01_ghex_F", 6],                         // UGV Stomper
+
+// OPFOR CUP
+    ["OPT_CUP_O_TT650_TKA", 0],               // Motorrad TT650 (0)  
+    ["OPT_CUP_O_UAZ_Unarmed_RU", 4],          // UAZ 469
+    ["OPT_CUP_O_UAZ_MG_RU", 4],               // UAZ 469 DShKM
+    ["OPT_CUP_O_LR_AA_TKA", 1],               // UAZ AA    
+    ["OPT_CUP_O_GAZ_Vodnik_Unarmed_RU", 4],   // GAZ 3937 Vodnik
+    ["OPT_CUP_O_GAZ_Vodnik_PK_RU", 4],        // GAZ 3937 Vodnik 2xPKM
+    ["OPT_CUP_O_Ural_TKA", 8],                // Ural
+    ["OPT_CUP_O_Ural_Repair_TKA", 4],         // Ural Rep
+    ["OPT_CUP_O_GAZ_Vodnik_MedEvac_RU", 0],   // GAZ 3937 Vodnik Medic (0)
+    ["OPT_CUP_O_Ural_Reammo_TKA", 4],         // Ural Ammo
+    ["OPT_CUP_O_Ural_Refuel_TKA", 4],         // Ural Tank
+    ["OPT_CUP_O_SA330_Puma_HC1_BAF", 4],      // SA-330 Puma 
+    ["OPT_CUP_O_Ka60_Grey_RU", 4],            // KA-60 Kataska
+    ["OPT_CUP_O_Merlin_HC3_GB", 4],           // Merlin HC3A
+    ["OPT_CUP_O_Mi24_V_Dynamic_RU", 1],       // MI-24V
+    ["OPT_CUP_C_Cessna_172_CIV_GREEN", 0],    // Cessna
+    ["OPT_CUP_O_AN2_TK", 2],                  // Antonov An-2
+    ["OPT_CUP_O_C47_SLA", 2],                 // Li-2
+    ["OPT_CUP_O_C130J_TKA", 4],               // C130J
+    ["OPT_CUP_O_Su25_Dyn_RU", 0],             // SU-25T
+    ["OPT_CUP_O_ZSU23_Afghan_SLA", 1],        // ZSU-23-4 Afghanski (50er Magazine)
+    ["OPT_CUP_O_T72_RU", 1],                  // T72
+    ["OPT_CUP_O_T90_RU", 1],                  // T90
+    ["OPT_CUP_O_BTR60_RU", 1],                // BTR-60 PB
+    ["OPT_CUP_O_BTR90_RU", 1],                // BTR90 ohne GMG, Preis?    
+    ["OPT_CUP_O_BRDM2_ATGM_RUS", 1],          // BRDM-2 ATGM    
+    ["OPT_CUP_O_BM21_RU", 0],                 // BM21 nicht nachladbar
+
     
 // CSAT Vehicles    
     ["OPT_O_Quadbike_01_F", 2],                    // Quadbike-
@@ -295,7 +354,37 @@ GVAR(canTransportCargo) =
 
 //Platzbedarf eines Objekts
 GVAR(canBeTransported) =
-[    
+[
+// NATO CUP
+    ["OPT_CUP_B_M1030_USA", 2],               // Motorrad M1030 (0)
+    ["OPT_CUP_B_LR_Transport_GB_W", 5],       // Land Rover 110
+    ["OPT_CUP_B_LR_MG_GB_W", 5],              // Land Rover M2
+    ["OPT_CUP_B_LR_AA_RACS", 8],              // Landrover AA
+    ["OPT_CUP_B_HMMWV_Unarmed_USMC", 5],      // HMMWV
+    ["OPT_CUP_B_HMMWV_M2_USMC", 5],           // HMMWV M2
+    ["OPT_CUP_B_MTVR_USMC", 10],              // MTVR
+    ["OPT_CUP_B_MTVR_Repair_USMC", 10],       // MTVR Rep
+    ["OPT_CUP_B_HMMWV_Ambulance_USMC", 5],    // HMMWV Ambulance (0)
+    ["OPT_CUP_B_MTVR_Ammo_USMC", 10],         // MTVR Ammo
+    ["OPT_CUP_B_MTVR_Refuel_USMC", 10],       // MTVR Tank
+    ["OPT_CUP_MH60S_Unarmed_USN", 10],        // MH-60S Seahawk
+    ["OPT_CUP_B_UH1D_armed_GER_KSK", 10],     // UH-1D
+    ["OPT_CUP_B_CH53E_USMC", 10],             // CH53G Super Stallion
+    ["OPT_CUP_B_AH64D_DL_USA", 10],           // AH-64
+    ["OPT_CUP_C_Cessna_172_CIV_BLUE", 10],    // Caesar BTT
+    ["OPT_CUP_C_AN2_CIV", 10],                // Antonov An-2
+    ["OPT_CUP_C_DC3_ChernAvia_CIV", 10],      // Li-2
+    ["OPT_CUP_B_C130J_USMC", 10],             // C130J
+    ["OPT_CUP_B_L39_CZ_GREY", 10],            // L-39AZ
+    ["OPT_CUP_B_LAV25_HQ_USMC", 8],           // LAV C2
+    ["OPT_CUP_B_M2Bradley_USA_W", 8],         // M2A2 Bradley IFV
+    ["OPT_CUP_B_M163_USA", 8],                // M163A1 VADS (50er Magazine)
+    ["OPT_CUP_B_M60A3_TTS_USMC", 10],         // M60A3 TTS
+    ["OPT_CUP_B_Leopard2A6_GER", 10],         // Leopard2A6
+    ["OPT_CUP_B_HMMWV_TOW_USMC", 8],          // HMMWV TOW
+    ["OPT_CUP_B_RM70_CZ", 5],                 // RM-70 nicht nachladbar
+
+
 // NATO Vehicles    
     ["OPT_B_Quadbike_01_F", 4],                    // Quadbike
     ["OPT_B_T_LSV_01_unarmed_F", 5],               // Prowler unarmed 
@@ -392,6 +481,35 @@ GVAR(canBeTransported) =
     ["OPT_B_Boat_Transport_01_F", 5],                    // Assault Boat     - hinzugefügt
     ["OPT_B_Boat_Armed_01_minigun_F", 5],                // Speedboat Minigun    - hinzugefügt
     ["OPT_B_C_Boat_Transport_02_F", 5],                    // Rhib unbewaffnet      - hinzugefügt    
+
+// OPFOR CUP
+    ["OPT_CUP_O_TT650_TKA", 2],               // Motorrad TT650 (0)  
+    ["OPT_CUP_O_UAZ_Unarmed_RU", 5],          // UAZ 469
+    ["OPT_CUP_O_UAZ_MG_RU", 5],               // UAZ 469 DShKM
+    ["OPT_CUP_O_LR_AA_TKA", 8],               // UAZ AA    
+    ["OPT_CUP_O_GAZ_Vodnik_Unarmed_RU", 5],   // GAZ 3937 Vodnik
+    ["OPT_CUP_O_GAZ_Vodnik_PK_RU", 5],        // GAZ 3937 Vodnik 2xPKM
+    ["OPT_CUP_O_Ural_TKA", 10],               // Ural
+    ["OPT_CUP_O_Ural_Repair_TKA", 10],        // Ural Rep
+    ["OPT_CUP_O_GAZ_Vodnik_MedEvac_RU", 5],   // GAZ 3937 Vodnik Medic (0)
+    ["OPT_CUP_O_Ural_Reammo_TKA", 10],        // Ural Ammo
+    ["OPT_CUP_O_Ural_Refuel_TKA", 10],        // Ural Tank
+    ["OPT_CUP_O_SA330_Puma_HC1_BAF", 10],     // SA-330 Puma 
+    ["OPT_CUP_O_Ka60_Grey_RU", 10],           // KA-60 Kataska
+    ["OPT_CUP_O_Merlin_HC3_GB", 10],          // Merlin HC3A
+    ["OPT_CUP_O_Mi24_V_Dynamic_RU", 10],      // MI-24V
+    ["OPT_CUP_C_Cessna_172_CIV_GREEN", 10],   // Cessna
+    ["OPT_CUP_O_AN2_TK", 10],                 // Antonov An-2
+    ["OPT_CUP_O_C47_SLA", 10],                // Li-2
+    ["OPT_CUP_O_C130J_TKA", 10],              // C130J
+    ["OPT_CUP_O_Su25_Dyn_RU", 10],            // SU-25T
+    ["OPT_CUP_O_ZSU23_Afghan_SLA", 8],        // ZSU-23-4 Afghanski (50er Magazine)
+    ["OPT_CUP_O_T72_RU", 10],                 // T72
+    ["OPT_CUP_O_T90_RU", 10],                 // T90
+    ["OPT_CUP_O_BTR60_RU", 8],                // BTR-60 PB
+    ["OPT_CUP_O_BTR90_RU", 8],                // BTR90 ohne GMG, Preis?    
+    ["OPT_CUP_O_BRDM2_ATGM_RUS", 8],          // BRDM-2 ATGM    
+    ["OPT_CUP_O_BM21_RU", 5],                 // BM21 nicht nachladbar
 
 // CSAT Vehicles    
     ["OPT_O_Quadbike_01_F", 4],                    // Quadbike-
