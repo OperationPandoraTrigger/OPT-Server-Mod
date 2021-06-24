@@ -115,4 +115,6 @@ if !(isNull _Basis) then
     // Beam-Auftrag an den Server weiterleiten
     GVAR(BEAMJOB) = [player, _Basis];
     publicVariableServer QGVAR(BEAMJOB);
+
+    // Alles weitere zum Beamen ist in GELDZEIT\fn_serverInit.sqf
 };

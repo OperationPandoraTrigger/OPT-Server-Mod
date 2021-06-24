@@ -81,10 +81,17 @@ openMap true;
 
     if !(_fail) then
     {
+        private _velocity = [0, 0, 0];
+        if (vehicle player != player) then
+        {
+            // Als Fahrzeugführer wird die alte Geschwindigkeit beibehalten
+            _velocity = velocityModelSpace vehicle player;
+        };
+
         // Den Teleport durchführen. (Zuerst in die Luft zum sicheren Ausrichten und dann final platzieren)
         vehicle player setPosASL (_newPos vectorAdd [0, 0, 100]);
-        vehicle player setVelocity [0, 0, 0];
         vehicle player setVectorUp surfaceNormal _newPos;
+        vehicle player setVelocityModelSpace _velocity;
         vehicle player setPosASL _newPos;
 
         [QGVAR(onMapSingleClick), "onMapSingleClick"] call BIS_fnc_removeStackedEventHandler;
