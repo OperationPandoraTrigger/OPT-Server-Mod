@@ -40,6 +40,22 @@
     0 setRain OPT_WEATHERTIME_weather_rain_start;
     0 setFog [OPT_WEATHERTIME_weather_fogValue_start, OPT_WEATHERTIME_weather_fogDecay_start, OPT_WEATHERTIME_weather_fogBase_start];
     forceWeatherChange;
+
+    // Es ist Dunkel zwischen 20 - 04 Uhr.
+    // Wenn die Mission ab 18 Uhr startet, ist davon auszugehen das es während einer 2h-Schlacht dunkel wird - Also aktivieren wir leuchtende Objekte
+    private _simulation = false;
+    if (((round OPT_WEATHERTIME_timeslider_hours) >= 18) || ((round OPT_WEATHERTIME_timeslider_hours) <= 4)) then
+    {
+        _simulation = true;
+    };
+
+    private _nightTypes = ["Land_LampShabby_F"]; 
+    {
+        private _objs = allMissionObjects _x;
+        {
+            _x enableSimulation _simulation;
+        } forEach _objs;
+    } forEach _nightTypes;
 }] call CFUNC(addEventhandler);
 
 // update rain and fog transisions every TRANSITION_INTERVAL seconds

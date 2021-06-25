@@ -59,24 +59,39 @@ openMap true;
         }
         else
         {
-            // sonst normaler Teleport, aber Abbruch bei Bäumen am Zielort
-            if (count nearestTerrainObjects [_pos select [0, 2], ["TREE", "SMALL TREE"], 10] > 0) then
+            // sonst normaler Teleport, aber sicheren Ort suchen
+            private _size = (sizeOf typeOf (vehicle player)) / 2;
+            _newPos = [_pos, 0, 20, _size, 0, 1] call BIS_fnc_findSafePos;
+
+            // Abbruch, wenn kein sicherer Ort gefunden wird. (BIS_fnc_findSafePos gibt dann die Kartenmitte zurück)
+            private _worldsize = (worldName call BIS_fnc_mapSize);
+            if ((_newPos select 0) == (_worldsize / 2) && (_newPos select 1) == (_worldsize / 2)) then
             {
                 private _header = MLOC(TELEPORT_MSG_HEADER);
                 private _txt = MLOC(TELEPORT_FAIL);
                 hint format ["%1\n\n%2", _header, _txt];
+                playSound "additemok";
                 _fail = true;
             };
 
-            _newPos = _pos vectorAdd [0, 0, 0.2];
+            _newPos set [2, 0];
+            _newPos = AGLToASL _newPos;
         };
     };
 
     if !(_fail) then
     {
+        private _velocity = [0, 0, 0];
+        if (vehicle player != player) then
+        {
+            // Als Fahrzeugführer wird die alte Geschwindigkeit beibehalten
+            _velocity = velocityModelSpace vehicle player;
+        };
+
         // Den Teleport durchführen. (Zuerst in die Luft zum sicheren Ausrichten und dann final platzieren)
         vehicle player setPosASL (_newPos vectorAdd [0, 0, 100]);
         vehicle player setVectorUp surfaceNormal _newPos;
+        vehicle player setVelocityModelSpace _velocity;
         vehicle player setPosASL _newPos;
 
         [QGVAR(onMapSingleClick), "onMapSingleClick"] call BIS_fnc_removeStackedEventHandler;
