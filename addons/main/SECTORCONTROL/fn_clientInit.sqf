@@ -54,6 +54,7 @@
     // Flaggen Wahl AddAction  erstellen
     [] call FUNC(addflagmenu);
 
+/*
     //Positon für Spectatormodus 
     DFUNC(SetupSpectatorPositions) = 
     {
@@ -72,4 +73,17 @@
         ["AddLocation", ["6", "AAF Flagge 2", "AAF Flagge 2","\A3\Data_F\Flags\flag_armex_CO.paa", [_Flag2positionAAF,[0,0],[0,0,0],[100,true]],[10,true]]] call BIS_fnc_EGSpectator;
     }; 
     [FUNC(SetupSpectatorPositions), 2, ""] call CLib_fnc_wait;   
+*/
+
+    // Beim Karte-Schließen den Teleport-EH entfernen, damit man später aus versehen nicht teleportieren kann
+    (finddisplay 12) displayAddEventhandler["KeyDown", 
+    { 
+        params ["_display", "_key"]; 
+        // ESC oder M gedrückt?
+        if (_key == 1 || _key == 50) then
+        {
+            [QGVAR(onMapSingleClick), "onMapSingleClick"] call BIS_fnc_removeStackedEventHandler;
+            openMap false;
+        };
+    }]; 
 }] call CFUNC(addEventhandler);

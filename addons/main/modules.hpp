@@ -47,6 +47,7 @@ class CfgCLibModules
             FNC(hardcap_check);
             FNC(create);
             FNC(Init);
+            FNC(checkpad);
         };
 
         MODULE(REVIVE)
@@ -84,6 +85,7 @@ class CfgCLibModules
             FNC(beam);
             FNC(haftladungen);
             FNC(clientInitcbaclassevents);
+            FNC(spritverbrauch);
         };
 
         MODULE(SECTORCONTROL)

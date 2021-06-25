@@ -32,28 +32,8 @@ params
 
 GVAR(idPadCheckCreate) =
 [{
-    private _freiePads = [];
- 
     // freie Pads suchen
-    {
-        // Bekannte Objekte in der Nähe suchen
-        private _objects = nearestObjects [_x, GVAR(all_item_classnames), GVAR(Checkbereich)];
-
-        // Jetzt noch lebende Soldaten suchen
-        private _soldiers = nearestObjects [_x, ["CAManBase"], GVAR(Checkbereich)];
-        {
-            if (alive _x) then
-            {
-                _objects pushBackUnique _x;
-            };
-        } forEach _soldiers;
-     
-        // Wenn Liste leer -> Pad ist frei!
-        if (count _objects == 0) then 
-        {
-            _freiePads append [_x]; 
-        };       
-    } forEach GVAR(pads);
+    private _freiePads = [GVAR(pads), GVAR(Checkbereich)] call FUNC(checkpad);
 
     // erstes Freies Pad zuordnen
     if ((count _freiePads) > 0) then 
@@ -102,19 +82,21 @@ DFUNC(createOrder) =
     _waffenkosten = GVAR(order_Datensatz) select 10;
 
     //Konstanten für Fahrzeugerstellung
-    #define HEIGHT_OFFSET_GROUND 0.1
-    #define HEIGHT_OFFSET_WATER 0.2
-
+    #define HEIGHT_OFFSET 0.2
+    
     //Objekt Erstellung 
-    private _posi = getPosASL GVAR(order_box) vectorAdd [0, 0, HEIGHT_OFFSET_GROUND];
+    private _posi = getPosASL GVAR(order_box) vectorAdd [0, 0, 1000];
     private _veh = createVehicle [_class, _posi, [], 0, "NONE"];
+    _veh enableDynamicSimulation true;
     _veh setdir getdir GVAR(order_box);
+    _veh setVectorUp vectorUp GVAR(order_box);
+    _posi = getPosASL GVAR(order_box) vectorAdd [0, 0, HEIGHT_OFFSET];
     _veh setPosASL _posi;
 
     //check Box liegt im Wasser
     if ((surfaceIsWater (position GVAR(order_box))) and (_veh isKindOf "Ship")) then 
     {
-        _veh setPos [(position GVAR(order_box) select 0),(position GVAR(order_box) select 1), HEIGHT_OFFSET_WATER]; 
+        _veh setPos [(position GVAR(order_box) select 0), (position GVAR(order_box) select 1), HEIGHT_OFFSET]; 
     };
 
     _veh setDamage 0;
