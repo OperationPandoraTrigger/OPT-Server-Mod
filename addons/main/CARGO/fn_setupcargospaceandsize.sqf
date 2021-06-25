@@ -383,7 +383,14 @@ GVAR(canBeTransported) =
     ["OPT_CUP_B_Leopard2A6_GER", 10],         // Leopard2A6
     ["OPT_CUP_B_HMMWV_TOW_USMC", 8],          // HMMWV TOW
     ["OPT_CUP_B_RM70_CZ", 5],                 // RM-70 nicht nachladbar
-
+    ["CUP_B_SearchLight_static_USMC", 2],     // searchlight
+    ["CUP_B_M252_USMC", 2],                   // m252 81mm
+    ["CUP_B_TOW2_TriPod_USMC", 5],            // m220 tow 2
+    ["CUP_B_M2StaticMG_MiniTripod_USMC", 2],  // M2 HD ministativ
+    ["CUP_B_M2StaticMG_USMC", 2],             // M2 HD Hoch
+    ["CUP_B_Stinger_AA_pod_Base_USMC", 5],    // FIM92
+    ["OPT_CUP_B_M119_USMC", 5],               // M119
+    ["OPT_CUP_B_M119_AT_USMC", 5],            // M119-AT
 
 // NATO Vehicles    
     ["OPT_B_Quadbike_01_F", 4],                    // Quadbike
@@ -510,6 +517,15 @@ GVAR(canBeTransported) =
     ["OPT_CUP_O_BTR90_RU", 8],                // BTR90 ohne GMG, Preis?    
     ["OPT_CUP_O_BRDM2_ATGM_RUS", 8],          // BRDM-2 ATGM    
     ["OPT_CUP_O_BM21_RU", 5],                 // BM21 nicht nachladbar
+    ["CUP_O_SearchLight_static_RU", 2],       // Searchlight
+    ["CUP_O_2b14_82mm_RU", 2],                // Podnos2b14
+    ["CUP_O_Kornet_RU", 5],                   // Kornet AT14
+    ["CUP_O_KORD_RU", 2],                     // KORD ministativ
+    ["CUP_O_DSHKM_SLA", 2],                   // DSHKM
+    ["CUP_O_Igla_AA_pod_RU", 5],              // Igla
+    ["OPT_CUP_O_D30_RU", 5],                  // D30
+    ["CUP_O_D30_AT_RU", 5],                   // D30-AT 
+
 
 // CSAT Vehicles    
     ["OPT_O_Quadbike_01_F", 4],                    // Quadbike-
@@ -798,7 +814,27 @@ GVAR(canBeDragged) =
 // AAF Ships
     ["OPT_I_Boat_Armed_01_minigun_F", [0, 2, 0.1], 0],         // Speedboat Minigun
     ["OPT_I_Boat_Transport_01_F", [0, 2, 0.1], 0],               // Assault Boat
-    ["OPT_I_C_Boat_Transport_02_F", [0, 2, 0.1], 0]             // Rhib unbewaffnet        
+    ["OPT_I_C_Boat_Transport_02_F", [0, 2, 0.1], 0],             // Rhib unbewaffnet    
+
+// CUP
+    ["CUP_B_SearchLight_static_USMC", 2],     // searchlight
+    ["CUP_B_M252_USMC", 2],                   // m252 81mm
+    ["CUP_B_TOW2_TriPod_USMC", 5],            // m220 tow 2
+    ["CUP_B_M2StaticMG_MiniTripod_USMC", 2],  // M2 HD ministativ
+    ["CUP_B_M2StaticMG_USMC", 2],             // M2 HD Hoch
+    ["CUP_B_Stinger_AA_pod_Base_USMC", 5],    // FIM92
+    ["OPT_CUP_B_M119_USMC", 5],               // M119
+    ["OPT_CUP_B_M119_AT_USMC", 5],            // M119-AT
+
+    ["CUP_O_SearchLight_static_RU", 2],       // Searchlight
+    ["CUP_O_2b14_82mm_RU", 2],                // Podnos2b14
+    ["CUP_O_Kornet_RU", 5],                   // Kornet AT14
+    ["CUP_O_KORD_RU", 2],                     // KORD ministativ
+    ["CUP_O_DSHKM_SLA", 2],                   // DSHKM
+    ["CUP_O_Igla_AA_pod_RU", 5],              // Igla
+    ["OPT_CUP_O_D30_RU", 5],                  // D30
+    ["CUP_O_D30_AT_RU", 5]                    // D30-AT 
+
 ];
 
 // Trag und Ziehbare Objekte
@@ -893,5 +929,25 @@ GVAR(canBeCarried) =
     ["OPT_B_Slingload_01_Ammo_F"],                        // Slinglot Muni Container    
     ["OPT_B_Slingload_01_Repair_F"],                        // Slinglot Rep Container    
     ["OPT_B_Slingload_01_Fuel_F"],                        // Slinglot Fuel Container    
-    ["OPT_I_Static_Designator_01_F"]                        // Remote Designator
+    ["OPT_I_Static_Designator_01_F"],                        // Remote Designator
+
+// CUP
+    ["CUP_B_SearchLight_static_USMC", 2],     // searchlight
+    ["CUP_B_M252_USMC", 2],                   // m252 81mm
+    ["CUP_B_TOW2_TriPod_USMC", 5],            // m220 tow 2
+    ["CUP_B_M2StaticMG_MiniTripod_USMC", 2],  // M2 HD ministativ
+    ["CUP_B_M2StaticMG_USMC", 2],             // M2 HD Hoch
+    ["CUP_B_Stinger_AA_pod_Base_USMC", 5],    // FIM92
+    ["OPT_CUP_B_M119_USMC", 5],               // M119
+    ["OPT_CUP_B_M119_AT_USMC", 5],            // M119-AT
+    
+    ["CUP_O_SearchLight_static_RU", 2],       // Searchlight
+    ["CUP_O_2b14_82mm_RU", 2],                // Podnos2b14
+    ["CUP_O_Kornet_RU", 5],                   // Kornet AT14
+    ["CUP_O_KORD_RU", 2],                     // KORD ministativ
+    ["CUP_O_DSHKM_SLA", 2],                   // DSHKM
+    ["CUP_O_Igla_AA_pod_RU", 5],              // Igla
+    ["OPT_CUP_O_D30_RU", 5],                  // D30
+    ["CUP_O_D30_AT_RU", 5],                   // D30-AT 
+
 ];
