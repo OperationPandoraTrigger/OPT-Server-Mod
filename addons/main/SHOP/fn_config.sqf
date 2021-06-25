@@ -184,7 +184,7 @@ GVAR(nato_supplies) =
     ["OPT_B_UGV_01_F", DEF_PROD(0)],                         // UGV Stomper
 
 //Tropentarn
-    ["OPT_B_UGV_01_ghex_F", DEF_PROD(2000)],                         // UGV Stomper
+    ["OPT_B_UGV_01_ghex_F", DEF_PROD(0)],                         // UGV Stomper
     ["OPT_B_UAV_01_F", DEF_PROD(0)],                            // Darter AR-2
     ["OPT_FlexibleTank_01_forest_F", DEF_PROD(1000)],           // Treibstoff-Fass
     ["OPT_B_Slingload_01_Ammo_F", 90000, 10000, 20000],                     // Munitionscontainer
