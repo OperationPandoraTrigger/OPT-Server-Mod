@@ -948,6 +948,6 @@ GVAR(canBeCarried) =
     ["CUP_O_DSHKM_SLA"],                   // DSHKM
     ["CUP_O_Igla_AA_pod_RU"],              // Igla
     ["OPT_CUP_O_D30_RU"],                  // D30
-    ["CUP_O_D30_AT_RU"],                   // D30-AT 
+    ["CUP_O_D30_AT_RU"]                    // D30-AT 
 
 ];
