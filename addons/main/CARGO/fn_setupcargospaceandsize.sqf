@@ -817,23 +817,23 @@ GVAR(canBeDragged) =
     ["OPT_I_C_Boat_Transport_02_F", [0, 2, 0.1], 0],             // Rhib unbewaffnet    
 
 // CUP
-    ["CUP_B_SearchLight_static_USMC", 2],     // searchlight
-    ["CUP_B_M252_USMC", 2],                   // m252 81mm
-    ["CUP_B_TOW2_TriPod_USMC", 5],            // m220 tow 2
-    ["CUP_B_M2StaticMG_MiniTripod_USMC", 2],  // M2 HD ministativ
-    ["CUP_B_M2StaticMG_USMC", 2],             // M2 HD Hoch
-    ["CUP_B_Stinger_AA_pod_Base_USMC", 5],    // FIM92
-    ["OPT_CUP_B_M119_USMC", 5],               // M119
-    ["OPT_CUP_B_M119_AT_USMC", 5],            // M119-AT
+    ["CUP_B_SearchLight_static_USMC"],     // searchlight
+    ["CUP_B_M252_USMC"],                   // m252 81mm
+    ["CUP_B_TOW2_TriPod_USMC"],            // m220 tow 2
+    ["CUP_B_M2StaticMG_MiniTripod_USMC"],  // M2 HD ministativ
+    ["CUP_B_M2StaticMG_USMC"],             // M2 HD Hoch
+    ["CUP_B_Stinger_AA_pod_Base_USMC"],    // FIM92
+    ["OPT_CUP_B_M119_USMC"],               // M119
+    ["OPT_CUP_B_M119_AT_USMC"],            // M119-AT
 
-    ["CUP_O_SearchLight_static_RU", 2],       // Searchlight
-    ["CUP_O_2b14_82mm_RU", 2],                // Podnos2b14
-    ["CUP_O_Kornet_RU", 5],                   // Kornet AT14
-    ["CUP_O_KORD_RU", 2],                     // KORD ministativ
-    ["CUP_O_DSHKM_SLA", 2],                   // DSHKM
-    ["CUP_O_Igla_AA_pod_RU", 5],              // Igla
-    ["OPT_CUP_O_D30_RU", 5],                  // D30
-    ["CUP_O_D30_AT_RU", 5]                    // D30-AT 
+    ["CUP_O_SearchLight_static_RU"],       // Searchlight
+    ["CUP_O_2b14_82mm_RU"],                // Podnos2b14
+    ["CUP_O_Kornet_RU"],                   // Kornet AT14
+    ["CUP_O_KORD_RU"],                     // KORD ministativ
+    ["CUP_O_DSHKM_SLA"],                   // DSHKM
+    ["CUP_O_Igla_AA_pod_RU"],              // Igla
+    ["OPT_CUP_O_D30_RU"],                  // D30
+    ["CUP_O_D30_AT_RU"]                    // D30-AT 
 
 ];
 
@@ -932,22 +932,22 @@ GVAR(canBeCarried) =
     ["OPT_I_Static_Designator_01_F"],                        // Remote Designator
 
 // CUP
-    ["CUP_B_SearchLight_static_USMC", 2],     // searchlight
-    ["CUP_B_M252_USMC", 2],                   // m252 81mm
-    ["CUP_B_TOW2_TriPod_USMC", 5],            // m220 tow 2
-    ["CUP_B_M2StaticMG_MiniTripod_USMC", 2],  // M2 HD ministativ
-    ["CUP_B_M2StaticMG_USMC", 2],             // M2 HD Hoch
-    ["CUP_B_Stinger_AA_pod_Base_USMC", 5],    // FIM92
-    ["OPT_CUP_B_M119_USMC", 5],               // M119
-    ["OPT_CUP_B_M119_AT_USMC", 5],            // M119-AT
+    ["CUP_B_SearchLight_static_USMC"],     // searchlight
+    ["CUP_B_M252_USMC"],                   // m252 81mm
+    ["CUP_B_TOW2_TriPod_USMC"],            // m220 tow 2
+    ["CUP_B_M2StaticMG_MiniTripod_USMC"],  // M2 HD ministativ
+    ["CUP_B_M2StaticMG_USMC"],             // M2 HD Hoch
+    ["CUP_B_Stinger_AA_pod_Base_USMC"],    // FIM92
+    ["OPT_CUP_B_M119_USMC"],               // M119
+    ["OPT_CUP_B_M119_AT_USMC"],            // M119-AT
     
-    ["CUP_O_SearchLight_static_RU", 2],       // Searchlight
-    ["CUP_O_2b14_82mm_RU", 2],                // Podnos2b14
-    ["CUP_O_Kornet_RU", 5],                   // Kornet AT14
-    ["CUP_O_KORD_RU", 2],                     // KORD ministativ
-    ["CUP_O_DSHKM_SLA", 2],                   // DSHKM
-    ["CUP_O_Igla_AA_pod_RU", 5],              // Igla
-    ["OPT_CUP_O_D30_RU", 5],                  // D30
-    ["CUP_O_D30_AT_RU", 5],                   // D30-AT 
+    ["CUP_O_SearchLight_static_RU"],       // Searchlight
+    ["CUP_O_2b14_82mm_RU"],                // Podnos2b14
+    ["CUP_O_Kornet_RU"],                   // Kornet AT14
+    ["CUP_O_KORD_RU"],                     // KORD ministativ
+    ["CUP_O_DSHKM_SLA"],                   // DSHKM
+    ["CUP_O_Igla_AA_pod_RU"],              // Igla
+    ["OPT_CUP_O_D30_RU"],                  // D30
+    ["CUP_O_D30_AT_RU"],                   // D30-AT 
 
 ];
