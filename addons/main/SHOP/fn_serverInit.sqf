@@ -84,6 +84,12 @@ switch (GVAR(hardcaplist)) do
 
     case "1": 
     {
+        /* CSAT Planes */
+        GVAR(Hardcap_csat_planes) pushBack ["OPT_CUP_C_Cessna_172_CIV_GREEN",3];
+        GVAR(Hardcap_csat_planes) pushBack ["OPT_CUP_O_AN2_TK",3];
+        GVAR(Hardcap_csat_planes) pushBack ["OPT_CUP_O_C47_SLA",3];
+        GVAR(Hardcap_csat_planes) pushBack ["OPT_CUP_O_C130J_TKA",3];
+
         /* CSAT Choppers */
         GVAR(Hardcap_csat_choppers) pushBack ["OPT_CUP_O_Ka60_Grey_RU",5];
         GVAR(Hardcap_csat_choppers) pushBack ["OPT_CUP_O_Mi24_V_Dynamic_RU",2];
@@ -107,6 +113,12 @@ switch (GVAR(hardcaplist)) do
         GVAR(Hardcap_csat_supplies) pushBack ["CUP_O_Igla_AA_pod_RU",2];
         GVAR(Hardcap_csat_supplies) pushBack ["CUP_O_D30_AT_RU",3];
         GVAR(Hardcap_csat_supplies) pushBack ["CUP_O_Kornet_RU",2];
+
+        /* NATO Planes */
+        GVAR(Hardcap_nato_planes) pushBack ["OPT_CUP_C_Cessna_172_CIV_BLUE",3];
+        GVAR(Hardcap_nato_planes) pushBack ["OPT_CUP_C_AN2_CIV",3];
+        GVAR(Hardcap_nato_planes) pushBack ["OPT_CUP_C_DC3_ChernAvia_CIV",3];
+        GVAR(Hardcap_nato_planes) pushBack ["OPT_CUP_B_C130J_USMC",3];
 
         /* NATO Choppers */
         GVAR(Hardcap_nato_choppers) pushBack ["OPT_CUP_B_UH1D_armed_GER_KSK",5];
