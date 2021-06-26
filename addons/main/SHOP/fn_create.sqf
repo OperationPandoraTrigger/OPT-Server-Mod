@@ -159,9 +159,10 @@ DFUNC(createOrder) =
         _veh setSkill 1.0;
     };
 
-    GVAR(order_kosten) = GVAR(order_unitCost) + _waffenkosten;
-
-    [getPlayerUID player, Name Player, playerSide, netId _veh, typeOf _veh, GVAR(order_kosten), "-"] remoteExecCall ["OPT_GELDZEIT_fnc_updateBudget", 2, false];
+    private _order_kosten = GVAR(order_unitCost) + _waffenkosten;
+    [getPlayerUID player, name player, playerSide, netId _veh, typeOf _veh, _order_kosten, "-"] remoteExecCall ["OPT_GELDZEIT_fnc_updateBudget", 2, false];
+    GVAR(RECENT_ORDERS) set [netId _veh, [serverTime, getPlayerUID player, name player, playerSide, typeOf _veh, _order_kosten]];
+    publicVariable QGVAR(RECENT_ORDERS);
 };
 
 //Hardcap Check und Padbox check
