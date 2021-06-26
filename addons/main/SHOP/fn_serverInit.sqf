@@ -149,3 +149,6 @@ switch (GVAR(hardcaplist)) do
     {
     };
 };
+
+GVAR(RECENT_ORDERS) = createHashMap;
+publicVariable QGVAR(RECENT_ORDERS);

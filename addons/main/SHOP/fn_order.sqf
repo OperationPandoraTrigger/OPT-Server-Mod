@@ -41,14 +41,12 @@ GVAR(order_box) = _box;
 GVAR(order_moveInVeh) = _moveInVeh;
 GVAR(order_unitCost) = _unitCost;
 
-GVAR(order_kosten) = 0;
-
 private _classSend = GVAR(order_Datensatz) select 0;
 private _waffenkosten = GVAR(order_Datensatz) select 10;
 
-GVAR(order_kosten) = GVAR(order_unitCost) + _waffenkosten;
+private _order_kosten = GVAR(order_unitCost) + _waffenkosten;
 
 //Hardcap Check
 [clientOwner,_classSend,GVAR(vehicleType),playerside] remoteExecCall [QFUNC(hardcap_check), 2, false];
 
-GVAR(order_kosten)
+_order_kosten
