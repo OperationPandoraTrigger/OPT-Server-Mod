@@ -161,7 +161,18 @@ DFUNC(createOrder) =
 
     private _order_kosten = GVAR(order_unitCost) + _waffenkosten;
     [getPlayerUID player, name player, playerSide, netId _veh, typeOf _veh, _order_kosten, "-"] remoteExecCall ["OPT_GELDZEIT_fnc_updateBudget", 2, false];
+
+    // Kauf-Informationen speichern für die spätere Möglichkeit einer Gutschrift
     GVAR(RECENT_ORDERS) set [netId _veh, [serverTime, getPlayerUID player, name player, playerSide, typeOf _veh, _order_kosten]];
+
+    // cleanup old entries
+    {
+        private _age = serverTime - (_y select 0);
+        if (_age > 5) then
+        {
+            GVAR(RECENT_ORDERS) deleteAt _x;
+        };
+    } forEach +GVAR(RECENT_ORDERS);
     publicVariable QGVAR(RECENT_ORDERS);
 };
 
