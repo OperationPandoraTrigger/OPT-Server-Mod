@@ -139,9 +139,9 @@ switch (GVAR(hardcaplist)) do
         /* NATO Supplies */
         GVAR(Hardcap_nato_supplies) pushBack ["CUP_B_M252_USMC",2];
         GVAR(Hardcap_nato_supplies) pushBack ["OPT_CUP_B_M119_USMC",1];
-        GVAR(Hardcap_nato_supplies) pushBack ["CUP_B_M252_USMC",3];
+        GVAR(Hardcap_nato_supplies) pushBack ["CUP_B_SearchLight_static_USMC",3];
         GVAR(Hardcap_nato_supplies) pushBack ["CUP_B_Stinger_AA_pod_Base_USMC",2];
-        GVAR(Hardcap_nato_supplies) pushBack ["OPT_CUP_B_D30_AT_USMC",3];
+        GVAR(Hardcap_nato_supplies) pushBack ["OPT_CUP_B_M119_AT_USMC",3];
         GVAR(Hardcap_nato_supplies) pushBack ["CUP_B_TOW2_TriPod_USMC",2];
     };
     
@@ -149,3 +149,6 @@ switch (GVAR(hardcaplist)) do
     {
     };
 };
+
+GVAR(RECENT_ORDERS) = createHashMap;
+publicVariable QGVAR(RECENT_ORDERS);

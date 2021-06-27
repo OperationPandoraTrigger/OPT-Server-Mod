@@ -145,7 +145,7 @@ QGVAR(BEAMJOB) addPublicVariableEventHandler
         private _destination = _beamjob select 1;
 
         // Checken ob das Ziel frei ist
-        private _freiePads = [[_destination], 15] call OPT_SHOP_fnc_checkpad;
+        private _freiePads = [[_destination], 8] call OPT_SHOP_fnc_checkpad;
         if ((count _freiePads) > 0) then 
         {
             // Beamen
