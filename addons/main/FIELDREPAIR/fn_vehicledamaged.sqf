@@ -25,6 +25,6 @@ private _flag = false;
     {
         if (_cdmg > 0.64) exitWith {_flag = true};
     };
-} forEach GVAR(repair_hps);
+} forEach GVAR(repairHitPoints);
 
 _flag

@@ -21,20 +21,20 @@ if (_veh isEqualTo objNull) exitWith {false};
 private _rprTime = 0;
 {
     private _cdmg = _veh getHitPointDamage (_x);
-    if (not isNil {_cdmg} ) then 
+    if (not isNil {_cdmg} ) then
     {
-        if (_cdmg > 0.64) exitWith 
+        if (_cdmg > 0.64) exitWith
         {
-            if (_x in GVAR(hardRepairParts)) then 
+            if (_x in GVAR(hardRepairParts)) then
             {
                 _rprTime = _rprTime + GVAR(DEFAULT_FIELDREPAIR_EACH_HARDPART_TIME);
-            } 
-            else 
+            }
+            else
             {
                 _rprTime = _rprTime + GVAR(DEFAULT_FIELDREPAIR_EACH_PART_TIME);
             };
         };
     };
-} forEach GVAR(repair_hps);
+} forEach GVAR(repairHitPoints);
 
 _rprTime
