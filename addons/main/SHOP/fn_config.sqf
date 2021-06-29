@@ -118,7 +118,7 @@ GVAR(nato_choppers) =
 
 GVAR(nato_planes) =
 [
-    ["OPT_CUP_C_Cessna_172_CIV_BLUE", DEF_PROD(30000)],     // Caesar BTT
+//    ["OPT_CUP_C_Cessna_172_CIV_BLUE", DEF_PROD(30000)],     // Caesar BTT
     ["OPT_CUP_C_AN2_CIV", DEF_PROD(30000)],                         // Antonov An-2
     ["OPT_CUP_C_DC3_ChernAvia_CIV", DEF_PROD(30000)],               // Li-2
     ["OPT_CUP_B_C130J_USMC", DEF_PROD(40000)],                      // C130J
@@ -310,7 +310,7 @@ GVAR(csat_choppers) =
 
 GVAR(csat_planes) =
 [
-    ["OPT_CUP_C_Cessna_172_CIV_GREEN", DEF_PROD(30000)],                // Cessna
+//    ["OPT_CUP_C_Cessna_172_CIV_GREEN", DEF_PROD(30000)],                // Cessna
     ["OPT_CUP_O_AN2_TK", DEF_PROD(30000)],                              // Antonov An-2
     ["OPT_CUP_O_C47_SLA", DEF_PROD(30000)],                             // Li-2
     ["OPT_CUP_O_C130J_TKA", DEF_PROD(40000)],                           // C130J
