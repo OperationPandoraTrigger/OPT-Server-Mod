@@ -510,8 +510,7 @@ GVAR(AllSectors) =
 
         [   // Flaggen-Positionen
             [9496.25, 6787.5, 0],
-            [10544.1, 6595.88, 0],
-            [10591.9, 4538.98, 0]    // Sonderfahne fuer TechCheck-Schlacht1
+            [10544.1, 6595.88, 0]
         ],
 
         [   // Beam-Positionen

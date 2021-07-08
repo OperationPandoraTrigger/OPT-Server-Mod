@@ -62,14 +62,12 @@ switch GVAR(Fraktionauswahl) do
     {
         if ((playerSide == east) and ((player distance Teleport_CSAT_Basis1) < MIN_DISTANCE_TO_BEAMSPOT)) then
         {
-//            _Basis = Teleport_CSAT_Basis2;
-            _Basis = Teleport_CSAT_TechCheck;
+            _Basis = Teleport_CSAT_Basis2;
         };
 
         if ((playerSide == west) and ((player distance Teleport_NATO_Basis1) < MIN_DISTANCE_TO_BEAMSPOT)) then
         {
-//            _Basis = Teleport_NATO_Basis2;
-            _Basis = Teleport_NATO_TechCheck;
+            _Basis = Teleport_NATO_Basis2;
         };
 
         if ((playerSide == east) and ((player distance Teleport_CSAT_Basis2) < MIN_DISTANCE_TO_BEAMSPOT)) then
