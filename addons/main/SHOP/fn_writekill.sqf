@@ -39,6 +39,9 @@ params
 if (_victim isEqualTo objNull) exitWith{};
 //if ((_instigator isEqualTo objNull) and (_projectile isEqualTo "")) exitWith{};
 
+_victim setVariable ["ace_medical_lastDamageSource", _instigator, 2];
+_victim setVariable ["ace_medical_lastInstigator", _instigator, 2];
+
 // victim = man?
 if (_victim isKindOf "Man") then 
 {
@@ -138,6 +141,9 @@ else // victim = vehicle!
             {
                 private _unit = _x select 0;
                 private _cargoIdx = _x select 2;
+
+                _unit setVariable ["ace_medical_lastDamageSource", _instigator, 2];
+                _unit setVariable ["ace_medical_lastInstigator", _instigator, 2];
 
                 // crew member have cargo index of -1, else > 0
                 if (_cargoIdx == -1) then 
