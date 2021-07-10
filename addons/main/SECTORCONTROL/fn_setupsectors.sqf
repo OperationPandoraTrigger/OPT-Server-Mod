@@ -210,7 +210,7 @@ GVAR(AllSectors) =
 
         [   // Flaggen-Positionen
             [16636.8, 4380.63, 0],
-            [14671.8, 3938.38, 0]
+            [14166.4, 4220.24, 0]
         ],
 
         [   // Beam-Positionen
@@ -232,7 +232,7 @@ GVAR(AllSectors) =
 
         [   // Flaggen-Positionen
             [12017.4, 4292.25, 0],
-            [12679, 3288.5, 0]
+            [13040.8, 3524.1, 0]
         ],
 
         [   // Beam-Positionen

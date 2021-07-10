@@ -567,7 +567,8 @@ GVAR(grenadelaunchers) =
     "OPT_arifle_Mk20_GL_F",
     */
     "OPT_CUP_arifle_HK416_M203_Black",
-    "OPT_CUP_arifle_AK101_GL_railed"
+    "OPT_CUP_arifle_AK101_GL_railed",
+    "OPT_CUP_arifle_Mk16_STD_EGLM_black"
 ];
 
 

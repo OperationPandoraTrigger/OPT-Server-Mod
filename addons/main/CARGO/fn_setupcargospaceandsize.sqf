@@ -66,12 +66,12 @@ GVAR(canTransportCargo) =
     ["OPT_CUP_B_MTVR_Refuel_USMC", 4],        // MTVR Tank
     ["OPT_CUP_MH60S_Unarmed_USN", 4],         // MH-60S Seahawk
     ["OPT_CUP_B_UH1D_armed_GER_KSK", 4],      // UH-1D
-    ["OPT_CUP_B_CH53E_USMC", 4],              // CH53G Super Stallion
+    ["OPT_CUP_B_CH53E_USMC", 8],              // CH53G Super Stallion
     ["OPT_CUP_B_AH64D_DL_USA", 1],            // AH-64
     ["OPT_CUP_C_Cessna_172_CIV_BLUE", 0],     // Caesar BTT
-    ["OPT_CUP_C_AN2_CIV", 2],                 // Antonov An-2
+    ["OPT_CUP_C_AN2_CIV", 4],                 // Antonov An-2
     ["OPT_CUP_C_DC3_ChernAvia_CIV", 2],       // Li-2
-    ["OPT_CUP_B_C130J_USMC", 4],              // C130J
+    ["OPT_CUP_B_C130J_USMC", 6],              // C130J
     ["OPT_CUP_B_L39_CZ_GREY", 0],             // L-39AZ
     ["OPT_CUP_B_LAV25_HQ_USMC", 1],           // LAV C2
     ["OPT_CUP_B_M2Bradley_USA_W", 1],         // M2A2 Bradley IFV
@@ -180,12 +180,12 @@ GVAR(canTransportCargo) =
     ["OPT_CUP_O_Ural_Refuel_TKA", 4],         // Ural Tank
     ["OPT_CUP_O_SA330_Puma_HC1_BAF", 4],      // SA-330 Puma 
     ["OPT_CUP_O_Ka60_Grey_RU", 4],            // KA-60 Kataska
-    ["OPT_CUP_O_Merlin_HC3_GB", 4],           // Merlin HC3A
+    ["OPT_CUP_O_Merlin_HC3_GB", 8],           // Merlin HC3A
     ["OPT_CUP_O_Mi24_V_Dynamic_RU", 1],       // MI-24V
     ["OPT_CUP_C_Cessna_172_CIV_GREEN", 0],    // Cessna
-    ["OPT_CUP_O_AN2_TK", 2],                  // Antonov An-2
+    ["OPT_CUP_O_AN2_TK", 4],                  // Antonov An-2
     ["OPT_CUP_O_C47_SLA", 2],                 // Li-2
-    ["OPT_CUP_O_C130J_TKA", 4],               // C130J
+    ["OPT_CUP_O_C130J_TKA", 6],               // C130J
     ["OPT_CUP_O_Su25_Dyn_RU", 0],             // SU-25T
     ["OPT_CUP_O_ZSU23_Afghan_SLA", 1],        // ZSU-23-4 Afghanski (50er Magazine)
     ["OPT_CUP_O_T72_RU", 1],                  // T72

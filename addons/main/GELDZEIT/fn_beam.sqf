@@ -65,7 +65,7 @@ switch GVAR(Fraktionauswahl) do
             _Basis = Teleport_CSAT_Basis2;
         };
 
-        if ((playerSide == west) and ((player distance Teleport_Nato_Basis1) < MIN_DISTANCE_TO_BEAMSPOT)) then
+        if ((playerSide == west) and ((player distance Teleport_NATO_Basis1) < MIN_DISTANCE_TO_BEAMSPOT)) then
         {
             _Basis = Teleport_NATO_Basis2;
         };
@@ -75,15 +75,15 @@ switch GVAR(Fraktionauswahl) do
             _Basis = Teleport_CSAT_Basis1;
         };
 
-        if ((playerSide == west) and ((player distance Teleport_Nato_Basis2) < MIN_DISTANCE_TO_BEAMSPOT)) then
+        if ((playerSide == west) and ((player distance Teleport_NATO_Basis2) < MIN_DISTANCE_TO_BEAMSPOT)) then
         {
             _Basis = Teleport_NATO_Basis1;
-        };    
+        };
     };
 
     case "NATOvsAAF":
     {
-        if ((playerSide == west) and ((player distance Teleport_Nato_Basis1) < MIN_DISTANCE_TO_BEAMSPOT)) then
+        if ((playerSide == west) and ((player distance Teleport_NATO_Basis1) < MIN_DISTANCE_TO_BEAMSPOT)) then
         {
             _Basis = Teleport_NATO_Basis2;
         };
@@ -93,7 +93,7 @@ switch GVAR(Fraktionauswahl) do
             _Basis = Teleport_AAF_Basis2;
         };
 
-        if ((playerSide == west) and ((player distance Teleport_Nato_Basis2) < MIN_DISTANCE_TO_BEAMSPOT)) then
+        if ((playerSide == west) and ((player distance Teleport_NATO_Basis2) < MIN_DISTANCE_TO_BEAMSPOT)) then
         {
             _Basis = Teleport_NATO_Basis1;
         };

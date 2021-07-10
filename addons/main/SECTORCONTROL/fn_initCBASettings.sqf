@@ -44,8 +44,7 @@
     {
         params ["_value"];
         GVAR(nato_sectors) = parseSimpleArray format ["[%1]", _value]; 
-    }, // function that will be executed once on mission start and every time the setting is changed.
-    true    // Setting will be marked as needing mission restart after being changed. (optional, default false) <BOOL>
+    } // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
 
 
@@ -79,8 +78,7 @@
     {
         params ["_value"];
         GVAR(csat_sectors) = parseSimpleArray format ["[%1]", _value]; 
-    }, // function that will be executed once on mission start and every time the setting is changed.
-    true    // Setting will be marked as needing mission restart after being changed. (optional, default false) <BOOL>
+    } // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
 
 
@@ -116,8 +114,7 @@
         params ["_value"];
         GVAR(aaf_sectors) = parseSimpleArray format ["[%1]", _value]; 
 
-    }, // function that will be executed once on mission start and every time the setting is changed.
-    true    // Setting will be marked as needing mission restart after being changed. (optional, default false) <BOOL>
+    } // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
 
 
