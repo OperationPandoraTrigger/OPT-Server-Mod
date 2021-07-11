@@ -1,7 +1,7 @@
 #include "macros.hpp"
 
-private _text = "";
 private _type = "TvT";
+private _logged = false;
 switch (GVAR(Fraktionauswahl)) do
 {
     case "AAFvsCSAT":
@@ -14,16 +14,19 @@ switch (GVAR(Fraktionauswahl)) do
         {
             if (_points2 > _points1) then
             {
-                [east, MLOC(CSAT_WIN), _type] call ocap_fnc_exportData;
+                _logged = true;
+                [east, format ["%1:%2", _points1, _points2], _type] call ocap_fnc_exportData;
             }
             else
             {
-                [resistance, MLOC(AAF_WIN), _type] call ocap_fnc_exportData;
+                _logged = true;
+                [resistance, format ["%1:%2", _points1, _points2], _type] call ocap_fnc_exportData;
             };
         }
         else
         {
-            [west, MLOC(NO_WINNER), _type] call ocap_fnc_exportData;
+            _logged = true;
+            [sideEmpty, format ["%1:%2", _points1, _points2], _type] call ocap_fnc_exportData;
         };
     };
 
@@ -37,16 +40,19 @@ switch (GVAR(Fraktionauswahl)) do
         {
             if (_points2 > _points1) then
             {
-                [east, MLOC(CSAT_WIN), _type] call ocap_fnc_exportData;
+                _logged = true;
+                [east, format ["%1:%2", _points1, _points2], _type] call ocap_fnc_exportData;
             }
             else
             {
-                [west, MLOC(NATO_WIN), _type] call ocap_fnc_exportData;
+                _logged = true;
+                [west, format ["%1:%2", _points1, _points2], _type] call ocap_fnc_exportData;
             };
         }
         else
         {
-            [west, MLOC(NO_WINNER), _type] call ocap_fnc_exportData;
+            _logged = true;
+            [sideEmpty, format ["%1:%2", _points1, _points2], _type] call ocap_fnc_exportData;
         };
     };
 
@@ -60,16 +66,23 @@ switch (GVAR(Fraktionauswahl)) do
         {
             if (_points2 > _points1) then
             {
-                [resistance, MLOC(AAF_WIN), _type] call ocap_fnc_exportData;
+                _logged = true;
+                [resistance, format ["%1:%2", _points1, _points2], _type] call ocap_fnc_exportData;
             }
             else
             {
-                [west, MLOC(NATO_WIN), _type] call ocap_fnc_exportData;
+                _logged = true;
+                [west, format ["%1:%2", _points1, _points2], _type] call ocap_fnc_exportData;
             };
         }
         else
         {
-            [west, MLOC(NO_WINNER), _type] call ocap_fnc_exportData;
+            _logged = true;
+            [sideEmpty, format ["%1:%2", _points1, _points2], _type] call ocap_fnc_exportData;
         };
     };
+};
+
+if (!_logged) then {
+    [sideEmpty, format ["NATO:%1 CSAT:%2 AAF:%3", EGVAR(SECTORCONTROL,nato_points), EGVAR(SECTORCONTROL,csat_points), EGVAR(SECTORCONTROL,aaf_points)], _type] call ocap_fnc_exportData;
 };

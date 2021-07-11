@@ -110,6 +110,7 @@ GVAR(playerList) = [];
 
                     // Endpunktestand loggen
                     ["Mission", "End", [EGVAR(SECTORCONTROL,nato_points), EGVAR(SECTORCONTROL,csat_points), EGVAR(SECTORCONTROL,aaf_points), missionName]] call EFUNC(LOGGING,writelog);
+                    [] call FUNC(endAAR);
 
                     [EVENT_SPIELUHR_ENDBILDSCHIRM,[]] call CFUNC(globalEvent);
                 };
