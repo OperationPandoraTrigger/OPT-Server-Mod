@@ -34,4 +34,4 @@ if !(_flag in GVAR(nato_flags) or _flag in GVAR(csat_flags) or _flag in GVAR(aaf
 // Logge Fahnen-Eroberung
 ["Flag", "Conquer", [_flag, getPlayerUID _unit, name _unit, side _unit, _flag distance2D _unit]] call EFUNC(LOGGING,writelog);
 
-["ocap_handleCustomEvent", ["captureFlag", name _unit]] call CBA_fnc_serverEvent;
+["ocap_handleCustomEvent", ["capturedFlag", name _unit]] call CBA_fnc_serverEvent;
