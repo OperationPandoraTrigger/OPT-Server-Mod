@@ -34,4 +34,14 @@ if !(_flag in GVAR(nato_flags) or _flag in GVAR(csat_flags) or _flag in GVAR(aaf
 // Logge Fahnen-Eroberung
 ["Flag", "Conquer", [_flag, getPlayerUID _unit, name _unit, side _unit, _flag distance2D _unit]] call EFUNC(LOGGING,writelog);
 
-["ocap_handleCustomEvent", ["capturedFlag", name _unit]] call CBA_fnc_serverEvent;
+private _flagSide = sideUnknown;
+if (_flag in GVAR(nato_flags)) then {
+    _flagSide = west;
+} else {
+    if (_flag in GVAR(csat_flags)) then {
+        _flagSide = east;
+    } else {
+        _flagSide = resistance;
+    }
+}
+["ocap_handleCustomEvent", ["capturedFlag", [name _unit, str side group _unit, str _flagSide, position _flag]]] call CBA_fnc_serverEvent;
