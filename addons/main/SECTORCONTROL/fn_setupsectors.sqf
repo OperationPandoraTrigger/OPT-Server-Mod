@@ -381,8 +381,9 @@ GVAR(AllSectors) =
         ],
 
         [   // Flaggen-Positionen
-            [6102.69, 12850.4, 0],
-            [5958.34, 13702.1, 0]
+//            [6102.69, 12850.4, 0],
+//            [5958.34, 13702.1, 0]
+            [6567.8, 12617.4, 0]   // Tech-Check Schlacht 2
         ],
 
         [   // Beam-Positionen
