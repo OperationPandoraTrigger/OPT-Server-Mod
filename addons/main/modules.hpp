@@ -73,6 +73,7 @@ class CfgCLibModules
             FNC(clientInit);
             FNC(initCBASettings);
             FNC(serverInit);
+            FNC(endAAR);
             FNC(ende);
             FNC(frezztime);
             FNC(playerinit);
