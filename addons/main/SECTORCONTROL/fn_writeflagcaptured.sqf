@@ -29,7 +29,6 @@ params
 
 /* VALIDATION */
 if (_flag isEqualTo objNull or _unit isEqualTo objNull) exitWith{};
-if !(_side isEqualTo west or _side isEqualTo east or _side isEqualTo independent) exitWith{};
 if !(_flag in GVAR(nato_flags) or _flag in GVAR(csat_flags) or _flag in GVAR(aaf_flags)) exitWith{};
 
 // Logge Fahnen-Eroberung
