@@ -26,7 +26,7 @@ switch (GVAR(Fraktionauswahl)) do
         else
         {
             _logged = true;
-            [sideEmpty, format ["%1:%2", _points1, _points2], _type] call ocap_fnc_exportData;
+            [sideUnknown, format ["%1:%2", _points1, _points2], _type] call ocap_fnc_exportData;
         };
     };
 
@@ -52,7 +52,7 @@ switch (GVAR(Fraktionauswahl)) do
         else
         {
             _logged = true;
-            [sideEmpty, format ["%1:%2", _points1, _points2], _type] call ocap_fnc_exportData;
+            [sideUnknown, format ["%1:%2", _points1, _points2], _type] call ocap_fnc_exportData;
         };
     };
 
@@ -78,11 +78,11 @@ switch (GVAR(Fraktionauswahl)) do
         else
         {
             _logged = true;
-            [sideEmpty, format ["%1:%2", _points1, _points2], _type] call ocap_fnc_exportData;
+            [sideUnknown, format ["%1:%2", _points1, _points2], _type] call ocap_fnc_exportData;
         };
     };
 };
 
 if (!_logged) then {
-    [sideEmpty, format ["NATO:%1 CSAT:%2 AAF:%3", EGVAR(SECTORCONTROL,nato_points), EGVAR(SECTORCONTROL,csat_points), EGVAR(SECTORCONTROL,aaf_points)], _type] call ocap_fnc_exportData;
+    [sideUnknown, format ["NATO:%1 CSAT:%2 AAF:%3", EGVAR(SECTORCONTROL,nato_points), EGVAR(SECTORCONTROL,csat_points), EGVAR(SECTORCONTROL,aaf_points)], _type] call ocap_fnc_exportData;
 };

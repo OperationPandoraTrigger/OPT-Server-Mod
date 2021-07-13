@@ -42,6 +42,6 @@ if (_flag in GVAR(nato_flags)) then {
         _flagSide = east;
     } else {
         _flagSide = resistance;
-    }
-}
-["ocap_handleCustomEvent", ["capturedFlag", [name _unit, str side group _unit, str _flagSide, position _flag]]] call CBA_fnc_serverEvent;
+    };
+};
+["ocap_handleCustomEvent", ["capturedFlag", [name _unit, str side group _unit, str _flagSide]]] call CBA_fnc_serverEvent;
