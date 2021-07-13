@@ -105,6 +105,11 @@ switch (GVAR(Fraktionauswahl)) do
             _text = MLOC(NO_WINNER);
         };
     };
+
+    default:
+    {
+        ERROR_LOG("Missionende: Fehlerhafte Datenuebergabe - Keine Fraktionauswahl erkannt");
+    };
 };
 
 DFUNC(endscreen) =
