@@ -81,22 +81,46 @@ DFUNC(createOrder) =
     _zusatz = GVAR(order_Datensatz) select 9;
     _waffenkosten = GVAR(order_Datensatz) select 10;
 
-    //Konstanten für Fahrzeugerstellung
-    #define HEIGHT_OFFSET 0.2
-    
+    // Defaulthöhe für Spawn
+    private _offset = 0.2;
+
+    // CSAT Choppers
+    if (_class == "OPT_CUP_O_SA330_Puma_HC1_BAF") then { _offset = 0; };
+    if (_class == "OPT_CUP_O_Ka60_Grey_RU") then { _offset = 0.2; };
+    if (_class == "OPT_CUP_O_Merlin_HC3_GB") then { _offset = 0; };
+    if (_class == "OPT_CUP_O_Mi24_V_Dynamic_RU") then { _offset = 0.1; };
+
+    // CSAT Planes
+    if (_class == "OPT_CUP_O_AN2_TK") then { _offset = 0.7; };
+    if (_class == "OPT_CUP_O_C47_SLA") then { _offset = 0.9; };
+    if (_class == "OPT_CUP_O_C130J_TKA") then { _offset = 0.1; };
+    if (_class == "OPT_CUP_O_Su25_Dyn_RU") then { _offset = 0.2; };
+
+    // NATO Choppers
+    if (_class == "OPT_CUP_MH60S_Unarmed_USN") then { _offset = 0.1; };
+    if (_class == "OPT_CUP_B_UH1D_armed_GER_KSK") then { _offset = 0.1; };
+    if (_class == "OPT_CUP_B_CH53E_USMC") then { _offset = 0.1; };
+    if (_class == "OPT_CUP_B_AH64D_DL_USA") then { _offset = 0; };
+
+    // NATO Planes
+    if (_class == "OPT_CUP_C_AN2_CIV") then { _offset = 0.7; };
+    if (_class == "OPT_CUP_C_DC3_ChernAvia_CIV") then { _offset = 0.8; };
+    if (_class == "OPT_CUP_B_C130J_USMC") then { _offset = 0.1; };
+    if (_class == "OPT_CUP_B_L39_CZ_GREY") then { _offset = 0.1; };
+
     //Objekt Erstellung 
     private _posi = getPosASL GVAR(order_box) vectorAdd [0, 0, 1000];
     private _veh = createVehicle [_class, _posi, [], 0, "NONE"];
     _veh enableDynamicSimulation true;
     _veh setdir getdir GVAR(order_box);
     _veh setVectorUp vectorUp GVAR(order_box);
-    _posi = getPosASL GVAR(order_box) vectorAdd [0, 0, HEIGHT_OFFSET];
+    _posi = getPosASL GVAR(order_box) vectorAdd [0, 0, _offset];
     _veh setPosASL _posi;
 
     //check Box liegt im Wasser
     if ((surfaceIsWater (position GVAR(order_box))) and (_veh isKindOf "Ship")) then 
     {
-        _veh setPos [(position GVAR(order_box) select 0), (position GVAR(order_box) select 1), HEIGHT_OFFSET]; 
+        _veh setPos [(position GVAR(order_box) select 0), (position GVAR(order_box) select 1), _offset]; 
     };
 
     _veh setDamage 0;
