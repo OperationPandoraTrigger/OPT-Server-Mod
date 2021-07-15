@@ -20,11 +20,9 @@
 */
 #include "macros.hpp"
 
-/* PARAMS */
-params
-[
-   ["_flag", objNull, [objNull], 1],
-   ["_unit", objNull, [objNull], 1]
+params [
+    ["_flag", objNull, [objNull], 1],
+    ["_unit", objNull, [objNull], 1]
 ];
 
 /* VALIDATION */
@@ -41,7 +39,17 @@ if (_flag in GVAR(nato_flags)) then {
     if (_flag in GVAR(csat_flags)) then {
         _flagSide = east;
     } else {
-        _flagSide = resistance;
+        if (_flag in GVAR(aaf_flags)) then {
+            _flagSide = resistance;
+        };
     };
 };
-["ocap_handleCustomEvent", ["capturedFlag", [name _unit, str side group _unit, str _flagSide]]] call CBA_fnc_serverEvent;
+
+// log flag capture for ocap2
+["ocap_handleCustomEvent", ["captured", [
+    "flag",
+    name _unit,
+    str side group _unit,
+    str _flagSide,
+    getPosATL _flag,
+]]] call CBA_fnc_serverEvent;
