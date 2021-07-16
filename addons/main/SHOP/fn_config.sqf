@@ -62,7 +62,7 @@ GVAR(nato_vehicles) =
     ["OPT_B_Truck_01_transport_ghex_F", DEF_PROD(5000)]        // HEMTT
 **/
 // CUP
-    ["OPT_CUP_B_M1030_USA", DEF_PROD(10000)],               // Motorrad M1030 (0)
+//    ["OPT_CUP_B_M1030_USA", DEF_PROD(10000)],               // Motorrad M1030 (0)
     ["OPT_CUP_B_LR_Transport_GB_W", DEF_PROD(18000)],       // Land Rover 110
     ["OPT_CUP_B_LR_MG_GB_W", DEF_PROD(25000)],              // Land Rover M2
     ["OPT_CUP_B_LR_AA_RACS", DEF_PROD(80000)],              // Landrover AA
@@ -246,7 +246,7 @@ GVAR(csat_vehicles) =
     ["OPT_O_T_Truck_02_Medical_F", DEF_PROD(6000)]          // Zamack Medical
 **/
 // CUP
-    ["OPT_CUP_O_TT650_TKA", DEF_PROD(10000)],               // Motorrad TT650 (0)
+//    ["OPT_CUP_O_TT650_TKA", DEF_PROD(10000)],               // Motorrad TT650 (0)
     ["OPT_CUP_O_UAZ_Unarmed_RU", DEF_PROD(18000)],          // UAZ 469
     ["OPT_CUP_O_UAZ_MG_RU", DEF_PROD(25000)],               // UAZ 469 DShKM
     ["OPT_CUP_O_LR_AA_TKA", DEF_PROD(30000)],               // UAZ AA
