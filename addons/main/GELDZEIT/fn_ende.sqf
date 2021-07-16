@@ -15,11 +15,11 @@
 * No
 *
 * Public:
-* No 
-* 
+* No
+*
 * Global:
 * No
-* 
+*
 * API:
 * No
 *
@@ -28,97 +28,98 @@
 */
 #include "macros.hpp"
 
-switch (GVAR(Fraktionauswahl)) do 
+private _text = "";
+switch (GVAR(Fraktionauswahl)) do
 {
     case "AAFvsCSAT":
     {
-        private _points1 = OPT_SECTORCONTROL_aaf_points;
-        private _points2 = OPT_SECTORCONTROL_csat_points;
+        private _points1 = EGVAR(SECTORCONTROL,aaf_points);
+        private _points2 = EGVAR(SECTORCONTROL,csat_points);
 
         // Ermittel Sieger
-        if (_points2 != _points1) then 
+        if (_points2 != _points1) then
         {
-            if (_points2 > _points1) then 
+            if (_points2 > _points1) then
             {
                 GVAR(csat_win) = 1;
-                private _text = MLOC(CSAT_WIN);
-            } 
-            else 
+                _text = MLOC(CSAT_WIN);
+            }
+            else
             {
                 GVAR(aaf_win) = 1;
-                private _text = MLOC(AAF_WIN);
+                _text = MLOC(AAF_WIN);
             };
-        }    
-        else 
+        }
+        else
         {
-                private _text = MLOC(NO_WINNER);
-        };    
+            _text = MLOC(NO_WINNER);
+        };
     };
 
     case "NATOvsCSAT":
     {
-        private _points1 = OPT_SECTORCONTROL_nato_points;
-        private _points2 = OPT_SECTORCONTROL_csat_points;
+        private _points1 = EGVAR(SECTORCONTROL,nato_points);
+        private _points2 = EGVAR(SECTORCONTROL,csat_points);
 
         // Ermittel Sieger
-        if (_points2 != _points1) then 
+        if (_points2 != _points1) then
         {
-            if (_points2 > _points1) then 
+            if (_points2 > _points1) then
             {
-                GVAR(csat_win = 1);
-                private _text = MLOC(CSAT_WIN);
-            } 
-            else 
+                GVAR(csat_win) = 1;
+                _text = MLOC(CSAT_WIN);
+            }
+            else
             {
-                GVAR(nato_win = 1);
-                private _text = MLOC(NATO_WIN);
+                GVAR(nato_win) = 1;
+                _text = MLOC(NATO_WIN);
             };
-        }    
-        else 
+        }
+        else
         {
-                private _text = MLOC(NO_WINNER);
-        };        
+            _text = MLOC(NO_WINNER);
+        };
     };
 
     case "NATOvsAAF":
     {
-        private _points1 = OPT_SECTORCONTROL_nato_points;
-        private _points2 = OPT_SECTORCONTROL_aaf_points;
+        private _points1 = EGVAR(SECTORCONTROL,nato_points);
+        private _points2 = EGVAR(SECTORCONTROL,aaf_points);
 
         // Ermittel Sieger
-        if (_points2 != _points1) then 
+        if (_points2 != _points1) then
         {
-            if (_points2 > _points1) then 
+            if (_points2 > _points1) then
             {
-                GVAR(aaf_win = 1);
-                private _text = MLOC(AAF_WIN);
-            } 
-            else 
+                GVAR(aaf_win) = 1;
+                _text = MLOC(AAF_WIN);
+            }
+            else
             {
-                GVAR(nato_win = 1);
-                private _text = MLOC(NATO_WIN);
+                GVAR(nato_win) = 1;
+                _text = MLOC(NATO_WIN);
             };
-        }    
-        else 
+        }
+        else
         {
-                private _text = MLOC(NO_WINNER);
-        };    
+            _text = MLOC(NO_WINNER);
+        };
     };
 
-       default 
+    default
     {
-        ERROR_LOG("Missionende: Fehlerhafte Datenuebergabe - Keine Fraktionauswahl erkannt");    
+        ERROR_LOG("Missionende: Fehlerhafte Datenuebergabe - Keine Fraktionauswahl erkannt");
     };
 };
 
-DFUNC(endscreen) = 
+DFUNC(endscreen) =
 {
     removeallweapons player;
     private _Sideidplayer = 0;
     _sideidplayer = playerSide call BIS_fnc_sideID;
 
     // Auswahl Bildschirmanzeige und Ende der Mission
-    private _end = switch (true) do 
+    private _end = switch (true) do
     {
         case (_sideidplayer == 1 && {GVAR(nato_win) == 1}) : {["END1",true,true]};
         case (_sideidplayer == 1 && {GVAR(csat_win) == 1}) : {["END2",false,true]};
@@ -134,11 +135,11 @@ DFUNC(endscreen) =
 
         default {["END4",true,true]};
     };
-    
+
     _end spawn BIS_fnc_endMission;
 
     GVAR(camera) cameraEffect ["terminate", "back"];
-    camDestroy GVAR(camera);    
+    camDestroy GVAR(camera);
 };
 
 //End Bildschirm
@@ -153,4 +154,4 @@ GVAR(camera) camSetRelPos [0,10,5];
 titleText [_text, "PLAIN DOWN",60];
 GVAR(camera) camCommit 10;
 
-[FUNC(endscreen), 10,""] call CLib_fnc_wait;
+[FUNC(endscreen), 10,""] call CFUNC(wait);

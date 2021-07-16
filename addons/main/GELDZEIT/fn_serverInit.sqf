@@ -1,7 +1,7 @@
 /**
 * Description:
 * Init Server Zeit und Geldsystem
-* 
+*
 * Author:
 * Lord-MDB, form
 *
@@ -11,13 +11,13 @@
 *
 * Server Only:
 * Yes
-* 
+*
 * Global:
 * No
-* 
+*
 * API:
 * No
-* 
+*
 * Example:
 * [] call FUNC(serverInit);
 */
@@ -53,9 +53,9 @@ GVAR(playerList) = [];
 
     // Aktuellen Spielabschnitt setzen
     [{
-        switch (GVAR(GAMESTAGE)) do 
+        switch (GVAR(GAMESTAGE)) do
         {
-            case GAMESTAGE_FREEZE: 
+            case GAMESTAGE_FREEZE:
             {
                 // Nach Ablauf der Freezetime die Waffenruhe auslösen
                 if (serverTime > GVAR(Timestamp_Waffenruhestart)) then
@@ -71,7 +71,7 @@ GVAR(playerList) = [];
                 };
             };
 
-            case GAMESTAGE_TRUCE: 
+            case GAMESTAGE_TRUCE:
             {
                 // Nach Ablauf der Waffenruhe die Spielzeit auslösen
                 if (serverTime > GVAR(Timestamp_Spielzeitstart)) then
@@ -97,7 +97,7 @@ GVAR(playerList) = [];
                 };
             };
 
-            case GAMESTAGE_WAR: 
+            case GAMESTAGE_WAR:
             {
                 // Nach Ablauf der Spielzeit das Ende auslösen
                 if (serverTime > GVAR(Timestamp_Spielzeitende)) then
@@ -109,13 +109,14 @@ GVAR(playerList) = [];
                     [] call FUNC(writePlayerList);
 
                     // Endpunktestand loggen
-                    ["Mission", "End", [OPT_SECTORCONTROL_nato_points, OPT_SECTORCONTROL_csat_points, OPT_SECTORCONTROL_aaf_points, missionName]] call OPT_LOGGING_fnc_writelog;
+                    ["Mission", "End", [EGVAR(SECTORCONTROL,nato_points), EGVAR(SECTORCONTROL,csat_points), EGVAR(SECTORCONTROL,aaf_points), missionName]] call EFUNC(LOGGING,writelog);
+                    [] call FUNC(endAAR);
 
                     [EVENT_SPIELUHR_ENDBILDSCHIRM,[]] call CFUNC(globalEvent);
                 };
             };
 
-            case GAMESTAGE_END: 
+            case GAMESTAGE_END:
             {
                 // do nothing and watch people disconnecting...
             };
@@ -125,7 +126,7 @@ GVAR(playerList) = [];
                 GVAR(GAMESTAGE) = GAMESTAGE_FREEZE;
                 publicVariable QGVAR(GAMESTAGE);
             };
-        }; 
+        };
     }, 1, _this] call CFUNC(addPerFrameHandler);
 }] call CFUNC(addEventhandler);
 
@@ -146,7 +147,7 @@ QGVAR(BEAMJOB) addPublicVariableEventHandler
 
         // Checken ob das Ziel frei ist
         private _freiePads = [[_destination], 8] call OPT_SHOP_fnc_checkpad;
-        if ((count _freiePads) > 0) then 
+        if ((count _freiePads) > 0) then
         {
             // Beamen
             {cutText ["Teleport...", "BLACK OUT", 0.1];} remoteExec ["call", _player];
@@ -157,7 +158,7 @@ QGVAR(BEAMJOB) addPublicVariableEventHandler
 
             vehicle _player setPosASL (getPosASL _destination vectorAdd [0, 0, 1000]);
             vehicle _player setdir getdir _destination;
-            
+
             if ((vehicle _player isKindOf "Air") && (_heightAboveGround > 2)) then
             {
                 vehicle _player setVectorUp [0, 0, 1];
@@ -168,7 +169,7 @@ QGVAR(BEAMJOB) addPublicVariableEventHandler
                 vehicle _player setVectorUp vectorUp _destination;
                 vehicle _player setPosASL (getPosASL _destination vectorAdd [0, 0, 0.2]);
             };
-    
+
             [vehicle _player, _velocity] remoteExec ["setVelocityModelSpace", _player];
             {cutText ["Teleport...", "BLACK IN", 0.5];} remoteExec ["call", _player];
         }

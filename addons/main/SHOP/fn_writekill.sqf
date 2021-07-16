@@ -39,31 +39,37 @@ params
 if (_victim isEqualTo objNull) exitWith{};
 //if ((_instigator isEqualTo objNull) and (_projectile isEqualTo "")) exitWith{};
 
+// Copied from acemod
+// https://github.com/acemod/ACE3/blob/76676eee462cb0bbe400a482561c148d8652b550/addons/medical/functions/fnc_addDamageToUnit.sqf#L43-L44
+// needed for OCAP2, to determine the killer
+_victim setVariable ["ace_medical_lastDamageSource", _instigator];
+_victim setVariable ["ace_medical_lastInstigator", _instigator];
+
 // victim = man?
-if (_victim isKindOf "Man") then 
+if (_victim isKindOf "Man") then
 {
     // projectile known?
     private _projectileName = "";
-    if !(_projectile isEqualTo "") then 
+    if !(_projectile isEqualTo "") then
     {
         // find display name of magazine
         private _name = "";
         {
-            if (getText (_x >> "ammo") isEqualTo _projectile) exitWith 
+            if (getText (_x >> "ammo") isEqualTo _projectile) exitWith
             {
                 // find upmost parent that is not too generic
                 private _parent = _x;
-                while {!(getText ((inheritsFrom _parent) >> "displayName") isEqualTo "")} do 
+                while {!(getText ((inheritsFrom _parent) >> "displayName") isEqualTo "")} do
                 {
                     _parent = inheritsFrom _x;
                 };
                 _name = getText (_parent >> "displayName");
                 _projectileName = _name;
-            };  
+            };
         } forEach ([configFile >> "CfgMagazines", 0, true] call BIS_fnc_returnChildren);
     };
     ["Health", "Kill", [getPlayerUID _victim, name _victim, side _victim, getPlayerUID _instigator, name _instigator, side _instigator, _victim distance2D _instigator, _projectileName]] call OPT_LOGGING_fnc_writelog;
-} 
+}
 else // victim = vehicle!
 {
     private _veh = _victim;
@@ -78,40 +84,40 @@ else // victim = vehicle!
     private _supplies = (opt_shop_nato_supplies + opt_shop_csat_supplies + opt_shop_AAF_supplies) apply {toLower (_x select 0)};
     private _static = (opt_shop_nato_static + opt_shop_csat_static + opt_shop_AAF_static) apply {toLower (_x select 0)};
 
-    _category = if (toLower (typeOf _veh) in _light) then 
+    _category = if (toLower (typeOf _veh) in _light) then
     {
         "Leicht"
-    } 
-    else 
+    }
+    else
     {
-        if (toLower (typeOf _veh) in _heavy) then 
+        if (toLower (typeOf _veh) in _heavy) then
         {
             "Schwer"
-        } 
-        else 
+        }
+        else
         {
-            if (toLower (typeOf _veh) in _air) then 
+            if (toLower (typeOf _veh) in _air) then
             {
                 "Flug"
-            } 
-            else 
+            }
+            else
             {
-                if (toLower (typeOf _veh) in _boat) then 
+                if (toLower (typeOf _veh) in _boat) then
                 {
                     "Boot"
-                } 
-                else 
+                }
+                else
                 {
-                    if (toLower (typeOf _veh) in _supplies) then 
+                    if (toLower (typeOf _veh) in _supplies) then
                     {
                         "Ausruestung"
-                    } 
-                    else 
+                    }
+                    else
                     {
-                        if (toLower (typeOf _veh) in _static) then 
+                        if (toLower (typeOf _veh) in _static) then
                         {
                             "Stationaer"
-                        } 
+                        }
                         else
                         {
                             "Unbekannt"
@@ -123,14 +129,14 @@ else // victim = vehicle!
     };
 
     // Täter bekannt
-    if !(_instigator isEqualTo objNull) then 
+    if !(_instigator isEqualTo objNull) then
     {
         // source is vehicle or player?
-        if (_source isEqualTo _instigator) then 
+        if (_source isEqualTo _instigator) then
         {
             ["Vehicle", "DestroyByMan", [_name, _category, _faction, netId _victim, getPlayerUID _instigator, name _instigator, side _instigator, _victim distance2D _instigator, _projectile]] call OPT_LOGGING_fnc_writelog;
-        } 
-        else 
+        }
+        else
         {
             private _crewArray = [];
             private _separator = toString [9]; // tabulator
@@ -139,8 +145,14 @@ else // victim = vehicle!
                 private _unit = _x select 0;
                 private _cargoIdx = _x select 2;
 
+                // Copied from acemod
+                // https://github.com/acemod/ACE3/blob/76676eee462cb0bbe400a482561c148d8652b550/addons/medical/functions/fnc_addDamageToUnit.sqf#L43-L44
+                // needed for OCAP2, to determine the killer
+                _unit setVariable ["ace_medical_lastDamageSource", _instigator];
+                _unit setVariable ["ace_medical_lastInstigator", _instigator];
+
                 // crew member have cargo index of -1, else > 0
-                if (_cargoIdx == -1) then 
+                if (_cargoIdx == -1) then
                 {
                     _crewArray pushBack getPlayerUID _unit;
                     _crewArray pushBack name _unit;
@@ -148,13 +160,13 @@ else // victim = vehicle!
             } forEach (fullCrew _source);
             ["Vehicle", "DestroyByCrew", [_name, _category, _faction, netId _victim, getText (configFile >> "CfgVehicles" >> typeOf _source >> "displayName"), side _instigator, _victim distance2D _instigator, _crewArray joinString _separator]] call OPT_LOGGING_fnc_writelog;
         };
-    } 
+    }
     else // Täter nicht bekannt
     {
         // Selbstverschulden?
-        if (_veh == _source) then 
+        if (_veh == _source) then
         {
             ["Vehicle", "DestroyByAccident", [_name, _category, _faction, netId _victim]] call OPT_LOGGING_fnc_writelog;
-        } 
+        }
     };
 };

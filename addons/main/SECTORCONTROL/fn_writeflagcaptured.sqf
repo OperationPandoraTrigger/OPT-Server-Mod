@@ -20,11 +20,9 @@
 */
 #include "macros.hpp"
 
-/* PARAMS */
-params
-[
-   ["_flag", objNull, [objNull], 1],
-   ["_unit", objNull, [objNull], 1]
+params [
+    ["_flag", objNull, [objNull], 1],
+    ["_unit", objNull, [objNull], 1]
 ];
 
 /* VALIDATION */
@@ -32,4 +30,26 @@ if (_flag isEqualTo objNull or _unit isEqualTo objNull) exitWith{};
 if !(_flag in GVAR(nato_flags) or _flag in GVAR(csat_flags) or _flag in GVAR(aaf_flags)) exitWith{};
 
 // Logge Fahnen-Eroberung
-["Flag", "Conquer", [_flag, getPlayerUID _unit, name _unit, side _unit, _flag distance2D _unit]] call OPT_LOGGING_fnc_writelog;
+["Flag", "Conquer", [_flag, getPlayerUID _unit, name _unit, side _unit, _flag distance2D _unit]] call EFUNC(LOGGING,writelog);
+
+private _flagSide = sideUnknown;
+if (_flag in GVAR(nato_flags)) then {
+    _flagSide = west;
+} else {
+    if (_flag in GVAR(csat_flags)) then {
+        _flagSide = east;
+    } else {
+        if (_flag in GVAR(aaf_flags)) then {
+            _flagSide = resistance;
+        };
+    };
+};
+
+// log flag capture for ocap2
+["ocap_handleCustomEvent", ["captured", [
+    "flag",
+    name _unit,
+    str side group _unit,
+    str _flagSide,
+    getPosATL _flag,
+]]] call CBA_fnc_serverEvent;

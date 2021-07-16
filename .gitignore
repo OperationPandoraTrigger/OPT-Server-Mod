@@ -5,3 +5,4 @@ releases/*
 *.biprivatekey
 keys/*
 .hemtt/local
+.idea
