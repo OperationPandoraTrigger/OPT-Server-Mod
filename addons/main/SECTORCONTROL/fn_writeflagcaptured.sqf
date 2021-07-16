@@ -51,5 +51,5 @@ if (_flag in GVAR(nato_flags)) then {
     name _unit,
     str side group _unit,
     str _flagSide,
-    getPosATL _flag,
+    getPosATL _flag
 ]]] call CBA_fnc_serverEvent;
