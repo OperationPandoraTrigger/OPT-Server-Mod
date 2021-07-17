@@ -20,13 +20,13 @@
     params ["_veh"];
     _veh addAction [
         format["<t color=""#f0f24e"">%1</t>", MLOC(HAFTLADUNG)], 
-        {[_this select 0] call FUNC(haftladungen)},
-        [], 
-        -1, 
-        false, 
-        true, 
+        {_this call FUNC(haftladungen)},
+        [],
+        -1,
+        false,
+        true,
         "",
-        "(nearestObject [player, 'PipeBombBase'] distance player < 7 && alive _target && speed _target < 3 && vehicle player == player)",
+        "(nearestObject [_target, 'PipeBombBase'] distance _target < 7 && alive _target && speed _target < 3 && vehicle player == player)",
         8
     ];
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
