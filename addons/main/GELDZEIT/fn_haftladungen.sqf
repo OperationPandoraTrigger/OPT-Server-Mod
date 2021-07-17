@@ -35,7 +35,7 @@ private _bomb = nearestObject [player, 'PipeBombBase'];
 if (isNull _veh) exitWith {hint format["%1", MLOC(HAFTLADUNGNOVEH)];};
 if (isNull _bomb) exitWith {hint format["%1", MLOC(HAFTLADUNGNOBOMBE)];};
 
-if ((_bomb distance _veh) > 8) exitWith {hint format["%1", MLOC(HAFTLADUNGNOBOMBE)];};
+if ((_bomb distance _veh) >= 7) exitWith {hint format["%1", MLOC(HAFTLADUNGNOBOMBE)];};
 
 // Roherfassung Objekt
 private _start = AGLToASL positionCameraToWorld [0, 0, 0];
