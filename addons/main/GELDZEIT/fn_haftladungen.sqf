@@ -25,25 +25,22 @@
 */
 #include "macros.hpp"
 
-private _unit = player;
-private _veh = nil;
-private _bomb = nil;
 private _pic = "A3\Weapons_F\Data\UI\gear_c4_charge_small_CA.paa";
 
 // Fahrzeug und Bomben ermittlung 
-_veh = (nearestObjects[_unit,["car","truck","tank","wheeled_apc"],8]) select 0;
-_bomb = (nearestObject [_unit, 'PipeBombBase']);
+private _veh = nearestObjects[player, ["car", "truck", "tank", "wheeled_apc"], 8] select 0;
+private _bomb = nearestObject [player, 'PipeBombBase'];
 
 // Check ob Beide nötigen Dinge vorhanden sind
-if (isNull _veh) exitWith {hint format["%1",MLOC(HAFTLADUNGNOVEH)];};
-if (isNull _bomb) exitWith {hint format["%1",MLOC(HAFTLADUNGNOBOMBE)];};
+if (isNull _veh) exitWith {hint format["%1", MLOC(HAFTLADUNGNOVEH)];};
+if (isNull _bomb) exitWith {hint format["%1", MLOC(HAFTLADUNGNOBOMBE)];};
 
-if ((_bomb distance _veh) > 8) exitWith {hint format["%1",MLOC(HAFTLADUNGNOBOMBE)];};
+if ((_bomb distance _veh) > 8) exitWith {hint format["%1", MLOC(HAFTLADUNGNOBOMBE)];};
 
 // Roherfassung Objekt
 private _start = AGLToASL positionCameraToWorld [0, 0, 0];
 private _end = AGLToASL positionCameraToWorld [0, 0, 10];
-private _lis = lineIntersectsSurfaces [_start, _end, _unit, objNull, true, -1];
+private _lis = lineIntersectsSurfaces [_start, _end, player, objNull, true, -1];
 private _intersection = _lis param [0, []] select 0;
 
 // Check ob Fahrzeug gefunden wurde
@@ -63,7 +60,7 @@ private _zoffset = _offset select 2;
 _bomb attachTo [_veh, [_xoffset, _yoffset, _zoffset]];
 
 // Ausrichten der Sprengladung 
-private _unitdir = getDir _unit;
+private _unitdir = getDir player;
 _bomb setVectorDirAndUp [[0, (cos(getDir _veh + 90)), 0], [(cos(getDir _veh - 90 + _unitdir)), (cos(getDir _veh + 90 + _unitdir)), 0]];
 
 // Ausgabe an den Spieler

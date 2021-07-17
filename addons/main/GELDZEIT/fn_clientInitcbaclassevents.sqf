@@ -25,7 +25,8 @@
         -1, 
         false, 
         true, 
-        '',
-        "_veh = vehicle _this; ((alive _target) and (speed _veh < 3) and (_veh distance _target) < 8 and vehicle player == player)"
+        "",
+        "(nearestObject [player, 'PipeBombBase'] distance player < 8 && alive _target && speed _target < 3 && vehicle player == player)",
+        8
     ];
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
