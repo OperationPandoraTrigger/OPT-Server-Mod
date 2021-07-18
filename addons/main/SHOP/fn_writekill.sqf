@@ -39,6 +39,12 @@ params
 if (_victim isEqualTo objNull) exitWith{};
 //if ((_instigator isEqualTo objNull) and (_projectile isEqualTo "")) exitWith{};
 
+// Copied from acemod
+// https://github.com/acemod/ACE3/blob/76676eee462cb0bbe400a482561c148d8652b550/addons/medical/functions/fnc_addDamageToUnit.sqf#L43-L44
+// needed for OCAP2, to determine the killer
+_victim setVariable ["ace_medical_lastDamageSource", _instigator];
+_victim setVariable ["ace_medical_lastInstigator", _instigator];
+
 // victim = man?
 if (_victim isKindOf "Man") then
 {
@@ -138,6 +144,12 @@ else // victim = vehicle!
             {
                 private _unit = _x select 0;
                 private _cargoIdx = _x select 2;
+
+                // Copied from acemod
+                // https://github.com/acemod/ACE3/blob/76676eee462cb0bbe400a482561c148d8652b550/addons/medical/functions/fnc_addDamageToUnit.sqf#L43-L44
+                // needed for OCAP2, to determine the killer
+                _unit setVariable ["ace_medical_lastDamageSource", _instigator];
+                _unit setVariable ["ace_medical_lastInstigator", _instigator];
 
                 // crew member have cargo index of -1, else > 0
                 if (_cargoIdx == -1) then
