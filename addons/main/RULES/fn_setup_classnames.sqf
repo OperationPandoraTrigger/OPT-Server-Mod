@@ -15,11 +15,11 @@
 * No
 *
 * Public:
-* No 
-* 
+* No
+*
 * Global:
 * No
-* 
+*
 * API:
 * No
 *
@@ -32,7 +32,7 @@
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 /* HL UND PL */
-GVAR(officer) = 
+GVAR(officer) =
 [
     /* UNUSED
     "OPT_NATO_Offizier_T",
@@ -45,7 +45,7 @@ GVAR(officer) =
 
 /* PILOTS */
 // hier sind alle Classnames aufgelistet, welche als Piloten definiert werden um fliegen zu duerfen
-GVAR(pilots) = 
+GVAR(pilots) =
 [
     /* UNUSED
     "OPT_NATO_Pilot_T",
@@ -58,13 +58,13 @@ GVAR(pilots) =
     "OPT_CSAT_Pilot"
 ];
 
-GVAR(jetpilots) = 
+GVAR(jetpilots) =
 [
     "OPT_NATO_Pilot_jet",
     "OPT_CSAT_Pilot_jet"
 ];
 
-GVAR(choppers) = 
+GVAR(choppers) =
 [
     "OPT4_B_Heli_light_03_green_F",                    // WY-55 Hellcat (Unbewaffnet)
     "OPT_B_Heli_Light_01_F",                    // MH-9 Hummingbird
@@ -90,7 +90,7 @@ GVAR(choppers) =
     "OPT_O_Heli_Light_03_unarmed_green_F",            // WY-55 Hellcat - 60000
     "OPT_O_Heli_Light_03_green_F",                    // WY-55 Hellcat (DAR)
     "OPT_O_Heli_light_03_Scalpel_green_F",            // WY-55 Hellcat (scalpel)
-    "OPT_O_Heli_light_03_Scalpel_F",            // WY-55 Hellcat (scalpel)    
+    "OPT_O_Heli_light_03_Scalpel_F",            // WY-55 Hellcat (scalpel)
     "OPT_O_Heli_Light_02_unarmed_F",                    // PO-30 Orca
     "OPT_O_Heli_Light_02_unarmed_black_F",        // PO-30 Orca
     "OPT_O_Heli_Light_02_Minigun_F",        // PO-30 Orca minigun 90000
@@ -108,7 +108,7 @@ GVAR(choppers) =
     "OPT_O_UAV_02_light_F",                         // Ababil unbewaffnet
     "OPT_O_UAV_02_CAS_F",                         // Ababil GBU-12
     "OPT_O_UAV_02_F",                             // Ababil Scalpel
-    "OPT_O_UAV_02_AA_F",                        // Ababil AA    
+    "OPT_O_UAV_02_AA_F",                        // Ababil AA
     "OPT_O_T_VTOL_02_infantry_unarmed_F",        // VTOL Y-32 Xi'an (Inf-Transport)
     "OPT_O_T_VTOL_02_vehicle_unarmed_F",        // VTOL Y-32 Xi'an (Fahrzeug-Transport) 300000
     "OPT_O_T_VTOL_02_infantry_F",                     // VTOL Y-32 Xi'an (Inf-Transport)
@@ -130,7 +130,7 @@ GVAR(choppers) =
     "OPT_I_Heli_Transport_02_F",                 // CH-49 Mohawk (Transport+Lift)
     "OPT_I_UAV_02_light_F",                 // Greyhawk unbewaffnet
     "OPT_O_Heli_Light_02_v2_F",                // PO-30 Orca Cas light
-    "OPT_O_Heli_Light_02_v3_F",                // PO-30 Orca Cas Heavy 
+    "OPT_O_Heli_Light_02_v3_F",                // PO-30 Orca Cas Heavy
     "OPT_I_Heli_light_03_v2_F",                // WY-55 Hellcat Cas light
     "OPT_I_Heli_light_03_v3_F",                // WY-55 Hellcat Cas Heavy
 
@@ -147,7 +147,7 @@ GVAR(choppers) =
     "OPT_CUP_O_Mi24_V_Dynamic_RU"          // MI-24V
 ];
 
-GVAR(planes) = 
+GVAR(planes) =
 [
     // NATO - CUP
     "OPT_CUP_C_Cessna_172_CIV_BLUE",        // Cessna
@@ -162,7 +162,7 @@ GVAR(planes) =
     "OPT_CUP_O_C130J_TKA"                   // C130J
 ];
 
-GVAR(jets) = 
+GVAR(jets) =
 [
     // NATO - CUP
     "OPT_CUP_B_L39_CZ_GREY",                // L-39AZ
@@ -171,14 +171,14 @@ GVAR(jets) =
     "OPT_CUP_O_Su25_Dyn_RU"                 // SU-25T
 ];
 
-GVAR(blockedVehiclePositions_air) = 
+GVAR(blockedVehiclePositions_air) =
 [
     "driver"
 ];
 
 /* FAHRZEUGE UND CREW */
     // hier sind alle Classnames aufgelistet, welche als Crew definiert werden um gepanzerte Fahrzeuge fahren zu duerfen (und Schuetzenposition)
-GVAR(crew) = 
+GVAR(crew) =
 [
     /* UNUSED
     "OPT_NATO_Besatzungsmitglied_T",
@@ -190,8 +190,8 @@ GVAR(crew) =
     "OPT_CSAT_Besatzungsmitglied"
 ];
 
-GVAR(crew_vehicles) = 
-[    
+GVAR(crew_vehicles) =
+[
 //NATO
     "OPT4_B_LSV_01_AT_F",
     "OPT4_B_MRAP_01_gmg_F",
@@ -207,12 +207,12 @@ GVAR(crew_vehicles) =
 
 // NATO - CUP
     "OPT_CUP_B_LAV25_HQ_USMC",              // LAV C2
-    "OPT_CUP_B_M2Bradley_USA_W",            // M2A2 Bradley IFV 
+    "OPT_CUP_B_M2Bradley_USA_W",            // M2A2 Bradley IFV
     "OPT_CUP_B_M163_USA",                   // M163A1 VADS (50er Magazine)
     "OPT_CUP_B_M60A3_TTS_USMC",             // M60A3 TTS
     "OPT_CUP_B_Leopard2A6_GER",             // Leopard 2A6
     "OPT_CUP_B_HMMWV_TOW_USMC",             // HMMWV TOW
-    "OPT_CUP_B_RM70_CZ",                    // RM-70 
+    "OPT_CUP_B_RM70_CZ",                    // RM-70
 
 //Tropentarn
     "OPT4_B_LSV_01_AT_ghex_F",
@@ -226,11 +226,11 @@ GVAR(crew_vehicles) =
     "OPT4_B_MBT_01_arty_ghex_F",
     "OPT4_B_MBT_03_cannon_ghex_F",
     "OPT_B_MBT_01_mlrs_ghex_F",
-    
 
-//CSAT 
+
+//CSAT
     "OPT4_O_LSV_02_AT_F",
-    "OPT4_O_MRAP_02_gmg_F",    
+    "OPT4_O_MRAP_02_gmg_F",
     "OPT4_O_APC_Wheeled_02_rcws_F",
     "OPT4_O_APC_Wheeled_03_cannon_F",
     "OPT4_O_APC_Tracked_02_cannon_F",
@@ -255,7 +255,7 @@ GVAR(crew_vehicles) =
     "OPT4_O_APC_Wheeled_03_cannon_ghex_F",
     "OPT4_O_T_APC_Tracked_02_cannon_ghex_F",
     "OPT4_O_T_APC_Tracked_02_AA_ghex_F",
-    "OPT4_O_T_MBT_02_cannon_ghex_F",    
+    "OPT4_O_T_MBT_02_cannon_ghex_F",
     "OPT4_O_T_MBT_02_arty_ghex_F",
     "OPT_O_Truck_02_MRL_ghex_F",
     "OPT_O_LSV_02_AT_GHEX_F",
@@ -269,7 +269,7 @@ GVAR(crew_vehicles) =
 
 //AAF
     "OPT4_I_C_Offroad_02_AT_F",
-    "OPT4_I_MRAP_03_gmg_F",    
+    "OPT4_I_MRAP_03_gmg_F",
     "OPT4_I_APC_Wheeled_03_cannon_F",
     "OPT4_I_APC_tracked_03_cannon_F",
     "OPT4_I_LT_01_AA_F",
@@ -286,7 +286,7 @@ GVAR(crew_vehicles) =
     "OPT_I_MBT_03_cannon_F_AT"
 ];
 
-GVAR(blockedVehiclePositions_veh) = 
+GVAR(blockedVehiclePositions_veh) =
 [
     "gunner",
     "turret",
@@ -294,7 +294,7 @@ GVAR(blockedVehiclePositions_veh) =
 ];
 
 /* Waffenabfrage Pilot/Crew*/
-GVAR(SMG) = 
+GVAR(SMG) =
 [
     /* UNUSED
     "OPT_SMG_01_F",
@@ -306,7 +306,7 @@ GVAR(SMG) =
 ];
 
 /* Light AT-Schützen UND LAUNCHER */
-GVAR(Lightrocketmen) = 
+GVAR(Lightrocketmen) =
 [
     /* UNUSED
     "OPT_NATO_PA_Schuetze",
@@ -324,7 +324,7 @@ GVAR(Lightrocketmen) =
     "OPT_CSAT_Soldat"
 ];
 
-GVAR(lightlaunchers) = 
+GVAR(lightlaunchers) =
 [
     /* UNUSED
     "launch_RPG7_F"
@@ -334,7 +334,7 @@ GVAR(lightlaunchers) =
 ];
 
 /* Heavy AT-Schützen UND LAUNCHER */
-GVAR(Heavyrocketmen) = 
+GVAR(Heavyrocketmen) =
 [
     /* UNUSED
     "O_Soldier_HAT_F",
@@ -344,7 +344,7 @@ GVAR(Heavyrocketmen) =
     "OPT_CSAT_PA_Schuetze"
 ];
 
-GVAR(Heavylaunchers) = 
+GVAR(Heavylaunchers) =
 [
     /* UNUSED
     "OPT_launch_MRAWS_green_rail_F",
@@ -356,7 +356,7 @@ GVAR(Heavylaunchers) =
 ];
 
 /* AA-Schützen UND LAUNCHER */
-GVAR(AArocketmen) = 
+GVAR(AArocketmen) =
 [
     /* UNUSED
     "O_Soldier_AA_F",
@@ -366,7 +366,7 @@ GVAR(AArocketmen) =
     "OPT_CSAT_Luftabwehrspezialist"
 ];
 
-GVAR(AAlaunchers) = 
+GVAR(AAlaunchers) =
 [
     /* UNUSED
     "OPT_launch_B_Titan_F",
@@ -379,9 +379,9 @@ GVAR(AAlaunchers) =
 ];
 
 
-/* OPERATOR 
+/* OPERATOR
  * UNUSED
-GVAR(operator) = 
+GVAR(operator) =
 [
     "OPT_NATO_Operator_T",
     "OPT_CSAT_Operator_T",
@@ -391,7 +391,7 @@ GVAR(operator) =
 */
 
 /* MEDIC */
-GVAR(medic) = 
+GVAR(medic) =
 [
     /* UNUSED
     "OPT_NATO_Sanitaeter_T",
@@ -403,9 +403,9 @@ GVAR(medic) =
     "OPT_CSAT_Sanitaeter"
 ];
 
-/* spaeher 
+/* spaeher
  * UNUSED
-GVAR(spaeher) = 
+GVAR(spaeher) =
 [
     "OPT_NATO_Aufklaerung_JTAC",
     "OPT_CSAT_Aufklaerung_JTAC"
@@ -414,7 +414,7 @@ GVAR(spaeher) =
 
 /* RECONSNIPER+waffen
  * UNUSED
-GVAR(reconSnipers) = 
+GVAR(reconSnipers) =
 [
     "OPT_NATO_Aufklaerung_Scharfschutze_T",
     "OPT_NATO_Aufklaerung_Scharfschutze_2",
@@ -424,15 +424,15 @@ GVAR(reconSnipers) =
     "OPT_CSAT_Aufklaerung_Scharfschutze"
 ];
 
-GVAR(reconSniperRifles) = 
+GVAR(reconSniperRifles) =
 [
     "OPT_arifle_MXM_Black_F",
-    "OPT_srifle_DMR_07_blk_F"    
-];    
+    "OPT_srifle_DMR_07_blk_F"
+];
 */
-                        
+
 /* SNIPER+waffen */
-GVAR(snipers) = 
+GVAR(snipers) =
 [
     /* UNUSED
     "OPT_NATO_Scharfschuetze_T",
@@ -446,7 +446,7 @@ GVAR(snipers) =
     "OPT_CSAT_Scharfschuetze"
 ];
 
-GVAR(sniperRifles) = 
+GVAR(sniperRifles) =
 [
     /* UNUSED
     "OPT_srifle_DMR_02_F",
@@ -462,7 +462,7 @@ GVAR(sniperRifles) =
 ];
 
 /* DMR SNIPER+waffen */
-GVAR(DMRsnipers) = 
+GVAR(DMRsnipers) =
 [
     /* UNUSED
     "OPT_CSAT_Beobachter",
@@ -476,7 +476,7 @@ GVAR(DMRsnipers) =
     "OPT_CSAT_Scharfschuetze_2"
 ];
 
-GVAR(DMRsniperRifles) = 
+GVAR(DMRsniperRifles) =
 [
     /* UNUSED
     "srifle_DMR_03_woodland_F",
@@ -489,7 +489,7 @@ GVAR(DMRsniperRifles) =
 ];
 
 /* MG */
-GVAR(soldatMG) = 
+GVAR(soldatMG) =
 [
     /* UNUSED
     "OPT_CSAT_MG_Schuetze_T",
@@ -501,7 +501,7 @@ GVAR(soldatMG) =
     "OPT_NATO_MG_Schuetze"
 ];
 
-GVAR(MG) = 
+GVAR(MG) =
 [
     /* UNUSED
     "OPT_LMG_Zafir_F",
@@ -513,7 +513,7 @@ GVAR(MG) =
 
 
 /* LMG */
-GVAR(soldatLMG) = 
+GVAR(soldatLMG) =
 [
     /* UNUSED
     "O_Soldier_AR_F",
@@ -523,7 +523,7 @@ GVAR(soldatLMG) =
     "OPT_CSAT_LMG_Schuetze"
 ];
 
-GVAR(LMG) = 
+GVAR(LMG) =
 [
     /* UNUSED
     "OPT_arifle_CTARS_blk_F",
@@ -535,7 +535,7 @@ GVAR(LMG) =
 ];
 
 /* GRENADIER */
-GVAR(grenadiers) = 
+GVAR(grenadiers) =
 [
     /* UNUSED
     "OPT_CSAT_Grenadier_T",
@@ -557,7 +557,7 @@ GVAR(grenadiers) =
     "OPT_NATO_Grenadier"
 ];
 
-GVAR(grenadelaunchers) = 
+GVAR(grenadelaunchers) =
 [
     /* UNUSED
     "OPT_arifle_MX_GL_Black_F",
@@ -573,7 +573,7 @@ GVAR(grenadelaunchers) =
 
 
 /* PIONIER */
-GVAR(pioniers) = 
+GVAR(pioniers) =
 [
     /* UNUSED
     "OPT_NATO_Pionier_T",
@@ -591,15 +591,15 @@ GVAR(pioniers) =
     "OPT_NATO_Sprengmeister"
 ];
 
-GVAR(Sprengmittel) = 
+GVAR(Sprengmittel) =
 [
     "SLAMDirectionalMine_Wire_Mag",
     "ATMine_Range_Mag"
-];    
+];
 
-/* RECON 
+/* RECON
  * UNUSED
-GVAR(recon) = 
+GVAR(recon) =
 [
     "OPT_CSAT_Aufklaerung_Scharfschutze_T",
     "OPT_CSAT_Aufklaerung_Scharfschutze_2",
@@ -625,7 +625,7 @@ GVAR(recon) =
     "OPT_NATO_Soldat"
 ];
 
-GVAR(reconRifles) = 
+GVAR(reconRifles) =
 [
     "OPT_arifle_Katiba_F",
     "OPT_arifle_Katiba_GL_F",
@@ -635,7 +635,7 @@ GVAR(reconRifles) =
 */
 
 /* UAV */
-GVAR(big_uavs) = 
+GVAR(big_uavs) =
 [
     "OPT_B_UAV_02_F",
     "OPT_B_UAV_02_CAS_F",

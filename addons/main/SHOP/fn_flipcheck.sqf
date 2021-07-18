@@ -20,10 +20,10 @@ params ["_target", "_caller"];
 private _ret = false;
 private _cond =
 (
-    (speed _target < 1) and 
-    ((_target distance _caller) < 10) and 
-    (_target isKindOf 'landVehicle') and 
-    (alive _target) and 
+    (speed _target < 1) and
+    ((_target distance _caller) < 10) and
+    (_target isKindOf 'landVehicle') and
+    (alive _target) and
     ((vectorUp _target) select 2 < 0.4)
 );
 

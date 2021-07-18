@@ -17,7 +17,7 @@
 params [["_veh", objNull]];
 
 private _fuel = fuel _veh;
-if (_fuel < 0.2) then 
+if (_fuel < 0.2) then
 {
     [_veh, _fuel + 0.2] remoteExecCall ["setFuel", _veh, false];
 };

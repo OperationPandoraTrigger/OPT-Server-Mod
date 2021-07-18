@@ -15,7 +15,7 @@
 * no
 *
 * Public:
-* no 
+* no
 *
 * Global:
 * no
@@ -33,7 +33,7 @@
 
 private _Basis = objNull;
 
-switch GVAR(Fraktionauswahl) do 
+switch GVAR(Fraktionauswahl) do
 {
     case "AAFvsCSAT":
     {

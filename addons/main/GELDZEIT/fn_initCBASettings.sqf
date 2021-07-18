@@ -16,10 +16,10 @@
 *
 * Public:
 * No - should be called only once from XEH_PreInit.sqf at mission start
-* 
+*
 * Global:
 * No
-* 
+*
 * API:
 * No
 *

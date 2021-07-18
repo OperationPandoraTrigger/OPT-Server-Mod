@@ -1,32 +1,32 @@
 /**
 * Description:Einlesen der Daten beim Öffnen des Dialogs durch den Spieler
-* 
-* 
+*
+*
 * Author:
 * [GNC]Lord-MDB
 *
 * Arguments:
-* 
+*
 *
 * Return value:
-* 
+*
 *
 * Server Only:
 * No
-* 
+*
 * Global:
 * No
-* 
+*
 * API:
 * No
-* 
+*
 * Example:
-* 
+*
 */
 #include "macros.hpp"
 
 //Typ einlesen
-params 
+params
 [
     ["_type", ""]
 ];
@@ -39,7 +39,7 @@ GVAR(LOCK) = true;
 private _side = playerside;
 
 //Dialog erstellen
-private _success = createDialog "DialogVerkaufs"; 
+private _success = createDialog "DialogVerkaufs";
 
 //Dialog definieren
 #define IDD_DLG_ORDER 23000
@@ -71,31 +71,31 @@ GVAR(vehicleType) = _type;
 [_budget] call opt_common_fnc_renderbudget;
 
 // Flagge setzen
-switch (_side) do 
+switch (_side) do
 {
-    case west: 
+    case west:
     {
         _rscPicture ctrlSetText "\opt\opt_client\addons\core\bilder\NATO-Logo.paa";
 
         GVAR(pads) = [VerkaufsBoxWest];
     };
 
-    case east: 
+    case east:
     {
         _rscPicture ctrlSetText "\opt\opt_client\addons\core\bilder\WP_Logo.paa";
 
         GVAR(pads) = [VerkaufsBoxEast];
-    }; 
+    };
 
-    case independent: 
+    case independent:
     {
         _rscPicture ctrlSetText "\opt\opt_client\addons\core\bilder\xxx-Logo.paa";
 
         GVAR(pads) = [VerkaufsBoxindependent];
-    };   
+    };
 };
 
-if (_type == "sell") then 
+if (_type == "sell") then
 {
     //Kaufbutton/Konfigbutton ausblenden
     _order ctrlShow false;
@@ -119,29 +119,29 @@ if (_type == "sell") then
 
     private _objs = [];
 
-    GVAR(pads) apply 
+    GVAR(pads) apply
     {
         private _ob = nearestObjects [_x, ["AllVehicles", "Thing"], 8];
 
-        if ((count _ob) != 0) then 
+        if ((count _ob) != 0) then
         {
 
-            _objs append _ob; 
+            _objs append _ob;
 
-        };   
-    };   
- 
+        };
+    };
+
     // Gehe alle gefundenen Objekte durch und lösche sie, falls nicht in pool, oder ergänze um Verkaufspreis
-    _objs apply 
+    _objs apply
     {
         private _index = ((GVAR(all) apply {toLower (_x select 0)}) find (toLower (typeOf _x)));
 
-        if (_index == -1) then 
+        if (_index == -1) then
         {
-            _objs = _objs - [_x]; 
-            
-        } 
-        else 
+            _objs = _objs - [_x];
+
+        }
+        else
         {
             _pool pushBack [_x, (GVAR(all) select _index) select 2, (GVAR(all) select _index) select 3]; // füge Fahrzeug und Verkaufspreis hinzu
             GVAR(sellVeh) append [_x];
@@ -169,9 +169,9 @@ if (_type == "sell") then
     } foreach GVAR(vehiclesToSell);
 };
 
-// Button Listbox Events 
+// Button Listbox Events
 //InfoBox Erneuern bei änderung
-_listbox_vehicles ctrlAddEventHandler [ "LBSelChanged", 
+_listbox_vehicles ctrlAddEventHandler [ "LBSelChanged",
 {
     params ["_listbox_vehicles", "_sel_class"];
 
@@ -185,12 +185,12 @@ _listbox_vehicles ctrlAddEventHandler [ "LBSelChanged",
 
     _editbox_info ctrlSetStructuredText parseText ([_class,_sel_class] call FUNC(getVehicleInfo));
 
-    // Budget 
+    // Budget
     [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
 
 // Verkaufs Ausführen
-_sell ctrlAddEventHandler [ "ButtonClick", 
+_sell ctrlAddEventHandler [ "ButtonClick",
 {
     private _display = findDisplay IDD_DLG_ORDER;
     private _listbox_vehicles = _display displayCtrl IDC_CTRL_VEHICLE_LIST;
@@ -207,25 +207,25 @@ _sell ctrlAddEventHandler [ "ButtonClick",
     private _sellveh = "";
     private _gutschrift = 0;
 
-    if (_class in (GVAR(vehClassWestWW))) then 
+    if (_class in (GVAR(vehClassWestWW))) then
     {
         _side = west;
-    };    
+    };
 
-    if (_class in (GVAR(vehClassEastWW))) then 
+    if (_class in (GVAR(vehClassEastWW))) then
     {
         _side = east;
-    }; 
+    };
 
-    if (_class in (GVAR(vehClassindependentWW))) then 
+    if (_class in (GVAR(vehClassindependentWW))) then
     {
         _side = independent;
-    };   
+    };
 
     _price = [_class] call FUNC(getPrice);
     _sellveh = GVAR(sellVeh) select _sel_class;
     _magazineVehArryNew = [_sellveh] call FUNC(auslesenMagazine);
-    _bewaffnungpreis = [_side, _magazineVehArryNew] call FUNC(geldVorhandeneBewaffnung);   
+    _bewaffnungpreis = [_side, _magazineVehArryNew] call FUNC(geldVorhandeneBewaffnung);
     _gutschrift = _price + _bewaffnungpreis;
 
     [getPlayerUID player, Name Player, playerSide, netId _sellveh, typeOf _sellveh, _gutschrift, "+"] remoteExecCall ["OPT_GELDZEIT_fnc_updateBudget", 2, false];

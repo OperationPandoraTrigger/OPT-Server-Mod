@@ -26,10 +26,10 @@ GVAR(Punktecount) = [
     if ((OPT_GELDZEIT_GAMESTAGE == GAMESTAGE_WAR) and (OPT_GELDZEIT_PLAYTIME - (serverTime - OPT_GELDZEIT_startTime) > 0)) then
     {
         // Falls es einen Dominator gibt -> Erhöhe Punkte +1, ansonsten spätestens alls 60 Sekunden einen Logeintrag
-        switch (GVAR(dominator)) do 
+        switch (GVAR(dominator)) do
         {
-            case west: 
-            { 
+            case west:
+            {
                 GVAR(nato_points_f) = GVAR(nato_points_f) + 0.016667;    // 1 Punkt pro Minute (1 / 60 = 0,0166666666)
                 if (round GVAR(nato_points_f) > GVAR(nato_points)) then
                 {
@@ -40,8 +40,8 @@ GVAR(Punktecount) = [
                 };
             };
 
-            case east: 
-            { 
+            case east:
+            {
                 GVAR(csat_points_f) = GVAR(csat_points_f) + 0.016667;    // 1 Punkt pro Minute (1 / 60 = 0,0166666666)
                 if (round GVAR(csat_points_f) > GVAR(csat_points)) then
                 {
@@ -52,8 +52,8 @@ GVAR(Punktecount) = [
                 };
             };
 
-            case independent: 
-            { 
+            case independent:
+            {
                 GVAR(aaf_points_f) = GVAR(aaf_points_f) + 0.016667;    // 1 Punkt pro Minute (1 / 60 = 0,0166666666)
                 if (round GVAR(aaf_points_f) > GVAR(aaf_points)) then
                 {
@@ -64,7 +64,7 @@ GVAR(Punktecount) = [
                 };
             };
 
-            default 
+            default
             {
                 if ((serverTime - GVAR(points_logtime)) >= 60) then // letzter logeintrag > 1 Minute alt? Dann den aktuellen Stand loggen
                 {

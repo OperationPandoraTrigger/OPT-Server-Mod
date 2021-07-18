@@ -9,7 +9,7 @@
 * 3: <NUMBER> cost of transaction
 * 4: <STRING> sign of transaction: "+" if cost is added to budget, "-" if cost is subtracted
 * 5: <STRING> case - transaction case ["", "respawn", "weapons"]
-* 
+*
 *
 * Return Value:
 * None
@@ -17,7 +17,7 @@
 * Example:
 * [name player, west, typeOf vehicle, 1000, "-", ""] call fnc_updateBudget.sqf;
 *
-* public: 
+* public:
 * yes
 */
 #include "macros.hpp"
@@ -25,7 +25,7 @@
 /* PARAMS */
 params
 [
-    ["_buyerUID", "", [""], 1], 
+    ["_buyerUID", "", [""], 1],
     ["_buyerName", "", [""], 1], 
     ["_side", sideUnknown, [sideUnknown], 1],
     ["_unitId", "", [""], 1],
@@ -48,40 +48,40 @@ private _boat = (opt_shop_nato_sea + opt_shop_csat_sea + opt_shop_AAF_sea) apply
 private _supplies = (opt_shop_nato_supplies + opt_shop_csat_supplies + opt_shop_AAF_supplies) apply {toLower (_x select 0)};
 private _static = (opt_shop_nato_static + opt_shop_csat_static + opt_shop_AAF_static) apply {toLower (_x select 0)};
 
-_category = if (toLower (typeOf _veh) in _light) then 
+_category = if (toLower (typeOf _veh) in _light) then
 {
     "Leicht"
-} 
-else 
+}
+else
 {
-    if (toLower (typeOf _veh) in _heavy) then 
+    if (toLower (typeOf _veh) in _heavy) then
     {
         "Schwer"
-    } 
-    else 
+    }
+    else
     {
-        if (toLower (typeOf _veh) in _air) then 
+        if (toLower (typeOf _veh) in _air) then
         {
             "Flug"
-        } 
-        else 
+        }
+        else
         {
-            if (toLower (typeOf _veh) in _boat) then 
+            if (toLower (typeOf _veh) in _boat) then
             {
                 "Boot"
-            } 
-            else 
+            }
+            else
             {
-                if (toLower (typeOf _veh) in _supplies) then 
+                if (toLower (typeOf _veh) in _supplies) then
                 {
                     "Ausruestung"
-                } 
-                else 
+                }
+                else
                 {
-                    if (toLower (typeOf _veh) in _static) then 
+                    if (toLower (typeOf _veh) in _static) then
                     {
                         "Stationaer"
-                    } 
+                    }
                     else
                     {
                         "Unbekannt"
@@ -90,39 +90,39 @@ else
             };
         };
     };
-}; 
+};
 
-switch (_sign) do 
+switch (_sign) do
 {
-    case "-": 
+    case "-":
     {
-            if (_side == west) then 
+            if (_side == west) then
             {
                 GVAR(nato_budget) = GVAR(nato_budget) - _unitCost;
-            }; 
-            if (_side == east) then 
-            { 
+            };
+            if (_side == east) then
+            {
                 GVAR(csat_budget) = GVAR(csat_budget) - _unitCost;
             };
-            if (_side == independent) then 
-            { 
+            if (_side == independent) then
+            {
                 GVAR(aaf_budget) = GVAR(aaf_budget) - _unitCost;
             };
             ["Budget", "Buy", [GVAR(nato_budget), GVAR(csat_budget), GVAR(aaf_budget), _buyerUID, _buyerName, _side, _unitId, _unitName, _category, _unitCost]] call OPT_LOGGING_fnc_writelog;
 
     };
-    case "+":  
+    case "+":
     {
-            if (_side == west) then 
+            if (_side == west) then
             {
                 GVAR(nato_budget) = GVAR(nato_budget) + _unitCost;
             };
-            if (_side == east) then 
-            {                   
+            if (_side == east) then
+            {
                 GVAR(csat_budget) = GVAR(csat_budget) + _unitCost;
             };
-            if (_side == independent) then 
-            {                   
+            if (_side == independent) then
+            {
                 GVAR(aaf_budget) = GVAR(aaf_budget) + _unitCost;
             };
             ["Budget", "Sell", [GVAR(nato_budget), GVAR(csat_budget), GVAR(aaf_budget), _buyerUID, _buyerName, _side, _unitId, _unitName, _category, _unitCost]] call OPT_LOGGING_fnc_writelog;

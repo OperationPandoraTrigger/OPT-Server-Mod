@@ -19,45 +19,45 @@ params ["_budget_field"];
 private _side = playerSide;
 private _side_Budget = 0;
 
-if (_side == west) then 
+if (_side == west) then
 {
     _side_Budget = GVAR(nato_budget);
 };
 
-if (_side == east) then 
+if (_side == east) then
 {
     _side_Budget = GVAR(csat_budget);
 };
 
-if (_side == independent) then 
+if (_side == independent) then
 {
     _side_Budget = GVAR(aaf_budget);
 };
 
-private _txt = if (_side_Budget >= 1e6) then 
+private _txt = if (_side_Budget >= 1e6) then
 {
-    format [MLOC(BUDGET_MIO), str(_side_Budget / 1e6)];  
-} 
-else 
+    format [MLOC(BUDGET_MIO), str(_side_Budget / 1e6)];
+}
+else
 {
     format [MLOC(BUDGET), str(_side_Budget)];
 };
 
 // Warnung, wenn Budget niedrig wird
-if (_side_Budget < 4e5) then 
+if (_side_Budget < 4e5) then
 {
     _budget_field ctrlSetTextColor [0.97, 0.63, 0.02, 1];
 };
 
 // Falls Budget negativ: Zeige Dispo
-if (_side_Budget < 0) then 
+if (_side_Budget < 0) then
 {
     _txt = format[MLOC(OVERDRAFT), str(_side_Budget)];
     _budget_field ctrlSetTextColor [1,0,0,1];
 };
 
 // Falls Budget sehr negativ: Zeige Dispo in Mio.
-if (_side_Budget <= -1e6) then 
+if (_side_Budget <= -1e6) then
 {
     _txt = format [MLOC(OVERDRAFT_MIO), str(_side_Budget / 1e6)];
 };

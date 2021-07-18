@@ -1,6 +1,6 @@
 /**
 * Author: Lord-MDB
-* Unflip von Fahrzeugen 
+* Unflip von Fahrzeugen
 *
 * Arguments:
 * None
@@ -30,40 +30,40 @@ private _boat = (opt_shop_nato_sea + opt_shop_csat_sea + opt_shop_AAF_sea) apply
 private _supplies = (opt_shop_nato_supplies + opt_shop_csat_supplies + opt_shop_AAF_supplies) apply {toLower (_x select 0)};
 private _static = (opt_shop_nato_static + opt_shop_csat_static + opt_shop_AAF_static) apply {toLower (_x select 0)};
 
-_category = if (toLower (typeOf _veh) in _light) then 
+_category = if (toLower (typeOf _veh) in _light) then
 {
     "Leicht"
-} 
-else 
+}
+else
 {
     if (toLower (typeOf _veh) in _heavy) then 
     {
         "Schwer"
-    } 
-    else 
+    }
+    else
     {
-        if (toLower (typeOf _veh) in _air) then 
+        if (toLower (typeOf _veh) in _air) then
         {
             "Flug"
-        } 
-        else 
+        }
+        else
         {
-            if (toLower (typeOf _veh) in _boat) then 
+            if (toLower (typeOf _veh) in _boat) then
             {
                 "Boot"
-            } 
-            else 
+            }
+            else
             {
-                if (toLower (typeOf _veh) in _supplies) then 
+                if (toLower (typeOf _veh) in _supplies) then
                 {
                     "Ausruestung"
-                } 
-                else 
+                }
+                else
                 {
-                    if (toLower (typeOf _veh) in _static) then 
+                    if (toLower (typeOf _veh) in _static) then
                     {
                         "Stationaer"
-                    } 
+                    }
                     else
                     {
                         "Unbekannt"
@@ -72,6 +72,6 @@ else
             };
         };
     };
-}; 
+};
 
 ["Vehicle", "Unflipped", [_name, _category, _faction, getPlayerUID player, name player, side player]] call OPT_LOGGING_fnc_writelog;

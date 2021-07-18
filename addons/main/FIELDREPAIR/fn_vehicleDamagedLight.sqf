@@ -22,7 +22,7 @@ if ((getAllHitPointsDamage _veh select 2) isEqualTo objNull) exitWith {false};
 
 private _flag = false;
 {
-    if (_x > 0.01) exitWith 
+    if (_x > 0.01) exitWith
     {
         _flag = true;
     };

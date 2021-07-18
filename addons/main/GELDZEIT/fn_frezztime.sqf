@@ -15,8 +15,8 @@
 * No
 *
 * Public:
-* No 
-* 
+* No
+*
 * Global:
 * No
 * 
@@ -29,7 +29,7 @@
 #include "macros.hpp"
 
 // Spieler in der Freezetime einfrieren
-if (GVAR(GAMESTAGE) == GAMESTAGE_FREEZE) then 
+if (GVAR(GAMESTAGE) == GAMESTAGE_FREEZE) then
 {
     // Spieler zu Beginn einfrieren
     player enableSimulation false;

@@ -19,7 +19,7 @@
 {
     params ["_veh"];
     _veh addAction [
-        format["<t color=""#f0f24e"">%1</t>", MLOC(HAFTLADUNG)], 
+        format["<t color=""#f0f24e"">%1</t>", MLOC(HAFTLADUNG)],
         {_this call FUNC(haftladungen)},
         [],
         -1,

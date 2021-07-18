@@ -12,19 +12,19 @@
 * [] call func(CBAClassEvents);
 *
 */
-#include "macros.hpp" 
+#include "macros.hpp"
 
 // setzt ACE cargo settings für jedes Fahrzeug
-["LandVehicle", "init", 
+["LandVehicle", "init",
 {
     params ["_vec"];
-    
+
     [_vec] call FUNC(Cargoinit); // global effect
     [_vec] call FUNC(Dragginginit);
 
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
-["Air", "init", 
+["Air", "init",
 {
     params ["_vec"];
 
@@ -33,11 +33,11 @@
 
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
-["CAManBase", "init", 
+["CAManBase", "init",
 {
     params ["_unit"];
-    
-    /* Deactivate ACE Carry functionality for players 
+
+    /* Deactivate ACE Carry functionality for players
     * because it interferes with FAR Revive */
     [_unit, false] call ace_dragging_fnc_setCarryable;
     [_unit, false] call ace_dragging_fnc_setDraggable;
@@ -45,7 +45,7 @@
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
 // setzt ACE cargo settings für jede Kiste
-["Thing", "init", 
+["Thing", "init",
 {
     params ["_item"];
 

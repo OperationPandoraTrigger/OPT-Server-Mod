@@ -16,10 +16,10 @@
 *
 * Public:
 * No - should be called only once from XEH_PreInit.sqf at mission start
-* 
+*
 * Global:
 * No
-* 
+*
 * API:
 * No
 *
@@ -32,7 +32,7 @@
     QGVAR(ENABLED), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "CHECKBOX", // setting type
     [
-        "Zeige Marker",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.  
+        "Zeige Marker",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
         "Spielermarker auf der Karte und im GPS anzeigen?" + endl +
         "(Eine Änderung wird erst nach Neuslottung über die Lobby übernommen)" + endl // Mouse-Over description of the above
     ],
@@ -46,7 +46,7 @@
     QGVAR(SHOW_NAMES), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "CHECKBOX", // setting type
     [
-        "Zeige Spielernamen",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.  
+        "Zeige Spielernamen",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
         "Spielernamen auf der Karte und im GPS anzeigen?" + endl +
         "(Eine Änderung wird sofort übernommen)" + endl // Mouse-Over description of the above
     ],

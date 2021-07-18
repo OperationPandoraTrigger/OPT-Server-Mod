@@ -29,8 +29,8 @@ private _action_earplugs_25 =
 ] call ace_interact_menu_fnc_createAction;
 
 [
-    player, 
-    1, 
+    player,
+    1,
     ["ACE_SelfActions", "ACE_Equipment"],
     _action_earplugs_25
 ] call ace_interact_menu_fnc_addActionToObject;
@@ -51,8 +51,8 @@ private _action_earplugs_50 =
 ] call ace_interact_menu_fnc_createAction;
 
 [
-    player, 
-    1, 
+    player,
+    1,
     ["ACE_SelfActions", "ACE_Equipment"],
     _action_earplugs_50
 ] call ace_interact_menu_fnc_addActionToObject;
@@ -73,8 +73,8 @@ private _action_earplugs_100 =
 ] call ace_interact_menu_fnc_createAction;
 
 [
-    player, 
-    1, 
+    player,
+    1,
     ["ACE_SelfActions", "ACE_Equipment"],
     _action_earplugs_100
 ] call ace_interact_menu_fnc_addActionToObject;

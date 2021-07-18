@@ -14,7 +14,7 @@
 */
 #include "macros.hpp"
 
-if (GVAR(trainingon)) then 
+if (GVAR(trainingon)) then
 {
     // EH für das Versetzen der Flaggen im Trainingsmodus
     // use stackedEH, cannot override default behavior
@@ -37,7 +37,7 @@ if (GVAR(trainingon)) then
             if (_x getVariable [QGVAR(isFlagMovable), false]) exitWith { _flag = _x; };
         } foreach GVAR(csat_flags) + GVAR(nato_flags) + GVAR(aaf_flags);
 
-        if (_flag isEqualTo objNull) then 
+        if (_flag isEqualTo objNull) then
         {
             // check for flag nearby
             _obj = nearestObjects [_pos, ["FlagPole_F"], 100];
@@ -46,8 +46,8 @@ if (GVAR(trainingon)) then
             _obj = _obj select 0;
             _obj setVariable [QGVAR(isFlagMovable), true];
             systemChat "Flagge kann verschoben werden. Platzieren mit erneutem ALT + Linksklick";
-        } 
-        else 
+        }
+        else
         {
             _flag setpos _pos;
             _flag setVariable [QGVAR(isFlagMovable), false];
@@ -60,12 +60,12 @@ if (GVAR(trainingon)) then
             _marker = _flag getVariable QGVAR(mineMarker);
             _marker setMarkerPos _pos;
         };
-        
+
     }] call BIS_fnc_addStackedEventHandler;
 
     // Teleport funktion
     player addAction [("<t color=""#f0bfbfbf"">" + ("Teleport") + "</t>"), {[] call FUNC(teleport)}, [], 0, false, true, '', "alive _target"];
-    
+
     ["Respawn",
     {
         // Teleport funktion
@@ -74,11 +74,11 @@ if (GVAR(trainingon)) then
 };
 
 // EH für Minensperre
-if (GVAR(flagFreeMineZoneOn)) then 
+if (GVAR(flagFreeMineZoneOn)) then
 {
-    player addEventHandler ["FiredMan", 
+    player addEventHandler ["FiredMan",
     {
-        /* 
+        /*
             0 unit: Object - Unit the event handler is assigned to (the instigator)
             1 weapon: String - Fired weapon
             2 muzzle: String - Muzzle that was used
@@ -88,7 +88,7 @@ if (GVAR(flagFreeMineZoneOn)) then
             6 projectile: Object - Object of the projectile that was shot out
             7 vehicle: Object - Vehicle, if weapon is vehicle weapon, otherwise objNull
         */
-        if (_this select 1 == "Put" && ({(_x distance player) <= GVAR(flagFreeMineZoneRadius)} count (GVAR(nato_flags) + GVAR(csat_flags) + GVAR(aaf_flags)) > 0)) then 
+        if (_this select 1 == "Put" && ({(_x distance player) <= GVAR(flagFreeMineZoneRadius)} count (GVAR(nato_flags) + GVAR(csat_flags) + GVAR(aaf_flags)) > 0)) then
         {
             // lösche Mine
             deleteVehicle (_this select 6);
@@ -98,6 +98,6 @@ if (GVAR(flagFreeMineZoneOn)) then
             private _txt = MLOC(MINE_VIOLATION);
             private _header = MLOC(MINE_VIOLATION_HEADER);
             hint format ["%1\n\n%2", _header, _txt];
-        };  
+        };
     }];
 };

@@ -38,7 +38,7 @@
         MLOC(DRAG),
         "z\ace\addons\dragging\UI\icons\person_drag.paa",
         {
-            params ["_target", "_player", "_params"]; 
+            params ["_target", "_player", "_params"];
             [_target, _player, "action_drag"] call FUNC(handleAction);
         },
         {
@@ -56,8 +56,8 @@
     */
     {
         [
-            _unit, 
-            0, 
+            _unit,
+            0,
             ["ACE_MainActions"],
             _x
         ] call ace_interact_menu_fnc_addActionToObject;

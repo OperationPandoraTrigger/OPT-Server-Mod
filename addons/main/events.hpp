@@ -20,11 +20,11 @@ List all events used by OPT here
 // params ["_typ"]
 #define EVENT_SHOP_KAUF_ONLOAD         OPT_EVENT(shop_kauf_onload)
 
-// Erneuerung des Infosfeld nach änderung der Auswahl 
+// Erneuerung des Infosfeld nach änderung der Auswahl
 // params ["_typ"]
 #define EVENT_SHOP_INFOFELD        OPT_EVENT(shop_infofeld)
 
-// Kauf Shop ausführen 
+// Kauf Shop ausführen
 // params ["_typ"]
 #define EVENT_SHOP_ORDER      OPT_EVENT(shop_order)
 
@@ -32,15 +32,15 @@ List all events used by OPT here
 // params ["_typ"]
 #define EVENT_SHOP_KONFIG_ONLOAD         OPT_EVENT(shop_konfig_onload)
 
-// Erneuerung des Infosfeld nach änderung der Auswahl 
+// Erneuerung des Infosfeld nach änderung der Auswahl
 // params [""]
 #define EVENT_SHOP_NEUBERECHNUNG        OPT_EVENT(shop_neuberechnung)
 
-// Kauf in Konfigurator ausführen 
+// Kauf in Konfigurator ausführen
 // params ["_typ"]
 #define EVENT_SHOP_KONFIG_ORDER      OPT_EVENT(shop_konfig_order)
 
-// Kauf in Konfigurator ausführen 
+// Kauf in Konfigurator ausführen
 // params ["_typ"]
 #define EVENT_SHOP_VERKAUF_ORDER      OPT_EVENT(shop_verkauf_order)
 

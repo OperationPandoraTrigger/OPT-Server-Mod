@@ -1,7 +1,7 @@
 /**
 * Description:
 * Initialisierung Wetter/Zeit nach Mission-Load
-* 
+*
 * Author:
 * form
 *
@@ -11,13 +11,13 @@
 *
 * Server Only:
 * Yes
-* 
+*
 * Global:
 * Yes
-* 
+*
 * API:
 * No
-* 
+*
 * Example:
 * [] call FUNC(serverInit);
 */
@@ -49,7 +49,7 @@
         _simulation = true;
     };
 
-    private _nightTypes = ["Land_LampShabby_F"]; 
+    private _nightTypes = ["Land_LampShabby_F"];
     {
         private _objs = allMissionObjects _x;
         {

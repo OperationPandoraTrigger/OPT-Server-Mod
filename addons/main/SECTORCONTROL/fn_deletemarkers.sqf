@@ -12,13 +12,13 @@
 *
 * Server Only:
 * no
-* 
+*
 * Global:
 * No
-* 
+*
 * API:
 * No
-* 
+*
 * Example:
 * remoteExecCall [QFUNC(deleteMarkers)];
 */

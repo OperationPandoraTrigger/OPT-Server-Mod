@@ -30,30 +30,30 @@ params
 [_veh, _instigator, _source] call FUNC(writeKill);
 
 //Loging Besatzung bei Heli Abschuss
-//Heli abschuwsse werden sonst nicht dem AA gutgeschrieben. 
-if (_veh isKindOf "Air") then 
+//Heli abschuwsse werden sonst nicht dem AA gutgeschrieben.
+if (_veh isKindOf "Air") then
 {
-    (crew _veh) apply 
+    (crew _veh) apply
     {
         [_x, _instigator, _source] remoteExecCall ["OPT_SHOP_fnc_writeKill", 2, false];
     };
- };   
+ };
 
 // delete all wrecks within the base safezones
 private _delete = false;
-switch OPT_GELDZEIT_Fraktionauswahl do 
+switch OPT_GELDZEIT_Fraktionauswahl do
 {
         case "AAFvsCSAT":
         {
-            if (!(_veh isKindOf "CAManBase") && {position _veh inArea "AAF_T_Zone1" || position _veh inArea "AAF_T_Zone2" || position _veh inArea "CSAT_T_Zone1" || position _veh inArea "CSAT_T_Zone2"}) then 
+            if (!(_veh isKindOf "CAManBase") && {position _veh inArea "AAF_T_Zone1" || position _veh inArea "AAF_T_Zone2" || position _veh inArea "CSAT_T_Zone1" || position _veh inArea "CSAT_T_Zone2"}) then
             {
                 _delete = true;
-            };     
+            };
         };
 
         case "NATOvsCSAT":
         {
-            if (!(_veh isKindOf "CAManBase") && {position _veh inArea "NATO_T_Zone1" || position _veh inArea "NATO_T_Zone2" || position _veh inArea "CSAT_T_Zone1" || position _veh inArea "CSAT_T_Zone2"}) then 
+            if (!(_veh isKindOf "CAManBase") && {position _veh inArea "NATO_T_Zone1" || position _veh inArea "NATO_T_Zone2" || position _veh inArea "CSAT_T_Zone1" || position _veh inArea "CSAT_T_Zone2"}) then
             {
                 _delete = true;
             };
@@ -61,13 +61,13 @@ switch OPT_GELDZEIT_Fraktionauswahl do
 
         case "NATOvsAAF":
         {
-            if (!(_veh isKindOf "CAManBase") && {position _veh inArea "NATO_T_Zone1" || position _veh inArea "NATO_T_Zone2" || position _veh inArea "AAF_T_Zone1" || position _veh inArea "AAF_T_Zone2"}) then 
+            if (!(_veh isKindOf "CAManBase") && {position _veh inArea "NATO_T_Zone1" || position _veh inArea "NATO_T_Zone2" || position _veh inArea "AAF_T_Zone1" || position _veh inArea "AAF_T_Zone2"}) then
             {
                 _delete = true;
-            };       
+            };
         };
 
-           default 
+           default
         {
             ERROR_LOG("handleDeadVehicle: Fehlerhafte Datenübergabe - Keine Fraktionauswahl erkannt");
         };

@@ -1,7 +1,7 @@
 /**
 * Description:
 * Init Server Hardcap Daten für Shop
-* 
+*
 * Author:
 * Lord-MDB
 *
@@ -11,13 +11,13 @@
 *
 * Server Only:
 * Yes
-* 
+*
 * Global:
 * No
-* 
+*
 * API:
 * No
-* 
+*
 * Example:
 * [] call FUNC(serverInit);
 */
@@ -60,7 +60,7 @@ publicVariable QGVAR(Hardcap_csat_sea);
 
 
 //AAF Hardcap
-// Heli / Fahrzeuge / Ausrüstung / See 
+// Heli / Fahrzeuge / Ausrüstung / See
 GVAR(Hardcap_aaf_choppers) = [];
 publicVariable QGVAR(Hardcap_aaf_choppers);
 
@@ -76,13 +76,13 @@ publicVariable QGVAR(Hardcap_aaf_supplies);
 GVAR(Hardcap_aaf_sea) = [];
 publicVariable QGVAR(Hardcap_aaf_sea);
 
-switch (GVAR(hardcaplist)) do 
+switch (GVAR(hardcaplist)) do
 {
-    case "0": 
+    case "0":
     {
     };
 
-    case "1": 
+    case "1":
     {
         /* CSAT Planes */
         GVAR(Hardcap_csat_planes) pushBack ["OPT_CUP_C_Cessna_172_CIV_GREEN",3];
@@ -144,8 +144,8 @@ switch (GVAR(hardcaplist)) do
         GVAR(Hardcap_nato_supplies) pushBack ["OPT_CUP_B_M119_AT_USMC",3];
         GVAR(Hardcap_nato_supplies) pushBack ["CUP_B_TOW2_TriPod_USMC",2];
     };
-    
-    default 
+
+    default
     {
     };
 };

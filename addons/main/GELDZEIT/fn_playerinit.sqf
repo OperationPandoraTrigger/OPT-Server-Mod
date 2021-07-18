@@ -15,11 +15,11 @@
 * No
 *
 * Public:
-* No 
-* 
+* No
+*
 * Global:
 * No
-* 
+*
 * API:
 * No
 *

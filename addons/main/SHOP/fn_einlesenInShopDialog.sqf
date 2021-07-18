@@ -1,32 +1,32 @@
 /**
 * Description:Einlesen der Daten beim Öffnen des Dialogs durch den Spieler
-* 
-* 
+*
+*
 * Author:
 * [GNC]Lord-MDB
 *
 * Arguments:
-* 
+*
 *
 * Return value:
-* 
+*
 *
 * Server Only:
 * No
-* 
+*
 * Global:
 * No
-* 
+*
 * API:
 * No
-* 
+*
 * Example:
-* 
+*
 */
 #include "macros.hpp"
 
 //Typ einlesen
-params 
+params
 [
     ["_type", ""]
 ];
@@ -49,7 +49,7 @@ GVAR(pads) = [];
 GVAR(moveInVeh) = false;
 
 //Dialog erstellen
-private _success = createDialog "Dialogshopkaufen"; 
+private _success = createDialog "Dialogshopkaufen";
 
 //Dialog definieren
 #define IDD_DLG_ORDER 20000
@@ -112,28 +112,28 @@ GVAR(Buttonwahl) = 0;
 GVAR(Checkbereich) = 7;
 
 //Kaufbutton ausblenden
-for "_i" from 0 to SHOPBUTTONANZAHL do 
+for "_i" from 0 to SHOPBUTTONANZAHL do
 {
     //Bild
     ctrlShow [(20102 + _i), false ];
 
-    //TextName    
+    //TextName
     ctrlShow [(20010 + _i), false ];
     ctrlEnable [(20010 + _i), false];
 
-    //TextGeld    
+    //TextGeld
     ctrlShow [(20126 + _i), false ];
     ctrlSetText [(20126 + _i), ""];
-};  
+};
 
-switch (GVAR(vehicleType)) do 
+switch (GVAR(vehicleType)) do
 {
-    case "choppers" : 
+    case "choppers" :
     {
-        switch (_side) do 
+        switch (_side) do
         {
             case west:
-            {    
+            {
                 _pool = GVAR(nato_choppers);
                 GVAR(pads) = GVAR(pad_air_west);
                 GVAR(Checkbereich) = 13;
@@ -141,7 +141,7 @@ switch (GVAR(vehicleType)) do
             };
 
             case east:
-            {    
+            {
                 _pool = GVAR(csat_choppers);
                  GVAR(pads) = GVAR(pad_air_east);
                  GVAR(Checkbereich) = 13;
@@ -149,7 +149,7 @@ switch (GVAR(vehicleType)) do
             };
 
             case independent:
-            {    
+            {
                 _pool = GVAR(AAF_choppers);
                 GVAR(pads) = GVAR(pad_air_independent);
                 GVAR(Checkbereich) = 13;
@@ -158,18 +158,18 @@ switch (GVAR(vehicleType)) do
 
             default
             {
-            };        
-        }; 
+            };
+        };
         GVAR(moveInVeh) = true;
-        _konfig ctrlEnable false;       
+        _konfig ctrlEnable false;
     };
 
-    case "planes" : 
+    case "planes" :
     {
-        switch (_side) do 
+        switch (_side) do
         {
             case west:
-            {    
+            {
                 _pool = GVAR(nato_planes);
                 GVAR(pads) = GVAR(pad_plane_west);
                 GVAR(Checkbereich) = 13;
@@ -177,7 +177,7 @@ switch (GVAR(vehicleType)) do
             };
 
             case east:
-            {    
+            {
                 _pool = GVAR(csat_planes);
                  GVAR(pads) = GVAR(pad_plane_east);
                  GVAR(Checkbereich) = 13;
@@ -185,7 +185,7 @@ switch (GVAR(vehicleType)) do
             };
 
             case independent:
-            {    
+            {
                 _pool = GVAR(AAF_planes);
                 GVAR(pads) = GVAR(pad_plane_independent);
                 GVAR(Checkbereich) = 13;
@@ -194,7 +194,7 @@ switch (GVAR(vehicleType)) do
 
             default
             {
-            };        
+            };
         };
 
         // Zivilflughafen
@@ -209,48 +209,48 @@ switch (GVAR(vehicleType)) do
         };
 
         GVAR(moveInVeh) = true;
-        _konfig ctrlEnable false;       
+        _konfig ctrlEnable false;
     };
 
     case "vehicles":
     {
-        switch (_side) do 
+        switch (_side) do
         {
             case west:
-            {    
+            {
                 _pool = GVAR(nato_armored) + GVAR(nato_vehicles) + GVAR(nato_vehicles_supply);
                 GVAR(pads) = GVAR(pad_veh_west);
                 GVAR(Hardcap_pool) = GVAR(Hardcap_nato_vehicles);
             };
 
             case east:
-            {    
+            {
                 _pool = GVAR(csat_armored) + GVAR(csat_vehicles) + GVAR(csat_vehicles_supply);
                 GVAR(pads) = GVAR(pad_veh_east);
                 GVAR(Hardcap_pool) = GVAR(Hardcap_csat_vehicles);
             };
 
             case independent:
-            {    
+            {
                 _pool = GVAR(AAF_armored) + GVAR(AAF_vehicles) + GVAR(AAF_vehicles_supply);
                 GVAR(pads) = GVAR(pad_veh_independent);
                 GVAR(Hardcap_pool) = GVAR(Hardcap_aaf_vehicles);
             };
 
-            default 
+            default
             {
-            };        
-        }; 
+            };
+        };
         GVAR(moveInVeh) = true;
-        _konfig ctrlEnable false;       
+        _konfig ctrlEnable false;
     };
 
-    case "supplies" : 
+    case "supplies" :
     {
-        switch (_side) do 
+        switch (_side) do
         {
             case west:
-            {    
+            {
                 _pool = GVAR(nato_supplies) + GVAR(nato_static);
                 GVAR(pads) = GVAR(pad_sup_west);
                 GVAR(Checkbereich) = 4;
@@ -258,7 +258,7 @@ switch (GVAR(vehicleType)) do
             };
 
             case east:
-            {    
+            {
                 _pool = GVAR(csat_supplies) + GVAR(csat_static);
                 GVAR(pads) = GVAR(pad_sup_east);
                 GVAR(Checkbereich) = 4;
@@ -266,89 +266,89 @@ switch (GVAR(vehicleType)) do
             };
 
             case independent:
-            {    
+            {
                 _pool = GVAR(AAF_supplies) + GVAR(AAF_static);
                 GVAR(pads) = GVAR(pad_sup_independent);
                 GVAR(Checkbereich) = 4;
                 GVAR(Hardcap_pool) = GVAR(Hardcap_aaf_supplies);
             };
 
-            default 
+            default
             {
-            };        
-        }; 
+            };
+        };
         GVAR(moveInVeh) = false;
-        _moveInVeh ctrlShow false;        
+        _moveInVeh ctrlShow false;
     };
 
     case "sea":
     {
-        switch (_side) do 
+        switch (_side) do
         {
             case west:
-            {    
+            {
                 _pool = GVAR(nato_sea);
                 GVAR(pads) = GVAR(pad_sea_west);
                 GVAR(Hardcap_pool) = GVAR(Hardcap_nato_sea);
             };
 
             case east:
-            {    
+            {
                 _pool = GVAR(csat_sea);
                 GVAR(pads) = GVAR(pad_sea_east);
                 GVAR(Hardcap_pool) = GVAR(Hardcap_csat_sea);
             };
 
             case independent:
-            {    
+            {
                 _pool = GVAR(AAF_sea);
                 GVAR(pads) = GVAR(pad_sea_independent);
                 GVAR(Hardcap_pool) = GVAR(Hardcap_aaf_sea);
             };
-            default 
+            default
             {
-            };        
-        }; 
+            };
+        };
         GVAR(moveInVeh) = true;
-        _konfig ctrlEnable false;       
+        _konfig ctrlEnable false;
     };
-    default 
+    default
     {
-        switch (_side) do 
+        switch (_side) do
         {
             case west:
-            {    
+            {
                 _pool = [];
                 GVAR(pads) = GVAR(pad_all_west);
             };
 
             case east:
-            {    
+            {
                 _pool = [];
                 GVAR(pads) = GVAR(pad_all_east);
             };
 
             case independent:
-            {    
+            {
                 _pool = [];
                 GVAR(pads) = GVAR(pad_all_independent);
             };
 
-            default 
+            default
             {
-            };        
-        }; 
+            };
+        };
     };
 };
 
-// Objekte größer 0€ bestimmen 
+// Objekte größer 0€ bestimmen
 _pool = _pool select {_x select 1 > 0};
 
-// Objekte Sortieren 
+// Objekte Sortieren
 GVAR(orderDialogObjects) = [_pool, 1] call CBA_fnc_sortNestedArray; // billigste zuerst
 
 //Boxen füllen
-// Budget 
+// Budget
 [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 
 //Anzahl Kaufbutton bestimmen
@@ -358,20 +358,20 @@ private _Bildobjekt = "";
 private _Nameobjekt = "";
 private _Geldobjekt = 0;
 
-for "_i" from 0 to (_Objektanzahl-1) do 
+for "_i" from 0 to (_Objektanzahl-1) do
 {
     //Bild
     _Bildobjekt = getText (configFile >> "cfgVehicles" >> ((GVAR(orderDialogObjects) select _i) select 0) >> "editorPreview");
     ctrlSetText [(20102 + _i), _Bildobjekt];
     ctrlShow [(20102 + _i), true ];
 
-    //TextName    
+    //TextName
     _Nameobjekt = getText (configFile >> "CfgVehicles" >> ((GVAR(orderDialogObjects) select _i) select 0) >> "displayName");
     ctrlSetText [(20010 + _i), _Nameobjekt];
     ctrlShow [(20010 + _i), true ];
     ctrlEnable [(20010 + _i), true];
 
-    //TextGeld    
+    //TextGeld
     _Geldobjekt = ((GVAR(orderDialogObjects) select _i) select 1);
     private _GeldClass = ((GVAR(orderDialogObjects) select _i) select 0);
     private _GeldDatensatz = [];
@@ -380,25 +380,25 @@ for "_i" from 0 to (_Objektanzahl-1) do
     ctrlSetText [(20126 + _i), format["%1",_Geldobjekt+(_GeldDatensatz select 10)]];
     ctrlShow [(20126 + _i), true ];
     _display displayCtrl (20010 + _i) ctrlSetTooltip format["Waffenpreis:%1 Grundpreis:%2",(_GeldDatensatz select 10),_Geldobjekt];
-}; 
+};
 
 // Flagge setzen
-switch (_side) do 
+switch (_side) do
 {
-    case west: 
+    case west:
     {
         _rscPicture ctrlSetText "\opt\opt_client\addons\core\bilder\NATO-Logo.paa";
     };
 
-    case east: 
+    case east:
     {
         _rscPicture ctrlSetText "\opt\opt_client\addons\core\bilder\WP_Logo.paa";
-    };  
+    };
 
-    case independent: 
+    case independent:
     {
         _rscPicture ctrlSetText "\opt\opt_client\addons\core\bilder\xxx-Logo.paa";
-    };    
+    };
 };
 
 GVAR(orderPAD) = [];
@@ -409,19 +409,19 @@ GVAR(idPadCheckShop) =
     private _display = findDisplay 20000;
     private _order = _display displayCtrl 20004;
     private _padBox = _display displayCtrl 20003;
-   
+
     // freie Pads suchen
     private _freiePads = [GVAR(pads), GVAR(Checkbereich)] call FUNC(checkpad);
 
     // Kaufbuttuon Freischalten und erstes Pad zuordnen
-    if ((count _freiePads) > 0) then 
+    if ((count _freiePads) > 0) then
     {
         _order ctrlEnable true;
         GVAR(orderPAD) = _freiePads select 0;
         _padBox ctrlSetTextColor [0.0, 1.0, 0.0, 1];
         _padBox ctrlSetText format ["BOX:%1",GVAR(orderPAD)];
     }
-    else 
+    else
     {
         _order ctrlEnable false;
         GVAR(orderPAD) = "Kein freie Box vorhanden";
@@ -430,9 +430,9 @@ GVAR(idPadCheckShop) =
     };
 }, 0] call CFUNC(addPerFrameHandler);
 
-// Button Listbox Events 
-// Kauf ausführen  
-_order ctrlAddEventHandler [ "ButtonClick", 
+// Button Listbox Events
+// Kauf ausführen
+_order ctrlAddEventHandler [ "ButtonClick",
 {
     private _unitCost = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1);
     private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
@@ -440,10 +440,10 @@ _order ctrlAddEventHandler [ "ButtonClick",
     private _Datensatz = [];
 
     _Datensatz = [_class] call FUNC(loadout);
-    
+
     [_Datensatz,GVAR(orderPAD),GVAR(moveInVeh),_unitCost] call FUNC(order);
-    
-    if (GVAR(moveInVeh)) then 
+
+    if (GVAR(moveInVeh)) then
     {
         GVAR(LOCK) = false;
         closeDialog 0;
@@ -451,11 +451,11 @@ _order ctrlAddEventHandler [ "ButtonClick",
 
     private _display = findDisplay IDD_DLG_ORDER;
     private _budget = _display displayCtrl 20009;
-    [_budget] call OPT_GELDZEIT_fnc_renderbudget;   
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
 
-// Konfig ausführen  
-_konfig ctrlAddEventHandler [ "ButtonClick", 
+// Konfig ausführen
+_konfig ctrlAddEventHandler [ "ButtonClick",
 {
     private _unitCost = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1);
     private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
@@ -466,32 +466,32 @@ _konfig ctrlAddEventHandler [ "ButtonClick",
 }];
 
 // Festlegen ob Spieler in Fahrzeug nach kauf
-_moveInVeh ctrlAddEventHandler [ "ButtonClick", 
+_moveInVeh ctrlAddEventHandler [ "ButtonClick",
 {
     private _display = findDisplay IDD_DLG_ORDER;
     private _moveInVeh = _display displayCtrl 20006;
 
-    if (GVAR(moveInVeh)) then 
+    if (GVAR(moveInVeh)) then
     {
-        GVAR(moveInVeh) = false;         
-        _moveInVeh ctrlSetText "[  ] Fahrzeug besetzen";   
-        _moveInVeh ctrlSetTextColor [1.0, 0.0, 0.0, 1];       
+        GVAR(moveInVeh) = false;
+        _moveInVeh ctrlSetText "[  ] Fahrzeug besetzen";
+        _moveInVeh ctrlSetTextColor [1.0, 0.0, 0.0, 1];
     }
     else
     {
-        GVAR(moveInVeh) = true;         
-        _moveInVeh ctrlSetText "[X] Fahrzeug besetzen"; 
-        _moveInVeh ctrlSetTextColor [0.0, 1.0, 0.0, 1];             
+        GVAR(moveInVeh) = true;
+        _moveInVeh ctrlSetText "[X] Fahrzeug besetzen";
+        _moveInVeh ctrlSetTextColor [0.0, 1.0, 0.0, 1];
     };
 
 }];
 
-// Fahrzeuge auf allen Boxen im Bereich löschen 
+// Fahrzeuge auf allen Boxen im Bereich löschen
 GVAR(removecount) = 0;
 
-_remove ctrlAddEventHandler [ "ButtonClick", 
+_remove ctrlAddEventHandler [ "ButtonClick",
 {
-    if (GVAR(removecount) == 3) then 
+    if (GVAR(removecount) == 3) then
     {
         [GVAR(pads)] call FUNC(deletevehicle);
         GVAR(removecount) = 0;
@@ -501,7 +501,7 @@ _remove ctrlAddEventHandler [ "ButtonClick",
 
 //Kaufbutton EH
 //Button 1
-_button1 ctrlAddEventHandler [ "ButtonClick", 
+_button1 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 0;
 
@@ -519,11 +519,11 @@ _button1 ctrlAddEventHandler [ "ButtonClick",
     GVAR(Hardcap_pool) apply
     {
         _hardcapobj = _x select 0;
-        if (_class isEqualTo _hardcapobj) then 
+        if (_class isEqualTo _hardcapobj) then
         {
-            _hardcapinfo = format ["%1",_x select 1];       
-        }; 
-    }; 
+            _hardcapinfo = format ["%1",_x select 1];
+        };
+    };
 
     _kosten ctrlSetText format ["€:%1 [%2]",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)),_hardcapinfo];
 
@@ -532,7 +532,7 @@ _button1 ctrlAddEventHandler [ "ButtonClick",
 }];
 
 //Button 2
-_button2 ctrlAddEventHandler [ "ButtonClick", 
+_button2 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 1;
 
@@ -550,11 +550,11 @@ _button2 ctrlAddEventHandler [ "ButtonClick",
     GVAR(Hardcap_pool) apply
     {
         _hardcapobj = _x select 0;
-        if (_class isEqualTo _hardcapobj) then 
+        if (_class isEqualTo _hardcapobj) then
         {
-            _hardcapinfo = format ["%1",_x select 1];       
-        }; 
-    }; 
+            _hardcapinfo = format ["%1",_x select 1];
+        };
+    };
 
     _kosten ctrlSetText format ["€:%1 [%2]",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)),_hardcapinfo];
 
@@ -563,7 +563,7 @@ _button2 ctrlAddEventHandler [ "ButtonClick",
 }];
 
 //Button 3
-_button3 ctrlAddEventHandler [ "ButtonClick", 
+_button3 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 2;
 
@@ -581,11 +581,11 @@ _button3 ctrlAddEventHandler [ "ButtonClick",
     GVAR(Hardcap_pool) apply
     {
         _hardcapobj = _x select 0;
-        if (_class isEqualTo _hardcapobj) then 
+        if (_class isEqualTo _hardcapobj) then
         {
-            _hardcapinfo = format ["%1",_x select 1];       
-        }; 
-    }; 
+            _hardcapinfo = format ["%1",_x select 1];
+        };
+    };
 
     _kosten ctrlSetText format ["€:%1 [%2]",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)),_hardcapinfo];
 
@@ -594,7 +594,7 @@ _button3 ctrlAddEventHandler [ "ButtonClick",
 }];
 
 //Button 4
-_button4 ctrlAddEventHandler [ "ButtonClick", 
+_button4 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 3;
 
@@ -612,20 +612,20 @@ _button4 ctrlAddEventHandler [ "ButtonClick",
     GVAR(Hardcap_pool) apply
     {
         _hardcapobj = _x select 0;
-        if (_class isEqualTo _hardcapobj) then 
+        if (_class isEqualTo _hardcapobj) then
         {
-            _hardcapinfo = format ["%1",_x select 1];       
-        }; 
-    }; 
+            _hardcapinfo = format ["%1",_x select 1];
+        };
+    };
 
     _kosten ctrlSetText format ["€:%1 [%2]",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)),_hardcapinfo];
-    
+
     private _budget = _display displayCtrl 20009;
     [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
 
 //Button 5
-_button5 ctrlAddEventHandler [ "ButtonClick", 
+_button5 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 4;
 
@@ -643,11 +643,11 @@ _button5 ctrlAddEventHandler [ "ButtonClick",
     GVAR(Hardcap_pool) apply
     {
         _hardcapobj = _x select 0;
-        if (_class isEqualTo _hardcapobj) then 
+        if (_class isEqualTo _hardcapobj) then
         {
-            _hardcapinfo = format ["%1",_x select 1];       
-        }; 
-    }; 
+            _hardcapinfo = format ["%1",_x select 1];
+        };
+    };
 
     _kosten ctrlSetText format ["€:%1 [%2]",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)),_hardcapinfo];
 
@@ -656,7 +656,7 @@ _button5 ctrlAddEventHandler [ "ButtonClick",
 }];
 
 //Button 6
-_button6 ctrlAddEventHandler [ "ButtonClick", 
+_button6 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 5;
 
@@ -674,11 +674,11 @@ _button6 ctrlAddEventHandler [ "ButtonClick",
     GVAR(Hardcap_pool) apply
     {
         _hardcapobj = _x select 0;
-        if (_class isEqualTo _hardcapobj) then 
+        if (_class isEqualTo _hardcapobj) then
         {
-            _hardcapinfo = format ["%1",_x select 1];       
-        }; 
-    }; 
+            _hardcapinfo = format ["%1",_x select 1];
+        };
+    };
 
     _kosten ctrlSetText format ["€:%1 [%2]",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)),_hardcapinfo];
 
@@ -687,7 +687,7 @@ _button6 ctrlAddEventHandler [ "ButtonClick",
 }];
 
 //Button 7
-_button7 ctrlAddEventHandler [ "ButtonClick", 
+_button7 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 6;
 
@@ -705,11 +705,11 @@ _button7 ctrlAddEventHandler [ "ButtonClick",
     GVAR(Hardcap_pool) apply
     {
         _hardcapobj = _x select 0;
-        if (_class isEqualTo _hardcapobj) then 
+        if (_class isEqualTo _hardcapobj) then
         {
-            _hardcapinfo = format ["%1",_x select 1];       
-        }; 
-    }; 
+            _hardcapinfo = format ["%1",_x select 1];
+        };
+    };
 
     _kosten ctrlSetText format ["€:%1 [%2]",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)),_hardcapinfo];
 
@@ -718,7 +718,7 @@ _button7 ctrlAddEventHandler [ "ButtonClick",
 }];
 
 //Button 8
-_button8 ctrlAddEventHandler [ "ButtonClick", 
+_button8 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 7;
 
@@ -736,11 +736,11 @@ _button8 ctrlAddEventHandler [ "ButtonClick",
     GVAR(Hardcap_pool) apply
     {
         _hardcapobj = _x select 0;
-        if (_class isEqualTo _hardcapobj) then 
+        if (_class isEqualTo _hardcapobj) then
         {
-            _hardcapinfo = format ["%1",_x select 1];       
-        }; 
-    }; 
+            _hardcapinfo = format ["%1",_x select 1];
+        };
+    };
 
     _kosten ctrlSetText format ["€:%1 [%2]",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)),_hardcapinfo];
 
@@ -749,7 +749,7 @@ _button8 ctrlAddEventHandler [ "ButtonClick",
 }];
 
 //Button 9
-_button9 ctrlAddEventHandler [ "ButtonClick", 
+_button9 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 8;
 
@@ -767,20 +767,20 @@ _button9 ctrlAddEventHandler [ "ButtonClick",
     GVAR(Hardcap_pool) apply
     {
         _hardcapobj = _x select 0;
-        if (_class isEqualTo _hardcapobj) then 
+        if (_class isEqualTo _hardcapobj) then
         {
-            _hardcapinfo = format ["%1",_x select 1];       
-        }; 
-    }; 
+            _hardcapinfo = format ["%1",_x select 1];
+        };
+    };
 
     _kosten ctrlSetText format ["€:%1 [%2]",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)),_hardcapinfo];
-    
+
     private _budget = _display displayCtrl 20009;
     [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
 
 //Button 10
-_button10 ctrlAddEventHandler [ "ButtonClick", 
+_button10 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 9;
 
@@ -798,20 +798,20 @@ _button10 ctrlAddEventHandler [ "ButtonClick",
     GVAR(Hardcap_pool) apply
     {
         _hardcapobj = _x select 0;
-        if (_class isEqualTo _hardcapobj) then 
+        if (_class isEqualTo _hardcapobj) then
         {
-            _hardcapinfo = format ["%1",_x select 1];       
-        }; 
-    }; 
+            _hardcapinfo = format ["%1",_x select 1];
+        };
+    };
 
     _kosten ctrlSetText format ["€:%1 [%2]",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)),_hardcapinfo];
-    
+
     private _budget = _display displayCtrl 20009;
     [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
 
 //Button 11
-_button11 ctrlAddEventHandler [ "ButtonClick", 
+_button11 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 10;
 
@@ -829,20 +829,20 @@ _button11 ctrlAddEventHandler [ "ButtonClick",
     GVAR(Hardcap_pool) apply
     {
         _hardcapobj = _x select 0;
-        if (_class isEqualTo _hardcapobj) then 
+        if (_class isEqualTo _hardcapobj) then
         {
-            _hardcapinfo = format ["%1",_x select 1];       
-        }; 
-    }; 
+            _hardcapinfo = format ["%1",_x select 1];
+        };
+    };
 
     _kosten ctrlSetText format ["€:%1 [%2]",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)),_hardcapinfo];
-    
+
     private _budget = _display displayCtrl 20009;
     [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
 
 //Button 12
-_button12 ctrlAddEventHandler [ "ButtonClick", 
+_button12 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 11;
 
@@ -860,20 +860,20 @@ _button12 ctrlAddEventHandler [ "ButtonClick",
     GVAR(Hardcap_pool) apply
     {
         _hardcapobj = _x select 0;
-        if (_class isEqualTo _hardcapobj) then 
+        if (_class isEqualTo _hardcapobj) then
         {
-            _hardcapinfo = format ["%1",_x select 1];       
-        }; 
-    }; 
+            _hardcapinfo = format ["%1",_x select 1];
+        };
+    };
 
     _kosten ctrlSetText format ["€:%1 [%2]",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)),_hardcapinfo];
-    
+
     private _budget = _display displayCtrl 20009;
     [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
 
 //Button 13
-_button13 ctrlAddEventHandler [ "ButtonClick", 
+_button13 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 12;
 
@@ -891,11 +891,11 @@ _button13 ctrlAddEventHandler [ "ButtonClick",
     GVAR(Hardcap_pool) apply
     {
         _hardcapobj = _x select 0;
-        if (_class isEqualTo _hardcapobj) then 
+        if (_class isEqualTo _hardcapobj) then
         {
-            _hardcapinfo = format ["%1",_x select 1];       
-        }; 
-    }; 
+            _hardcapinfo = format ["%1",_x select 1];
+        };
+    };
 
     _kosten ctrlSetText format ["€:%1 [%2]",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)),_hardcapinfo];
 
@@ -904,7 +904,7 @@ _button13 ctrlAddEventHandler [ "ButtonClick",
 }];
 
 //Button 14
-_button14 ctrlAddEventHandler [ "ButtonClick", 
+_button14 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 13;
 
@@ -922,20 +922,20 @@ _button14 ctrlAddEventHandler [ "ButtonClick",
     GVAR(Hardcap_pool) apply
     {
         _hardcapobj = _x select 0;
-        if (_class isEqualTo _hardcapobj) then 
+        if (_class isEqualTo _hardcapobj) then
         {
-            _hardcapinfo = format ["%1",_x select 1];       
-        }; 
-    }; 
+            _hardcapinfo = format ["%1",_x select 1];
+        };
+    };
 
     _kosten ctrlSetText format ["€:%1 [%2]",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)),_hardcapinfo];
-    
+
     private _budget = _display displayCtrl 20009;
     [_budget] call OPT_GELDZEIT_fnc_renderbudget;
 }];
 
 //Button 15
-_button15 ctrlAddEventHandler [ "ButtonClick", 
+_button15 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 14;
 
@@ -953,11 +953,11 @@ _button15 ctrlAddEventHandler [ "ButtonClick",
     GVAR(Hardcap_pool) apply
     {
         _hardcapobj = _x select 0;
-        if (_class isEqualTo _hardcapobj) then 
+        if (_class isEqualTo _hardcapobj) then
         {
-            _hardcapinfo = format ["%1",_x select 1];       
-        }; 
-    }; 
+            _hardcapinfo = format ["%1",_x select 1];
+        };
+    };
 
     _kosten ctrlSetText format ["€:%1 [%2]",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)),_hardcapinfo];
 
@@ -966,7 +966,7 @@ _button15 ctrlAddEventHandler [ "ButtonClick",
 }];
 
 //Button 16
-_button16 ctrlAddEventHandler [ "ButtonClick", 
+_button16 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 15;
 
@@ -984,11 +984,11 @@ _button16 ctrlAddEventHandler [ "ButtonClick",
     GVAR(Hardcap_pool) apply
     {
         _hardcapobj = _x select 0;
-        if (_class isEqualTo _hardcapobj) then 
+        if (_class isEqualTo _hardcapobj) then
         {
-            _hardcapinfo = format ["%1",_x select 1];       
-        }; 
-    }; 
+            _hardcapinfo = format ["%1",_x select 1];
+        };
+    };
 
     _kosten ctrlSetText format ["€:%1 [%2]",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)),_hardcapinfo];
 
@@ -997,7 +997,7 @@ _button16 ctrlAddEventHandler [ "ButtonClick",
 }];
 
 //Button 17
-_button17 ctrlAddEventHandler [ "ButtonClick", 
+_button17 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 16;
 
@@ -1015,11 +1015,11 @@ _button17 ctrlAddEventHandler [ "ButtonClick",
     GVAR(Hardcap_pool) apply
     {
         _hardcapobj = _x select 0;
-        if (_class isEqualTo _hardcapobj) then 
+        if (_class isEqualTo _hardcapobj) then
         {
-            _hardcapinfo = format ["%1",_x select 1];       
-        }; 
-    }; 
+            _hardcapinfo = format ["%1",_x select 1];
+        };
+    };
 
     _kosten ctrlSetText format ["€:%1 [%2]",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)),_hardcapinfo];
 
@@ -1028,7 +1028,7 @@ _button17 ctrlAddEventHandler [ "ButtonClick",
 }];
 
 //Button 18
-_button18 ctrlAddEventHandler [ "ButtonClick", 
+_button18 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 17;
 
@@ -1046,11 +1046,11 @@ _button18 ctrlAddEventHandler [ "ButtonClick",
     GVAR(Hardcap_pool) apply
     {
         _hardcapobj = _x select 0;
-        if (_class isEqualTo _hardcapobj) then 
+        if (_class isEqualTo _hardcapobj) then
         {
-            _hardcapinfo = format ["%1",_x select 1];       
-        }; 
-    }; 
+            _hardcapinfo = format ["%1",_x select 1];
+        };
+    };
 
     _kosten ctrlSetText format ["€:%1 [%2]",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)),_hardcapinfo];
 
@@ -1059,7 +1059,7 @@ _button18 ctrlAddEventHandler [ "ButtonClick",
 }];
 
 //Button 19
-_button19 ctrlAddEventHandler [ "ButtonClick", 
+_button19 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 18;
 
@@ -1077,11 +1077,11 @@ _button19 ctrlAddEventHandler [ "ButtonClick",
     GVAR(Hardcap_pool) apply
     {
         _hardcapobj = _x select 0;
-        if (_class isEqualTo _hardcapobj) then 
+        if (_class isEqualTo _hardcapobj) then
         {
-            _hardcapinfo = format ["%1",_x select 1];       
-        }; 
-    }; 
+            _hardcapinfo = format ["%1",_x select 1];
+        };
+    };
 
     _kosten ctrlSetText format ["€:%1 [%2]",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)),_hardcapinfo];
 
@@ -1090,7 +1090,7 @@ _button19 ctrlAddEventHandler [ "ButtonClick",
 }];
 
 //Button 20
-_button20 ctrlAddEventHandler [ "ButtonClick", 
+_button20 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 19;
 
@@ -1108,11 +1108,11 @@ _button20 ctrlAddEventHandler [ "ButtonClick",
     GVAR(Hardcap_pool) apply
     {
         _hardcapobj = _x select 0;
-        if (_class isEqualTo _hardcapobj) then 
+        if (_class isEqualTo _hardcapobj) then
         {
-            _hardcapinfo = format ["%1",_x select 1];       
-        }; 
-    }; 
+            _hardcapinfo = format ["%1",_x select 1];
+        };
+    };
 
     _kosten ctrlSetText format ["€:%1 [%2]",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)),_hardcapinfo];
 
@@ -1121,7 +1121,7 @@ _button20 ctrlAddEventHandler [ "ButtonClick",
 }];
 
 //Button 21
-_button21 ctrlAddEventHandler [ "ButtonClick", 
+_button21 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 20;
 
@@ -1139,11 +1139,11 @@ _button21 ctrlAddEventHandler [ "ButtonClick",
     GVAR(Hardcap_pool) apply
     {
         _hardcapobj = _x select 0;
-        if (_class isEqualTo _hardcapobj) then 
+        if (_class isEqualTo _hardcapobj) then
         {
-            _hardcapinfo = format ["%1",_x select 1];       
-        }; 
-    }; 
+            _hardcapinfo = format ["%1",_x select 1];
+        };
+    };
 
     _kosten ctrlSetText format ["€:%1 [%2]",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)),_hardcapinfo];
 
@@ -1152,7 +1152,7 @@ _button21 ctrlAddEventHandler [ "ButtonClick",
 }];
 
 //Button 22
-_button22 ctrlAddEventHandler [ "ButtonClick", 
+_button22 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 21;
 
@@ -1170,11 +1170,11 @@ _button22 ctrlAddEventHandler [ "ButtonClick",
     GVAR(Hardcap_pool) apply
     {
         _hardcapobj = _x select 0;
-        if (_class isEqualTo _hardcapobj) then 
+        if (_class isEqualTo _hardcapobj) then
         {
-            _hardcapinfo = format ["%1",_x select 1];       
-        }; 
-    }; 
+            _hardcapinfo = format ["%1",_x select 1];
+        };
+    };
 
     _kosten ctrlSetText format ["€:%1 [%2]",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)),_hardcapinfo];
 
@@ -1183,7 +1183,7 @@ _button22 ctrlAddEventHandler [ "ButtonClick",
 }];
 
 //Button 23
-_button23 ctrlAddEventHandler [ "ButtonClick", 
+_button23 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 22;
 
@@ -1201,11 +1201,11 @@ _button23 ctrlAddEventHandler [ "ButtonClick",
     GVAR(Hardcap_pool) apply
     {
         _hardcapobj = _x select 0;
-        if (_class isEqualTo _hardcapobj) then 
+        if (_class isEqualTo _hardcapobj) then
         {
-            _hardcapinfo = format ["%1",_x select 1];       
-        }; 
-    }; 
+            _hardcapinfo = format ["%1",_x select 1];
+        };
+    };
 
     _kosten ctrlSetText format ["€:%1 [%2]",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)),_hardcapinfo];
 
@@ -1214,7 +1214,7 @@ _button23 ctrlAddEventHandler [ "ButtonClick",
 }];
 
 //Button 24
-_button24 ctrlAddEventHandler [ "ButtonClick", 
+_button24 ctrlAddEventHandler [ "ButtonClick",
 {
     GVAR(Buttonwahl) = 23;
 
@@ -1232,11 +1232,11 @@ _button24 ctrlAddEventHandler [ "ButtonClick",
     GVAR(Hardcap_pool) apply
     {
         _hardcapobj = _x select 0;
-        if (_class isEqualTo _hardcapobj) then 
+        if (_class isEqualTo _hardcapobj) then
         {
-            _hardcapinfo = format ["%1",_x select 1];       
-        }; 
-    }; 
+            _hardcapinfo = format ["%1",_x select 1];
+        };
+    };
 
     _kosten ctrlSetText format ["€:%1 [%2]",(((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)),_hardcapinfo];
 

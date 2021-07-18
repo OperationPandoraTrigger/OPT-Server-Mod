@@ -4,7 +4,7 @@
 *
 * Arguments:
 * 0: <OBJECT> flag
-* 1: <OBJECT> unit 
+* 1: <OBJECT> unit
 *
 * Return Value:
 * 0: <BOOl> true - flag can be captured, false - otherwise
@@ -29,9 +29,9 @@ params
 
 if (_flag isEqualTo objNull or _unit isEqualTo objNull) exitWith{false};
 
-// Flagge kann nur nach Missionsstart, in 5 m Radius, 
-// ausserhalb eines Fahrzeugs 
-// in Restspielzeit gezogen werden 
+// Flagge kann nur nach Missionsstart, in 5 m Radius,
+// ausserhalb eines Fahrzeugs
+// in Restspielzeit gezogen werden
 // nur von der anderen Seite
 vehicle _unit == _unit and
 OPT_GELDZEIT_GAMESTAGE == GAMESTAGE_WAR and

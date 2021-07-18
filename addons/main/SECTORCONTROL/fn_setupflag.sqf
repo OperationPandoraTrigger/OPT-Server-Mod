@@ -1,7 +1,7 @@
 /**
 * Description:
 * initialize all flag poles with optionall marker and add action menu for playersNumber
-* 
+*
 * Author:
 * Lord-MDB
 *
@@ -11,13 +11,13 @@
 *
 * Server Only:
 * Yes
-* 
+*
 * Global:
 * No
-* 
+*
 * API:
 * No
-* 
+*
 * Example:
 * [] call func(setupFlag);
 */
@@ -79,7 +79,7 @@ remoteExecCall [QFUNC(deleteMarkers)];
 } foreach GVAR(PreMineZoneMarkers);
 
 /*
-Fuer jede Flagge in einem Sektor: 
+Fuer jede Flagge in einem Sektor:
 Marker für Flag falls Marker an
 Marker für Minensperre falls Minensperre an
 unverwundbar, Logistik-Script aus sowie Actionmeneintrag fuer Spieler
@@ -89,31 +89,31 @@ Flaggen-Seite loggen
     private _flag = _x;
 
     // erzeuge fuer jede gefundene Flagge einen Marker auf der Karte
-    if (GVAR(flagMarkerOn)) then 
+    if (GVAR(flagMarkerOn)) then
     {
         private _markerName = format["MapMarker_%1_%2", _forEachIndex, _flag];
         private _marker = createMarker [_markerName, getPos _flag];
 
-        if (GVAR(csat_flags) find _x >= 0) then 
+        if (GVAR(csat_flags) find _x >= 0) then
         {
             _marker setMarkerType "flag_CSAT";
-        }; 
+        };
 
-        if (GVAR(nato_flags) find _x >= 0) then 
+        if (GVAR(nato_flags) find _x >= 0) then
         {
             _marker setMarkerType "flag_NATO";
-        }; 
+        };
 
-        if (GVAR(aaf_flags) find _x >= 0) then 
+        if (GVAR(aaf_flags) find _x >= 0) then
         {
             _marker setMarkerType "flag_AAF";
-        }; 
-        
+        };
+
         _flag setVariable [QGVAR(flagMarker), _marker, true];
     };
 
     // mark free mine zone around flag
-    if (GVAR(flagFreeMineZoneMarkerOn)) then 
+    if (GVAR(flagFreeMineZoneMarkerOn)) then
     {
         private _markerName = format["MineZoneMarker_%1_%2", _forEachIndex, _flag];
         private _marker = createMarker [_markerName, getPos _flag];
@@ -133,13 +133,13 @@ Flaggen-Seite loggen
             [],                                                          // Parameter fr Skript
             999,                                                         // priority
             true,                                                        // showWindow
-            true,                                                        // hideOnUse 
+            true,                                                        // hideOnUse
             "",                                                          // shortcut
-            "(vehicle player == player and (OPT_GELDZEIT_GAMESTAGE == 2) and ((OPT_GELDZEIT_PLAYTIME - (serverTime - OPT_GELDZEIT_startTime)) > 0) and (playerside != _target getVariable 'owner'))",                              
+            "(vehicle player == player and (OPT_GELDZEIT_GAMESTAGE == 2) and ((OPT_GELDZEIT_PLAYTIME - (serverTime - OPT_GELDZEIT_startTime)) > 0) and (playerside != _target getVariable 'owner'))",
             GVAR(flagDistanceToPlayer)                                   // radius
         ]
     ] remoteExecCall ["addAction", -2, true];
-   
+
     _flag allowDamage false;  // Flagge kann nicht beschaedigt werden
 
         // Bei Missionsstart alle ursprünglichen Flaggenowner loggen

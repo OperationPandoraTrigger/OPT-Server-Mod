@@ -1,6 +1,6 @@
 /**
 * Author: Lord-MDB
-* Teilt alle Clienten den Datensatz des Hardcaps neu zu. 
+* Teilt alle Clienten den Datensatz des Hardcaps neu zu.
 *
 * Arguments:
 * None

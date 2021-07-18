@@ -1,7 +1,7 @@
 /*
 * Description:
 * Spieler-Anzeige auf Karte und GPS
-* 
+*
 * Author:
 * [GNC]Lord-MDB, form
 *
@@ -14,10 +14,10 @@
 * 
 * Global:
 * No
-* 
+*
 * API:
 * No
-* 
+*
 * Example:
 * [] call FUNC(gps);
 */
@@ -33,8 +33,8 @@ GVAR(LastCleanUp) = time;
 // create special local player marker
 private _markerOwn = format["OPT_GPS_OWN_%1", getPlayerID player];
 GVAR(markerOwn) = createMarkerLocal [_markerOwn, position (vehicle player)];
-GVAR(markerOwn) setMarkerTypeLocal "mil_circle_noShadow";  
-GVAR(markerOwn) setMarkerColorLocal "ColorYellow";  
+GVAR(markerOwn) setMarkerTypeLocal "mil_circle_noShadow";
+GVAR(markerOwn) setMarkerColorLocal "ColorYellow";
 GVAR(markerOwn) setMarkerSizeLocal [0.7, 0.7];
 GVAR(markerOwn) setMarkerAlphaLocal 1;
 
@@ -106,7 +106,7 @@ GVAR(markerOwn) setMarkerAlphaLocal 1;
                         {
                             _markerAlive setMarkerTextLocal format["%1 (---)", _vehicleName];
                         };
-                    } 
+                    }
                     else
                     {
                         _markerAlive setMarkerTextLocal format["%1 (%2)", _vehicleName, _playerName];

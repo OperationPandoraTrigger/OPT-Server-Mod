@@ -1,7 +1,7 @@
 /**
 * Description:Kauf ausführen nach Order Status und Fahrzeug erstellen.
-* 
-* 
+*
+*
 * Author:
 * [GNC]Lord-MDB
 *
@@ -13,10 +13,10 @@
 *
 * Server Only:
 * No
-* 
+*
 * Global:
 * No
-* 
+*
 * API:
 * No
 * 
@@ -25,7 +25,7 @@
 */
 #include "macros.hpp"
 
-params 
+params
 [
     ["_status", 0]
 ];
@@ -36,17 +36,17 @@ GVAR(idPadCheckCreate) =
     private _freiePads = [GVAR(pads), GVAR(Checkbereich)] call FUNC(checkpad);
 
     // erstes Freies Pad zuordnen
-    if ((count _freiePads) > 0) then 
+    if ((count _freiePads) > 0) then
     {
         GVAR(order_box) = _freiePads select 0;
     }
-    else 
+    else
     {
         GVAR(order_box) = player;
     };
 }, 0] call CFUNC(addPerFrameHandler);
 
-DFUNC(createOrder) = 
+DFUNC(createOrder) =
 {
     //Hardcap Send Auslösung Zurücksetzen
     GVAR(Daten_send) = false;
@@ -114,7 +114,7 @@ DFUNC(createOrder) =
         default { _offset = 0.2 };
     };
 
-    //Objekt Erstellung 
+    //Objekt Erstellung
     private _posi = getPosASL GVAR(order_box) vectorAdd [0, 0, 1000];
     private _veh = createVehicle [_class, _posi, [], 0, "NONE"];
     _veh enableDynamicSimulation true;
@@ -124,17 +124,17 @@ DFUNC(createOrder) =
     _veh setPosASL _posi;
 
     //check Box liegt im Wasser
-    if ((surfaceIsWater (position GVAR(order_box))) and (_veh isKindOf "Ship")) then 
+    if ((surfaceIsWater (position GVAR(order_box))) and (_veh isKindOf "Ship")) then
     {
-        _veh setPos [(position GVAR(order_box) select 0), (position GVAR(order_box) select 1), _offset]; 
+        _veh setPos [(position GVAR(order_box) select 0), (position GVAR(order_box) select 1), _offset];
     };
 
     _veh setDamage 0;
 
     //Fahrzeug bewaffnen
-    if (((count _airRaketenmagazin) > 0) or 
-        ((count _airGunmagazin) > 0) or 
-        ((count _vehMagazin) > 0)) then 
+    if (((count _airRaketenmagazin) > 0) or
+        ((count _airGunmagazin) > 0) or
+        ((count _vehMagazin) > 0)) then
     {
         [_veh,
         _airRaketenweapon,
@@ -148,10 +148,10 @@ DFUNC(createOrder) =
         _zusatz,
         _weaponold,
         _magazinold] call FUNC(arm);
-    };    
+    };
 
     // Spieler in Fahrzeug setzen
-    if (GVAR(order_moveInVeh)) then 
+    if (GVAR(order_moveInVeh)) then
     {
         Player moveInDriver _veh;
 
@@ -183,7 +183,7 @@ DFUNC(createOrder) =
         "OPT_I_UGV_01_F"
     ];
 
-    if (_class in (_uavs)) then 
+    if (_class in (_uavs)) then
     {
         createVehicleCrew (_veh);
         _veh setSkill 1.0;
@@ -207,20 +207,20 @@ DFUNC(createOrder) =
 };
 
 //Hardcap Check und Padbox check
-if (_status isEqualTo 1) then 
+if (_status isEqualTo 1) then
 {
-    if (GVAR(order_box) != Player) then 
+    if (GVAR(order_box) != Player) then
     {
         [] Call FUNC(createOrder);
-    }                 
-    else 
+    }
+    else
     {
         private _txt = MLOC(BOX_CHECK_Empty);
         private _header = MLOC(BOX_CHECK);
-        hint format["%1\n\n%2", _header, _txt];    
-    };        
-}                   
-else 
+        hint format["%1\n\n%2", _header, _txt];
+    };
+}
+else
 {
     private _txt = MLOC(HARDCAP_TEXT);
     private _header = MLOC(HARDCAP);

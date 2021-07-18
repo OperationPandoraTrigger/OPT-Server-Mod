@@ -1,6 +1,6 @@
 /**
 * Author: James
-* call appropriate function 
+* call appropriate function
 *
 * Arguments:
 * 0: <OBJECT> target add action is attached to
@@ -21,19 +21,19 @@ params ["_target", "_caller", "_action"];
 ////////////////////////////////////////////////
 // Handle actions
 ////////////////////////////////////////////////
-switch (_action) do 
+switch (_action) do
 {
-    case "action_drag": 
+    case "action_drag":
     {
         [_target] call FUNC(drag);
     };
 
-    case "action_release": 
+    case "action_release":
     {
         [] call FUNC(release);
     };
 
-    default 
+    default
     {
 
     };

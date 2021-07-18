@@ -15,11 +15,11 @@
 * No
 *
 * Public:
-* No 
+* No
 * 
 * Global:
 * No
-* 
+*
 * API:
 * No
 *
@@ -33,7 +33,7 @@
     GVAR(mutexAction) = false;
 
     //pioniers
-    GVAR(pioniers) = 
+    GVAR(pioniers) =
     [
         "OPT_NATO_Pionier_T",
         "OPT_CSAT_Pionier_T",

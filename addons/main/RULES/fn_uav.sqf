@@ -27,25 +27,25 @@ private _pcs = [AAF_Drohnenstation, CSAT_Drohnenstation];
                 _terminal,
                 {
                     params ["_terminal"];
-                    
+
                     private _txt = MLOC(UAV_CONNECTION_MSG);
                     private _header = MLOC(UAV_STATION);
-                    hint format["%1\n\n%2", _header, _txt]; 
+                    hint format["%1\n\n%2", _header, _txt];
                     player setVariable [QGVAR(loggedInStation), _terminal];
-                    
-                    if (PLAYERSIDE == west) then 
+
+                    if (PLAYERSIDE == west) then
                     {
                         player removeWeapon "ItemGPS";
                         player addWeapon "B_UavTerminal";
                     };
 
-                    if (PLAYERSIDE == east) then 
+                    if (PLAYERSIDE == east) then
                     {
                         player removeWeapon "ItemGPS";
                         player addWeapon "O_UavTerminal";
                     };
 
-                    if (PLAYERSIDE == independent) then 
+                    if (PLAYERSIDE == independent) then
                     {
                         player removeWeapon "ItemGPS";
                         player addWeapon "I_UavTerminal";
@@ -74,23 +74,23 @@ private _pcs = [AAF_Drohnenstation, CSAT_Drohnenstation];
                 {
                     private _txt = MLOC(CONNECTION_QUIT);
                     private _header = MLOC(UAV_STATION);
-                    hint format["%1\n\n%2", _header, _txt]; 
+                    hint format["%1\n\n%2", _header, _txt];
                     player connectTerminalToUAV objNull;
                     player setVariable [QGVAR(loggedInStation), objNull];
-                    
-                    if (PLAYERSIDE == west) then 
+
+                    if (PLAYERSIDE == west) then
                     {
                         player removeWeapon "B_UavTerminal";
                         player addWeapon "ItemGPS";
                     };
 
-                    if (PLAYERSIDE == east) then 
+                    if (PLAYERSIDE == east) then
                     {
                         player removeWeapon "O_UavTerminal";
                         player addWeapon "ItemGPS";
                     };
 
-                    if (PLAYERSIDE == independent) then 
+                    if (PLAYERSIDE == independent) then
                     {
                         player removeWeapon "I_UavTerminal";
                         player addWeapon "ItemGPS";
@@ -109,7 +109,7 @@ private _pcs = [AAF_Drohnenstation, CSAT_Drohnenstation];
     ];
 } forEach _pcs;
 
-DFUNC(UAV_check_player) = 
+DFUNC(UAV_check_player) =
 {
     GVAR(checkuav) = [{
 
@@ -117,37 +117,37 @@ DFUNC(UAV_check_player) =
         {
             private _station = player getVariable QGVAR(loggedInStation);
 
-            if (player distance2D _station > 4) then 
+            if (player distance2D _station > 4) then
             {
                 player setVariable [QGVAR(loggedInStation), objNull];
                 player connectTerminalToUAV objNull;
 
                 private _txt = MLOC(UAV_CONNECTION_LOST);
                 private _header = MLOC(UAV_STATION);
-                hint format["%1\n\n%2", _header, _txt];     
+                hint format["%1\n\n%2", _header, _txt];
 
-                if (PLAYERSIDE == west) then 
+                if (PLAYERSIDE == west) then
                 {
                     player removeWeapon "B_UavTerminal";
                     player addWeapon "ItemGPS";
 
                 };
 
-                if (PLAYERSIDE == east) then 
+                if (PLAYERSIDE == east) then
                 {
                     player removeWeapon "O_UavTerminal";
                     player addWeapon "ItemGPS";
 
                 };
-                    
-                if (PLAYERSIDE == independent) then 
+
+                if (PLAYERSIDE == independent) then
                 {
                     player removeWeapon "I_UavTerminal";
                     player addWeapon "ItemGPS";
 
                 };
-                GVAR(checkuav) call CFUNC(removePerframeHandler);    
+                GVAR(checkuav) call CFUNC(removePerframeHandler);
             };
         };
     }, 1] call CFUNC(addPerFrameHandler);
- };   
+ };

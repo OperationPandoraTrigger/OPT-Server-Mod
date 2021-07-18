@@ -1,7 +1,7 @@
 /**
 * Description:
 * Initialisierung Flaggensystem Server
-* 
+*
 * Author:
 * Lord-MDB
 *
@@ -11,13 +11,13 @@
 *
 * Server Only:
 * Yes
-* 
+*
 * Global:
 * No
-* 
+*
 * API:
 * No
-* 
+*
 * Example:
 * [] call FUNC(serverInit);
 */
@@ -57,17 +57,17 @@ publicVariable QGVAR(csat_flags);
 GVAR(aaf_flags) = [];
 publicVariable QGVAR(aaf_flags);
 
-DFUNC(startflagsetup) = 
+DFUNC(startflagsetup) =
 {
     //Punkte Erfassung wärend der Spielzeit
     [] call FUNC(punkte);
-    
+
     // start flag setup (setting owner)
     [] call FUNC(setupFlag);
 
     // calculate first time the dominator (it's needed if assynchrone number of flags are defined)
-    [sideUnknown, objNull] call FUNC(setFlagOwner);    
-};    
+    [sideUnknown, objNull] call FUNC(setFlagOwner);
+};
 
 ["missionStarted",
 {
@@ -89,12 +89,12 @@ DFUNC(startflagsetup) =
 
 private _worldsize = (worldName call BIS_fnc_mapSize);
 createMarkerLocal ["Marker_NumPlayers", [0, worldsize + 500]];
-"Marker_NumPlayers" setMarkerTypeLocal "hd_end_noShadow";  
-"Marker_NumPlayers" setMarkerColorLocal "ColorBlack";  
+"Marker_NumPlayers" setMarkerTypeLocal "hd_end_noShadow";
+"Marker_NumPlayers" setMarkerColorLocal "ColorBlack";
 "Marker_NumPlayers" setMarkerSizeLocal [1, 1];
 "Marker_NumPlayers" setMarkerAlphaLocal 1;
 
-switch OPT_GELDZEIT_Fraktionauswahl do 
+switch OPT_GELDZEIT_Fraktionauswahl do
 {
     case "AAFvsCSAT":
     {
@@ -117,7 +117,7 @@ switch OPT_GELDZEIT_Fraktionauswahl do
             "Marker_NumPlayers" setMarkerText format["Eingeslottet: NATO: %1 // AAF: %2", playersNumber west, playersNumber independent];
         }, PLAYERCOUNT_INTERVAL] call CBA_fnc_addPerFrameHandler;    // Der CLib PFH funktioniert hier noch nicht vor dem Missionsstart
     };
-    default 
+    default
     {
         ERROR_LOG("RulesClientInit: Fehlerhafte Datenübergabe - Keine Fraktionauswahl erkannt");
     };

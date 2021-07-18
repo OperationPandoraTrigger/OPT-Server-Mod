@@ -1,7 +1,7 @@
 /**
 * Description:Kaufanfrage an Server Senden.
-* 
-* 
+*
+*
 * Author:
 * [GNC]Lord-MDB
 *
@@ -12,23 +12,23 @@
 * 3 <Number> Fahrzeugkosten ohne Bewaffnung
 *
 * Return value:
-* 0 <Number> Gesamtkosten des Fahrzeugs 
+* 0 <Number> Gesamtkosten des Fahrzeugs
 *
 * Server Only:
 * No
-* 
+*
 * Global:
 * No
-* 
+*
 * API:
 * No
-* 
+*
 * Example:
-* 
+*
 */
 #include "macros.hpp"
 
-params 
+params
 [
     ["_Datensatz", []], 
     ["_box", objNull],

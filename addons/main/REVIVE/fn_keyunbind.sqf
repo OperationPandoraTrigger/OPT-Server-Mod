@@ -14,11 +14,11 @@
 * No
 *
 * Public:
-* No 
-* 
+* No
+*
 * Global:
 * No
-* 
+*
 * API:
 * No
 *
@@ -32,7 +32,7 @@ _key = _this select 1;
 _return = false;
 
 {
-    if ((player getVariable ['OPT_isUnconscious',0] == 1) && {_key in (actionkeys _x)}) then 
+    if ((player getVariable ['OPT_isUnconscious',0] == 1) && {_key in (actionkeys _x)}) then
     {
         _return = (_key == (actionkeys _x) select 0);
         private _txt = MLOC(CHAT_DEACTIVATED);

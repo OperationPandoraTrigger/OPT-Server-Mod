@@ -43,7 +43,7 @@
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {
         params ["_value"];
-        GVAR(nato_sectors) = parseSimpleArray format ["[%1]", _value]; 
+        GVAR(nato_sectors) = parseSimpleArray format ["[%1]", _value];
     } // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
 
@@ -60,7 +60,7 @@
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {
         params ["_value"];
-        GVAR(csat_allsectors) = parseSimpleArray format ["[%1]", _value]; 
+        GVAR(csat_allsectors) = parseSimpleArray format ["[%1]", _value];
     }, // function that will be executed once on mission start and every time the setting is changed.
     true    // Setting will be marked as needing mission restart after being changed. (optional, default false) <BOOL>
 ] call CBA_Settings_fnc_init;
@@ -77,7 +77,7 @@
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {
         params ["_value"];
-        GVAR(csat_sectors) = parseSimpleArray format ["[%1]", _value]; 
+        GVAR(csat_sectors) = parseSimpleArray format ["[%1]", _value];
     } // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
 
@@ -94,7 +94,7 @@
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {
         params ["_value"];
-        GVAR(aaf_allsectors) = parseSimpleArray format ["[%1]", _value]; 
+        GVAR(aaf_allsectors) = parseSimpleArray format ["[%1]", _value];
 
     }, // function that will be executed once on mission start and every time the setting is changed.
     true    // Setting will be marked as needing mission restart after being changed. (optional, default false) <BOOL>
@@ -112,7 +112,7 @@
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {
         params ["_value"];
-        GVAR(aaf_sectors) = parseSimpleArray format ["[%1]", _value]; 
+        GVAR(aaf_sectors) = parseSimpleArray format ["[%1]", _value];
 
     } // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
@@ -122,7 +122,7 @@
     QGVAR(flagCountNATO), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "SLIDER", // setting type
     [
-        "Anzahl der NATO-Flaggen",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.  
+        "Anzahl der NATO-Flaggen",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
         "Die Anzahl der NATO-Flaggen, die für die Gegenseite zum Angriff stehen." + endl  // Mouse-Over description of the above
     ],
     ["OPT Sektorkontrolle", "4 - Flaggenanzahl"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
@@ -135,7 +135,7 @@
     QGVAR(flagCountCSAT), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "SLIDER", // setting type
     [
-        "Anzahl der CSAT-Flaggen",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.  
+        "Anzahl der CSAT-Flaggen",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
         "Die Anzahl der CSAT-Flaggen, die für die Gegenseite zum Angriff stehen." + endl  // Mouse-Over description of the above
     ],
     ["OPT Sektorkontrolle", "4 - Flaggenanzahl"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
@@ -148,7 +148,7 @@
     QGVAR(flagCountAAF), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "SLIDER", // setting type
     [
-        "Anzahl der AAF-Flaggen",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.  
+        "Anzahl der AAF-Flaggen",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
         "Die Anzahl der AAF-Flaggen, die für die Gegenseite zum Angriff stehen." + endl  // Mouse-Over description of the above
     ],
     ["OPT Sektorkontrolle", "4 - Flaggenanzahl"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
@@ -185,7 +185,7 @@
     QGVAR(flagStartNeutral), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "CHECKBOX", // setting type
     [
-        "Start mit neutralen Flaggen",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.  
+        "Start mit neutralen Flaggen",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
         "Die zu Missionsstart gewählten Flaggen tragen noch keine Fahne und müssen erst erobert werden." + endl  // Mouse-Over description of the above
     ],
     ["OPT Sektorkontrolle", "5 - Diverses"], // Pretty name of the category where the setting can be found. Can be stringtable entry.

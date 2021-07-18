@@ -1,6 +1,6 @@
 /**
 * Description:
-* Initialisierung Revive System 
+* Initialisierung Revive System
 *
 * Author:
 * Lord-MDB
@@ -15,11 +15,11 @@
 * No
 *
 * Public:
-* No 
-* 
+* No
+*
 * Global:
 * No
-* 
+*
 * API:
 * No
 *
@@ -31,10 +31,10 @@
 //Init Werte
 GVAR(SaniKlassen) = ["OPT_NATO_Sanitaeter","OPT_CSAT_Sanitaeter","OPT_NATO_Sanitaeter_T","OPT_CSAT_Sanitaeter_T","I_medic_F"];
 
-// Eigenversorung Funktion 
-DFUNC(eigenversorgung) = 
+// Eigenversorung Funktion
+DFUNC(eigenversorgung) =
 {
-    player switchmove "AinvPknlMstpSnonWrflDnon_medic";    
+    player switchmove "AinvPknlMstpSnonWrflDnon_medic";
 
     [
         GVAR(Helizeiteigen),
@@ -47,15 +47,15 @@ DFUNC(eigenversorgung) =
         },
         {
             player switchmove "";
-            player action ["WeaponInHand", player];    
-        }, 
+            player action ["WeaponInHand", player];
+        },
         MLOC(SELF_CARE)
     ] call ace_common_fnc_progressBar;
 };
 
 ["missionStarted",
 {
-    // Var setzen 
+    // Var setzen
     player setVariable ["OPT_isUnconscious", 0, true];
     player setVariable ["OPT_isStabilized", 0, true];
     GVAR(OPT_isDragging) = false;
@@ -64,8 +64,8 @@ DFUNC(eigenversorgung) =
     //Chat abschaltung bei Bewustlosigkeit
     (findDisplay 46) displayAddEventHandler ["KeyDown", {_this call FUNC(keyUnbind)}];
 
-    //ACE Interaktioneinträge 
-    GVAR(revive_Action_eigen) = 
+    //ACE Interaktioneinträge
+    GVAR(revive_Action_eigen) =
     [
         MLOC(FIRST_AID),
         MLOC(FIRST_AID),

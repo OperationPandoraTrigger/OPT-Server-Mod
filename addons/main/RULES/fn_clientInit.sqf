@@ -1,6 +1,6 @@
 /**
 * Description:
-* Initialisierung Rules System 
+* Initialisierung Rules System
 *
 * Author:
 * Lord-MDB, form
@@ -15,11 +15,11 @@
 * No
 *
 * Public:
-* No 
-* 
+* No
+*
 * Global:
 * No
-* 
+*
 * API:
 * No
 *
@@ -38,22 +38,22 @@
     // UAV Drohnenstation
     [] call FUNC(uav);
 
-    // Hint Meldung das Zuschauerslot besetzt wurde. 
-    if ((player isKindOf "VirtualSpectator_F") or (player isKindOf "ace_spectator_virtual")) then 
+    // Hint Meldung das Zuschauerslot besetzt wurde.
+    if ((player isKindOf "VirtualSpectator_F") or (player isKindOf "ace_spectator_virtual")) then
     {
         private _txt = format["%1 hat einen Zuschauerslot ausgewählt.", name player];
         [_txt] remoteExecCall ["hint", 0, false];
     };
 
-    if (!(OPT_SECTORCONTROL_trainingon)) then 
+    if (!(OPT_SECTORCONTROL_trainingon)) then
     {
         // EH für Waffencheck
         player addEventHandler ["Take", {_this call FUNC(weaponCheck)}];
 
         // EH für Positionssperre in Fahrzeugen beim Einsteigen
-        player addEventHandler ["GetInMan", 
+        player addEventHandler ["GetInMan",
         {
-            /*  
+            /*
                 unit: Object - Unit the event handler is assigned to
                 position: String - Can be either "driver", "gunner" or "cargo"
                 vehicle: Object - Vehicle the unit entered
@@ -62,7 +62,7 @@
             params ["_unit", "_pos", "_veh", "_turret"];
             private _pos2 = assignedVehicleRole _unit select 0;
 
-            if (typeOf _veh in GVAR(choppers) && !(typeOf _unit in GVAR(pilots)) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then 
+            if (typeOf _veh in GVAR(choppers) && !(typeOf _unit in GVAR(pilots)) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then
             {
                 _unit action ["GetOut", _veh];
                 private _txt = MLOC(SLOT_LOCK_PILOT);
@@ -70,7 +70,7 @@
                 hint format ["%1\n\n%2", _header, _txt];
             };
 
-            if (typeOf _veh in GVAR(planes) && !(typeOf _unit in (GVAR(pilots) + GVAR(jetpilots))) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then 
+            if (typeOf _veh in GVAR(planes) && !(typeOf _unit in (GVAR(pilots) + GVAR(jetpilots))) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then
             {
                 _unit action ["GetOut", _veh];
                 private _txt = MLOC(SLOT_LOCK_PILOT);
@@ -78,7 +78,7 @@
                 hint format ["%1\n\n%2", _header, _txt];
             };
 
-            if (typeOf _veh in GVAR(jets) && !(typeOf _unit in GVAR(jetpilots)) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then 
+            if (typeOf _veh in GVAR(jets) && !(typeOf _unit in GVAR(jetpilots)) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then
             {
                 _unit action ["GetOut", _veh];
                 private _txt = MLOC(SLOT_LOCK_PILOT);
@@ -86,7 +86,7 @@
                 hint format ["%1\n\n%2", _header, _txt];
             };
 
-            if ((typeOf _veh in GVAR(crew_vehicles) || _veh isKindOf "Tank") && !(typeOf _unit in GVAR(crew)) && _pos2 in GVAR(blockedVehiclePositions_veh)) then 
+            if ((typeOf _veh in GVAR(crew_vehicles) || _veh isKindOf "Tank") && !(typeOf _unit in GVAR(crew)) && _pos2 in GVAR(blockedVehiclePositions_veh)) then
             {
                 _unit action ["GetOut", _veh];
                 private _txt = MLOC(SLOT_LOCK_CREW);
@@ -96,9 +96,9 @@
         }];
 
         // EH für Positionssperre in Fahrzeugen bei Platztausch
-        player addEventHandler ["SeatSwitchedMan", 
+        player addEventHandler ["SeatSwitchedMan",
         {
-            /*  
+            /*
                 unit1: Object - Unit switching seat.
                 unit2: Object - Unit with which unit1 is switching seat.
                 vehicle: Object - Vehicle where switching seats is taking place.
@@ -106,7 +106,7 @@
             params ["_unit", "_unit2", "_veh"];
             private _pos2 = assignedVehicleRole _unit select 0;
 
-            if (typeOf _veh in GVAR(choppers) && !(typeOf _unit in GVAR(pilots)) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then 
+            if (typeOf _veh in GVAR(choppers) && !(typeOf _unit in GVAR(pilots)) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then
             {
                 _unit action ["GetOut", _veh];
                 private _txt = MLOC(SLOT_LOCK_PILOT);
@@ -114,7 +114,7 @@
                 hint format ["%1\n\n%2", _header, _txt];
             };
 
-            if (typeOf _veh in GVAR(planes) && !(typeOf _unit in (GVAR(pilots) + GVAR(jetpilots))) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then 
+            if (typeOf _veh in GVAR(planes) && !(typeOf _unit in (GVAR(pilots) + GVAR(jetpilots))) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then
             {
                 _unit action ["GetOut", _veh];
                 private _txt = MLOC(SLOT_LOCK_PILOT);
@@ -122,7 +122,7 @@
                 hint format ["%1\n\n%2", _header, _txt];
             };
 
-            if (typeOf _veh in GVAR(jets) && !(typeOf _unit in GVAR(jetpilots)) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then 
+            if (typeOf _veh in GVAR(jets) && !(typeOf _unit in GVAR(jetpilots)) && _pos2 in GVAR(blockedVehiclePositions_air) && !(typeOf _veh in ["Steerable_Parachute_F", "NonSteerable_Parachute_F"])) then
             {
                 _unit action ["GetOut", _veh];
                 private _txt = MLOC(SLOT_LOCK_PILOT);
@@ -130,7 +130,7 @@
                 hint format ["%1\n\n%2", _header, _txt];
             };
 
-            if ((typeOf _veh in GVAR(crew_vehicles) || _veh isKindOf "Tank") && !(typeOf _unit in GVAR(crew)) && _pos2 in GVAR(blockedVehiclePositions_veh)) then 
+            if ((typeOf _veh in GVAR(crew_vehicles) || _veh isKindOf "Tank") && !(typeOf _unit in GVAR(crew)) && _pos2 in GVAR(blockedVehiclePositions_veh)) then
             {
                 _unit action ["GetOut", _veh];
                 private _txt = MLOC(SLOT_LOCK_CREW);
@@ -154,7 +154,7 @@
         }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
 
         // Regelmäßig checken ob sich der Spieler in einem verbotenen Bereich in der nähe einer Feindlichen Basis aufhält
-        switch OPT_GELDZEIT_Fraktionauswahl do 
+        switch OPT_GELDZEIT_Fraktionauswahl do
         {
             case "AAFvsCSAT":
             {
@@ -246,7 +246,7 @@
                 };
             };
 
-            default 
+            default
             {
                 ERROR_LOG("RulesClientInit: Fehlerhafte Datenübergabe - Keine Fraktionauswahl erkannt");
             };

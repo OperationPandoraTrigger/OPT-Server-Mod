@@ -1,7 +1,7 @@
 /**
 * Description:
 * Initializes Vars für Client und Server
-* 
+*
 * Author:
 * [GNC]Lord-MDB
 *
@@ -11,13 +11,13 @@
 *
 * Server Only:
 * no
-* 
+*
 * Global:
 * yes
-* 
+*
 * API:
 * No
-* 
+*
 * Example:
 */
 #include "macros.hpp"
@@ -27,18 +27,17 @@
 
 // add killed EH to all kind of vehicles, either on map or later spawned via crteateVehicle arrayIntersect
 // -> log kill and delete if near base
-["LandVehicle", "killed", 
+["LandVehicle", "killed",
 {
     _this remoteExecCall [QFUNC(handleDeadVehicle), 2, false];
 }] call CBA_fnc_addClassEventHandler;
 
-["Air", "killed", 
+["Air", "killed",
 {
     _this remoteExecCall [QFUNC(handleDeadVehicle), 2, false];
 }] call CBA_fnc_addClassEventHandler;
 
-["Ship", "killed", 
+["Ship", "killed",
 {
     _this remoteExecCall [QFUNC(handleDeadVehicle), 2, false];
 }] call CBA_fnc_addClassEventHandler;
-

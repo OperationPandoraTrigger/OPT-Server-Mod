@@ -1,27 +1,27 @@
 /**
 * Description:Einlesen der Daten beim Öffnen des Dialogs durch den Spieler
-* 
-* 
+*
+*
 * Author:
 * [GNC]Lord-MDB
 *
 * Arguments:
-* 
+*
 *
 * Return value:
-* 
+*
 *
 * Server Only:
 * No
-* 
+*
 * Global:
 * No
-* 
+*
 * API:
 * No
-* 
+*
 * Example:
-* 
+*
 */
 #include "macros.hpp"
 
@@ -34,7 +34,7 @@ params
 ];
 
 //Dialog Initalisieren
-createDialog "Dialogshopkonfig"; 
+createDialog "Dialogshopkonfig";
 
 //dialog
 #define IDD_DLG_KONFIG 22000
@@ -101,7 +101,7 @@ _Munitext4 ctrlEnable false;
 _Munitext5 ctrlEnable false;
 _Munitext6 ctrlEnable false;
 
-_kosten ctrlSetText format["€:%1",_unitCost];    
+_kosten ctrlSetText format["€:%1",_unitCost];
 
 GVAR(veh) = "";
 
@@ -113,7 +113,7 @@ private _moveInVeh = _display displayCtrl 22044;
 _moveInVeh ctrlSetTextColor [0.0, 1.0, 0.0, 1];
 
 //Fahrzeugfeststellung
-if (_modus == "New") then 
+if (_modus == "New") then
 {
     GVAR(vehType) = _type;
     GVAR(Modus) = "New";
@@ -139,16 +139,16 @@ GVAR(side) = civilian;
 GVAR(pylon) = [];
 
 //Typ ermitteln
-[] call FUNC(typfestellung);    
+[] call FUNC(typfestellung);
 
 private _waffenMagazinArry  = [];
 GVAR(weaponsVeh) =[];
 GVAR(magazineVeh) =[];
 private _magazineVehArryNew=[];
-        
+
 //auslesen und filtern bei alt Fahrzeug
 
-if (GVAR(Modus) == "old") then 
+if (GVAR(Modus) == "old") then
 {
     // Boxanzeige ausblenden
     _padBox ctrlShow false;
@@ -157,54 +157,54 @@ if (GVAR(Modus) == "old") then
     _IDD_vehKonfigOrder ctrlEnable true;
 
     // Vorhandenen Bewaffnung Filtern
-    _waffenMagazinArry = [GVAR(veh)] call FUNC(filter);    
+    _waffenMagazinArry = [GVAR(veh)] call FUNC(filter);
 
     // Fahrzeugbesetzt button ausblenden
     _moveInVeh ctrlShow false;
 
     //Festellung Bewaffnung
     GVAR(weaponsVeh) =_waffenMagazinArry select 0;
-    GVAR(magazineVeh) = _waffenMagazinArry select 1;      
+    GVAR(magazineVeh) = _waffenMagazinArry select 1;
     _magazineVehArryNew = [GVAR(veh)] call FUNC(auslesenMagazine);
-        
-    // Darstellung Magazine im Dialog
-    private _magazineVehCount = count _magazineVehArryNew; 
 
-    if (_magazineVehCount > 0) then 
+    // Darstellung Magazine im Dialog
+    private _magazineVehCount = count _magazineVehArryNew;
+
+    if (_magazineVehCount > 0) then
     {
     private _anzeige = [];
     private _MuniKugel = "\A3\Weapons_F\Data\UI\m_200rnd_65x39_yellow_ca.paa";
     private _MuniRakete = "\A3\Weapons_F_beta\Launchers\titan\Data\UI\gear_titan_missile_atl_CA.paa";
 
-        if (GVAR(veh) isKindOf "Air") then 
+        if (GVAR(veh) isKindOf "Air") then
         {
             {
-                if (getNumber (configFile >> "cfgMagazines" >> (_x select 0) >> "count") > 30) then 
+                if (getNumber (configFile >> "cfgMagazines" >> (_x select 0) >> "count") > 30) then
                 {
                     _anzeige pushBack _MuniKugel;
-                } 
-                else 
+                }
+                else
                 {
                     _anzeige pushBack _MuniRakete;
                 };
 
             } forEach _magazineVehArryNew;
-        } 
-        else 
+        }
+        else
         {
-            _magazineVehArryNew apply 
+            _magazineVehArryNew apply
             {
-            _anzeige pushBack _MuniKugel;  
-            };  
+            _anzeige pushBack _MuniKugel;
+            };
         };
-        
+
         private _Munitext1 = "";
         private _Munitext2 = "";
         private _Munitext3 = "";
         private _Munitext4 = "";
         private _Munitext5 = "";
         private _Munitext6 = "";
-        
+
         private _MuniBild1 = "";
         private _MuniBild2 = "";
         private _MuniBild3 = "";
@@ -212,20 +212,20 @@ if (GVAR(Modus) == "old") then
         private _MuniBild5 = "";
         private _MuniBild6 = "";
 
-        for "_i" from 1 to _magazineVehCount do 
+        for "_i" from 1 to _magazineVehCount do
         {
             //Bild
             call compile format["_MuniBild%1 = _anzeige select (_i - 1);", _i];
             call compile format["_IDD_muniBild%1 ctrlSetText  _MuniBild%1;", _i];
             call compile format["_IDD_muniBild%1 ctrlShow  true;", _i];
 
-            //Text    
+            //Text
             call compile format["_Munitext%1 = getText (configFile >> 'cfgMagazines' >> ((_magazineVehArryNew select (_i - 1)) select 0) >> 'displayName')", _i];
             call compile format["_IDD_muniText%1 ctrlSetText _Munitext%1;", _i];
-            call compile format["_IDD_muniText%1 ctrlShow true;", _i];      
-        };        
+            call compile format["_IDD_muniText%1 ctrlShow true;", _i];
+        };
     };
-};    
+};
 
 _IDD_vehDisplayName ctrlSetText _vehDisplayName;
 _IDD_vehDisplayIcon ctrlSetText _vehDisplayIcon;
@@ -233,18 +233,18 @@ _IDD_vehDisplayIcon ctrlSetText _vehDisplayIcon;
 //Preis vorhandene Bewaffnung
 GVAR(VorhandeneBewaffnunggeld) = 0;
 
-if (GVAR(side) isEqualTo civilian) then 
+if (GVAR(side) isEqualTo civilian) then
 {
     //Box7 füllen
-    private _index =_IDD_box7 lbAdd format ["Datalink €%1", GVAR(preisDatalink)];    
-    _index =_IDD_box7 lbAdd "Leer";    
+    private _index =_IDD_box7 lbAdd format ["Datalink €%1", GVAR(preisDatalink)];
+    _index =_IDD_box7 lbAdd "Leer";
 
     _IDD_box_text7 ctrlSetText "Datalink";
-} 
-else 
+}
+else
 {
     GVAR(VorhandeneBewaffnunggeld) = [GVAR(side), _magazineVehArryNew] call FUNC(geldVorhandeneBewaffnung);
-    
+
     //Boxen füllen
     private _Rakmag  = GVAR(boxArry) select 4 select 0;
     private _gunmag = GVAR(boxArry) select 4 select 1;
@@ -252,217 +252,217 @@ else
     private _tarnung = GVAR(boxArry) select 2 select 1;
     private _datalink = GVAR(boxArry) select 3 select 0;
 
-    if (GVAR(vehType) isKindOf "Air") then 
+    if (GVAR(vehType) isKindOf "Air") then
     {
         //Box1+2
         private _heli = [];
 
-        switch (GVAR(side)) do 
+        switch (GVAR(side)) do
         {
-            case west : 
-            {    
-                _heli = GVAR(Gunheliwest); 
+            case west :
+            {
+                _heli = GVAR(Gunheliwest);
             };
-            case east : 
-            {    
+            case east :
+            {
                 _heli = GVAR(Gunhelieast);
             };
-            case independent : 
-            {    
+            case independent :
+            {
                 _heli = GVAR(Gunheliindependent);
             };
-            default 
+            default
             {
-            };        
+            };
         };
 
         {
-            _index =_IDD_box1 lbAdd     
+            _index =_IDD_box1 lbAdd
             format["%1 €%2", _heli select _x select 4, _heli select _x select 3];
 
-            _index =_IDD_box2 lbAdd 
+            _index =_IDD_box2 lbAdd
             format["%1 €%2", _heli select _x select 4, _heli select _x select 3];
-
-        } forEach (GVAR(boxArry) select 1);     
-
-        _index =_IDD_box1 lbAdd "Leer";    
-        _index =_IDD_box2 lbAdd "Leer";    
-
-        _IDD_box_text1 ctrlSetText "Magazin Gun";
-        _IDD_box_text2 ctrlSetText "Magazin Gun";
-        
-        //Box3+4
-        _heli = [];
-        switch (GVAR(side)) do 
-        {
-            case west : 
-            {    
-                _heli = GVAR(Raktenheliwest);
-            };
-            case east : 
-            {    
-                _heli = GVAR(Raktenhelieast);
-            };
-            case independent : 
-            {    
-                _heli = GVAR(Raktenheliindependent);
-            };
-            default 
-            {
-            };        
-        };    
-
-        {
-            _index =_IDD_box3 lbAdd 
-            format["%1 €%2", _heli select _x select 4, _heli select _x select 3];
-
-            _index =_IDD_box4 lbAdd 
-            format["%1 €%2", _heli select _x select 4, _heli select _x select 3];
-        } forEach (GVAR(boxArry) select 0);
-
-        _index =_IDD_box3 lbAdd "Leer";    
-        _index =_IDD_box4 lbAdd "Leer";
-
-        _IDD_box_text3 ctrlSetText "Magazin Raketen";
-        _IDD_box_text4 ctrlSetText "Magazin Raketen";
-                    
-        //Box5+6
-        if (_Rakmag > 2) then  
-        {
-            {
-                _index =_IDD_box5 lbAdd 
-                format["%1 €%2", _heli select _x select 4, _heli select _x select 3];
-
-                _index =_IDD_box6 lbAdd 
-                format["%1 €%2", _heli select _x select 4, _heli select _x select 3];
-            } forEach (GVAR(boxArry) select 0);
-
-            _index =_IDD_box5 lbAdd "Leer";    
-            _index =_IDD_box6 lbAdd "Leer";
-
-            _IDD_box_text5 ctrlSetText "Magazin Raketen";
-            _IDD_box_text6 ctrlSetText "Magazin Raketen";
-        };    
-    } 
-    else 
-    {
-        //Box1+2
-        private _vehSelect = [];
-        switch (GVAR(side)) do 
-        {
-            case west:
-            {    
-                _vehSelect = GVAR(Gunvehwest);
-            };
-
-            case east:
-            {    
-                _vehSelect = GVAR(Gunveheast);
-            };
-
-            case independent:
-            {    
-                _vehSelect = GVAR(Gunvehindependent);
-            };
-
-            default
-            {
-            };        
-        }; 
-
-        {
-            _index =_IDD_box1 lbAdd 
-            format["%1 €%2", _vehSelect select _x select 4,_vehSelect select _x select 3];
-
-            _index =_IDD_box2 lbAdd 
-            format["%1 €%2", _vehSelect select _x select 4, _vehSelect select _x select 3];
 
         } forEach (GVAR(boxArry) select 1);
-        
-        _index =_IDD_box1 lbAdd "Leer";    
+
+        _index =_IDD_box1 lbAdd "Leer";
         _index =_IDD_box2 lbAdd "Leer";
 
         _IDD_box_text1 ctrlSetText "Magazin Gun";
         _IDD_box_text2 ctrlSetText "Magazin Gun";
 
         //Box3+4
-        _vehSelect = []; 
-        switch (GVAR(side)) do 
+        _heli = [];
+        switch (GVAR(side)) do
+        {
+            case west :
+            {
+                _heli = GVAR(Raktenheliwest);
+            };
+            case east :
+            {
+                _heli = GVAR(Raktenhelieast);
+            };
+            case independent :
+            {
+                _heli = GVAR(Raktenheliindependent);
+            };
+            default
+            {
+            };
+        };
+
+        {
+            _index =_IDD_box3 lbAdd
+            format["%1 €%2", _heli select _x select 4, _heli select _x select 3];
+
+            _index =_IDD_box4 lbAdd
+            format["%1 €%2", _heli select _x select 4, _heli select _x select 3];
+        } forEach (GVAR(boxArry) select 0);
+
+        _index =_IDD_box3 lbAdd "Leer";
+        _index =_IDD_box4 lbAdd "Leer";
+
+        _IDD_box_text3 ctrlSetText "Magazin Raketen";
+        _IDD_box_text4 ctrlSetText "Magazin Raketen";
+
+        //Box5+6
+        if (_Rakmag > 2) then
+        {
+            {
+                _index =_IDD_box5 lbAdd
+                format["%1 €%2", _heli select _x select 4, _heli select _x select 3];
+
+                _index =_IDD_box6 lbAdd
+                format["%1 €%2", _heli select _x select 4, _heli select _x select 3];
+            } forEach (GVAR(boxArry) select 0);
+
+            _index =_IDD_box5 lbAdd "Leer";
+            _index =_IDD_box6 lbAdd "Leer";
+
+            _IDD_box_text5 ctrlSetText "Magazin Raketen";
+            _IDD_box_text6 ctrlSetText "Magazin Raketen";
+        };
+    }
+    else
+    {
+        //Box1+2
+        private _vehSelect = [];
+        switch (GVAR(side)) do
         {
             case west:
-            {    
+            {
                 _vehSelect = GVAR(Gunvehwest);
             };
 
             case east:
-            {    
+            {
                 _vehSelect = GVAR(Gunveheast);
             };
 
             case independent:
-            {    
+            {
                 _vehSelect = GVAR(Gunvehindependent);
             };
 
-            default 
+            default
             {
-            };        
-        }; 
+            };
+        };
 
         {
-            _index =_IDD_box3 lbAdd 
-            format["%1 €%2", _vehSelect select _x select 4, _vehSelect select _x select 3];
+            _index =_IDD_box1 lbAdd
+            format["%1 €%2", _vehSelect select _x select 4,_vehSelect select _x select 3];
 
-            _index =_IDD_box4 lbAdd 
+            _index =_IDD_box2 lbAdd
             format["%1 €%2", _vehSelect select _x select 4, _vehSelect select _x select 3];
 
         } forEach (GVAR(boxArry) select 1);
 
-        _index =_IDD_box3 lbAdd "Leer";    
+        _index =_IDD_box1 lbAdd "Leer";
+        _index =_IDD_box2 lbAdd "Leer";
+
+        _IDD_box_text1 ctrlSetText "Magazin Gun";
+        _IDD_box_text2 ctrlSetText "Magazin Gun";
+
+        //Box3+4
+        _vehSelect = [];
+        switch (GVAR(side)) do
+        {
+            case west:
+            {
+                _vehSelect = GVAR(Gunvehwest);
+            };
+
+            case east:
+            {
+                _vehSelect = GVAR(Gunveheast);
+            };
+
+            case independent:
+            {
+                _vehSelect = GVAR(Gunvehindependent);
+            };
+
+            default
+            {
+            };
+        };
+
+        {
+            _index =_IDD_box3 lbAdd
+            format["%1 €%2", _vehSelect select _x select 4, _vehSelect select _x select 3];
+
+            _index =_IDD_box4 lbAdd
+            format["%1 €%2", _vehSelect select _x select 4, _vehSelect select _x select 3];
+
+        } forEach (GVAR(boxArry) select 1);
+
+        _index =_IDD_box3 lbAdd "Leer";
         _index =_IDD_box4 lbAdd "Leer";
 
         _IDD_box_text3 ctrlSetText "Magazin Gun";
         _IDD_box_text4 ctrlSetText "Magazin Gun";
 
-        //Box5            
-        if (_draht > 0) then 
-        {    
-            _index =_IDD_box5 lbAdd  
+        //Box5
+        if (_draht > 0) then
+        {
+            _index =_IDD_box5 lbAdd
             format ["Drahtkäfig €%1", GVAR(preisDrahtkafig)];
 
             _index =_IDD_box5 lbAdd "Leer";
 
-            _IDD_box_text5 ctrlSetText "Drahtkäfig";    
+            _IDD_box_text5 ctrlSetText "Drahtkäfig";
         };
 
-        //Box6            
-        if (_tarnung > 0) then 
+        //Box6
+        if (_tarnung > 0) then
         {
-            _index =_IDD_box6 lbAdd 
+            _index =_IDD_box6 lbAdd
             format ["Tarnung €%1", GVAR(preisTarnung)];
 
-            _index =_IDD_box6 lbAdd "Leer";    
+            _index =_IDD_box6 lbAdd "Leer";
 
             _IDD_box_text6 ctrlSetText "Tranung";
-        };        
+        };
     };
-    
-    //Box7            
-    if (_datalink > 0) then  
-    {
-        _index =_IDD_box7 lbAdd 
-        format ["Datalink €%1", GVAR(preisDatalink)];  
 
-        _index =_IDD_box7 lbAdd "Leer"; 
-           
+    //Box7
+    if (_datalink > 0) then
+    {
+        _index =_IDD_box7 lbAdd
+        format ["Datalink €%1", GVAR(preisDatalink)];
+
+        _index =_IDD_box7 lbAdd "Leer";
+
         _IDD_box_text7 ctrlSetText "Datalink";
     };
-    
-    _kosten ctrlSetText format["€:%1", GVAR(VorhandeneBewaffnunggeld)-GVAR(unitCost)];    
-};  
+
+    _kosten ctrlSetText format["€:%1", GVAR(VorhandeneBewaffnunggeld)-GVAR(unitCost)];
+};
 
 //InfoBox Erneuern bei änderung
-_IDD_box1 ctrlAddEventHandler [ "LBSelChanged", 
+_IDD_box1 ctrlAddEventHandler [ "LBSelChanged",
 {
     private _display = findDisplay IDD_DLG_KONFIG;
     private _kosten = _display displayCtrl 22003;
@@ -470,11 +470,11 @@ _IDD_box1 ctrlAddEventHandler [ "LBSelChanged",
     private _Datensatz = [];
 
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
-    
-    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10) - GVAR(unitCost))];  
+
+    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10) - GVAR(unitCost))];
 }];
 
-_IDD_box2 ctrlAddEventHandler [ "LBSelChanged", 
+_IDD_box2 ctrlAddEventHandler [ "LBSelChanged",
 {
     private _display = findDisplay IDD_DLG_KONFIG;
     private _kosten = _display displayCtrl 22003;
@@ -482,11 +482,11 @@ _IDD_box2 ctrlAddEventHandler [ "LBSelChanged",
     private _Datensatz = [];
 
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
-    
-    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10) - GVAR(unitCost))]; 
+
+    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10) - GVAR(unitCost))];
 }];
 
-_IDD_box3 ctrlAddEventHandler [ "LBSelChanged", 
+_IDD_box3 ctrlAddEventHandler [ "LBSelChanged",
 {
     private _display = findDisplay IDD_DLG_KONFIG;
     private _kosten = _display displayCtrl 22003;
@@ -494,11 +494,11 @@ _IDD_box3 ctrlAddEventHandler [ "LBSelChanged",
     private _Datensatz = [];
 
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
-    
-    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10) - GVAR(unitCost))]; 
+
+    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10) - GVAR(unitCost))];
 }];
 
-_IDD_box4 ctrlAddEventHandler [ "LBSelChanged", 
+_IDD_box4 ctrlAddEventHandler [ "LBSelChanged",
 {
     private _display = findDisplay IDD_DLG_KONFIG;
     private _kosten = _display displayCtrl 22003;
@@ -506,11 +506,11 @@ _IDD_box4 ctrlAddEventHandler [ "LBSelChanged",
     private _Datensatz = [];
 
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
-    
-    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10) - GVAR(unitCost))];  
+
+    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10) - GVAR(unitCost))];
 }];
 
-_IDD_box5 ctrlAddEventHandler [ "LBSelChanged", 
+_IDD_box5 ctrlAddEventHandler [ "LBSelChanged",
 {
     private _display = findDisplay IDD_DLG_KONFIG;
     private _kosten = _display displayCtrl 22003;
@@ -518,11 +518,11 @@ _IDD_box5 ctrlAddEventHandler [ "LBSelChanged",
     private _Datensatz = [];
 
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
-    
-    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10) - GVAR(unitCost))]; 
+
+    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10) - GVAR(unitCost))];
 }];
 
-_IDD_box6 ctrlAddEventHandler [ "LBSelChanged", 
+_IDD_box6 ctrlAddEventHandler [ "LBSelChanged",
 {
     private _display = findDisplay IDD_DLG_KONFIG;
     private _kosten = _display displayCtrl 22003;
@@ -530,11 +530,11 @@ _IDD_box6 ctrlAddEventHandler [ "LBSelChanged",
     private _Datensatz = [];
 
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
-    
-    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10) - GVAR(unitCost))];  
+
+    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10) - GVAR(unitCost))];
 }];
 
-_IDD_box7 ctrlAddEventHandler [ "LBSelChanged", 
+_IDD_box7 ctrlAddEventHandler [ "LBSelChanged",
 {
     private _display = findDisplay IDD_DLG_KONFIG;
     private _kosten = _display displayCtrl 22003;
@@ -542,12 +542,12 @@ _IDD_box7 ctrlAddEventHandler [ "LBSelChanged",
     private _Datensatz = [];
 
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
-    
-    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10) - GVAR(unitCost))];  
+
+    _kosten ctrlSetText format["€:%1", (GVAR(VorhandeneBewaffnunggeld) - (_Datensatz select 10) - GVAR(unitCost))];
 }];
 
-// Kauf Konfig ausführen  
-_IDD_vehKonfigOrder ctrlAddEventHandler [ "ButtonClick", 
+// Kauf Konfig ausführen
+_IDD_vehKonfigOrder ctrlAddEventHandler [ "ButtonClick",
 {
     private _display = findDisplay IDD_DLG_KONFIG;
 
@@ -555,8 +555,8 @@ _IDD_vehKonfigOrder ctrlAddEventHandler [ "ButtonClick",
     private _Gesamtkosten = 0;
 
     _Datensatz = [GVAR(side),GVAR(vehType),GVAR(boxArry),GVAR(pylon)] call FUNC(dynamischerDatensatz);
-       
-    if (GVAR(Modus) == "New") then  
+
+    if (GVAR(Modus) == "New") then
     {
         _Gesamtkosten = [_Datensatz,GVAR(orderPAD),GVAR(moveInVeh),GVAR(unitCost)] call FUNC(order);
     }
@@ -570,7 +570,7 @@ _IDD_vehKonfigOrder ctrlAddEventHandler [ "ButtonClick",
         private _vehWeapon = [];
         private _vehMagazin = [];
 
-        if (GVAR(veh) isKindOf "Air") then 
+        if (GVAR(veh) isKindOf "Air") then
         {
             _airRaktenweapon = _Datensatz select 1;
             _airRaktenmagazin = _Datensatz select 2;
@@ -605,13 +605,13 @@ _IDD_vehKonfigOrder ctrlAddEventHandler [ "ButtonClick",
         _raketencontrol,
         _zusatz,
         GVAR(weaponsVeh),
-        GVAR(magazineVeh)] call FUNC(arm);            
-        
-        if ((GVAR(VorhandeneBewaffnunggeld) - _waffenkosten) > 0) then 
-        {                
+        GVAR(magazineVeh)] call FUNC(arm);
+
+        if ((GVAR(VorhandeneBewaffnunggeld) - _waffenkosten) > 0) then
+        {
             [getPlayerUID player, Name Player, playerSide, 0, GVAR(vehType), (GVAR(VorhandeneBewaffnunggeld) - _waffenkosten), "+", "weapons"] remoteExecCall ["OPT_GELDZEIT_fnc_updateBudget", 2, false];
-        } 
-        else 
+        }
+        else
         {
             [getPlayerUID player, Name Player, playerSide, 0, GVAR(vehType), ((GVAR(VorhandeneBewaffnunggeld) - _waffenkosten) * (-1)), "-", "weapons"] remoteExecCall ["OPT_GELDZEIT_fnc_updateBudget", 2, false];
         };
@@ -625,19 +625,19 @@ GVAR(idPadCheckKonfig) = [
     private _display = findDisplay IDD_DLG_KONFIG;
     private _IDD_vehKonfigOrder = _display displayCtrl 22020;
     private _padBox = _display displayCtrl 22018;
-   
+
     // freie Pads suchen
     private _freiePads = [GVAR(pads), GVAR(Checkbereich)] call FUNC(checkpad);
 
     // Kaufbuttuon Freischalten und erstes Pad zuordnen
-    if (((count _freiePads) > 0) and (GVAR(Modus) == "New")) then 
+    if (((count _freiePads) > 0) and (GVAR(Modus) == "New")) then
     {
         _IDD_vehKonfigOrder ctrlEnable true;
         GVAR(orderPAD) = _freiePads select 0;
         _padBox ctrlSetTextColor [0.0, 1.0, 0.0, 1];
         _padBox ctrlSetText format ["BOX:%1",GVAR(orderPAD)];
     }
-    else 
+    else
     {
         _IDD_vehKonfigOrder ctrlEnable false;
         GVAR(orderPAD) = "Kein freie Box vorhanden";
@@ -645,28 +645,28 @@ GVAR(idPadCheckKonfig) = [
         _padBox ctrlSetText format ["BOX:%1",GVAR(orderPAD)];
     };
 
-    if (GVAR(Modus) == "old") then  
+    if (GVAR(Modus) == "old") then
     {
         _IDD_vehKonfigOrder ctrlEnable true;
-    };   
+    };
 }, 0] call CFUNC(addPerFrameHandler);
 
 // Festlegen ob Spieler in Fahrzeug nach kauf
-_moveInVeh ctrlAddEventHandler [ "ButtonClick", 
+_moveInVeh ctrlAddEventHandler [ "ButtonClick",
 {
     private _display = findDisplay IDD_DLG_KONFIG;
     private _moveInVeh = _display displayCtrl 22044;
 
-    if (GVAR(moveInVeh)) then 
+    if (GVAR(moveInVeh)) then
     {
-        GVAR(moveInVeh) = false;         
-        _moveInVeh ctrlSetText "[_] Fahrzeug besetzen";   
-        _moveInVeh ctrlSetTextColor [1.0, 0.0, 0.0, 1];       
+        GVAR(moveInVeh) = false;
+        _moveInVeh ctrlSetText "[_] Fahrzeug besetzen";
+        _moveInVeh ctrlSetTextColor [1.0, 0.0, 0.0, 1];
     }
     else
     {
-        GVAR(moveInVeh) = true;         
-        _moveInVeh ctrlSetText "[X] Fahrzeug besetzen"; 
-        _moveInVeh ctrlSetTextColor [0.0, 1.0, 0.0, 1];             
+        GVAR(moveInVeh) = true;
+        _moveInVeh ctrlSetText "[X] Fahrzeug besetzen";
+        _moveInVeh ctrlSetTextColor [0.0, 1.0, 0.0, 1];
     };
 }];

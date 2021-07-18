@@ -1,9 +1,9 @@
 /**
 * Description:
 * Stellt Haftladungen zur Verfügung
-* 
+*
 * Author: Lord-MDB
-* 
+*
 * Arguments:
 * none
 *
@@ -16,7 +16,7 @@
 *
 * Global:
 * no
-* 
+*
 * Public:
 * no
 *
@@ -41,7 +41,7 @@ if (isNil "_intersection" || _intersection isEqualTo []) exitWith {hint format["
 
 // Netto Position des Fahrzeugs
 private _vDir = _start vectorFromTo _end;
-private _position = _intersection vectorAdd (_vDir vectorMultiply + (0.9 * abs(cos(getDir _target + 90)))); // 90 cm abstand 
+private _position = _intersection vectorAdd (_vDir vectorMultiply + (0.9 * abs(cos(getDir _target + 90)))); // 90 cm abstand
 private _offset = _target worldToModel ASLToAGL _position;
 
 private _xoffset = _offset select 0;
@@ -51,7 +51,7 @@ private _zoffset = _offset select 2;
 // Anheften der Sprengladung mit Offset
 _bomb attachTo [_target, [_xoffset, _yoffset, _zoffset]];
 
-// Ausrichten der Sprengladung 
+// Ausrichten der Sprengladung
 private _unitdir = getDir player;
 _bomb setVectorDirAndUp [[0, (cos(getDir _target + 90)), 0], [(cos(getDir _target - 90 + _unitdir)), (cos(getDir _target + 90 + _unitdir)), 0]];
 

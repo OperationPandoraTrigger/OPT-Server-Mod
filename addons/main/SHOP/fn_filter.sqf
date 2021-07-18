@@ -1,34 +1,34 @@
 /**
 * Description:
 * Funktion Waffen+Magazine Filtern
-* 
-* Author: 
+*
+* Author:
 * [GNC]Lord-MDB
 *
 * Arguments:
 * 0 <OBJECT> Fahrzeug, dass ausgelesen werden soll
-* 
+*
 * Return Value:
-* 0 <ARRAY> _waffenMagazinArray 
-* 
+* 0 <ARRAY> _waffenMagazinArray
+*
 * Server only:
 * no
 *
 * Public:
 * no
-* 
+*
 * Global:
 * no
-* 
+*
 * Sideeffects:
 * no
-* 
+*
 * Example:
 *
 */
 #include "macros.hpp"
 
-params 
+params
 [
     ["_veh", objNull]
 ];
@@ -63,7 +63,7 @@ _weaponsVeh = _weaponsVeh select {_x != ""};
     "SmokeLauncherMag"
 ] apply
 {
-    _magazineVeh deleteAt (_magazineVeh find _x);                
+    _magazineVeh deleteAt (_magazineVeh find _x);
 };
 
 _magazineVeh = _magazineVeh select {_x != ""};

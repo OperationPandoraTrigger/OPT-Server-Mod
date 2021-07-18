@@ -1,7 +1,7 @@
 /**
 * Description:Löschen von allen Fahrzeugen auf dem Boxen
-* 
-* 
+*
+*
 * Author:
 * [GNC]Lord-MDB
 *
@@ -13,19 +13,19 @@
 *
 * Server Only:
 * No
-* 
+*
 * Global:
 * No
-* 
+*
 * API:
 * No
-* 
+*
 * Example:
 * 
 */
 #include "macros.hpp"
 
-params 
+params
 [
     ["_pads", []]
 ];
@@ -35,7 +35,7 @@ _pads apply
 {
     private _spawnpos = _x;
     private _objs = [];
-    
+
     _objs = nearestObjects [_spawnpos, ["AllVehicles", "Thing"], GVAR(Checkbereich)];
 
     // now delete
@@ -45,9 +45,9 @@ _pads apply
             deleteVehicle _x;
         };
 
-        if ((_x isKindOf "CAManBase") and !alive _x) then 
+        if ((_x isKindOf "CAManBase") and !alive _x) then
         {
             deleteVehicle _x;
-        };    
+        };
     } forEach _objs;
 };

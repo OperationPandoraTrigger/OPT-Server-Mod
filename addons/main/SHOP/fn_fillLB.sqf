@@ -1,7 +1,7 @@
 /**
 * Description:Box befüllen
-* 
-* 
+*
+*
 * Author:
 * [GNC]Lord-MDB
 *
@@ -17,21 +17,21 @@
 *
 * Server Only:
 * No
-* 
+*
 * Global:
 * No
-* 
+*
 * API:
 * No
-* 
+*
 * Example:
-* 
+*
 */
 #include "macros.hpp"
 
 params
 [
-    ["_idd", 0, [1], 1], 
+    ["_idd", 0, [1], 1],
     ["_idc", 0, [1], 1],
     ["_txtToAdd", "", [["s"]]],
     ["_picToAdd", "", [["s"]]],

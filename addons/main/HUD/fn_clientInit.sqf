@@ -1,6 +1,6 @@
 /**
 * Description:
-* Initialisierung HUD System 
+* Initialisierung HUD System
 *
 * Author:
 * Lord-MDB
@@ -15,11 +15,11 @@
 * No
 *
 * Public:
-* No 
+* No
 * 
 * Global:
 * No
-* 
+*
 * API:
 * No
 *

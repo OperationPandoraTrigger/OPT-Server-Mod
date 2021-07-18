@@ -21,10 +21,10 @@ private _typeOfPlayer = typeOf _unit;
 private _bad_item_used = false;
 
 // check SMG
-if !(_typeOfPlayer in (GVAR(pilots) + GVAR(jetpilots) + GVAR(crew))) then 
+if !(_typeOfPlayer in (GVAR(pilots) + GVAR(jetpilots) + GVAR(crew))) then
 {
     {
-        if (_x in GVAR(SMG)) then 
+        if (_x in GVAR(SMG)) then
         {
             _unit removeWeapon _x;
             _bad_item_used = true;
@@ -33,10 +33,10 @@ if !(_typeOfPlayer in (GVAR(pilots) + GVAR(jetpilots) + GVAR(crew))) then
 };
 
 // check Light launcher
-if !(_typeOfPlayer in GVAR(Lightrocketmen)) then 
+if !(_typeOfPlayer in GVAR(Lightrocketmen)) then
 {
     {
-        if (_x in GVAR(lightlaunchers)) then 
+        if (_x in GVAR(lightlaunchers)) then
         {
             _unit removeWeapon _x;
             _bad_item_used = true;
@@ -45,10 +45,10 @@ if !(_typeOfPlayer in GVAR(Lightrocketmen)) then
 };
 
 // check Heavy launcher
-if !(_typeOfPlayer in GVAR(Heavyrocketmen)) then 
+if !(_typeOfPlayer in GVAR(Heavyrocketmen)) then
 {
     {
-        if (_x in GVAR(Heavylaunchers)) then 
+        if (_x in GVAR(Heavylaunchers)) then
         {
             _unit removeWeapon _x;
             _bad_item_used = true;
@@ -57,10 +57,10 @@ if !(_typeOfPlayer in GVAR(Heavyrocketmen)) then
 };
 
 // check AA launcher
-if !(_typeOfPlayer in GVAR(AArocketmen)) then 
+if !(_typeOfPlayer in GVAR(AArocketmen)) then
 {
     {
-        if (_x in GVAR(AAlaunchers)) then 
+        if (_x in GVAR(AAlaunchers)) then
         {
             _unit removeWeapon _x;
             _bad_item_used = true;
@@ -69,10 +69,10 @@ if !(_typeOfPlayer in GVAR(AArocketmen)) then
 };
 
 // check recon Sniper
-if !(_typeOfPlayer in GVAR(reconSnipers)) then 
+if !(_typeOfPlayer in GVAR(reconSnipers)) then
 {
     {
-        if (_x in GVAR(reconSniperRifles)) then 
+        if (_x in GVAR(reconSniperRifles)) then
         {
             _unit removeWeapon _x;
             _bad_item_used = true;
@@ -81,10 +81,10 @@ if !(_typeOfPlayer in GVAR(reconSnipers)) then
 };
 
 // check sniper
-if !(_typeOfPlayer in GVAR(snipers)) then 
+if !(_typeOfPlayer in GVAR(snipers)) then
 {
     {
-        if (_x in GVAR(sniperRifles)) then 
+        if (_x in GVAR(sniperRifles)) then
         {
             _unit removeWeapon _x;
             _bad_item_used = true;
@@ -93,10 +93,10 @@ if !(_typeOfPlayer in GVAR(snipers)) then
 };
 
 // check DMR Sniper
-if !(_typeOfPlayer in GVAR(DMRsnipers)) then 
+if !(_typeOfPlayer in GVAR(DMRsnipers)) then
 {
     {
-        if (_x in GVAR(DMRsniperRifles)) then 
+        if (_x in GVAR(DMRsniperRifles)) then
         {
             _unit removeWeapon _x;
             _bad_item_used = true;
@@ -105,10 +105,10 @@ if !(_typeOfPlayer in GVAR(DMRsnipers)) then
 };
 
 // check MG
-if !(_typeOfPlayer in GVAR(soldatMG)) then 
+if !(_typeOfPlayer in GVAR(soldatMG)) then
 {
     {
-        if (_x in GVAR(MG)) then 
+        if (_x in GVAR(MG)) then
         {
             _unit removeWeapon _x;
             _bad_item_used = true;
@@ -117,10 +117,10 @@ if !(_typeOfPlayer in GVAR(soldatMG)) then
 };
 
 // check LMG
-if !(_typeOfPlayer in GVAR(soldatLMG)) then 
+if !(_typeOfPlayer in GVAR(soldatLMG)) then
 {
     {
-        if (_x in GVAR(LMG)) then 
+        if (_x in GVAR(LMG)) then
         {
             _unit removeWeapon _x;
             _bad_item_used = true;
@@ -129,10 +129,10 @@ if !(_typeOfPlayer in GVAR(soldatLMG)) then
 };
 
 // check recon
-if !(_typeOfPlayer in GVAR(recon)) then 
+if !(_typeOfPlayer in GVAR(recon)) then
 {
     {
-        if (_x in GVAR(reconRifles)) then 
+        if (_x in GVAR(reconRifles)) then
         {
             _unit removeWeapon _x;
             _bad_item_used = true;
@@ -141,10 +141,10 @@ if !(_typeOfPlayer in GVAR(recon)) then
 };
 
 // check grenade launcher
-if !(_typeOfPlayer in GVAR(grenadiers)) then 
+if !(_typeOfPlayer in GVAR(grenadiers)) then
 {
     {
-        if (_x in GVAR(grenadelaunchers)) then 
+        if (_x in GVAR(grenadelaunchers)) then
         {
             _unit removeWeapon _x;
             _bad_item_used = true;
@@ -153,35 +153,35 @@ if !(_typeOfPlayer in GVAR(grenadiers)) then
 };
 
 // check Minenscanner
-if !(_typeOfPlayer in GVAR(pioniers)) then 
+if !(_typeOfPlayer in GVAR(pioniers)) then
 {
     {
-        _unit unassignItem _x; 
+        _unit unassignItem _x;
         _unit removeItems _x
     } forEach ["MineDetector"];
 };
 
 // check medic item
-if !(_typeOfPlayer in GVAR(medic)) then 
+if !(_typeOfPlayer in GVAR(medic)) then
 {
     {
         _unit removeItems _x;
-    } forEach ["Medikit"]; 
+    } forEach ["Medikit"];
 };
 
 // check Minen
-if !(_typeOfPlayer in GVAR(pioniers)) then 
+if !(_typeOfPlayer in GVAR(pioniers)) then
 {
     {
-        if (_x in GVAR(Sprengmittel)) then 
+        if (_x in GVAR(Sprengmittel)) then
         {
-            _unit removeMagazines _x; 
+            _unit removeMagazines _x;
             _bad_item_used = true;
         };
     } forEach (magazines _unit);
 };
 
-if (_bad_item_used) then 
+if (_bad_item_used) then
 {
     private _txt = MLOC(WEAPON_LOCK);
     private _header = MLOC(RULE_VIOLATION);

@@ -1,7 +1,7 @@
 /**
 * Description:
-* Init GPS 
-* 
+* Init GPS
+*
 * Author:
 * [GNC]Lord-MDB
 *
@@ -14,10 +14,10 @@
 * 
 * Global:
 * No
-* 
+*
 * API:
 * No
-* 
+*
 * Example:
 * [] call FUNC(clientinit);
 */

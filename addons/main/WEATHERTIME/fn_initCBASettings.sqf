@@ -44,7 +44,7 @@
     QGVAR(weather_overcast), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "SLIDER", // setting type
     [
-        "Bewölkung",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.  
+        "Bewölkung",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
         "Stärke der Bewölkung" + endl +
         "Dieser Wert ist statisch und kann leider keinen Clientsynchronen Übergang aufweisen." + endl
         // Mouse-Over description of the above
@@ -59,7 +59,7 @@
     QGVAR(weather_rain_start), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "SLIDER", // setting type
     [
-        "Regen",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.  
+        "Regen",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
         "Stärke des Regens zum Schlachtbeginn." + endl +
         "Für Regen ist ein Bewölkungswert von mindestens 0.5 nötig." + endl
         // Mouse-Over description of the above
@@ -74,7 +74,7 @@
     QGVAR(weather_fogValue_start), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "SLIDER", // setting type
     [
-        "Nebeldichte auf Basishöhe",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.  
+        "Nebeldichte auf Basishöhe",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
         "Stärke des Nebels auf der angegebenen Basishöhe." + endl   // Mouse-Over description of the above
     ],
     ["OPT Wetter/Zeit", "3 - Regen und Nebel zum Schlachtbeginn"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
@@ -87,7 +87,7 @@
     QGVAR(weather_fogBase_start), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "SLIDER", // setting type
     [
-        "Nebel-Basishöhe",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.  
+        "Nebel-Basishöhe",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
         "Höhe der Nebel-Basis (in m über NN)." + endl   // Mouse-Over description of the above
     ],
     ["OPT Wetter/Zeit", "3 - Regen und Nebel zum Schlachtbeginn"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
@@ -100,8 +100,8 @@
     QGVAR(weather_fogDecay_start), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "SLIDER", // setting type
     [
-        "Nebel Anstieg/Rückgang pro Höhe",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.  
-        "Positiver Wert: Nebelintensität nimmt mit steigender Höhe ab (z.B. für Bodennebel)." + endl + 
+        "Nebel Anstieg/Rückgang pro Höhe",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+        "Positiver Wert: Nebelintensität nimmt mit steigender Höhe ab (z.B. für Bodennebel)." + endl +
         "Negativer Wert: Nebelintensität nimmt mit steigender Höhe zu (z.B. für Höhennebel)." + endl
         // Mouse-Over description of the above
     ],
@@ -115,7 +115,7 @@
     QGVAR(weather_rain_end), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "SLIDER", // setting type
     [
-        "Regen",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.  
+        "Regen",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
         "Stärke des Regens zum Schlachtende." + endl +
         "Für Regen ist ein Bewölkungswert von mindestens 0.5 nötig." + endl
         // Mouse-Over description of the above
@@ -130,7 +130,7 @@
     QGVAR(weather_fogValue_end), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "SLIDER", // setting type
     [
-        "Nebeldichte auf Basishöhe",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.  
+        "Nebeldichte auf Basishöhe",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
         "Stärke des Nebels auf der angegebenen Basishöhe." + endl   // Mouse-Over description of the above
     ],
     ["OPT Wetter/Zeit", "4 - Regen und Nebel zum Schlachtende"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
@@ -143,7 +143,7 @@
     QGVAR(weather_fogBase_end), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "SLIDER", // setting type
     [
-        "Nebel-Basishöhe",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.  
+        "Nebel-Basishöhe",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
         "Höhe der Nebel-Basis (in m über NN)." + endl   // Mouse-Over description of the above
     ],
     ["OPT Wetter/Zeit", "4 - Regen und Nebel zum Schlachtende"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
@@ -156,8 +156,8 @@
     QGVAR(weather_fogDecay_end), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "SLIDER", // setting type
     [
-        "Nebel Anstieg/Rückgang pro Höhe",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.  
-        "Positiver Wert: Nebelintensität nimmt mit steigender Höhe ab (z.B. für Bodennebel)." + endl + 
+        "Nebel Anstieg/Rückgang pro Höhe",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+        "Positiver Wert: Nebelintensität nimmt mit steigender Höhe ab (z.B. für Bodennebel)." + endl +
         "Negativer Wert: Nebelintensität nimmt mit steigender Höhe zu (z.B. für Höhennebel)." + endl
         // Mouse-Over description of the above
     ],

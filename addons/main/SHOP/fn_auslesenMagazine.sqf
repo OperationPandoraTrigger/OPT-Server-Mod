@@ -1,7 +1,7 @@
 /**
 * Description:Magazine Auslesen vom Fahrzeug.
-* 
-* 
+*
+*
 * Author:
 * [GNC]Lord-MDB
 *
@@ -9,23 +9,23 @@
 * 0 <Objekt> Fahrzeug das Ausgelesen wird
 *
 * Return value:
-* 0 <Array> Gefilterte Fahrzeug Magazine 
+* 0 <Array> Gefilterte Fahrzeug Magazine
 *
 * Server Only:
 * No
-* 
+*
 * Global:
 * No
-* 
+*
 * API:
 * No
-* 
+*
 * Example:
-* 
+*
 */
 #include "macros.hpp"
 
-params 
+params
 [
     ["_veh", objNull, [objNull], 1]
 ];
@@ -54,7 +54,7 @@ private _magazineVehArry = magazinesAmmo _veh;
     ["SmokeLauncherMag", 2]
 ] apply
 {
-    _magazineVehArry deleteAt (_magazineVehArry find _x);                
+    _magazineVehArry deleteAt (_magazineVehArry find _x);
 };
 
 _magazineVehArry

@@ -1,7 +1,7 @@
 /**
 * Description:
 * initialize all flag poles
-* 
+*
 * Author:
 * Lord-MDB, form
 *
@@ -11,13 +11,13 @@
 *
 * Server Only:
 * No
-* 
+*
 * Global:
 * No
-* 
+*
 * API:
 * No
-* 
+*
 * Example:
 * [] call fnc_setupflagpoles.sqf;
 
@@ -28,7 +28,7 @@ Diese Datei erzeugt für alle gewählten Sektoren die Fahnenmasten sowie Markier
 private _PreMineZoneMarkerID = 0;
 
 CreateFlags = {
-    if (isServer) then 
+    if (isServer) then
     {
         _this params ["_pos", "_side", "_texture"];
         private _flag = createVehicle ["FlagPole_F", _pos, [], 0, "CAN_COLLIDE"];
@@ -46,7 +46,7 @@ CreateFlags = {
         };
 
         // Create MineZoneMarker for all possible flags (will be deleted after Waffenruhe)
-        if (GVAR(flagFreeMineZoneMarkerOn)) then 
+        if (GVAR(flagFreeMineZoneMarkerOn)) then
         {
             _PreMineZoneMarkerID = _PreMineZoneMarkerID + 1;
             private _markerName = format["PreMineZoneMarkerStage2_%1", _PreMineZoneMarkerID];

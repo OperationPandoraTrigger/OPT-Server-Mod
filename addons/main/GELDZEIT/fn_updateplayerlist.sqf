@@ -4,8 +4,8 @@
 *
 * Arguments:
 * 0: <STRING> unique UID of player
-* 1: <STRING> name of player 
-* 2: <SIDE> side of player 
+* 1: <STRING> name of player
+* 2: <SIDE> side of player
 *
 * Return Value:
 * None

@@ -1,7 +1,7 @@
 /**
 * Description:
 * initialize and mark all sector, flag and beam positions
-* 
+*
 * Author:
 * form
 *
@@ -11,13 +11,13 @@
 *
 * Server Only:
 * Yes
-* 
+*
 * Global:
 * No
-* 
+*
 * API:
 * No
-* 
+*
 * Example:
 * [] call fnc_setupsectors.sqf;
 
@@ -620,7 +620,7 @@ publicVariable QGVAR(AllSectors);
 // Create MineZoneMarker for all possible flags (will be deleted after Waffenruhe)
 GVAR(PreMineZoneMarkers) = [];
 private _PreMineZoneMarkerID = 0;
-if (isServer && GVAR(flagFreeMineZoneMarkerOn)) then 
+if (isServer && GVAR(flagFreeMineZoneMarkerOn)) then
 {
     {
         {
@@ -646,9 +646,9 @@ GVAR(BorderMarkers) = [];
 private _markerID = 0;
 
 // CBA-Settings parsen, da dies sonst erst nach dem "Durchdrücken" geschieht
-GVAR(nato_allsectors) = parseSimpleArray format ["[%1]", GVAR(nato_allsectors_str)]; 
-GVAR(csat_allsectors) = parseSimpleArray format ["[%1]", GVAR(csat_allsectors_str)]; 
-GVAR(aaf_allsectors) = parseSimpleArray format ["[%1]", GVAR(aaf_allsectors_str)]; 
+GVAR(nato_allsectors) = parseSimpleArray format ["[%1]", GVAR(nato_allsectors_str)];
+GVAR(csat_allsectors) = parseSimpleArray format ["[%1]", GVAR(csat_allsectors_str)];
+GVAR(aaf_allsectors) = parseSimpleArray format ["[%1]", GVAR(aaf_allsectors_str)];
 
 // Sektormarker zeichnen
 {
@@ -679,7 +679,7 @@ GVAR(aaf_allsectors) = parseSimpleArray format ["[%1]", GVAR(aaf_allsectors_str)
 } forEach GVAR(aaf_allsectors);
 
 // Grenzlinien
-switch OPT_GELDZEIT_Fraktionauswahl do 
+switch OPT_GELDZEIT_Fraktionauswahl do
 {
         case "AAFvsCSAT":
         {
@@ -699,7 +699,7 @@ switch OPT_GELDZEIT_Fraktionauswahl do
             GVAR(Side2SectorMarkers) = GVAR(AAFSectorMarkers);
         };
 
-           default 
+           default
         {
             ERROR_LOG("setupsectors: Fehlerhafte Datenuebergabe - Keine Fraktionauswahl erkannt");
         };

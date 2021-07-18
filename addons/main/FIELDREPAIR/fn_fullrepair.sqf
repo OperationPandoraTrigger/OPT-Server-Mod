@@ -6,7 +6,7 @@
 * None
 *
 * Return Value:
-* None 
+* None
 *
 * Example:
 * [vehicle] call func(fullRepair);

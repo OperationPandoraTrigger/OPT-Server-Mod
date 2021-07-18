@@ -15,11 +15,11 @@
 * No
 *
 * Public:
-* No 
+* No
 * 
 * Global:
 * No
-* 
+*
 * API:
 * No
 *
@@ -44,16 +44,16 @@ GVAR(waffenruheFlagMarkers) = [];
     if (_x getVariable ["opt_flag", false]) then
     {
         // only show attack flags
-        switch OPT_GELDZEIT_Fraktionauswahl do 
+        switch OPT_GELDZEIT_Fraktionauswahl do
         {
             case "AAFvsCSAT":
             {
-                switch (playerSide) do 
+                switch (playerSide) do
                 {
-                    case east: 
+                    case east:
                     {
                         // Flaggenpunkte die zur Auswahl stehen
-                        if (_x getVariable ["start_owner", sideUnknown] == independent) then 
+                        if (_x getVariable ["start_owner", sideUnknown] == independent) then
                         {
                             private _markerName = format["OptionMarkerCSAT_%1_%2", _forEachIndex, _x];
                             private _marker = createMarkerLocal [_markerName, getPos _x];
@@ -62,7 +62,7 @@ GVAR(waffenruheFlagMarkers) = [];
                         };
 
                         // Gewählte Ziele
-                        if (_x in GVAR(aaf_flags)) then 
+                        if (_x in GVAR(aaf_flags)) then
                         {
                             private _markerName = format["ActiveMarkerCSAT_%1", _x];
                             private _marker = createMarkerLocal [_markerName, getPos _x];
@@ -73,10 +73,10 @@ GVAR(waffenruheFlagMarkers) = [];
                         };
                     };
 
-                    case independent: 
+                    case independent:
                     {
                         // Flaggenpunkte die zur Auswahl stehen
-                        if (_x getVariable ["start_owner", sideUnknown] == east) then 
+                        if (_x getVariable ["start_owner", sideUnknown] == east) then
                         {
                             private _markerName = format["OptionMarkerGUER_%1_%2", _forEachIndex, _x];
                             private _marker = createMarkerLocal [_markerName, getPos _x];
@@ -85,7 +85,7 @@ GVAR(waffenruheFlagMarkers) = [];
                         };
 
                         // Gewählte Ziele
-                        if (_x in GVAR(csat_flags)) then 
+                        if (_x in GVAR(csat_flags)) then
                         {
                             private _markerName = format["ActiveMarkerGUER_%1", _x];
                             private _marker = createMarkerLocal [_markerName, getPos _x];
@@ -94,18 +94,18 @@ GVAR(waffenruheFlagMarkers) = [];
                             _marker setMarkerColorLocal "ColorIndependent";
                             GVAR(waffenruheFlagMarkers) pushBackUnique _marker;
                         };
-                    };    
-                };          
+                    };
+                };
             };
 
             case "NATOvsCSAT":
             {
-                switch (playerSide) do 
+                switch (playerSide) do
                 {
-                    case west: 
+                    case west:
                     {
                         // Flaggenpunkte die zur Auswahl stehen
-                        if (_x getVariable ["start_owner", sideUnknown] == east) then 
+                        if (_x getVariable ["start_owner", sideUnknown] == east) then
                         {
                             private _markerName = format["OptionMarkerNATO_%1_%2", _forEachIndex, _x];
                             private _marker = createMarkerLocal [_markerName, getPos _x];
@@ -114,7 +114,7 @@ GVAR(waffenruheFlagMarkers) = [];
                         };
 
                         // Gewählte Ziele
-                        if (_x in GVAR(csat_flags)) then 
+                        if (_x in GVAR(csat_flags)) then
                         {
                             private _markerName = format["ActiveMarkerNATO_%1", _x];
                             private _marker = createMarkerLocal [_markerName, getPos _x];
@@ -125,10 +125,10 @@ GVAR(waffenruheFlagMarkers) = [];
                         };
                     };
 
-                    case east: 
+                    case east:
                     {
                         // Flaggenpunkte die zur Auswahl stehen
-                        if (_x getVariable ["start_owner", sideUnknown] == west) then 
+                        if (_x getVariable ["start_owner", sideUnknown] == west) then
                         {
                             private _markerName = format["OptionMarkerCSAT_%1_%2", _forEachIndex, _x];
                             private _marker = createMarkerLocal [_markerName, getPos _x];
@@ -137,7 +137,7 @@ GVAR(waffenruheFlagMarkers) = [];
                         };
 
                         // Gewählte Ziele
-                        if (_x in GVAR(nato_flags)) then 
+                        if (_x in GVAR(nato_flags)) then
                         {
                             private _markerName = format["ActiveMarkerCSAT_%1", _x];
                             private _marker = createMarkerLocal [_markerName, getPos _x];
@@ -147,17 +147,17 @@ GVAR(waffenruheFlagMarkers) = [];
                             GVAR(waffenruheFlagMarkers) pushBackUnique _marker;
                         };
                     };
-                };    
+                };
             };
 
             case "NATOvsAAF":
             {
-                switch (playerSide) do 
+                switch (playerSide) do
                 {
-                    case west: 
+                    case west:
                     {
                         // Flaggenpunkte die zur Auswahl stehen
-                        if (_x getVariable ["start_owner", sideUnknown] == east) then 
+                        if (_x getVariable ["start_owner", sideUnknown] == east) then
                         {
                             private _markerName = format["OptionMarkerNATO_%1_%2", _forEachIndex, _x];
                             private _marker = createMarkerLocal [_markerName, getPos _x];
@@ -166,7 +166,7 @@ GVAR(waffenruheFlagMarkers) = [];
                         };
 
                         // Gewählte Ziele
-                        if (_x in GVAR(csat_flags)) then 
+                        if (_x in GVAR(csat_flags)) then
                         {
                             private _markerName = format["ActiveMarkerNATO_%1", _x];
                             private _marker = createMarkerLocal [_markerName, getPos _x];
@@ -177,10 +177,10 @@ GVAR(waffenruheFlagMarkers) = [];
                         };
                     };
 
-                    case independent: 
+                    case independent:
                     {
                         // Flaggenpunkte die zur Auswahl stehen
-                        if (_x getVariable ["start_owner", sideUnknown] == east) then 
+                        if (_x getVariable ["start_owner", sideUnknown] == east) then
                         {
                             private _markerName = format["OptionMarkerGUER_%1_%2", _forEachIndex, _x];
                             private _marker = createMarkerLocal [_markerName, getPos _x];
@@ -198,7 +198,7 @@ GVAR(waffenruheFlagMarkers) = [];
                             GVAR(waffenruheFlagMarkers) pushBackUnique _marker;
                         };
                     };
-                };     
+                };
             };
 
             default
@@ -216,14 +216,14 @@ GVAR(waffenruheFlagMarkers) = [];
     private _flag = nearestObjects [_pos, ["FlagPole_F"], 100];
     private _txtplayer = "STR_OPT_SECTORCONTROL_FLAG_CONFIRM" call CLib_fnc_readLocalisation;
 
-    if (count _flag > 0) then 
+    if (count _flag > 0) then
     {
         _flag = _flag select 0;
 
         // bugfix if enemy flag was chosen
         if ((_flag getVariable ["start_owner", sideUnknown]) == PLAYERSIDE) exitWith{};
 
-        switch OPT_GELDZEIT_Fraktionauswahl do 
+        switch OPT_GELDZEIT_Fraktionauswahl do
         {
             case "AAFvsCSAT":
             {
@@ -250,7 +250,7 @@ GVAR(waffenruheFlagMarkers) = [];
 
                         // neue flagge? -> hinzufügen
                         else
-                        { 
+                        {
                             // noch genügend flaggen erlaubt?
                             if (count GVAR(aaf_flags) < round GVAR(flagCountAAF)) then
                             {
@@ -265,8 +265,8 @@ GVAR(waffenruheFlagMarkers) = [];
                             };
                         };
                         systemChat format [_txtplayer, count GVAR(aaf_flags), round GVAR(flagCountAAF)];
-                    };            
-    
+                    };
+
                     case independent:
                     {
                         private _index = GVAR(csat_flags) find _flag;
@@ -288,7 +288,7 @@ GVAR(waffenruheFlagMarkers) = [];
 
                         // neue flagge? -> hinzufügen
                         else
-                        { 
+                        {
                             // noch genügend flaggen erlaubt?
                             if (count GVAR(csat_flags) < round GVAR(flagCountCSAT)) then
                             {
@@ -304,7 +304,7 @@ GVAR(waffenruheFlagMarkers) = [];
                         };
                         systemChat format [_txtplayer, count GVAR(csat_flags), round GVAR(flagCountCSAT)];
                     };
-                };   
+                };
             };
 
             case "NATOvsCSAT":
@@ -332,7 +332,7 @@ GVAR(waffenruheFlagMarkers) = [];
 
                         // neue flagge? -> hinzufügen
                         else
-                        { 
+                        {
                             // noch genügend flaggen erlaubt?
                             if (count GVAR(csat_flags) < round GVAR(flagCountCSAT)) then
                             {
@@ -370,7 +370,7 @@ GVAR(waffenruheFlagMarkers) = [];
 
                         // neue flagge? -> hinzufügen
                         else
-                        { 
+                        {
                             // noch genügend flaggen erlaubt?
                             if (count GVAR(nato_flags) < round GVAR(flagCountNATO)) then
                             {
@@ -386,7 +386,7 @@ GVAR(waffenruheFlagMarkers) = [];
                         };
                         systemChat format [_txtplayer, count GVAR(nato_flags), round GVAR(flagCountNATO)];
                     };
-                };                 
+                };
             };
 
             case "NATOvsAAF":
@@ -414,7 +414,7 @@ GVAR(waffenruheFlagMarkers) = [];
 
                         // neue flagge? -> hinzufügen
                         else
-                        { 
+                        {
                             // noch genügend flaggen erlaubt?
                             if (count GVAR(aaf_flags) < round GVAR(flagCountAAF)) then
                             {
@@ -452,7 +452,7 @@ GVAR(waffenruheFlagMarkers) = [];
 
                         // neue flagge? -> hinzufügen
                         else
-                        { 
+                        {
                             // noch genügend flaggen erlaubt?
                             if (count GVAR(nato_flags) < round GVAR(flagCountNATO)) then
                             {
@@ -468,19 +468,19 @@ GVAR(waffenruheFlagMarkers) = [];
                         };
                         systemChat format [_txtplayer, count GVAR(nato_flags), round GVAR(flagCountNATO)];
                     };
-                };                          
+                };
             };
 
-            default 
+            default
             {
                 ERROR_LOG("chooseflag: Fehlerhafte Datenuebergabe - Keine Fraktionauswahl erkannt");
                 private _side = sideUnknown;
             };
-        };    
-    }; 
+        };
+    };
 }] call BIS_fnc_addStackedEventHandler;
 
-DFUNC(REH) = 
+DFUNC(REH) =
 {
     ["sectorMap", "onMapSingleClick"] call BIS_fnc_removeStackedEventHandler;
 

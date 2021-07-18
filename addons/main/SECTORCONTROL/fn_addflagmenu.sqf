@@ -2,7 +2,7 @@
 * Author: James
 * fügt allen Offizieren (HL und PL) einen addAction Eintrag für die Flaggenwahl
 * zu Missionsbeginn hinzu. Ruft das Skript chooseFlag auf. Wird ausgeblendet,
-* sobald die Mission begonnen hat.     
+* sobald die Mission begonnen hat.
 *
 * Arguments:
 * None
@@ -18,7 +18,7 @@
 
 if (OPT_GELDZEIT_GAMESTAGE >= GAMESTAGE_WAR) exitWith{};
 
-GVAR(officer) =  
+GVAR(officer) =
 [
     "OPT_NATO_Offizier_T",
     "OPT_CSAT_Offizier_T",
@@ -29,16 +29,16 @@ GVAR(officer) =
 ];
 
 // Mausradmenüeinträge für HL und PL
-if (typeOf player in GVAR(officer)) then 
+if (typeOf player in GVAR(officer)) then
 {
     player addAction [
-        format["<t size=""1.5"" color=""#ffffff"">%1</t>", MLOC(ATTACK_FLAG)], 
-        {[] call FUNC(chooseFlag);}, 
-        [], 
-        6, 
-        true, 
-        true, 
-        "", 
+        format["<t size=""1.5"" color=""#ffffff"">%1</t>", MLOC(ATTACK_FLAG)],
+        {[] call FUNC(chooseFlag);},
+        [],
+        6,
+        true,
+        true,
+        "",
         "(OPT_GELDZEIT_GAMESTAGE <= 1)"
     ];
 
