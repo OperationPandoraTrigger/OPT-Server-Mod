@@ -32,5 +32,13 @@
 if (GVAR(GAMESTAGE) == GAMESTAGE_FREEZE) then
 {
     // Spieler zu Beginn einfrieren
-    [true] call ace_common_fnc_disableUserInput;
+
+    // OPT Methode
+    player enableSimulation false;
+
+    // Offizielle Methode
+    // disableUserInput true;
+
+    // ACE Methode
+    // [true] call ace_common_fnc_disableUserInput;
 };

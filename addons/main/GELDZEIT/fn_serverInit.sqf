@@ -64,8 +64,15 @@ GVAR(playerList) = [];
                     publicVariable QGVAR(GAMESTAGE);
 
                     // Gefreezte Spieler auftauen
-                    {[false] call ace_common_fnc_disableUserInput;} remoteExec ["call", -2];
 
+                    // OPT Methode
+                    {player enableSimulation true;} remoteExec ["call", -2];
+
+                    // Offizielle Methode
+                    // {disableUserInput false;} remoteExec ["call", -2];
+
+                    // ACE Methode
+                    // {[false] call ace_common_fnc_disableUserInput;} remoteExec ["call", -2];
 
                     // Logeintrag
                     ["Mission", "Truce", [0, 0, 0, missionName]] call OPT_LOGGING_fnc_writelog;
