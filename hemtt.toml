@@ -13,5 +13,5 @@ releasebuild = [
     "@zip opt-servermod_v{{semver.major}}.{{semver.minor}}.{{semver.patch}}.{{semver.build}}"
 ]
 
-key_name = "v{{semver.major}}.{{semver.minor}}.{{semver.patch}}.{{semver.build}}"
-authority = "v{{semver.major}}.{{semver.minor}}.{{semver.patch}}.{{semver.build}}"
+key_name = "opt_server_v{{semver.major}}.{{semver.minor}}.{{semver.patch}}.{{semver.build}}"
+authority = "opt_server_v{{semver.major}}.{{semver.minor}}.{{semver.patch}}.{{semver.build}}"
