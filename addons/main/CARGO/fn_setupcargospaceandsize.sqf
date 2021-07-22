@@ -68,7 +68,7 @@ GVAR(canTransportCargo) =
     ["OPT_CUP_B_UH1D_armed_GER_KSK", 4],      // UH-1D
     ["OPT_CUP_B_CH53E_USMC", 8],              // CH53G Super Stallion
     ["OPT_CUP_B_AH64D_DL_USA", 1],            // AH-64
-    ["OPT_CUP_C_Cessna_172_CIV_BLUE", 0],     // Caesar BTT
+    ["OPT_CUP_I_CESSNA_T41_UNARMED_USA", 0],  // Caesar BTT
     ["OPT_CUP_C_AN2_CIV", 4],                 // Antonov An-2
     ["OPT_CUP_C_DC3_ChernAvia_CIV", 2],       // Li-2
     ["OPT_CUP_B_C130J_USMC", 6],              // C130J
@@ -182,7 +182,7 @@ GVAR(canTransportCargo) =
     ["OPT_CUP_O_Ka60_Grey_RU", 4],            // KA-60 Kataska
     ["OPT_CUP_O_Merlin_HC3_GB", 8],           // Merlin HC3A
     ["OPT_CUP_O_Mi24_V_Dynamic_RU", 1],       // MI-24V
-    ["OPT_CUP_C_Cessna_172_CIV_GREEN", 0],    // Cessna
+    ["OPT_CUP_I_CESSNA_T41_UNARMED_ION", 0],  // Cessna
     ["OPT_CUP_O_AN2_TK", 4],                  // Antonov An-2
     ["OPT_CUP_O_C47_SLA", 2],                 // Li-2
     ["OPT_CUP_O_C130J_TKA", 6],               // C130J
@@ -371,7 +371,7 @@ GVAR(canBeTransported) =
     ["OPT_CUP_B_UH1D_armed_GER_KSK", 10],     // UH-1D
     ["OPT_CUP_B_CH53E_USMC", 10],             // CH53G Super Stallion
     ["OPT_CUP_B_AH64D_DL_USA", 10],           // AH-64
-    ["OPT_CUP_C_Cessna_172_CIV_BLUE", 10],    // Caesar BTT
+    ["OPT_CUP_I_CESSNA_T41_UNARMED_USA", 10], // Caesar BTT
     ["OPT_CUP_C_AN2_CIV", 10],                // Antonov An-2
     ["OPT_CUP_C_DC3_ChernAvia_CIV", 10],      // Li-2
     ["OPT_CUP_B_C130J_USMC", 10],             // C130J
@@ -505,7 +505,7 @@ GVAR(canBeTransported) =
     ["OPT_CUP_O_Ka60_Grey_RU", 10],           // KA-60 Kataska
     ["OPT_CUP_O_Merlin_HC3_GB", 10],          // Merlin HC3A
     ["OPT_CUP_O_Mi24_V_Dynamic_RU", 10],      // MI-24V
-    ["OPT_CUP_C_Cessna_172_CIV_GREEN", 10],   // Cessna
+    ["OPT_CUP_I_CESSNA_T41_UNARMED_ION", 10], // Cessna
     ["OPT_CUP_O_AN2_TK", 10],                 // Antonov An-2
     ["OPT_CUP_O_C47_SLA", 10],                // Li-2
     ["OPT_CUP_O_C130J_TKA", 10],              // C130J

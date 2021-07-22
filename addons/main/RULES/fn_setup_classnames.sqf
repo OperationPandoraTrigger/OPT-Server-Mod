@@ -150,13 +150,13 @@ GVAR(choppers) =
 GVAR(planes) =
 [
     // NATO - CUP
-    "OPT_CUP_C_Cessna_172_CIV_BLUE",        // Cessna
+    "OPT_CUP_I_CESSNA_T41_UNARMED_USA",     // Cessna
     "OPT_CUP_C_AN2_CIV",                    // Antonov An-2
     "OPT_CUP_C_DC3_ChernAvia_CIV",          // Li-2
     "OPT_CUP_B_C130J_USMC",                 // C130J
 
     // CSAT - CUP
-    "OPT_CUP_C_Cessna_172_CIV_GREEN",       // Cessna
+    "OPT_CUP_I_CESSNA_T41_UNARMED_ION",     // Cessna
     "OPT_CUP_O_AN2_TK",                     // Antonov An-2
     "OPT_CUP_O_C47_SLA",                    // Li-2
     "OPT_CUP_O_C130J_TKA"                   // C130J

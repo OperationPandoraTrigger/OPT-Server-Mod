@@ -94,6 +94,7 @@ DFUNC(createOrder) =
         case "OPT_CUP_O_Mi24_V_Dynamic_RU": { _offset = 0.1 };
 
         // CSAT Planes
+        case "OPT_CUP_I_CESSNA_T41_UNARMED_ION": { _offset = 0.2 };
         case "OPT_CUP_O_AN2_TK": { _offset = 0.7 };
         case "OPT_CUP_O_C47_SLA": { _offset = 0.9 };
         case "OPT_CUP_O_C130J_TKA": { _offset = 0.1 };
@@ -106,6 +107,7 @@ DFUNC(createOrder) =
         case "OPT_CUP_B_AH64D_DL_USA": { _offset = 0 };
 
         // NATO Planes
+        case "OPT_CUP_I_CESSNA_T41_UNARMED_USA": { _offset = 0.2 };
         case "OPT_CUP_C_AN2_CIV": { _offset = 0.7 };
         case "OPT_CUP_C_DC3_ChernAvia_CIV": { _offset = 0.8 };
         case "OPT_CUP_B_C130J_USMC": { _offset = 0.1 };
