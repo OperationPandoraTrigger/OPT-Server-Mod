@@ -35,7 +35,7 @@ if (not alive player or (player distance _veh) > 10 or (vehicle player != player
 };
 
 // if player has no tool kit or vehicle was repaired more often than free repair
-if (!(typeOf player in GVAR(pioniers)) and (_veh getVariable [QGVAR(longRepairTimes), 0] > 0)) exitWith
+if (!(typeOf player in EGVAR(RULES,engineers)) and (_veh getVariable [QGVAR(longRepairTimes), 0] > 0)) exitWith
 {
     private _txt = MLOC(NEED_TOOLKIT);
     private _header = MLOC(FIELD_REPAIR_HEADER);

@@ -460,6 +460,7 @@ GVAR(canBeTransported) =
     ["OPT_Box_NATO_WpsSpecial_F", 2],                          // Munition spezial NEUE KISTE!
     ["OPT_Box_NATO_Grenades_F", 2],                          // granatenkiste
     ["OPT_NATO_Sprengstoffkiste", 2],                          // sprengstoffkiste NEUE KISTE!
+    ["OPT_NATO_Minenkiste", 2],
     ["OPT_Box_NATO_WpsSpecial_AT_L1", 2],                    // Raketenkiste MAWWS NEUE KISTE!
     ["OPT_Box_NATO_WpsSpecial_AT_L1A", 2],                    // Raketenkiste MAWWS NEUE KISTE!
     ["OPT_Box_NATO_WpsSpecial_AT_L2", 2],                    // Raketenkiste PCML NEUE KISTE!
@@ -717,6 +718,7 @@ GVAR(canBeDragged) =
     ["OPT_Box_NATO_WpsSpecial_F"],                                            // Munition spezial kiste NEUE KISTE!
     ["OPT_Box_NATO_Grenades_F"],                                             // granatenkiste,75000
     ["OPT_NATO_Sprengstoffkiste"],                                             // sprengstoffkiste,75000 NEUE KISTE!
+    ["OPT_NATO_Minenkiste"],
     ["OPT_Box_NATO_WpsSpecial_AT_L1"],                                        // Raketenkiste MAWWS NEUE KISTE!
     ["OPT_Box_NATO_WpsSpecial_AT_L1A"],                                        // Raketenkiste MAWWS NEUE KISTE!
     ["OPT_Box_NATO_WpsSpecial_AT_L2"],                                        // Raketenkiste PCML NEUE KISTE!
@@ -847,6 +849,7 @@ GVAR(canBeCarried) =
     ["OPT_Box_NATO_WpsSpecial_F"],                        // Munition spezial kiste NEUE KISTE!
     ["OPT_Box_NATO_Grenades_F"],                         // granatenkiste,75000
     ["OPT_NATO_Sprengstoffkiste"],                         // sprengstoffkiste,75000 NEUE KISTE!
+    ["OPT_NATO_Minenkiste"],
     ["OPT_Box_NATO_WpsSpecial_AT_L1"],                       // Raketenkiste MAWWS NEUE KISTE!
     ["OPT_Box_NATO_WpsSpecial_AT_L1A"],                       // Raketenkiste MAWWS NEUE KISTE!
     ["OPT_Box_NATO_WpsSpecial_AT_L2"],                       // Raketenkiste PCML NEUE KISTE!

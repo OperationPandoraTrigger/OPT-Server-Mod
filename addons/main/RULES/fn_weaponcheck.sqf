@@ -153,7 +153,7 @@ if !(_typeOfPlayer in GVAR(grenadiers)) then
 };
 
 // check Minenscanner
-if !(_typeOfPlayer in GVAR(pioniers)) then
+if !(_typeOfPlayer in GVAR(pioneers)) then
 {
     {
         _unit unassignItem _x;
@@ -170,7 +170,7 @@ if !(_typeOfPlayer in GVAR(medic)) then
 };
 
 // check Minen
-if !(_typeOfPlayer in GVAR(pioniers)) then
+if !(_typeOfPlayer in GVAR(pioneers)) then
 {
     {
         if (_x in GVAR(Sprengmittel)) then
