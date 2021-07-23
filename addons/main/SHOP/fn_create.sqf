@@ -191,6 +191,12 @@ DFUNC(createOrder) =
         _veh setSkill 1.0;
     };
 
+    // Nur gepanzerte Fahrzeuge verbleiben im Garbage Collector
+    if !(_class in GVAR(all_armored_classnames)) then
+    {
+        removeFromRemainsCollector [_veh];
+    };
+
     private _order_kosten = GVAR(order_unitCost) + _waffenkosten;
     [getPlayerUID player, name player, playerSide, netId _veh, typeOf _veh, _order_kosten, "-"] remoteExecCall ["OPT_GELDZEIT_fnc_updateBudget", 2, false];
 

@@ -162,7 +162,6 @@ GVAR(nato_armored) =
     ["OPT_CUP_B_Leopard2A6_GER", DEF_PROD(450000)],         // Leopard2A6
     ["OPT_CUP_B_HMMWV_TOW_USMC", DEF_PROD(200000)],          // HMMWV TOW
     ["OPT_CUP_B_RM70_CZ", DEF_PROD(300000)]                 // RM-70 nicht nachladbar
-
 ];
 
 GVAR(nato_supplies) =
@@ -1167,3 +1166,8 @@ GVAR(all_item_classnames) = [];
 {
     GVAR(all_item_classnames) pushBackUnique (_x select 0);
 } forEach GVAR(all);
+
+GVAR(all_armored_classnames) = [];
+{
+    GVAR(all_armored_classnames) pushBackUnique (_x select 0);
+} forEach (GVAR(nato_armored) + GVAR(csat_armored));
