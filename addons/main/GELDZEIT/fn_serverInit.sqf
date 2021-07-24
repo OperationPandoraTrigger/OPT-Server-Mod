@@ -26,6 +26,13 @@
 
 #define LOGGING_VERSION 9
 
+// Missionsnamen-Rekonstruktor (Symlink opt_latest -> opt_v123)
+GVAR(missionName) = missionName;
+if (GVAR(missionName) isEqualTo "opt_latest") then
+{
+    GVAR(missionName) = "opt_v" + getMissionConfigValue "onLoadMission";
+};
+
 private _time = systemTime;
 ["Logging", "Start", [LOGGING_VERSION, OPT_GELDZEIT_Fraktionauswahl, format ["%1-%2-%3 %4:%5:%6", _time select 0, _time select 1, _time select 2, _time select 3, _time select 4, _time select 5]]] call OPT_LOGGING_fnc_writelog;
 ["Mission", "Load", [0, 0, 0, GVAR(missionName)]] call OPT_LOGGING_fnc_writelog;
@@ -34,14 +41,6 @@ GVAR(GAMESTAGE) = GAMESTAGE_FREEZE;
 publicVariable QGVAR(GAMESTAGE);
 
 GVAR(playerList) = [];
-
-
-// Missionsnamen-Rekonstruktor (Symlink opt_latest -> opt_v123)
-GVAR(missionName) = missionName;
-if (GVAR(missionName) isEqualTo "opt_latest") then
-{
-    GVAR(missionName) = "opt_v" + getMissionConfigValue "onLoadMission";
-};
 
 ["missionStarted",
 {
