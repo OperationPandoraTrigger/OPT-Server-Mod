@@ -36,7 +36,7 @@ GVAR(Punktecount) = [
                     GVAR(nato_points) = round GVAR(nato_points_f);    // übernahme in bisherige integer-zählweise
                     publicVariable QGVAR(nato_points);
                     GVAR(points_logtime) = serverTime;
-                    ["Mission", "State", [GVAR(nato_points), GVAR(csat_points), GVAR(aaf_points), missionName]] call OPT_LOGGING_fnc_writelog;
+                    ["Mission", "State", [GVAR(nato_points), GVAR(csat_points), GVAR(aaf_points), EGVAR(GELDZEIT,missionName)]] call OPT_LOGGING_fnc_writelog;
                 };
             };
 
@@ -48,7 +48,7 @@ GVAR(Punktecount) = [
                     GVAR(csat_points) = round GVAR(csat_points_f);    // übernahme in bisherige integer-zählweise
                     publicVariable QGVAR(csat_points);
                     GVAR(points_logtime) = serverTime;
-                    ["Mission", "State", [GVAR(nato_points), GVAR(csat_points), GVAR(aaf_points), missionName]] call OPT_LOGGING_fnc_writelog;
+                    ["Mission", "State", [GVAR(nato_points), GVAR(csat_points), GVAR(aaf_points), EGVAR(GELDZEIT,missionName)]] call OPT_LOGGING_fnc_writelog;
                 };
             };
 
@@ -60,7 +60,7 @@ GVAR(Punktecount) = [
                     GVAR(aaf_points) = round GVAR(aaf_points_f);    // übernahme in bisherige integer-zählweise
                     publicVariable QGVAR(aaf_points);
                     GVAR(points_logtime) = serverTime;
-                    ["Mission", "State", [GVAR(nato_points), GVAR(csat_points), GVAR(aaf_points), missionName]] call OPT_LOGGING_fnc_writelog;
+                    ["Mission", "State", [GVAR(nato_points), GVAR(csat_points), GVAR(aaf_points), EGVAR(GELDZEIT,missionName)]] call OPT_LOGGING_fnc_writelog;
                 };
             };
 
@@ -69,7 +69,7 @@ GVAR(Punktecount) = [
                 if ((serverTime - GVAR(points_logtime)) >= 60) then // letzter logeintrag > 1 Minute alt? Dann den aktuellen Stand loggen
                 {
                     GVAR(points_logtime) = serverTime;
-                    ["Mission", "State", [GVAR(nato_points), GVAR(csat_points), GVAR(aaf_points), missionName]] call OPT_LOGGING_fnc_writelog;
+                    ["Mission", "State", [GVAR(nato_points), GVAR(csat_points), GVAR(aaf_points), EGVAR(GELDZEIT,missionName)]] call OPT_LOGGING_fnc_writelog;
                 };
             };
         };
