@@ -289,40 +289,16 @@ class CfgCLibLocalisation
 
         class HUD
         {
-            class AAFvCSAT
+            class PLAYERS
             {
-                English = "Player: (A) %1 vs %2 (C)";
-                German = "Spieler: (A) %1 vs %2 (C)";
+                English = "Player: (%1) %2 vs. %3 (%4)";
+                German = "Spieler: (%1) %2 vs. %3 (%4)";
             };
 
-            class NATOvCSAT
+            class POINTS
             {
-                English = "Player: (N) %1 vs %2 (C)";
-                German = "Spieler: (N) %1 vs %2 (C)";
-            };
-
-            class NATOvAAF
-            {
-                English = "Player: (N) %1 vs %2 (A)";
-                German = "Spieler: (N) %1 vs %2 (A)";
-            };
-
-            class AAFvCSAT_POINT
-            {
-                English = "Points: (A) %1 : %2 (C)";
-                German = "Punkte: (A) %1 : %2 (C)";
-            };
-
-            class NATOvCSAT_POINT
-            {
-                English = "Points: (N) %1 : %2 (C)";
-                German = "Punkte: (N) %1 : %2 (C)";
-            };
-
-            class NATOvAAF_POINT
-            {
-                English = "Points: (N) %1 : %2 (A)";
-                German = "Punkte: (N) %1 : %2 (A)";
+                English = "Points: (%1) %2 : %3 (%4)";
+                German = "Punkte: (%1) %2 : %3 (%4)";
             };
 
             class TIME_LEFT
@@ -377,12 +353,6 @@ class CfgCLibLocalisation
             {
                 English = "NATO won!";
                 German = "NATO hat gewonnen!";
-            };
-
-            class AAF_WIN
-            {
-                English = "AAF won!";
-                German = "AAF hat gewonnen!";
             };
 
             class NO_WINNER

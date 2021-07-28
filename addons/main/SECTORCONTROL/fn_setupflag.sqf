@@ -24,14 +24,13 @@
 #include "macros.hpp"
 
 /* BY JAMES */
-// Variablen opt_csat_flags und opt_nato_flags / opt_csat_flags und opt_guer_flags werden durch die HL & PL von NATO und CSAT / AAF und CSAT in der Warmup-Phase am Kartenboard ausgewaehlt
+// Variablen opt_csat_flags und opt_nato_flags werden durch die HL & PL von NATO und CSAT in der Warmup-Phase am Kartenboard ausgewaehlt
 // siehe mission\functions\fnc_chooseFlag für Details
 
 // fallback if no flag was chosen -> random war!
 private _all_flags = allMissionObjects "FlagPole_F";
 private _all_nato_flags = _all_flags select {_x getVariable "start_owner" == west};
 private _all_csat_flags = _all_flags select {_x getVariable "start_owner" == east};
-private _all_aaf_flags = _all_flags select {_x getVariable "start_owner" == independent};
 
 private _maxTries = 1000;
 while {(count GVAR(nato_flags) < round GVAR(flagCountNATO)) && _maxTries > 0} do
@@ -49,21 +48,13 @@ while {(count GVAR(csat_flags) < round GVAR(flagCountCSAT)) && _maxTries > 0} do
 };
 publicVariable QGVAR(csat_flags);
 
-_maxTries = 1000;
-while {(count GVAR(aaf_flags) < round GVAR(flagCountAAF)) && _maxTries > 0} do
-{
-    GVAR(aaf_flags) pushBackUnique selectRandom _all_aaf_flags;
-    _maxTries = _maxTries - 1;
-};
-publicVariable QGVAR(aaf_flags);
-
 // Delete unselected Flagpoles
 {
    // only process opt flags
     if (_x getVariable ["opt_flag", false]) then
     {
         // only unselected flags
-        if (!(_x in (GVAR(csat_flags) + GVAR(nato_flags) + GVAR(aaf_flags)))) then
+        if (!(_x in (GVAR(csat_flags) + GVAR(nato_flags)))) then
         {
             deleteVehicle _x;
         };
@@ -104,11 +95,6 @@ Flaggen-Seite loggen
             _marker setMarkerType "flag_NATO";
         };
 
-        if (GVAR(aaf_flags) find _x >= 0) then
-        {
-            _marker setMarkerType "flag_AAF";
-        };
-
         _flag setVariable [QGVAR(flagMarker), _marker, true];
     };
 
@@ -144,4 +130,4 @@ Flaggen-Seite loggen
 
         // Bei Missionsstart alle ursprünglichen Flaggenowner loggen
         ["Flag", "StartState", [_flag, _flag getVariable ["start_owner", sideUnknown]]] call OPT_LOGGING_fnc_writelog;
-} foreach GVAR(csat_flags) + GVAR(nato_flags) + GVAR(aaf_flags);
+} foreach GVAR(csat_flags) + GVAR(nato_flags);

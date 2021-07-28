@@ -28,10 +28,4 @@ publicVariable QGVAR(Hardcap_csat_vehicles);
 publicVariable QGVAR(Hardcap_csat_supplies);
 publicVariable QGVAR(Hardcap_csat_sea);
 
-publicVariable QGVAR(Hardcap_aaf_choppers);
-publicVariable QGVAR(Hardcap_aaf_planes);
-publicVariable QGVAR(Hardcap_aaf_vehicles);
-publicVariable QGVAR(Hardcap_aaf_supplies);
-publicVariable QGVAR(Hardcap_aaf_sea);
-
 publicVariable QGVAR(Daten_send);

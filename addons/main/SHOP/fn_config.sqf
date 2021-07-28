@@ -405,111 +405,6 @@ GVAR(csat_sea) =
     ["OPT_O_SDV_01_F", DEF_PROD(40000)]                              // Submarine
 ];
 
-//AAF Einheiten
-GVAR(AAF_vehicles) =
-[
-/*
-    ["OPT_I_Quadbike_01_F", DEF_PROD(10000)],                    // Quadbike
-    ["OPT_I_C_Offroad_02_unarmed_F", DEF_PROD(18000)],               // Jeep unarmed
-    ["OPT_I_C_Offroad_02_LMG_F", DEF_PROD(25000)],                 // Jeeg MG
-    ["OPT_I_MRAP_03_F", DEF_PROD(20000)],                        // Strider
-    ["OPT_I_MRAP_03_hmg_F", DEF_PROD(80000)],                   // Strider HMG
-    ["OPT_I_Truck_02_covered_F", DEF_PROD(5000)],               // Zamak Transport
-    ["OPT_I_Truck_02_box_F", 10000,5000,10000],               // Zamak Repair
-    ["OPT_I_Truck_02_transport_F", DEF_PROD(5000)],               // Zamak
-    ["OPT_I_Truck_02_medical_F", DEF_PROD(6000)]               // Zamak Medical
-*/
-];
-
-// Fahrzeuge dieser Liste können nicht verkauft werden!
-GVAR(AAF_vehicles_supply) =
-[
-/*
-    ["OPT_I_Truck_02_ammo_F", 50000,5000,10000],                         // Zamak Ammo
-    ["OPT_I_Truck_02_fuel_F", 10000,5000,10000],                      // Zamak Fuel
-    ["OPT_B_Slingload_01_Ammo_F", 50000,5000,10000],                      // Slinglot Muni Container
-//    ["OPT_B_Slingload_01_Repair_F", DEF_PROD(0)],                      // Slinglot Rep Container
-    ["OPT_B_Slingload_01_Fuel_F", 10000,5000,10000]                      // Slinglot Fuel Container
-*/
-];
-
-GVAR(AAF_choppers) =
-[
-/*
-    ["OPT_I_Heli_light_03_v2_F", 200000,10000,20000],                 // WY-55 Hellcat Cas Light
-    ["OPT_I_Heli_light_03_v3_F", 400000,10000,20000],                 // WY-55 Hellcat Cas Heavy
-    ["OPT_I_Heli_light_03_unarmed_F", 40000,10000,20000],          // WY-55 Hellcat Unbewaffnet
-    ["OPT_I_Heli_Transport_02_F", 45000,10000,20000]                   // CH-49 Mohawk (Transport+Lift)
-//    ["OPT_I_UAV_02_light_F", DEF_PROD(0)]                 // Greyhawk unbewaffnet
-*/
-];
-
-GVAR(AAF_planes) =
-[
-];
-
-GVAR(AAF_armored) =
-[
-/*
-    ["OPT_I_LSV_01_AT_ghex_F", DEF_PROD(250000)],                     // Jeep AT
-//    ["OPT_I_MRAP_03_gmg_F", DEF_PROD(0)],                        // Strider GMG
-    ["OPT_I_APC_tracked_03_cannon_F_INF", DEF_PROD(300000)],        // FV-720 Mora Infanterie
-    ["OPT_I_APC_Wheeled_03_cannon_F_VEH", DEF_PROD(350000)],        // Gorgon Fahrzeug
-    ["OPT_I_APC_Wheeled_03_cannon_F_AT", DEF_PROD(400000)],        // Gorgon Tank
-    ["OPT_I_APC_Tracked_01_AA_ghex_F", DEF_PROD(320000)],                     // AA cheetah
-    ["OPT_I_MBT_03_cannon_F_INF", DEF_PROD(400000)],                     // MBT-52 Kuma Infanterie
-    ["OPT_I_MBT_03_cannon_F_AT", DEF_PROD(500000)],                     // MBT-52 Kuma Fahrzeug
-    ["OPT_I_MBT_01_arty_ghex_F", DEF_PROD(350000)],                     // Scorcher Arty
-    ["OPT_I_Truck_02_MRL_F", DEF_PROD(400000)]                      // Zamak Arty
-*/
-];
-
-GVAR(AAF_supplies) =
-[
-/*
-    ["OPT_Box_EFA_Ammo_F", 40000, 1000, 2000],               // Munitionskiste
-    ["OPT_Box_EAF_WpsSpecial_F", 60000, 1000, 2000],         // Munition spezial
-    ["OPT_Box_EAF_Grenades_F", 50000, 1000, 2000],           // granatenkiste
-    ["OPT_Box_EAF_UGL_F", 21000, 1000, 2000],           // granatenkiste
-    ["OPT_EAF_Sprengstoffkiste", 200000, 1000, 2000],        // sprengstoffkiste
-    ["OPT_EAF_Minenkiste", 80000, 1000, 2000],               // Minenkiste
-    ["OPT_Box_EAF_WpsSpecial_AT_L2", 101000, 1000, 2000],     // AT Raketenkiste (RPG7)
-    ["OPT_Box_EAF_WpsSpecial_AT_L1" ,225000, 1000, 2000],              // AT Raketenkiste (MAAWS)
-    ["OPT_Box_EAF_WpsSpecial_AT_L1A" ,250000, 1000, 2000],              // AT Raketenkiste (MAAWS)
-    ["OPT_Box_EAF_WpsSpecial_AT_L3" ,200000, 1000, 2000],              // AT Raketenkiste (RPG-42)
-    ["OPT_Box_EAF_WpsSpecial_AA_F", 150000, 1000, 2000],      // AA Raketenkiste
-    ["OPT_I_supplyCrate_F", 5000,1000, 2000],                     // Transportkiste (leer)
-    ["OPT_I_CargoNet_01_ammo_F", 5000,1000, 2000],               // Ausrstungskiste
-    ["OPT_Box_EAF_WpsSpecial_Diver_F", 5000,1000, 2000],        // Taucherkiste
-//    ["OPT_I_UGV_01_F", DEF_PROD(0)],                         // UGV Stomper                        // Darter AR-2
-    ["OPT_FlexibleTank_01_forest_F", DEF_PROD(1000)]           // Treibstoff-Fass
-*/
-];
-
-GVAR(AAF_static) =
-[
-/*
-    ["OPT_I_HMG_01_high_F", DEF_PROD(10000)],                   // Stand-MG hoch
-    ["OPT_I_HMG_01_F", DEF_PROD(10000)],                        // Stand-MG niedrig
-    ["OPT_I_GMG_01_high_F", DEF_PROD(75000)],                   // Stand-GMG hoch
-    ["OPT_I_GMG_01_F", DEF_PROD(75000)],                        // Stand-GMG niedrig
-    ["OPT_I_static_AA_F", DEF_PROD(20000)],                     // Stand-AA
-    ["OPT_I_static_AT_F", DEF_PROD(150000)],                    // Stand-AT
-    ["OPT_I_Mortar_01_F", DEF_PROD(50000)],                    // MK6 - Mörser
-    ["OPT_I_Static_Designator_01_F", DEF_PROD(10000)]           // Remote Designator
-*/
-];
-
-GVAR(AAF_sea) =
-[
-/*
-    ["OPT_I_Boat_Armed_01_minigun_F", DEF_PROD(25000)],         // Speedboat Minigun
-    ["OPT_I_Boat_Transport_01_F", DEF_PROD(500)],               // Assault Boat
-    ["OPT_I_SDV_01_F", DEF_PROD(40000)],                         // Submarine
-    ["OPT_I_C_Boat_Transport_02_F", DEF_PROD(12000)]             // Rhib unbewaffnet
-*/
-];
-
 GVAR(allNato) =
     GVAR(nato_vehicles) +
     GVAR(nato_vehicles_supply) +
@@ -530,20 +425,9 @@ GVAR(allCsat) =
     GVAR(csat_static) +
     GVAR(csat_sea);
 
-GVAR(allAAF) =
-    GVAR(AAF_vehicles) +
-    GVAR(AAF_vehicles_supply) +
-    GVAR(AAF_choppers) +
-    GVAR(AAF_planes) +
-    GVAR(AAF_armored) +
-    GVAR(AAF_supplies) +
-    GVAR(AAF_static) +
-    GVAR(AAF_sea);
-
 GVAR(all) =
     GVAR(allNato) +
-    GVAR(allCsat) +
-    GVAR(allAAF);
+    GVAR(allCsat);
 
 //Waffenkonfiguation
 //Raketen Heli Nato
@@ -741,104 +625,6 @@ GVAR(gunVehEast) =
 */
 ];
 
-//Raketen Heli AAF
-//[Magazinename, Waffenname, Preis/Schuss, Preis Magazin, Boxname, Waffenkontrolle Pilot KHS]
-GVAR(raktenHeliindependent) =
-[
-/*
-    ["OPT_PylonRack_1Rnd_Missile_AGM_02_F", "OPT_Missile_AGM_02_Plane_CAS_01_F", 150000, 150000, "1xMacer", 0],  // 0.1xMacer
-    ["OPT_PylonMissile_Missile_AMRAAM_D_INT_x1", "OPT_weapon_AMRAAMLauncher", 100000, 100000, "1xAMRAAM", 0],  //      1.1xAMRAAM
-    ["OPT_PylonRack_1Rnd_LG_scalpel", "OPT_missiles_SCALPEL", 200000, 200000, "1xScalpel", 0],  //      2.1xScalpel AH9, Orca
-    ["OPT_PylonRack_3Rnd_LG_scalpel", "OPT_missiles_SCALPEL", 200000, 600000, "3xScalpel", 0],  //      3.3xScalpel
-    ["OPT_PylonRack_12Rnd_missiles", "OPT_missiles_DAR", 4000, 48000, "12xDAR", -1],  //      4.12xDAR
-    ["OPT_PylonRack_12Rnd_PG_missiles", "OPT_missiles_DAGR", 10000, 120000, "12xDAGR", -1],  //      5.12xDAGR
-    ["OPT_PylonRack_19Rnd_Rocket_Skyfire", "OPT_rockets_Skyfire", 2500, 47500, "19xSkyfire", -1],  //      6.19xSkyfire
-    ["OPT_PylonRack_4Rnd_LG_scalpel", "OPT_missiles_SCALPEL", 200000, 800000, "4xScalpel", 0],  //      7.4xScalpel
-    ["PylonRack_7Rnd_Rocket_04_HE_F", "OPT_Rocket_04_HE_Plane_CAS_01_F", 2500, 17500, "7xShrieker HE", -1],  //      8.7xShrieker HE
-    ["PylonRack_7Rnd_Rocket_04_AP_F", "OPT_Rocket_04_AP_Plane_CAS_01_F", 5000, 35000, "7xShrieker AP", -1],  //      9.7xShrieker AP
-    ["PylonRack_20Rnd_Rocket_03_HE_F", "OPT_Rocket_03_HE_Plane_CAS_02_F", 2500, 50000, "20xTratnyr HE", -1],  //      10.20xTratnyr HE
-    ["PylonRack_20Rnd_Rocket_03_AP_F", "OPT_Rocket_03_AP_Plane_CAS_02_F", 5000, 100000, "20xTratnyr AP", -1],  //      11.20xTratnyr AP
-    ["OPT_PylonMissile_1Rnd_LG_scalpel", "OPT_missiles_SCALPEL", 200000, 200000, "1xScalpel", 0],  //      12.1xScalpel Hellcat, Kajman, Blackfoot
-    ["OPT_PylonRack_1Rnd_AAA_missiles", "OPT_missiles_ASRAAM", 25000, 25000, "1xASRAAM", 0],  //      13.1xASRAAM AH9, Orca, Hellcat
-    ["OPT_PylonRack_Missile_AGM_02_x1", "OPT_weapon_AGM_65Launcher", 150000, 150000, "1xMacer II", 0],  // 14.1xMacer II
-    ["OPT_PylonMissile_1Rnd_AAA_missiles", "OPT_missiles_ASRAAM", 25000, 25000, "1xASRAAM", 0]  //      15.1xASRAAM Blackfoot
-*/
-];
-
-//Gun Heli independent
-//[Magazinename, Waffenname, Preis/Schuss, Preis Magazin, Boxname]
-GVAR(gunHeliindependent) =
-[
-/*
-    ["5000Rnd_762x51_Yellow_Belt", "OPT_M134_minigun", 10, 50000, "5000x7.62 mm"],       // 0.5000x7.62 mm Minigun
-    ["1000Rnd_65x39_Belt_Yellow", "LMG_Minigun_heli", 10, 10000, "1000x6.5 mm mm"],  // 1.1000x6.5 mm mm Minigun
-    ["2000Rnd_65x39_Belt_Yellow", "LMG_Minigun_heli", 10, 20000, "2000x6.5 mm mm"],  // 2.2000x6.5 mm mm Minigun
-    ["1000Rnd_20mm_shells", "OPT_gatling_20mm", 100, 100000, "1000x20 mm"],      // 3.1000x20 mm Minigun
-    ["2000Rnd_20mm_shells", "OPT_gatling_20mm", 100, 200000, "2000x20 mm"],      // 4.2000x20 mm Minigun
-    ["300Rnd_20mm_shells", "OPT_gatling_20mm", 100, 30000, "300x20 mm"],         // 5.300x20 mm Minigun
-    ["250Rnd_30mm_HE_shells", "OPT_gatling_30mm", 300, 50000, "250x30 mm HE"],   // 6.250x30 mm HE Cannon Caseless
-    ["250Rnd_30mm_APDS_shells", "OPT_gatling_30mm", 200, 75000, "250x30 mm APDS"],// 7.250x30 mm APSD Cannon Caseless
-    ["OPT_PylonWeapon_300Rnd_20mm_shells", "OPT_Twin_Cannon_20mm", 100, 30000, "300xTwin 20mm"]  // 8.300xTwin 20mm Cannon
-*/
-];
-
-//Gun Fahrzeuge independent
-//[Magazinename, Waffenname, Preis/Schuss, Preis Magazin, Boxname]
-GVAR(gunVehindependent) =
-[
-/*
-    ["500Rnd_127x99_mag", "HMG_127", 80, 40000, "500x12.7 mm"],  // 0.500x12.7 mm AA MG
-    ["200Rnd_127x99_mag", "HMG_127", 80, 16000, "200x12.7 mm"],  // 1.200x12.7 mm AA MG
-    ["100Rnd_127x99_mag", "HMG_127", 80, 8000, "100x12.7 mm"],  // 2.100x12.7 mm AA MG
-    ["2000Rnd_762x51_Belt", "LMG_coax", 10, 20000, "2000x7.62 mm"],  // 3.2000x7.62 mm LMG
-    ["1000Rnd_762x51_Belt", "LMG_coax", 10, 10000, "1000x7.62 mm"],  // 4.1000x7.62 mm LMG
-    ["2000Rnd_65x39_Belt", "LMG_RCWS", 7, 14000, "2000x6.5 mm"],  // 5.2000x6.5 mm LMG
-    ["1000Rnd_65x39_Belt", "LMG_RCWS", 7, 7000, "1000x6.5 mm"],  // 6.1000x6.5 mm LMG
-    ["200Rnd_40mm_G_belt", "GMG_40mm", 1000, 200000, "200x40 mm HE Grenade"],  //  7.200x40 mm HE Grenade
-    ["96Rnd_40mm_G_belt", "GMG_40mm", 1000, 96000, "96x40 mm HE Grenade"],  //  8.96x40 mm HE Grenade
-    ["32Rnd_40mm_G_belt", "GMG_40mm", 1000, 32000, "32x40 mm HE Grenade"],  //  9.32x40 mm HE Grenade
-    ["200Rnd_20mm_G_belt", "GMG_20mm", 250, 50000, "200x20 mm HE Grenade"],  //  10.200x20 mm HE Grenade
-    ["40Rnd_20mm_g_belt", "GMG_20mm", 250, 10000, "40x20 mm HE Grenade"],  //  11.40x20 mm HE Grenade
-    ["140Rnd_30mm_MP_shells", "OPT_autocannon_30mm_CTWS", 100, 14000, "140x30 mm HE"],  //  12.140x30 mm HE
-    ["60Rnd_30mm_APFSDS_shells", "OPT_autocannon_30mm_CTWS", 400, 24000, "60x30 mm APFSDS"],  //  13.60x30 mm APFSDS
-    ["60Rnd_40mm_GPR_shells", "OPT_autocannon_40mm_CTWS", 200, 12000, "60x40 mm HE"],  //  14.60x40 mm HE
-    ["40Rnd_40mm_APFSDS_shells", "OPT_autocannon_40mm_CTWS", 700, 28000, "40x40 mm APFSDS"],  //  15.40x40 mm APFSDS
-    ["2Rnd_GAT_missiles", "OPT_missiles_titan", 50000, 100000, "2xTitan AT"],  //  16.2xTitan AT
-    ["1Rnd_GAT_missiles", "OPT_missiles_titan_static", 50000, 50000, "1xTitan AT"],  //  17.1xTitan AT
-    ["SPG9_HEAT", "launcher_SPG9", 25000, 25000, "1xSPG-9 HEAT"],  //  18.1xSPG-9 HEAT
-    ["SPG9_HE", "launcher_SPG9", 1000, 1000, "1xSPG-9 HE"],  //  19.1xSPG-9 HE
-    ["OPT_680Rnd_35mm_AA_shells_Tracer_Green", "OPT_autocannon_35mm", 100, 68000, "680xFlak 35 mm"],  //  20.680xFlak 35 mm
-    ["OPT_1200Rnd_35mm_AA_shells_Tracer_Green", "OPT_autocannon_35mm", 100, 120000, "1200xFlak 35 mm"],  //  21.1200xFlak 35 mm
-    ["4Rnd_Titan_long_missiles", "OPT_missiles_titan_AA", 12500, 50000, "4xTitan AA"],  //  22.4xTitan AA
-    ["2Rnd_Titan_long_missiles", "OPT_missiles_titan_AA", 12500, 25000, "2xTitan AA"],  //  23.2xTitan AA
-    ["32Rnd_120mm_APFSDS_shells", "cannon_120mm", 5000, 160000, "32x120mm APFSDS"],  //  24.32x120mm APFSDS
-    ["30Rnd_120mm_HE_shells", "cannon_120mm", 3000, 90000, "30x120mm HE"],  //  25.30x120mm HE
-    ["20Rnd_120mm_HEAT_MP", "cannon_120mm", 4500, 90000, "20x120mm HEAT"],  //  26.20x120mm HEAT
-    ["20Rnd_120mm_APFSDS_shells", "cannon_120mm", 5000, 100000, "20x120mm APFSDS"],  //  27.20x120mm APFSDS
-    ["16Rnd_120mm_HE_shells", "cannon_120mm", 3000, 48000, "16x120mm HE"],  //  28.16x120mm HE
-    ["12Rnd_120mm_HEAT_MP", "cannon_120mm", 4500, 54000, "12x120mm HEAT"],  //  29.12x120mm HEAT
-    ["12Rnd_120mm_APFSDS_shells", "cannon_120mm", 5000, 60000, "12x120mm APFSDS"],  //  30.12x120mm APFSDS
-    ["8Rnd_120mm_HE_shells", "cannon_120mm", 3000, 24000, "8x120mm HE"],  //  31.8x120mm HE
-    ["8Rnd_120mm_HEAT_MP", "cannon_120mm", 4500, 36000, "8x120mm HEAT"],  //  32.8x120mm HEAT
-    ["24Rnd_125mm_APFSDS", "cannon_125mm", 6000, 144000, "24x125mm APFSDS"],  //  33.20x125mm APFSDS
-    ["12Rnd_125mm_HE", "cannon_125mm", 3500, 42000, "12x125mm HE"],  //  34.12x125mm HE
-    ["12Rnd_125mm_HEAT", "cannon_125mm", 5000, 60000, "12x125mm HEAT"],  //  35.12x125mm HEAT
-    ["16Rnd_125mm_APFSDS", "cannon_125mm", 6000, 96000, "16x125mm APFSDS"],  // 36.16x125mm APFSDS
-    ["8Rnd_125mm_HE", "cannon_125mm", 3500, 28000, "8x125mm HE"],  //  37.8x125mm HE
-    ["4Rnd_120mm_cannon_missiles", "cannon_120mm", 50000, 200000, "4x120mm ATGM"],  // 38.4x120mm ATGM
-    ["4Rnd_125mm_cannon_missiles", "cannon_125mm", 50000, 200000, "4x125mm ATGM"],  //  39.4x125mm ATGM
-    ["OPT_32Rnd_155mm_Mo_shells", "OPT_mortar_155mm_AMOS", 5000, 160000, "32x155 mm HE"],  //  40.32x155 mm HE
-    ["OPT_2Rnd_155mm_Mo_Cluster", "OPT_mortar_155mm_AMOS", 2, 4, "2xCluster"],  //  41.2xCluster Shells
-    ["6Rnd_155mm_Mo_smoke", "OPT_mortar_155mm_AMOS", 500, 3000, "6xSmoke"],  //  42.6xSmoke
-    ["Vorona_HEAT", "missiles_Vorona", 500, 250000, "1xVorona-HEAT"],  //  43.vorona-test KalleK
-    ["Vorona_HE", "missiles_Vorona", 500, 150000, "1xVorona-HE"],  //  44.vorona-test KalleK
-    ["28Rnd_120mm_APFSDS_shells", "cannon_120mm", 5000, 140000, "28x120mm APFSDS"],  //  45.28x120mm APFSDS
-    ["20Rnd_125mm_APFSDS", "cannon_125mm", 6000, 120000, "20x125mm APFSDS"],  //  46.20x125mm APFSDS
-    ["12Rnd_120mm_HE_shells", "cannon_120mm", 3000, 36000, "12x120mm HE"],  //  47.12x120mm HE
-    ["4Rnd_70mm_SAAMI_missiles", "missiles_SAAMI", 12500, 50000, "4xSAAMI Missile"]  //  48.4xSAAMI Missile
-*/
-];
-
 //Preis Tarnung, Drahtkäfig, Datalinksystem
 GVAR(preisTarnung) = 10000;
 GVAR(preisDrahtkafig) = 10000;
@@ -876,19 +662,6 @@ GVAR(tigris) = [[], [20, 22], [0, 0], [1], [0, 4]];
 GVAR(varsuk) = [[], [3, 4, 5, 6, 33, 46, 36, 34, 37, 35, 39], [0, 0], [1], [0, 4]];
 GVAR(Angara) = [[], [3, 4, 5, 6, 33, 46, 36, 34, 37, 35, 39], [0, 0], [1], [0, 4]];
 GVAR(sochor) = [[], [40, 42], [0, 0], [1], [0, 4]];
-
-//independent Einheiten
-//[[Raketen], [Gun], [Drahtkäfig, Tranung], [Datalink], [Raketenmagzine, Gunmagazine]]
-GVAR(hellcat2) = [[4, 8, 9, 10, 11], [0, 1, 2], [0, 0], [1], [2, 2]];
-GVAR(striderHMG2) = [[], [0, 1, 2], [0, 0], [1], [0, 4]];
-GVAR(striderGMG2) = [[], [7, 8, 9, 10, 11], [0, 0], [1], [0, 4]];
-GVAR(MB4WDAT) = [[], [18,19], [0, 0], [1], [0, 4]];
-GVAR(gorgon2) = [[], [3, 4, 5, 6, 12, 13, 16], [0, 0], [1], [0, 4]];
-GVAR(mora2) = [[], [3, 4, 5, 6, 12, 13], [0, 0], [1], [0, 4]];
-GVAR(NyxAT) = [[], [0, 1, 2, 16], [0, 0], [1], [0, 4]];
-GVAR(NyxAA) = [[], [0, 1, 2, 48], [0, 0], [1], [0, 4]];
-GVAR(Kuma) = [[], [3, 4, 5, 6, 45, 27, 30, 28, 47, 31, 29, 32, 38], [0, 0], [1], [0, 4]];
-
 
 //Fahrzeuge die zugelassen sind
 GVAR(vehClassWestWW) =
@@ -957,21 +730,6 @@ GVAR(vehClassEastWW) =
 */
 ];
 
-GVAR(vehClassindependentWW) =
-[
-/*
-    "OPT4_I_MRAP_03_gmg_F",
-    "OPT4_I_MRAP_03_hmg_F",
-    "OPT4_I_C_Offroad_02_AT_F",
-    "OPT_I_Heli_light_03_F",
-    "OPT4_I_APC_tracked_03_cannon_F",
-    "OPT4_I_APC_Wheeled_03_cannon_F",
-    "OPT4_I_LT_01_AT_F",
-    "OPT4_I_LT_01_AA_F",
-    "OPT4_I_MBT_03_cannon_F"
-*/
-];
-
 //West Einheiten Loadouts
 //[[Raketen], [Gun], [Drahtkäfig, Tranung], [Datalink]]
 GVAR(pawneeLoadout) = [[4,4], [0], [0, 0], [0]];
@@ -1005,18 +763,6 @@ GVAR(varsukLoadout) = [[], [3, 33, 34, 35], [0, 0], [0]];
 GVAR(AngaraLoadout) = [[], [3, 33, 34, 35], [0, 0], [0]];
 GVAR(sochorLoadout) = [[], [40,40], [0, 0], [0]];
 
-//independent Einheiten Loadouts
-//[[Raketen], [Gun], [Drahtkäfig, Tranung], [Datalink]]
-GVAR(hellcat2Loadout) = [[4,4], [0], [0, 0], [0]];
-GVAR(striderHMG2Loadout) = [[], [0], [0, 0], [0]];
-GVAR(striderGMG2Loadout) = [[], [7], [0, 0], [0]];
-GVAR(MB4WDATLoadout) = [[], [18, 18, 19, 19], [0, 0], [0]];
-GVAR(gorgon2Loadout) =  [[], [3, 12, 13], [0, 0], [0]];
-GVAR(mora2Loadout) = [[], [3, 12, 13], [0, 0], [0]];
-GVAR(NyxATLoadout) = [[], [3, 16, 16], [0, 0], [0]];
-GVAR(NyxAALoadout) = [[], [0, 0, 48, 48], [0, 0], [0]];
-GVAR(KumaLoadout) = [[], [3, 45, 28, 29], [0, 0], [0]];
-
 //Pads für Bestellung und Verkauf
 GVAR(pad_veh_east) =
 [
@@ -1042,18 +788,6 @@ GVAR(pad_veh_west) =
     FahrzeugBoxWest8
 ];
 
-GVAR(pad_veh_independent) =
-[
-    FahrzeugBoxindependent1,
-    FahrzeugBoxindependent2,
-    FahrzeugBoxindependent3,
-    FahrzeugBoxindependent4,
-    FahrzeugBoxindependent5,
-    FahrzeugBoxindependent6,
-    FahrzeugBoxindependent7,
-    FahrzeugBoxindependent8
-];
-
 GVAR(pad_air_east) =
 [
     HeliBoxEast1,
@@ -1066,12 +800,6 @@ GVAR(pad_air_west) =
     HeliBoxWest2
 ];
 
-GVAR(pad_air_independent) =
-[
-    HeliBoxindependent1,
-    HeliBoxindependent2
-];
-
 GVAR(pad_plane_east) =
 [
     PlaneBoxEast
@@ -1080,11 +808,6 @@ GVAR(pad_plane_east) =
 GVAR(pad_plane_west) =
 [
     PlaneBoxWest
-];
-
-GVAR(pad_plane_independent) =
-[
-    PlaneBoxIndependent
 ];
 
 GVAR(pad_sup_east) =
@@ -1111,18 +834,6 @@ GVAR(pad_sup_west) =
     AusruestungBoxWest8
 ];
 
-GVAR(pad_sup_independent) =
-[
-    AusruestungBoxindependent1,
-    AusruestungBoxindependent2,
-    AusruestungBoxindependent3,
-    AusruestungBoxindependent4,
-    AusruestungBoxindependent5,
-    AusruestungBoxindependent6,
-    AusruestungBoxindependent7,
-    AusruestungBoxindependent8
-];
-
 GVAR(pad_sea_west) =
 [
     SeaBoxWest1,
@@ -1133,12 +844,6 @@ GVAR(pad_sea_east) =
 [
     SeaBoxEast1,
     SeaBoxEast2
-];
-
-GVAR(pad_sea_independent) =
-[
-    SeaBoxindependent1,
-    SeaBoxindependent2
 ];
 
 GVAR(pad_all_west) =
@@ -1154,13 +859,6 @@ GVAR(pad_all_east) =
     GVAR(pad_plane_east) +
     GVAR(pad_sup_east) +
     GVAR(pad_sea_east);
-
-GVAR(pad_all_independent) =
-    GVAR(pad_veh_independent) +
-    GVAR(pad_air_independent) +
-    GVAR(pad_plane_independent) +
-    GVAR(pad_sup_independent) +
-    GVAR(pad_sea_independent);
 
 GVAR(all_item_classnames) = [];
 {

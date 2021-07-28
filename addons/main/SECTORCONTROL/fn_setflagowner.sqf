@@ -17,14 +17,8 @@
 
 params ["_side","_flag"];
 
-//Flaggen Texturen
-//WESTFLAG "\opt\opt_client\addons\core\bilder\arf_fahne.paa"
-//EASTFLAG "\opt\opt_client\addons\core\bilder\sword_fahne.paa"
-//INDEPENDENTFLAG "\opt\opt_client\addons\core\bilder\arf_fahne.paa"
-
 switch (_side) do
 {
-    //wenn spieler der zieht NATO ist
     case (west):
     {
         _flag setFlagTexture GVAR(westflag);
@@ -35,13 +29,6 @@ switch (_side) do
     case (east):
     {
         _flag setFlagTexture GVAR(eastflag);
-        _flag setVariable ["owner", _side, true];
-
-    };
-
-    case (independent):
-    {
-        _flag setFlagTexture GVAR(independentflag);
         _flag setVariable ["owner", _side, true];
 
     };

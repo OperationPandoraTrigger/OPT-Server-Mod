@@ -40,40 +40,7 @@ if (_veh isKindOf "Air") then
  };
 
 // delete all wrecks within the base safezones
-private _delete = false;
-switch OPT_GELDZEIT_Fraktionauswahl do
-{
-        case "AAFvsCSAT":
-        {
-            if (!(_veh isKindOf "CAManBase") && {position _veh inArea "AAF_T_Zone1" || position _veh inArea "AAF_T_Zone2" || position _veh inArea "CSAT_T_Zone1" || position _veh inArea "CSAT_T_Zone2"}) then
-            {
-                _delete = true;
-            };
-        };
-
-        case "NATOvsCSAT":
-        {
-            if (!(_veh isKindOf "CAManBase") && {position _veh inArea "NATO_T_Zone1" || position _veh inArea "NATO_T_Zone2" || position _veh inArea "CSAT_T_Zone1" || position _veh inArea "CSAT_T_Zone2"}) then
-            {
-                _delete = true;
-            };
-        };
-
-        case "NATOvsAAF":
-        {
-            if (!(_veh isKindOf "CAManBase") && {position _veh inArea "NATO_T_Zone1" || position _veh inArea "NATO_T_Zone2" || position _veh inArea "AAF_T_Zone1" || position _veh inArea "AAF_T_Zone2"}) then
-            {
-                _delete = true;
-            };
-        };
-
-           default
-        {
-            ERROR_LOG("handleDeadVehicle: Fehlerhafte Datenübergabe - Keine Fraktionauswahl erkannt");
-        };
-};
-
-if (_delete) then
+if (!(_veh isKindOf "CAManBase") && {position _veh inArea "NATO_T_Zone1" || position _veh inArea "NATO_T_Zone2" || position _veh inArea "CSAT_T_Zone1" || position _veh inArea "CSAT_T_Zone2"}) then
 {
     private _name = getText(configFile >> "CfgVehicles" >> typeOf _veh >> "displayName");
     private _txt = format["Es gab einen Unfall in der Basis.\n\n Das Wrack von %1 wurde entsorgt.", _name];

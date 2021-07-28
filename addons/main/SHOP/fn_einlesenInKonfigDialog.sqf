@@ -267,10 +267,6 @@ else
             {
                 _heli = GVAR(Gunhelieast);
             };
-            case independent :
-            {
-                _heli = GVAR(Gunheliindependent);
-            };
             default
             {
             };
@@ -302,10 +298,6 @@ else
             case east :
             {
                 _heli = GVAR(Raktenhelieast);
-            };
-            case independent :
-            {
-                _heli = GVAR(Raktenheliindependent);
             };
             default
             {
@@ -360,11 +352,6 @@ else
                 _vehSelect = GVAR(Gunveheast);
             };
 
-            case independent:
-            {
-                _vehSelect = GVAR(Gunvehindependent);
-            };
-
             default
             {
             };
@@ -397,11 +384,6 @@ else
             case east:
             {
                 _vehSelect = GVAR(Gunveheast);
-            };
-
-            case independent:
-            {
-                _vehSelect = GVAR(Gunvehindependent);
             };
 
             default

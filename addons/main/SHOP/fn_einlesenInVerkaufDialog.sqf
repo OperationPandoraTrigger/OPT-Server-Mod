@@ -86,13 +86,6 @@ switch (_side) do
 
         GVAR(pads) = [VerkaufsBoxEast];
     };
-
-    case independent:
-    {
-        _rscPicture ctrlSetText "\opt\opt_client\addons\core\bilder\xxx-Logo.paa";
-
-        GVAR(pads) = [VerkaufsBoxindependent];
-    };
 };
 
 if (_type == "sell") then
@@ -215,11 +208,6 @@ _sell ctrlAddEventHandler [ "ButtonClick",
     if (_class in (GVAR(vehClassEastWW))) then
     {
         _side = east;
-    };
-
-    if (_class in (GVAR(vehClassindependentWW))) then
-    {
-        _side = independent;
     };
 
     _price = [_class] call FUNC(getPrice);

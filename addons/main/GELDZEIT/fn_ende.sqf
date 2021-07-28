@@ -29,109 +29,39 @@
 #include "macros.hpp"
 
 private _text = "";
-switch (GVAR(Fraktionauswahl)) do
+
+// Ermittle Sieger
+if (EGVAR(SECTORCONTROL,csat_points) != EGVAR(SECTORCONTROL,nato_points)) then
 {
-    case "AAFvsCSAT":
+    if (EGVAR(SECTORCONTROL,csat_points) > EGVAR(SECTORCONTROL,nato_points)) then
     {
-        private _points1 = EGVAR(SECTORCONTROL,aaf_points);
-        private _points2 = EGVAR(SECTORCONTROL,csat_points);
-
-        // Ermittel Sieger
-        if (_points2 != _points1) then
-        {
-            if (_points2 > _points1) then
-            {
-                GVAR(csat_win) = 1;
-                _text = MLOC(CSAT_WIN);
-            }
-            else
-            {
-                GVAR(aaf_win) = 1;
-                _text = MLOC(AAF_WIN);
-            };
-        }
-        else
-        {
-            _text = MLOC(NO_WINNER);
-        };
-    };
-
-    case "NATOvsCSAT":
+        GVAR(csat_win) = 1;
+        _text = MLOC(CSAT_WIN);
+    }
+    else
     {
-        private _points1 = EGVAR(SECTORCONTROL,nato_points);
-        private _points2 = EGVAR(SECTORCONTROL,csat_points);
-
-        // Ermittel Sieger
-        if (_points2 != _points1) then
-        {
-            if (_points2 > _points1) then
-            {
-                GVAR(csat_win) = 1;
-                _text = MLOC(CSAT_WIN);
-            }
-            else
-            {
-                GVAR(nato_win) = 1;
-                _text = MLOC(NATO_WIN);
-            };
-        }
-        else
-        {
-            _text = MLOC(NO_WINNER);
-        };
+        GVAR(nato_win) = 1;
+        _text = MLOC(NATO_WIN);
     };
-
-    case "NATOvsAAF":
-    {
-        private _points1 = EGVAR(SECTORCONTROL,nato_points);
-        private _points2 = EGVAR(SECTORCONTROL,aaf_points);
-
-        // Ermittel Sieger
-        if (_points2 != _points1) then
-        {
-            if (_points2 > _points1) then
-            {
-                GVAR(aaf_win) = 1;
-                _text = MLOC(AAF_WIN);
-            }
-            else
-            {
-                GVAR(nato_win) = 1;
-                _text = MLOC(NATO_WIN);
-            };
-        }
-        else
-        {
-            _text = MLOC(NO_WINNER);
-        };
-    };
-
-    default
-    {
-        ERROR_LOG("Missionende: Fehlerhafte Datenuebergabe - Keine Fraktionauswahl erkannt");
-    };
+}
+else
+{
+    _text = MLOC(NO_WINNER);
 };
 
 DFUNC(endscreen) =
 {
     removeallweapons player;
-    private _Sideidplayer = 0;
-    _sideidplayer = playerSide call BIS_fnc_sideID;
+    private _sideidplayer = playerSide call BIS_fnc_sideID;
 
     // Auswahl Bildschirmanzeige und Ende der Mission
     private _end = switch (true) do
     {
         case (_sideidplayer == 1 && {GVAR(nato_win) == 1}) : {["END1",true,true]};
         case (_sideidplayer == 1 && {GVAR(csat_win) == 1}) : {["END2",false,true]};
-        case (_sideidplayer == 1 && {GVAR(aaf_win) == 1}) : {["END3",false,true]};
 
         case (_sideidplayer == 0 && {GVAR(nato_win) == 1}) : {["END1",false,true]};
         case (_sideidplayer == 0 && {GVAR(csat_win) == 1}) : {["END2",true,true]};
-        case (_sideidplayer == 0 && {GVAR(aaf_win) == 1}) : {["END3",false,true]};
-
-        case (_sideidplayer == 2 && {GVAR(aaf_win) == 1}) : {["END3",true,true]};
-        case (_sideidplayer == 2 && {GVAR(csat_win) == 1}) : {["END2",false,true]};
-        case (_sideidplayer == 2 && {GVAR(nato_win) == 1}) : {["END1",false,true]};
 
         default {["END4",true,true]};
     };

@@ -14,7 +14,7 @@
 */
 #include "macros.hpp"
 
-private _pcs = [AAF_Drohnenstation, CSAT_Drohnenstation];
+private _pcs = [NATO_Drohnenstation, CSAT_Drohnenstation];
 
 // add to each UAV PC addaction menu
 {
@@ -45,11 +45,6 @@ private _pcs = [AAF_Drohnenstation, CSAT_Drohnenstation];
                         player addWeapon "O_UavTerminal";
                     };
 
-                    if (PLAYERSIDE == independent) then
-                    {
-                        player removeWeapon "ItemGPS";
-                        player addWeapon "I_UavTerminal";
-                    };
                     [] call FUNC(UAV_check_player);
                 },
                 {},
@@ -87,12 +82,6 @@ private _pcs = [AAF_Drohnenstation, CSAT_Drohnenstation];
                     if (PLAYERSIDE == east) then
                     {
                         player removeWeapon "O_UavTerminal";
-                        player addWeapon "ItemGPS";
-                    };
-
-                    if (PLAYERSIDE == independent) then
-                    {
-                        player removeWeapon "I_UavTerminal";
                         player addWeapon "ItemGPS";
                     };
                 },
@@ -140,12 +129,6 @@ DFUNC(UAV_check_player) =
 
                 };
 
-                if (PLAYERSIDE == independent) then
-                {
-                    player removeWeapon "I_UavTerminal";
-                    player addWeapon "ItemGPS";
-
-                };
                 GVAR(checkuav) call CFUNC(removePerframeHandler);
             };
         };

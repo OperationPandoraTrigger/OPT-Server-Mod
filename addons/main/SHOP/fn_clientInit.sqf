@@ -82,256 +82,84 @@ GVAR(eventArgs) = [];
 ["missionStarted",
 {
     GVAR(LOCK) = false;
-    switch OPT_GELDZEIT_Fraktionauswahl do
-    {
-        case "AAFvsCSAT":
+
+    //AddAction für Dialog öffnen
+    east_shop_air addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["choppers"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
+    west_shop_air addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["choppers"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
+
+    east_shop_plane addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["planes"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
+    west_shop_plane addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["planes"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
+    civ1_shop_plane addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["planes"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
+    civ2_shop_plane addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["planes"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
+
+    east_shop_veh addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_GROUND)], {[EVENT_SHOP_KAUF_ONLOAD,["vehicles"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
+    west_shop_veh addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_GROUND)], {[EVENT_SHOP_KAUF_ONLOAD,["vehicles"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
+
+    east_shop_sup addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_EQUIPMENT)], {[EVENT_SHOP_KAUF_ONLOAD,["supplies"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
+    west_shop_sup addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_EQUIPMENT)], {[EVENT_SHOP_KAUF_ONLOAD,["supplies"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
+
+    east_shop_sea addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SEA)], {[EVENT_SHOP_KAUF_ONLOAD,["sea"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
+    west_shop_sea addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SEA)], {[EVENT_SHOP_KAUF_ONLOAD,["sea"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
+
+    east_shop_verkauf addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SELL)], {[EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
+    west_shop_verkauf addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SELL)], {[EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
+
+    //Shop Dialog öffnen
+    /*
+    * https://cbateam.github.io/CBA_A3/docs/files/keybinding/fnc_addKeybind-sqf.html
+    */
+    [
+        "OPT",
+        "OPT Shop System",
+        ["Shop-Dialog öffnen", "Öffnet den Shop-Dialog im Fahnenbereich."],
         {
-            //AddAction für Dialog öffnen
-            east_shop_air addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["choppers"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-            independent_shop_air addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["choppers"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-
-            east_shop_plane addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["planes"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-            independent_shop_plane addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["planes"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-            civ1_shop_plane addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["planes"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-            civ2_shop_plane addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["planes"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-
-            east_shop_veh addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_GROUND)], {[EVENT_SHOP_KAUF_ONLOAD,["vehicles"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-            independent_shop_veh addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_GROUND)], {[EVENT_SHOP_KAUF_ONLOAD,["vehicles"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-
-            east_shop_sup addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_EQUIPMENT)], {[EVENT_SHOP_KAUF_ONLOAD,["supplies"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-            independent_shop_sup addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_EQUIPMENT)], {[EVENT_SHOP_KAUF_ONLOAD,["supplies"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-
-            east_shop_sea addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SEA)], {[EVENT_SHOP_KAUF_ONLOAD,["sea"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-            independent_shop_sea addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SEA)], {[EVENT_SHOP_KAUF_ONLOAD,["sea"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-
-            east_shop_verkauf addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SELL)], {[EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-            independent_shop_verkauf addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SELL)], {[EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-
-            //Shop Dialog öffnen
-            /*
-            * https://cbateam.github.io/CBA_A3/docs/files/keybinding/fnc_addKeybind-sqf.html
-            */
-            [
-                "OPT",
-                "OPT Shop System",
-                ["Shop-Dialog öffnen", "Öffnet den Shop-Dialog im Fahnenbereich."],
+            // Entfernungsabfragen zu den einzelnen Shop-Schildern. Verschachtelt für Performancebringenden Abbruch.
+            if (((player distance east_shop_air) < MAX_DISTANCE_TO_SHOP) or ((player distance west_shop_air) < MAX_DISTANCE_TO_SHOP)) then
+            {
+                [EVENT_SHOP_KAUF_ONLOAD, ["choppers"]] call CFUNC(localEvent);
+            }
+            else
+            {
+                if (((player distance east_shop_veh) < MAX_DISTANCE_TO_SHOP) or ((player distance west_shop_veh) < MAX_DISTANCE_TO_SHOP)) then
                 {
-                    // Entfernungsabfragen zu den einzelnen Shop-Schildern. Verschachtelt für Performancebringenden Abbruch.
-                    if (((player distance east_shop_air) < MAX_DISTANCE_TO_SHOP) or ((player distance independent_shop_air) < MAX_DISTANCE_TO_SHOP)) then
+                    [EVENT_SHOP_KAUF_ONLOAD, ["vehicles"]] call CFUNC(localEvent);
+                }
+                else
+                {
+                    if (((player distance east_shop_sup) < MAX_DISTANCE_TO_SHOP) or ((player distance west_shop_sup) < MAX_DISTANCE_TO_SHOP)) then
                     {
-                        [EVENT_SHOP_KAUF_ONLOAD, ["choppers"]] call CFUNC(localEvent);
+                        [EVENT_SHOP_KAUF_ONLOAD, ["supplies"]] call CFUNC(localEvent);
                     }
                     else
                     {
-                        if (((player distance east_shop_veh) < MAX_DISTANCE_TO_SHOP) or ((player distance independent_shop_veh) < MAX_DISTANCE_TO_SHOP)) then
+                        if (((player distance east_shop_sea) < MAX_DISTANCE_TO_SHOP) or ((player distance west_shop_sea) < MAX_DISTANCE_TO_SHOP)) then
                         {
-                            [EVENT_SHOP_KAUF_ONLOAD, ["vehicles"]] call CFUNC(localEvent);
+                            [EVENT_SHOP_KAUF_ONLOAD, ["sea"]] call CFUNC(localEvent);
                         }
                         else
                         {
-                            if (((player distance east_shop_sup) < MAX_DISTANCE_TO_SHOP) or ((player distance independent_shop_sup) < MAX_DISTANCE_TO_SHOP)) then
+                            if (((player distance east_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance west_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance civ1_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance civ2_shop_plane) < MAX_DISTANCE_TO_SHOP)) then
                             {
-                                [EVENT_SHOP_KAUF_ONLOAD, ["supplies"]] call CFUNC(localEvent);
+                                [EVENT_SHOP_KAUF_ONLOAD, ["planes"]] call CFUNC(localEvent);
                             }
                             else
                             {
-                                if (((player distance east_shop_sea) < MAX_DISTANCE_TO_SHOP) or ((player distance independent_shop_sea) < MAX_DISTANCE_TO_SHOP)) then
+                                if (((player distance east_shop_verkauf) < MAX_DISTANCE_TO_SHOP) or ((player distance west_shop_verkauf) < MAX_DISTANCE_TO_SHOP)) then
                                 {
-                                    [EVENT_SHOP_KAUF_ONLOAD, ["sea"]] call CFUNC(localEvent);
-                                }
-                                else
-                                {
-                                    if (((player distance east_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance independent_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance civ1_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance civ2_shop_plane) < MAX_DISTANCE_TO_SHOP)) then
-                                    {
-                                        [EVENT_SHOP_KAUF_ONLOAD, ["planes"]] call CFUNC(localEvent);
-                                    }
-                                    else
-                                    {
-                                        if (((player distance east_shop_verkauf) < MAX_DISTANCE_TO_SHOP) or ((player distance independent_shop_verkauf) < MAX_DISTANCE_TO_SHOP)) then
-                                        {
-                                            [EVENT_SHOP_VERKAUF_ORDER, ["sell"]] call CFUNC(localEvent);
-                                        };
-                                    };
+                                    [EVENT_SHOP_VERKAUF_ORDER, ["sell"]] call CFUNC(localEvent);
                                 };
                             };
                         };
                     };
-                },
-                {},
-                [
-                    DIK_F3,
-                    [false, false, false] // [shift, ctrl, alt]
-                ]
-            ] call CBA_fnc_addKeybind;
-        };
-
-        case "NATOvsCSAT":
-        {
-            //AddAction für Dialog öffnen
-            east_shop_air addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["choppers"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-            west_shop_air addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["choppers"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-
-            east_shop_plane addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["planes"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-            west_shop_plane addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["planes"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-            civ1_shop_plane addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["planes"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-            civ2_shop_plane addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["planes"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-
-            east_shop_veh addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_GROUND)], {[EVENT_SHOP_KAUF_ONLOAD,["vehicles"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-            west_shop_veh addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_GROUND)], {[EVENT_SHOP_KAUF_ONLOAD,["vehicles"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-
-            east_shop_sup addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_EQUIPMENT)], {[EVENT_SHOP_KAUF_ONLOAD,["supplies"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-            west_shop_sup addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_EQUIPMENT)], {[EVENT_SHOP_KAUF_ONLOAD,["supplies"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-
-            east_shop_sea addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SEA)], {[EVENT_SHOP_KAUF_ONLOAD,["sea"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-            west_shop_sea addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SEA)], {[EVENT_SHOP_KAUF_ONLOAD,["sea"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-
-            east_shop_verkauf addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SELL)], {[EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-            west_shop_verkauf addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SELL)], {[EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-
-            //Shop Dialog öffnen
-            /*
-            * https://cbateam.github.io/CBA_A3/docs/files/keybinding/fnc_addKeybind-sqf.html
-            */
-            [
-                "OPT",
-                "OPT Shop System",
-                ["Shop-Dialog öffnen", "Öffnet den Shop-Dialog im Fahnenbereich."],
-                {
-                    // Entfernungsabfragen zu den einzelnen Shop-Schildern. Verschachtelt für Performancebringenden Abbruch.
-                    if (((player distance east_shop_air) < MAX_DISTANCE_TO_SHOP) or ((player distance west_shop_air) < MAX_DISTANCE_TO_SHOP)) then
-                    {
-                        [EVENT_SHOP_KAUF_ONLOAD, ["choppers"]] call CFUNC(localEvent);
-                    }
-                    else
-                    {
-                        if (((player distance east_shop_veh) < MAX_DISTANCE_TO_SHOP) or ((player distance west_shop_veh) < MAX_DISTANCE_TO_SHOP)) then
-                        {
-                            [EVENT_SHOP_KAUF_ONLOAD, ["vehicles"]] call CFUNC(localEvent);
-                        }
-                        else
-                        {
-                            if (((player distance east_shop_sup) < MAX_DISTANCE_TO_SHOP) or ((player distance west_shop_sup) < MAX_DISTANCE_TO_SHOP)) then
-                            {
-                                [EVENT_SHOP_KAUF_ONLOAD, ["supplies"]] call CFUNC(localEvent);
-                            }
-                            else
-                            {
-                                if (((player distance east_shop_sea) < MAX_DISTANCE_TO_SHOP) or ((player distance west_shop_sea) < MAX_DISTANCE_TO_SHOP)) then
-                                {
-                                    [EVENT_SHOP_KAUF_ONLOAD, ["sea"]] call CFUNC(localEvent);
-                                }
-                                else
-                                {
-                                    if (((player distance east_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance west_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance civ1_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance civ2_shop_plane) < MAX_DISTANCE_TO_SHOP)) then
-                                    {
-                                        [EVENT_SHOP_KAUF_ONLOAD, ["planes"]] call CFUNC(localEvent);
-                                    }
-                                    else
-                                    {
-                                        if (((player distance east_shop_verkauf) < MAX_DISTANCE_TO_SHOP) or ((player distance west_shop_verkauf) < MAX_DISTANCE_TO_SHOP)) then
-                                        {
-                                            [EVENT_SHOP_VERKAUF_ORDER, ["sell"]] call CFUNC(localEvent);
-                                        };
-                                    };
-                                };
-                            };
-                        };
-                    };
-                },
-                {},
-                [
-                    DIK_F3,
-                    [false, false, false] // [shift, ctrl, alt]
-                ]
-            ] call CBA_fnc_addKeybind;
-        };
-
-        case "NATOvsAAF":
-        {
-            //AddAction für Dialog öffnen
-            west_shop_air addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["choppers"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-            independent_shop_air addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["choppers"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-
-            west_shop_plane addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["planes"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-            independent_shop_plane addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["planes"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-            civ1_shop_plane addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["planes"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-            civ2_shop_plane addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["planes"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-
-            west_shop_veh addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_GROUND)], {[EVENT_SHOP_KAUF_ONLOAD,["vehicles"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-            independent_shop_veh addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_GROUND)], {[EVENT_SHOP_KAUF_ONLOAD,["vehicles"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-
-            west_shop_sup addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_EQUIPMENT)], {[EVENT_SHOP_KAUF_ONLOAD,["supplies"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-            independent_shop_sup addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_EQUIPMENT)], {[EVENT_SHOP_KAUF_ONLOAD,["supplies"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-
-            west_shop_sea addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SEA)], {[EVENT_SHOP_KAUF_ONLOAD,["sea"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-            independent_shop_sea addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SEA)], {[EVENT_SHOP_KAUF_ONLOAD,["sea"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-
-            west_shop_verkauf addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SELL)], {[EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-            independent_shop_verkauf addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SELL)], {[EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-
-            //Shop Dialog öffnen
-            /*
-            * https://cbateam.github.io/CBA_A3/docs/files/keybinding/fnc_addKeybind-sqf.html
-            */
-            [
-                "OPT",
-                "OPT Shop System",
-                ["Shop-Dialog öffnen", "Öffnet den Shop-Dialog im Fahnenbereich."],
-                {
-                    // Entfernungsabfragen zu den einzelnen Shop-Schildern. Verschachtelt für Performancebringenden Abbruch.
-                    if (((player distance west_shop_air) < MAX_DISTANCE_TO_SHOP) or ((player distance independent_shop_air) < MAX_DISTANCE_TO_SHOP)) then
-                    {
-                        [EVENT_SHOP_KAUF_ONLOAD, ["choppers"]] call CFUNC(localEvent);
-                    }
-                    else
-                    {
-                        if (((player distance west_shop_veh) < MAX_DISTANCE_TO_SHOP) or ((player distance independent_shop_veh) < MAX_DISTANCE_TO_SHOP)) then
-                        {
-                            [EVENT_SHOP_KAUF_ONLOAD, ["vehicles"]] call CFUNC(localEvent);
-                        }
-                        else
-                        {
-                            if (((player distance west_shop_sup) < MAX_DISTANCE_TO_SHOP) or ((player distance independent_shop_sup) < MAX_DISTANCE_TO_SHOP)) then
-                            {
-                                [EVENT_SHOP_KAUF_ONLOAD, ["supplies"]] call CFUNC(localEvent);
-                            }
-                            else
-                            {
-                                if (((player distance west_shop_sea) < MAX_DISTANCE_TO_SHOP) or ((player distance independent_shop_sea) < MAX_DISTANCE_TO_SHOP)) then
-                                {
-                                    [EVENT_SHOP_KAUF_ONLOAD, ["sea"]] call CFUNC(localEvent);
-                                }
-                                else
-                                {
-                                    if (((player distance west_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance independent_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance civ1_shop_plane) < MAX_DISTANCE_TO_SHOP) or ((player distance civ2_shop_plane) < MAX_DISTANCE_TO_SHOP)) then
-                                    {
-                                        [EVENT_SHOP_KAUF_ONLOAD, ["planes"]] call CFUNC(localEvent);
-                                    }
-                                    else
-                                    {
-                                        if (((player distance west_shop_verkauf) < MAX_DISTANCE_TO_SHOP) or ((player distance independent_shop_verkauf) < MAX_DISTANCE_TO_SHOP)) then
-                                        {
-                                            [EVENT_SHOP_VERKAUF_ORDER, ["sell"]] call CFUNC(localEvent);
-                                        };
-                                    };
-                                };
-                            };
-                        };
-                    };
-                },
-                {},
-                [
-                    DIK_F3,
-                    [false, false, false] // [shift, ctrl, alt]
-                ]
-            ] call CBA_fnc_addKeybind;
-        };
-
-        default
-        {
-            ERROR_LOG("ShopClientInit: Fehlerhafte Datenuebergabe - Keine Fraktionauswahl erkannt");
-        };
-    };
+                };
+            };
+        },
+        {},
+        [
+            DIK_F3,
+            [false, false, false] // [shift, ctrl, alt]
+        ]
+    ] call CBA_fnc_addKeybind;
 
     //TFAR Verschlüsselung bei Fahrzeugen
 
@@ -356,7 +184,7 @@ GVAR(eventArgs) = [];
             {
                 case west:
                 {
-                    if ((toLower(_encryption) == "_opfor") or (toLower(_encryption) == "_independent")) then
+                    if ((toLower(_encryption) == "_opfor")) then
                     {
                         [_VehicleLR, "_bluefor"] call TFAR_fnc_setLrRadioCode;
                         systemChat "Die Funk-Verschlüsselung wurde geändert.";
@@ -365,18 +193,9 @@ GVAR(eventArgs) = [];
 
                 case east:
                 {
-                    if ((toLower(_encryption) == "_bluefor") or (toLower(_encryption) == "_independent")) then
+                    if ((toLower(_encryption) == "_bluefor")) then
                     {
                         [_VehicleLR, "_opfor"] call TFAR_fnc_setLrRadioCode;
-                        systemChat "Die Funk-Verschlüsselung wurde geändert.";
-                    };
-                };
-
-                case independent:
-                {
-                    if ((toLower(_encryption) == "_bluefor") or (toLower(_encryption) == "_opfor")) then
-                    {
-                        [_VehicleLR, "independent"] call TFAR_fnc_setLrRadioCode;
                         systemChat "Die Funk-Verschlüsselung wurde geändert.";
                     };
                 };

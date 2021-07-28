@@ -83,11 +83,3 @@ GVAR(csat_flags_pos) = [];
         [_x, east, GVAR(eastflag)] call CreateFlags;
     } forEach ((GVAR(AllSectors) select _x) select 1);
 } forEach GVAR(csat_sectors);
-
-// AAF Flaggen
-GVAR(aaf_flags_pos) = [];
-{
-    {
-        [_x, independent, GVAR(independentflag)] call CreateFlags;
-    } forEach ((GVAR(AllSectors) select _x) select 1);
-} forEach GVAR(aaf_sectors);

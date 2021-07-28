@@ -148,14 +148,6 @@ switch (GVAR(vehicleType)) do
                  GVAR(Hardcap_pool) = GVAR(Hardcap_csat_choppers);
             };
 
-            case independent:
-            {
-                _pool = GVAR(AAF_choppers);
-                GVAR(pads) = GVAR(pad_air_independent);
-                GVAR(Checkbereich) = 13;
-                GVAR(Hardcap_pool) = GVAR(Hardcap_aaf_choppers);
-            };
-
             default
             {
             };
@@ -182,14 +174,6 @@ switch (GVAR(vehicleType)) do
                  GVAR(pads) = GVAR(pad_plane_east);
                  GVAR(Checkbereich) = 13;
                  GVAR(Hardcap_pool) = GVAR(Hardcap_csat_planes);
-            };
-
-            case independent:
-            {
-                _pool = GVAR(AAF_planes);
-                GVAR(pads) = GVAR(pad_plane_independent);
-                GVAR(Checkbereich) = 13;
-                GVAR(Hardcap_pool) = GVAR(Hardcap_aaf_planes);
             };
 
             default
@@ -230,13 +214,6 @@ switch (GVAR(vehicleType)) do
                 GVAR(Hardcap_pool) = GVAR(Hardcap_csat_vehicles);
             };
 
-            case independent:
-            {
-                _pool = GVAR(AAF_armored) + GVAR(AAF_vehicles) + GVAR(AAF_vehicles_supply);
-                GVAR(pads) = GVAR(pad_veh_independent);
-                GVAR(Hardcap_pool) = GVAR(Hardcap_aaf_vehicles);
-            };
-
             default
             {
             };
@@ -265,14 +242,6 @@ switch (GVAR(vehicleType)) do
                 GVAR(Hardcap_pool) = GVAR(Hardcap_csat_supplies);
             };
 
-            case independent:
-            {
-                _pool = GVAR(AAF_supplies) + GVAR(AAF_static);
-                GVAR(pads) = GVAR(pad_sup_independent);
-                GVAR(Checkbereich) = 4;
-                GVAR(Hardcap_pool) = GVAR(Hardcap_aaf_supplies);
-            };
-
             default
             {
             };
@@ -299,12 +268,6 @@ switch (GVAR(vehicleType)) do
                 GVAR(Hardcap_pool) = GVAR(Hardcap_csat_sea);
             };
 
-            case independent:
-            {
-                _pool = GVAR(AAF_sea);
-                GVAR(pads) = GVAR(pad_sea_independent);
-                GVAR(Hardcap_pool) = GVAR(Hardcap_aaf_sea);
-            };
             default
             {
             };
@@ -326,12 +289,6 @@ switch (GVAR(vehicleType)) do
             {
                 _pool = [];
                 GVAR(pads) = GVAR(pad_all_east);
-            };
-
-            case independent:
-            {
-                _pool = [];
-                GVAR(pads) = GVAR(pad_all_independent);
             };
 
             default
@@ -393,11 +350,6 @@ switch (_side) do
     case east:
     {
         _rscPicture ctrlSetText "\opt\opt_client\addons\core\bilder\WP_Logo.paa";
-    };
-
-    case independent:
-    {
-        _rscPicture ctrlSetText "\opt\opt_client\addons\core\bilder\xxx-Logo.paa";
     };
 };
 

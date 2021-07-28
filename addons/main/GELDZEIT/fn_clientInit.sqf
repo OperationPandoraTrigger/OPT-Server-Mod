@@ -53,57 +53,16 @@
         {
             if (GVAR(TEAMBALANCE) > 0) then
             {
-                switch GVAR(Fraktionauswahl) do
+                private _en_pa = if (playerSide == blufor) then {playersNumber opfor} else {playersNumber blufor};
+
+                if ((playersNumber playerSide) > (_en_pa + GVAR(TEAMBALANCE))) then
                 {
-                    case "AAFvsCSAT":
+                    endMission (switch (playerSide) do
                     {
-                        private _en_pa = if (playerSide == independent) then {playersNumber opfor} else {playersNumber independent};
-
-                        if ((playersNumber playerSide) > (_en_pa + GVAR(TEAMBALANCE))) then
-                        {
-                            endMission (switch (playerSide) do
-                            {
-                                case (independent) : {"balanceindependent"};
-                                case (opfor) : {"balanceOPFOR"};
-                                default {"LOSER"};
-                            });
-                        };
-                    };
-
-                    case "NATOvsCSAT":
-                    {
-                        private _en_pa = if (playerSide == blufor) then {playersNumber opfor} else {playersNumber blufor};
-
-                        if ((playersNumber playerSide) > (_en_pa + GVAR(TEAMBALANCE))) then
-                        {
-                            endMission (switch (playerSide) do
-                            {
-                                case (blufor) : {"balanceBLUFOR"};
-                                case (opfor) : {"balanceOPFOR"};
-                                default {"LOSER"};
-                            });
-                        };
-                    };
-
-                    case "NATOvsAAF":
-                    {
-                        private _en_pa = if (playerSide == blufor) then {playersNumber independent} else {playersNumber blufor};
-
-                        if ((playersNumber playerSide) > (_en_pa + GVAR(TEAMBALANCE))) then
-                        {
-                            endMission (switch (playerSide) do
-                            {
-                                case (blufor) : {"balanceBLUFOR"};
-                                case (independent) : {"balanceindependent"};
-                                default {"LOSER"};
-                            });
-                        };
-                    };
-
-                    default
-                    {
-                        ERROR_LOG("clientinit: Fehlerhafte Datenuebergabe - Keine Fraktionauswahl erkannt");
-                    };
+                        case (blufor) : {"balanceBLUFOR"};
+                        case (opfor) : {"balanceOPFOR"};
+                        default {"LOSER"};
+                    });
                 };
             };
         };
@@ -128,35 +87,8 @@
     ] call CBA_fnc_addKeybind;
 
     // Init Beam-Schilder
-    switch GVAR(Fraktionauswahl) do
-    {
-        case "AAFvsCSAT":
-        {
-            independent_Basis_Teleport1 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];
-            independent_Basis_Teleport2 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];
-            east_Basis_Teleport1 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];
-            east_Basis_Teleport2 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];
-        };
-
-        case "NATOvsCSAT":
-        {
-            west_Basis_Teleport1 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];
-            west_Basis_Teleport2 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];
-            east_Basis_Teleport1 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];
-            east_Basis_Teleport2 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];
-        };
-
-        case "NATOvsAAF":
-        {
-            west_Basis_Teleport1 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];
-            west_Basis_Teleport2 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];
-            independent_Basis_Teleport1 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];
-            independent_Basis_Teleport2 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];
-        };
-
-        default
-        {
-            ERROR_LOG("GeldzeitClientInit: Fehlerhafte Datenuebergabe - Keine Fraktionauswahl erkannt");
-        };
-    };
+    west_Basis_Teleport1 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];
+    west_Basis_Teleport2 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];
+    east_Basis_Teleport1 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];
+    east_Basis_Teleport2 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];
 }] call CFUNC(addEventhandler);

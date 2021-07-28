@@ -29,11 +29,6 @@ if (_side == east) then
     _side_Budget = GVAR(csat_budget);
 };
 
-if (_side == independent) then
-{
-    _side_Budget = GVAR(aaf_budget);
-};
-
 private _txt = if (_side_Budget >= 1e6) then
 {
     format [MLOC(BUDGET_MIO), str(_side_Budget / 1e6)];

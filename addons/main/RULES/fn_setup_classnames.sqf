@@ -242,24 +242,6 @@ GVAR(crew_vehicles) =
     "OPT_O_T_APC_Tracked_02_cannon_ghex_F_AT",
     "OPT_O_T_MBT_02_cannon_ghex_F_INF",
     "OPT_O_T_MBT_02_cannon_ghex_F_AT",
-
-//AAF
-    "OPT4_I_C_Offroad_02_AT_F",
-    "OPT4_I_MRAP_03_gmg_F",
-    "OPT4_I_APC_Wheeled_03_cannon_F",
-    "OPT4_I_APC_tracked_03_cannon_F",
-    "OPT4_I_LT_01_AA_F",
-    "OPT4_I_LT_01_AT_F",
-    "OPT4_I_MBT_03_cannon_F",
-    "OPT_I_Truck_02_MRL_F",
-    "OPT_I_LSV_01_AT_ghex_F",
-    "OPT_I_MBT_01_arty_ghex_F",
-    "OPT_I_APC_Tracked_01_AA_ghex_F",
-    "OPT_I_APC_tracked_03_cannon_F_INF",
-    "OPT_I_APC_Wheeled_03_cannon_F_VEH",
-    "OPT_I_APC_Wheeled_03_cannon_F_AT",
-    "OPT_I_MBT_03_cannon_F_INF",
-    "OPT_I_MBT_03_cannon_F_AT"
 */
 ];
 

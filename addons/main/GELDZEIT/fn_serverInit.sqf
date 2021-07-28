@@ -24,7 +24,7 @@
 
 #include "macros.hpp"
 
-#define LOGGING_VERSION 9
+#define LOGGING_VERSION 10
 
 // Missionsnamen-Rekonstruktor (Symlink opt_latest -> opt_v123)
 GVAR(missionName) = missionName;
@@ -34,8 +34,8 @@ if (GVAR(missionName) isEqualTo "opt_latest") then
 };
 
 private _time = systemTime;
-["Logging", "Start", [LOGGING_VERSION, OPT_GELDZEIT_Fraktionauswahl, format ["%1-%2-%3 %4:%5:%6", _time select 0, _time select 1, _time select 2, _time select 3, _time select 4, _time select 5]]] call OPT_LOGGING_fnc_writelog;
-["Mission", "Load", [0, 0, 0, GVAR(missionName)]] call OPT_LOGGING_fnc_writelog;
+["Logging", "Start", [LOGGING_VERSION, EGVAR(SECTORCONTROL,nato_faction), EGVAR(SECTORCONTROL,csat_faction), format ["%1-%2-%3 %4:%5:%6", _time select 0, _time select 1, _time select 2, _time select 3, _time select 4, _time select 5]]] call OPT_LOGGING_fnc_writelog;
+["Mission", "Load", [0, 0, GVAR(missionName)]] call OPT_LOGGING_fnc_writelog;
 
 GVAR(GAMESTAGE) = GAMESTAGE_FREEZE;
 publicVariable QGVAR(GAMESTAGE);
@@ -82,7 +82,7 @@ GVAR(playerList) = [];
                     // {[false] call ace_common_fnc_disableUserInput;} remoteExec ["call", -2];
 
                     // Logeintrag
-                    ["Mission", "Truce", [0, 0, 0, GVAR(missionName)]] call OPT_LOGGING_fnc_writelog;
+                    ["Mission", "Truce", [0, 0, GVAR(missionName)]] call OPT_LOGGING_fnc_writelog;
                 };
             };
 
@@ -95,12 +95,12 @@ GVAR(playerList) = [];
                     publicVariable QGVAR(GAMESTAGE);
 
                     // Missionsstart loggen
-                    ["Mission", "Start", [0, 0, 0, GVAR(missionName)]] call OPT_LOGGING_fnc_writelog;
+                    ["Mission", "Start", [0, 0, GVAR(missionName)]] call OPT_LOGGING_fnc_writelog;
 
                     // Nach Ablauf der Waffenruhe die Sektorenmarker von der Karte entfernen
                     {
                         deleteMarker _x;
-                    } forEach (OPT_SECTORCONTROL_NATOSectorMarkers + OPT_SECTORCONTROL_CSATSectorMarkers + OPT_SECTORCONTROL_AAFSectorMarkers);
+                    } forEach (OPT_SECTORCONTROL_NATOSectorMarkers + OPT_SECTORCONTROL_CSATSectorMarkers);
 
                     // Nach Ablauf der Waffenruhe die Grenzlinien von der Karte entfernen
                     if !(OPT_SECTORCONTROL_trainingon && OPT_SECTORCONTROL_trainingDontDeleteBorderMarkers) then
@@ -124,7 +124,7 @@ GVAR(playerList) = [];
                     [] call FUNC(writePlayerList);
 
                     // Endpunktestand loggen
-                    ["Mission", "End", [EGVAR(SECTORCONTROL,nato_points), EGVAR(SECTORCONTROL,csat_points), EGVAR(SECTORCONTROL,aaf_points), GVAR(missionName)]] call EFUNC(LOGGING,writelog);
+                    ["Mission", "End", [EGVAR(SECTORCONTROL,nato_points), EGVAR(SECTORCONTROL,csat_points), GVAR(missionName)]] call EFUNC(LOGGING,writelog);
                     [] call FUNC(endAAR);
 
                     [EVENT_SPIELUHR_ENDBILDSCHIRM,[]] call CFUNC(globalEvent);

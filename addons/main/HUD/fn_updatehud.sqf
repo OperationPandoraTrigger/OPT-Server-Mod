@@ -32,30 +32,7 @@ TimeToString =
     private _currentCutDisplay = uiNamespace getVariable "opt_hud_anzeige";
     //--------------------- update players ------------------------------------------
     private _control = _currentCutDisplay displayCtrl 5101;
-    private _playersStr = "";
-
-    switch OPT_GELDZEIT_Fraktionauswahl do
-    {
-        case "AAFvsCSAT":
-        {
-            _playersStr = format [MLOC(AAFvCSAT), playersNumber independent, playersNumber east];
-        };
-
-        case "NATOvsCSAT":
-        {
-            _playersStr = format [MLOC(NATOvCSAT), playersNumber west, playersNumber east];
-        };
-
-        case "NATOvsAAF":
-        {
-            _playersStr = format [MLOC(NATOvAAF), playersNumber west, playersNumber independent];
-        };
-
-        default
-        {
-            ERROR_LOG("Updatehud: Fehlerhafte Datenübergabe - Keine Fraktionauswahl erkannt");
-        };
-    };
+    private _playersStr = format [MLOC(PLAYERS), EGVAR(SECTORCONTROL,nato_faction), playersNumber west, playersNumber east, EGVAR(SECTORCONTROL,csat_faction)];
 
     // Anzeige updaten
     _control ctrlSetText _playersStr;
@@ -70,30 +47,7 @@ TimeToString =
 
     //----------------------- update score --------------------------------------------
     _control = _currentCutDisplay displayCtrl 5104;
-    private _scoreStr = "";
-
-    switch OPT_GELDZEIT_Fraktionauswahl do
-    {
-        case "AAFvsCSAT":
-        {
-            _scoreStr = format [MLOC(AAFvCSAT_POINT),  OPT_SECTORCONTROL_aaf_points, OPT_SECTORCONTROL_csat_points];
-        };
-
-        case "NATOvsCSAT":
-        {
-            _scoreStr = format [MLOC(NATOvCSAT_POINT), OPT_SECTORCONTROL_nato_points, OPT_SECTORCONTROL_csat_points];
-        };
-
-        case "NATOvsAAF":
-        {
-            _scoreStr = format [MLOC(NATOvAAF_POINT), OPT_SECTORCONTROL_nato_points, OPT_SECTORCONTROL_aaf_points];
-        };
-
-        default
-        {
-            ERROR_LOG("UpdateHUD: Fehlerhafte Datenübergabe - Keine Fraktionauswahl erkannt");
-        };
-    };
+    private _scoreStr = format [MLOC(POINTS), EGVAR(SECTORCONTROL,nato_faction), EGVAR(SECTORCONTROL,nato_points), EGVAR(SECTORCONTROL,csat_points), EGVAR(SECTORCONTROL,csat_faction)];
 
     // Anzeige updaten
     // Update Text

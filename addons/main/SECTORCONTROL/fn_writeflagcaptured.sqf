@@ -27,21 +27,21 @@ params [
 
 /* VALIDATION */
 if (_flag isEqualTo objNull or _unit isEqualTo objNull) exitWith{};
-if !(_flag in GVAR(nato_flags) or _flag in GVAR(csat_flags) or _flag in GVAR(aaf_flags)) exitWith{};
+if !(_flag in GVAR(nato_flags) or _flag in GVAR(csat_flags)) exitWith{};
 
 // Logge Fahnen-Eroberung
 ["Flag", "Conquer", [_flag, getPlayerUID _unit, name _unit, side _unit, _flag distance2D _unit]] call EFUNC(LOGGING,writelog);
 
 private _flagSide = sideUnknown;
-if (_flag in GVAR(nato_flags)) then {
+if (_flag in GVAR(nato_flags)) then
+{
     _flagSide = west;
-} else {
-    if (_flag in GVAR(csat_flags)) then {
+}
+else
+{
+    if (_flag in GVAR(csat_flags)) then
+    {
         _flagSide = east;
-    } else {
-        if (_flag in GVAR(aaf_flags)) then {
-            _flagSide = resistance;
-        };
     };
 };
 

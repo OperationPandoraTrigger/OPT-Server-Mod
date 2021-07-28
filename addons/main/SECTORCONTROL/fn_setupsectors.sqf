@@ -641,14 +641,12 @@ publicVariable QGVAR(PreMineZoneMarkers);
 // Sector-Markers
 GVAR(NATOSectorMarkers) = [];
 GVAR(CSATSectorMarkers) = [];
-GVAR(AAFSectorMarkers) = [];
 GVAR(BorderMarkers) = [];
 private _markerID = 0;
 
 // CBA-Settings parsen, da dies sonst erst nach dem "Durchdrücken" geschieht
 GVAR(nato_allsectors) = parseSimpleArray format ["[%1]", GVAR(nato_allsectors_str)];
 GVAR(csat_allsectors) = parseSimpleArray format ["[%1]", GVAR(csat_allsectors_str)];
-GVAR(aaf_allsectors) = parseSimpleArray format ["[%1]", GVAR(aaf_allsectors_str)];
 
 // Sektormarker zeichnen
 {
@@ -669,42 +667,7 @@ GVAR(aaf_allsectors) = parseSimpleArray format ["[%1]", GVAR(aaf_allsectors_str)
     } forEach ((GVAR(AllSectors) select _x) select 0);
 } forEach GVAR(csat_allsectors);
 
-{
-    {
-        _markerID = _markerID + 1;
-        private _markername = format ["SectorMarker_%1", _markerID];
-        [_x, "ColorBlack", 8, _markername] call FUNC(drawline);
-        GVAR(AAFSectorMarkers) pushBack _markername;
-    } forEach ((GVAR(AllSectors) select _x) select 0);
-} forEach GVAR(aaf_allsectors);
-
 // Grenzlinien
-switch OPT_GELDZEIT_Fraktionauswahl do
-{
-        case "AAFvsCSAT":
-        {
-            GVAR(Side1SectorMarkers) = GVAR(AAFSectorMarkers);
-            GVAR(Side2SectorMarkers) = GVAR(CSATSectorMarkers);
-        };
-
-        case "NATOvsCSAT":
-        {
-            GVAR(Side1SectorMarkers) = GVAR(NATOSectorMarkers);
-            GVAR(Side2SectorMarkers) = GVAR(CSATSectorMarkers);
-        };
-
-        case "NATOvsAAF":
-        {
-            GVAR(Side1SectorMarkers) = GVAR(NATOSectorMarkers);
-            GVAR(Side2SectorMarkers) = GVAR(AAFSectorMarkers);
-        };
-
-           default
-        {
-            ERROR_LOG("setupsectors: Fehlerhafte Datenuebergabe - Keine Fraktionauswahl erkannt");
-        };
-};
-
 // Wenn sich zwei feindliche Sektormarker-Linien sehr nah sind -> Grenzlinie dazwischen zeichnen
 {
     private _pos1 = getMarkerPos _x;
@@ -724,8 +687,8 @@ switch OPT_GELDZEIT_Fraktionauswahl do
             _mrk setMarkerColorLocal "ColorRed";
             _mrk setMarkerSize [10, (markerSize _x) select 1];   // Letzter Markerbefehl nicht-local (für serverweiten Broadcast)
         };
-    } forEach GVAR(Side2SectorMarkers)
-} forEach GVAR(Side1SectorMarkers);
+    } forEach GVAR(CSATSectorMarkers)
+} forEach GVAR(NATOSectorMarkers);
 
 // Karten Umrandung
 private _worldsize = (worldName call BIS_fnc_mapSize);

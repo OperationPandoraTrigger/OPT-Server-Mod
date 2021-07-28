@@ -58,24 +58,6 @@ publicVariable QGVAR(Hardcap_csat_supplies);
 GVAR(Hardcap_csat_sea) = [];
 publicVariable QGVAR(Hardcap_csat_sea);
 
-
-//AAF Hardcap
-// Heli / Fahrzeuge / Ausrüstung / See
-GVAR(Hardcap_aaf_choppers) = [];
-publicVariable QGVAR(Hardcap_aaf_choppers);
-
-GVAR(Hardcap_aaf_planes) = [];
-publicVariable QGVAR(Hardcap_aaf_planes);
-
-GVAR(Hardcap_aaf_vehicles) = [];
-publicVariable QGVAR(Hardcap_aaf_vehicles);
-
-GVAR(Hardcap_aaf_supplies) = [];
-publicVariable QGVAR(Hardcap_aaf_supplies);
-
-GVAR(Hardcap_aaf_sea) = [];
-publicVariable QGVAR(Hardcap_aaf_sea);
-
 switch (GVAR(hardcaplist)) do
 {
     case "0":

@@ -101,12 +101,6 @@ else
                 _waffenauswahlarry2 = GVAR(Raktenhelieast);
             };
 
-            case independent:
-            {
-                _waffenauswahlarry1 = GVAR(Gunheliindependent);
-                _waffenauswahlarry2 = GVAR(Raktenheliindependent);
-            };
-
             default
             {
             };
@@ -232,11 +226,6 @@ else
             case east:
             {
                 _waffenauswahlarry1 = GVAR(Gunveheast);
-            };
-
-            case independent:
-            {
-                _waffenauswahlarry1 = GVAR(Gunvehindependent);
             };
 
             default

@@ -33,81 +33,24 @@
 
 private _Basis = objNull;
 
-switch GVAR(Fraktionauswahl) do
+if ((playerSide == east) and ((player distance Teleport_CSAT_Basis1) < MIN_DISTANCE_TO_BEAMSPOT)) then
 {
-    case "AAFvsCSAT":
-    {
-        if ((playerSide == east) and ((player distance Teleport_CSAT_Basis1) < MIN_DISTANCE_TO_BEAMSPOT)) then
-        {
-            _Basis = Teleport_CSAT_Basis2;
-        };
+    _Basis = Teleport_CSAT_Basis2;
+};
 
-        if ((playerSide == independent) and ((player distance Teleport_AAF_Basis1) < MIN_DISTANCE_TO_BEAMSPOT)) then
-        {
-            _Basis = Teleport_AAF_Basis2;
-        };
+if ((playerSide == west) and ((player distance Teleport_NATO_Basis1) < MIN_DISTANCE_TO_BEAMSPOT)) then
+{
+    _Basis = Teleport_NATO_Basis2;
+};
 
-        if ((playerSide == east) and ((player distance Teleport_CSAT_Basis2) < MIN_DISTANCE_TO_BEAMSPOT)) then
-        {
-            _Basis = Teleport_CSAT_Basis1;
-        };
+if ((playerSide == east) and ((player distance Teleport_CSAT_Basis2) < MIN_DISTANCE_TO_BEAMSPOT)) then
+{
+    _Basis = Teleport_CSAT_Basis1;
+};
 
-        if ((playerSide == independent) and ((player distance Teleport_AAF_Basis2) < MIN_DISTANCE_TO_BEAMSPOT)) then
-        {
-            _Basis = Teleport_AAF_Basis1;
-        };
-    };
-
-    case "NATOvsCSAT":
-    {
-        if ((playerSide == east) and ((player distance Teleport_CSAT_Basis1) < MIN_DISTANCE_TO_BEAMSPOT)) then
-        {
-            _Basis = Teleport_CSAT_Basis2;
-        };
-
-        if ((playerSide == west) and ((player distance Teleport_NATO_Basis1) < MIN_DISTANCE_TO_BEAMSPOT)) then
-        {
-            _Basis = Teleport_NATO_Basis2;
-        };
-
-        if ((playerSide == east) and ((player distance Teleport_CSAT_Basis2) < MIN_DISTANCE_TO_BEAMSPOT)) then
-        {
-            _Basis = Teleport_CSAT_Basis1;
-        };
-
-        if ((playerSide == west) and ((player distance Teleport_NATO_Basis2) < MIN_DISTANCE_TO_BEAMSPOT)) then
-        {
-            _Basis = Teleport_NATO_Basis1;
-        };
-    };
-
-    case "NATOvsAAF":
-    {
-        if ((playerSide == west) and ((player distance Teleport_NATO_Basis1) < MIN_DISTANCE_TO_BEAMSPOT)) then
-        {
-            _Basis = Teleport_NATO_Basis2;
-        };
-
-        if ((playerSide == independent) and ((player distance Teleport_AAF_Basis1) < MIN_DISTANCE_TO_BEAMSPOT)) then
-        {
-            _Basis = Teleport_AAF_Basis2;
-        };
-
-        if ((playerSide == west) and ((player distance Teleport_NATO_Basis2) < MIN_DISTANCE_TO_BEAMSPOT)) then
-        {
-            _Basis = Teleport_NATO_Basis1;
-        };
-
-        if ((playerSide == independent) and ((player distance Teleport_AAF_Basis2) < MIN_DISTANCE_TO_BEAMSPOT)) then
-        {
-            _Basis = Teleport_AAF_Basis1;
-        };
-    };
-
-    default
-    {
-        ERROR_LOG("GeldzeitBeam: Fehlerhafte Datenübergabe - Keine Fraktionauswahl erkannt");
-    };
+if ((playerSide == west) and ((player distance Teleport_NATO_Basis2) < MIN_DISTANCE_TO_BEAMSPOT)) then
+{
+    _Basis = Teleport_NATO_Basis1;
 };
 
 if !(isNull _Basis) then

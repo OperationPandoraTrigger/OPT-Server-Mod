@@ -23,12 +23,12 @@ _veh setPosATL [(getPosATL _veh) select 0, (getPosATL _veh) select 1, 0.3];
 private _name = (getText(configFile >> 'CfgVehicles' >> typeOf _veh >> 'displayName'));
 private _faction = (getText(configFile >> 'CfgVehicles' >> typeOf _veh >> 'faction'));
 private _category ="";
-private _light = (opt_shop_nato_vehicles + opt_shop_csat_vehicles + opt_shop_AAF_vehicles + opt_shop_nato_vehicles_supply + opt_shop_csat_vehicles_supply + opt_shop_AAF_vehicles_supply) apply {toLower (_x select 0)};
-private _heavy = (opt_shop_nato_armored + opt_shop_csat_armored + opt_shop_AAF_armored) apply {toLower (_x select 0)};
-private _air = (opt_shop_nato_choppers + opt_shop_csat_choppers + opt_shop_AAF_choppers + opt_shop_nato_planes + opt_shop_csat_planes + opt_shop_AAF_planes) apply {toLower (_x select 0)};
-private _boat = (opt_shop_nato_sea + opt_shop_csat_sea + opt_shop_AAF_sea) apply {toLower (_x select 0)};
-private _supplies = (opt_shop_nato_supplies + opt_shop_csat_supplies + opt_shop_AAF_supplies) apply {toLower (_x select 0)};
-private _static = (opt_shop_nato_static + opt_shop_csat_static + opt_shop_AAF_static) apply {toLower (_x select 0)};
+private _light = (opt_shop_nato_vehicles + opt_shop_csat_vehicles + opt_shop_nato_vehicles_supply + opt_shop_csat_vehicles_supply) apply {toLower (_x select 0)};
+private _heavy = (opt_shop_nato_armored + opt_shop_csat_armored) apply {toLower (_x select 0)};
+private _air = (opt_shop_nato_choppers + opt_shop_csat_choppers + opt_shop_nato_planes + opt_shop_csat_planes) apply {toLower (_x select 0)};
+private _boat = (opt_shop_nato_sea + opt_shop_csat_sea) apply {toLower (_x select 0)};
+private _supplies = (opt_shop_nato_supplies + opt_shop_csat_supplies) apply {toLower (_x select 0)};
+private _static = (opt_shop_nato_static + opt_shop_csat_static) apply {toLower (_x select 0)};
 
 _category = if (toLower (typeOf _veh) in _light) then
 {

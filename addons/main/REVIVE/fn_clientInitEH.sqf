@@ -89,10 +89,6 @@ DFUNC(isUnconscious) =
         {
             _radio_key = "_opfor";
         };
-        case independent:
-        {
-            _radio_key = "_independent";
-        };
         default { };
     };
 

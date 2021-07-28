@@ -154,101 +154,30 @@
         }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
 
         // Regelmäßig checken ob sich der Spieler in einem verbotenen Bereich in der nähe einer Feindlichen Basis aufhält
-        switch OPT_GELDZEIT_Fraktionauswahl do
+        switch playerSide do
         {
-            case "AAFvsCSAT":
+            case east:
             {
-                switch playerSide do
-                {
-                    case east:
+                [{
+                    if ((position player inArea "NATO_T_Zone1") or (position player inArea "NATO_T_Zone2")) then
                     {
-                        [{
-                            if ((position player inArea "AAF_T_Zone1") or (position player inArea "AAF_T_Zone2")) then
-                            {
-                                ["Cheat", "KillZone", [getPlayerUID player, name player, side player, position player, typeOf vehicle player]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
-                                player setDamage 1;
-                                {hint format ["%1", MLOC(BASE_DISTANCE)];} remoteExec ["call", -2];
-                            };
-                        }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
+                        ["Cheat", "KillZone", [getPlayerUID player, name player, side player, position player, typeOf vehicle player]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
+                        player setDamage 1;
+                        {hint format ["%1", MLOC(BASE_DISTANCE)];} remoteExec ["call", -2];
                     };
-
-                    case independent:
-                    {
-                        [{
-                            if ((position player inArea "CSAT_T_Zone1") or (position player inArea "CSAT_T_Zone2")) then
-                            {
-                                ["Cheat", "KillZone", [getPlayerUID player, name player, side player, position player, typeOf vehicle player]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
-                                player setDamage 1;
-                                {hint format ["%1", MLOC(BASE_DISTANCE)];} remoteExec ["call", -2];
-                            };
-                        }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
-                    };
-                };
+                }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
             };
 
-            case "NATOvsCSAT":
+            case west:
             {
-                switch playerSide do
-                {
-                    case east:
+                [{
+                    if ((position player inArea "CSAT_T_Zone1") or (position player inArea "CSAT_T_Zone2")) then
                     {
-                        [{
-                            if ((position player inArea "NATO_T_Zone1") or (position player inArea "NATO_T_Zone2")) then
-                            {
-                                ["Cheat", "KillZone", [getPlayerUID player, name player, side player, position player, typeOf vehicle player]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
-                                player setDamage 1;
-                                {hint format ["%1", MLOC(BASE_DISTANCE)];} remoteExec ["call", -2];
-                            };
-                        }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
+                        ["Cheat", "KillZone", [getPlayerUID player, name player, side player, position player, typeOf vehicle player]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
+                        player setDamage 1;
+                        {hint format ["%1", MLOC(BASE_DISTANCE)];} remoteExec ["call", -2];
                     };
-
-                    case west:
-                    {
-                        [{
-                            if ((position player inArea "CSAT_T_Zone1") or (position player inArea "CSAT_T_Zone2")) then
-                            {
-                                ["Cheat", "KillZone", [getPlayerUID player, name player, side player, position player, typeOf vehicle player]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
-                                player setDamage 1;
-                                {hint format ["%1", MLOC(BASE_DISTANCE)];} remoteExec ["call", -2];
-                            };
-                        }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
-                    };
-                };
-            };
-
-            case "NATOvsAAF":
-            {
-                switch playerSide do
-                {
-                    case independent:
-                    {
-                        [{
-                            if ((position player inArea "NATO_T_Zone1") or (position player inArea "NATO_T_Zone2")) then
-                            {
-                                ["Cheat", "KillZone", [getPlayerUID player, name player, side player, position player, typeOf vehicle player]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
-                                player setDamage 1;
-                                {hint format ["%1", MLOC(BASE_DISTANCE)];} remoteExec ["call", -2];
-                            };
-                        }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
-                    };
-
-                    case west:
-                    {
-                        [{
-                            if ((position player inArea "AAF_T_Zone1") or (position player inArea "AAF_T_Zone2")) then
-                            {
-                                ["Cheat", "KillZone", [getPlayerUID player, name player, side player, position player, typeOf vehicle player]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
-                                player setDamage 1;
-                                {hint format ["%1", MLOC(BASE_DISTANCE)];} remoteExec ["call", -2];
-                            };
-                        }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
-                    };
-                };
-            };
-
-            default
-            {
-                ERROR_LOG("RulesClientInit: Fehlerhafte Datenübergabe - Keine Fraktionauswahl erkannt");
+                }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
             };
         };
     };  // if (!(OPT_SECTORCONTROL_trainingon))

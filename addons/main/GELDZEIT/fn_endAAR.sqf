@@ -2,87 +2,28 @@
 
 private _type = "TvT";
 private _logged = false;
-switch (GVAR(Fraktionauswahl)) do
+
+// Ermittle Sieger
+if (EGVAR(SECTORCONTROL,csat_points) != EGVAR(SECTORCONTROL,nato_points)) then
 {
-    case "AAFvsCSAT":
+    if (EGVAR(SECTORCONTROL,csat_points) > EGVAR(SECTORCONTROL,nato_points)) then
     {
-        private _points1 = EGVAR(SECTORCONTROL,aaf_points);
-        private _points2 = EGVAR(SECTORCONTROL,csat_points);
-
-        // Ermittel Sieger
-        if (_points2 != _points1) then
-        {
-            if (_points2 > _points1) then
-            {
-                _logged = true;
-                [east, format ["%1:%2", _points1, _points2], _type] call ocap_fnc_exportData;
-            }
-            else
-            {
-                _logged = true;
-                [resistance, format ["%1:%2", _points1, _points2], _type] call ocap_fnc_exportData;
-            };
-        }
-        else
-        {
-            _logged = true;
-            [sideUnknown, format ["%1:%2", _points1, _points2], _type] call ocap_fnc_exportData;
-        };
-    };
-
-    case "NATOvsCSAT":
+        _logged = true;
+        [east, format ["%1:%2", EGVAR(SECTORCONTROL,nato_points), EGVAR(SECTORCONTROL,csat_points)], _type] call ocap_fnc_exportData;
+    }
+    else
     {
-        private _points1 = EGVAR(SECTORCONTROL,nato_points);
-        private _points2 = EGVAR(SECTORCONTROL,csat_points);
-
-        // Ermittel Sieger
-        if (_points2 != _points1) then
-        {
-            if (_points2 > _points1) then
-            {
-                _logged = true;
-                [east, format ["%1:%2", _points1, _points2], _type] call ocap_fnc_exportData;
-            }
-            else
-            {
-                _logged = true;
-                [west, format ["%1:%2", _points1, _points2], _type] call ocap_fnc_exportData;
-            };
-        }
-        else
-        {
-            _logged = true;
-            [sideUnknown, format ["%1:%2", _points1, _points2], _type] call ocap_fnc_exportData;
-        };
+        _logged = true;
+        [west, format ["%1:%2", EGVAR(SECTORCONTROL,nato_points), EGVAR(SECTORCONTROL,csat_points)], _type] call ocap_fnc_exportData;
     };
-
-    case "NATOvsAAF":
-    {
-        private _points1 = EGVAR(SECTORCONTROL,nato_points);
-        private _points2 = EGVAR(SECTORCONTROL,aaf_points);
-
-        // Ermittel Sieger
-        if (_points2 != _points1) then
-        {
-            if (_points2 > _points1) then
-            {
-                _logged = true;
-                [resistance, format ["%1:%2", _points1, _points2], _type] call ocap_fnc_exportData;
-            }
-            else
-            {
-                _logged = true;
-                [west, format ["%1:%2", _points1, _points2], _type] call ocap_fnc_exportData;
-            };
-        }
-        else
-        {
-            _logged = true;
-            [sideUnknown, format ["%1:%2", _points1, _points2], _type] call ocap_fnc_exportData;
-        };
-    };
+}
+else
+{
+    _logged = true;
+    [sideUnknown, format ["%1:%2", EGVAR(SECTORCONTROL,nato_points), EGVAR(SECTORCONTROL,csat_points)], _type] call ocap_fnc_exportData;
 };
 
-if (!_logged) then {
-    [sideUnknown, format ["NATO:%1 CSAT:%2 AAF:%3", EGVAR(SECTORCONTROL,nato_points), EGVAR(SECTORCONTROL,csat_points), EGVAR(SECTORCONTROL,aaf_points)], _type] call ocap_fnc_exportData;
+if (!_logged) then
+{
+    [sideUnknown, format ["NATO:%1 CSAT:%2", EGVAR(SECTORCONTROL,nato_points), EGVAR(SECTORCONTROL,csat_points)], _type] call ocap_fnc_exportData;
 };

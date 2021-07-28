@@ -30,9 +30,6 @@ publicVariable QGVAR(csat_points);
 GVAR(nato_points) = 0;
 publicVariable QGVAR(nato_points);
 
-GVAR(aaf_points) = 0;
-publicVariable QGVAR(aaf_points);
-
 GVAR(draw) = 0;
 publicVariable QGVAR(draw);
 
@@ -42,9 +39,6 @@ publicVariable QGVAR(csat_win);
 GVAR(nato_win) = 0;
 publicVariable QGVAR(nato_win);
 
-GVAR(aaf_win)= 0;
-publicVariable QGVAR(aaf_win);
-
 GVAR(dominator) = sideUnknown;
 publicVariable QGVAR(dominator);
 
@@ -53,9 +47,6 @@ publicVariable QGVAR(nato_flags);
 
 GVAR(csat_flags) = [];
 publicVariable QGVAR(csat_flags);
-
-GVAR(aaf_flags) = [];
-publicVariable QGVAR(aaf_flags);
 
 DFUNC(startflagsetup) =
 {
@@ -71,6 +62,10 @@ DFUNC(startflagsetup) =
 
 ["missionStarted",
 {
+    // Flaggentexturen festlegen
+    GVAR(westflag) = "\opt\opt_client\addons\core\bilder\" + toLower EGVAR(SECTORCONTROL,nato_faction) + "_fahne.paa";
+    GVAR(eastflag) = "\opt\opt_client\addons\core\bilder\" + toLower EGVAR(SECTORCONTROL,csat_faction) + "_fahne.paa";
+    
     // Finale Fahnenmasten und Markierungen setzen
     [] call FUNC(setupflagpoles);
     [FUNC(startflagsetup), {(OPT_GELDZEIT_GAMESTAGE == GAMESTAGE_WAR)}, "Awesome Delay"] call CLib_fnc_waitUntil;
@@ -94,31 +89,7 @@ createMarkerLocal ["Marker_NumPlayers", [0, worldsize + 500]];
 "Marker_NumPlayers" setMarkerSizeLocal [1, 1];
 "Marker_NumPlayers" setMarkerAlphaLocal 1;
 
-switch OPT_GELDZEIT_Fraktionauswahl do
-{
-    case "AAFvsCSAT":
-    {
-        GVAR(playercount_handler) =
-        [{
-            "Marker_NumPlayers" setMarkerText format["Eingeslottet: AAF: %1 // CSAT: %2", playersNumber independent, playersNumber east];
-        }, PLAYERCOUNT_INTERVAL] call CBA_fnc_addPerFrameHandler;    // Der CLib PFH funktioniert hier noch nicht vor dem Missionsstart
-    };
-    case "NATOvsCSAT":
-    {
-        GVAR(playercount_handler) =
-        [{
-            "Marker_NumPlayers" setMarkerText format["Eingeslottet: NATO: %1 // CSAT: %2", playersNumber west, playersNumber east];
-        }, PLAYERCOUNT_INTERVAL] call CBA_fnc_addPerFrameHandler;    // Der CLib PFH funktioniert hier noch nicht vor dem Missionsstart
-    };
-    case "NATOvsAAF":
-    {
-        GVAR(playercount_handler) =
-        [{
-            "Marker_NumPlayers" setMarkerText format["Eingeslottet: NATO: %1 // AAF: %2", playersNumber west, playersNumber independent];
-        }, PLAYERCOUNT_INTERVAL] call CBA_fnc_addPerFrameHandler;    // Der CLib PFH funktioniert hier noch nicht vor dem Missionsstart
-    };
-    default
-    {
-        ERROR_LOG("RulesClientInit: Fehlerhafte Datenübergabe - Keine Fraktionauswahl erkannt");
-    };
-};
+GVAR(playercount_handler) =
+[{
+    "Marker_NumPlayers" setMarkerText format["Eingeslottet: NATO: %1 // CSAT: %2", playersNumber west, playersNumber east];
+}, PLAYERCOUNT_INTERVAL] call CBA_fnc_addPerFrameHandler;    // Der CLib PFH funktioniert hier noch nicht vor dem Missionsstart

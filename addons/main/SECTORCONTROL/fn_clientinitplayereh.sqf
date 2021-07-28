@@ -35,7 +35,7 @@ if (GVAR(trainingon)) then
         _flag = objNull;
         {
             if (_x getVariable [QGVAR(isFlagMovable), false]) exitWith { _flag = _x; };
-        } foreach GVAR(csat_flags) + GVAR(nato_flags) + GVAR(aaf_flags);
+        } foreach GVAR(csat_flags) + GVAR(nato_flags);
 
         if (_flag isEqualTo objNull) then
         {
@@ -88,7 +88,7 @@ if (GVAR(flagFreeMineZoneOn)) then
             6 projectile: Object - Object of the projectile that was shot out
             7 vehicle: Object - Vehicle, if weapon is vehicle weapon, otherwise objNull
         */
-        if (_this select 1 == "Put" && ({(_x distance player) <= GVAR(flagFreeMineZoneRadius)} count (GVAR(nato_flags) + GVAR(csat_flags) + GVAR(aaf_flags)) > 0)) then
+        if (_this select 1 == "Put" && ({(_x distance player) <= GVAR(flagFreeMineZoneRadius)} count (GVAR(nato_flags) + GVAR(csat_flags)) > 0)) then
         {
             // lösche Mine
             deleteVehicle (_this select 6);

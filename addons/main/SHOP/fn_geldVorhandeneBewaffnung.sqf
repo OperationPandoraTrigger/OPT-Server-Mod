@@ -61,11 +61,6 @@ switch (_side) do
         _vehiclePool = GVAR(Raktenhelieast)  + GVAR(Gunhelieast) + GVAR(Gunveheast);
     };
 
-    case independent:
-    {
-        _vehiclePool = GVAR(Raktenheliindependent)  + GVAR(Gunheliindependent) + GVAR(Gunvehindependent);
-    };
-
     default
     {
     };

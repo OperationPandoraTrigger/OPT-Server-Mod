@@ -41,10 +41,6 @@ if (_index != -1) then
         ((GVAR(allNato) apply {toLower (_x select 0)} find (toLower _class) != -1) and playerside == east)
         or
         ((GVAR(allCsat) apply {toLower (_x select 0)} find (toLower _class) != -1) and playerside == west)
-        or
-        ((GVAR(allAAF) apply {toLower (_x select 0)} find (toLower _class) != -1) and playerside == east)
-        or
-        ((GVAR(allCsat) apply {toLower (_x select 0)} find (toLower _class) != -1) and playerside == independent)
         )
     then
     {
