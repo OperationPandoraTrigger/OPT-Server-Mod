@@ -83,3 +83,7 @@ GVAR(csat_flags_pos) = [];
         [_x, east, GVAR(eastflag)] call CreateFlags;
     } forEach ((GVAR(AllSectors) select _x) select 1);
 } forEach GVAR(csat_sectors);
+
+// Flaggen in der Basis
+NATO_BaseFlag setFlagTexture GVAR(westflag);
+CSAT_BaseFlag setFlagTexture GVAR(eastflag);

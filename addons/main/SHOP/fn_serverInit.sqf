@@ -58,13 +58,13 @@ publicVariable QGVAR(Hardcap_csat_supplies);
 GVAR(Hardcap_csat_sea) = [];
 publicVariable QGVAR(Hardcap_csat_sea);
 
-switch (GVAR(hardcaplist)) do
+switch (GVAR(hardcapmode)) do
 {
-    case "0":
+    case 0:
     {
     };
 
-    case "1":
+    case 1:
     {
         /* CSAT Planes */
         GVAR(Hardcap_csat_planes) pushBack ["OPT_CUP_I_CESSNA_T41_UNARMED_ION",3];
