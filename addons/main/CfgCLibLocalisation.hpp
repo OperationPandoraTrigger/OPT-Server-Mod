@@ -166,8 +166,8 @@ class CfgCLibLocalisation
 
             class WEAPON_LOCK
             {
-                English = "Weapon inadmissible for current player class.\n\n Weapon has been removed.";
-                German = "Waffe unzulässig für aktuelle Spielerklasse.\n\n Waffe wurde entfernt.";
+                English = "Weapon inadmissible for current player class.\n\nWeapon has been removed.";
+                German = "Waffe unzulässig für aktuelle Spielerklasse.\n\nWaffe wurde entfernt.";
             };
 
             class BASE_DISTANCE
@@ -175,10 +175,17 @@ class CfgCLibLocalisation
                 English = "A player was automatically killed due to entering the enemy base!";
                 German = "Ein Spieler wurde aufgrund des Betretens der feindlichen Basis automatisch getötet!";
             };
+
             class PLAYER_OUT_OF_MAP
             {
                 English = "A player was automatically killed due to leaving the map!";
                 German = "Ein Spieler wurde aufgrund des Verlassens der Karte automatisch getötet!";
+            };
+
+            class BAD_FREQUENCY
+            {
+                English = "Invalid frequency (%1 MHz) used. Falling back to %2 MHz.";
+                German = "Ungültige Frequenz (%1 MHz) verwendet. Es wurde auf %2 MHz zurückgeschaltet.";
             };
         };
 

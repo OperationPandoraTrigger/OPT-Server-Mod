@@ -45,6 +45,70 @@
         [_txt] remoteExecCall ["hint", 0, false];
     };
 
+    // TFAR-Frequenzüberschneidungen zwischen den Fraktionen vermeiden
+    // ARF:     30 - 59 MHz
+    // SWORD:   60 - 87 MHz
+    switch playerSide do
+    {
+        case west:
+        {
+            switch EGVAR(SECTORCONTROL,nato_faction) do
+            {
+                case "ARF":
+                {
+                    GVAR(MIN_FREQ) = 30;
+                    GVAR(MAX_FREQ) = 59;
+                };
+
+                case "SWORD":
+                {
+                    GVAR(MIN_FREQ) = 60;
+                    GVAR(MAX_FREQ) = 87;
+                };
+            };
+        };
+
+        case east:
+        {
+            switch EGVAR(SECTORCONTROL,csat_faction) do
+            {
+                case "ARF":
+                {
+                    GVAR(MIN_FREQ) = 30;
+                    GVAR(MAX_FREQ) = 59;
+                };
+
+                case "SWORD":
+                {
+                    GVAR(MIN_FREQ) = 60;
+                    GVAR(MAX_FREQ) = 87;
+                };
+            };
+        };
+    };
+
+    ["TFAR_event_OnFrequencyChanged",
+    {
+        params ["_TFAR_currentUnit", "_radio", "_channel", "_oldFrequency", "_newFrequency"];
+        private _newFreq = parseNumber _newFrequency;
+        if (_newFreq < GVAR(MIN_FREQ) || _newFreq > GVAR(MAX_FREQ)) then
+        {
+            // Meldung
+            private _oldFreq = parseNumber _oldFrequency;
+            hint format[MLOC(BAD_FREQUENCY), _newFreq, _oldFreq];
+            playSound "additemok";
+            ["Cheat", "BadFrequency", [getPlayerUID player, name player, side player, _newFreq, _radio]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
+
+            // Frequenz zurückstellen
+            private _isLRRadio = _radio isEqualType [];
+            private _settings = _radio call ([TFAR_fnc_getSwSettings, TFAR_fnc_getLrSettings] select _isLRRadio);
+            if (isNil "_settings") exitWith {};
+            #define TFAR_FREQ_OFFSET 2
+            (_settings select TFAR_FREQ_OFFSET) set [_channel, _oldFrequency];
+            [_radio, _settings] call ([TFAR_fnc_setSwSettings, TFAR_fnc_setLrSettings] select _isLRRadio);
+        };
+    }] call CBA_fnc_addEventHandler;
+
     if (!(OPT_SECTORCONTROL_trainingon)) then
     {
         // EH für Waffencheck
