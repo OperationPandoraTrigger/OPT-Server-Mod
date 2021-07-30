@@ -18,18 +18,8 @@
 
 if (OPT_GELDZEIT_GAMESTAGE >= GAMESTAGE_WAR) exitWith{};
 
-GVAR(officer) =
-[
-    "OPT_NATO_Offizier_T",
-    "OPT_CSAT_Offizier_T",
-    "OPT_NATO_Offizier",
-    "OPT_CSAT_Offizier",
-    "I_officer_F",
-    "O_officer_F"
-];
-
 // Mausradmenüeinträge für HL und PL
-if (typeOf player in GVAR(officer)) then
+if (typeOf player in EGVAR(RULES,officer)) then
 {
     player addAction [
         format["<t size=""1.5"" color=""#ffffff"">%1</t>", MLOC(ATTACK_FLAG)],

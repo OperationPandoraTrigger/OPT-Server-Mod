@@ -28,9 +28,6 @@
 */
 #include "macros.hpp"
 
-//Init Werte
-GVAR(SaniKlassen) = ["OPT_NATO_Sanitaeter","OPT_CSAT_Sanitaeter","OPT_NATO_Sanitaeter_T","OPT_CSAT_Sanitaeter_T","I_medic_F"];
-
 // Eigenversorung Funktion
 DFUNC(eigenversorgung) =
 {

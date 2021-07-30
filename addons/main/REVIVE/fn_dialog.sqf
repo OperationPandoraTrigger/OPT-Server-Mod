@@ -94,7 +94,7 @@ GVAR(startzeit) = time;
             _sidesoldat =getnumber (configFile >> "CfgVehicles" >> (typeof _x) >> "side");
             _sideplayer =getnumber (configFile >> "CfgVehicles" >> (typeof player) >> "side");
 
-            if ((_sidesoldat isEqualTo _sideplayer) and (typeOf _x in GVAR(SaniKlassen)) and !(lifeState _x isEqualTo "INCAPACITATED") and (incapacitatedState _x == "") and GVAR(onlysani)) then
+            if ((_sidesoldat isEqualTo _sideplayer) and (typeOf _x in EGVAR(RULES,medic)) and !(lifeState _x isEqualTo "INCAPACITATED") and (incapacitatedState _x == "") and GVAR(onlysani)) then
             {
                 _poolplayer pushBack _x;
             };
