@@ -46,7 +46,6 @@ GVAR(mutexAction) = true;
 
 player selectWeapon primaryWeapon player;    // psycho, animation only able to play while primary weapon is in use
 sleep 1;
-private _lastPlayerState = animationState player;
 
 player playMove "Acts_carFixingWheel";
 sleep 0.5;

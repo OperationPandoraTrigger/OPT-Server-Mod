@@ -176,8 +176,8 @@ GVAR(eventArgs) = [];
         // check if there is a radio in the vehicle
         if (_veh call TFAR_fnc_hasVehicleRadio) then
         {
-            _VehicleLR = player call TFAR_fnc_VehicleLR;
-            _encryption = _VehicleLR call TFAR_fnc_getLrRadioCode;
+            private _VehicleLR = player call TFAR_fnc_VehicleLR;
+            private _encryption = _VehicleLR call TFAR_fnc_getLrRadioCode;
 
             // Check if vehicle was occupied by other team. IF so, we change the encryption to match the team again.
             switch (playerSide) do

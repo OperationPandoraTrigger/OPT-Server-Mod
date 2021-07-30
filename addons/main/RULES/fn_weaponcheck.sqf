@@ -16,7 +16,7 @@
 */
 #include "macros.hpp"
 
-params ["_unit", "_container","_item"];
+params ["_unit", "_container", "_item"];
 private _typeOfPlayer = typeOf _unit;
 private _bad_item_used = false;
 

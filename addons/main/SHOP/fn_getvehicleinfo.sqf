@@ -37,7 +37,7 @@ private _price = 0;
 private _preis = "";
 private _priceTxt = "";
 private _Datensatz = [];
-private _magazineVehArryNew=[];
+private _magazineVehArryNew = [];
 private _bewaffnungpreis = 0;
 private _side = civilian;
 private _sellveh = "";
@@ -167,7 +167,6 @@ if (_class isKindOf "AllVehicles" and !(_class isKindOf "StaticWeapon")) then
     _newweapons = _newweapons select [0, count _newweapons - 2];
 
     private _crewCount = [_class, true] call BIS_fnc_crewCount;
-    private _model = getText(configFile >> "cfgVehicles" >> _class >> "model");
     private _maxSpeed = getNumber(configFile >> "cfgVehicles" >> _class >> "maxSpeed");
 
     //Treibstoffberechnung
@@ -249,7 +248,6 @@ if (_class isKindOf "StaticWeapon") then
     _newweapons = _newweapons select [0, count _newweapons - 2];
 
     private _crewCount = [_class, true] call BIS_fnc_crewCount;
-    private _model = getText(configFile >> "cfgVehicles" >> _class >> "model");
 
     _return = format
     [

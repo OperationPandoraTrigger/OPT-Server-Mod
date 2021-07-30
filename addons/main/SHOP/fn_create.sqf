@@ -51,9 +51,6 @@ DFUNC(createOrder) =
     //Hardcap Send Auslösung Zurücksetzen
     GVAR(Daten_send) = false;
 
-    private _hardcapobj = "";
-    private _hardcapinfo = 999;
-
     //Init Vars
     private _airRaketenmagazin = [];
     private _airRaketenweapon = [];

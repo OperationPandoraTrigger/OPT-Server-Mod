@@ -32,7 +32,7 @@
     * 9: Other parameters [showDisabled,enableInside,canCollapse,runOnHover,doNotCheckLOS] <ARRAY> (Optional)
     * 10: Modifier function <CODE> (Optional)
     */
-    _action_drag =
+    private _action_drag =
     [
         "OPT_REVIVE_DRAG",
         MLOC(DRAG),

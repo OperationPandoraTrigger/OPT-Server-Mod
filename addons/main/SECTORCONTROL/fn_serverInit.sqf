@@ -83,7 +83,7 @@ DFUNC(startflagsetup) =
 #define PLAYERCOUNT_INTERVAL 1
 
 private _worldsize = (worldName call BIS_fnc_mapSize);
-createMarkerLocal ["Marker_NumPlayers", [0, worldsize + 500]];
+createMarkerLocal ["Marker_NumPlayers", [0, _worldsize + 500]];
 "Marker_NumPlayers" setMarkerTypeLocal "hd_end_noShadow";
 "Marker_NumPlayers" setMarkerColorLocal "ColorBlack";
 "Marker_NumPlayers" setMarkerSizeLocal [1, 1];

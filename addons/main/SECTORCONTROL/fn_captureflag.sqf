@@ -31,9 +31,7 @@ if (!hasInterface) exitWith {};
 
 params ["_flag", "_caller"];
 
-_side = side _caller;
-
-[_side, _flag] remoteExecCall [QFUNC(setFlagOwner), 2, false];
+[side _caller, _flag] remoteExecCall [QFUNC(setFlagOwner), 2, false];
 
 // log player
 [_flag, _caller] remoteExecCall [QFUNC(writeFlagCaptured), 2, false];

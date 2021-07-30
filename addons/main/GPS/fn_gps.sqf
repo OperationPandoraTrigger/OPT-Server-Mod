@@ -96,11 +96,11 @@ GVAR(markerOwn) setMarkerAlphaLocal 1;
                     // Spezialfall Drohne
                     if (_playerVehicle in allUnitsUAV) then
                     {
-                        private _operatorName = (UAVControl _playerVehicle) select 0;
+                        private _operator = (UAVControl _playerVehicle) select 0;
                         // UAV Operator ja/nein
                         if (!isNull _operator) then
                         {
-                            _markerAlive setMarkerTextLocal format["%1 (%2)", _vehicleName, name _operatorName];
+                            _markerAlive setMarkerTextLocal format["%1 (%2)", _vehicleName, name _operator];
                         }
                         else
                         {

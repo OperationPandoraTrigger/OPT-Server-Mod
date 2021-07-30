@@ -29,7 +29,7 @@ GVAR(drag_target) = _target;
 GVAR(Addaction_id) = player addAction
 [
     "<t color=""#C90000"">" + "Ablegen" + "</t>",
-    {_caller = _this select 1; [cursorTarget, _caller, "action_release"] call FUNC(handleAction);},
+    {private _caller = _this select 1; [cursorTarget, _caller, "action_release"] call FUNC(handleAction);},
     [],
     10,
     true,

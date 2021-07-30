@@ -29,7 +29,7 @@ if (!OPT_SECTORCONTROL_trainingon) exitWith {};
     };
 
     private _group = createGroup sideLogic;
-    _curator = _group createUnit ["ModuleCurator_F", [0, 0, 0], [], 0, "CAN_COLLIDE"];
+    private _curator = _group createUnit ["ModuleCurator_F", [0, 0, 0], [], 0, "CAN_COLLIDE"];
     _curator setVariable ["addons", 3, true];
     _curator setVariable ["bis_fnc_initModules_activate", false, true];
     _curator addCuratorEditableObjects [allMissionObjects "", true];

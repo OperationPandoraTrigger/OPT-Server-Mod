@@ -62,7 +62,6 @@ private _pcs = [NATO_Drohnenstation, CSAT_Drohnenstation];
     _x addAction [
         format["<t color=""#F3B601"">%1</t>", MLOC(UAV_LOGOUT)],
         {
-            private _terminal = _this select 0;
             [
                 3,
                 [],

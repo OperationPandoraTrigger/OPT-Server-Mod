@@ -35,7 +35,6 @@ params
 
 private _magazineVeh = magazines _veh;
 private _weaponsVeh = weapons _veh;
-private _magazineVehArrayNew  = [];
 private _waffenMagazinArray  = [];
 
 _weaponsVeh deleteAt (_weaponsVeh find "OPT_CMFlareLauncher");
@@ -67,6 +66,6 @@ _weaponsVeh = _weaponsVeh select {_x != ""};
 };
 
 _magazineVeh = _magazineVeh select {_x != ""};
-_waffenMagazinArray =[_weaponsVeh,_magazineVeh];
+_waffenMagazinArray =[_weaponsVeh, _magazineVeh];
 
 _waffenMagazinArray

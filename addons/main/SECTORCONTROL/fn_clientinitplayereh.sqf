@@ -32,7 +32,7 @@ if (GVAR(trainingon)) then
 
         // if alt key was pressed -> was a flag chosen or should a flag be moved?
         // is there a flag that should be moved?
-        _flag = objNull;
+        private _flag = objNull;
         {
             if (_x getVariable [QGVAR(isFlagMovable), false]) exitWith { _flag = _x; };
         } foreach GVAR(csat_flags) + GVAR(nato_flags);
@@ -40,7 +40,7 @@ if (GVAR(trainingon)) then
         if (_flag isEqualTo objNull) then
         {
             // check for flag nearby
-            _obj = nearestObjects [_pos, ["FlagPole_F"], 100];
+            private _obj = nearestObjects [_pos, ["FlagPole_F"], 100];
             if (count _obj == 0) exitWith {};
 
             _obj = _obj select 0;
@@ -53,7 +53,7 @@ if (GVAR(trainingon)) then
             _flag setVariable [QGVAR(isFlagMovable), false];
 
             // flaggenmarker verschieben
-            _marker = _flag getVariable QGVAR(flagMarker);
+            private _marker = _flag getVariable QGVAR(flagMarker);
             _marker setMarkerPos _pos;
 
             // minenzonenmarker verschieben
