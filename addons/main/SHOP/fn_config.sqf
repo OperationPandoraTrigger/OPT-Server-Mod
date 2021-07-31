@@ -49,17 +49,17 @@ GVAR(DB_vehicles) =
     ["OPT_O_MRAP_02_hmg_F",                         COST(80000),                            5,          4,          false,      false,      [0, 3, 0.2], 0,         0.1,            east], // Ifrit HMG
     ["OPT_B_Truck_02_covered_F",                    COST(5000),                             10,         4,          false,      false,      [0, 3, 0.2], 0,         0.1,            west], // Zamak Logistik LKW
     ["OPT_O_Truck_02_covered_F",                    COST(5000),                             10,         4,          false,      false,      [0, 3, 0.2], 0,         0.1,            east], // Zamak Logistik LKW
-    ["OPT_B_Truck_02_box_F",                        10000,      5000,       20000,          10,         2,          false,      false,      [0, 3, 0.2], 0,         0.1,            west], // Zamak Reparatur LKW
-    ["OPT_O_Truck_02_box_F",                        10000,      5000,       20000,          10,         2,          false,      false,      [0, 3, 0.2], 0,         0.1,            east], // Zamak Reparatur LKW
-    ["OPT_B_Truck_02_medical_F",                    10000,      5000,       20000,          10,         2,          false,      false,      [0, 3, 0.2], 0,         0.1,            west], // Zamak Medical LKW
-    ["OPT_O_Truck_02_medical_F",                    10000,      5000,       20000,          10,         2,          false,      false,      [0, 3, 0.2], 0,         0.1,            east]  // Zamak Medical LKW
+    ["OPT_B_Truck_02_box_F",                        COST(10000),                            10,         2,          false,      false,      [0, 3, 0.2], 0,         0.1,            west], // Zamak Reparatur LKW
+    ["OPT_O_Truck_02_box_F",                        COST(10000),                            10,         2,          false,      false,      [0, 3, 0.2], 0,         0.1,            east], // Zamak Reparatur LKW
+    ["OPT_B_Truck_02_medical_F",                    COST(10000),                            10,         2,          false,      false,      [0, 3, 0.2], 0,         0.1,            west], // Zamak Medical LKW
+    ["OPT_O_Truck_02_medical_F",                    COST(10000),                            10,         2,          false,      false,      [0, 3, 0.2], 0,         0.1,            east]  // Zamak Medical LKW
 ];
 
 GVAR(DB_vehicles_supply) =
 [
 //  ["Classname",                                   BuyPrice,   SellPrice,  SellPriceEnemy, NeedsCargo, GivesCargo, Draggable,  Carriable,  GrabOffset,  GrabDir,   HeightOffset,   Side],
-    ["OPT_B_Truck_02_fuel_F",                       10000,      5000,       20000,          10,         2,          false,      false,      [0, 3, 0.2], 0,         0.1,            west], // Zamak Tank LKW
-    ["OPT_O_Truck_02_fuel_F",                       10000,      5000,       20000,          10,         2,          false,      false,      [0, 3, 0.2], 0,         0.1,            east], // Zamak Tank LKW
+    ["OPT_B_Truck_02_fuel_F",                       COST(10000),                            10,         2,          false,      false,      [0, 3, 0.2], 0,         0.1,            west], // Zamak Tank LKW
+    ["OPT_O_Truck_02_fuel_F",                       COST(10000),                            10,         2,          false,      false,      [0, 3, 0.2], 0,         0.1,            east], // Zamak Tank LKW
     ["OPT_B_Truck_02_ammo_F",                       50000,      5000,       20000,          10,         2,          false,      false,      [0, 3, 0.2], 0,         0.1,            west], // Zamak Munitions LKW
     ["OPT_O_Truck_02_ammo_F",                       50000,      5000,       20000,          10,         2,          false,      false,      [0, 3, 0.2], 0,         0.1,            east]  // Zamak Munitions LKW
 ];
