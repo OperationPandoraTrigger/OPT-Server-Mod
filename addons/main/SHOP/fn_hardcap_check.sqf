@@ -26,257 +26,39 @@ params
 ];
 
 private _Hardcaparray = [];
-private _Hardcap_pool = [];
 private _hardcapobj = "";
-private _hardcapinfo = 999;
-
-// Auswahl Hardcap Array
-switch (_vehicleType) do
-{
-    case "choppers" :
-    {
-        switch (_side) do
-        {
-            case west:
-            {
-                _Hardcap_pool = GVAR(Hardcap_nato_choppers);
-            };
-
-            case east:
-            {
-                 _Hardcap_pool = GVAR(Hardcap_csat_choppers);
-            };
-
-            default
-            {
-            };
-        };
-    };
-
-    case "planes" :
-    {
-        switch (_side) do
-        {
-            case west:
-            {
-                _Hardcap_pool = GVAR(Hardcap_nato_planes);
-            };
-
-            case east:
-            {
-                 _Hardcap_pool = GVAR(Hardcap_csat_planes);
-            };
-
-            default
-            {
-            };
-        };
-    };
-
-    case "vehicles" :
-    {
-        switch (_side) do
-        {
-            case west:
-            {
-                _Hardcap_pool = GVAR(Hardcap_nato_vehicles);
-            };
-
-            case east:
-            {
-                _Hardcap_pool = GVAR(Hardcap_csat_vehicles);
-            };
-
-            default
-            {
-            };
-        };
-    };
-    case "supplies" :
-    {
-        switch (_side) do
-        {
-            case west:
-            {
-                _Hardcap_pool = GVAR(Hardcap_nato_supplies);
-            };
-
-            case east:
-            {
-                _Hardcap_pool = GVAR(Hardcap_csat_supplies);
-            };
-
-            default
-            {
-            };
-        };
-    };
-
-    case "sea" :
-    {
-        switch (_side) do
-        {
-            case west:
-            {
-                _Hardcap_pool = GVAR(Hardcap_nato_sea);
-            };
-
-            case east:
-            {
-                _Hardcap_pool = GVAR(Hardcap_csat_sea);
-            };
-
-            default
-            {
-            };
-        };
-    };
-    default
-    {
-    };
-};
+private _hardcapleft = -1;
+private _hardcaptotal = -1;
 
 //Objekt suchen in Array
-_Hardcap_pool apply
+if (_class in GVAR(Hardcap_pool)) then
 {
-    _hardcapobj = _x select 0;
-    if (_class isEqualTo _hardcapobj) then
-    {
-        _hardcapinfo = _x select 1;
-        _Hardcaparray = _x;
-    };
+    private _hardcaparray = GVAR(Hardcap_pool) get _class;
+    _hardcapleft = _hardcaparray select 1;
+    _hardcaptotal = _hardcaparray select 2;
 };
 
-if (_hardcapinfo > 0) then
+if (_hardcapleft > 0) then
 {
-    // Hardcap Erneuerung in Datensatz
-    _Hardcap_pool deleteAt (_Hardcap_pool find _Hardcaparray);
-    _Hardcaparray set [1, (_hardcapinfo-1)];
-    _Hardcap_pool pushBack _Hardcaparray;
-
-    switch (_vehicleType) do
-    {
-            case "choppers" :
-            {
-                switch (_side) do
-                {
-                    case west:
-                    {
-                        GVAR(Hardcap_nato_choppers) = _Hardcap_pool;
-                        publicVariable QGVAR(Hardcap_nato_choppers);
-                    };
-
-                    case east:
-                    {
-                        GVAR(Hardcap_csat_choppers) = _Hardcap_pool;
-                        publicVariable QGVAR(Hardcap_csat_choppers);
-                    };
-
-                    default
-                    {
-                    };
-                };
-            };
-
-            case "planes" :
-            {
-                switch (_side) do
-                {
-                    case west:
-                    {
-                        GVAR(Hardcap_nato_planes) = _Hardcap_pool;
-                        publicVariable QGVAR(Hardcap_nato_planes);
-                    };
-
-                    case east:
-                    {
-                        GVAR(Hardcap_csat_planes) = _Hardcap_pool;
-                        publicVariable QGVAR(Hardcap_csat_planes);
-                    };
-
-                    default
-                    {
-                    };
-                };
-            };
-
-            case "vehicles" :
-            {
-                switch (_side) do
-                {
-                    case west:
-                    {
-                        GVAR(Hardcap_nato_vehicles) = _Hardcap_pool;
-                        publicVariable QGVAR(Hardcap_nato_vehicles);
-                    };
-
-                    case east:
-                    {
-                        GVAR(Hardcap_csat_vehicles) = _Hardcap_pool;
-                        publicVariable QGVAR(Hardcap_csat_vehicles);
-                    };
-
-                    default
-                    {
-                    };
-                };
-            };
-
-            case "supplies" :
-            {
-                switch (_side) do
-                {
-                    case west:
-                    {
-                        GVAR(Hardcap_nato_supplies) = _Hardcap_pool;
-                        publicVariable QGVAR(Hardcap_nato_supplies);
-                    };
-
-                    case east:
-                    {
-                        GVAR(Hardcap_csat_supplies) = _Hardcap_pool;
-                        publicVariable QGVAR(Hardcap_csat_supplies);
-                    };
-
-                    default
-                    {
-                    };
-                };
-            };
-
-            case "sea" :
-            {
-                switch (_side) do
-                {
-                    case west:
-                    {
-                        GVAR(Hardcap_nato_sea) = _Hardcap_pool;
-                        publicVariable QGVAR(Hardcap_nato_sea);
-                    };
-
-                    case east:
-                    {
-                        GVAR(Hardcap_csat_sea) = _Hardcap_pool;
-                        publicVariable QGVAR(Hardcap_csat_sea);
-                    };
-
-                    default
-                    {
-                    };
-                };
-            };
-
-            default
-            {
-            };
-    };
+    // eins abziehen und erlauben
+    GVAR(Hardcap_pool) set [_class, [_hardcapleft - 1, _hardcaptotal]];
+    publicVariable QGVAR(Hardcap_pool);
     [1] remoteExecCall [QFUNC(create), _user, false];
 }
 else
 {
-    [0] remoteExecCall [QFUNC(create), _user, false];
+    if (_hardcapleft == -1) then
+    {
+        // unbegrenzt erlauben
+        [1] remoteExecCall [QFUNC(create), _user, false];
+    }
+    else
+    {
+        // verbraucht verweigern
+        [0] remoteExecCall [QFUNC(create), _user, false];
+    };
 };
 
 // Log Hardcap Info
 private _unitName = (getText(configFile >> 'CfgVehicles' >> _class >> 'displayName'));
-["Hardcap", "Info", [_unitName, _hardcapinfo]] call OPT_LOGGING_fnc_writelog;
+["Hardcap", "Info", [_unitName, _hardcapleft, _hardcaptotal]] call EFUNC(LOGGING,writelog);

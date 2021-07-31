@@ -186,5 +186,5 @@ if (_bad_item_used) then
     private _txt = MLOC(WEAPON_LOCK);
     private _header = MLOC(RULE_VIOLATION);
     hint format ["%1\n\n%2", _header, _txt];
-    ["Cheat", "BadWeapon", [getPlayerUID player, name player, side player, position player, typeOf vehicle player]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
+    ["Cheat", "BadWeapon", [getPlayerUID player, name player, side player, position player, typeOf vehicle player]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
 };

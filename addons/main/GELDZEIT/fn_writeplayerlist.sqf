@@ -21,5 +21,5 @@
 #include "macros.hpp"
 
 {
-    ["Player", "List", [_x select 0, _x select 1, _x select 2]] call OPT_LOGGING_fnc_writelog;
+    ["Player", "List", [_x select 0, _x select 1, _x select 2]] call EFUNC(LOGGING,writelog);
 } forEach GVAR(playerList);

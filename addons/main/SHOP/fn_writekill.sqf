@@ -33,7 +33,7 @@ params
 ];
 
 // Raw-Logging of everything
-["Health", "Raw", [netID _victim, getPlayerUID _victim, _victim, netID _instigator, getPlayerUID _instigator, _instigator, netID _source, getPlayerUID _source, _source, _projectile]] call OPT_LOGGING_fnc_writelog;
+["Health", "Raw", [netID _victim, getPlayerUID _victim, _victim, netID _instigator, getPlayerUID _instigator, _instigator, netID _source, getPlayerUID _source, _source, _projectile]] call EFUNC(LOGGING,writelog);
 
 /* VALIDATION */
 if (_victim isEqualTo objNull) exitWith{};
@@ -68,7 +68,7 @@ if (_victim isKindOf "Man") then
             };
         } forEach ([configFile >> "CfgMagazines", 0, true] call BIS_fnc_returnChildren);
     };
-    ["Health", "Kill", [getPlayerUID _victim, name _victim, side _victim, getPlayerUID _instigator, name _instigator, side _instigator, _victim distance2D _instigator, _projectileName]] call OPT_LOGGING_fnc_writelog;
+    ["Health", "Kill", [getPlayerUID _victim, name _victim, side _victim, getPlayerUID _instigator, name _instigator, side _instigator, _victim distance2D _instigator, _projectileName]] call EFUNC(LOGGING,writelog);
 }
 else // victim = vehicle!
 {
@@ -128,7 +128,7 @@ else // victim = vehicle!
         // source is vehicle or player?
         if (_source isEqualTo _instigator) then
         {
-            ["Vehicle", "DestroyByMan", [_name, _category, _faction, netId _victim, getPlayerUID _instigator, name _instigator, side _instigator, _victim distance2D _instigator, _projectile]] call OPT_LOGGING_fnc_writelog;
+            ["Vehicle", "DestroyByMan", [_name, _category, _faction, netId _victim, getPlayerUID _instigator, name _instigator, side _instigator, _victim distance2D _instigator, _projectile]] call EFUNC(LOGGING,writelog);
         }
         else
         {
@@ -152,7 +152,7 @@ else // victim = vehicle!
                     _crewArray pushBack name _unit;
                 };
             } forEach (fullCrew _source);
-            ["Vehicle", "DestroyByCrew", [_name, _category, _faction, netId _victim, getText (configFile >> "CfgVehicles" >> typeOf _source >> "displayName"), side _instigator, _victim distance2D _instigator, _crewArray joinString _separator]] call OPT_LOGGING_fnc_writelog;
+            ["Vehicle", "DestroyByCrew", [_name, _category, _faction, netId _victim, getText (configFile >> "CfgVehicles" >> typeOf _source >> "displayName"), side _instigator, _victim distance2D _instigator, _crewArray joinString _separator]] call EFUNC(LOGGING,writelog);
         };
     }
     else // Täter nicht bekannt
@@ -160,7 +160,7 @@ else // victim = vehicle!
         // Selbstverschulden?
         if (_veh == _source) then
         {
-            ["Vehicle", "DestroyByAccident", [_name, _category, _faction, netId _victim]] call OPT_LOGGING_fnc_writelog;
+            ["Vehicle", "DestroyByAccident", [_name, _category, _faction, netId _victim]] call EFUNC(LOGGING,writelog);
         }
     };
 };

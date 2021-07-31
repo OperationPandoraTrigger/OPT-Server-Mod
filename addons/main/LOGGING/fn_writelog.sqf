@@ -9,7 +9,7 @@
 * None
 *
 * Example:
-* ["Mission", "Start", [0, 0, 0, "MissionName"]] call OPT_LOGGING_fnc_writelog;
+* ["Mission", "Start", [0, 0, 0, "MissionName"]] call EFUNC(LOGGING,writelog);
 *
 */
 #include "macros.hpp"

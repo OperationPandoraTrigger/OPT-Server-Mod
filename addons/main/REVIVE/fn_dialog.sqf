@@ -60,7 +60,7 @@ _BleedoutBar_Text ctrlSetText format ["%1 sec",GVAR(ausblutzeit)];
 _Respawn_button ctrlAddEventHandler [ "ButtonClick",
 {
     OPT_REVIVE_respawnedHandler = true;
-    ["Health", "Respawn", [getPlayerUID player, name player, side player, "RespawnClick"]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
+    ["Health", "Respawn", [getPlayerUID player, name player, side player, "RespawnClick"]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
     player setDamage 1;
     1 enableChannel true;
     player allowDamage true;
@@ -134,7 +134,7 @@ GVAR(startzeit) = time;
     if (((GVAR(ausblutzeit) - (time - GVAR(startzeit))) < 0)) then
     {
         OPT_REVIVE_respawnedHandler = true;
-        ["Health", "Respawn", [getPlayerUID player, name player, side player, "RespawnTimeout"]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
+        ["Health", "Respawn", [getPlayerUID player, name player, side player, "RespawnTimeout"]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
         player setDamage 1;
     };
 

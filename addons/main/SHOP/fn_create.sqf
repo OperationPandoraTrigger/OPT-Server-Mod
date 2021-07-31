@@ -83,7 +83,7 @@ DFUNC(createOrder) =
     private _path = [GVAR(DB_all), _class] call BIS_fnc_findNestedElement;
     if (count _path > 0) then
     {
-        _offset = GVAR(DB_all) select (_path select 0) select 10;
+        _offset = GVAR(DB_all) select (_path select 0) select 11;
     };
 
     //Objekt Erstellung

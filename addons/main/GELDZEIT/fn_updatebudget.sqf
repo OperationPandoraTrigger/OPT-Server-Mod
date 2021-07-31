@@ -98,7 +98,7 @@ switch (_sign) do
             {
                 GVAR(csat_budget) = GVAR(csat_budget) - _unitCost;
             };
-            ["Budget", "Buy", [GVAR(nato_budget), GVAR(csat_budget), _buyerUID, _buyerName, _side, _unitId, _unitName, _category, _unitCost]] call OPT_LOGGING_fnc_writelog;
+            ["Budget", "Buy", [GVAR(nato_budget), GVAR(csat_budget), _buyerUID, _buyerName, _side, _unitId, _unitName, _category, _unitCost]] call EFUNC(LOGGING,writelog);
 
     };
     case "+":
@@ -111,7 +111,7 @@ switch (_sign) do
             {
                 GVAR(csat_budget) = GVAR(csat_budget) + _unitCost;
             };
-            ["Budget", "Sell", [GVAR(nato_budget), GVAR(csat_budget), _buyerUID, _buyerName, _side, _unitId, _unitName, _category, _unitCost]] call OPT_LOGGING_fnc_writelog;
+            ["Budget", "Sell", [GVAR(nato_budget), GVAR(csat_budget), _buyerUID, _buyerName, _side, _unitId, _unitName, _category, _unitCost]] call EFUNC(LOGGING,writelog);
     };
 };
 

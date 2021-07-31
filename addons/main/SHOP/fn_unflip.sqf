@@ -68,4 +68,4 @@ else
     };
 };
 
-["Vehicle", "Unflipped", [_name, _category, _faction, getPlayerUID player, name player, side player]] call OPT_LOGGING_fnc_writelog;
+["Vehicle", "Unflipped", [_name, _category, _faction, getPlayerUID player, name player, side player]] call EFUNC(LOGGING,writelog);
