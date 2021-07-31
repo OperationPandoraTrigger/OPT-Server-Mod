@@ -46,32 +46,6 @@ GVAR(jetpilots) =
     "OPT_CSAT_Pilot_jet"
 ];
 
-GVAR(choppers) =
-[
-    "OPT_B_Heli_light_03_unarmed_F",
-    "OPT_B_Heli_light_03_dynamicLoadout_F",
-    "OPT_B_Heli_heavy_03_dynamicLoadout_F",
-    "OPT_B_Heli_Transport_02_F",
-    "OPT_O_Heli_Light_02_unarmed_F",
-    "OPT_O_Heli_Light_02_v2_F",
-    "OPT_O_Heli_Light_02_v3_F",
-    "OPT_O_Heli_Transport_04_covered_F",
-    "OPT_O_Heli_Transport_04_box_F",
-    "OPT_O_Heli_Transport_04_ammo_F",
-    "OPT_O_Heli_Transport_04_fuel_F",
-    "OPT_O_Heli_Attack_02_F"
-];
-
-GVAR(planes) =
-[
-];
-
-GVAR(jets) =
-[
-    "OPT_B_Plane_Fighter_03_dynamicLoadout_F",
-    "OPT_O_Plane_Fighter_03_dynamicLoadout_F"
-];
-
 GVAR(blockedVehiclePositions_air) =
 [
     "driver"
@@ -81,26 +55,6 @@ GVAR(crew) =
 [
     "OPT_NATO_Besatzungsmitglied",
     "OPT_CSAT_Besatzungsmitglied"
-];
-
-GVAR(crew_vehicles) =
-[
-    "OPT_B_APC_tracked_03_cannon_F",
-    "OPT_B_APC_Wheeled_03_cannon_F",
-    "OPT_B_APC_Tracked_01_AA_F",
-    "OPT_B_AFV_Wheeled_01_cannon_F",
-    "OPT_B_MBT_03_cannon_F",
-    "OPT_B_MBT_01_arty_F",
-    "OPT_B_MBT_01_mlrs_F",
-    "OPT_O_APC_Wheeled_01_cannon_F",
-    "OPT_O_APC_Tracked_02_cannon_F",
-    "OPT_O_APC_Tracked_02_AA_F",
-    "OPT_O_AFV_Wheeled_01_cannon_F",
-    "OPT_O_MBT_02_cannon_F",
-    "OPT_B_MBT_01_arty_F",
-    "OPT_B_MBT_01_mlrs_F",
-    "OPT_O_MBT_02_arty_F",
-    "OPT_O_Truck_02_MRL_F"
 ];
 
 GVAR(blockedVehiclePositions_veh) =
@@ -170,7 +124,6 @@ GVAR(DMRsniperRifles) =
 [
 ];
 
-/* MG */
 GVAR(soldatMG) =
 [
     "OPT_CSAT_MG_Schuetze",

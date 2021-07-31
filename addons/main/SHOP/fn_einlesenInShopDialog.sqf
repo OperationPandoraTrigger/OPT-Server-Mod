@@ -162,7 +162,7 @@ switch (GVAR(vehicleType)) do
         {
             case west:
             {
-                _pool = GVAR(nato_planes);
+                _pool = GVAR(nato_planes) + GVAR(nato_jets) + GVAR(nato_uavs);
                 GVAR(pads) = GVAR(pad_plane_west);
                 GVAR(Checkbereich) = 13;
                 GVAR(Hardcap_pool) = GVAR(Hardcap_nato_planes);
@@ -170,7 +170,7 @@ switch (GVAR(vehicleType)) do
 
             case east:
             {
-                _pool = GVAR(csat_planes);
+                _pool = GVAR(csat_planes) + GVAR(csat_jets) + GVAR(csat_uavs);
                  GVAR(pads) = GVAR(pad_plane_east);
                  GVAR(Checkbereich) = 13;
                  GVAR(Hardcap_pool) = GVAR(Hardcap_csat_planes);

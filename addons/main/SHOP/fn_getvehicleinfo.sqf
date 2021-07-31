@@ -82,24 +82,24 @@ private _cargo_space = 0;
 private _cargo_size = 0;
 private _Dragged_Carried = "";
 
-private _index = (opt_cargo_canTransportCargo apply {_x select 0}) find _class;
+private _index = (EGVAR(SHOP,canTransportCargo) apply {_x select 0}) find _class;
 if (_index != -1) then
 {
-    _cargo_space = (opt_cargo_canTransportCargo select _index) select 1;
+    _cargo_space = (EGVAR(SHOP,canTransportCargo) select _index) select 1;
 };
 
-_index = (opt_cargo_canBeTransported apply {_x select 0}) find _class;
+_index = (EGVAR(SHOP,canBeTransported) apply {_x select 0}) find _class;
 if (_index != -1) then
 {
-    _cargo_size = (opt_cargo_canBeTransported select _index) select 1;
+    _cargo_size = (EGVAR(SHOP,canBeTransported) select _index) select 1;
 };
 
-_index = (opt_cargo_canBeCarried apply {_x select 0}) find _class;
+_index = (EGVAR(SHOP,canBeCarried) apply {_x select 0}) find _class;
 if (_index != -1) then {
     _Dragged_Carried = _Dragged_Carried + "Ziehbar" + ", ";
 };
 
-_index = (opt_cargo_canBeCarried apply {_x select 0}) find _class;
+_index = (EGVAR(SHOP,canBeCarried) apply {_x select 0}) find _class;
 if (_index != -1) then
 {
    _Dragged_Carried = _Dragged_Carried + "Tragbar" + ", ";

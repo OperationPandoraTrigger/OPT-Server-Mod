@@ -22,45 +22,39 @@ _veh setPosATL [(getPosATL _veh) select 0, (getPosATL _veh) select 1, 0.3];
 // logging
 private _name = (getText(configFile >> 'CfgVehicles' >> typeOf _veh >> 'displayName'));
 private _faction = (getText(configFile >> 'CfgVehicles' >> typeOf _veh >> 'faction'));
-private _category ="";
-private _light = (opt_shop_nato_vehicles + opt_shop_csat_vehicles + opt_shop_nato_vehicles_supply + opt_shop_csat_vehicles_supply) apply {toLower (_x select 0)};
-private _heavy = (opt_shop_nato_armored + opt_shop_csat_armored) apply {toLower (_x select 0)};
-private _air = (opt_shop_nato_choppers + opt_shop_csat_choppers + opt_shop_nato_planes + opt_shop_csat_planes) apply {toLower (_x select 0)};
-private _boat = (opt_shop_nato_sea + opt_shop_csat_sea) apply {toLower (_x select 0)};
-private _supplies = (opt_shop_nato_supplies + opt_shop_csat_supplies) apply {toLower (_x select 0)};
-private _static = (opt_shop_nato_static + opt_shop_csat_static) apply {toLower (_x select 0)};
+private _category = "";
 
-_category = if (toLower (typeOf _veh) in _light) then
+_category = if (typeOf _veh in EGVAR(SHOP,light)) then
 {
     "Leicht"
 }
 else
 {
-    if (toLower (typeOf _veh) in _heavy) then 
+    if (typeOf _veh in EGVAR(SHOP,heavy)) then
     {
         "Schwer"
     }
     else
     {
-        if (toLower (typeOf _veh) in _air) then
+        if (typeOf _veh in EGVAR(SHOP,air)) then
         {
             "Flug"
         }
         else
         {
-            if (toLower (typeOf _veh) in _boat) then
+            if (typeOf _veh in EGVAR(SHOP,boat)) then
             {
                 "Boot"
             }
             else
             {
-                if (toLower (typeOf _veh) in _supplies) then
+                if (typeOf _veh in EGVAR(SHOP,supplies)) then
                 {
                     "Ausruestung"
                 }
                 else
                 {
-                    if (toLower (typeOf _veh) in _static) then
+                    if (typeOf _veh in EGVAR(SHOP,static)) then
                     {
                         "Stationaer"
                     }
