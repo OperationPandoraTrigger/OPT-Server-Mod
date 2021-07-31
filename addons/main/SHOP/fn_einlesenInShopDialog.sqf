@@ -66,6 +66,32 @@ private _padBox = _display displayCtrl 20003;
 private _moveInVeh = _display displayCtrl 20006;
 private _kosten = _display displayCtrl 20002;
 
+//Kaufbutton
+private _button1 = _display displayCtrl 20010;
+private _button2 = _display displayCtrl 20011;
+private _button3 = _display displayCtrl 20012;
+private _button4 = _display displayCtrl 20013;
+private _button5 = _display displayCtrl 20014;
+private _button6 = _display displayCtrl 20015;
+private _button7 = _display displayCtrl 20016;
+private _button8 = _display displayCtrl 20017;
+private _button9 = _display displayCtrl 20018;
+private _button10 = _display displayCtrl 20019;
+private _button11 = _display displayCtrl 20020;
+private _button12 = _display displayCtrl 20021;
+private _button13 = _display displayCtrl 20022;
+private _button14 = _display displayCtrl 20023;
+private _button15 = _display displayCtrl 20024;
+private _button16 = _display displayCtrl 20025;
+private _button17 = _display displayCtrl 20026;
+private _button18 = _display displayCtrl 20027;
+private _button19 = _display displayCtrl 20028;
+private _button20 = _display displayCtrl 20029;
+private _button21 = _display displayCtrl 20030;
+private _button22 = _display displayCtrl 20031;
+private _button23 = _display displayCtrl 20032;
+private _button24 = _display displayCtrl 20033;
+
 // ESC-Taste zum schliessen benutzt -> Dialog wieder freigeben
 _display displayAddEventhandler["KeyDown",
 {
@@ -84,8 +110,7 @@ GVAR(Buttonwahl) = 0;
 //Bereicht für Boxkontrolle
 GVAR(Checkbereich) = 7;
 
-//Kaufbuttons initialisieren
-private _buttons = [];
+//Kaufbutton ausblenden
 for "_i" from 0 to SHOPBUTTONANZAHL do
 {
     //Bild
@@ -94,7 +119,6 @@ for "_i" from 0 to SHOPBUTTONANZAHL do
     //TextName
     ctrlShow [(20010 + _i), false ];
     ctrlEnable [(20010 + _i), false];
-    _buttons pushBack (_display displayCtrl (20010 + _i));
 
     //TextGeld
     ctrlShow [(20126 + _i), false ];
@@ -376,9 +400,7 @@ _konfig ctrlAddEventHandler [ "ButtonClick",
 {
     private _unitCost = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1);
     private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
-
     closeDialog 0;
-
    [EVENT_SHOP_KONFIG_ONLOAD,[_class,"New",_unitCost]] call CFUNC(localEvent);
 }];
 
@@ -417,35 +439,722 @@ _remove ctrlAddEventHandler [ "ButtonClick",
 }];
 
 //Kaufbutton EH
-for "_i" from 0 to SHOPBUTTONANZAHL do
+//Button 1
+_button1 ctrlAddEventHandler [ "ButtonClick",
 {
-    (_buttons select _i) ctrlAddEventHandler [ "ButtonClick",
+    GVAR(Buttonwahl) = 0;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    private _hardcapobj = "";
+    private _hardcapinfo = "∞";
+
+    if (_class in GVAR(Hardcap_pool)) then
     {
-        GVAR(Buttonwahl) = _i;
+        private _hardcaparray = GVAR(Hardcap_pool) get _class;
+        private _hardcapleft = _hardcaparray select 0;
+        private _hardcaptotal = _hardcaparray select 1;
+        _hardcapinfo = format["%1/%2", _hardcapleft, _hardcaptotal];
+    };
 
-        private _display = findDisplay IDD_DLG_ORDER;
-        private _kosten = _display displayCtrl 20002;
+    _kosten ctrlSetText format ["€:%1 [%2]", (((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)), _hardcapinfo];
 
-        private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
-        private _Datensatz = [];
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
+}];
 
-        _Datensatz = [_class] call FUNC(loadout);
+//Button 2
+_button2 ctrlAddEventHandler [ "ButtonClick",
+{
+    GVAR(Buttonwahl) = 1;
 
-        private _hardcapobj = "";
-        private _hardcapinfo = "U";
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
 
-        if (_class in GVAR(Hardcap_pool)) then
-        {
-            private _hardcaparray = GVAR(Hardcap_pool) get _class;
-            private _hardcapleft = _hardcaparray select 1;
-            private _hardcaptotal = _hardcaparray select 2;
-            _hardcapinfo = format["%1/%2", _hardcapleft, _hardcaptotal];
-        };
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
 
-        _kosten ctrlSetText format ["€:%1 [%2]", (((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)), _hardcapinfo];
+    _Datensatz = [_class] call FUNC(loadout);
 
-        private _budget = _display displayCtrl 20009;
-        [_budget] call OPT_GELDZEIT_fnc_renderbudget;
-    }];
+    private _hardcapobj = "";
+    private _hardcapinfo = "∞";
 
-};
+    if (_class in GVAR(Hardcap_pool)) then
+    {
+        private _hardcaparray = GVAR(Hardcap_pool) get _class;
+        private _hardcapleft = _hardcaparray select 0;
+        private _hardcaptotal = _hardcaparray select 1;
+        _hardcapinfo = format["%1/%2", _hardcapleft, _hardcaptotal];
+    };
+
+    _kosten ctrlSetText format ["€:%1 [%2]", (((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)), _hardcapinfo];
+
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
+}];
+
+//Button 3
+_button3 ctrlAddEventHandler [ "ButtonClick",
+{
+    GVAR(Buttonwahl) = 2;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    private _hardcapobj = "";
+    private _hardcapinfo = "∞";
+
+    if (_class in GVAR(Hardcap_pool)) then
+    {
+        private _hardcaparray = GVAR(Hardcap_pool) get _class;
+        private _hardcapleft = _hardcaparray select 0;
+        private _hardcaptotal = _hardcaparray select 1;
+        _hardcapinfo = format["%1/%2", _hardcapleft, _hardcaptotal];
+    };
+
+    _kosten ctrlSetText format ["€:%1 [%2]", (((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)), _hardcapinfo];
+
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
+}];
+
+//Button 4
+_button4 ctrlAddEventHandler [ "ButtonClick",
+{
+    GVAR(Buttonwahl) = 3;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    private _hardcapobj = "";
+    private _hardcapinfo = "∞";
+
+    if (_class in GVAR(Hardcap_pool)) then
+    {
+        private _hardcaparray = GVAR(Hardcap_pool) get _class;
+        private _hardcapleft = _hardcaparray select 0;
+        private _hardcaptotal = _hardcaparray select 1;
+        _hardcapinfo = format["%1/%2", _hardcapleft, _hardcaptotal];
+    };
+
+    _kosten ctrlSetText format ["€:%1 [%2]", (((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)), _hardcapinfo];
+
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
+}];
+
+//Button 5
+_button5 ctrlAddEventHandler [ "ButtonClick",
+{
+    GVAR(Buttonwahl) = 4;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    private _hardcapobj = "";
+    private _hardcapinfo = "∞";
+
+    if (_class in GVAR(Hardcap_pool)) then
+    {
+        private _hardcaparray = GVAR(Hardcap_pool) get _class;
+        private _hardcapleft = _hardcaparray select 0;
+        private _hardcaptotal = _hardcaparray select 1;
+        _hardcapinfo = format["%1/%2", _hardcapleft, _hardcaptotal];
+    };
+
+    _kosten ctrlSetText format ["€:%1 [%2]", (((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)), _hardcapinfo];
+
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
+}];
+
+//Button 6
+_button6 ctrlAddEventHandler [ "ButtonClick",
+{
+    GVAR(Buttonwahl) = 5;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    private _hardcapobj = "";
+    private _hardcapinfo = "∞";
+
+    if (_class in GVAR(Hardcap_pool)) then
+    {
+        private _hardcaparray = GVAR(Hardcap_pool) get _class;
+        private _hardcapleft = _hardcaparray select 0;
+        private _hardcaptotal = _hardcaparray select 1;
+        _hardcapinfo = format["%1/%2", _hardcapleft, _hardcaptotal];
+    };
+
+    _kosten ctrlSetText format ["€:%1 [%2]", (((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)), _hardcapinfo];
+
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
+}];
+
+//Button 7
+_button7 ctrlAddEventHandler [ "ButtonClick",
+{
+    GVAR(Buttonwahl) = 6;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    private _hardcapobj = "";
+    private _hardcapinfo = "∞";
+
+    if (_class in GVAR(Hardcap_pool)) then
+    {
+        private _hardcaparray = GVAR(Hardcap_pool) get _class;
+        private _hardcapleft = _hardcaparray select 0;
+        private _hardcaptotal = _hardcaparray select 1;
+        _hardcapinfo = format["%1/%2", _hardcapleft, _hardcaptotal];
+    };
+
+    _kosten ctrlSetText format ["€:%1 [%2]", (((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)), _hardcapinfo];
+
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
+}];
+
+//Button 8
+_button8 ctrlAddEventHandler [ "ButtonClick",
+{
+    GVAR(Buttonwahl) = 7;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    private _hardcapobj = "";
+    private _hardcapinfo = "∞";
+
+    if (_class in GVAR(Hardcap_pool)) then
+    {
+        private _hardcaparray = GVAR(Hardcap_pool) get _class;
+        private _hardcapleft = _hardcaparray select 0;
+        private _hardcaptotal = _hardcaparray select 1;
+        _hardcapinfo = format["%1/%2", _hardcapleft, _hardcaptotal];
+    };
+
+    _kosten ctrlSetText format ["€:%1 [%2]", (((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)), _hardcapinfo];
+
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
+}];
+
+//Button 9
+_button9 ctrlAddEventHandler [ "ButtonClick",
+{
+    GVAR(Buttonwahl) = 8;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    private _hardcapobj = "";
+    private _hardcapinfo = "∞";
+
+    if (_class in GVAR(Hardcap_pool)) then
+    {
+        private _hardcaparray = GVAR(Hardcap_pool) get _class;
+        private _hardcapleft = _hardcaparray select 0;
+        private _hardcaptotal = _hardcaparray select 1;
+        _hardcapinfo = format["%1/%2", _hardcapleft, _hardcaptotal];
+    };
+
+    _kosten ctrlSetText format ["€:%1 [%2]", (((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)), _hardcapinfo];
+
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
+}];
+
+//Button 10
+_button10 ctrlAddEventHandler [ "ButtonClick",
+{
+    GVAR(Buttonwahl) = 9;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    private _hardcapobj = "";
+    private _hardcapinfo = "∞";
+
+    if (_class in GVAR(Hardcap_pool)) then
+    {
+        private _hardcaparray = GVAR(Hardcap_pool) get _class;
+        private _hardcapleft = _hardcaparray select 0;
+        private _hardcaptotal = _hardcaparray select 1;
+        _hardcapinfo = format["%1/%2", _hardcapleft, _hardcaptotal];
+    };
+
+    _kosten ctrlSetText format ["€:%1 [%2]", (((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)), _hardcapinfo];
+
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
+}];
+
+//Button 11
+_button11 ctrlAddEventHandler [ "ButtonClick",
+{
+    GVAR(Buttonwahl) = 10;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    private _hardcapobj = "";
+    private _hardcapinfo = "∞";
+
+    if (_class in GVAR(Hardcap_pool)) then
+    {
+        private _hardcaparray = GVAR(Hardcap_pool) get _class;
+        private _hardcapleft = _hardcaparray select 0;
+        private _hardcaptotal = _hardcaparray select 1;
+        _hardcapinfo = format["%1/%2", _hardcapleft, _hardcaptotal];
+    };
+
+    _kosten ctrlSetText format ["€:%1 [%2]", (((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)), _hardcapinfo];
+
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
+}];
+
+//Button 12
+_button12 ctrlAddEventHandler [ "ButtonClick",
+{
+    GVAR(Buttonwahl) = 11;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    private _hardcapobj = "";
+    private _hardcapinfo = "∞";
+
+    if (_class in GVAR(Hardcap_pool)) then
+    {
+        private _hardcaparray = GVAR(Hardcap_pool) get _class;
+        private _hardcapleft = _hardcaparray select 0;
+        private _hardcaptotal = _hardcaparray select 1;
+        _hardcapinfo = format["%1/%2", _hardcapleft, _hardcaptotal];
+    };
+
+    _kosten ctrlSetText format ["€:%1 [%2]", (((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)), _hardcapinfo];
+
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
+}];
+
+//Button 13
+_button13 ctrlAddEventHandler [ "ButtonClick",
+{
+    GVAR(Buttonwahl) = 12;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    private _hardcapobj = "";
+    private _hardcapinfo = "∞";
+
+    if (_class in GVAR(Hardcap_pool)) then
+    {
+        private _hardcaparray = GVAR(Hardcap_pool) get _class;
+        private _hardcapleft = _hardcaparray select 0;
+        private _hardcaptotal = _hardcaparray select 1;
+        _hardcapinfo = format["%1/%2", _hardcapleft, _hardcaptotal];
+    };
+
+    _kosten ctrlSetText format ["€:%1 [%2]", (((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)), _hardcapinfo];
+
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
+}];
+
+//Button 14
+_button14 ctrlAddEventHandler [ "ButtonClick",
+{
+    GVAR(Buttonwahl) = 13;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    private _hardcapobj = "";
+    private _hardcapinfo = "∞";
+
+    if (_class in GVAR(Hardcap_pool)) then
+    {
+        private _hardcaparray = GVAR(Hardcap_pool) get _class;
+        private _hardcapleft = _hardcaparray select 0;
+        private _hardcaptotal = _hardcaparray select 1;
+        _hardcapinfo = format["%1/%2", _hardcapleft, _hardcaptotal];
+    };
+
+    _kosten ctrlSetText format ["€:%1 [%2]", (((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)), _hardcapinfo];
+
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
+}];
+
+//Button 15
+_button15 ctrlAddEventHandler [ "ButtonClick",
+{
+    GVAR(Buttonwahl) = 14;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    private _hardcapobj = "";
+    private _hardcapinfo = "∞";
+
+    if (_class in GVAR(Hardcap_pool)) then
+    {
+        private _hardcaparray = GVAR(Hardcap_pool) get _class;
+        private _hardcapleft = _hardcaparray select 0;
+        private _hardcaptotal = _hardcaparray select 1;
+        _hardcapinfo = format["%1/%2", _hardcapleft, _hardcaptotal];
+    };
+
+    _kosten ctrlSetText format ["€:%1 [%2]", (((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)), _hardcapinfo];
+
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
+}];
+
+//Button 16
+_button16 ctrlAddEventHandler [ "ButtonClick",
+{
+    GVAR(Buttonwahl) = 15;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    private _hardcapobj = "";
+    private _hardcapinfo = "∞";
+
+    if (_class in GVAR(Hardcap_pool)) then
+    {
+        private _hardcaparray = GVAR(Hardcap_pool) get _class;
+        private _hardcapleft = _hardcaparray select 0;
+        private _hardcaptotal = _hardcaparray select 1;
+        _hardcapinfo = format["%1/%2", _hardcapleft, _hardcaptotal];
+    };
+
+    _kosten ctrlSetText format ["€:%1 [%2]", (((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)), _hardcapinfo];
+
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
+}];
+
+//Button 17
+_button17 ctrlAddEventHandler [ "ButtonClick",
+{
+    GVAR(Buttonwahl) = 16;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    private _hardcapobj = "";
+    private _hardcapinfo = "∞";
+
+    if (_class in GVAR(Hardcap_pool)) then
+    {
+        private _hardcaparray = GVAR(Hardcap_pool) get _class;
+        private _hardcapleft = _hardcaparray select 0;
+        private _hardcaptotal = _hardcaparray select 1;
+        _hardcapinfo = format["%1/%2", _hardcapleft, _hardcaptotal];
+    };
+
+    _kosten ctrlSetText format ["€:%1 [%2]", (((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)), _hardcapinfo];
+
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
+}];
+
+//Button 18
+_button18 ctrlAddEventHandler [ "ButtonClick",
+{
+    GVAR(Buttonwahl) = 17;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    private _hardcapobj = "";
+    private _hardcapinfo = "∞";
+
+    if (_class in GVAR(Hardcap_pool)) then
+    {
+        private _hardcaparray = GVAR(Hardcap_pool) get _class;
+        private _hardcapleft = _hardcaparray select 0;
+        private _hardcaptotal = _hardcaparray select 1;
+        _hardcapinfo = format["%1/%2", _hardcapleft, _hardcaptotal];
+    };
+
+    _kosten ctrlSetText format ["€:%1 [%2]", (((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)), _hardcapinfo];
+
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
+}];
+
+//Button 19
+_button19 ctrlAddEventHandler [ "ButtonClick",
+{
+    GVAR(Buttonwahl) = 18;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    private _hardcapobj = "";
+    private _hardcapinfo = "∞";
+
+    if (_class in GVAR(Hardcap_pool)) then
+    {
+        private _hardcaparray = GVAR(Hardcap_pool) get _class;
+        private _hardcapleft = _hardcaparray select 0;
+        private _hardcaptotal = _hardcaparray select 1;
+        _hardcapinfo = format["%1/%2", _hardcapleft, _hardcaptotal];
+    };
+
+    _kosten ctrlSetText format ["€:%1 [%2]", (((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)), _hardcapinfo];
+
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
+}];
+
+//Button 20
+_button20 ctrlAddEventHandler [ "ButtonClick",
+{
+    GVAR(Buttonwahl) = 19;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    private _hardcapobj = "";
+    private _hardcapinfo = "∞";
+
+    if (_class in GVAR(Hardcap_pool)) then
+    {
+        private _hardcaparray = GVAR(Hardcap_pool) get _class;
+        private _hardcapleft = _hardcaparray select 0;
+        private _hardcaptotal = _hardcaparray select 1;
+        _hardcapinfo = format["%1/%2", _hardcapleft, _hardcaptotal];
+    };
+
+    _kosten ctrlSetText format ["€:%1 [%2]", (((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)), _hardcapinfo];
+
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
+}];
+
+//Button 21
+_button21 ctrlAddEventHandler [ "ButtonClick",
+{
+    GVAR(Buttonwahl) = 20;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    private _hardcapobj = "";
+    private _hardcapinfo = "∞";
+
+    if (_class in GVAR(Hardcap_pool)) then
+    {
+        private _hardcaparray = GVAR(Hardcap_pool) get _class;
+        private _hardcapleft = _hardcaparray select 0;
+        private _hardcaptotal = _hardcaparray select 1;
+        _hardcapinfo = format["%1/%2", _hardcapleft, _hardcaptotal];
+    };
+
+    _kosten ctrlSetText format ["€:%1 [%2]", (((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)), _hardcapinfo];
+
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
+}];
+
+//Button 22
+_button22 ctrlAddEventHandler [ "ButtonClick",
+{
+    GVAR(Buttonwahl) = 21;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    private _hardcapobj = "";
+    private _hardcapinfo = "∞";
+
+    if (_class in GVAR(Hardcap_pool)) then
+    {
+        private _hardcaparray = GVAR(Hardcap_pool) get _class;
+        private _hardcapleft = _hardcaparray select 0;
+        private _hardcaptotal = _hardcaparray select 1;
+        _hardcapinfo = format["%1/%2", _hardcapleft, _hardcaptotal];
+    };
+
+    _kosten ctrlSetText format ["€:%1 [%2]", (((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)), _hardcapinfo];
+
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
+}];
+
+//Button 23
+_button23 ctrlAddEventHandler [ "ButtonClick",
+{
+    GVAR(Buttonwahl) = 22;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    private _hardcapobj = "";
+    private _hardcapinfo = "∞";
+
+    if (_class in GVAR(Hardcap_pool)) then
+    {
+        private _hardcaparray = GVAR(Hardcap_pool) get _class;
+        private _hardcapleft = _hardcaparray select 0;
+        private _hardcaptotal = _hardcaparray select 1;
+        _hardcapinfo = format["%1/%2", _hardcapleft, _hardcaptotal];
+    };
+
+    _kosten ctrlSetText format ["€:%1 [%2]", (((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)), _hardcapinfo];
+
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
+}];
+
+//Button 24
+_button24 ctrlAddEventHandler [ "ButtonClick",
+{
+    GVAR(Buttonwahl) = 23;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _kosten = _display displayCtrl 20002;
+
+    private _class = ((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 0);
+    private _Datensatz = [];
+
+    _Datensatz = [_class] call FUNC(loadout);
+
+    private _hardcapobj = "";
+    private _hardcapinfo = "∞";
+
+    if (_class in GVAR(Hardcap_pool)) then
+    {
+        private _hardcaparray = GVAR(Hardcap_pool) get _class;
+        private _hardcapleft = _hardcaparray select 0;
+        private _hardcaptotal = _hardcaparray select 1;
+        _hardcapinfo = format["%1/%2", _hardcapleft, _hardcaptotal];
+    };
+
+    _kosten ctrlSetText format ["€:%1 [%2]", (((GVAR(orderDialogObjects) select GVAR(Buttonwahl)) select 1) + (_Datensatz select 10)), _hardcapinfo];
+
+    private _budget = _display displayCtrl 20009;
+    [_budget] call OPT_GELDZEIT_fnc_renderbudget;
+}];

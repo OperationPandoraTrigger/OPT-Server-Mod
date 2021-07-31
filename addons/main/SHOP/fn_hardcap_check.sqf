@@ -34,8 +34,8 @@ private _hardcaptotal = -1;
 if (_class in GVAR(Hardcap_pool)) then
 {
     private _hardcaparray = GVAR(Hardcap_pool) get _class;
-    _hardcapleft = _hardcaparray select 1;
-    _hardcaptotal = _hardcaparray select 2;
+    _hardcapleft = _hardcaparray select 0;
+    _hardcaptotal = _hardcaparray select 1;
 };
 
 if (_hardcapleft > 0) then
