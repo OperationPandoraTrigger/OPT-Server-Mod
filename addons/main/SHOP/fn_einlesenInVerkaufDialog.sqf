@@ -75,14 +75,14 @@ switch (_side) do
 {
     case west:
     {
-        _rscPicture ctrlSetText "\A3\Data_F\Flags\Flag_NATO_CO.paa";
+        _rscPicture ctrlSetText "\opt\opt_client\addons\core\bilder\flag_finland.paa";
 
         GVAR(pads) = [VerkaufsBoxWest];
     };
 
     case east:
     {
-        _rscPicture ctrlSetText "\A3\Data_F\Flags\Flag_CSAT_CO.paa";
+        _rscPicture ctrlSetText "\opt\opt_client\addons\core\bilder\flag_soviet_union.paa";
 
         GVAR(pads) = [VerkaufsBoxEast];
     };

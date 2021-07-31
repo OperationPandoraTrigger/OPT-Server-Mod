@@ -94,7 +94,7 @@ for "_i" from 0 to SHOPBUTTONANZAHL do
     //TextName
     ctrlShow [(20010 + _i), false ];
     ctrlEnable [(20010 + _i), false];
-    _buttons pushBack (_display (displayCtrl 20010 + _i));
+    _buttons pushBack (_display displayCtrl (20010 + _i));
 
     //TextGeld
     ctrlShow [(20126 + _i), false ];
@@ -309,12 +309,12 @@ switch (_side) do
 {
     case west:
     {
-        _rscPicture ctrlSetText "\A3\Data_F\Flags\Flag_NATO_CO.paa";
+        _rscPicture ctrlSetText "\opt\opt_client\addons\core\bilder\flag_finland.paa";
     };
 
     case east:
     {
-        _rscPicture ctrlSetText "\A3\Data_F\Flags\Flag_CSAT_CO.paa";
+        _rscPicture ctrlSetText "\opt\opt_client\addons\core\bilder\flag_soviet_union.paa";
     };
 };
 

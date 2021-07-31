@@ -36,7 +36,7 @@ GVAR(DB_vehicles) =
 [
 //  ["Classname",                                   BuyPrice,   SellPrice,  SellPriceEnemy, NeedsCargo, GivesCargo, Draggable,  Carriable,  CanRepair,  GrabOffset,     GrabDir,   HeightOffset,   Side,   HardCap],
     ["OPT_B_Quadbike_01_F",                         COST(10000),                            4,          2,          false,      false,      false,      [0, 3, 0.2],    0,         0.1,            west,   [-1, -1, -1]], // Quadbike
-    ["OPT_O_Quadbike_01_F",                         COST(10000),                            4,          2,          false,      false,      false,      [0, 3, 0.2],    0,         0.1,            east,   [-1, -1, -1]], // Quadbike
+    ["OPT_O_Quadbike_01_F",                         COST(10000),                            4,          2,          false,      false,      false,      [0, 3, 0.2],    0,         0.1,            east,   [2, 3, 4]], // Quadbike
     ["OPT_B_T_LSV_01_unarmed_F",                    COST(25000),                            5,          4,          false,      false,      false,      [0, 3, 0.2],    0,         0.1,            west,   [-1, -1, -1]], // Prowler unarmed
     ["OPT_O_T_LSV_02_unarmed_F",                    COST(25000),                            5,          4,          false,      false,      false,      [0, 3, 0.2],    0,         0.1,            east,   [-1, -1, -1]], // Prowler unarmed
     ["OPT_B_T_LSV_01_armed_F",                      COST(35000),                            5,          4,          false,      false,      false,      [0, 3, 0.2],    0,         0.1,            west,   [-1, -1, -1]], // Prowler armed
@@ -52,7 +52,7 @@ GVAR(DB_vehicles) =
     ["OPT_B_Truck_02_box_F",                        COST(10000),                            10,         2,          false,      false,      true,       [0, 3, 0.2],    0,         0.1,            west,   [-1, -1, -1]], // Zamak Reparatur LKW
     ["OPT_O_Truck_02_box_F",                        COST(10000),                            10,         2,          false,      false,      true,       [0, 3, 0.2],    0,         0.1,            east,   [-1, -1, -1]], // Zamak Reparatur LKW
     ["OPT_B_Truck_02_medical_F",                    COST(10000),                            10,         2,          false,      false,      false,      [0, 3, 0.2],    0,         0.1,            west,   [-1, -1, -1]], // Zamak Medical LKW
-    ["OPT_O_Truck_02_medical_F",                    COST(10000),                            10,         2,          false,      false,      false,      [0, 3, 0.2],    0,         0.1,            east    [-1, -1, -1]]  // Zamak Medical LKW
+    ["OPT_O_Truck_02_medical_F",                    COST(10000),                            10,         2,          false,      false,      false,      [0, 3, 0.2],    0,         0.1,            east,   [-1, -1, -1]]  // Zamak Medical LKW
 ];
 
 GVAR(DB_vehicles_supply) =
@@ -61,7 +61,7 @@ GVAR(DB_vehicles_supply) =
     ["OPT_B_Truck_02_fuel_F",                       COST(10000),                            10,         2,          false,      false,      false,      [0, 3, 0.2],    0,         0.1,            west,   [-1, -1, -1]], // Zamak Tank LKW
     ["OPT_O_Truck_02_fuel_F",                       COST(10000),                            10,         2,          false,      false,      false,      [0, 3, 0.2],    0,         0.1,            east,   [-1, -1, -1]], // Zamak Tank LKW
     ["OPT_B_Truck_02_ammo_F",                       50000,      5000,       20000,          10,         2,          false,      false,      false,      [0, 3, 0.2],    0,         0.1,            west,   [-1, -1, -1]], // Zamak Munitions LKW
-    ["OPT_O_Truck_02_ammo_F",                       50000,      5000,       20000,          10,         2,          false,      false,      false,      [0, 3, 0.2],    0,         0.1,            east    [-1, -1, -1]]  // Zamak Munitions LKW
+    ["OPT_O_Truck_02_ammo_F",                       50000,      5000,       20000,          10,         2,          false,      false,      false,      [0, 3, 0.2],    0,         0.1,            east,   [-1, -1, -1]]  // Zamak Munitions LKW
 ];
 
 GVAR(DB_choppers) =
@@ -79,7 +79,7 @@ GVAR(DB_choppers) =
     ["OPT_O_Heli_Transport_04_ammo_F",              15000,      10000,      20000,          0,          4,          false,      false,      false,      [0, 3, 0.2],    0,         0.1,            east,   [-1, -1, -1]], // Taru Munition
     ["OPT_O_Heli_Transport_04_fuel_F",              15000,      10000,      20000,          0,          4,          false,      false,      false,      [0, 3, 0.2],    0,         0.1,            east,   [-1, -1, -1]], // Taru Fuel
     ["OPT_B_Heli_Attack_01_F",                      COST(400000),                           0,          0,          false,      false,      false,      [0, 3, 0.2],    0,         0.1,            west,   [-1, -1, -1]], // Blackwood
-    ["OPT_O_Heli_Attack_02_F",                      COST(400000),                           0,          0,          false,      false,      false,      [0, 3, 0.2],    0,         0.1,            east    [-1, -1, -1]]  // Kajman
+    ["OPT_O_Heli_Attack_02_F",                      COST(400000),                           0,          0,          false,      false,      false,      [0, 3, 0.2],    0,         0.1,            east,   [-1, -1, -1]]  // Kajman
 ];
 
 GVAR(DB_planes) = [];
@@ -88,7 +88,7 @@ GVAR(DB_jets) =
 [
 //  ["Classname",                                   BuyPrice,   SellPrice,  SellPriceEnemy, NeedsCargo, GivesCargo, Draggable,  Carriable,  CanRepair,  GrabOffset,     GrabDir,   HeightOffset,   Side,   HardCap],
     ["OPT_B_Plane_Fighter_03_dynamicLoadout_F",     COST(500000),                           0,          0,          false,      false,      false,      [0, 3, 0.2],    0,         0.2,            west,   [-1, -1, -1]], // A-143 Buzzard
-    ["OPT_O_Plane_Fighter_03_dynamicLoadout_F",     COST(500000),                           0,          0,          false,      false,      false,      [0, 3, 0.2],    0,         0.2,            east    [-1, -1, -1]]  // A-143 Buzzard
+    ["OPT_O_Plane_Fighter_03_dynamicLoadout_F",     COST(500000),                           0,          0,          false,      false,      false,      [0, 3, 0.2],    0,         0.2,            east,   [-1, -1, -1]]  // A-143 Buzzard
 ];
 
 GVAR(DB_uavs) = [];
@@ -109,7 +109,7 @@ GVAR(DB_armored) =
     ["OPT_B_MBT_01_arty_F",                         COST(350000),                           10,         4,          false,      false,      false,      [0, 3, 0.2],    0,         0.1,            west,   [-1, -1, -1]], // Rohr Arty
     ["OPT_O_MBT_02_arty_F",                         COST(350000),                           10,         4,          false,      false,      false,      [0, 3, 0.2],    0,         0.1,            east,   [-1, -1, -1]], // Rohr Arty
     ["OPT_B_MBT_01_mlrs_F",                         COST(400000),                           10,         4,          false,      false,      false,      [0, 3, 0.2],    0,         0.1,            west,   [-1, -1, -1]], // Raketen Arty
-    ["OPT_O_Truck_02_MRL_F",                        COST(400000),                           10,         4,          false,      false,      false,      [0, 3, 0.2],    0,         0.1,            east    [-1, -1, -1]]  // Raketen Arty
+    ["OPT_O_Truck_02_MRL_F",                        COST(400000),                           10,         4,          false,      false,      false,      [0, 3, 0.2],    0,         0.1,            east,   [-1, -1, -1]]  // Raketen Arty
 ];
 
 GVAR(DB_supplies) =
@@ -144,7 +144,7 @@ GVAR(DB_supplies) =
     ["OPT_FlexibleTank_01_forest_F",                COST(1000),                             1,          0,          true,       true,       false,      [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // Treibstoff Tank
     ["OPT_FlexibleTank_01_sand_F",                  COST(1000),                             1,          0,          true,       true,       false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // Treibstoff Tank
     ["OPT_B_Slingload_01_Ammo_F",                   90000,      10000,      20000,          10,         10,         true,       false,      false,      [0, 5, 0.05],   0,          0.1,            west,   [-1, -1, -1]], // Munitionscontainer
-    ["OPT_B_Slingload_01_Fuel_F",                   DEF_PROD(8000),                         10,         10,         true,       false,      false,      [0, 5, 0.05],   0,          0.1,            west    [-1, -1, -1]]  // Fuelcontainer
+    ["OPT_B_Slingload_01_Fuel_F",                   COST(8000),                             10,         10,         true,       false,      false,      [0, 5, 0.05],   0,          0.1,            west,   [-1, -1, -1]]  // Fuelcontainer
 ];
 
 GVAR(DB_static) =
@@ -163,7 +163,7 @@ GVAR(DB_static) =
     ["OPT_B_static_AA_F",                           COST(20000),                            2,          0,          true,       true,       false,      [0, 3, 0.2],    0,         0.1,            west,   [-1, -1, -1]], // Statische AA
     ["OPT_O_static_AA_F",                           COST(20000),                            2,          0,          true,       true,       false,      [0, 3, 0.2],    0,         0.1,            east,   [-1, -1, -1]], // Statische AA
     ["OPT_B_static_AT_F",                           COST(150000),                           2,          0,          true,       true,       false,      [0, 3, 0.2],    0,         0.1,            west,   [-1, -1, -1]], // Statischer AT
-    ["OPT_O_static_AT_F",                           COST(150000),                           2,          0,          true,       true,       false,      [0, 3, 0.2],    0,         0.1,            east    [-1, -1, -1]]  // Statischer AT
+    ["OPT_O_static_AT_F",                           COST(150000),                           2,          0,          true,       true,       false,      [0, 3, 0.2],    0,         0.1,            east,   [-1, -1, -1]]  // Statischer AT
 ];
 
 GVAR(DB_sea) =
@@ -176,7 +176,7 @@ GVAR(DB_sea) =
     ["OPT_B_C_Boat_Transport_02_F",                 COST(7000),                             5,          4,          true,       false,      false,      [0, 2, 0.1],    0,         0,              west,   [-1, -1, -1]], // Rhib unbewaffnet
     ["OPT_O_C_Boat_Transport_02_F",                 COST(12000),                            5,          4,          true,       false,      false,      [0, 2, 0.1],    0,         0,              east,   [-1, -1, -1]], // Rhib unbewaffnet
     ["OPT_B_SDV_01_F",                              COST(2000),                             5,          0,          true,       false,      false,      [0, 2, 0.1],    0,         0,              west,   [-1, -1, -1]], // U-Boot
-    ["OPT_O_SDV_01_F",                              COST(40000),                            5,          0,          true,       false,      false,      [0, 2, 0.1],    0,         0,              east    [-1, -1, -1]]  // U-Boot
+    ["OPT_O_SDV_01_F",                              COST(40000),                            5,          0,          true,       false,      false,      [0, 2, 0.1],    0,         0,              east,   [-1, -1, -1]]  // U-Boot
 ];
 
 GVAR(DB_all) = GVAR(DB_vehicles) + GVAR(DB_vehicles_supply) + GVAR(DB_choppers) + GVAR(DB_planes) + GVAR(DB_jets) + GVAR(DB_uavs) + GVAR(DB_armored) + GVAR(DB_supplies) + GVAR(DB_static) + GVAR(DB_sea);
