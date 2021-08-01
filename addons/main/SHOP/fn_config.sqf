@@ -35,8 +35,8 @@
 GVAR(DB_vehicles) =
 [
 //  ["Classname",                                   BuyPrice,   SellPrice,  SellPriceEnemy, NeedsCargo, GivesCargo, Draggable,  Carriable,  CanRepair,  GrabOffset,     GrabDir,    HeightOffset,   Side,   HardCap],
-    ["OPT_B_Quadbike_01_F",                         COST(10000),                            2,          0,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // Quadbike
-    ["OPT_O_Quadbike_01_F",                         COST(10000),                            2,          0,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // Quadbike
+    ["OPT_B_Quadbike_01_F",                         COST(10000),                            2,          2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // Quadbike
+    ["OPT_O_Quadbike_01_F",                         COST(10000),                            2,          2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // Quadbike
     ["OPT_B_T_LSV_01_unarmed_F",                    COST(25000),                            5,          4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // Prowler unarmed
     ["OPT_O_T_LSV_02_unarmed_F",                    COST(25000),                            5,          4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // Prowler unarmed
     ["OPT_B_T_LSV_01_armed_F",                      COST(35000),                            5,          4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // Prowler armed
