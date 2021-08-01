@@ -35,20 +35,20 @@
 GVAR(DB_vehicles) =
 [
 //  ["Classname",                                   BuyPrice,   SellPrice,  SellPriceEnemy, NeedsCargo, GivesCargo, Draggable,  Carriable,  CanRepair,  GrabOffset,     GrabDir,    HeightOffset,   Side,   HardCap],
-    ["OPT_B_Quadbike_01_F",                         COST(10000),                            4,          2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // Quadbike
-    ["OPT_O_Quadbike_01_F",                         COST(10000),                            4,          2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // Quadbike
+    ["OPT_B_Quadbike_01_F",                         COST(10000),                            2,          0,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // Quadbike
+    ["OPT_O_Quadbike_01_F",                         COST(10000),                            2,          0,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // Quadbike
     ["OPT_B_T_LSV_01_unarmed_F",                    COST(25000),                            5,          4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // Prowler unarmed
     ["OPT_O_T_LSV_02_unarmed_F",                    COST(25000),                            5,          4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // Prowler unarmed
     ["OPT_B_T_LSV_01_armed_F",                      COST(35000),                            5,          4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // Prowler armed
     ["OPT_O_T_LSV_02_armed_F",                      COST(35000),                            5,          4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // Prowler armed
-    ["OPT_B_LSV_01_AT_F",                           COST(250000),                           5,          4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [ 0,  2,  3]], // Prowler AT
-    ["OPT_O_LSV_02_AT_F",                           COST(250000),                           5,          4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [ 0,  2,  3]], // Prowler AT
+    ["OPT_B_LSV_01_AT_F",                           COST(250000),                           5,          2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [ 0,  2,  3]], // Prowler AT
+    ["OPT_O_LSV_02_AT_F",                           COST(250000),                           5,          2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [ 0,  2,  3]], // Prowler AT
     ["OPT_B_MRAP_01_F",                             COST(20000),                            5,          4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [ 5,  5,  5]], // Hunter
     ["OPT_O_MRAP_02_F",                             COST(20000),                            5,          4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [ 5,  5,  5]], // Ifrit
     ["OPT_B_MRAP_01_hmg_F",                         COST(80000),                            5,          4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [ 5,  4,  4]], // Hunter HMG
     ["OPT_O_MRAP_02_hmg_F",                         COST(80000),                            5,          4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [ 5,  4,  4]], // Ifrit HMG
-    ["OPT_B_Truck_02_covered_F",                    COST(5000),                             10,         4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // Zamak Logistik LKW
-    ["OPT_O_Truck_02_covered_F",                    COST(5000),                             10,         4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // Zamak Logistik LKW
+    ["OPT_B_Truck_02_covered_F",                    COST(5000),                             10,         10,         false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // Zamak Logistik LKW
+    ["OPT_O_Truck_02_covered_F",                    COST(5000),                             10,         10,         false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // Zamak Logistik LKW
     ["OPT_B_Truck_02_box_F",                        COST(10000),                            10,         2,          false,      false,      true,       [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // Zamak Reparatur LKW
     ["OPT_O_Truck_02_box_F",                        COST(10000),                            10,         2,          false,      false,      true,       [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // Zamak Reparatur LKW
     ["OPT_B_Truck_02_medical_F",                    COST(10000),                            10,         2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // Zamak Medical LKW
@@ -96,20 +96,20 @@ GVAR(DB_uavs) = [];
 GVAR(DB_armored) =
 [
 //  ["Classname",                                   BuyPrice,   SellPrice,  SellPriceEnemy, NeedsCargo, GivesCargo, Draggable,  Carriable,  CanRepair,  GrabOffset,     GrabDir,    HeightOffset,   Side,   HardCap],
-    ["OPT_B_APC_tracked_03_cannon_F",               COST(150000),                           10,         4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [ 0,  2,  4]], // Mora
-    ["OPT_O_APC_Wheeled_01_cannon_F",               COST(150000),                           10,         4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [ 0,  2,  4]], // Marshall
-    ["OPT_B_APC_Wheeled_03_cannon_F",               COST(200000),                           10,         4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [ 0,  2,  4]], // Gorgon
-    ["OPT_O_APC_Tracked_02_cannon_F",               COST(200000),                           10,         4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [ 0,  2,  4]], // BTR-K
-    ["OPT_B_APC_Tracked_01_AA_F",                   COST(320000),                           10,         4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [ 0,  1,  2]], // Cheetah
-    ["OPT_O_APC_Tracked_02_AA_F",                   COST(320000),                           10,         4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [ 0,  1,  2]], // Tigris
-    ["OPT_B_AFV_Wheeled_01_cannon_F",               COST(300000),                           10,         4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [ 0,  1,  2]], // Rhino
-    ["OPT_O_AFV_Wheeled_01_cannon_F",               COST(300000),                           10,         4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [ 0,  1,  2]], // Rhino
-    ["OPT_B_MBT_03_cannon_F",                       COST(500000),                           10,         4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [ 0,  0,  2]], // Kuma
-    ["OPT_O_MBT_02_cannon_F",                       COST(500000),                           10,         4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [ 0,  0,  2]], // T-100
-    ["OPT_B_MBT_01_arty_F",                         COST(350000),                           10,         4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [ 0,  1,  1]], // Rohr Arty
-    ["OPT_O_MBT_02_arty_F",                         COST(350000),                           10,         4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [ 0,  1,  1]], // Rohr Arty
-    ["OPT_B_MBT_01_mlrs_F",                         COST(400000),                           10,         4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [ 0,  1,  1]], // Raketen Arty
-    ["OPT_O_Truck_02_MRL_F",                        COST(400000),                           10,         4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [ 0,  1,  1]]  // Raketen Arty
+    ["OPT_B_APC_tracked_03_cannon_F",               COST(150000),                           10,         2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [ 0,  2,  4]], // Mora
+    ["OPT_O_APC_Wheeled_01_cannon_F",               COST(150000),                           10,         2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [ 0,  2,  4]], // Marshall
+    ["OPT_B_APC_Wheeled_03_cannon_F",               COST(200000),                           10,         2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [ 0,  2,  4]], // Gorgon
+    ["OPT_O_APC_Tracked_02_cannon_F",               COST(200000),                           10,         2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [ 0,  2,  4]], // BTR-K
+    ["OPT_B_APC_Tracked_01_AA_F",                   COST(320000),                           10,         2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [ 0,  1,  2]], // Cheetah
+    ["OPT_O_APC_Tracked_02_AA_F",                   COST(320000),                           10,         2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [ 0,  1,  2]], // Tigris
+    ["OPT_B_AFV_Wheeled_01_cannon_F",               COST(300000),                           10,         2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [ 0,  1,  2]], // Rhino
+    ["OPT_O_AFV_Wheeled_01_cannon_F",               COST(300000),                           10,         2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [ 0,  1,  2]], // Rhino
+    ["OPT_B_MBT_03_cannon_F",                       COST(500000),                           10,         2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [ 0,  0,  2]], // Kuma
+    ["OPT_O_MBT_02_cannon_F",                       COST(500000),                           10,         2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [ 0,  0,  2]], // T-100
+    ["OPT_B_MBT_01_arty_F",                         COST(350000),                           10,         2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [ 0,  1,  1]], // Rohr Arty
+    ["OPT_O_MBT_02_arty_F",                         COST(350000),                           10,         2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [ 0,  1,  1]], // Rohr Arty
+    ["OPT_B_MBT_01_mlrs_F",                         COST(400000),                           10,         2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [ 0,  1,  1]], // Raketen Arty
+    ["OPT_O_Truck_02_MRL_F",                        COST(400000),                           10,         2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [ 0,  1,  1]]  // Raketen Arty
 ];
 
 GVAR(DB_supplies) =
@@ -143,8 +143,8 @@ GVAR(DB_supplies) =
     ["OPT_CSAT_Minenkiste",                         80000,      10000,      20000,          2,          0,          true,       true,       false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // Minenkiste
     ["OPT_FlexibleTank_01_forest_F",                COST(1000),                             1,          0,          true,       true,       false,      [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // Treibstoff Tank
     ["OPT_FlexibleTank_01_sand_F",                  COST(1000),                             1,          0,          true,       true,       false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // Treibstoff Tank
-    ["OPT_B_Slingload_01_Ammo_F",                   90000,      10000,      20000,          10,         10,         true,       false,      false,      [0, 5, 0.05],   0,          0.1,            west,   [-1, -1, -1]], // Munitionscontainer
-    ["OPT_B_Slingload_01_Fuel_F",                   COST(8000),                             10,         10,         true,       false,      false,      [0, 5, 0.05],   0,          0.1,            west,   [-1, -1, -1]]  // Fuelcontainer
+    ["OPT_B_Slingload_01_Ammo_F",                   90000,      10000,      20000,          10,         0,          true,       false,      false,      [0, 5, 0.05],   0,          0.1,            west,   [-1, -1, -1]], // Munitionscontainer
+    ["OPT_B_Slingload_01_Fuel_F",                   COST(8000),                             10,         0,          true,       false,      false,      [0, 5, 0.05],   0,          0.1,            west,   [-1, -1, -1]]  // Fuelcontainer
 ];
 
 GVAR(DB_static) =
@@ -160,10 +160,10 @@ GVAR(DB_static) =
     ["OPT_O_GMG_01_high_F",                         COST(75000),                            2,          0,          true,       true,       false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // Stand-GMG erhöht
     ["OPT_B_Mortar_01_F",                           COST(50000),                            2,          0,          true,       true,       false,      [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // Mörser
     ["OPT_O_Mortar_01_F",                           COST(50000),                            2,          0,          true,       true,       false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // Mörser
-    ["OPT_B_static_AA_F",                           COST(20000),                            2,          0,          true,       true,       false,      [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // Statische AA
-    ["OPT_O_static_AA_F",                           COST(20000),                            2,          0,          true,       true,       false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // Statische AA
-    ["OPT_B_static_AT_F",                           COST(150000),                           2,          0,          true,       true,       false,      [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // Statischer AT
-    ["OPT_O_static_AT_F",                           COST(150000),                           2,          0,          true,       true,       false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]]  // Statischer AT
+    ["OPT_B_static_AA_F",                           COST(20000),                            5,          0,          true,       true,       false,      [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // Statische AA
+    ["OPT_O_static_AA_F",                           COST(20000),                            5,          0,          true,       true,       false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // Statische AA
+    ["OPT_B_static_AT_F",                           COST(150000),                           5,          0,          true,       true,       false,      [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // Statischer AT
+    ["OPT_O_static_AT_F",                           COST(150000),                           5,          0,          true,       true,       false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]]  // Statischer AT
 ];
 
 GVAR(DB_sea) =
