@@ -66,7 +66,10 @@ GVAR(blockedVehiclePositions_veh) =
 
 GVAR(SMG) =
 [
+    "OPT_SMG_03C_TR_black"
 ];
+
+/////
 
 GVAR(Lightrocketmen) =
 [
@@ -76,7 +79,11 @@ GVAR(Lightrocketmen) =
 
 GVAR(lightlaunchers) =
 [
+    "launch_RPG7_F",
+    "OPT_launch_RPG32_ghex_F"
 ];
+
+/////
 
 GVAR(Heavyrocketmen) =
 [
@@ -86,7 +93,10 @@ GVAR(Heavyrocketmen) =
 
 GVAR(Heavylaunchers) =
 [
+    "OPT_launch_MRAWS_green_F"
 ];
+
+/////
 
 GVAR(AArocketmen) =
 [
@@ -96,13 +106,10 @@ GVAR(AArocketmen) =
 
 GVAR(AAlaunchers) =
 [
+    "launch_I_Titan_eaf_F"
 ];
 
-GVAR(medic) =
-[
-    "OPT_NATO_Sanitaeter",
-    "OPT_CSAT_Sanitaeter"
-];
+/////
 
 GVAR(snipers) =
 [
@@ -112,7 +119,11 @@ GVAR(snipers) =
 
 GVAR(sniperRifles) =
 [
+    "OPT_srifle_GM6_camo_LRPS_F",
+    "OPT_srifle_GM6_ghex_LRPS_F"
 ];
+
+/////
 
 GVAR(DMRsnipers) =
 [
@@ -122,7 +133,21 @@ GVAR(DMRsnipers) =
 
 GVAR(DMRsniperRifles) =
 [
+    "OPT_srifle_DMR_03_ERCO_F",
+    "OPT_srifle_EBR_ERCO_F"
 ];
+
+/////
+
+GVAR(reconSnipers) =
+[
+];
+
+GVAR(reconSniperRifles) =
+[
+];
+
+/////
 
 GVAR(soldatMG) =
 [
@@ -132,7 +157,11 @@ GVAR(soldatMG) =
 
 GVAR(MG) =
 [
+    "OPT_LMG_Zafir_ACO_pointer_F",
+    "OPT_arifle_RPK12_ACO_BI_pointer_F"
 ];
+
+/////
 
 GVAR(soldatLMG) =
 [
@@ -142,7 +171,11 @@ GVAR(soldatLMG) =
 
 GVAR(LMG) =
 [
+    "OPT_arifle_MX_SW_Black_ACO_pointer_F",
+    "OPT_LMG_Mk200_ACO_BI_pointer_F"
 ];
+
+//////
 
 GVAR(grenadiers) =
 [
@@ -152,7 +185,11 @@ GVAR(grenadiers) =
 
 GVAR(grenadelaunchers) =
 [
+    "OPT_arifle_SPAR_01_GL_blk_ERCO_Pointer_F",
+    "OPT_arifle_CTAR_GL_blk_ERCO_Pointer_F"
 ];
+
+/////
 
 GVAR(pioneers) =
 [
@@ -166,8 +203,16 @@ GVAR(Sprengmittel) =
     "ATMine_Range_Mag"
 ];
 
+/////
+
 GVAR(engineers) =
 [
     "OPT_NATO_Ingenieur",
     "OPT_CSAT_Ingenieur"
+];
+
+GVAR(medic) =
+[
+    "OPT_NATO_Sanitaeter",
+    "OPT_CSAT_Sanitaeter"
 ];
