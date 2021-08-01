@@ -169,7 +169,7 @@ if !(_typeOfPlayer in GVAR(pioneers)) then
 {
     {
         _unit unassignItem _x;
-        _unit removeItems _x
+        _unit removeItems _x;
         _bad_weapon_used = _x;
     } forEach ["MineDetector"];
 };
