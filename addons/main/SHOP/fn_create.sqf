@@ -78,39 +78,12 @@ DFUNC(createOrder) =
     _zusatz = GVAR(order_Datensatz) select 9;
     _waffenkosten = GVAR(order_Datensatz) select 10;
 
-    // Höhenoffset für Fahrzeugspawn
-    private "_offset";
-
     // Individuelle Spawnhöhe je nach Fahrzeugtyp
-    switch (_class) do
+    private _offset = 0.2;
+    private _path = [GVAR(DB_all), _class] call BIS_fnc_findNestedElement;
+    if (count _path > 0) then
     {
-        // CSAT Choppers
-        case "OPT_CUP_O_SA330_Puma_HC1_BAF": { _offset = 0 };
-        case "OPT_CUP_O_Ka60_Grey_RU": { _offset = 0.2 };
-        case "OPT_CUP_O_Merlin_HC3_GB": { _offset = 0 };
-        case "OPT_CUP_O_Mi24_V_Dynamic_RU": { _offset = 0.1 };
-
-        // CSAT Planes
-        case "OPT_CUP_I_CESSNA_T41_UNARMED_ION": { _offset = 0.2 };
-        case "OPT_CUP_O_AN2_TK": { _offset = 0.7 };
-        case "OPT_CUP_O_C47_SLA": { _offset = 0.9 };
-        case "OPT_CUP_O_C130J_TKA": { _offset = 0.1 };
-        case "OPT_CUP_O_Su25_Dyn_RU": { _offset = 0.2 };
-
-        // NATO Choppers
-        case "OPT_CUP_MH60S_Unarmed_USN": { _offset = 0.1 };
-        case "OPT_CUP_B_UH1D_armed_GER_KSK": { _offset = 0.1 };
-        case "OPT_CUP_B_CH53E_USMC": { _offset = 0.1 };
-        case "OPT_CUP_B_AH64D_DL_USA": { _offset = 0 };
-
-        // NATO Planes
-        case "OPT_CUP_I_CESSNA_T41_UNARMED_USA": { _offset = 0.2 };
-        case "OPT_CUP_C_AN2_CIV": { _offset = 0.7 };
-        case "OPT_CUP_C_DC3_ChernAvia_CIV": { _offset = 0.8 };
-        case "OPT_CUP_B_C130J_USMC": { _offset = 0.1 };
-        case "OPT_CUP_B_L39_CZ_GREY": { _offset = 0.1 };
-
-        default { _offset = 0.2 };
+        _offset = GVAR(DB_all) select (_path select 0) select 11;
     };
 
     //Objekt Erstellung
@@ -157,32 +130,7 @@ DFUNC(createOrder) =
     };
 
     // Erzeugt Crew für Drohnen
-    private _uavs =
-    [
-        "OPT_B_UGV_01_F",
-        "OPT_B_UGV_01_rcws_F",
-        "OPT_O_UGV_01_F",
-        "OPT_O_UGV_01_rcws_F",
-        "B_UCSV_01",
-        "OPT_B_UAV_02_light_F",
-        "OPT_B_UAV_02_CAS_F",
-        "OPT_B_UAV_02_CAS_F",
-        "OPT_B_UAV_02_F",
-        "OPT_B_UAV_01_F",
-        "OPT_O_UAV_01_F",
-        "OPT_O_UAV_02_light_F",
-        "OPT_O_UAV_02_CAS_F",
-        "OPT_O_UAV_02_F",
-        "OPT_B_Static_Designator_01_F",
-        "OPT_O_Static_Designator_02_F",
-        "OPT_I_Static_Designator_01_F",
-        "OPT_B_UGV_01_ghex_F",
-        "OPT_O_T_UGV_01_ghex_F",
-        "OPT_I_UAV_02_light_F",
-        "OPT_I_UGV_01_F"
-    ];
-
-    if (_class in (_uavs)) then
+    if (_class in GVAR(uavs)) then
     {
         createVehicleCrew (_veh);
         _veh setSkill 1.0;

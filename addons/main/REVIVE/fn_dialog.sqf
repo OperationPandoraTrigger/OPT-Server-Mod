@@ -60,7 +60,7 @@ _BleedoutBar_Text ctrlSetText format ["%1 sec",GVAR(ausblutzeit)];
 _Respawn_button ctrlAddEventHandler [ "ButtonClick",
 {
     OPT_REVIVE_respawnedHandler = true;
-    ["Health", "Respawn", [getPlayerUID player, name player, side player, "RespawnClick"]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
+    ["Health", "Respawn", [getPlayerUID player, name player, side player, "RespawnClick"]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
     player setDamage 1;
     1 enableChannel true;
     player allowDamage true;
@@ -94,7 +94,7 @@ GVAR(startzeit) = time;
             _sidesoldat =getnumber (configFile >> "CfgVehicles" >> (typeof _x) >> "side");
             _sideplayer =getnumber (configFile >> "CfgVehicles" >> (typeof player) >> "side");
 
-            if ((_sidesoldat isEqualTo _sideplayer) and (typeOf _x in GVAR(SaniKlassen)) and !(lifeState _x isEqualTo "INCAPACITATED") and (incapacitatedState _x == "") and GVAR(onlysani)) then
+            if ((_sidesoldat isEqualTo _sideplayer) and (typeOf _x in EGVAR(RULES,medic)) and !(lifeState _x isEqualTo "INCAPACITATED") and (incapacitatedState _x == "") and GVAR(onlysani)) then
             {
                 _poolplayer pushBack _x;
             };
@@ -134,7 +134,7 @@ GVAR(startzeit) = time;
     if (((GVAR(ausblutzeit) - (time - GVAR(startzeit))) < 0)) then
     {
         OPT_REVIVE_respawnedHandler = true;
-        ["Health", "Respawn", [getPlayerUID player, name player, side player, "RespawnTimeout"]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
+        ["Health", "Respawn", [getPlayerUID player, name player, side player, "RespawnTimeout"]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
         player setDamage 1;
     };
 

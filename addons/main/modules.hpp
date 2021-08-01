@@ -150,7 +150,6 @@ class CfgCLibModules
             FNC(deactivatedragging);
             FNC(dragginginit);
             FNC(cbaclassevents);
-            FNC(setupcargospaceandsize);
         };
 
         MODULE(RULES)

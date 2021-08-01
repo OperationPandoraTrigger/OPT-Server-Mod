@@ -37,13 +37,13 @@ switch (_art) do
     case 1 :
     {
         // Log Wiederbelebung
-        ["Health", "Revive", [getPlayerUID _verletzter, name _verletzter, side _verletzter, getPlayerUID _retter, name _retter, side _retter, _verletzter distance2D _retter]] call OPT_LOGGING_fnc_writelog;
+        ["Health", "Revive", [getPlayerUID _verletzter, name _verletzter, side _verletzter, getPlayerUID _retter, name _retter, side _retter, _verletzter distance2D _retter]] call EFUNC(LOGGING,writelog);
     };
 
     case 2 :
     {
         // Log Stabilisierung
-        ["Health", "Stabilize", [getPlayerUID _verletzter, name _verletzter, side _verletzter, getPlayerUID _retter, name _retter, side _retter, _verletzter distance2D _retter]] call OPT_LOGGING_fnc_writelog;
+        ["Health", "Stabilize", [getPlayerUID _verletzter, name _verletzter, side _verletzter, getPlayerUID _retter, name _retter, side _retter, _verletzter distance2D _retter]] call EFUNC(LOGGING,writelog);
     };
 
     default

@@ -145,7 +145,7 @@ This event happens every time a soldier enters a vehicle.
         if (_pos in ["cargo", "gunner"] and (_dis > MinDistance)) then
         {
             // Log Distanz
-            ["Transport", "Drive", [getPlayerUID _unit, name _unit, side _unit, getPlayerUID _driver, name _driver, side _driver, _dis]] remoteExecCall ["OPT_LOGGING_fnc_writelog", 2, false];
+            ["Transport", "Drive", [getPlayerUID _unit, name _unit, side _unit, getPlayerUID _driver, name _driver, side _driver, _dis]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
         };
     };
 }] call CBA_fnc_addClassEventHandler;

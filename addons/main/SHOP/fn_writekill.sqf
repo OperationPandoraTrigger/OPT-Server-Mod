@@ -33,7 +33,7 @@ params
 ];
 
 // Raw-Logging of everything
-["Health", "Raw", [netID _victim, getPlayerUID _victim, _victim, netID _instigator, getPlayerUID _instigator, _instigator, netID _source, getPlayerUID _source, _source, _projectile]] call OPT_LOGGING_fnc_writelog;
+["Health", "Raw", [netID _victim, getPlayerUID _victim, _victim, netID _instigator, getPlayerUID _instigator, _instigator, netID _source, getPlayerUID _source, _source, _projectile]] call EFUNC(LOGGING,writelog);
 
 /* VALIDATION */
 if (_victim isEqualTo objNull) exitWith{};
@@ -68,53 +68,47 @@ if (_victim isKindOf "Man") then
             };
         } forEach ([configFile >> "CfgMagazines", 0, true] call BIS_fnc_returnChildren);
     };
-    ["Health", "Kill", [getPlayerUID _victim, name _victim, side _victim, getPlayerUID _instigator, name _instigator, side _instigator, _victim distance2D _instigator, _projectileName]] call OPT_LOGGING_fnc_writelog;
+    ["Health", "Kill", [getPlayerUID _victim, name _victim, side _victim, getPlayerUID _instigator, name _instigator, side _instigator, _victim distance2D _instigator, _projectileName]] call EFUNC(LOGGING,writelog);
 }
 else // victim = vehicle!
 {
     private _veh = _victim;
-    private _category ="";
+    private _category = "";
 
     private _faction = (getText(configFile >> 'CfgVehicles' >> typeOf _veh >> 'faction'));
     private _name = (getText(configFile >> 'CfgVehicles' >> typeOf _veh >> 'displayName'));
-    private _light = (opt_shop_nato_vehicles + opt_shop_csat_vehicles + opt_shop_nato_vehicles_supply + opt_shop_csat_vehicles_supply) apply {toLower (_x select 0)};
-    private _heavy = (opt_shop_nato_armored + opt_shop_csat_armored) apply {toLower (_x select 0)};
-    private _air = (opt_shop_nato_choppers + opt_shop_csat_choppers + opt_shop_nato_planes + opt_shop_csat_planes) apply {toLower (_x select 0)};
-    private _boat = (opt_shop_nato_sea + opt_shop_csat_sea) apply {toLower (_x select 0)};
-    private _supplies = (opt_shop_nato_supplies + opt_shop_csat_supplies) apply {toLower (_x select 0)};
-    private _static = (opt_shop_nato_static + opt_shop_csat_static) apply {toLower (_x select 0)};
 
-    _category = if (toLower (typeOf _veh) in _light) then
+    _category = if (typeOf _veh in EGVAR(SHOP,light)) then
     {
         "Leicht"
     }
     else
     {
-        if (toLower (typeOf _veh) in _heavy) then
+        if (typeOf _veh in EGVAR(SHOP,heavy)) then
         {
             "Schwer"
         }
         else
         {
-            if (toLower (typeOf _veh) in _air) then
+            if (typeOf _veh in EGVAR(SHOP,air)) then
             {
                 "Flug"
             }
             else
             {
-                if (toLower (typeOf _veh) in _boat) then
+                if (typeOf _veh in EGVAR(SHOP,boat)) then
                 {
                     "Boot"
                 }
                 else
                 {
-                    if (toLower (typeOf _veh) in _supplies) then
+                    if (typeOf _veh in EGVAR(SHOP,supplies)) then
                     {
                         "Ausruestung"
                     }
                     else
                     {
-                        if (toLower (typeOf _veh) in _static) then
+                        if (typeOf _veh in EGVAR(SHOP,static)) then
                         {
                             "Stationaer"
                         }
@@ -134,7 +128,7 @@ else // victim = vehicle!
         // source is vehicle or player?
         if (_source isEqualTo _instigator) then
         {
-            ["Vehicle", "DestroyByMan", [_name, _category, _faction, netId _victim, getPlayerUID _instigator, name _instigator, side _instigator, _victim distance2D _instigator, _projectile]] call OPT_LOGGING_fnc_writelog;
+            ["Vehicle", "DestroyByMan", [_name, _category, _faction, netId _victim, getPlayerUID _instigator, name _instigator, side _instigator, _victim distance2D _instigator, _projectile]] call EFUNC(LOGGING,writelog);
         }
         else
         {
@@ -158,7 +152,7 @@ else // victim = vehicle!
                     _crewArray pushBack name _unit;
                 };
             } forEach (fullCrew _source);
-            ["Vehicle", "DestroyByCrew", [_name, _category, _faction, netId _victim, getText (configFile >> "CfgVehicles" >> typeOf _source >> "displayName"), side _instigator, _victim distance2D _instigator, _crewArray joinString _separator]] call OPT_LOGGING_fnc_writelog;
+            ["Vehicle", "DestroyByCrew", [_name, _category, _faction, netId _victim, getText (configFile >> "CfgVehicles" >> typeOf _source >> "displayName"), side _instigator, _victim distance2D _instigator, _crewArray joinString _separator]] call EFUNC(LOGGING,writelog);
         };
     }
     else // Täter nicht bekannt
@@ -166,7 +160,7 @@ else // victim = vehicle!
         // Selbstverschulden?
         if (_veh == _source) then
         {
-            ["Vehicle", "DestroyByAccident", [_name, _category, _faction, netId _victim]] call OPT_LOGGING_fnc_writelog;
+            ["Vehicle", "DestroyByAccident", [_name, _category, _faction, netId _victim]] call EFUNC(LOGGING,writelog);
         }
     };
 };

@@ -15,17 +15,5 @@
 #include "macros.hpp"
 
 GVAR(Daten_send) = true;
-
-publicVariable QGVAR(Hardcap_nato_choppers);
-publicVariable QGVAR(Hardcap_nato_planes);
-publicVariable QGVAR(Hardcap_nato_vehicles);
-publicVariable QGVAR(Hardcap_nato_supplies);
-publicVariable QGVAR(Hardcap_nato_sea);
-
-publicVariable QGVAR(Hardcap_csat_choppers);
-publicVariable QGVAR(Hardcap_csat_planes);
-publicVariable QGVAR(Hardcap_csat_vehicles);
-publicVariable QGVAR(Hardcap_csat_supplies);
-publicVariable QGVAR(Hardcap_csat_sea);
-
+publicVariable QGVAR(Hardcap_pool);
 publicVariable QGVAR(Daten_send);

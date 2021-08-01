@@ -129,5 +129,5 @@ Flaggen-Seite loggen
     _flag allowDamage false;  // Flagge kann nicht beschaedigt werden
 
         // Bei Missionsstart alle ursprünglichen Flaggenowner loggen
-        ["Flag", "StartState", [_flag, _flag getVariable ["start_owner", sideUnknown]]] call OPT_LOGGING_fnc_writelog;
+        ["Flag", "StartState", [_flag, _flag getVariable ["start_owner", sideUnknown]]] call EFUNC(LOGGING,writelog);
 } foreach GVAR(csat_flags) + GVAR(nato_flags);

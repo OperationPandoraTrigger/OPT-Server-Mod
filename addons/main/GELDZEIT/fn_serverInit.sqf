@@ -34,8 +34,8 @@ if (GVAR(missionName) isEqualTo "opt_latest") then
 };
 
 private _time = systemTime;
-["Logging", "Start", [LOGGING_VERSION, EGVAR(SECTORCONTROL,nato_faction), EGVAR(SECTORCONTROL,csat_faction), format ["%1-%2-%3 %4:%5:%6", _time select 0, _time select 1, _time select 2, _time select 3, _time select 4, _time select 5]]] call OPT_LOGGING_fnc_writelog;
-["Mission", "Load", [0, 0, GVAR(missionName)]] call OPT_LOGGING_fnc_writelog;
+["Logging", "Start", [LOGGING_VERSION, EGVAR(SECTORCONTROL,nato_faction), EGVAR(SECTORCONTROL,csat_faction), format ["%1-%2-%3 %4:%5:%6", _time select 0, _time select 1, _time select 2, _time select 3, _time select 4, _time select 5]]] call EFUNC(LOGGING,writelog);
+["Mission", "Load", [0, 0, GVAR(missionName)]] call EFUNC(LOGGING,writelog);
 
 GVAR(GAMESTAGE) = GAMESTAGE_FREEZE;
 publicVariable QGVAR(GAMESTAGE);
@@ -82,7 +82,7 @@ GVAR(playerList) = [];
                     // {[false] call ace_common_fnc_disableUserInput;} remoteExec ["call", -2];
 
                     // Logeintrag
-                    ["Mission", "Truce", [0, 0, GVAR(missionName)]] call OPT_LOGGING_fnc_writelog;
+                    ["Mission", "Truce", [0, 0, GVAR(missionName)]] call EFUNC(LOGGING,writelog);
                 };
             };
 
@@ -95,7 +95,7 @@ GVAR(playerList) = [];
                     publicVariable QGVAR(GAMESTAGE);
 
                     // Missionsstart loggen
-                    ["Mission", "Start", [0, 0, GVAR(missionName)]] call OPT_LOGGING_fnc_writelog;
+                    ["Mission", "Start", [0, 0, GVAR(missionName)]] call EFUNC(LOGGING,writelog);
 
                     // Nach Ablauf der Waffenruhe die Sektorenmarker von der Karte entfernen
                     {
