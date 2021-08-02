@@ -51,6 +51,9 @@
         ]
     ] call CBA_fnc_addKeybind;
 
+    // Quickfix - Die Veriablen werden sonst zu spät geladen
+    [] call EFUNC(RULES,setup_classnames);
+
     // Flaggen Wahl AddAction  erstellen
     [] call FUNC(addflagmenu);
 
