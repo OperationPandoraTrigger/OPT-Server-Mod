@@ -24,7 +24,8 @@ private _cond =
     ((_target distance _caller) < 10) and
     (_target isKindOf 'landVehicle') and
     (alive _target) and
-    ((vectorUp _target) select 2 < 0.4)
+    ((vectorUp _target) select 2 < 0.4) and
+    !(player in _target)
 );
 
 if (_cond) then
