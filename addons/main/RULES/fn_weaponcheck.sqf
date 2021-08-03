@@ -22,7 +22,7 @@ private _bad_item_used = false;
 private "_bad_weapon_used";
 
 // check SMG
-if !(_typeOfPlayer in (GVAR(pilots) + GVAR(jetpilots) + GVAR(crew))) then
+if !(_typeOfPlayer in (GVAR(pilots) + GVAR(jetpilots) + GVAR(crew) + GVAR(pioneers))) then
 {
     {
         if (_x in GVAR(SMG)) then

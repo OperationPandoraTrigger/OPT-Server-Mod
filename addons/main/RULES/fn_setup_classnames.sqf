@@ -106,7 +106,8 @@ GVAR(AArocketmen) =
 
 GVAR(AAlaunchers) =
 [
-    "launch_I_Titan_eaf_F"
+    "OPT_launch_B_Titan_tna_F",
+    "OPT_launch_O_Titan_ghex_F"
 ];
 
 /////
