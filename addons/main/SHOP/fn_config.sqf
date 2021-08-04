@@ -61,7 +61,9 @@ GVAR(DB_vehicles_supply) =
     ["OPT_B_Truck_02_fuel_F",                       COST(10000),                            10,         2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // Zamak Tank LKW
     ["OPT_O_Truck_02_fuel_F",                       COST(10000),                            10,         2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // Zamak Tank LKW
     ["OPT_B_Truck_02_ammo_F",                       50000,      5000,       20000,          10,         2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // Zamak Munitions LKW
-    ["OPT_O_Truck_02_ammo_F",                       50000,      5000,       20000,          10,         2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]]  // Zamak Munitions LKW
+    ["OPT_O_Truck_02_ammo_F",                       50000,      5000,       20000,          10,         2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]],  // Zamak Munitions LKW
+    ["OPT_B_Slingload_01_Ammo_F",                   90000,      10000,      20000,          10,         0,          true,       false,      false,      [0, 5, 0.05],   0,          0.1,            west,   [-1, -1, -1]], // Munitionscontainer
+    ["OPT_B_Slingload_01_Fuel_F",                   COST(8000),                             10,         0,          true,       false,      false,      [0, 5, 0.05],   0,          0.1,            west,   [-1, -1, -1]]  // Fuelcontainer
 ];
 
 GVAR(DB_choppers) =
@@ -142,9 +144,7 @@ GVAR(DB_supplies) =
     ["OPT_NATO_Minenkiste",                         80000,      10000,      20000,          2,          0,          true,       true,       false,      [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // Minenkiste
     ["OPT_CSAT_Minenkiste",                         80000,      10000,      20000,          2,          0,          true,       true,       false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // Minenkiste
     ["OPT_FlexibleTank_01_forest_F",                COST(1000),                             1,          0,          true,       true,       false,      [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // Treibstoff Tank
-    ["OPT_FlexibleTank_01_sand_F",                  COST(1000),                             1,          0,          true,       true,       false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // Treibstoff Tank
-    ["OPT_B_Slingload_01_Ammo_F",                   90000,      10000,      20000,          10,         0,          true,       false,      false,      [0, 5, 0.05],   0,          0.1,            west,   [-1, -1, -1]], // Munitionscontainer
-    ["OPT_B_Slingload_01_Fuel_F",                   COST(8000),                             10,         0,          true,       false,      false,      [0, 5, 0.05],   0,          0.1,            west,   [-1, -1, -1]]  // Fuelcontainer
+    ["OPT_FlexibleTank_01_sand_F",                  COST(1000),                             1,          0,          true,       true,       false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]] // Treibstoff Tank
 ];
 
 GVAR(DB_static) =

@@ -41,3 +41,13 @@
 {
     _this remoteExecCall [QFUNC(handleDeadVehicle), 2, false];
 }] call CBA_fnc_addClassEventHandler;
+
+["OPT_B_Slingload_01_Ammo_F", "killed",
+{
+    _this remoteExecCall [QFUNC(handleDeadVehicle), 2, false];
+}] call CBA_fnc_addClassEventHandler;
+
+["OPT_B_Slingload_01_Fuel_F", "killed",
+{
+    _this remoteExecCall [QFUNC(handleDeadVehicle), 2, false];
+}] call CBA_fnc_addClassEventHandler;

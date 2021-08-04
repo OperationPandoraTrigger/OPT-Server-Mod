@@ -66,7 +66,9 @@ GVAR(blockedVehiclePositions_veh) =
 
 GVAR(SMG) =
 [
-    "OPT_SMG_03C_TR_black"
+    "OPT_SMG_03C_TR_black",
+    "OPT_hgun_PDW2000_ACO_F",
+    "OPT_SMG_02_ACO_F"
 ];
 
 /////
