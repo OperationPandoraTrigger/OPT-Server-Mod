@@ -108,7 +108,7 @@ _kosten ctrlSetText format ["€:%1",0];
 GVAR(Buttonwahl) = 0;
 
 //Bereicht für Boxkontrolle
-GVAR(Checkbereich) = 7;
+GVAR(Checkbereich) = 9;
 
 //Kaufbutton ausblenden
 for "_i" from 0 to SHOPBUTTONANZAHL do

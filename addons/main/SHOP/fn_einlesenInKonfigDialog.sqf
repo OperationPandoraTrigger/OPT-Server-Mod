@@ -106,7 +106,7 @@ _kosten ctrlSetText format["€:%1",_unitCost];
 GVAR(veh) = "";
 
 //Bereicht für Boxkontrolle
-GVAR(Checkbereich) = 7;
+GVAR(Checkbereich) = 9;
 
 //Fahrzeug besetzt
 private _moveInVeh = _display displayCtrl 22044;
