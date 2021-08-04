@@ -108,7 +108,7 @@ GVAR(DB_armored) =
     ["OPT_O_MBT_02_cannon_F",                       COST(500000),                           10,         2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [ 0,  0,  2]], // T-100
     ["OPT_B_MBT_01_arty_F",                         COST(350000),                           10,         2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [ 0,  1,  1]], // Rohr Arty
     ["OPT_O_MBT_02_arty_F",                         COST(350000),                           10,         2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [ 0,  1,  1]], // Rohr Arty
-    ["OPT_B_MBT_01_mlrs_F",                         COST(400000),                           10,         2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [ 0,  1,  1]], // Raketen Arty
+    ["OPT_B_Truck_02_MRL_F",                        COST(400000),                           10,         2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [ 0,  1,  1]], // Raketen Arty
     ["OPT_O_Truck_02_MRL_F",                        COST(400000),                           10,         2,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [ 0,  1,  1]]  // Raketen Arty
 ];
 
