@@ -373,9 +373,7 @@ GVAR(pad_veh_east) =
     FahrzeugBoxEast3,
     FahrzeugBoxEast4,
     FahrzeugBoxEast5,
-    FahrzeugBoxEast6,
-    FahrzeugBoxEast7,
-    FahrzeugBoxEast8
+    FahrzeugBoxEast6
 ];
 
 GVAR(pad_veh_west) =
@@ -385,9 +383,7 @@ GVAR(pad_veh_west) =
     FahrzeugBoxWest3,
     FahrzeugBoxWest4,
     FahrzeugBoxWest5,
-    FahrzeugBoxWest6,
-    FahrzeugBoxWest7,
-    FahrzeugBoxWest8
+    FahrzeugBoxWest6
 ];
 
 GVAR(pad_air_east) =
