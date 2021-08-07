@@ -80,6 +80,7 @@ GVAR(DB_choppers) =
     ["OPT_O_Heli_Transport_04_box_F",               15000,      10000,      20000,          0,          4,          false,      false,      true,       [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // Taru Reparatur
     ["OPT_O_Heli_Transport_04_ammo_F",              15000,      10000,      20000,          0,          4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // Taru Munition
     ["OPT_O_Heli_Transport_04_fuel_F",              15000,      10000,      20000,          0,          4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // Taru Fuel
+    ["OPT_O_Heli_Transport_04_F",                   15000,      10000,      20000,          0,          4,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // Taru Kran
     ["OPT_B_Heli_Attack_01_F",                      COST(400000),                           0,          0,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // Blackwood
     ["OPT_O_Heli_Attack_02_F",                      COST(400000),                           0,          0,          false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]]  // Kajman
 ];
