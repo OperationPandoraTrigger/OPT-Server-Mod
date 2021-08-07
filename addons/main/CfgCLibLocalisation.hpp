@@ -350,24 +350,6 @@ class CfgCLibLocalisation
 
         class GELDZEIT
         {
-            class CSAT_WIN
-            {
-                English = "CSAT won!";
-                German = "CSAT hat gewonnen!";
-            };
-
-            class NATO_WIN
-            {
-                English = "NATO won!";
-                German = "NATO hat gewonnen!";
-            };
-
-            class NO_WINNER
-            {
-                English = "It's a tie!";
-                German = "Unentschieden!";
-            };
-
             class ACE_EQIP
             {
                 English = "Equipment";

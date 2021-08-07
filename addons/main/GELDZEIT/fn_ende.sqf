@@ -28,25 +28,17 @@
 */
 #include "macros.hpp"
 
-private _text = "";
-
 // Ermittle Sieger
 if (EGVAR(SECTORCONTROL,csat_points) != EGVAR(SECTORCONTROL,nato_points)) then
 {
     if (EGVAR(SECTORCONTROL,csat_points) > EGVAR(SECTORCONTROL,nato_points)) then
     {
         GVAR(csat_win) = 1;
-        _text = MLOC(CSAT_WIN);
     }
     else
     {
         GVAR(nato_win) = 1;
-        _text = MLOC(NATO_WIN);
     };
-}
-else
-{
-    _text = MLOC(NO_WINNER);
 };
 
 DFUNC(endscreen) =
@@ -81,7 +73,6 @@ GVAR(camera) camCommit 1;
 
 showCinemaBorder false;
 GVAR(camera) camSetRelPos [0,10,5];
-titleText [_text, "PLAIN DOWN",60];
 GVAR(camera) camCommit 10;
 
 [FUNC(endscreen), 10,""] call CFUNC(wait);
