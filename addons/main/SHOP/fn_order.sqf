@@ -47,7 +47,7 @@ private _waffenkosten = GVAR(order_Datensatz) select 10;
 private _order_kosten = GVAR(order_unitCost) + _waffenkosten;
 
 // Budget check
-private "_budget";
+private _budget = 0;
 switch (playerSide) do
 {
     case west:
@@ -57,10 +57,6 @@ switch (playerSide) do
     case east:
     {
         _budget = EGVAR(GELDZEIT,csat_budget) + EGVAR(GELDZEIT,dispo);
-    };
-    default
-    {
-        _budget = 0;
     };
 };
 
