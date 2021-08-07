@@ -46,7 +46,34 @@ private _waffenkosten = GVAR(order_Datensatz) select 10;
 
 private _order_kosten = GVAR(order_unitCost) + _waffenkosten;
 
-//Hardcap Check
-[clientOwner,_classSend,GVAR(vehicleType),playerside] remoteExecCall [QFUNC(hardcap_check), 2, false];
+// Budget check
+private "_budget";
+switch (playerSide) do
+{
+    case west:
+    {
+        _budget = EGVAR(GELDZEIT,nato_budget) + EGVAR(GELDZEIT,dispo);
+    };
+    case east:
+    {
+        _budget = EGVAR(GELDZEIT,csat_budget) + EGVAR(GELDZEIT,dispo);
+    };
+    default
+    {
+        _budget = 0;
+    };
+};
 
-_order_kosten
+if (_order_kosten > _budget) then
+{
+    // Dispo überschritten!
+    hint format[MLOC(DISPO)];
+    playSound "additemok";
+    0
+}
+else
+{
+    // Hardcap Check und Kaufausführung
+    [clientOwner,_classSend,GVAR(vehicleType),playerside] remoteExecCall [QFUNC(hardcap_check), 2, false];
+    _order_kosten
+};

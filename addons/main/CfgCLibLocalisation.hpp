@@ -613,6 +613,12 @@ class CfgCLibLocalisation
                 English = "Box Check";
                 German = "Box Check";
             };
+            class DISPO
+
+            {
+                English = "The permitted overdraft limit has been exceeded!";
+                German = "Das zulässige Dispolimit wurde überschritten!";
+            };
         };
     };
 };
