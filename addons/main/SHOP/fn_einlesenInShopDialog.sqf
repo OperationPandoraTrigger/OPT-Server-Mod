@@ -197,13 +197,13 @@ switch (GVAR(vehicleType)) do
         {
             case west:
             {
-                _pool = GVAR(nato_armored) + GVAR(nato_vehicles) + GVAR(nato_vehicles_supply);
+                _pool = GVAR(nato_vehicles) + GVAR(nato_vehicles_supply) + GVAR(nato_armored);
                 GVAR(pads) = GVAR(pad_veh_west);
             };
 
             case east:
             {
-                _pool = GVAR(csat_armored) + GVAR(csat_vehicles) + GVAR(csat_vehicles_supply);
+                _pool = GVAR(csat_vehicles) + GVAR(csat_vehicles_supply) + GVAR(csat_armored);
                 GVAR(pads) = GVAR(pad_veh_east);
             };
 
@@ -291,7 +291,10 @@ switch (GVAR(vehicleType)) do
 _pool = _pool select {_x select 1 > 0};
 
 // Objekte Sortieren
-GVAR(orderDialogObjects) = [_pool, 1] call CBA_fnc_sortNestedArray; // billigste zuerst
+// GVAR(orderDialogObjects) = [_pool, 1] call CBA_fnc_sortNestedArray; // billigste zuerst
+
+// Objekte unsortiert übernehmen, da sie schon in einer sinnvollen Reihenfolge angelegt wurden
+GVAR(orderDialogObjects) = _pool;
 
 //Boxen füllen
 // Budget
@@ -427,15 +430,26 @@ _moveInVeh ctrlAddEventHandler [ "ButtonClick",
 
 // Fahrzeuge auf allen Boxen im Bereich löschen
 GVAR(removecount) = 0;
-
 _remove ctrlAddEventHandler [ "ButtonClick",
 {
-    if (GVAR(removecount) == 3) then
+    GVAR(removecount) = GVAR(removecount)+1;
+
+    private _display = findDisplay IDD_DLG_ORDER;
+    private _remove = _display displayCtrl 20008;
+    private _text = "Räumen";
+    switch GVAR(removecount) do
+    {
+        case 1: {_text = "Räumen 3.."};
+        case 2: {_text = "Räumen 2.."};
+        case 3: {_text = "Räumen 1.."};
+    };
+    _remove ctrlSetText _text;
+
+    if (GVAR(removecount) == 4) then
     {
         [GVAR(pads)] call FUNC(deletevehicle);
         GVAR(removecount) = 0;
     };
-    GVAR(removecount) = GVAR(removecount)+1;
 }];
 
 //Kaufbutton EH
