@@ -103,6 +103,29 @@ DFUNC(createOrder) =
 
     _veh setDamage 0;
 
+    // Jet auf Startbahn wenden
+    if (typeOf _veh in EGVAR(SHOP,jets)) then
+    {
+        _veh addAction
+        [
+            format["%1", MLOC(ROTATE_VEH)],
+	        {
+    		    params ["_target", "_caller", "_actionId", "_arguments"];
+                _target setdir getdir nearestObject [_target, 'Land_HelipadSquare_F'];
+    	    },
+    	    nil,
+    	    5,
+    	    false,
+    	    false,
+    	    "",
+    	    "(nearestObject [_target, 'Land_HelipadSquare_F'] distance _target < 30 && alive _target && speed _target < 3 && vehicle player == player)",
+    	    30,
+    	    false,
+    	    "",
+    	    ""
+        ];
+    };
+
     //Fahrzeug bewaffnen
     if (((count _airRaketenmagazin) > 0) or
         ((count _airGunmagazin) > 0) or

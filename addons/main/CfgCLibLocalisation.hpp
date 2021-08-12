@@ -584,6 +584,12 @@ class CfgCLibLocalisation
                 German = "Fahrzeug aufrichten";
             };
 
+            class ROTATE_VEH
+            {
+                English = "Align vehicle for takeoff";
+                German = "Fahrzeug für den Start ausrichten";
+            };
+
             class BOX_CHECK_Empty
             {
                 English = "No free box available";
