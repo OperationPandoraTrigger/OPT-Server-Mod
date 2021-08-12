@@ -104,7 +104,7 @@ DFUNC(createOrder) =
     _veh setDamage 0;
 
     // Jet auf Startbahn wenden
-    if (typeOf _veh in EGVAR(SHOP,jets)) then
+    if (typeOf _veh in EGVAR(SHOP,planes) + EGVAR(SHOP,jets)) then
     {
         _veh addAction
         [
