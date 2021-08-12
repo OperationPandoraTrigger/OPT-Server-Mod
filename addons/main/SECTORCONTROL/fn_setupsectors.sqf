@@ -147,10 +147,8 @@ GVAR(AllSectors) =
         ],
 
         [   // Flaggen-Positionen
-//            [14487, 14696, 0],
-//            [15967.9, 14971.9, 0.75]
-            [14875.8, 14796.3, 0],  // Tech-Check Schlacht 4
-            [14778.9, 14591.9, 0]   // Tech-Check Schlacht 4
+            [14487, 14696, 0],
+            [15967.9, 14971.9, 0.75]
         ],
 
         [   // Beam-Positionen
@@ -401,8 +399,9 @@ GVAR(AllSectors) =
         ],
 
         [   // Flaggen-Positionen
-            [8537.76, 13397.5, 0],
-            [7100.92, 11966.6, 0]
+//            [8537.76, 13397.5, 0],
+//            [7100.92, 11966.6, 0]
+            [7693.24,11819.2,0] // TechCheck Schlacht #5
         ],
 
         [   // Beam-Positionen
@@ -590,8 +589,9 @@ GVAR(AllSectors) =
         ],
 
         [   // Flaggen-Positionen
-            [8307.75, 10460.9, 0],
-            [7176.88, 10171.9, 0]
+//            [8307.75, 10460.9, 0],
+//            [7176.88, 10171.9, 0]
+            [7561.26,10997.3,0] // TechCheck Schlacht #5
         ],
 
         [   // Beam-Positionen
