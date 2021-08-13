@@ -63,9 +63,10 @@ This event happens every time a soldier enters a vehicle.
     {
         _veh addAction
         [
-            format["<t color='#00FF00' size='1.25'>%1</t>", MLOC(ROTATE_VEH)],
+            format["<t color='#00FF00'>%1</t>", MLOC(ROTATE_VEH)],
             {
                 params ["_target", "_caller", "_actionId", "_arguments"];
+                _target setPosASL (getPosASL _target vectorAdd [0, 0, 0.2]);
                 _target setdir getdir nearestObject [_target, 'Land_HelipadSquare_F'];
             },
             nil,
@@ -73,8 +74,8 @@ This event happens every time a soldier enters a vehicle.
             false,
             true,
             "",
-            "(nearestObject [_target, 'Land_HelipadSquare_F'] distance _target < 30 && alive _target && speed _target < 3 && vehicle player == player)",
-            30,
+            "(nearestObject [_target, 'Land_HelipadSquare_F'] distance _target < 50 && alive _target && speed _target < 3 && vehicle player == player)",
+            50,
             false,
             "",
             ""
