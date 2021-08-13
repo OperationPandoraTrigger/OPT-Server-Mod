@@ -48,10 +48,10 @@ GVAR(idPadCheckCreate) =
 
 DFUNC(createOrder) =
 {
-    //Hardcap Send Auslösung Zurücksetzen
+    // Hardcap Send Auslösung Zurücksetzen
     GVAR(Daten_send) = false;
 
-    //Init Vars
+    // Init Vars
     private _airRaketenmagazin = [];
     private _airRaketenweapon = [];
     private _airGunmagazin = [];
@@ -65,7 +65,7 @@ DFUNC(createOrder) =
     private _weaponold = [];
     private _magazinold = [];
 
-    //Datensatz aufschüsseln
+    // Datensatz aufschüsseln
     private _class = GVAR(order_Datensatz) select 0;
     _airRaketenweapon = GVAR(order_Datensatz) select 1;
     _airRaketenmagazin = GVAR(order_Datensatz) select 2;
@@ -86,7 +86,7 @@ DFUNC(createOrder) =
         _offset = GVAR(DB_all) select (_path select 0) select 11;
     };
 
-    //Objekt Erstellung
+    // Objekt Erstellung
     private _posi = getPosASL GVAR(order_box) vectorAdd [0, 0, 1000];
     private _veh = createVehicle [_class, _posi, [], 0, "NONE"];
     _veh enableDynamicSimulation true;
@@ -95,7 +95,7 @@ DFUNC(createOrder) =
     _posi = getPosASL GVAR(order_box) vectorAdd [0, 0, _offset];
     _veh setPosASL _posi;
 
-    //check Box liegt im Wasser
+    // check Box liegt im Wasser
     if ((surfaceIsWater (position GVAR(order_box))) and (_veh isKindOf "Ship")) then
     {
         _veh setPos [(position GVAR(order_box) select 0), (position GVAR(order_box) select 1), _offset];
@@ -103,30 +103,7 @@ DFUNC(createOrder) =
 
     _veh setDamage 0;
 
-    // Jet auf Startbahn wenden
-    if (typeOf _veh in EGVAR(SHOP,planes) + EGVAR(SHOP,jets)) then
-    {
-        _veh addAction
-        [
-            format["%1", MLOC(ROTATE_VEH)],
-            {
-                params ["_target", "_caller", "_actionId", "_arguments"];
-                _target setdir getdir nearestObject [_target, 'Land_HelipadSquare_F'];
-            },
-            nil,
-            5,
-            false,
-            false,
-            "",
-            "(nearestObject [_target, 'Land_HelipadSquare_F'] distance _target < 30 && alive _target && speed _target < 3 && vehicle player == player)",
-            30,
-            false,
-            "",
-            ""
-        ];
-    };
-
-    //Fahrzeug bewaffnen
+    // Fahrzeug bewaffnen
     if (((count _airRaketenmagazin) > 0) or
         ((count _airGunmagazin) > 0) or
         ((count _vehMagazin) > 0)) then
@@ -149,7 +126,6 @@ DFUNC(createOrder) =
     if (GVAR(order_moveInVeh)) then
     {
         Player moveInDriver _veh;
-
     };
 
     // Erzeugt Crew für Drohnen

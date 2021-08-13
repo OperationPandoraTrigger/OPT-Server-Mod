@@ -27,8 +27,8 @@ This event happens every time a soldier enters a vehicle.
 // ersetzt player add action in onPlayerRespawn (viel performanter, da kein pulling)
 ["LandVehicle", "init",
 {
-    params ["_vec"];
-    _vec addAction
+    params ["_veh"];
+    _veh addAction
     [
         format["<t color='#00D3BF'>%1</t>", MLOC(FLIP_VEH)],
         {[] call FUNC(unFlip);},
@@ -37,14 +37,15 @@ This event happens every time a soldier enters a vehicle.
         false,
         true,
         "",
-        format["[_target, player] call %1", QFUNC(flipCheck)]
+        format["[_target, player] call %1", QFUNC(flipCheck)],
+        15
     ];
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
 ["Air", "init",
 {
-    params ["_vec"];
-    _vec addAction
+    params ["_veh"];
+    _veh addAction
     [
         format["<t color='#00D3BF'>%1</t>", MLOC(FLIP_VEH)],
         {[] call FUNC(unFlip);},
@@ -53,9 +54,32 @@ This event happens every time a soldier enters a vehicle.
         false,
         true,
         "",
-        format["[_target, player] call %1", QFUNC(flipCheck)]
+        format["[_target, player] call %1", QFUNC(flipCheck)],
+        15
     ];
 
+    // Jet auf Startbahn wenden
+    if (typeOf _veh in EGVAR(SHOP,planes) + EGVAR(SHOP,jets)) then
+    {
+        _veh addAction
+        [
+            format["<t color='#00FF00' size='1.25'>%1</t>", MLOC(ROTATE_VEH)],
+            {
+                params ["_target", "_caller", "_actionId", "_arguments"];
+                _target setdir getdir nearestObject [_target, 'Land_HelipadSquare_F'];
+            },
+            nil,
+            5,
+            false,
+            true,
+            "",
+            "(nearestObject [_target, 'Land_HelipadSquare_F'] distance _target < 30 && alive _target && speed _target < 3 && vehicle player == player)",
+            30,
+            false,
+            "",
+            ""
+        ];
+    };
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
 // Engine EH für Piloten -> Log transportierte Soldaten
@@ -68,19 +92,19 @@ This event happens every time a soldier enters a vehicle.
     (Since Arma 3 v1.36)
     turret: Array - turret path
     */
-    params ["_vec", "_pos", "_unit"];
+    params ["_veh", "_pos", "_unit"];
 
     // speichere Pilot als Variable des Objekts Heli
     if (_pos isEqualTo "driver") then
     {
-        _vec setVariable [QGVAR(transport_pilot), _unit];
+        _veh setVariable [QGVAR(transport_pilot), _unit];
 
         //erhöhter Treibstoffverbrauch bei Lufteinheiten
-        [_vec] call OPT_GELDZEIT_fnc_spritverbrauch;
+        [_veh] call OPT_GELDZEIT_fnc_spritverbrauch;
     };
 
     // speichere aktuellen Ort an der Einheit
-    _unit setVariable [QGVAR(transport_start_loc), getPosASL _vec];
+    _unit setVariable [QGVAR(transport_start_loc), getPosASL _veh];
 }] call CBA_fnc_addClassEventHandler;
 
 ["Air", "GetOut",
@@ -91,7 +115,7 @@ This event happens every time a soldier enters a vehicle.
     unit: Object - Unit that left the vehicle
     turret: Array - turret path (since Arma 3 v1.36)
     */
-    params ["_vec", "_pos", "_unit", "_turret"];
+    params ["_veh", "_pos", "_unit", "_turret"];
     if (_unit isEqualTo player) then
     {
         // logge transport von Spielern
@@ -109,16 +133,16 @@ This event happens every time a soldier enters a vehicle.
     (Since Arma 3 v1.36)
     turret: Array - turret path
     */
-    params ["_vec", "_pos", "_unit"];
+    params ["_veh", "_pos", "_unit"];
 
     // speichere Fahrer als Variable des Objekts
     if (_pos isEqualTo "driver") then
     {
-        _vec setVariable [QGVAR(transport_driver), _unit];
+        _veh setVariable [QGVAR(transport_driver), _unit];
     };
 
     // speichere aktuellen Ort an der Einheit
-    _unit setVariable [QGVAR(transport_start_loc), getPosASL _vec];
+    _unit setVariable [QGVAR(transport_start_loc), getPosASL _veh];
 }] call CBA_fnc_addClassEventHandler;
 
 ["LandVehicle", "GetOut",
@@ -129,18 +153,18 @@ This event happens every time a soldier enters a vehicle.
     unit: Object - Unit that left the vehicle
     turret: Array - turret path (since Arma 3 v1.36)
     */
-    params ["_vec", "_pos", "_unit", "_turret"];
+    params ["_veh", "_pos", "_unit", "_turret"];
     if (_unit isEqualTo player) then
     {
         // logge transport von Spielern
         #define MinDistance 50
 
-        private _driver = _vec getVariable [QGVAR(transport_driver), objNull];
+        private _driver = _veh getVariable [QGVAR(transport_driver), objNull];
 
         // end script if either player or pilot is unconscious
         if ((lifeState _unit isEqualTo "INCAPACITATED") or (lifeState _driver isEqualTo "INCAPACITATED")) exitWith {};
 
-        private _dis = (getPos _vec) distance2D (_unit getVariable QGVAR(transport_start_loc));
+        private _dis = (getPos _veh) distance2D (_unit getVariable QGVAR(transport_start_loc));
 
         if (_pos in ["cargo", "gunner"] and (_dis > MinDistance)) then
         {

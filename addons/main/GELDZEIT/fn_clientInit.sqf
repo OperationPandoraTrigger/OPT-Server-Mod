@@ -87,8 +87,18 @@
     ] call CBA_fnc_addKeybind;
 
     // Init Beam-Schilder
-    west_Basis_Teleport1 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];
-    west_Basis_Teleport2 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];
-    east_Basis_Teleport1 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];
-    east_Basis_Teleport2 addAction [format["<t color='#00ff0f' size='1.25'>%1</t>", MLOC(BEAM)], {[] call FUNC(beam);},"", 6, false, true, "", ""];
+    {
+        _x addAction
+        [
+            format["<t color='#00FF00' size='1.25'>%1</t>", MLOC(BEAM)],
+            {[] call FUNC(beam);},
+            nil,
+            6,
+            false,
+            true,
+            "",
+            "(nearestObject [_target, 'Land_HelipadCivil_F'] distance _this < 10)",
+            20
+        ];
+    } forEach [west_Basis_Teleport1, west_Basis_Teleport2, east_Basis_Teleport1, east_Basis_Teleport2];
 }] call CFUNC(addEventhandler);
