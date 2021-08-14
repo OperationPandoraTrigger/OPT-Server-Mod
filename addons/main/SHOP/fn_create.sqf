@@ -106,8 +106,8 @@ DFUNC(createOrder) =
     // Verursacher der letzten Beschädigung speichern
     _veh addEventHandler ["Dammaged",
     {
-    	params ["_unit", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"]; 
-    	if (!isNull _shooter && _shooter != currentPilot _unit) then
+        params ["_unit", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"]; 
+        if (!isNull _shooter && _shooter != currentPilot _unit) then
         {
             _unit setVariable ["lastDamage", [serverTime, _shooter], true];
         };
