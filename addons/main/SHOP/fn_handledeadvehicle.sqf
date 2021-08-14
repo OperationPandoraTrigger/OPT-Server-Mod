@@ -26,6 +26,17 @@ params
     "_useEffects"
 ];
 
+// Wer zuletzt (bis zu 1 Minute vorher) einen Schaden verursacht hat, wird als Täter geführt. (1 Minute wegen fehlgeschlagener Notlandung, etc.)
+private _lastDamage = _veh getVariable "lastDamage";
+if !(isNil "_lastDamage") then
+{
+    private _lastDamageAge = serverTime - (_lastDamage select 0);
+    if (_lastDamageAge < 60) then
+    {
+        _instigator = _lastDamage select 1;
+    };
+};
+
 // log destroyed vehicle and killer
 [_veh, _instigator, _source] call FUNC(writeKill);
 
