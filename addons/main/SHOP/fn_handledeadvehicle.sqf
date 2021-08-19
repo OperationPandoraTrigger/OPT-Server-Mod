@@ -59,11 +59,19 @@ if (!(_veh isKindOf "CAManBase") && {position _veh inArea "NATO_T_Zone1" || posi
     private _entry = GVAR(RECENT_ORDERS) get (netId _veh);
     GVAR(RECENT_ORDERS) deleteAt (netId _veh);
     private _age = serverTime - (_entry select 0);
-    private _gutschrift = _entry select 5;
     if (_age <= 5) then
     {
+        // Geld-Gutschrift
+        private _gutschrift = _entry select 5;
         _txt = format["%1\n\nEs erfolgt eine Gutschrift über %2€.", _txt, _gutschrift];
         [_entry select 1, _entry select 2, _entry select 3, netId _veh, _entry select 4, _gutschrift, "+"] remoteExecCall ["OPT_GELDZEIT_fnc_updateBudget", 2, false];
+
+        // Hardcap-Gutschrift
+        private _hardcaparray = GVAR(Hardcap_pool) get (typeOf _veh);
+        private _hardcapleft = _hardcaparray select 0;
+        private _hardcaptotal = _hardcaparray select 1;
+        GVAR(Hardcap_pool) set [typeOf _veh, [_hardcapleft + 1, _hardcaptotal]];
+        publicVariable QGVAR(Hardcap_pool);
     };
 
     // message only for those within a 200m radius

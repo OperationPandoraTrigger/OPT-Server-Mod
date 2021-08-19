@@ -48,6 +48,7 @@ class CfgCLibModules
             FNC(create);
             FNC(Init);
             FNC(checkpad);
+            FNC(hardcapinit);
         };
 
         MODULE(REVIVE)
