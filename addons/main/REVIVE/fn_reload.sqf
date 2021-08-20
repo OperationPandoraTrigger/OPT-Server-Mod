@@ -20,17 +20,17 @@ private _mags = magazines player;
 // dont reload when player has no magazine
 if (_mag != "") then
 {
-	player removePrimaryWeaponItem _mag;
+    player removePrimaryWeaponItem _mag;
 
     // two possible sequences to prevent full or empty inventory
     if (_mag in _mags) then
-	{
-		reload player;
-		player addMagazine _mag;
-	}
-	else
-	{
-		player addMagazine _mag;
-		reload player;
-	};
+    {
+        reload player;
+        player addMagazine _mag;
+    }
+    else
+    {
+        player addMagazine _mag;
+        reload player;
+    };
 };
