@@ -76,4 +76,7 @@ DFUNC(eigenversorgung) =
 
     // Spielerbeitritt loggen, bei Spielstart und wenn über die Lobby ein neuer Slot gewählt wird
     ["Player", "Joined", [getPlayerUID player, name player, side player]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
+
+    // Waffe nachladen (evtl. hilft das gegen den Soundbug)
+    call FUNC(reload);
 }] call CFUNC(addEventhandler);

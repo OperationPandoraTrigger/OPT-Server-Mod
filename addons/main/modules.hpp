@@ -65,6 +65,7 @@ class CfgCLibModules
             FNC(handleaction);
             FNC(checkplaymove);
             FNC(release);
+            FNC(reload);
             FNC(clientInitcbaclassevents);
         };
 

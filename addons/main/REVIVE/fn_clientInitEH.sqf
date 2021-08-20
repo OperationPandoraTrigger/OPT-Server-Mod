@@ -14,7 +14,7 @@
 *
 * Global:
 * No
-* 
+*
 * API:
 * No
 *
@@ -104,6 +104,9 @@ DFUNC(isUnconscious) =
 
     // Shop Dialoge freigeben
     OPT_SHOP_LOCK = false;
+
+    // Waffe nachladen (evtl. hilft das gegen den Soundbug)
+    call FUNC(reload);
 }] call CFUNC(addEventhandler);
 
 
