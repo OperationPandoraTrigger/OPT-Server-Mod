@@ -16,7 +16,7 @@
 *
 * Public:
 * No
-* 
+*
 * Global:
 * No
 *
@@ -78,57 +78,51 @@ GVAR(startzeit) = time;
     private _MedicNearLabel_Meter = _display displayCtrl IDC_REVIVE_MEDICNEARLABEL_METER;
     private _BleedoutBar_Text = _display displayCtrl IDC_REVIVE_BLEEDOUTBAR_TEXT;
 
-    private _dist = GVAR(playerdist);
-    private _units = nearestObjects [getpos player, ["CAManBase"], _dist] - [player];
-    private _poolplayer = [];
-    private _hintMsg = "";
-    private _sidesoldat = 0;
-    private _sideplayer = 0;
+    private _sideplayer = getnumber (configFile >> "CfgVehicles" >> (typeof player) >> "side");
+    private _nextGuyName = "";
+    private _nextGuyDistance = 0;
 
     // Spieler im Bereich finden
+    private _units = nearestObjects [getpos player, ["CAManBase"], GVAR(playerdist)] - [player];
     if (count _units > 0) then
     {
-        _units apply
         {
-            //Nur Sanis
-            _sidesoldat =getnumber (configFile >> "CfgVehicles" >> (typeof _x) >> "side");
-            _sideplayer =getnumber (configFile >> "CfgVehicles" >> (typeof player) >> "side");
+            private _sidesoldat = getnumber (configFile >> "CfgVehicles" >> (typeof _x) >> "side");
 
-            if ((_sidesoldat isEqualTo _sideplayer) and (typeOf _x in EGVAR(RULES,medic)) and !(lifeState _x isEqualTo "INCAPACITATED") and (incapacitatedState _x == "") and GVAR(onlysani)) then
+            if (getDammage _x < GVAR(MAX_DAMAGE) && _sidesoldat == _sideplayer) then
             {
-                _poolplayer pushBack _x;
+                // Zeige nur Sanis an
+                if (GVAR(onlysani)) then
+                {
+                    if (typeOf _x in EGVAR(RULES,medic)) then
+                    {
+                        _nextGuyName = name _x;
+                        _nextGuyDistance = round (_x distance player);
+                    };
+                }
+                // Zeige alle Spieler an
+                else
+                {
+                    _nextGuyName = name _x;
+                    _nextGuyDistance = round (_x distance player);
+                };
             };
-            //alle Spieler
-            if ((_sidesoldat isEqualTo _sideplayer) and !(lifeState _x isEqualTo "INCAPACITATED") and (incapacitatedState _x == "") and !GVAR(onlysani)) then
-            {
-                _poolplayer pushBack _x;
-            };
-        };
-
-        _poolplayer = _poolplayer apply { [_x distance player, _x] };
+            if (_nextGuyName != "") then {break};
+        } forEach _units;
     };
 
-    //Ordnung nächster Sani
-    private _next_poolplayer = objNull;
-
-    if (count _poolplayer > 0) then
+    private _hintMsg = "";
+    if (_nextGuyName != "") then
     {
-        _next_poolplayer = (_poolplayer select 0 select 1);
-
-        if (!isNull _next_poolplayer)  then
-        {
-            private _poolplayer_Name = name _next_poolplayer;
-            private _abst = floor (_poolplayer select 0 select 0);
-            _hintMsg = format[MLOC(MEDIC_DISTANCE), _poolplayer_Name, _abst];
-        };
+        _hintMsg = format[MLOC(MEDIC_DISTANCE), _nextGuyName, _nextGuyDistance];
     }
     else
     {
         _hintMsg = MLOC(NO_MEDIC);
     };
 
-    // Textausgabe über MEdic entfernung
-    _MedicNearLabel_Meter ctrlSetText format ["%1",_hintMsg];
+    // Textausgabe über Medic entfernung
+    _MedicNearLabel_Meter ctrlSetText format ["%1", _hintMsg];
 
     //Auto Respwan nach Ablauf der Ausblutzeit
     if (((GVAR(ausblutzeit) - (time - GVAR(startzeit))) < 0)) then

@@ -253,14 +253,14 @@ class CfgCLibLocalisation
 
             class MEDIC_DISTANCE
             {
-                English = "Paramedic %1 is %2m away.";
-                German = "Sanitäter %1 ist %2m entfernt.";
+                English = "%1 is %2 m away.";
+                German = "%1 ist %2 m entfernt.";
             };
 
             class NO_MEDIC
             {
-                English = "No paramedics nearby.";
-                German = "Kein Sanitäter in der Nähe.";
+                English = "No rescuers nearby.";
+                German = "Keine Helfer in der Nähe.";
             };
 
             class CARRY_DRAG
