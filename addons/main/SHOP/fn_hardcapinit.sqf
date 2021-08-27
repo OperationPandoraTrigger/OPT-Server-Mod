@@ -34,7 +34,7 @@ GVAR(Hardcap_pool) = createHashMap;
 if (_hardcapMode > 0) then
 {
     {
-        _x params ["_Classname", "_BuyPrice", "_SellPrice", "_SellPriceEnemy", "_NeedsCargo", "_GivesCargo", "_Draggable", "_Carriable", "_CanRepair", "_GrabOffset", "_GrabDir", "_HeightOffset", "_Side", "_HardCap"];
+        _x params ["_Classname", "_BuyPrice", "_SellPrice", "_SellPriceEnemy", "_NeedsCargo", "_GivesCargo", "_Draggable", "_Carriable", "_CanRepair", "_CanBeam", "_GrabOffset", "_GrabDir", "_HeightOffset", "_Side", "_HardCap"];
         private _hardcap = _HardCap select (_hardcapMode - 1);
         if (_hardcap >= 0) then
         {
