@@ -48,42 +48,32 @@
     // TFAR-Frequenzüberschneidungen zwischen den Fraktionen vermeiden
     // ARF:     30 - 59 MHz
     // SWORD:   60 - 87 MHz
+    private _playerFaction = "";
     switch playerSide do
     {
         case west:
         {
-            switch EGVAR(SECTORCONTROL,nato_faction) do
-            {
-                case "ARF":
-                {
-                    GVAR(MIN_FREQ) = 30;
-                    GVAR(MAX_FREQ) = 59;
-                };
-
-                case "SWORD":
-                {
-                    GVAR(MIN_FREQ) = 60;
-                    GVAR(MAX_FREQ) = 87;
-                };
-            };
+            _playerFaction = EGVAR(SECTORCONTROL,nato_faction);
         };
 
         case east:
         {
-            switch EGVAR(SECTORCONTROL,csat_faction) do
-            {
-                case "ARF":
-                {
-                    GVAR(MIN_FREQ) = 30;
-                    GVAR(MAX_FREQ) = 59;
-                };
+            _playerFaction = EGVAR(SECTORCONTROL,csat_faction);
+        };
+    };
 
-                case "SWORD":
-                {
-                    GVAR(MIN_FREQ) = 60;
-                    GVAR(MAX_FREQ) = 87;
-                };
-            };
+    switch _playerFaction do
+    {
+        case "ARF":
+        {
+            GVAR(MIN_FREQ) = 30;
+            GVAR(MAX_FREQ) = 59;
+        };
+
+        case "SWORD":
+        {
+            GVAR(MIN_FREQ) = 60;
+            GVAR(MAX_FREQ) = 87;
         };
     };
 

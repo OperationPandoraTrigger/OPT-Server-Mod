@@ -38,9 +38,6 @@ GVAR(LOCK) = true;
 //Hardcap Send Auslösung Zurücksetzen
 GVAR(Daten_send) = false;
 
-//Spieler Seite bestimmen
-private _side = playerside;
-
 //Shopart bestimmen
 GVAR(vehicleType) = _type;
 private _pool = [];
@@ -129,7 +126,7 @@ switch (GVAR(vehicleType)) do
 {
     case "choppers" :
     {
-        switch (_side) do
+        switch playerSide do
         {
             case west:
             {
@@ -155,7 +152,7 @@ switch (GVAR(vehicleType)) do
 
     case "planes" :
     {
-        switch (_side) do
+        switch playerSide do
         {
             case west:
             {
@@ -193,7 +190,7 @@ switch (GVAR(vehicleType)) do
 
     case "vehicles":
     {
-        switch (_side) do
+        switch playerSide do
         {
             case west:
             {
@@ -217,7 +214,7 @@ switch (GVAR(vehicleType)) do
 
     case "supplies" :
     {
-        switch (_side) do
+        switch playerSide do
         {
             case west:
             {
@@ -243,7 +240,7 @@ switch (GVAR(vehicleType)) do
 
     case "sea":
     {
-        switch (_side) do
+        switch playerSide do
         {
             case west:
             {
@@ -266,7 +263,7 @@ switch (GVAR(vehicleType)) do
     };
     default
     {
-        switch (_side) do
+        switch playerSide do
         {
             case west:
             {
@@ -332,16 +329,30 @@ for "_i" from 0 to (_Objektanzahl-1) do
 };
 
 // Flagge setzen
-switch (_side) do
+private _playerFaction = "";
+switch playerSide do
 {
     case west:
     {
-        _rscPicture ctrlSetText "\opt\opt_client\addons\core\bilder\flag_finland.paa";
+        _playerFaction = EGVAR(SECTORCONTROL,nato_faction);
     };
 
     case east:
     {
-        _rscPicture ctrlSetText "\opt\opt_client\addons\core\bilder\flag_soviet_union.paa";
+        _playerFaction = EGVAR(SECTORCONTROL,csat_faction);
+    };
+};
+
+switch _playerFaction do
+{
+    case "ARF":
+    {
+        _rscPicture ctrlSetText "\opt\opt_client\addons\core\bilder\arf_logo.paa";
+    };
+
+    case "SWORD":
+    {
+        _rscPicture ctrlSetText "\opt\opt_client\addons\core\bilder\sword_logo.paa";
     };
 };
 

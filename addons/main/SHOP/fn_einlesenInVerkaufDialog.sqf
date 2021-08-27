@@ -35,9 +35,6 @@ params
 if (GVAR(LOCK)) exitWith {};
 GVAR(LOCK) = true;
 
-//Spieler Seite bestimmen
-private _side = playerside;
-
 //Dialog erstellen
 private _success = createDialog "DialogVerkaufs";
 
@@ -71,20 +68,32 @@ GVAR(vehicleType) = _type;
 [_budget] call opt_common_fnc_renderbudget;
 
 // Flagge setzen
-switch (_side) do
+private _playerFaction = "";
+switch playerSide do
 {
     case west:
     {
-        _rscPicture ctrlSetText "\opt\opt_client\addons\core\bilder\flag_finland.paa";
-
+        _playerFaction = EGVAR(SECTORCONTROL,nato_faction);
         GVAR(pads) = [VerkaufsBoxWest];
     };
 
     case east:
     {
-        _rscPicture ctrlSetText "\opt\opt_client\addons\core\bilder\flag_soviet_union.paa";
-
+        _playerFaction = EGVAR(SECTORCONTROL,csat_faction);
         GVAR(pads) = [VerkaufsBoxEast];
+    };
+};
+
+switch _playerFaction do
+{
+    case "ARF":
+    {
+        _rscPicture ctrlSetText "\opt\opt_client\addons\core\bilder\arf_logo.paa";
+    };
+
+    case "SWORD":
+    {
+        _rscPicture ctrlSetText "\opt\opt_client\addons\core\bilder\sword_logo.paa";
     };
 };
 
