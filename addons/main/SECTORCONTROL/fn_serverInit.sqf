@@ -30,15 +30,6 @@ publicVariable QGVAR(csat_points);
 GVAR(nato_points) = 0;
 publicVariable QGVAR(nato_points);
 
-GVAR(draw) = 0;
-publicVariable QGVAR(draw);
-
-GVAR(csat_win)= 0;
-publicVariable QGVAR(csat_win);
-
-GVAR(nato_win) = 0;
-publicVariable QGVAR(nato_win);
-
 GVAR(dominator) = sideUnknown;
 publicVariable QGVAR(dominator);
 
@@ -65,7 +56,7 @@ DFUNC(startflagsetup) =
     // Flaggentexturen festlegen
     GVAR(westflag) = "\opt\opt_client\addons\core\bilder\" + toLower EGVAR(SECTORCONTROL,nato_faction) + "_fahne.paa";
     GVAR(eastflag) = "\opt\opt_client\addons\core\bilder\" + toLower EGVAR(SECTORCONTROL,csat_faction) + "_fahne.paa";
-    
+
     // Finale Fahnenmasten und Markierungen setzen
     [] call FUNC(setupflagpoles);
     [FUNC(startflagsetup), {(OPT_GELDZEIT_GAMESTAGE == GAMESTAGE_WAR)}, "Awesome Delay"] call CLib_fnc_waitUntil;

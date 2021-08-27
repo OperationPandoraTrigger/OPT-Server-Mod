@@ -28,41 +28,38 @@
 */
 #include "macros.hpp"
 
+GVAR(END) = "END_DRAW";
+GVAR(VICTORY) = true;
+
+private _playerFaction = "";
+switch playerSide do
+{
+    case west:
+    {
+        _playerFaction = EGVAR(SECTORCONTROL,nato_faction);
+    };
+
+    case east:
+    {
+        _playerFaction = EGVAR(SECTORCONTROL,csat_faction);
+    };
+};
+
 // Ermittle Sieger
+private _winnerFaction = "";
 if (EGVAR(SECTORCONTROL,csat_points) != EGVAR(SECTORCONTROL,nato_points)) then
 {
     if (EGVAR(SECTORCONTROL,csat_points) > EGVAR(SECTORCONTROL,nato_points)) then
     {
-        GVAR(csat_win) = 1;
+        _winnerFaction = EGVAR(SECTORCONTROL,csat_faction);
     }
     else
     {
-        GVAR(nato_win) = 1;
+        _winnerFaction = EGVAR(SECTORCONTROL,nato_faction);
     };
+    GVAR(END) = "END_" + _winnerFaction;
 };
-
-DFUNC(endscreen) =
-{
-    removeallweapons player;
-    private _sideidplayer = playerSide call BIS_fnc_sideID;
-
-    // Auswahl Bildschirmanzeige und Ende der Mission
-    private _end = switch (true) do
-    {
-        case (_sideidplayer == 1 && {GVAR(nato_win) == 1}) : {["END1",true,true]};
-        case (_sideidplayer == 1 && {GVAR(csat_win) == 1}) : {["END2",false,true]};
-
-        case (_sideidplayer == 0 && {GVAR(nato_win) == 1}) : {["END1",false,true]};
-        case (_sideidplayer == 0 && {GVAR(csat_win) == 1}) : {["END2",true,true]};
-
-        default {["END4",true,true]};
-    };
-
-    _end spawn BIS_fnc_endMission;
-
-    GVAR(camera) cameraEffect ["terminate", "back"];
-    camDestroy GVAR(camera);
-};
+if (_playerFaction != _winnerFaction) then {GVAR(VICTORY) = false};
 
 //End Bildschirm
 private _camPos = vehicle player;
@@ -75,4 +72,9 @@ showCinemaBorder false;
 GVAR(camera) camSetRelPos [0,10,5];
 GVAR(camera) camCommit 10;
 
-[FUNC(endscreen), 10,""] call CFUNC(wait);
+[{
+    removeAllWeapons player;
+    [GVAR(END), GVAR(VICTORY), true] call BIS_fnc_endMission;
+    GVAR(camera) cameraEffect ["terminate", "back"];
+    camDestroy GVAR(camera);
+}, 10, ""] call CFUNC(wait);
