@@ -105,8 +105,8 @@ DFUNC(isUnconscious) =
     // Shop Dialoge freigeben
     OPT_SHOP_LOCK = false;
 
-    // Waffe nachladen (evtl. hilft das gegen den Soundbug)
-    call FUNC(reload);
+    // Waffe neu ausrüsten (evtl. hilft das gegen den Soundbug)
+    call FUNC(weaponreequip);
 }] call CFUNC(addEventhandler);
 
 
