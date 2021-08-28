@@ -31,6 +31,7 @@ private _distance = 0;
 // Bestimmung der Fortbewegungsart
 if (vehicle player == player) then
 {
+    _isPilot = true;
     if (surfaceIsWater position player) then {_travelMode = TRAVELMODE_SWIM}
     else {_travelMode = TRAVELMODE_WALK};
 }
@@ -58,30 +59,27 @@ if (!isNil QGVAR(LAST_POSITION)) then
         {
             case TRAVELMODE_WALK:
             {
-                ["Transport", "Walk", [nil, nil, nil, getPlayerUID player, name player, side player, _distance]] remoteExec [QEFUNC(LOGGING,writelog), 2];
+                ["Transport", "Walk", [getPlayerUID player, name player, side player, GVAR(LAST_ISPILOT), _distance]] remoteExec [QEFUNC(LOGGING,writelog), 2];
             };
 
             case TRAVELMODE_SWIM:
             {
-                ["Transport", "Swim", [nil, nil, nil, getPlayerUID player, name player, side player, _distance]] remoteExec [QEFUNC(LOGGING,writelog), 2];
+                ["Transport", "Swim", [getPlayerUID player, name player, side player, GVAR(LAST_ISPILOT), _distance]] remoteExec [QEFUNC(LOGGING,writelog), 2];
             };
 
             case TRAVELMODE_BOAT:
             {
-                if (GVAR(LAST_ISPILOT)) then {["Transport", "Boat", [nil, nil, nil, getPlayerUID player, name player, side player, _distance]] remoteExec [QEFUNC(LOGGING,writelog), 2]}
-                else {["Transport", "Boat", [getPlayerUID player, name player, side player, nil, nil, nil, _distance]] remoteExec [QEFUNC(LOGGING,writelog), 2]};
+                ["Transport", "Boat", [getPlayerUID player, name player, side player, GVAR(LAST_ISPILOT), _distance]] remoteExec [QEFUNC(LOGGING,writelog), 2];
             };
 
             case TRAVELMODE_DRIVE:
             {
-                if (GVAR(LAST_ISPILOT)) then {["Transport", "Drive", [nil, nil, nil, getPlayerUID player, name player, side player, _distance]] remoteExec [QEFUNC(LOGGING,writelog), 2]}
-                else {["Transport", "Drive", [getPlayerUID player, name player, side player, nil, nil, nil, _distance]] remoteExec [QEFUNC(LOGGING,writelog), 2]};
+                ["Transport", "Drive", [getPlayerUID player, name player, side player, GVAR(LAST_ISPILOT), _distance]] remoteExec [QEFUNC(LOGGING,writelog), 2];
             };
 
             case TRAVELMODE_FLY:
             {
-                if (GVAR(LAST_ISPILOT)) then {["Transport", "Fly", [nil, nil, nil, getPlayerUID player, name player, side player, _distance]] remoteExec [QEFUNC(LOGGING,writelog), 2]}
-                else {["Transport", "Fly", [getPlayerUID player, name player, side player, nil, nil, nil, _distance]] remoteExec [QEFUNC(LOGGING,writelog), 2]};
+                ["Transport", "Fly", [getPlayerUID player, name player, side player, GVAR(LAST_ISPILOT), _distance]] remoteExec [QEFUNC(LOGGING,writelog), 2];
             };
         };
         _distance = 0;

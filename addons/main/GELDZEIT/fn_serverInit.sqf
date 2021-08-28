@@ -24,7 +24,7 @@
 
 #include "macros.hpp"
 
-#define LOGGING_VERSION 10
+#define LOGGING_VERSION 11
 
 // Missionsnamen-Rekonstruktor (Symlink opt_latest -> opt_v123)
 GVAR(missionName) = missionName;
