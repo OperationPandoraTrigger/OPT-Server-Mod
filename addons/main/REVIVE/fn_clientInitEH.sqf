@@ -28,7 +28,6 @@
 DFUNC(isUnconscious) =
 {
     params ["_unit"];
-
     if (_unit isEqualTo player) then
     {
         //Var für GPS setzen
@@ -37,8 +36,7 @@ DFUNC(isUnconscious) =
         //Einheit aus Fahrzeug entfernen
         if (vehicle _unit != _unit) then
         {
-            unAssignVehicle _unit;
-            _unit action ["GetOut", vehicle _unit];
+            moveOut _unit;
         };
 
         //Sprengladungen mit Todmannschalter zünden
@@ -140,6 +138,7 @@ DFUNC(playercheckINCAPACITATED) =
 {
     if ((lifeState GVAR(playerHandleDamage_unit) isEqualTo "INCAPACITATED") and isNil "OPT_REVIVE_unconsciousHandler") then
     {
+        call EFUNC(LOGGING,tracker);    // Reisesdistanz loggen
         OPT_REVIVE_unconsciousHandler = true;
         [GVAR(playerHandleDamage_unit), GVAR(playerHandleDamage_instigator), GVAR(playerHandleDamage_source), GVAR(playerHandleDamage_projectile)] remoteExecCall ["OPT_SHOP_fnc_writeKill", 2, false];
 

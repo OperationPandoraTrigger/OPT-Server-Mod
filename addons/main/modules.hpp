@@ -41,7 +41,6 @@ class CfgCLibModules
             FNC(flipcheck);
             FNC(unflip);
             FNC(writekill);
-            FNC(writetransportdistance);
             FNC(serverInit);
             FNC(hardcap_send);
             FNC(hardcap_check);
@@ -165,6 +164,8 @@ class CfgCLibModules
 
         MODULE(LOGGING)
         {
+            FNC(clientInit);
+            FNC(tracker);
             FNC(writelog);
         };
 
