@@ -19,7 +19,7 @@
 *
 * API:
 * No
-* 
+*
 * Example:
 * [] call Func(create);
 */
@@ -83,7 +83,8 @@ DFUNC(createOrder) =
     private _path = [GVAR(DB_all), _class] call BIS_fnc_findNestedElement;
     if (count _path > 0) then
     {
-        _offset = GVAR(DB_all) select (_path select 0) select 11;
+        GVAR(DB_all) select (_path select 0) params ["_Classname", "_BuyPrice", "_SellPrice", "_SellPriceEnemy", "_NeedsCargo", "_GivesCargo", "_Draggable", "_Carriable", "_CanRepair", "_CanBeam", "_GrabOffset", "_GrabDir", "_HeightOffset", "_Side", "_HardCap"];
+        _offset = _HeightOffset;
     };
 
     // Objekt Erstellung
@@ -106,7 +107,7 @@ DFUNC(createOrder) =
     // Verursacher der letzten Beschädigung speichern
     _veh addEventHandler ["Dammaged",
     {
-        params ["_unit", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"]; 
+        params ["_unit", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"];
         if (!isNull _shooter && _shooter != currentPilot _unit) then
         {
             _unit setVariable ["lastDamage", [serverTime, _shooter], true];
