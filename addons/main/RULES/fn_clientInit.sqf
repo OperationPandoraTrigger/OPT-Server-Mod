@@ -96,7 +96,32 @@
             #define TFAR_FREQ_OFFSET 2
             (_settings select TFAR_FREQ_OFFSET) set [_channel, _oldFrequency];
             [_radio, _settings] call ([TFAR_fnc_setSwSettings, TFAR_fnc_setLrSettings] select _isLRRadio);
+
+            // TFAR LR-Gearsave
+            if (_isLRRadio) then
+            {
+                GVAR(TFAR_LR_SETTINGS) = _settings;
+            };
         };
+    }] call CBA_fnc_addEventHandler;
+
+    // TFAR LR-Gearsave
+    ["TFAR_event_OnLRchannelSet",
+    {
+        params ["_TFAR_currentUnit", "_radio", "_radio_qualifier", "_newChannel", "_isAdditional", "_oldChannel"];
+        GVAR(TFAR_LR_SETTINGS) = [_radio, _radio_qualifier] call TFAR_fnc_getLrSettings;
+    }] call CBA_fnc_addEventHandler;
+
+    ["TFAR_event_OnLRstereoSet",
+    {
+        params ["_TFAR_currentUnit", "_radio", "_radio_qualifier", "", ""];
+        GVAR(TFAR_LR_SETTINGS) = [_radio, _radio_qualifier] call TFAR_fnc_getLrSettings;
+    }] call CBA_fnc_addEventHandler;
+
+    ["TFAR_event_OnLRvolumeSet",
+    {
+        params ["_TFAR_currentUnit", "_radio", "_radio_qualifier", ""];
+        GVAR(TFAR_LR_SETTINGS) = [_radio, _radio_qualifier] call TFAR_fnc_getLrSettings;
     }] call CBA_fnc_addEventHandler;
 
     if (!(OPT_SECTORCONTROL_trainingon)) then

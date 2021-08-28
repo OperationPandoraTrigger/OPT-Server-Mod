@@ -76,39 +76,52 @@ DFUNC(isUnconscious) =
 
     1 enableChannel true;
 
-    // TFAR Encryption beim Joinen neu setzen
-    private _radio_key = "";
-
-    switch (playerSide) do
-    {
-        case west:
-        {
-            _radio_key = "_bluefor";
-        };
-        case east:
-        {
-            _radio_key = "_opfor";
-        };
-        default { };
-    };
-
-    if (call TFAR_fnc_haveSWRadio) then
-    {
-        [call TFAR_fnc_activeSwRadio, _radio_key] call TFAR_fnc_setSwRadioCode;
-    };
-
-    if (call TFAR_fnc_haveLRRadio) then
-    {
-        [call TFAR_fnc_activeLrRadio, _radio_key] call TFAR_fnc_setLrRadioCode;
-    };
-
     // Shop Dialoge freigeben
     OPT_SHOP_LOCK = false;
 
-    // Waffe neu ausrüsten (evtl. hilft das gegen den Soundbug)
-    call FUNC(weaponreequip);
-}] call CFUNC(addEventhandler);
+    // Verzögert ausführen, da es sonst zeitgleich oder leicht vor dem ACE-Gearsave läuft
+    [{
+        // TFAR Encryption beim Joinen neu setzen
+        private _radio_key = "_disabled";
 
+        switch (playerSide) do
+        {
+            case west:
+            {
+                _radio_key = "_bluefor";
+            };
+
+            case east:
+            {
+                _radio_key = "_opfor";
+            };
+        };
+
+        if (call TFAR_fnc_haveSWRadio) then
+        {
+            [call TFAR_fnc_activeSwRadio, _radio_key] call TFAR_fnc_setSwRadioCode;
+        };
+
+        if (call TFAR_fnc_haveLRRadio) then
+        {
+            // TFAR LR-Settings wiederherstellen (incl. radio_key neu forciert)
+            if (!isNil QEGVAR(RULES,TFAR_LR_SETTINGS)) then
+            {
+                #define TFAR_CODE_OFFSET 4
+                EGVAR(RULES,TFAR_LR_SETTINGS) set [TFAR_CODE_OFFSET, _radio_key];
+                [call TFAR_fnc_activeLrRadio, EGVAR(RULES,TFAR_LR_SETTINGS)] call TFAR_fnc_setLrSettings;
+            };
+        }
+        else
+        {
+            // Alte Settings löschen wenn man umgeslottet und keine LR-Funke mehr hat
+            EGVAR(RULES,TFAR_LR_SETTINGS) = nil;
+        };
+
+        // Waffe neu ausrüsten (evtl. hilft das gegen den Soundbug)
+        call FUNC(weaponreequip);
+    }, 1, ""] call CFUNC(wait);
+}] call CFUNC(addEventhandler);
 
 // Avoid Handcuffing
 // by TeTeT for OPT
