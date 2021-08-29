@@ -96,6 +96,9 @@ class CfgCLibModules
             FNC(initCBASettings);
             FNC(serverInit);
             FNC(beam);
+            FNC(beam2);
+            FNC(onloaddialog);
+            FNC(beammapmove);
             FNC(teleport);
         };
 

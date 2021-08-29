@@ -48,7 +48,9 @@ if (EGVAR(SECTORCONTROL,trainingon)) then
         QGVAR(cba_addKeybind_beam_dialog),
         ["Beam-Funktion", "Beamen im Teleportbereich zur anderen Basis."],
         {
-            [] call FUNC(beam);
+//            [] call FUNC(beam);
+            createDialog "DialogBeam";
+
         },
         {},
         [
