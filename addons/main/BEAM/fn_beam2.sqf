@@ -36,15 +36,28 @@ params
 
 if (_idx == -1) exitWith {};
 
-private _beamingAllowed = true;
-private _beamingRestrictedVehicle = false;
-private _isBeamDuringMissionForbidden = true;
-private _beamLevel = (GVAR(box) select _idx) select 2;
 private _beamPosition = (GVAR(box) select _idx) select 0;
+private _beamLevel = (GVAR(box) select _idx) select 2;
+private _newPos = [0, 0, 0];
 
-if (_beamingAllowed) then
+// Sicheren freien Ort für die eigene Fahrzeuggröße suchen
+private _size = (sizeOf typeOf (vehicle player)) / 2;
+_newPos = [_beamPosition, 0, 20, _size, 0, 1] call BIS_fnc_findSafePos;
+
+// Abbruch, wenn kein sicherer Ort gefunden wird. (BIS_fnc_findSafePos gibt dann die Kartenmitte zurück)
+private _worldsize = (worldName call BIS_fnc_mapSize);
+if ((_newPos select 0) == (_worldsize / 2) && (_newPos select 1) == (_worldsize / 2)) then
 {
-    player setPos _beamPosition;
+    hint format ["%1", MLOC(BEAM_BUSY)];
+    playSound "additemok";
+}
+// Den Teleport durchführen. (Zuerst in die Luft zum sicheren Ausrichten und dann final platzieren)
+else
+{
+    _newPos set [2, 0];
+    _newPos = AGLToASL _newPos;
+    vehicle player setPosASL (_newPos vectorAdd [0, 0, 100]);
+    vehicle player setVectorUp surfaceNormal _newPos;
+    vehicle player setPosASL _newPos;
+    closeDialog 0;
 };
-
-closeDialog 0;

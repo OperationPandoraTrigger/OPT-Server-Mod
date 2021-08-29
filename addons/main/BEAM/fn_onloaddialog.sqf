@@ -51,16 +51,52 @@ disableSerialization;
 private _display = findDisplay DIALOG_BEAM_IDD;
 private _lb = _display displayCtrl DIALOG_BEAM_LB_IDC;
 
-GVAR(box) = [];
+// Zentrum des Kampfgeschehens suchen (Mittelpunkt zwischen allen Fahnen, die als Verteidigungsfahnen zur Verfügung stehen)
+private _center = nil;
 {
-    private _sector = _forEachIndex;
     {
-        private _distance = [(position player distance _x) / 1000, 1, 1] call CBA_fnc_formatNumber;
-        GVAR(box) pushBack [_x, format ["Sektor %1 / Fahne %2 (%3 km)", _sector, _forEachIndex + 1, _distance], _forEachIndex + 1];
-    } forEach (_x select 1);    // select 1 = flaggen positionen // select 2 = beam orte
-} forEach EGVAR(SECTORCONTROL,AllSectors);
+        if (isNil "_center") then {_center = _x}
+        else {_center = (_center vectorAdd _x) vectorMultiply 0.5};
+    } forEach ((EGVAR(SECTORCONTROL,AllSectors) select _x) select 1);  // select 1 = flaggen positionen
+} forEach (EGVAR(SECTORCONTROL,nato_sectors) + EGVAR(SECTORCONTROL,csat_sectors));
 
-// writing out box elements in level corresponding colors
+// Beampunkteliste füllen
+GVAR(box) = [];
+switch (playerSide) do
+{
+    case west:
+    {
+        // Beam-Pads in Basis und Außenposten zur Liste der Beampunkte hinzufügen
+        GVAR(box) pushBack [position west_Basis_Teleport1, "Heimatbasis", 0];
+        GVAR(box) pushBack [position west_Basis_Teleport2, "Außenposten", 0];
+
+        // Die Fahnenpositionen aus den eigenen Sektoren als Beampunkte hinzufügen
+        {
+            private _sector = _x;
+            {
+                private _distance = [(_center distance _x) / 1000, 1, 1] call CBA_fnc_formatNumber;
+                GVAR(box) pushBack [_x, format ["Sektor %1 / Fahne %2 (%3 km)", _sector, _forEachIndex + 1, _distance], _forEachIndex + 1];
+            } forEach ((EGVAR(SECTORCONTROL,AllSectors) select _x) select 1);  // select 1 = flaggen positionen // select 2 = beam orte
+        } forEach EGVAR(SECTORCONTROL,nato_allsectors);
+    };
+
+    case east:
+    {
+        // Beam-Pads in Basis und Außenposten zur Liste der Beampunkte hinzufügen
+        GVAR(box) pushBack [position east_Basis_Teleport1, "Heimatbasis", 0];
+        GVAR(box) pushBack [position east_Basis_Teleport2, "Außenposten", 0];
+
+        // Die Fahnenpositionen aus den eigenen Sektoren als Beampunkte hinzufügen
+        {
+            private _sector = _x;
+            {
+                private _distance = [(_center distance _x) / 1000, 1, 1] call CBA_fnc_formatNumber;
+                GVAR(box) pushBack [_x, format ["Sektor %1 / Fahne %2 (%3 km)", _sector, _forEachIndex + 1, _distance], _forEachIndex + 1];
+            } forEach ((EGVAR(SECTORCONTROL,AllSectors) select _x) select 1);  // select 1 = flaggen positionen // select 2 = beam orte
+        } forEach EGVAR(SECTORCONTROL,csat_allsectors);
+    };
+};
+
 {
     private _pos = _x select 0;
     private _name = _x select 1;
