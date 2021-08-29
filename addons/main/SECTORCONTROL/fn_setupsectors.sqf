@@ -52,9 +52,8 @@ GVAR(AllSectors) =
         ],
 
         [   // Flaggen-Positionen
-//            [1041.75, 16821.9, 0],
-//            [4752.63, 13806.3, 0]
-            [1879, 16253, 0] // TechCheck Schlacht #6
+            [1041.75, 16821.9, 0],
+            [4752.63, 13806.3, 0]
         ],
 
         [   // Beam-Positionen
@@ -366,9 +365,8 @@ GVAR(AllSectors) =
         ],
 
         [   // Flaggen-Positionen
-//            [1829.5, 14566.8, 0],
-//            [3678.37, 13845.2, 0]
-            [1986, 15255, 0] // TechCheck Schlacht #6
+            [1829.5, 14566.8, 0],
+            [3678.37, 13845.2, 0]
         ],
 
         [   // Beam-Positionen

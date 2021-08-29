@@ -73,6 +73,22 @@ if (EGVAR(SECTORCONTROL,trainingon)) then
         ];
     } forEach [west_Basis_Teleport1, west_Basis_Teleport2, east_Basis_Teleport1, east_Basis_Teleport2];
 
+    // Init Beam-Schilder (TEST des neuen Beamsystems)
+    {
+        _x addAction
+        [
+            format["<t color='#FF0000' size='1.25'>Neues Beam-System</t>"],
+            {createDialog "DialogBeam";},
+            nil,
+            6,
+            false,
+            true,
+            "",
+            "(nearestObject [_target, 'Land_HelipadCivil_F'] distance _this < 10)",
+            20
+        ];
+    } forEach [west_Basis_Teleport1, west_Basis_Teleport2, east_Basis_Teleport1, east_Basis_Teleport2];
+
     // Beim Karte-Schließen den Teleport-EH entfernen, damit man später aus versehen nicht teleportieren kann
     (finddisplay 12) displayAddEventhandler["KeyDown",
     {
