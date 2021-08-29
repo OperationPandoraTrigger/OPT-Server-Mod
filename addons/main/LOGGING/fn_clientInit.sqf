@@ -22,7 +22,7 @@
 * call FUNC(clientinit);
 */
 #include "macros.hpp"
-#define TRACKER_REFRESH 10
+#define TRACKER_REFRESH 5
 
 ["missionStarted",
 {
@@ -31,7 +31,7 @@
 
     // Tracker für Reisedistanz alle 'TRACKER_REFRESH' Sekunden ausführen
     [{
-        call FUNC(tracker);
+        false call FUNC(tracker);
     }, TRACKER_REFRESH, _this] call CFUNC(addPerFrameHandler);
 
 }] call CFUNC(addEventhandler);

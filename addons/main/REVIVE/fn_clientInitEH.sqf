@@ -138,7 +138,7 @@ DFUNC(playercheckINCAPACITATED) =
 {
     if ((lifeState GVAR(playerHandleDamage_unit) isEqualTo "INCAPACITATED") and isNil "OPT_REVIVE_unconsciousHandler") then
     {
-        call EFUNC(LOGGING,tracker);    // Reisesdistanz loggen
+        true call EFUNC(LOGGING,tracker);    // Reisesdistanz loggen
         OPT_REVIVE_unconsciousHandler = true;
         [GVAR(playerHandleDamage_unit), GVAR(playerHandleDamage_instigator), GVAR(playerHandleDamage_source), GVAR(playerHandleDamage_projectile)] remoteExecCall ["OPT_SHOP_fnc_writeKill", 2, false];
 

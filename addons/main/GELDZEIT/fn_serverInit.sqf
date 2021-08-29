@@ -93,6 +93,7 @@ GVAR(playerList) = [];
                 {
                     GVAR(GAMESTAGE) = GAMESTAGE_WAR;
                     publicVariable QGVAR(GAMESTAGE);
+                    GVAR(TRACKER_ONCE) = true;
 
                     // Missionsstart loggen
                     ["Mission", "Start", [0, 0, GVAR(missionName)]] call EFUNC(LOGGING,writelog);
@@ -114,6 +115,13 @@ GVAR(playerList) = [];
 
             case GAMESTAGE_WAR:
             {
+                // 5 Sekunden vor Ablauf der Spielzeit einmalig die letzte Reisedistanz der Spieler loggen (sonst wäre es wegen remoteExec zu knapp vor dem "Mission End")
+                if (serverTime > (GVAR(Timestamp_Spielzeitende) - 5) && GVAR(TRACKER_ONCE)) then
+                {
+                    true remoteExecCall [QEFUNC(LOGGING,tracker), -2];
+                    GVAR(TRACKER_ONCE) = false;
+                };
+
                 // Nach Ablauf der Spielzeit das Ende auslösen
                 if (serverTime > GVAR(Timestamp_Spielzeitende)) then
                 {

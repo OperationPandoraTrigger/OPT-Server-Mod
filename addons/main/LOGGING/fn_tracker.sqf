@@ -5,16 +5,19 @@
 * When player changes vehicle or dies, the distance gets logged.
 *
 * Arguments:
-* None
+* 0: <BOOL> (optional) set to true to force log distance (when dead or game over)
 *
 * Return Value:
 * None
 *
 * Example:
 * call EFUNC(LOGGING,tracker);
+* true call EFUNC(LOGGING,tracker);
 *
 */
 #include "macros.hpp"
+
+params [["_abort", false]];
 
 #define TRAVELMODE_NONE 0
 #define TRAVELMODE_WALK 1
@@ -47,7 +50,7 @@ else
 };
 
 // Stoppe Auswertung als Beifahrer ohne Pilot
-if (isNull _pilot) exitWith {};
+if (isNull _pilot && !_abort) exitWith {};
 
 // Es liegen Daten vor
 if (!isNil QGVAR(LAST_POSITION)) then
@@ -55,7 +58,7 @@ if (!isNil QGVAR(LAST_POSITION)) then
     _distance = GVAR(LAST_DISTANCE) + (_position distance GVAR(LAST_POSITION));
 
     // Veränderung des Fortbewegungsmittels oder des Pilots -> Wegstrecke loggen und nullen
-    if (GVAR(LAST_TRAVELMODE) != _travelMode || GVAR(LAST_PILOT) != _pilot) then
+    if (GVAR(LAST_TRAVELMODE) != _travelMode || GVAR(LAST_PILOT) != _pilot || _abort) then
     {
         private _travelString = "";
         switch (GVAR(LAST_TRAVELMODE)) do

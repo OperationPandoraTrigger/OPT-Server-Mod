@@ -91,7 +91,7 @@
         [_veh] call OPT_GELDZEIT_fnc_spritverbrauch;
     };
 
-    if (_unit isEqualTo player) then {call EFUNC(LOGGING,tracker)}; // Logge Reisedistanz
+    if (_unit isEqualTo player) then {true call EFUNC(LOGGING,tracker)}; // Logge Reisedistanz
 }] call CBA_fnc_addClassEventHandler;
 
 ["Air", "GetOut",
@@ -103,7 +103,7 @@
     turret: Array - turret path (since Arma 3 v1.36)
     */
     params ["_veh", "_pos", "_unit", "_turret"];
-    if (_unit isEqualTo player) then {call EFUNC(LOGGING,tracker)}; // Logge Reisedistanz
+    if (_unit isEqualTo player) then {true call EFUNC(LOGGING,tracker)}; // Logge Reisedistanz
 }] call CBA_fnc_addClassEventHandler;
 
 ["LandVehicle", "GetIn",
@@ -116,7 +116,7 @@
     turret: Array - turret path
     */
     params ["_veh", "_pos", "_unit"];
-    if (_unit isEqualTo player) then {call EFUNC(LOGGING,tracker)}; // Logge Reisedistanz
+    if (_unit isEqualTo player) then {true call EFUNC(LOGGING,tracker)}; // Logge Reisedistanz
 }] call CBA_fnc_addClassEventHandler;
 
 ["LandVehicle", "GetOut",
@@ -128,7 +128,7 @@
     turret: Array - turret path (since Arma 3 v1.36)
     */
     params ["_veh", "_pos", "_unit", "_turret"];
-    if (_unit isEqualTo player) then {call EFUNC(LOGGING,tracker)}; // Logge Reisedistanz
+    if (_unit isEqualTo player) then {true call EFUNC(LOGGING,tracker)}; // Logge Reisedistanz
 }] call CBA_fnc_addClassEventHandler;
 
 ["Ship", "GetIn",
@@ -141,7 +141,7 @@
     turret: Array - turret path
     */
     params ["_veh", "_pos", "_unit"];
-    if (_unit isEqualTo player) then {call EFUNC(LOGGING,tracker)}; // Logge Reisedistanz
+    if (_unit isEqualTo player) then {true call EFUNC(LOGGING,tracker)}; // Logge Reisedistanz
 }] call CBA_fnc_addClassEventHandler;
 
 ["Ship", "GetOut",
@@ -153,5 +153,5 @@
     turret: Array - turret path (since Arma 3 v1.36)
     */
     params ["_veh", "_pos", "_unit", "_turret"];
-    if (_unit isEqualTo player) then {call EFUNC(LOGGING,tracker)}; // Logge Reisedistanz
+    if (_unit isEqualTo player) then {true call EFUNC(LOGGING,tracker)}; // Logge Reisedistanz
 }] call CBA_fnc_addClassEventHandler;
