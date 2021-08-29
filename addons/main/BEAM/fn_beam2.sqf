@@ -7,7 +7,7 @@
 * James
 *
 * Edit by:
-* Manu
+* Manu, form
 *
 * Arguments:
 * 0: <NUMBER> current selected index of listbox control
@@ -23,11 +23,6 @@
 *
 * Global:
 * no
-*
-* Sideeffects:
-* black out and black in effect for player
-* local gui messages for player
-* log message "%1 (%2) wurde nach %3 gebeamt"
 *
 * Example:
 * [0] spawn EFUNC(beam,beam);
@@ -47,7 +42,6 @@ private _isBeamDuringMissionForbidden = true;
 private _beamLevel = (GVAR(box) select _idx) select 2;
 private _beamPosition = (GVAR(box) select _idx) select 0;
 
-/* initiates beaming process if all previous checks are passed ( _beamingAllowed == true )*/
 if (_beamingAllowed) then
 {
     player setPos _beamPosition;

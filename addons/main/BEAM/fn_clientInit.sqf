@@ -48,9 +48,7 @@ if (EGVAR(SECTORCONTROL,trainingon)) then
         QGVAR(cba_addKeybind_beam_dialog),
         ["Beam-Funktion", "Beamen im Teleportbereich zur anderen Basis."],
         {
-//            [] call FUNC(beam);
-            createDialog "DialogBeam";
-
+            [] call FUNC(beam);
         },
         {},
         [
@@ -65,6 +63,22 @@ if (EGVAR(SECTORCONTROL,trainingon)) then
         [
             format["<t color='#00FF00' size='1.25'>%1</t>", MLOC(BEAM)],
             {[] call FUNC(beam);},
+            nil,
+            6,
+            false,
+            true,
+            "",
+            "(nearestObject [_target, 'Land_HelipadCivil_F'] distance _this < 10)",
+            20
+        ];
+    } forEach [west_Basis_Teleport1, west_Basis_Teleport2, east_Basis_Teleport1, east_Basis_Teleport2];
+
+    // Init Beam-Schilder (TEST des neuen Beamsystems)
+    {
+        _x addAction
+        [
+            format["<t color='#FF0000' size='1.25'>Neues Beam-System</t>"],
+            {createDialog "DialogBeam";},
             nil,
             6,
             false,

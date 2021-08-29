@@ -55,8 +55,8 @@ GVAR(box) = [];
 {
     private _sector = _forEachIndex;
     {
-            private _distance = [(position player distance _x) / 1000, 1, 1] call CBA_fnc_formatNumber;
-            GVAR(box) pushBack [_x, format ["Sektor %1 / Fahne %2 (%3 km)", _sector, _forEachIndex + 1, _distance], _forEachIndex + 1];
+        private _distance = [(position player distance _x) / 1000, 1, 1] call CBA_fnc_formatNumber;
+        GVAR(box) pushBack [_x, format ["Sektor %1 / Fahne %2 (%3 km)", _sector, _forEachIndex + 1, _distance], _forEachIndex + 1];
     } forEach (_x select 1);    // select 1 = flaggen positionen // select 2 = beam orte
 } forEach EGVAR(SECTORCONTROL,AllSectors);
 
