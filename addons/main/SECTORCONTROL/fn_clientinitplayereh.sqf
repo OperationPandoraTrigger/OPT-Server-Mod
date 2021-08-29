@@ -18,7 +18,7 @@ if (GVAR(trainingon)) then
 {
     // EH für das Versetzen der Flaggen im Trainingsmodus
     // use stackedEH, cannot override default behavior
-    [QGVAR(move_flag), "onMapSingleClick", 
+    [QGVAR(move_flag), "onMapSingleClick",
     {
         /*
         units: Array - leader selected units, same as groupSelectedUnits (same as _units param)
@@ -62,15 +62,6 @@ if (GVAR(trainingon)) then
         };
 
     }] call BIS_fnc_addStackedEventHandler;
-
-    // Teleport funktion
-    player addAction [("<t color=""#f0bfbfbf"">" + ("Teleport") + "</t>"), {[] call FUNC(teleport)}, [], 0, false, true, '', "alive _target"];
-
-    ["Respawn",
-    {
-        // Teleport funktion
-        player addAction [("<t color=""#f0bfbfbf"">" + ("Teleport") + "</t>"), {[] call FUNC(teleport)}, [], 0, false, true, '', "alive _target"];
-    }] call CFUNC(addEventhandler);
 };
 
 // EH für Minensperre

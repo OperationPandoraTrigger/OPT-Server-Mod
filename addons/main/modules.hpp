@@ -84,10 +84,19 @@ class CfgCLibModules
             FNC(updateplayerlist);
             FNC(earplugs);
             FNC(briefing);
-            FNC(beam);
             FNC(haftladungen);
             FNC(clientInitcbaclassevents);
             FNC(spritverbrauch);
+        };
+
+        MODULE(BEAM)
+        {
+            dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
+            FNC(clientInit);
+            FNC(initCBASettings);
+            FNC(serverInit);
+            FNC(beam);
+            FNC(teleport);
         };
 
         MODULE(SECTORCONTROL)
@@ -109,7 +118,6 @@ class CfgCLibModules
             FNC(setupflagpoles);
             FNC(Punkte);
             FNC(captureflag);
-            FNC(teleport);
             FNC(drawline);
         };
 

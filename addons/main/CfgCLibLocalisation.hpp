@@ -3,6 +3,39 @@ class CfgCLibLocalisation
     supportedLanguages[] = {"English", "German"};
     class OPT
     {
+        class BEAM
+        {
+            class BEAM
+            {
+                English = "Beam to other base";
+                German = "Beam zur anderen Basis";
+            };
+
+            class BEAM_BUSY
+            {
+                English = "Unfortunately, the target position is currently occupied.";
+                German = "Die Zielposition ist derzeit leider belegt.";
+            };
+
+            class TELEPORT_MSG_HEADER
+            {
+                English = "Teleport";
+                German = "Teleport";
+            };
+
+            class TELEPORT_MSG
+            {
+                English = "Select position to teleport with left click.";
+                German = "Position zum Teleport mit Linksklick auswählen.";
+            };
+
+            class TELEPORT_FAIL
+            {
+                English = "Teleporting failed. There is not enough space at the selected destination.";
+                German = "Teleport gescheitert. Am gewählten Ziel ist nicht genügend Platz vorhanden.";
+            };
+        };
+
         class SECTORCONTROL
         {
             class ATTACK_FLAG
@@ -63,24 +96,6 @@ class CfgCLibLocalisation
             {
                 English = "Capture the flag";
                 German = "Flagge ziehen";
-            };
-
-            class TELEPORT_MSG_HEADER
-            {
-                English = "Teleport";
-                German = "Teleport";
-            };
-
-            class TELEPORT_MSG
-            {
-                English = "Select position to teleport with left click.";
-                German = "Position zum Teleport mit Linksklick auswählen.";
-            };
-
-            class TELEPORT_FAIL
-            {
-                English = "Teleporting failed. There is not enough space at the selected destination.";
-                German = "Teleport gescheitert. Am gewählten Ziel ist nicht genügend Platz vorhanden.";
             };
         };
 
@@ -396,18 +411,6 @@ class CfgCLibLocalisation
             {
                 English = "Overdraft: %1 €";
                 German = "Dispo: %1 €";
-            };
-
-            class BEAM
-            {
-                English = "Beam to other base";
-                German = "Beam zur anderen Basis";
-            };
-
-            class BEAM_BUSY
-            {
-                English = "Unfortunately, the target position is currently occupied.";
-                German = "Die Zielposition ist derzeit leider belegt.";
             };
 
             class HAFTLADUNG
