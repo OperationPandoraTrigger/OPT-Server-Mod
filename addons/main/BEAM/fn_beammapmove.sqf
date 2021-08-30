@@ -38,8 +38,11 @@ params
 
 if (_idx == -1) exitWith {};
 
-private _fcDialog = findDisplay 444001;
-private _mapCtrl = _fcDialog displayCtrl 10007;
+#define DIALOG_BEAM_IDD 10000
+#define DIALOG_BEAM_map_IDC 10007
+
+private _fcDialog = findDisplay DIALOG_BEAM_IDD;
+private _mapCtrl = _fcDialog displayCtrl DIALOG_BEAM_map_IDC;
 private _mapFocus = (GVAR(box) select _idx) select 0;
 
 _mapCtrl ctrlMapAnimAdd [0, 0.1, _mapFocus];
