@@ -31,7 +31,7 @@ TimeToString =
 [{
     private _currentCutDisplay = uiNamespace getVariable "opt_hud_anzeige";
     //--------------------- update players ------------------------------------------
-    private _control = _currentCutDisplay displayCtrl 5101;
+    private _control = _currentCutDisplay displayCtrl 6101;
     private _playersStr = format [MLOC(PLAYERS), EGVAR(SECTORCONTROL,nato_faction), playersNumber west, playersNumber east, EGVAR(SECTORCONTROL,csat_faction)];
 
     // Anzeige updaten
@@ -39,14 +39,14 @@ TimeToString =
     _control ctrlShow true;
 
     //--------------------- update Budget ------------------------------------------
-    _control = _currentCutDisplay displayCtrl 5103;
+    _control = _currentCutDisplay displayCtrl 6103;
 
     [_control] call OPT_GELDZEIT_fnc_renderbudget;
 
     _control ctrlShow true;
 
     //----------------------- update score --------------------------------------------
-    _control = _currentCutDisplay displayCtrl 5104;
+    _control = _currentCutDisplay displayCtrl 6104;
     private _scoreStr = format [MLOC(POINTS), EGVAR(SECTORCONTROL,nato_faction), EGVAR(SECTORCONTROL,nato_points), EGVAR(SECTORCONTROL,csat_points), EGVAR(SECTORCONTROL,csat_faction)];
 
     // Anzeige updaten
@@ -55,7 +55,7 @@ TimeToString =
     _control ctrlShow true;
 
     //--------------------- update clock ---------------------------------------
-    _control = _currentCutDisplay displayCtrl 5105;
+    _control = _currentCutDisplay displayCtrl 6105;
 
     private _timeStr = "";
     private _timeElapsed = serverTime - OPT_GELDZEIT_startTime;
