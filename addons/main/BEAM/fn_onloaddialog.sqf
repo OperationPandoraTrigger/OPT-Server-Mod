@@ -53,12 +53,15 @@ private _lb = _display displayCtrl DIALOG_BEAM_LB_IDC;
 
 // Zentrum des Kampfgeschehens suchen (Mittelpunkt zwischen allen Fahnen, die als Verteidigungsfahnen zur Verfügung stehen)
 private _center = nil;
+private _i = 0;
 {
     {
+        _i = _i + 1;
         if (isNil "_center") then {_center = _x}
-        else {_center = (_center vectorAdd _x) vectorMultiply 0.5};
+        else {_center = _center vectorAdd _x};
     } forEach ((EGVAR(SECTORCONTROL,AllSectors) select _x) select 1);  // select 1 = flaggen positionen
 } forEach (EGVAR(SECTORCONTROL,nato_sectors) + EGVAR(SECTORCONTROL,csat_sectors));
+_center = _center vectorMultiply (1 / _i);
 
 // Beampunkteliste füllen
 GVAR(box) = [];
