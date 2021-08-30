@@ -157,7 +157,6 @@ _lb ctrlAddEventHandler [ "LBSelChanged",
     private _beampunkt = _display displayCtrl DIALOG_BEAM_LB_IDC;
     [lbCurSel _beampunkt] call FUNC(beamMapmove);
 
-    systemChat format ["B1%1",_beampunkt];
 }];
 
 // beamen ausführen
@@ -165,7 +164,7 @@ _button ctrlAddEventHandler [ "ButtonClick",
 {
     private _display = findDisplay DIALOG_BEAM_IDD;
     private _beampunkt = _display displayCtrl DIALOG_BEAM_LB_IDC;
-    systemChat format ["Bgo%1","go"];
+
     [lbCurSel _beampunkt] call FUNC(beam2);
     closeDialog 0;
 
