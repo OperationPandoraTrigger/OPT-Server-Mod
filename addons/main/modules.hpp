@@ -97,7 +97,7 @@ class CfgCLibModules
             FNC(serverInit);
             FNC(beam);
             FNC(beam2);
-            FNC(onloaddialog);
+            FNC(beamdialog);
             FNC(beammapmove);
             FNC(teleport);
         };

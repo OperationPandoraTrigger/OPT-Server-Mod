@@ -78,7 +78,7 @@ if (EGVAR(SECTORCONTROL,trainingon)) then
         _x addAction
         [
             format["<t color='#FF0000' size='1.25'>Neues Beam-System</t>"],
-            {createDialog "DialogBeam";},
+            {[] call FUNC(beamdialog);},
             nil,
             6,
             false,
