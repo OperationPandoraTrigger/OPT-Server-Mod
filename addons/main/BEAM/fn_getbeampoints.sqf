@@ -7,7 +7,8 @@
 *
 *
 * Arguments:
-* 0: playerSide. Can be west or east
+* 0: <playerSide> Can be west or east
+* 1: <bool> If true and player near beampoint, return list without that position
 *
 * Return Value:
 * Array of valid beampoints
@@ -27,12 +28,12 @@
 * no
 *
 * Example:
-* playerSide call FUNC(getbeampoints);
+* [playerSide, false] call FUNC(getbeampoints);
 */
 
 #include "macros.hpp"
 
-params [["_side", civilian]];
+params [["_side", civilian], ["_withoutPlayer", false]];
 
 private _Homebase = nil;
 private _Outpost = nil;
@@ -92,8 +93,11 @@ private _beampoints = [];
     private _pos = _x select 0;
     private _denied = false;
 
+    // Spieler schon vor Ort?
+    if (_withoutPlayer && _pos distance2D vehicle player < GVAR(SearchRadius)) then {_denied = true};
+
     // Punkt zu nah an allen möglichen A-Fahnen? (Nur während der Waffenruhe)
-    if (EGVAR(GELDZEIT,GAMESTAGE) != GAMESTAGE_WAR) then
+    if (!_denied && EGVAR(GELDZEIT,GAMESTAGE) != GAMESTAGE_WAR) then
     {
         {
             {

@@ -37,7 +37,7 @@ params
 if (_idx == -1) exitWith {};
 
 private _beamPosition = (GVAR(box) select _idx) select 0;
-private _beamLevel = (GVAR(box) select _idx) select 2;
+private _beamLevel = (GVAR(box) select _idx) select 3;
 private _newPos = [0, 0, 0];
 
 // Sicheren freien Ort für die eigene Fahrzeuggröße suchen

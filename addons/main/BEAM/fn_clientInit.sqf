@@ -115,6 +115,6 @@ if (EGVAR(SECTORCONTROL,trainingon)) then
                 _marker setMarkerTypeLocal "mil_dot";
                 _marker setMarkerTextLocal _markertext;
             };
-        } forEach (playerSide call FUNC(getbeampoints));
+        } forEach ([playerSide, false] call FUNC(getbeampoints));
     }, {(OPT_GELDZEIT_GAMESTAGE == GAMESTAGE_WAR)}, ""] call CLib_fnc_waitUntil;
 }] call CFUNC(addEventhandler);

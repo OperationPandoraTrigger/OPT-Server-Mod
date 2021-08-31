@@ -46,16 +46,13 @@ private _lb = _display displayCtrl DIALOG_BEAM_LB_IDC;
 private _button = _display displayCtrl DIALOG_BEAM_BU_IDC;
 
 // Array mit gültigen Beampunkten füllen
-GVAR(box) = playerSide call FUNC(getbeampoints);
+GVAR(box) = [playerSide, true] call FUNC(getbeampoints);
 
 // Listbox füllen
 {
     private _pos = _x select 0;
     private _name = _x select 1;
     private _lvl = _x select 3;
-
-    // Spieler schon vor Ort?
-    if (_pos distance2D vehicle player < GVAR(SearchRadius)) then {continue};
 
     private _index = lbAdd [DIALOG_BEAM_LB_IDC, _name];
 
