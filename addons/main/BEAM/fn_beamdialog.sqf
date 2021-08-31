@@ -31,6 +31,42 @@
 
 #include "macros.hpp"
 
+// Minimalentfernung zum Beam-Platz
+#define MIN_DISTANCE_TO_BEAMSPOT 10
+
+private _Basis = objNull;
+
+if ((playerSide == east) and ((player distance Teleport_CSAT_Basis1) < MIN_DISTANCE_TO_BEAMSPOT)) then
+{
+    _Basis = Teleport_CSAT_Basis2;
+};
+
+if ((playerSide == west) and ((player distance Teleport_NATO_Basis1) < MIN_DISTANCE_TO_BEAMSPOT)) then
+{
+    _Basis = Teleport_NATO_Basis2;
+};
+
+if ((playerSide == east) and ((player distance Teleport_CSAT_Basis2) < MIN_DISTANCE_TO_BEAMSPOT)) then
+{
+    _Basis = Teleport_CSAT_Basis1;
+};
+
+if ((playerSide == west) and ((player distance Teleport_NATO_Basis2) < MIN_DISTANCE_TO_BEAMSPOT)) then
+{
+    _Basis = Teleport_NATO_Basis1;
+};
+
+// Abbrechen wenn kein eigenes Beam-Pad in der Nähe ist
+if (isNull _Basis) exitWith {};
+
+// Array mit gültigen Beampunkten füllen
+GVAR(box) = [playerSide, true] call FUNC(getbeampoints);
+
+// Nicht berechtigt zum Beamen oder zu Fuß unterwegs? -> Automatische Auswahl von Index 0 (Heimatbasis oder Außenposten)
+if (!(typeOf vehicle player in EGVAR(SHOP,beamClasses)) || vehicle player isKindOf "CAManBase") exitWith {0 call FUNC(beam2)};
+
+// Fahrzeug abbremsen, bevor der Dialog aufgeht
+vehicle player setVelocity [0, 0, 0];
 createDialog "DialogBeam";
 
 #define DIALOG_BEAM_IDD 10000
@@ -44,9 +80,6 @@ createDialog "DialogBeam";
 private _display = findDisplay DIALOG_BEAM_IDD;
 private _lb = _display displayCtrl DIALOG_BEAM_LB_IDC;
 private _button = _display displayCtrl DIALOG_BEAM_BU_IDC;
-
-// Array mit gültigen Beampunkten füllen
-GVAR(box) = [playerSide, true] call FUNC(getbeampoints);
 
 // Listbox füllen
 {
