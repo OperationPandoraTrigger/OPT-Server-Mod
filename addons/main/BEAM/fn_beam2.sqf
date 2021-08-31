@@ -42,7 +42,7 @@ private _newPos = [0, 0, 0];
 
 // Sicheren freien Ort für die eigene Fahrzeuggröße suchen
 private _size = (sizeOf typeOf (vehicle player)) / 2;
-_newPos = [_beamPosition, 0, 20, _size, 0, 1] call BIS_fnc_findSafePos;
+_newPos = [_beamPosition, 0, GVAR(SearchRadius), _size, 0, 1] call BIS_fnc_findSafePos;
 
 // Abbruch, wenn kein sicherer Ort gefunden wird. (BIS_fnc_findSafePos gibt dann die Kartenmitte zurück)
 private _worldsize = (worldName call BIS_fnc_mapSize);
