@@ -100,4 +100,21 @@ if (EGVAR(SECTORCONTROL,trainingon)) then
             openMap false;
         };
     }];
+
+    // Nach Anlauf der Waffenruhe Marker für alle Beampunkte auf die Karte zeichnen
+    [{
+        {
+            private _pos = _x select 0;
+            private _markertext = _x select 2;
+
+            // Nur Marker mit Text (nicht die Heimatbasis und der Außenposten!)
+            if (_markertext != "") then
+            {
+                private _marker = createMarkerLocal [format ["beampointmarker_%1", _forEachIndex], _pos];
+                _marker setMarkerColorLocal "ColorBlack";
+                _marker setMarkerTypeLocal "mil_dot";
+                _marker setMarkerTextLocal _markertext;
+            };
+        } forEach (playerSide call FUNC(getbeampoints));
+    }, {(OPT_GELDZEIT_GAMESTAGE == GAMESTAGE_WAR)}, ""] call CLib_fnc_waitUntil;
 }] call CFUNC(addEventhandler);
