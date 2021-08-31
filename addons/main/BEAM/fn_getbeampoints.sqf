@@ -76,12 +76,17 @@ private _points = [];
 _points pushBack [position _Homebase, "Heimatbasis", "", 0];
 _points pushBack [position _Outpost, "Außenposten", "", 0];
 
-// Flaggen- und Beampositionen der eigenen Sektoren zur Liste der Beampunkte hinzufügen
+// V-Fahnen Positionen des gewählten Sektors zur Liste der Beampunkte hinzufügen
 {
     private _sector = _x;
     {
         _points pushBack [_x, format ["Sektor %1 / Fahne %2", _sector, _forEachIndex + 1], format ["F%1.%2", _sector, _forEachIndex + 1], 1];
     } forEach ((EGVAR(SECTORCONTROL,AllSectors) select _x) select 1);  // Flaggen Positionen
+} forEach _OwnSectorsSelected;
+
+// Beampositionen der eigenen Sektoren zur Liste der Beampunkte hinzufügen
+{
+    private _sector = _x;
     {
         _points pushBack [_x, format ["Sektor %1 / Beampunkt %2", _sector, _forEachIndex + 1], format ["BP%1.%2", _sector, _forEachIndex + 1], 2];
     } forEach ((EGVAR(SECTORCONTROL,AllSectors) select _x) select 2);  // Beam-Positionen

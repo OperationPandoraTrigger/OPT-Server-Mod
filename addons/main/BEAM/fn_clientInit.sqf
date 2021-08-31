@@ -41,9 +41,13 @@ DFUNC(DrawBeamMarkers) =
         if (_markertext != "") then
         {
             private _marker = createMarkerLocal [format ["beampointmarker_%1", _forEachIndex], _pos];
-            _marker setMarkerColorLocal "ColorBlack";
             _marker setMarkerTypeLocal "mil_dot";
             _marker setMarkerTextLocal _markertext;
+
+            // V-Fahnen Beams gelb markieren, Beampunkte schwarz
+            if (_markertext select [0,1] == "F") then {_marker setMarkerColorLocal "ColorYellow"}
+            else {_marker setMarkerColorLocal "ColorBlack"};
+
             GVAR(BeamMarkers) pushBack _marker;
         };
     } forEach ([playerSide, false] call FUNC(getbeampoints));

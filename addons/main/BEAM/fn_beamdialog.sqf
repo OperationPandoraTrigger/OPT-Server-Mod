@@ -62,8 +62,8 @@ if (isNull _Basis) exitWith {};
 // Array mit gültigen Beampunkten füllen
 GVAR(box) = [playerSide, true] call FUNC(getbeampoints);
 
-// Nicht berechtigt zum Beamen oder zu Fuß unterwegs? -> Automatische Auswahl von Index 0 (Heimatbasis oder Außenposten)
-if (!(typeOf vehicle player in EGVAR(SHOP,beamClasses)) || vehicle player isKindOf "CAManBase") exitWith {0 call FUNC(beam2)};
+// Nicht berechtigt zum Beamen? -> Automatische Auswahl von Index 0 (Heimatbasis oder Außenposten)
+if (vehicle player != player && !(typeOf vehicle player in EGVAR(SHOP,beamClasses))) exitWith {0 call FUNC(beam2)};
 
 // Fahrzeug abbremsen, bevor der Dialog aufgeht
 vehicle player setVelocity [0, 0, 0];
