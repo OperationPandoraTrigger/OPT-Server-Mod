@@ -99,6 +99,7 @@ class CfgCLibModules
             FNC(beam2);
             FNC(beamdialog);
             FNC(beammapmove);
+            FNC(getbeampoints);
             FNC(teleport);
         };
 

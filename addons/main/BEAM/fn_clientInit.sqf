@@ -28,6 +28,31 @@
 */
 #include "macros.hpp"
 
+GVAR(BeamMarkers) = [];
+DFUNC(DrawBeamMarkers) =
+{
+    // Bisherige Marker löschen
+    {deleteMarkerLocal _x} forEach GVAR(BeamMarkers);
+    GVAR(BeamMarkers) = [];
+    {
+        private _pos = _x select 0;
+        private _markertext = _x select 2;
+        // Nur Marker mit Text (nicht die Heimatbasis und der Außenposten!)
+        if (_markertext != "") then
+        {
+            private _marker = createMarkerLocal [format ["beampointmarker_%1", _forEachIndex], _pos];
+            _marker setMarkerTypeLocal "mil_dot";
+            _marker setMarkerTextLocal _markertext;
+
+            // V-Fahnen Beams gelb markieren, Beampunkte schwarz
+            if (_markertext select [0,1] == "F") then {_marker setMarkerColorLocal "ColorYellow"}
+            else {_marker setMarkerColorLocal "ColorBlack"};
+
+            GVAR(BeamMarkers) pushBack _marker;
+        };
+    } forEach ([playerSide, false] call FUNC(getbeampoints));
+};
+
 if (EGVAR(SECTORCONTROL,trainingon)) then
 {
     // Teleport funktion
@@ -47,9 +72,8 @@ if (EGVAR(SECTORCONTROL,trainingon)) then
         "OPT",
         QGVAR(cba_addKeybind_beam_dialog),
         ["Beam-Funktion", "Beamen im Teleportbereich zur anderen Basis."],
-        {
-            [] call FUNC(beam);
-        },
+//        {[] call FUNC(beam)},
+        {call FUNC(beamdialog)},
         {},
         [
             DIK_F2,
@@ -62,23 +86,8 @@ if (EGVAR(SECTORCONTROL,trainingon)) then
         _x addAction
         [
             format["<t color='#00FF00' size='1.25'>%1</t>", MLOC(BEAM)],
-            {[] call FUNC(beam);},
-            nil,
-            6,
-            false,
-            true,
-            "",
-            "(nearestObject [_target, 'Land_HelipadCivil_F'] distance _this < 10)",
-            20
-        ];
-    } forEach [west_Basis_Teleport1, west_Basis_Teleport2, east_Basis_Teleport1, east_Basis_Teleport2];
-
-    // Init Beam-Schilder (TEST des neuen Beamsystems)
-    {
-        _x addAction
-        [
-            format["<t color='#FF0000' size='1.25'>Neues Beam-System</t>"],
-            {[] call FUNC(beamdialog);},
+//            {[] call FUNC(beam)},
+            {call FUNC(beamdialog)},
             nil,
             6,
             false,
@@ -100,4 +109,10 @@ if (EGVAR(SECTORCONTROL,trainingon)) then
             openMap false;
         };
     }];
+
+    // In der Waffenruhe Marker für alle derzeitig gültigen Beampunkte zeichnen
+    call FUNC(DrawBeamMarkers);
+
+    // Nach Ablauf der Waffenruhe die Marker für alle nun gültigen Beampunkte aktualisieren
+    [{call FUNC(DrawBeamMarkers)}, {(OPT_GELDZEIT_GAMESTAGE == GAMESTAGE_WAR)}, ""] call CLib_fnc_waitUntil;
 }] call CFUNC(addEventhandler);
