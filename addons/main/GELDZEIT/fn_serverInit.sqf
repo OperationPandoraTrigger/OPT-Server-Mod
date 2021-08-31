@@ -99,9 +99,12 @@ GVAR(playerList) = [];
                     ["Mission", "Start", [0, 0, GVAR(missionName)]] call EFUNC(LOGGING,writelog);
 
                     // Nach Ablauf der Waffenruhe die Sektorenmarker von der Karte entfernen
+                    if !(OPT_SECTORCONTROL_trainingon && OPT_SECTORCONTROL_trainingDontDeleteSectorMarkers) then
                     {
-                        deleteMarker _x;
-                    } forEach (OPT_SECTORCONTROL_NATOSectorMarkers + OPT_SECTORCONTROL_CSATSectorMarkers);
+                        {
+                            deleteMarker _x;
+                        } forEach (OPT_SECTORCONTROL_NATOSectorMarkers + OPT_SECTORCONTROL_CSATSectorMarkers);
+                    };
 
                     // Nach Ablauf der Waffenruhe die Grenzlinien von der Karte entfernen
                     if !(OPT_SECTORCONTROL_trainingon && OPT_SECTORCONTROL_trainingDontDeleteBorderMarkers) then
