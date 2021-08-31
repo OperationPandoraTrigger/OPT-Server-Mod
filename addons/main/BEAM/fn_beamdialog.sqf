@@ -55,7 +55,7 @@ GVAR(box) = playerSide call FUNC(getbeampoints);
     private _lvl = _x select 3;
 
     // Spieler schon vor Ort?
-    if (_pos distance position vehicle player < GVAR(SearchRadius)) then {continue};
+    if (_pos distance2D vehicle player < GVAR(SearchRadius)) then {continue};
 
     private _index = lbAdd [DIALOG_BEAM_LB_IDC, _name];
 
