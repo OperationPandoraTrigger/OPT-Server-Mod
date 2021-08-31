@@ -74,8 +74,8 @@ createDialog "DialogBeam";
 #define DIALOG_BEAM_BU_IDC 10004
 
 #define DIALOG_BEAM_LB_COLOR_DEFAULT [ 0, 1, 0, 1 ]
-#define DIALOG_BEAM_LB_COLOR_LVL_ONE [ 1, 0.5, 0.5, 1 ]
-#define DIALOG_BEAM_LB_COLOR_LVL_TWO [ 1, 1, 0, 1 ]
+#define DIALOG_BEAM_LB_COLOR_LVL_ONE [ 1, 1, 1, 1 ]
+#define DIALOG_BEAM_LB_COLOR_LVL_TWO [0.7, 0.6, 0,1]
 
 private _display = findDisplay DIALOG_BEAM_IDD;
 private _lb = _display displayCtrl DIALOG_BEAM_LB_IDC;

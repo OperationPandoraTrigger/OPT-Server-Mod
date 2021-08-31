@@ -44,9 +44,9 @@ DFUNC(DrawBeamMarkers) =
             _marker setMarkerTypeLocal "mil_dot";
             _marker setMarkerTextLocal _markertext;
 
-            // V-Fahnen Beams gelb markieren, Beampunkte schwarz
-            if (_markertext select [0,1] == "F") then {_marker setMarkerColorLocal "ColorYellow"}
-            else {_marker setMarkerColorLocal "ColorBlack"};
+            // V-Fahnen Beams weiß markieren, Beampunkte dunkelgelb
+            if (_markertext select [0,1] == "F") then {_marker setMarkerColorLocal "ColorWhite"}
+            else {_marker setMarkerColorLocal "ColorUNKNOWN"};
 
             GVAR(BeamMarkers) pushBack _marker;
         };
