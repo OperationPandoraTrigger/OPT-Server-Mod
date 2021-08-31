@@ -97,7 +97,7 @@ private _beampoints = [];
     {
         {
             {
-                if (_pos distance2D _x < GVAR(MinDistance)) then {_denied = true};
+                if (_pos distance2D _x < (GVAR(MinDistance) * 1000)) then {_denied = true};
             } forEach ((EGVAR(SECTORCONTROL,AllSectors) select _x) select 1);
         } forEach _EnemySectorsSelected;
     };
@@ -106,7 +106,7 @@ private _beampoints = [];
     if (!_denied && EGVAR(GELDZEIT,GAMESTAGE) == GAMESTAGE_WAR) then
     {
         {
-            if (_pos distance2D _x < GVAR(MinDistance)) then {_denied = true};
+            if (_pos distance2D _x < (GVAR(MinDistance) * 1000)) then {_denied = true};
         } forEach (_OwnFlagsSelected + _EnemyFlagsSelected);
     };
 
