@@ -205,10 +205,8 @@ GVAR(AllSectors) =
         ],
 
         [   // Flaggen-Positionen
-//            [12893.1, 5724.88, 0],
-//            [13807.1, 6349.63, 0]
-            [13119.4, 6945.63, 0],  // Promo-Schlacht
-            [13424.6, 7018.85, 0]   // Promo-Schlacht
+            [12893.1, 5724.88, 0],
+            [13807.1, 6349.63, 0]
         ],
 
         [   // Beam-Positionen
@@ -560,10 +558,8 @@ GVAR(AllSectors) =
         ],
 
         [   // Flaggen-Positionen
-//            [9496.25, 6787.5, 0],
-//            [10544.1, 6595.88, 0]
-            [10622.5, 4555.14, 0],  // Promo-Schlacht
-            [10898.5, 4548.68, 0]   // Promo-Schlacht
+            [9496.25, 6787.5, 0],
+            [10544.1, 6595.88, 0]
         ],
 
         [   // Beam-Positionen
