@@ -44,7 +44,8 @@ if (_idx == -1) exitWith {};
 private _fcDialog = findDisplay DIALOG_BEAM_IDD;
 private _mapCtrl = _fcDialog displayCtrl DIALOG_BEAM_map_IDC;
 private _mapFocus = (GVAR(box) select _idx) select 0;
+private _mapZoom = ctrlMapScale _mapCtrl;
 
-_mapCtrl ctrlMapAnimAdd [0, 0.1, _mapFocus];
+_mapCtrl ctrlMapAnimAdd [0, _mapZoom, _mapFocus];
 ctrlMapAnimCommit _mapCtrl;
 _mapCtrl ctrlCommit 0;
