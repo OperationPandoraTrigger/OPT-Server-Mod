@@ -96,13 +96,14 @@ _points pushBack [position _Outpost, "Außenposten", "", 0];
 private _beampoints = [];
 {
     private _pos = _x select 0;
+    private _level = _x select 3;
     private _denied = false;
 
     // Spieler schon vor Ort?
     if (_withoutPlayer && _pos distance2D vehicle player < GVAR(SearchRadius)) then {_denied = true};
 
-    // Punkt zu nah an allen möglichen A-Fahnen? (Nur während der Waffenruhe)
-    if (!_denied && EGVAR(GELDZEIT,GAMESTAGE) != GAMESTAGE_WAR) then
+    // Beampunkt zu nah an allen möglichen A-Fahnen? (Nur während der Waffenruhe)
+    if (!_denied && EGVAR(GELDZEIT,GAMESTAGE) != GAMESTAGE_WAR && _level == 2) then
     {
         {
             {
@@ -112,7 +113,7 @@ private _beampoints = [];
     };
 
     // Punkt zu nah an aktiven Fahnen? (In der Schlacht)
-    if (!_denied && EGVAR(GELDZEIT,GAMESTAGE) == GAMESTAGE_WAR) then
+    if (!_denied && EGVAR(GELDZEIT,GAMESTAGE) == GAMESTAGE_WAR && _level > 0) then
     {
         {
             if (_pos distance2D _x < (GVAR(MinDistance) * 1000)) then {_denied = true};

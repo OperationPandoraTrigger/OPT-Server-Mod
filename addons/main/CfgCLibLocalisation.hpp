@@ -7,8 +7,8 @@ class CfgCLibLocalisation
         {
             class BEAM
             {
-                English = "Beam to other base";
-                German = "Beam zur anderen Basis";
+                English = "Beam menu";
+                German = "Beam Menü";
             };
 
             class BEAM_BUSY

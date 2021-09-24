@@ -110,9 +110,12 @@ if (EGVAR(SECTORCONTROL,trainingon)) then
         };
     }];
 
-    // In der Waffenruhe Marker für alle derzeitig gültigen Beampunkte zeichnen
+    // Nach Missionsstart die Marker für alle derzeitig gültigen Beampunkte aktualisieren
     call FUNC(DrawBeamMarkers);
 
     // Nach Ablauf der Waffenruhe die Marker für alle nun gültigen Beampunkte aktualisieren
     [{call FUNC(DrawBeamMarkers)}, {(OPT_GELDZEIT_GAMESTAGE == GAMESTAGE_WAR)}, ""] call CLib_fnc_waitUntil;
 }] call CFUNC(addEventhandler);
+
+// Vor dem Missionsstart alle derzeitig gültigen Beampunkte zeichnen
+call FUNC(DrawBeamMarkers);
