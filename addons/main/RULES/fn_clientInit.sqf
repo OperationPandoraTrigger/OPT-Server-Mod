@@ -261,3 +261,11 @@
         };
     };  // if (!(OPT_SECTORCONTROL_trainingon))
 }] call CFUNC(addEventhandler);
+
+// Spieler ist illegal in mittlerem oder großem Kontingent geslottet?
+if (("[MK]" in roleDescription player && EGVAR(SHOP,hardcapmode) == 1) ||
+    ("[GK]" in roleDescription player && (EGVAR(SHOP,hardcapmode) == 1 || EGVAR(SHOP,hardcapmode) == 2))) then
+{
+    systemChat "Der gewählte Slot ist im derzeitigen Kontingent nicht erlaubt. Bitte umslotten!";
+    ["END_SLOTS", false, false, false, false] call BIS_fnc_endMission;
+};
