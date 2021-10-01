@@ -264,6 +264,7 @@
 
 // Spieler ist illegal in mittlerem oder großem Kontingent geslottet?
 if (("[MK]" in roleDescription player && EGVAR(SHOP,hardcapmode) == 1) ||
+    ("[MK/GK]" in roleDescription player && EGVAR(SHOP,hardcapmode) == 1) ||
     ("[GK]" in roleDescription player && (EGVAR(SHOP,hardcapmode) == 1 || EGVAR(SHOP,hardcapmode) == 2))) then
 {
     systemChat "Der gewählte Slot ist im derzeitigen Kontingent nicht erlaubt. Bitte umslotten!";
