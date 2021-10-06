@@ -62,8 +62,8 @@ if (isNull _Basis) exitWith {};
 // Array mit gültigen Beampunkten füllen
 GVAR(box) = [playerSide, true] call FUNC(getbeampoints);
 
-// Nicht berechtigt zum Beamen? -> Automatische Auswahl von Index 0 (Heimatbasis oder Außenposten)
-if (vehicle player != player && !(typeOf vehicle player in EGVAR(SHOP,beamClasses))) exitWith {0 call FUNC(beam2)};
+// Nicht berechtigt zum Beamen? -> Automatische Auswahl von Heimatbasis oder Außenposten
+if (vehicle player != player && !(typeOf vehicle player in EGVAR(SHOP,beamClasses))) exitWith {call FUNC(beam)};
 
 // Fahrzeug abbremsen, bevor der Dialog aufgeht
 vehicle player setVelocity [0, 0, 0];
@@ -109,7 +109,16 @@ _lb ctrlAddEventHandler [ "LBSelChanged",
 _button ctrlAddEventHandler [ "ButtonClick",
 {
     private _display = findDisplay DIALOG_BEAM_IDD;
-    private _index = _display displayCtrl DIALOG_BEAM_LB_IDC;
-    [lbCurSel _index] call FUNC(beam2);
+    private _listbox = _display displayCtrl DIALOG_BEAM_LB_IDC;
+    private _index = lbCurSel _listbox;
+    if (_index > 0) then
+    {
+        [_index] call FUNC(beam2);
+    }
+    else
+    {
+        // Alte Beamfunktion für die Heimatbasis & Außenposten (sonst ist nicht genug Platz für die "freie" Suche)
+        call FUNC(beam);
+    };
     closeDialog 0;
 }];
