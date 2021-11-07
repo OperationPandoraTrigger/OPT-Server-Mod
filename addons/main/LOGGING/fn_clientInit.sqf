@@ -40,4 +40,5 @@
 {
     // Tracker nach Respawn invalidieren
     GVAR(LAST_POSITION) = nil;
+    GVAR(LAST_DISTANCE) = 0;
 }] call CFUNC(addEventhandler);

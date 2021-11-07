@@ -55,7 +55,16 @@ if ((playerSide == west) and ((player distance Teleport_NATO_Basis2) < MIN_DISTA
 
 if !(isNull _Basis) then
 {
+    // Vor dem Beamen die bisherige Reisesdistanz loggen
+    true call EFUNC(LOGGING,tracker);
+
     // Beam-Auftrag an den Server weiterleiten
     GVAR(BEAMJOB) = [player, _Basis];
     publicVariableServer QGVAR(BEAMJOB);
+
+    // Nach dem Beamen die Reisedistanz zurücksetzen
+    [{
+        EGVAR(LOGGING,LAST_POSITION) = nil;
+        EGVAR(LOGGING,LAST_DISTANCE) = 0;
+    }, 3,""] call CLib_fnc_wait;
 };

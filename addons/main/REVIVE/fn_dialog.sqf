@@ -59,6 +59,10 @@ _BleedoutBar_Text ctrlSetText format ["%1 sec",GVAR(ausblutzeit)];
 // Respwan Button
 _Respawn_button ctrlAddEventHandler [ "ButtonClick",
 {
+    // Distanz-Tracker bei Respawn invalidieren
+    EGVAR(LOGGING,LAST_POSITION) = nil;
+    EGVAR(LOGGING,LAST_DISTANCE) = 0;
+
     OPT_REVIVE_respawnedHandler = true;
     ["Health", "Respawn", [getPlayerUID player, name player, side player, "RespawnClick"]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
     player setDamage 1;

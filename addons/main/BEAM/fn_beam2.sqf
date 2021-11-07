@@ -51,10 +51,17 @@ if (count _newPos == 0) then
 // Den Teleport durchführen. (Zuerst in die Luft zum sicheren Ausrichten und dann final platzieren)
 else
 {
+    // Vor dem Beamen die bisherige Reisesdistanz loggen
+    true call EFUNC(LOGGING,tracker);
+
     _newPos set [2, 0];
     _newPos = AGLToASL _newPos;
     vehicle player setPosASL (_newPos vectorAdd [0, 0, 100]);
     vehicle player setVectorUp surfaceNormal _newPos;
     vehicle player setPosASL _newPos;
     closeDialog 0;
+
+    // Nach dem Beamen die Reisedistanz zurücksetzen
+    EGVAR(LOGGING,LAST_POSITION) = nil;
+    EGVAR(LOGGING,LAST_DISTANCE) = 0;
 };

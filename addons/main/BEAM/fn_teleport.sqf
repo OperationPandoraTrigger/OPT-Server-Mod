@@ -88,11 +88,18 @@ openMap true;
             _velocity = velocityModelSpace vehicle player;
         };
 
+        // Vor dem Beamen die bisherige Reisesdistanz loggen
+        true call EFUNC(LOGGING,tracker);
+
         // Den Teleport durchführen. (Zuerst in die Luft zum sicheren Ausrichten und dann final platzieren)
         vehicle player setPosASL (_newPos vectorAdd [0, 0, 100]);
         vehicle player setVectorUp surfaceNormal _newPos;
         vehicle player setVelocityModelSpace _velocity;
         vehicle player setPosASL _newPos;
+
+        // Nach dem Beamen die Reisedistanz zurücksetzen
+        EGVAR(LOGGING,LAST_POSITION) = nil;
+        EGVAR(LOGGING,LAST_DISTANCE) = 0;
 
         [QGVAR(onMapSingleClick), "onMapSingleClick"] call BIS_fnc_removeStackedEventHandler;
         openMap false;
