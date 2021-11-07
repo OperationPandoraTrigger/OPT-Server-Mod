@@ -38,15 +38,12 @@ if (_idx == -1) exitWith {};
 
 private _beamPosition = (GVAR(box) select _idx) select 0;
 private _beamLevel = (GVAR(box) select _idx) select 3;
-private _newPos = [0, 0, 0];
 
-// Sicheren freien Ort für die eigene Fahrzeuggröße suchen
-private _size = (sizeOf typeOf (vehicle player)) / 2;
-_newPos = [_beamPosition, 0, GVAR(SearchRadius), _size, 0, 1] call BIS_fnc_findSafePos;
+// Freie Position suchen
+private _newPos = [_beamPosition, GVAR(SearchRadiusBeam)] call FUNC(findFreePosition);
 
-// Abbruch, wenn kein sicherer Ort gefunden wird. (BIS_fnc_findSafePos gibt dann die Kartenmitte zurück)
-private _worldsize = (worldName call BIS_fnc_mapSize);
-if ((_newPos select 0) == (_worldsize / 2) && (_newPos select 1) == (_worldsize / 2)) then
+// Abbruch, wenn kein sicherer Ort gefunden wurde
+if (count _newPos == 0) then
 {
     hint format ["%1", MLOC(BEAM_BUSY)];
     playSound "additemok";

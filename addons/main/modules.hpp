@@ -101,6 +101,7 @@ class CfgCLibModules
             FNC(beammapmove);
             FNC(getbeampoints);
             FNC(teleport);
+            FNC(findFreePosition);
         };
 
         MODULE(SECTORCONTROL)

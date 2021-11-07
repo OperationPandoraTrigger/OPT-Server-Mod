@@ -60,22 +60,22 @@ openMap true;
         else
         {
             // sonst normaler Teleport, aber sicheren Ort suchen
-            private _size = (sizeOf typeOf (vehicle player)) / 2;
-            _newPos = [_pos, 0, 20, _size, 0, 1] call BIS_fnc_findSafePos;
+            _newPos = [_pos, GVAR(SearchRadiusTeleport)] call FUNC(findFreePosition);
 
-            // Abbruch, wenn kein sicherer Ort gefunden wird. (BIS_fnc_findSafePos gibt dann die Kartenmitte zurück)
-            private _worldsize = (worldName call BIS_fnc_mapSize);
-            if ((_newPos select 0) == (_worldsize / 2) && (_newPos select 1) == (_worldsize / 2)) then
+            // Abbruch, wenn kein sicherer Ort gefunden wurde
+            if (count _newPos == 0) then
             {
                 private _header = MLOC(TELEPORT_MSG_HEADER);
                 private _txt = MLOC(TELEPORT_FAIL);
                 hint format ["%1\n\n%2", _header, _txt];
                 playSound "additemok";
                 _fail = true;
+            }
+            else
+            {
+                _newPos set [2, 0];
+                _newPos = AGLToASL _newPos;
             };
-
-            _newPos set [2, 0];
-            _newPos = AGLToASL _newPos;
         };
     };
 
