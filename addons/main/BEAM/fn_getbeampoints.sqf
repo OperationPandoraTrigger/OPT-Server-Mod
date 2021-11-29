@@ -100,7 +100,7 @@ private _beampoints = [];
     private _denied = false;
 
     // Spieler schon vor Ort?
-    if (_withoutPlayer && _pos distance2D vehicle player < GVAR(SearchRadius)) then {_denied = true};
+    if (_withoutPlayer && _pos distance2D vehicle player < GVAR(SearchRadiusBeam)) then {_denied = true};
 
     // Beampunkt zu nah an allen möglichen A-Fahnen? (Nur während der Waffenruhe)
     if (!_denied && EGVAR(GELDZEIT,GAMESTAGE) != GAMESTAGE_WAR && _level == 2) then
