@@ -152,6 +152,20 @@ GVAR(reconSniperRifles) =
 
 /////
 
+GVAR(soldat) =
+[
+    "OPT_CSAT_Soldat",
+    "OPT_NATO_Soldat"
+];
+
+GVAR(rifle) =
+[
+    "OPT_arifle_SPAR_01_blk_ERCO_Pointer_F",
+    "OPT_arifle_CTAR_ERCO_Pointer_F"
+];
+
+/////
+
 GVAR(soldatMG) =
 [
     "OPT_CSAT_MG_Schuetze",
