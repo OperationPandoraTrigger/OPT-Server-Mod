@@ -75,6 +75,7 @@ GVAR(camera) camCommit 10;
 [{
     removeAllWeapons player;
     [GVAR(END), GVAR(VICTORY), true] call BIS_fnc_endMission;
+    [GVAR(END), GVAR(VICTORY), true] remoteExec ["BIS_fnc_endMission", 2];
     GVAR(camera) cameraEffect ["terminate", "back"];
     camDestroy GVAR(camera);
 }, 10, ""] call CFUNC(wait);
