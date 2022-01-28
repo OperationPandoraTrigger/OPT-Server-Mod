@@ -254,7 +254,7 @@ if (worldName == "vt7") then
 
             [   // Flaggen-Positionen
                 [12017.4, 4292.25, 0],
-                [13040.8, 3524.1, 0]
+                [11583.2, 6223.95, 0]
             ],
 
             [   // Beam-Positionen
