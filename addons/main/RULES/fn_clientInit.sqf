@@ -39,10 +39,12 @@
     [] call FUNC(uav);
 
     // Hint Meldung das Zuschauerslot besetzt wurde.
-    if ((player isKindOf "VirtualSpectator_F") or (player isKindOf "ace_spectator_virtual")) then
+//    if ((player isKindOf "VirtualSpectator_F") or (player isKindOf "ace_spectator_virtual")) then
+    if (player isKindOf "C_man_p_beggar_F") then
     {
         private _txt = format["%1 hat einen Zuschauerslot ausgewählt.", name player];
         [_txt] remoteExecCall ["hint", 0, false];
+        [true] call ace_spectator_fnc_setSpectator;
     };
 
     // TFAR-Frequenzüberschneidungen zwischen den Fraktionen vermeiden
