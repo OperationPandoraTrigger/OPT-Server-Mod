@@ -36,7 +36,6 @@
     /* set maximal weight values */
     missionNamespace setVariable ["ACE_maxWeightCarry", OPT_CARGO_ACE_maxWeightCarry];
     missionNamespace setVariable ["ACE_maxWeightDrag", OPT_CARGO_ACE_maxWeightDrag];
-
-    [] call FUNC(setupCargoSpaceAndSize);
+    
     [] call FUNC(cbaclassevents);
 }] call CFUNC(addEventhandler);

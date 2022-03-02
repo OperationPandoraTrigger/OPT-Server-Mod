@@ -33,6 +33,15 @@
 
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
+["Ship", "init",
+{
+    params ["_vec"];
+
+    [_vec] call FUNC(Cargoinit);
+    [_vec] call FUNC(Dragginginit);
+
+}, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
 ["CAManBase", "init",
 {
     params ["_unit"];
@@ -53,3 +62,4 @@
     [_item] call FUNC(Dragginginit);
 
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
+
