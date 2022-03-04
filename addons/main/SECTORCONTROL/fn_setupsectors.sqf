@@ -684,6 +684,7 @@ if (worldName == "vt7") then
     ]; // letztes Komma löschen!!
 };
 
+/*
 if (worldName == "cup_chernarus_A3") then
 {
     GVAR(AllSectors) =
@@ -697,160 +698,10 @@ if (worldName == "cup_chernarus_A3") then
 
             [   // Beam-Positionen
             ]
-        ],
-
-        [    // Sektor 1
-            [   // Sektormarker
-            ],
-
-            [   // Flaggen-Positionen
-                [1876.93,2255.05,0]
-            ],
-
-            [   // Beam-Positionen
-                [1918.55,4316.99,0] // nord
-            ]
-        ],
-
-        [    // Sektor 2
-            [   // Sektormarker
-            ],
-
-            [   // Flaggen-Positionen
-            ],
-
-            [   // Beam-Positionen
-                [4077.33,2612.46,0] // ost
-            ]
         ]
     ]; // letztes Komma löschen!!
 };
-
-if (worldName == "pja310") then // rajak
-{
-    GVAR(AllSectors) =
-    [
-        [    // Sektor 0
-            [   // Sektormarker
-            ],
-
-            [   // Flaggen-Positionen
-            ],
-
-            [   // Beam-Positionen
-            ]
-        ],
-
-        [    // Sektor 1
-            [   // Sektormarker
-            ],
-
-            [   // Flaggen-Positionen
-                [16505.7,19150.7,0]
-            ],
-
-            [   // Beam-Positionen
-                [18183.2,17543.4,0] // süd
-            ]
-        ],
-
-        [    // Sektor 2
-            [   // Sektormarker
-            ],
-
-            [   // Flaggen-Positionen
-            ],
-
-            [   // Beam-Positionen
-                [13913.4,19464,0]   // west
-            ]
-        ]
-    ]; // letztes Komma löschen!!
-};
-
-if (worldName == "tem_kujari") then
-{
-    GVAR(AllSectors) =
-    [
-        [    // Sektor 0
-            [   // Sektormarker
-            ],
-
-            [   // Flaggen-Positionen
-            ],
-
-            [   // Beam-Positionen
-            ]
-        ],
-
-        [    // Sektor 1
-            [   // Sektormarker
-            ],
-
-            [   // Flaggen-Positionen
-                [14806.8,5804.92,0]
-            ],
-
-            [   // Beam-Positionen
-                [16007,3003.46,0]   // süd
-            ]
-        ],
-
-        [    // Sektor 2
-            [   // Sektormarker
-            ],
-
-            [   // Flaggen-Positionen
-            ],
-
-            [   // Beam-Positionen
-                [13980.3,9008.8,0]  // nord
-            ]
-        ]
-    ]; // letztes Komma löschen!!
-};
-
-if (worldName == "gm_weferlingen_summer") then
-{
-    GVAR(AllSectors) =
-    [
-        [    // Sektor 0
-            [   // Sektormarker
-            ],
-
-            [   // Flaggen-Positionen
-            ],
-
-            [   // Beam-Positionen
-            ]
-        ],
-
-        [    // Sektor 1
-            [   // Sektormarker
-            ],
-
-            [   // Flaggen-Positionen
-                [19680.3,8428.14,0]
-            ],
-
-            [   // Beam-Positionen
-                [19926.5,4774.59,0] // süd
-            ]
-        ],
-
-        [    // Sektor 2
-            [   // Sektormarker
-            ],
-
-            [   // Flaggen-Positionen
-            ],
-
-            [   // Beam-Positionen
-                [19543,11527.1,0]   // nord
-            ]
-        ]
-    ]; // letztes Komma löschen!!
-};
+*/
 
 publicVariable QGVAR(AllSectors);
 
