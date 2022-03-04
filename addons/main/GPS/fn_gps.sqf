@@ -11,7 +11,7 @@
 *
 * Server Only:
 * No
-* 
+*
 * Global:
 * No
 *
@@ -163,4 +163,4 @@ GVAR(markerOwn) setMarkerAlphaLocal 1;
         } forEach +GVAR(MarkerPool);   // das Plus ist so gewollt (durch eine Kopie iterieren damit wir uns nicht zwischendrin selbst abwürgen)
         GVAR(LastCleanUp) = time;
     };
-}, 1 / GVAR(REFRESH_RATE), _this] call CFUNC(addPerFrameHandler);
+}, 1 / GVAR(REFRESHRATE), _this] call CFUNC(addPerFrameHandler);
