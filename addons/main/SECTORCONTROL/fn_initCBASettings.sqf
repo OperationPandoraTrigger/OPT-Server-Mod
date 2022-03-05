@@ -127,7 +127,7 @@
         "Die Anzahl der NATO-Flaggen, die für die Gegenseite zum Angriff stehen." + endl  // Mouse-Over description of the above
     ],
     ["OPT Sektorkontrolle", "3 - Flaggenanzahl"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
-    [0, 30, 1, 0], // [_min, _max, _default, _trailingDecimals]
+    [0, 50, 1, 0], // [_min, _max, _default, _trailingDecimals]
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {} // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
@@ -140,7 +140,7 @@
         "Die Anzahl der CSAT-Flaggen, die für die Gegenseite zum Angriff stehen." + endl  // Mouse-Over description of the above
     ],
     ["OPT Sektorkontrolle", "3 - Flaggenanzahl"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
-    [0, 30, 1, 0], // [_min, _max, _default, _trailingDecimals]
+    [0, 50, 1, 0], // [_min, _max, _default, _trailingDecimals]
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {} // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
