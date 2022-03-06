@@ -220,7 +220,7 @@
             };
         }];
 
-        // Regelmäßig checken ob sich der Spieler außerhalb der Karte aufhält
+        // Regelmäßig checken ob sich der Spieler außerhalb der Karte aufhält (in Todeszonen die über den Kartenrand hinausgehen, ist es allerdings erlaubt)
         [{
             private _mapSize = worldSize;
             private _pos = getPos player;
@@ -228,9 +228,12 @@
             private _posY = _pos select 1;
             if (((_posX < 0) || (_posX > _mapSize) || (_posY < 0) || (_posY > _mapSize)) && !(typeOf vehicle player in EGVAR(SHOP,planes) + EGVAR(SHOP,jets))) then
             {
-                ["Cheat", "OutOfMap", [getPlayerUID player, name player, side player, _pos, typeOf vehicle player]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
-                player setDamage 1;
-                {hint format ["%1", MLOC(PLAYER_OUT_OF_MAP)];} remoteExec ["call", -2];
+                if (!((position player inArea "NATO_T_Zone1") || (position player inArea "NATO_T_Zone2") || (position player inArea "CSAT_T_Zone1") || (position player inArea "CSAT_T_Zone2"))) then
+                {
+                    ["Cheat", "OutOfMap", [getPlayerUID player, name player, side player, _pos, typeOf vehicle player]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
+                    player setDamage 1;
+                    {hint format ["%1", MLOC(PLAYER_OUT_OF_MAP)];} remoteExec ["call", -2];
+                };
             };
         }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
 
