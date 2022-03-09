@@ -178,6 +178,7 @@ class CfgCLibModules
         MODULE(LOGGING)
         {
             FNC(clientInit);
+            FNC(logpos);
             FNC(tracker);
             FNC(writelog);
         };

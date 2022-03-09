@@ -42,3 +42,15 @@
     GVAR(LAST_POSITION) = nil;
     GVAR(LAST_DISTANCE) = 0;
 }] call CFUNC(addEventhandler);
+
+if (EGVAR(SECTORCONTROL,trainingon) && EGVAR(SECTORCONTROL,trainingAllowPositionLogging)) then
+{
+    // Logging of own position
+    player addAction ["Log position", {[] call FUNC(logpos)}, [], 1, false, true, "", "alive _target"];
+
+    ["Respawn",
+    {
+        // Logging of own position
+        player addAction ["Log position", {[] call FUNC(logpos)}, [], 1, false, true, "", "alive _target"];
+    }] call CFUNC(addEventhandler);
+};
