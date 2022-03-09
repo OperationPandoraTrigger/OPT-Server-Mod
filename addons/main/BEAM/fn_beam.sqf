@@ -55,6 +55,9 @@ if ((playerSide == west) and ((player distance Teleport_NATO_Basis2) < MIN_DISTA
 
 if !(isNull _Basis) then
 {
+    // Beam loggen
+    ["Transport", "Beam", [getPlayerUID player, name player, side player, position vehicle player, position _Basis, position vehicle player distance _Basis]] remoteExec [QEFUNC(LOGGING,writelog), 2];
+
     // Vor dem Beamen die bisherige Reisesdistanz loggen
     true call EFUNC(LOGGING,tracker);
 

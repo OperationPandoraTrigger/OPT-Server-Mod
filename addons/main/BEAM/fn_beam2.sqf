@@ -56,6 +56,11 @@ else
 
     _newPos set [2, 0];
     _newPos = AGLToASL _newPos;
+
+    // Beam loggen
+    ["Transport", "Beam", [getPlayerUID player, name player, side player, position vehicle player, _newPos, position vehicle player distance _newPos]] remoteExec [QEFUNC(LOGGING,writelog), 2];
+
+    // Beamen
     vehicle player setPosASL (_newPos vectorAdd [0, 0, 100]);
     vehicle player setVectorUp surfaceNormal _newPos;
     vehicle player setPosASL _newPos;

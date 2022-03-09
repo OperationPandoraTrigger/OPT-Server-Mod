@@ -91,6 +91,9 @@ openMap true;
         // Vor dem Beamen die bisherige Reisesdistanz loggen
         true call EFUNC(LOGGING,tracker);
 
+        // Teleport loggen
+        ["Transport", "Teleport", [getPlayerUID player, name player, side player, position vehicle player, _newPos, position vehicle player distance _newPos]] remoteExec [QEFUNC(LOGGING,writelog), 2];
+
         // Den Teleport durchführen. (Zuerst in die Luft zum sicheren Ausrichten und dann final platzieren)
         vehicle player setPosASL (_newPos vectorAdd [0, 0, 100]);
         vehicle player setVectorUp surfaceNormal _newPos;
