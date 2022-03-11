@@ -28,7 +28,10 @@
 //Typ einlesen
 params
 [
-    ["_type", ""]
+    ["_type", ""],
+    ["_items", []],
+    ["_pads", []],
+    ["_checkbereich", 9]
 ];
 
 // Shop gegen erneutes öffnen sperren (per Hotkey sonst mehrfach moeglich)
@@ -40,8 +43,8 @@ GVAR(Daten_send) = false;
 
 //Shopart bestimmen
 GVAR(vehicleType) = _type;
-private _pool = [];
-GVAR(pads) = [];
+private _pool = _items;
+GVAR(pads) = _pads;
 GVAR(moveInVeh) = false;
 
 //Dialog erstellen
@@ -104,8 +107,8 @@ _kosten ctrlSetText format ["€:%1",0];
 
 GVAR(Buttonwahl) = 0;
 
-//Bereicht für Boxkontrolle
-GVAR(Checkbereich) = 9;
+//Bereich für Boxkontrolle
+GVAR(Checkbereich) = _checkbereich;
 
 //Kaufbutton ausblenden
 for "_i" from 0 to SHOPBUTTONANZAHL do
@@ -126,161 +129,35 @@ switch (GVAR(vehicleType)) do
 {
     case "choppers" :
     {
-        switch playerSide do
-        {
-            case west:
-            {
-                _pool = GVAR(nato_choppers);
-                GVAR(pads) = GVAR(pad_air_west);
-                GVAR(Checkbereich) = 13;
-            };
-
-            case east:
-            {
-                _pool = GVAR(csat_choppers);
-                 GVAR(pads) = GVAR(pad_air_east);
-                 GVAR(Checkbereich) = 13;
-            };
-
-            default
-            {
-            };
-        };
         GVAR(moveInVeh) = true;
         _konfig ctrlEnable false;
     };
 
     case "planes" :
     {
-        switch playerSide do
-        {
-            case west:
-            {
-                _pool = GVAR(nato_planes) + GVAR(nato_jets) + GVAR(nato_uavs);
-                GVAR(pads) = GVAR(pad_plane_west);
-                GVAR(Checkbereich) = 13;
-            };
-
-            case east:
-            {
-                _pool = GVAR(csat_planes) + GVAR(csat_jets) + GVAR(csat_uavs);
-                 GVAR(pads) = GVAR(pad_plane_east);
-                 GVAR(Checkbereich) = 13;
-            };
-
-            default
-            {
-            };
-        };
-
-        // Zivilflughafen
-        if ((player distance civ1_shop_plane) < 10) then
-        {
-            GVAR(pads) = [PlaneBoxCiv1];
-        };
-
-        if ((player distance civ2_shop_plane) < 10) then
-        {
-            GVAR(pads) = [PlaneBoxCiv2];
-        };
-
         GVAR(moveInVeh) = true;
         _konfig ctrlEnable false;
     };
 
     case "vehicles":
     {
-        switch playerSide do
-        {
-            case west:
-            {
-                _pool = GVAR(nato_vehicles) + GVAR(nato_vehicles_supply) + GVAR(nato_armored);
-                GVAR(pads) = GVAR(pad_veh_west);
-            };
-
-            case east:
-            {
-                _pool = GVAR(csat_vehicles) + GVAR(csat_vehicles_supply) + GVAR(csat_armored);
-                GVAR(pads) = GVAR(pad_veh_east);
-            };
-
-            default
-            {
-            };
-        };
         GVAR(moveInVeh) = true;
         _konfig ctrlEnable false;
     };
 
     case "supplies" :
     {
-        switch playerSide do
-        {
-            case west:
-            {
-                _pool = GVAR(nato_supplies) + GVAR(nato_static);
-                GVAR(pads) = GVAR(pad_sup_west);
-                GVAR(Checkbereich) = 4;
-            };
-
-            case east:
-            {
-                _pool = GVAR(csat_supplies) + GVAR(csat_static);
-                GVAR(pads) = GVAR(pad_sup_east);
-                GVAR(Checkbereich) = 4;
-            };
-
-            default
-            {
-            };
-        };
         GVAR(moveInVeh) = false;
         _moveInVeh ctrlShow false;
     };
 
     case "sea":
     {
-        switch playerSide do
-        {
-            case west:
-            {
-                _pool = GVAR(nato_sea);
-                GVAR(pads) = GVAR(pad_sea_west);
-            };
-
-            case east:
-            {
-                _pool = GVAR(csat_sea);
-                GVAR(pads) = GVAR(pad_sea_east);
-            };
-
-            default
-            {
-            };
-        };
         GVAR(moveInVeh) = true;
         _konfig ctrlEnable false;
     };
     default
     {
-        switch playerSide do
-        {
-            case west:
-            {
-                _pool = [];
-                GVAR(pads) = GVAR(pad_all_west);
-            };
-
-            case east:
-            {
-                _pool = [];
-                GVAR(pads) = GVAR(pad_all_east);
-            };
-
-            default
-            {
-            };
-        };
     };
 };
 
