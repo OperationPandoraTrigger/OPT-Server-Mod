@@ -31,7 +31,8 @@ params
     ["_type", ""],
     ["_items", []],
     ["_pads", []],
-    ["_checkbereich", 9]
+    ["_checkbereich", 9],
+    ["_moveInVeh", false]
 ];
 
 // Shop gegen erneutes öffnen sperren (per Hotkey sonst mehrfach moeglich)
@@ -45,7 +46,7 @@ GVAR(Daten_send) = false;
 GVAR(vehicleType) = _type;
 private _pool = _items;
 GVAR(pads) = _pads;
-GVAR(moveInVeh) = false;
+GVAR(moveInVeh) = _moveInVeh;
 
 //Dialog erstellen
 private _success = createDialog "Dialogshopkaufen";
@@ -123,42 +124,6 @@ for "_i" from 0 to SHOPBUTTONANZAHL do
     //TextGeld
     ctrlShow [(20126 + _i), false ];
     ctrlSetText [(20126 + _i), ""];
-};
-
-switch (GVAR(vehicleType)) do
-{
-    case "choppers" :
-    {
-        GVAR(moveInVeh) = true;
-        _konfig ctrlEnable false;
-    };
-
-    case "planes" :
-    {
-        GVAR(moveInVeh) = true;
-        _konfig ctrlEnable false;
-    };
-
-    case "vehicles":
-    {
-        GVAR(moveInVeh) = true;
-        _konfig ctrlEnable false;
-    };
-
-    case "supplies" :
-    {
-        GVAR(moveInVeh) = false;
-        _moveInVeh ctrlShow false;
-    };
-
-    case "sea":
-    {
-        GVAR(moveInVeh) = true;
-        _konfig ctrlEnable false;
-    };
-    default
-    {
-    };
 };
 
 // Objekte größer 0€ bestimmen
