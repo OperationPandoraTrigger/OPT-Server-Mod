@@ -42,8 +42,17 @@ while {_maxTries > 0} do
 {
     _maxTries = _maxTries - 1;
 
-    // Position innerhalb des Such-Radius randomisieren und dort in einem kleinen Bereich einen freien Ort für das Fahrzeug suchen
-    _newPos = (_pos vectorAdd [_radius / 2 - random _radius, _radius / 2 - random _radius, 0]) findEmptyPosition [5, 10, _vehicle];
+    if (_radius > 0) then
+    {
+        // Position innerhalb des Such-Radius randomisieren und dort in einem kleinen Bereich einen freien Ort für das Fahrzeug suchen
+        _newPos = (_pos vectorAdd [_radius / 2 - random _radius, _radius / 2 - random _radius, 0]) findEmptyPosition [5, 10, _vehicle];
+    }
+    else
+    {
+        // Bei Suchradius=0 die exakte Position übernehmen
+        _newPos = _pos;
+    };
+
     if (count _newPos > 0) then
     {
         // Zusätzlicher Kollisionscheck

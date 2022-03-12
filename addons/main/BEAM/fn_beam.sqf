@@ -1,12 +1,14 @@
 /**
 * Description:
 * Teleport player and their vehicle to selected destination.
+* Check for truce time and level of teleport location.
 *
 * Author:
-* [GNC]Lord-MDB, form
+* form
 *
 * Arguments:
-* no
+* 0: <NUMBER> current selected index of listbox control
+* 1: <NUMBER> desired search radius of placement
 *
 * Return Value:
 * None
@@ -15,59 +17,61 @@
 * no
 *
 * Public:
-* no
+* no - should be called from beam dialog
 *
 * Global:
 * no
 *
-* Sideeffects:
-* no
-*
 * Example:
-* [] call FUNC(beam);
+* [0] spawn EFUNC(beam,beam);
 */
 #include "macros.hpp"
 
-// Minimalentfernung zum Beam-Platz
-#define MIN_DISTANCE_TO_BEAMSPOT 10
+params
+[
+    ["_idx", -1, [0], 1],
+    ["_radius", GVAR(SearchRadiusBeam)]
+];
 
-private _Basis = objNull;
+if (_idx == -1) exitWith {};
 
-if ((playerSide == east) and ((player distance Teleport_CSAT_Basis1) < MIN_DISTANCE_TO_BEAMSPOT)) then
+private _beamPosition = (GVAR(box) select _idx) select 0;
+private _beamDirection = (GVAR(box) select _idx) select 1;
+private _beamLevel = (GVAR(box) select _idx) select 4;
+
+// Freie Position suchen
+private _newPos = [_beamPosition, _radius] call FUNC(findFreePosition);
+
+// Abbruch, wenn kein sicherer Ort gefunden wurde
+if (count _newPos == 0) then
 {
-    _Basis = Teleport_CSAT_Basis2;
-};
-
-if ((playerSide == west) and ((player distance Teleport_NATO_Basis1) < MIN_DISTANCE_TO_BEAMSPOT)) then
+    hint format ["%1", MLOC(BEAM_BUSY)];
+    playSound "additemok";
+}
+// Den Teleport durchführen. (Zuerst in die Luft zum sicheren Ausrichten und dann final platzieren)
+else
 {
-    _Basis = Teleport_NATO_Basis2;
-};
-
-if ((playerSide == east) and ((player distance Teleport_CSAT_Basis2) < MIN_DISTANCE_TO_BEAMSPOT)) then
-{
-    _Basis = Teleport_CSAT_Basis1;
-};
-
-if ((playerSide == west) and ((player distance Teleport_NATO_Basis2) < MIN_DISTANCE_TO_BEAMSPOT)) then
-{
-    _Basis = Teleport_NATO_Basis1;
-};
-
-if !(isNull _Basis) then
-{
-    // Beam loggen
-    ["Transport", "Beam", [getPlayerUID player, name player, side player, position vehicle player, position _Basis, position vehicle player distance _Basis]] remoteExec [QEFUNC(LOGGING,writelog), 2];
-
     // Vor dem Beamen die bisherige Reisesdistanz loggen
     true call EFUNC(LOGGING,tracker);
 
-    // Beam-Auftrag an den Server weiterleiten
-    GVAR(BEAMJOB) = [player, _Basis];
-    publicVariableServer QGVAR(BEAMJOB);
+    // Bei nicht präzisem Beam selbstständig die Höhe der Oberfläche suchen
+    if (_radius > 0 ) then
+    {
+        _newPos set [2, 0];
+        _newPos = AGLToASL _newPos;
+    };
+
+    // Beam loggen
+    ["Transport", "Beam", [getPlayerUID player, name player, side player, position vehicle player, _newPos, position vehicle player distance _newPos]] remoteExec [QEFUNC(LOGGING,writelog), 2];
+
+    // Beamen
+    vehicle player setPosASL (_newPos vectorAdd [0, 0, 100]);
+    vehicle player setDir _beamDirection;
+    vehicle player setVectorUp surfaceNormal _newPos;
+    vehicle player setPosASL _newPos;
+    closeDialog 0;
 
     // Nach dem Beamen die Reisedistanz zurücksetzen
-    [{
-        EGVAR(LOGGING,LAST_POSITION) = nil;
-        EGVAR(LOGGING,LAST_DISTANCE) = 0;
-    }, 3,""] call CLib_fnc_wait;
+    EGVAR(LOGGING,LAST_POSITION) = nil;
+    EGVAR(LOGGING,LAST_DISTANCE) = 0;
 };

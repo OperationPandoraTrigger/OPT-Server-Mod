@@ -36,7 +36,7 @@ DFUNC(DrawBeamMarkers) =
     GVAR(BeamMarkers) = [];
     {
         private _pos = _x select 0;
-        private _markertext = _x select 2;
+        private _markertext = _x select 3;
         // Nur Marker mit Text (nicht die Heimatbasis und der Außenposten!)
         if (_markertext != "") then
         {
@@ -72,7 +72,6 @@ if (EGVAR(SECTORCONTROL,trainingon)) then
         "OPT",
         QGVAR(cba_addKeybind_beam_dialog),
         ["Beam-Funktion", "Beamen im Teleportbereich zur anderen Basis."],
-//        {[] call FUNC(beam)},
         {call FUNC(beamdialog)},
         {},
         [
@@ -86,7 +85,6 @@ if (EGVAR(SECTORCONTROL,trainingon)) then
         _x addAction
         [
             format["<t color='#00FF00' size='1.25'>%1</t>", MLOC(BEAM)],
-//            {[] call FUNC(beam)},
             {call FUNC(beamdialog)},
             nil,
             6,
@@ -96,7 +94,7 @@ if (EGVAR(SECTORCONTROL,trainingon)) then
             "(nearestObject [_target, 'Land_HelipadCivil_F'] distance _this < 10)",
             20
         ];
-    } forEach [west_Basis_Teleport1, west_Basis_Teleport2, east_Basis_Teleport1, east_Basis_Teleport2];
+    } forEach [west_Basis_Teleport1, west_Basis_Teleport2, east_Basis_Teleport1, east_Basis_Teleport2, east_Basis_Teleport3];
 
     // Beim Karte-Schließen den Teleport-EH entfernen, damit man später aus versehen nicht teleportieren kann
     (finddisplay 12) displayAddEventhandler["KeyDown",

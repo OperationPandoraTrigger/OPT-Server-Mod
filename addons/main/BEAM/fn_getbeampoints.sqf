@@ -12,7 +12,7 @@
 *
 * Return Value:
 * Array of valid beampoints
-* Format: [[position, description, markertext, level], ... ]
+* Format: [[position, rotation, description, markertext, level], ... ]
 *
 * Level 0: Heimat- und Außenbasis
 * Level 1: Fahnenpunkte
@@ -37,6 +37,7 @@ params [["_side", civilian], ["_withoutPlayer", false]];
 
 private _Homebase = nil;
 private _Outpost = nil;
+private _Outpost2 = nil;
 private _OwnSectorsAll = [];
 private _OwnSectorsSelected = [];
 private _OwnFlagsSelected = [];
@@ -48,8 +49,8 @@ switch playerSide do
 {
     case west:
     {
-        _Homebase = west_Basis_Teleport1;
-        _Outpost = west_Basis_Teleport2;
+        _Homebase = Teleport_NATO_Basis1;
+        _Outpost = Teleport_NATO_Basis2;
         _OwnSectorsAll = EGVAR(SECTORCONTROL,nato_allsectors);
         _OwnSectorsSelected = EGVAR(SECTORCONTROL,nato_sectors);
         _OwnFlagsSelected = EGVAR(SECTORCONTROL,nato_flags);
@@ -60,8 +61,9 @@ switch playerSide do
 
     case east:
     {
-        _Homebase = east_Basis_Teleport1;
-        _Outpost = east_Basis_Teleport2;
+        _Homebase = Teleport_CSAT_Basis1;
+        _Outpost = Teleport_CSAT_Basis2;
+        _Outpost2 = Teleport_CSAT_Basis3;
         _OwnSectorsAll = EGVAR(SECTORCONTROL,csat_allsectors);
         _OwnSectorsSelected = EGVAR(SECTORCONTROL,csat_sectors);
         _OwnFlagsSelected = EGVAR(SECTORCONTROL,csat_flags);
@@ -73,8 +75,21 @@ switch playerSide do
 
 // Beam-Pads in Basis und Außenposten zur Liste der Beampunkte hinzufügen
 private _points = [];
-_points pushBack [position _Homebase, "Heimatbasis", "", 0];
-_points pushBack [position _Outpost, "Außenposten", "", 0];
+_points pushBack [getPosASL _Homebase, getDir _HomeBase, "Heimatbasis", "", 0];
+
+switch playerSide do
+{
+    case west:
+    {
+        _points pushBack [getPosASL _Outpost, getDir _Outpost, "Außenposten", "", 0];
+    };
+
+    case east:
+    {
+        _points pushBack [getPosASL _Outpost, getDir _Outpost, "Außenposten Südost", "", 0];
+        _points pushBack [getPosASL _Outpost2, getDir _Outpost2, "Außenposten Ost", "", 0];
+    };
+};
 
 // V-Fahnen Positionen des gewählten Sektors zur Liste der Beampunkte hinzufügen
 if (!EGVAR(SECTORCONTROL,flagStartNeutral)) then
@@ -82,7 +97,7 @@ if (!EGVAR(SECTORCONTROL,flagStartNeutral)) then
     {
         private _sector = _x;
         {
-            _points pushBack [_x, format ["Sektor %1 / Fahne %2", _sector, _forEachIndex + 1], format ["F%1.%2", _sector, _forEachIndex + 1], 1];
+            _points pushBack [_x, random 360, format ["Sektor %1 / Fahne %2", _sector, _forEachIndex + 1], format ["F%1.%2", _sector, _forEachIndex + 1], 1];
         } forEach ((EGVAR(SECTORCONTROL,AllSectors) select _x) select 1);  // Flaggen Positionen
     } forEach _OwnSectorsSelected;
 };
@@ -91,7 +106,7 @@ if (!EGVAR(SECTORCONTROL,flagStartNeutral)) then
 {
     private _sector = _x;
     {
-        _points pushBack [_x, format ["Sektor %1 / Beampunkt %2", _sector, _forEachIndex + 1], format ["BP%1.%2", _sector, _forEachIndex + 1], 2];
+        _points pushBack [_x, random 360, format ["Sektor %1 / Beampunkt %2", _sector, _forEachIndex + 1], format ["BP%1.%2", _sector, _forEachIndex + 1], 2];
     } forEach ((EGVAR(SECTORCONTROL,AllSectors) select _x) select 2);  // Beam-Positionen
 } forEach _OwnSectorsAll;
 
@@ -99,7 +114,7 @@ if (!EGVAR(SECTORCONTROL,flagStartNeutral)) then
 private _beampoints = [];
 {
     private _pos = _x select 0;
-    private _level = _x select 3;
+    private _level = _x select 4;
     private _denied = false;
 
     // Spieler schon vor Ort?
@@ -122,6 +137,9 @@ private _beampoints = [];
             if (_pos distance2D _x < (GVAR(MinDistance) * 1000)) then {_denied = true};
         } forEach (_OwnFlagsSelected + _EnemyFlagsSelected);
     };
+
+    // Ab Level 1 nur erlaubte Fahrzeuge zulassen
+    if (_level >= 1 && vehicle player != player && !(typeOf vehicle player in EGVAR(SHOP,beamClasses))) then {_denied = true};
 
     // Wenn OK dann übernehmen
     if (!_denied) then {_beampoints pushBack _x};

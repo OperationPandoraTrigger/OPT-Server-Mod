@@ -34,36 +34,45 @@
 // Minimalentfernung zum Beam-Platz
 #define MIN_DISTANCE_TO_BEAMSPOT 10
 
-private _Basis = objNull;
-
-if ((playerSide == east) and ((player distance Teleport_CSAT_Basis1) < MIN_DISTANCE_TO_BEAMSPOT)) then
-{
-    _Basis = Teleport_CSAT_Basis2;
-};
+// Überprüfung ob Spieler in der Nähe eines Beampunktes ist (wichtig für Hotkey-Aufruf)
+private _nearBeamSpot = false;
 
 if ((playerSide == west) and ((player distance Teleport_NATO_Basis1) < MIN_DISTANCE_TO_BEAMSPOT)) then
 {
-    _Basis = Teleport_NATO_Basis2;
-};
-
-if ((playerSide == east) and ((player distance Teleport_CSAT_Basis2) < MIN_DISTANCE_TO_BEAMSPOT)) then
-{
-    _Basis = Teleport_CSAT_Basis1;
+    _nearBeamSpot = true;
 };
 
 if ((playerSide == west) and ((player distance Teleport_NATO_Basis2) < MIN_DISTANCE_TO_BEAMSPOT)) then
 {
-    _Basis = Teleport_NATO_Basis1;
+    _nearBeamSpot = true;
+};
+
+if ((playerSide == east) and ((player distance Teleport_CSAT_Basis1) < MIN_DISTANCE_TO_BEAMSPOT)) then
+{
+    _nearBeamSpot = true;
+};
+
+if ((playerSide == east) and ((player distance Teleport_CSAT_Basis2) < MIN_DISTANCE_TO_BEAMSPOT)) then
+{
+    _nearBeamSpot = true;
+};
+
+if ((playerSide == east) and ((player distance Teleport_CSAT_Basis3) < MIN_DISTANCE_TO_BEAMSPOT)) then
+{
+    _nearBeamSpot = true;
 };
 
 // Abbrechen wenn kein eigenes Beam-Pad in der Nähe ist
-if (isNull _Basis) exitWith {};
+if (!_nearBeamSpot) exitWith {};
 
 // Array mit gültigen Beampunkten füllen
 GVAR(box) = [playerSide, true] call FUNC(getbeampoints);
 
-// Nicht berechtigt zum Beamen? -> Automatische Auswahl von Heimatbasis oder Außenposten
-if (vehicle player != player && !(typeOf vehicle player in EGVAR(SHOP,beamClasses))) exitWith {call FUNC(beam)};
+// Bei nur einem gültigen Beampunkt sofort beamen ohne Dialog
+if (count GVAR(box) == 1) exitWith
+{
+    [0, 0] call FUNC(beam);
+};
 
 // Fahrzeug abbremsen, bevor der Dialog aufgeht
 vehicle player setVelocity [0, 0, 0];
@@ -84,9 +93,8 @@ private _button = _display displayCtrl DIALOG_BEAM_BU_IDC;
 // Listbox füllen
 {
     private _pos = _x select 0;
-    private _name = _x select 1;
-    private _lvl = _x select 3;
-
+    private _name = _x select 2;
+    private _lvl = _x select 4;
     private _index = lbAdd [DIALOG_BEAM_LB_IDC, _name];
 
     switch _lvl do
@@ -111,14 +119,16 @@ _button ctrlAddEventHandler [ "ButtonClick",
     private _display = findDisplay DIALOG_BEAM_IDD;
     private _listbox = _display displayCtrl DIALOG_BEAM_LB_IDC;
     private _index = lbCurSel _listbox;
-    if (_index > 0) then
+    private _beamLevel = (GVAR(box) select _index) select 4;
+
+    if (_beamLevel > 0) then
     {
-        [_index] call FUNC(beam2);
+        [_index] call FUNC(beam);
     }
     else
     {
-        // Alte Beamfunktion für die Heimatbasis & Außenposten (sonst ist nicht genug Platz für die "freie" Suche)
-        call FUNC(beam);
+        // Exakte positionierung (SearchRadius=0) bei Heimat- und Außenbasis
+        [_index, 0] call FUNC(beam);
     };
     closeDialog 0;
 }];

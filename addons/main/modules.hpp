@@ -94,9 +94,7 @@ class CfgCLibModules
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
             FNC(clientInit);
             FNC(initCBASettings);
-            FNC(serverInit);
             FNC(beam);
-            FNC(beam2);
             FNC(beamdialog);
             FNC(beammapmove);
             FNC(getbeampoints);
