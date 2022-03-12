@@ -35,6 +35,7 @@ private _success = createDialog "opt_revive_blackscreen";
 
 //Dialog definieren
 #define IDD_REVIVE_BLACKSCREEN 5000
+#define IDD_REVIVE_WOUNDEDLABEL 5003
 #define IDC_REVIVE_BUTTON 5011
 #define IDC_REVIVE_MEDICNEARLABEL 5012
 #define IDC_REVIVE_MEDICNEARLABEL_METER 5013
@@ -46,12 +47,14 @@ private _BleedoutBar = _display displayCtrl IDC_REVIVE_BLEEDOUTBAR;
 private _Respawn_button = _display displayCtrl IDC_REVIVE_BUTTON;
 private _MedicNearLabel_Meter = _display displayCtrl IDC_REVIVE_MEDICNEARLABEL_METER;
 private _BleedoutBar_Text = _display displayCtrl IDC_REVIVE_BLEEDOUTBAR_TEXT;
+private _WoundedLabel_Text = _display displayCtrl IDD_REVIVE_WOUNDEDLABEL;
 
 //Grundstellung
 _BleedoutBar progressSetPosition 1.0;
 _MedicNearLabel_Meter ctrlSetText "";
 GVAR(ausblutzeit) = 300;
-_BleedoutBar_Text ctrlSetText format ["%1 sec",GVAR(ausblutzeit)];
+_BleedoutBar_Text ctrlSetText format ["%1 sec", GVAR(ausblutzeit)];
+_WoundedLabel_Text ctrlSetText format [MLOC(WOUNDED)];
 
 //Chat abschalten
 1 enableChannel false;
@@ -79,12 +82,14 @@ GVAR(startzeit) = time;
     private _display = findDisplay IDD_REVIVE_BLACKSCREEN;
     private _BleedoutBar = _display displayCtrl IDC_REVIVE_BLEEDOUTBAR;
     private _Respawn_button = _display displayCtrl IDC_REVIVE_BUTTON;
+    private _MedicNearLabel = _display displayCtrl IDC_REVIVE_MEDICNEARLABEL;
     private _MedicNearLabel_Meter = _display displayCtrl IDC_REVIVE_MEDICNEARLABEL_METER;
     private _BleedoutBar_Text = _display displayCtrl IDC_REVIVE_BLEEDOUTBAR_TEXT;
-
     private _sideplayer = getnumber (configFile >> "CfgVehicles" >> (typeof player) >> "side");
     private _nextGuyName = "";
     private _nextGuyDistance = 0;
+    private _hintMsg = MLOC(NO_MEDIC);
+    _MedicNearLabel ctrlSetText format [MLOC(NEXT_HELPER)];
 
     // Spieler im Bereich finden
     private _units = nearestObjects [getpos player, ["CAManBase"], GVAR(playerdist)] - [player];
@@ -92,37 +97,27 @@ GVAR(startzeit) = time;
     {
         {
             private _sidesoldat = getnumber (configFile >> "CfgVehicles" >> (typeof _x) >> "side");
-
-            if (getDammage _x < GVAR(MAX_DAMAGE) && _sidesoldat == _sideplayer) then
+            if (getDammage _x < GVAR(MAX_DAMAGE) && _sidesoldat == _sideplayer && alive _x && lifeState _x isNotEqualTo "INCAPACITATED") then
             {
+                private _isMedic = typeOf _x in EGVAR(RULES,medic);
+
                 // Zeige nur Sanis an
-                if (GVAR(onlysani)) then
+                if (GVAR(onlysani) && !_isMedic) then {continue};
+
+                _nextGuyName = name _x;
+                _nextGuyDistance = round (_x distance player);
+
+                if (_isMedic) then
                 {
-                    if (typeOf _x in EGVAR(RULES,medic)) then
-                    {
-                        _nextGuyName = name _x;
-                        _nextGuyDistance = round (_x distance player);
-                    };
+                    _hintMsg = format[MLOC(MEDIC_DISTANCE), _nextGuyName, _nextGuyDistance];
                 }
-                // Zeige alle Spieler an
                 else
                 {
-                    _nextGuyName = name _x;
-                    _nextGuyDistance = round (_x distance player);
+                    _hintMsg = format[MLOC(NONMEDIC_DISTANCE), _nextGuyName, _nextGuyDistance];
                 };
+                break;
             };
-            if (_nextGuyName != "") then {break};
         } forEach _units;
-    };
-
-    private _hintMsg = "";
-    if (_nextGuyName != "") then
-    {
-        _hintMsg = format[MLOC(MEDIC_DISTANCE), _nextGuyName, _nextGuyDistance];
-    }
-    else
-    {
-        _hintMsg = MLOC(NO_MEDIC);
     };
 
     // Textausgabe über Medic entfernung
@@ -137,7 +132,7 @@ GVAR(startzeit) = time;
     };
 
     // Zeitausgabe bis Auto Respwan
-    _BleedoutBar_Text ctrlSetText format ["%1 sec",floor (GVAR(ausblutzeit) - (time - GVAR(startzeit)))];
+    _BleedoutBar_Text ctrlSetText format ["%1 sec", floor (GVAR(ausblutzeit) - (time - GVAR(startzeit)))];
     _BleedoutBar progressSetPosition ((floor (GVAR(ausblutzeit) - (time - GVAR(startzeit)))) / GVAR(ausblutzeit));
     _BleedoutBar_Text ctrlSetTextColor [1, 0, 0, 1];
     _BleedoutBar ctrlSetTextColor [1, 0, 0, 1];

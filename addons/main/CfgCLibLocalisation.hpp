@@ -266,10 +266,28 @@ class CfgCLibLocalisation
                 German = "Eigenversorgung";
             };
 
-            class MEDIC_DISTANCE
+            class WOUNDED
+            {
+                English = "You are wounded.";
+                German = "Sie sind verwundet.";
+            };
+
+            class NEXT_HELPER
+            {
+                English = "Closest assistant:";
+                German = "Nächster Helfer:";
+            };
+
+            class NONMEDIC_DISTANCE
             {
                 English = "%1 is %2 m away.";
                 German = "%1 ist %2 m entfernt.";
+            };
+
+            class MEDIC_DISTANCE
+            {
+                English = "%1 (Medic) is %2 m away.";
+                German = "%1 (Sanitäter) ist %2 m entfernt.";
             };
 
             class NO_MEDIC
