@@ -55,8 +55,9 @@ while {_maxTries > 0} do
 
     if (count _newPos > 0) then
     {
-        // Zusätzlicher Kollisionscheck
-        private _objects = _newPos nearObjects (sizeOf _vehicle);
+        // Zusätzlicher Kollisionscheck (2D)
+        private _tmp = _newPos select [0, 2];
+        private _objects = _tmp nearObjects (sizeOf _vehicle);
         {
             // Objekt bekannt? (Shop-Objekt oder lebender Soldat)
             if (typeOf _x in EGVAR(SHOP,all_item_classnames) || (_x isKindOf "CAManBase" && alive _x)) then
