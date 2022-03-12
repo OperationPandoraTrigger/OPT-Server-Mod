@@ -16,11 +16,13 @@ if (!OPT_SECTORCONTROL_trainingon) exitWith {};
 [ZEUS_SWAP_EVENT, {
     _this select 0 params["_unit", "_corpse"];
 
-    if (!isNull _corpse) then {
+    if (!isNull _corpse) then
+    {
         {
             private _assignedUnit = getAssignedCuratorUnit _x;
             private _group = group _x;
-            if (_corpse == _assignedUnit || isNull _assignedUnit) exitWith {
+            if (_corpse == _assignedUnit || isNull _assignedUnit) exitWith
+            {
                 unassignCurator _x;
                 deleteVehicle _x;
                 deleteGroup _group;
@@ -34,6 +36,4 @@ if (!OPT_SECTORCONTROL_trainingon) exitWith {};
     _curator setVariable ["bis_fnc_initModules_activate", false, true];
     _curator addCuratorEditableObjects [allMissionObjects "", true];
     _unit assignCurator _curator;
-
-    "Zeusmodus verfügbar." remoteExec ["systemChat", _unit];
 }] call CFUNC(addEventHandler);

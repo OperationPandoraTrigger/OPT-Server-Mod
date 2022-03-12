@@ -173,6 +173,13 @@ class CfgCLibModules
             FNC(uav);
         };
 
+        MODULE(INTRO)
+        {
+            dependency[] = {"Clib/Events"};
+            FNC(clientInit);
+            FNC(initCBASettings);
+        };
+
         MODULE(LOGGING)
         {
             FNC(clientInit);

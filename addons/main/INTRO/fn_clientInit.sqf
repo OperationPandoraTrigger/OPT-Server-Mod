@@ -1,9 +1,9 @@
 /**
 * Description:
-* Initialisierung HUD System
+* Initialisierung Intro
 *
 * Author:
-* Lord-MDB
+* form
 *
 * Arguments:
 * None
@@ -28,7 +28,10 @@
 */
 #include "macros.hpp"
 
-["missionStarted", {
-    (["OPT_HUD"] call BIS_fnc_rscLayer) cutRsc ["opt_hud_DefaultMenu", "PLAIN", 1];
-    [] call FUNC(updateHUD);
+["missionStarted",
+{
+    if (GVAR(PlayIntro)) then
+    {
+        [GVAR(IntroFile)] call BIS_fnc_playVideo;
+    };
 }] call CFUNC(addEventhandler);
