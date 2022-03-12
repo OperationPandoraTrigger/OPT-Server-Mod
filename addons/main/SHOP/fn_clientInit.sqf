@@ -93,7 +93,7 @@ GVAR(eventArgs) = [];
             civ2_shop_plane addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_AIR)], {[EVENT_SHOP_KAUF_ONLOAD,["planes", GVAR(nato_planes), [PlaneBoxCiv2], 13, true]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
             west_shop_veh addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_GROUND)], {[EVENT_SHOP_KAUF_ONLOAD,["vehicles", GVAR(nato_vehicles) + GVAR(nato_vehicles_supply) + GVAR(nato_armored), GVAR(pad_veh_west), 9, true]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
             west_shop_sup addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_EQUIPMENT)], {[EVENT_SHOP_KAUF_ONLOAD,["supplies", GVAR(nato_supplies) + GVAR(nato_static), GVAR(pad_sup_west), 4, false]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
-            west_shop_sea addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SEA)], {[EVENT_SHOP_KAUF_ONLOAD,["sea", GVAR(nato_sea), GVAR(pad_sea_west),9, true]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
+            west_shop_sea addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SEA)], {[EVENT_SHOP_KAUF_ONLOAD,["sea", GVAR(nato_sea), GVAR(pad_sea_west), 9, true]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
             west_shop_verkauf addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SELL)], {[EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
         };
 
