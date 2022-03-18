@@ -178,6 +178,7 @@ class CfgCLibModules
             dependency[] = {"Clib/Events"};
             FNC(clientInit);
             FNC(initCBASettings);
+            FNC(dialog);
         };
 
         MODULE(LOGGING)
