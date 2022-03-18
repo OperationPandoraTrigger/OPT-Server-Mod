@@ -45,20 +45,20 @@ private _logoopt = "\opt\opt_client\addons\core\bilder\opt4_logo.paa";
 
 // *** SPIELER-NAMEN ERMITTELN ***
 {
-	_name = name _x;
-	switch (side _x) do
-	{
-		case west : 
-		{
-			GVAR(playernames_west) = GVAR(playernames_west) + [ _name];
-		};
+    _name = name _x;
+    switch (side _x) do
+    {
+        case west : 
+        {
+            GVAR(playernames_west) = GVAR(playernames_west) + [ _name];
+        };
 
-		case east : 
-		{
-			GVAR(playernames_east) = GVAR(playernames_east) + [ _name];
-		};
-	};
-	
+        case east : 
+        {
+            GVAR(playernames_east) = GVAR(playernames_east) + [ _name];
+        };
+    };
+    
 }forEach playableUnits; 
 
 // Felder bestücken in Infos
@@ -90,18 +90,18 @@ else
 
 for "_i" from 1 to _zahl do
 {
-	GVAR(zahlspieler) = _i;
-	[{
+    GVAR(zahlspieler) = _i;
+    [{
 
-		ctrlSetText [(55100+GVAR(zahlspieler)), format ["%1",GVAR(playernames_west) select (GVAR(zahlspieler)-1)]];
-		ctrlSetText [(55200+GVAR(zahlspieler)), format ["%1",GVAR(playernames_east) select (GVAR(zahlspieler)-1)]];	
+        ctrlSetText [(55100+GVAR(zahlspieler)), format ["%1",GVAR(playernames_west) select (GVAR(zahlspieler)-1)]];
+        ctrlSetText [(55200+GVAR(zahlspieler)), format ["%1",GVAR(playernames_east) select (GVAR(zahlspieler)-1)]];	
 
-	}, 2 ,"2"] call CLib_fnc_wait;
+    }, 2 ,"2"] call CLib_fnc_wait;
 };
 
 //Zeit bis zum Autoschliessen des Intros
 [{
-	closeDialog 55000;
+    closeDialog 55000;
 
 }, 40 ,"40"] call CLib_fnc_wait;
 
