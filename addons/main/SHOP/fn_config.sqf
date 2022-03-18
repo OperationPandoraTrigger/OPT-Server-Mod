@@ -90,15 +90,27 @@ GVAR(DB_planes) = [];
 GVAR(DB_jets) =
 [
 //  ["Classname",                                   BuyPrice,   SellPrice,  SellPriceEnemy, NeedsCargo, GivesCargo, Draggable,  Carriable,  CanRepair,  CanBeam,    GrabOffset,     GrabDir,    HeightOffset,   Side,   HardCap],
-    ["OPT_B_Plane_CAS_02_F",     COST(450000),                           0,          0,          false,      false,      false,      false,      [0, 3, 0.2],    0,          0.2,            west,   [-1, -1, -1]], // To-199 Neophron
-    ["OPT_O_Plane_CAS_02_F",     COST(450000),                           0,          0,          false,      false,      false,      false,      [0, 3, 0.2],    0,          0.2,            east,   [-1, -1, -1]],  // To-199 Neophron
-    ["OPT_B_UAV_02_light_F",     COST(80000),                           0,          0,          false,      false,      false,      false,      [0, 3, 0.2],    0,          0.2,            east,   [-1, -1, -1]],  // MQ4A Greyhawk 
-    ["OPT_O_UAV_02_light_F",     COST(80000),                           0,          0,          false,      false,      false,      false,      [0, 3, 0.2],    0,          0.2,            east,   [-1, -1, -1]],  // K40 Ababil-3
-    ["OPT_B_UAV_02_F",     COST(120000),                           0,          0,          false,      false,      false,      false,      [0, 3, 0.2],    0,          0.2,            east,   [-1, -1, -1]],  // MQ4A Greyhawk Shrieker
-    ["OPT_O_UAV_02_F",     COST(120000),                           0,          0,          false,      false,      false,      false,      [0, 3, 0.2],    0,          0.2,            east,   [-1, -1, -1]]  // K40 Ababil-3 Shrieker
+    ["OPT_B_Plane_CAS_02_F",                        COST(450000),                           0,          0,          false,      false,      false,      false,      [0, 3, 0.2],    0,          0.2,            west,   [-1, -1, -1]], // To-199 Neophron
+    ["OPT_O_Plane_CAS_02_F",                        COST(450000),                           0,          0,          false,      false,      false,      false,      [0, 3, 0.2],    0,          0.2,            east,   [-1, -1, -1]]  // To-199 Neophron
 ];
 
-GVAR(DB_uavs) = [];
+GVAR(DB_uavs_air) =
+[
+//  ["Classname",                                   BuyPrice,   SellPrice,  SellPriceEnemy, NeedsCargo, GivesCargo, Draggable,  Carriable,  CanRepair,  CanBeam,    GrabOffset,     GrabDir,    HeightOffset,   Side,   HardCap],
+    ["OPT_B_UAV_02_light_F",                        COST(80000),                            0,          0,          false,      false,      false,      false,      [0, 3, 0.2],    0,          0.2,            west,   [-1, -1, -1]], // MQ4A Greyhawk 
+    ["OPT_O_UAV_02_light_F",                        COST(80000),                            0,          0,          false,      false,      false,      false,      [0, 3, 0.2],    0,          0.2,            east,   [-1, -1, -1]], // K40 Ababil-3
+    ["OPT_B_UAV_02_F",                              COST(120000),                           0,          0,          false,      false,      false,      false,      [0, 3, 0.2],    0,          0.2,            west,   [-1, -1, -1]], // MQ4A Greyhawk Shrieker
+    ["OPT_O_UAV_02_F",                              COST(120000),                           0,          0,          false,      false,      false,      false,      [0, 3, 0.2],    0,          0.2,            east,   [-1, -1, -1]]  // K40 Ababil-3 Shrieker
+];
+
+GVAR(DB_uavs_land) =
+[
+//  ["Classname",                                   BuyPrice,   SellPrice,  SellPriceEnemy, NeedsCargo, GivesCargo, Draggable,  Carriable,  CanRepair,  CanBeam,    GrabOffset,     GrabDir,    HeightOffset,   Side,   HardCap],
+    ["OPT_B_UAV_06_F",                              COST(15000),                            0,          2,         false,      false,      false,      false,       [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // AL-6 Pelican
+    ["OPT_O_UAV_06_F",                              COST(15000),                            0,          2,         false,      false,      false,      false,       [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // AL-6 Pelican
+    ["OPT_B_UGV_02_Demining_F",                     COST(30000),                            0,          0,         false,      false,      false,      false,       [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // ED-1D Pelter
+    ["OPT_O_UGV_02_Demining_F",                     COST(30000),                            0,          0,         false,      false,      false,      false,       [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]]  // ED-1D Pelter
+];
 
 GVAR(DB_armored) =
 [
@@ -149,11 +161,7 @@ GVAR(DB_supplies) =
     ["OPT_NATO_Minenkiste",                         80000,      10000,      20000,          2,          0,          true,       true,       false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // Minenkiste
     ["OPT_CSAT_Minenkiste",                         80000,      10000,      20000,          2,          0,          true,       true,       false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // Minenkiste
     ["OPT_FlexibleTank_01_forest_F",                COST(1000),                             1,          0,          true,       true,       false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // Treibstoff Tank
-    ["OPT_FlexibleTank_01_sand_F",                  COST(1000),                             1,          0,          true,       true,       false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // Treibstoff Tank
-    ["OPT_B_UAV_06_F",                              COST(15000),                             0,          2,         false,      false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // AL-6 Pelican
-    ["OPT_O_UAV_06_F",                              COST(15000),                             0,          2,         false,      false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // AL-6 Pelican
-    ["OPT_ B_UGV_02_Demining_F",                    COST(30000),                             0,          0,         false,      false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // ED-1D Pelter
-    ["OPT_O_UGV_02_Demining_F",                     COST(30000),                             0,          0,         false,      false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]] // ED-1D Pelter
+    ["OPT_FlexibleTank_01_sand_F",                  COST(1000),                             1,          0,          true,       true,       false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]]  // Treibstoff Tank
 ];
 
 GVAR(DB_static) =
@@ -243,8 +251,10 @@ GVAR(nato_planes) = ([GVAR(DB_planes), west] call parse_DB);
 GVAR(csat_planes) = ([GVAR(DB_planes), east] call parse_DB);
 GVAR(nato_jets) = ([GVAR(DB_jets), west] call parse_DB);
 GVAR(csat_jets) = ([GVAR(DB_jets), east] call parse_DB);
-GVAR(nato_uavs) = ([GVAR(DB_uavs), west] call parse_DB);
-GVAR(csat_uavs) = ([GVAR(DB_uavs), east] call parse_DB);
+GVAR(nato_uavs_air) = ([GVAR(DB_uavs_air), west] call parse_DB);
+GVAR(csat_uavs_air) = ([GVAR(DB_uavs_air), east] call parse_DB);
+GVAR(nato_uavs_land) = ([GVAR(DB_uavs_land), west] call parse_DB);
+GVAR(csat_uavs_land) = ([GVAR(DB_uavs_land), east] call parse_DB);
 GVAR(nato_armored) = ([GVAR(DB_armored), west] call parse_DB);
 GVAR(csat_armored) = ([GVAR(DB_armored), east] call parse_DB);
 GVAR(nato_supplies) = ([GVAR(DB_supplies), west] call parse_DB);
@@ -258,15 +268,15 @@ GVAR(csat_sea) = ([GVAR(DB_sea), east] call parse_DB);
 GVAR(choppers) = [GVAR(DB_choppers)] call parse_class_from_DB;
 GVAR(planes) = [GVAR(DB_planes)] call parse_class_from_DB;
 GVAR(jets) = [GVAR(DB_jets)] call parse_class_from_DB;
-GVAR(uavs) = [GVAR(DB_uavs)] call parse_class_from_DB;
+GVAR(uavs) = [GVAR(DB_uavs_air) + GVAR(DB_uavs_land)] call parse_class_from_DB;
 GVAR(crew_vehicles) = [GVAR(DB_armored)] call parse_class_from_DB;
 
 // Classnames only for category checks
 GVAR(light) = [GVAR(DB_vehicles) + GVAR(DB_vehicles_supply)] call parse_class_from_DB;
 GVAR(heavy) = [GVAR(DB_armored)] call parse_class_from_DB;
-GVAR(air) = [GVAR(DB_choppers) + GVAR(DB_planes) + GVAR(DB_jets)] call parse_class_from_DB;
+GVAR(air) = [GVAR(DB_choppers) + GVAR(DB_planes) + GVAR(DB_jets) + GVAR(DB_uavs_air)] call parse_class_from_DB;
 GVAR(boat) = [GVAR(DB_sea)] call parse_class_from_DB;
-GVAR(supplies) = [GVAR(DB_supplies)] call parse_class_from_DB;
+GVAR(supplies) = [GVAR(DB_supplies) + GVAR(DB_uavs_land)] call parse_class_from_DB;
 GVAR(static) = [GVAR(DB_static)] call parse_class_from_DB;
 
 GVAR(allNato) =
@@ -278,7 +288,9 @@ GVAR(allNato) =
     GVAR(nato_armored) +
     GVAR(nato_supplies) +
     GVAR(nato_static) +
-    GVAR(nato_sea);
+    GVAR(nato_sea) +
+    GVAR(nato_uavs_air) +
+    GVAR(nato_uavs_land);
 
 GVAR(allCsat) =
     GVAR(csat_vehicles) +
@@ -289,7 +301,9 @@ GVAR(allCsat) =
     GVAR(csat_armored) +
     GVAR(csat_supplies) +
     GVAR(csat_static) +
-    GVAR(csat_sea);
+    GVAR(csat_sea) +
+    GVAR(csat_uavs_air) +
+    GVAR(csat_uavs_land);
 
 GVAR(all) =
     GVAR(allNato) +

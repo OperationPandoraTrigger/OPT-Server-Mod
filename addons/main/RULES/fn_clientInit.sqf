@@ -36,7 +36,11 @@
     [] call FUNC(setup_classnames);
 
     // UAV Drohnenstation
-    [] call FUNC(uav);
+    
+    if (typeOf player in GVAR(uav_operators)) then
+    {
+        [] call FUNC(uav);
+    };
 
     // Hint Meldung das Zuschauerslot besetzt wurde.
 //    if ((player isKindOf "VirtualSpectator_F") or (player isKindOf "ace_spectator_virtual")) then

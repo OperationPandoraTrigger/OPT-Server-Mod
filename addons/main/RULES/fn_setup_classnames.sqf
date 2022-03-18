@@ -46,6 +46,12 @@ GVAR(jetpilots) =
     "OPT_CSAT_Pilot_jet"
 ];
 
+GVAR(uav_operators) =
+[
+    "OPT_NATO_Operator",
+    "OPT_CSAT_Operator"
+];
+
 GVAR(blockedVehiclePositions_air) =
 [
     "driver"
