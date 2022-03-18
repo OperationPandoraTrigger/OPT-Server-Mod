@@ -40,9 +40,9 @@
 [
     QGVAR(Introvideolange), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "EDITBOX", // setting type
-    "Laenge der Videos", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+    "Laenge des Videos", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     "OPT Intro", // Pretty name of the category where the setting can be found. Can be stringtable entry.
-    "6", // data for this setting: [min, max, default, number of shown trailing decimals]
+    "7", // data for this setting: [min, max, default, number of shown trailing decimals]
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {
         params ["_value"];
@@ -58,7 +58,7 @@
         "Name der Kampagne" + endl // Mouse-Over description of the above
     ],
     "OPT Intro", // Pretty name of the category where the setting can be found. Can be stringtable entry.
-    "Die drei Frageziechen", // Default value <STRING>
+    "Die drei Fragezeichen", // Default value <STRING>
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {} // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
