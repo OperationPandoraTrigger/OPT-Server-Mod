@@ -44,5 +44,6 @@ _button ctrlAddEventHandler [ "ButtonClick",
     private _textbox = _display displayCtrl DIALOG_LOGPOS_TB_IDC;
     private _comment = ctrlText _textbox;
     ["Player", "PositionReport", [getPlayerUID player, name player, side player, position vehicle player, getDir vehicle player, _comment]] remoteExec [QEFUNC(LOGGING,writelog), 2];
+    systemChat format ["Logged position %1 // Direction %2 // Comment: %3 // Thanks.", position vehicle player, getDir vehicle player, _comment];
     closeDialog 0;
 }];
