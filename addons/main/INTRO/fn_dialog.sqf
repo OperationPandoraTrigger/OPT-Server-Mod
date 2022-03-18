@@ -36,8 +36,8 @@ private _success = createDialog "Dialogintro";
 private _display = findDisplay IDD_DLG_ORDER;
 
 // Daten 
-GVAR(playernames_west)	= [];
-GVAR(playernames_east)	= [];
+GVAR(playernames_west) = [];
+GVAR(playernames_east) = [];
 
 private _logowest= "\opt\opt_client\addons\core\bilder\arf_logo.paa";
 private _logoeast= "\opt\opt_client\addons\core\bilder\sword_logo.paa";
@@ -94,7 +94,7 @@ for "_i" from 1 to _zahl do
     [{
 
         ctrlSetText [(55100+GVAR(zahlspieler)), format ["%1",GVAR(playernames_west) select (GVAR(zahlspieler)-1)]];
-        ctrlSetText [(55200+GVAR(zahlspieler)), format ["%1",GVAR(playernames_east) select (GVAR(zahlspieler)-1)]];	
+        ctrlSetText [(55200+GVAR(zahlspieler)), format ["%1",GVAR(playernames_east) select (GVAR(zahlspieler)-1)]];
 
     }, 2 ,"2"] call CLib_fnc_wait;
 };
