@@ -3,7 +3,7 @@
 * Intro
 *
 * Author:
-* form
+* Lord
 *
 * Arguments:
 * None
@@ -66,10 +66,10 @@ private _control = _currentCutDisplay displayCtrl 54000;
 _control ctrlSetText _logoopt;
 
 private _control = _currentCutDisplay displayCtrl 54001;
-_control ctrlSetText GVAR(Url);
+_control ctrlSetText GVAR(URL);
 
 private _control = _currentCutDisplay displayCtrl 54002;
-_control ctrlSetText GVAR(Kampagnenamen);
+_control ctrlSetText GVAR(Kampagnename);
 
 private _control = _currentCutDisplay displayCtrl 54003;
 _control ctrlSetText GVAR(Schlachtnummer);
@@ -97,7 +97,7 @@ _control ctrlSetText EGVAR(SECTORCONTROL,csat_faction);
 
 // Box mit Namen füllen
 GVAR(zahlspieler) = 0;
-private _zahl =0;
+private _zahl = 0;
 GVAR(txt1) = "";
 GVAR(txt2) = "";
 
@@ -111,7 +111,7 @@ if (Count GVAR(playernames_west) > 39) then
 }
 else
 {
-    _zahl = Count (GVAR(playernames_west));
+    _zahl = count (GVAR(playernames_west));
 };
 
 for "_i" from 1 to _zahl do
@@ -130,17 +130,10 @@ for "_i" from 1 to _zahl do
         _control ctrlSetText GVAR(txt2);
         systemChat format ["T2:%1 Z:%2",GVAR(txt2),_zahl];
 
-    }, 2 ,_i] call CLib_fnc_wait;
+    }, 2, _i] call CLib_fnc_wait;
 };
 
 //Zeit bis zum Autoschliessen des Intros
 [{
     (["opt_intro"] call BIS_fnc_rscLayer) cutRsc ["RscTitleDisplayEmpty", "PLAIN", 1];
-
 }, 40 ,"40"] call CLib_fnc_wait;
-
-
-
-
-
-

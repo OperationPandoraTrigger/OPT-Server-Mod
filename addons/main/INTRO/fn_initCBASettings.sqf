@@ -38,7 +38,7 @@
 ] call CBA_Settings_fnc_init;
 
 [
-    QGVAR(Kampagnenamen), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    QGVAR(Kampagnename), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "EDITBOX", // setting type
     [
         "Kampagnenname", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
@@ -64,14 +64,11 @@
 ] call CBA_Settings_fnc_init;
 
 [
-    QGVAR(Url), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    QGVAR(URL), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "EDITBOX", // setting type
-    [
-        "HP URL", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
-        "Internetseite" + endl // Mouse-Over description of the above
-    ],
+    "URL des Webauftritts", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     "OPT Intro", // Pretty name of the category where the setting can be found. Can be stringtable entry.
-    "https://opt4.net/", // Default value <STRING>
+    "https://opt4.net", // Default value <STRING>
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {} // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;

@@ -181,7 +181,7 @@ class CfgCLibLocalisation
 
             class UAV_WORNG_CONNECTION
             {
-                English = "This action can only be performed at the UAV station";
+                English = "This action can only be performed at the UAV station.";
                 German = "Diese Aktion kann nur an der UAV-Station ausgeführt werden.";
             };
 
