@@ -88,29 +88,3 @@
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {} // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
-
-[
-    QGVAR(introWGes), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
-    "EDITBOX", // setting type
-    [
-        "Gesamtpunkte NATO", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
-        "Kampagnen Gesamtpunkte der Natoseite" + endl // Mouse-Over description of the above
-    ],
-    "OPT Intro", // Pretty name of the category where the setting can be found. Can be stringtable entry.
-    "XX", // Default value <STRING>
-    1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
-    {} // function that will be executed once on mission start and every time the setting is changed.
-] call CBA_Settings_fnc_init;
-
-[
-    QGVAR(introEGes), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
-    "EDITBOX", // setting type
-    [
-        "Gesamtpunkte CSAT", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
-        "Kampagnen Gesamtpunkte der Csatseite" + endl // Mouse-Over description of the above
-    ],
-    "OPT Intro", // Pretty name of the category where the setting can be found. Can be stringtable entry.
-    "XX", // Default value <STRING>
-    1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
-    {} // function that will be executed once on mission start and every time the setting is changed.
-] call CBA_Settings_fnc_init;

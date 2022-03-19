@@ -29,18 +29,18 @@
 #include "macros.hpp"
 
 //Dialog erstellen
-private _success = createDialog "Dialogintro";
+(["opt_intro"] call BIS_fnc_rscLayer) cutRsc ["opt_intro_anzeige", "PLAIN", 1];
+
 
 //Dialog definieren
-#define IDD_DLG_ORDER 55000
-private _display = findDisplay IDD_DLG_ORDER;
+private _currentCutDisplay = uiNamespace getVariable "opt_intro_anzeige";
 
 // Daten 
 GVAR(playernames_west) = [];
 GVAR(playernames_east) = [];
 
-private _logowest= "\opt\opt_client\addons\core\bilder\arf_logo.paa";
-private _logoeast= "\opt\opt_client\addons\core\bilder\sword_logo.paa";
+private _logowest= "\opt\opt_client\addons\core\bilder\" + toLower EGVAR(SECTORCONTROL,nato_faction) + "_logo.paa";
+private _logoeast= "\opt\opt_client\addons\core\bilder\" + toLower EGVAR(SECTORCONTROL,csat_faction) + "_logo.paa";
 private _logoopt = "\opt\opt_client\addons\core\bilder\opt4_logo.paa";
 
 // *** SPIELER-NAMEN ERMITTELN ***
@@ -62,17 +62,38 @@ private _logoopt = "\opt\opt_client\addons\core\bilder\opt4_logo.paa";
 }forEach playableUnits; 
 
 // Felder bestücken in Infos
-ctrlSetText [54000, _logoopt];
-ctrlSetText [54001, GVAR(Url)];
-ctrlSetText [54002, GVAR(Kampagnenamen)];
-ctrlSetText [54003, GVAR(Schlachtnummer)];
-ctrlSetText [55000, "Gesamtergebnis"];
-ctrlSetText [55001, _logowest];
-ctrlSetText [55003, _logoeast];
-ctrlSetText [55004, GVAR(introWGes)];
-ctrlSetText [55006, GVAR(introEGes)];
-ctrlSetText [55007, EGVAR(SECTORCONTROL,nato_faction)];
-ctrlSetText [55008, EGVAR(SECTORCONTROL,csat_faction)];
+private _control = _currentCutDisplay displayCtrl 54000;
+_control ctrlSetText _logoopt;
+
+private _control = _currentCutDisplay displayCtrl 54001;
+_control ctrlSetText GVAR(Url);
+
+private _control = _currentCutDisplay displayCtrl 54002;
+_control ctrlSetText GVAR(Kampagnenamen);
+
+private _control = _currentCutDisplay displayCtrl 54003;
+_control ctrlSetText GVAR(Schlachtnummer);
+
+private _control = _currentCutDisplay displayCtrl 55000;
+_control ctrlSetText "Verteidigungssektoren";
+
+private _control = _currentCutDisplay displayCtrl 55001;
+_control ctrlSetText _logowest;
+
+private _control = _currentCutDisplay displayCtrl 55003;
+_control ctrlSetText _logoeast;
+
+private _control = _currentCutDisplay displayCtrl 55004;
+_control ctrlSetText EGVAR(SECTORCONTROL,nato_sectors_str);
+
+private _control = _currentCutDisplay displayCtrl 55006;
+_control ctrlSetText EGVAR(SECTORCONTROL,csat_sectors_str);
+
+private _control = _currentCutDisplay displayCtrl 55007;
+_control ctrlSetText EGVAR(SECTORCONTROL,nato_faction);
+
+private _control = _currentCutDisplay displayCtrl 55008;
+_control ctrlSetText EGVAR(SECTORCONTROL,csat_faction);
 
 // Box mit Namen füllen
 GVAR(zahlspieler) = 0;
@@ -92,16 +113,20 @@ for "_i" from 1 to _zahl do
 {
     GVAR(zahlspieler) = _i;
     [{
+        private _currentCutDisplay = uiNamespace getVariable "opt_intro_anzeige";
 
-        ctrlSetText [(55100+GVAR(zahlspieler)), format ["%1",GVAR(playernames_west) select (GVAR(zahlspieler)-1)]];
-        ctrlSetText [(55200+GVAR(zahlspieler)), format ["%1",GVAR(playernames_east) select (GVAR(zahlspieler)-1)]];
+        private _control = _currentCutDisplay displayCtrl (55100+GVAR(zahlspieler));
+        _control ctrlSetText format ["%1",GVAR(playernames_west) select (GVAR(zahlspieler)-1)];
+
+        private _control = _currentCutDisplay displayCtrl (55200+GVAR(zahlspieler));
+        _control ctrlSetText format ["%1",GVAR(playernames_east) select (GVAR(zahlspieler)-1)];
 
     }, 2 ,"2"] call CLib_fnc_wait;
 };
 
 //Zeit bis zum Autoschliessen des Intros
 [{
-    closeDialog 55000;
+    (["opt_intro"] call BIS_fnc_rscLayer) cutRsc ["RscTitleDisplayEmpty", "PLAIN", 1];
 
 }, 40 ,"40"] call CLib_fnc_wait;
 
