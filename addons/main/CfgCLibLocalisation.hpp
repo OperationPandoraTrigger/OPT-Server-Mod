@@ -179,6 +179,18 @@ class CfgCLibLocalisation
                 German = "Verbindung zur UAV-Station verloren.";
             };
 
+            class UAV_WORNG_CONNECTION
+            {
+                English = "This action can only be performed at the UAV station";
+                German = "Diese Aktion kann nur an der UAV-Station ausgeführt werden.";
+            };
+
+            class UAV_ONLY_OPERATOR
+            {
+                English = "This equipment can only be used by an UAV Operator. ";
+                German = "Diese Ausrüstung kann nur ein UAV Operator benutzen.";
+            };
+
             class WEAPON_LOCK
             {
                 English = "Weapon inadmissible for current player class.\n\nWeapon has been removed.";
