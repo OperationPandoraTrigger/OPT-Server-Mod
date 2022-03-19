@@ -32,13 +32,12 @@
 {
     if (GVAR(PlayIntro)) then
     {
-        //Vorspann Video
-        [GVAR(IntroFile)] call BIS_fnc_playVideo;
-
-        //Info und Spieler
+        // Vorspann Video
+        GVAR(IntroHandle) = [GVAR(IntroFile)] spawn BIS_fnc_playVideo;
+        // Info und Spieler
         [{
             [] call FUNC(dialog);
             
-        }, GVAR(Introvideolange) ,"6"] call CLib_fnc_wait;
+        }, {scriptDone GVAR(IntroHandle)}, ""] call CLib_fnc_waitUntil;
     };
 }] call CFUNC(addEventhandler);
