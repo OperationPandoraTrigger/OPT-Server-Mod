@@ -239,3 +239,12 @@ GVAR(medic) =
     "OPT_NATO_Sanitaeter",
     "OPT_CSAT_Sanitaeter"
 ];
+
+// Grosse Drohne für Berechtigung 
+GVAR(big_uavs) =
+[
+    "OPT_B_UAV_02_light_F",
+    "OPT_B_UAV_02_F",
+    "OPT_O_UAV_02_light_F",
+    "OPT_O_UAV_02_F"
+];

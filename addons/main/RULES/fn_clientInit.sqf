@@ -35,9 +35,8 @@
 {
     [] call FUNC(setup_classnames);
 
-    // UAV Drohnenstation
-    
-    if (typeOf player in GVAR(uav_operators)) then
+    // UAV Drohnenstation  
+    if (typeOf player in (GVAR(jetpilots) + GVAR(uav_operators) + GVAR(pilots))) then
     {
         [] call FUNC(uav);
     };
