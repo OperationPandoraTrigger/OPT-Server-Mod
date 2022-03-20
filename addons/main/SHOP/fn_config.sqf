@@ -106,10 +106,10 @@ GVAR(DB_uavs_air) =
 GVAR(DB_uavs_land) =
 [
 //  ["Classname",                                   BuyPrice,   SellPrice,  SellPriceEnemy, NeedsCargo, GivesCargo, Draggable,  Carriable,  CanRepair,  CanBeam,    GrabOffset,     GrabDir,    HeightOffset,   Side,   HardCap],
-    ["OPT_B_UAV_06_F",                              COST(15000),                            0,          2,         false,      false,      false,      false,       [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // AL-6 Pelican
-    ["OPT_O_UAV_06_F",                              COST(15000),                            0,          2,         false,      false,      false,      false,       [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // AL-6 Pelican
-    ["OPT_B_UGV_02_Demining_F",                     COST(30000),                            0,          0,         false,      false,      false,      false,       [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // ED-1D Pelter
-    ["OPT_O_UGV_02_Demining_F",                     COST(30000),                            0,          0,         false,      false,      false,      false,       [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]]  // ED-1D Pelter
+    ["OPT_B_UAV_06_F",                              COST(15000),                            2,          2,         false,      false,      false,      false,       [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // AL-6 Pelican
+    ["OPT_O_UAV_06_F",                              COST(15000),                            2,          2,         false,      false,      false,      false,       [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // AL-6 Pelican
+    ["OPT_B_UGV_02_Demining_F",                     COST(30000),                            2,          0,         false,      false,      false,      false,       [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // ED-1D Pelter
+    ["OPT_O_UGV_02_Demining_F",                     COST(30000),                            2,          0,         false,      false,      false,      false,       [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]]  // ED-1D Pelter
 ];
 
 GVAR(DB_armored) =
