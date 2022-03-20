@@ -34,6 +34,7 @@
     {
         // Vorspann Video
         GVAR(IntroHandle) = [GVAR(IntroFile)] spawn BIS_fnc_playVideo;
+
         // Info und Spieler
         [{
             [] call FUNC(dialog);

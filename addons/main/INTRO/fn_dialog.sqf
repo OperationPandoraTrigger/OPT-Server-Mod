@@ -60,10 +60,6 @@ GVAR(playernames_east) = [];
 //GVAR(playernames_west) = ["Hans","peter","Uwe","klaus","Ute","jurgen","Anke","michael"];
 //GVAR(playernames_east) = ["Ute","jurgen","Anke","michael"];
 
-GVAR(zahl) = 0;
-GVAR(txt1) = "";
-GVAR(txt2) = "";
-
 // Felder bestücken mit Infos
 private _control = _currentCutDisplay displayCtrl 54000;
 _control ctrlSetText _logoopt;
@@ -98,40 +94,34 @@ _control ctrlSetText EGVAR(SECTORCONTROL,nato_faction);
 private _control = _currentCutDisplay displayCtrl 55008;
 _control ctrlSetText EGVAR(SECTORCONTROL,csat_faction);
 
-GVAR(playerboxfull) = [
-{
+
+GVAR(Textbox_west) = "";
+GVAR(Textbox_east) = "";
+GVAR(LoopCount) = 0;
+[{
         params ["_args", "_handle"];
-
         private _currentCutDisplay = uiNamespace getVariable "opt_intro_anzeige";
-        private _spielerzahl =[];
 
-        if (Count GVAR(playernames_west) > GVAR(zahl)) then
+        if (count GVAR(playernames_west) > GVAR(LoopCount)) then
         {
             private _control = _currentCutDisplay displayCtrl 55101;
-            GVAR(txt1) = format ["%1%2%3", GVAR(txt1), endl, GVAR(playernames_west) select GVAR(zahl)];
-            _control ctrlSetText GVAR(txt1);
+            GVAR(Textbox_west) = [GVAR(Textbox_west), GVAR(playernames_west) select GVAR(LoopCount)] joinString endl;
+            _control ctrlSetText GVAR(Textbox_west);
         };
 
-        if (Count GVAR(playernames_east) > GVAR(zahl)) then
+        if (count GVAR(playernames_east) > GVAR(LoopCount)) then
         {
             private _control = _currentCutDisplay displayCtrl 55201;
-            GVAR(txt2) = format ["%1%2%3", GVAR(txt2), endl, GVAR(playernames_east) select GVAR(zahl)];
-            _control ctrlSetText GVAR(txt2);
+            GVAR(Textbox_east) = [GVAR(Textbox_east), GVAR(playernames_east) select GVAR(LoopCount)] joinString endl;
+            _control ctrlSetText GVAR(Textbox_east);
         };
 
-        _spielerzahl = [Count GVAR(playernames_west),Count GVAR(playernames_east)];
-        _spielerzahl sort true;
- 
-        if ((_spielerzahl select 1) < GVAR(zahl)) then
+        // 5 Sekunden nachdem die Liste komplett ist den Dialog und PerFrameHandler löschen
+        if (GVAR(LoopCount) > ((count GVAR(playernames_west) max count GVAR(playernames_east))) + 5) then
         {
+            _currentCutDisplay closeDisplay 1;
             _handle call CFUNC(removePerframeHandler);
         };     
 
-        GVAR(zahl)=GVAR(zahl)+1;
-
-}, 1.5, _this] call CFUNC(addPerFrameHandler);
-
-// Zeit bis zum Autoschliessen des Intros
-[{
-    (["opt_intro"] call BIS_fnc_rscLayer) cutRsc ["RscTitleDisplayEmpty", "PLAIN", 1];
-}, 50] call CLib_fnc_wait;
+        GVAR(LoopCount) = GVAR(LoopCount) + 1;
+}, 1, _this] call CFUNC(addPerFrameHandler);
