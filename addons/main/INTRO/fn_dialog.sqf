@@ -57,8 +57,12 @@ GVAR(playernames_east) = [];
 } forEach playableUnits; 
 
 // Fake-Namen
-//GVAR(playernames_west) = ["Hans","peter","Uwe","klaus"];
+//GVAR(playernames_west) = ["Hans","peter","Uwe","klaus","Ute","jurgen","Anke","michael"];
 //GVAR(playernames_east) = ["Ute","jurgen","Anke","michael"];
+
+GVAR(zahl) = 0;
+GVAR(txt1) = "";
+GVAR(txt2) = "";
 
 // Felder bestücken mit Infos
 private _control = _currentCutDisplay displayCtrl 54000;
@@ -94,13 +98,40 @@ _control ctrlSetText EGVAR(SECTORCONTROL,nato_faction);
 private _control = _currentCutDisplay displayCtrl 55008;
 _control ctrlSetText EGVAR(SECTORCONTROL,csat_faction);
 
-private _control = _currentCutDisplay displayCtrl 55101;
-_control ctrlSetText (GVAR(playernames_west) joinString endl);
+GVAR(playerboxfull) = [
+{
+        params ["_args", "_handle"];
 
-private _control = _currentCutDisplay displayCtrl 55201;
-_control ctrlSetText (GVAR(playernames_east) joinString endl);
+        private _currentCutDisplay = uiNamespace getVariable "opt_intro_anzeige";
+        private _spielerzahl =[];
+
+        if (Count GVAR(playernames_west) > GVAR(zahl)) then
+        {
+            private _control = _currentCutDisplay displayCtrl 55101;
+            GVAR(txt1) = format ["%1%2%3", GVAR(txt1), endl, GVAR(playernames_west) select GVAR(zahl)];
+            _control ctrlSetText GVAR(txt1);
+        };
+
+        if (Count GVAR(playernames_east) > GVAR(zahl)) then
+        {
+            private _control = _currentCutDisplay displayCtrl 55201;
+            GVAR(txt2) = format ["%1%2%3", GVAR(txt2), endl, GVAR(playernames_east) select GVAR(zahl)];
+            _control ctrlSetText GVAR(txt2);
+        };
+
+        _spielerzahl = [Count GVAR(playernames_west),Count GVAR(playernames_east)];
+        _spielerzahl sort true;
+ 
+        if ((_spielerzahl select 1) < GVAR(zahl)) then
+        {
+            _handle call CFUNC(removePerframeHandler);
+        };     
+
+        GVAR(zahl)=GVAR(zahl)+1;
+
+}, 1.5, _this] call CFUNC(addPerFrameHandler);
 
 // Zeit bis zum Autoschliessen des Intros
 [{
     (["opt_intro"] call BIS_fnc_rscLayer) cutRsc ["RscTitleDisplayEmpty", "PLAIN", 1];
-}, 15] call CLib_fnc_wait;
+}, 50] call CLib_fnc_wait;
