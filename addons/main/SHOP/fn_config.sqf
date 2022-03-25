@@ -194,11 +194,11 @@ GVAR(DB_sea) =
     ["OPT_O_C_Boat_Transport_02_F",                 COST(12000),                            5,          4,          true,       false,      false,      false,      [0, 2, 0.1],    0,          0,              east,   [-1, -1, -1]], // Rhib unbewaffnet
     ["OPT_B_SDV_01_F",                              COST(2000),                             5,          0,          true,       false,      false,      false,      [0, 2, 0.1],    0,          0,              west,   [-1, -1, -1]], // U-Boot
     ["OPT_O_SDV_01_F",                              COST(40000),                            5,          0,          true,       false,      false,      false,      [0, 2, 0.1],    0,          0,              east,   [-1, -1, -1]], // U-Boot
-    ["OPT_rksla3_lcvpmk5_viv",                      COST(10000),                            0,          10,         true,       false,      false,      false,      [0, 2, 0.1],    0,          0,              east,   [-1, -1, -1]], // LCVP Mk5 - bluefor
-    ["OPT_rksla3_lcvpmk5_viv_opfor_camo",           COST(10000),                            0,          10,         true,       false,      false,      false,      [0, 2, 0.1],    0,          0,              east,   [-1, -1, -1]]  // LCVP Mk5 - opfor
+    ["OPT_rksla3_lcvpmk5_viv",                      COST(10000),                            0,          10,         false,      false,      false,      false,      [0, 2, 0.1],    0,          0,              west,   [-1, -1, -1]], // LCVP Mk5 - bluefor
+    ["OPT_rksla3_lcvpmk5_viv_opfor_camo",           COST(10000),                            0,          10,         false,      false,      false,      false,      [0, 2, 0.1],    0,          0,              east,   [-1, -1, -1]]  // LCVP Mk5 - opfor
 ];
 
-GVAR(DB_all) = GVAR(DB_vehicles) + GVAR(DB_vehicles_supply) + GVAR(DB_choppers) + GVAR(DB_planes) + GVAR(DB_jets) + GVAR(DB_uavs) + GVAR(DB_armored) + GVAR(DB_supplies) + GVAR(DB_static) + GVAR(DB_sea);
+GVAR(DB_all) = GVAR(DB_vehicles) + GVAR(DB_vehicles_supply) + GVAR(DB_choppers) + GVAR(DB_planes) + GVAR(DB_jets) + GVAR(DB_uavs_air) + GVAR(DB_uavs_land) + GVAR(DB_armored) + GVAR(DB_supplies) + GVAR(DB_static) + GVAR(DB_sea);
 
 // Returns oldstyle shop-array for vehicles and sets cargo/repair stuff in the background
 parse_DB =

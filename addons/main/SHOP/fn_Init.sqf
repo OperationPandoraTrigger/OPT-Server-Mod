@@ -22,7 +22,7 @@
 */
 #include "macros.hpp"
 
-//Dateneinlesen
+// Daten einlesen
 [] call FUNC(config);
 
 // add killed EH to all kind of vehicles, either on map or later spawned via crteateVehicle arrayIntersect
