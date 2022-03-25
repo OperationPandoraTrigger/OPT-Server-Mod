@@ -92,25 +92,7 @@ GVAR(markerOwn) setMarkerAlphaLocal 1;
                 if (_playerVehicle != _x) then
                 {
                     private _vehicleName = getText (configFile >> "cfgVehicles" >> typeOf _playerVehicle >> "displayName");
-
-                    // Spezialfall Drohne
-                    if (_playerVehicle in allUnitsUAV) then
-                    {
-                        private _operator = (UAVControl _playerVehicle) select 0;
-                        // UAV Operator ja/nein
-                        if (!isNull _operator) then
-                        {
-                            _markerAlive setMarkerTextLocal format["%1 (%2)", _vehicleName, name _operator];
-                        }
-                        else
-                        {
-                            _markerAlive setMarkerTextLocal format["%1 (---)", _vehicleName];
-                        };
-                    }
-                    else
-                    {
-                        _markerAlive setMarkerTextLocal format["%1 (%2)", _vehicleName, _playerName];
-                    };
+                    _markerAlive setMarkerTextLocal format["%1 (%2)", _vehicleName, _playerName];
                 }
                 // Spieler zu Fuß
                 else
@@ -158,6 +140,69 @@ GVAR(markerOwn) setMarkerAlphaLocal 1;
             {
                 deleteMarkerLocal format["OPT_GPS_ALIVE_%1", _x];
                 deleteMarkerLocal format["OPT_GPS_DEAD_%1", _x];
+                GVAR(MarkerPool) deleteAt _x;
+            };
+        } forEach +GVAR(MarkerPool);   // das Plus ist so gewollt (durch eine Kopie iterieren damit wir uns nicht zwischendrin selbst abwürgen)
+        GVAR(LastCleanUp) = time;
+    };
+
+    // get all UAVs from own side
+    private _allUAVs = allUnitsUAV select {(side group _x) isEqualTo (side group player)};
+
+    // update all UAVs
+    {
+        private _operator = (UAVControl _x) select 0;
+        private _UavID = netId _x;
+        private _vehicleName = getText (configFile >> "cfgVehicles" >> typeOf _x >> "displayName");
+        private _marker = format["OPT_GPS_UAV_%1", _UavID];
+
+        // Marker nur einmalig initialisieren
+        if !(_UavID in GVAR(MarkerPool)) then
+        {
+            createMarkerLocal [_marker, _x];
+            _marker setMarkerAlphaLocal 0;
+            _marker setMarkerTypeLocal "loc_ViewTower"; // brauchbare Spielermarker: MemoryFragment, mil_triangle_noShadow, mil_start_noShadow, mil_arrow_noShadow, loc_ViewTower
+            _marker setMarkerSizeLocal [1.2, 1.2];
+            _marker setMarkerColorLocal "ColorWhite";
+        };
+
+        // Zeit des letzten Updates speichern (für späteren Cleanup)
+        GVAR(MarkerPool) set [_UavID, time];
+
+        _marker setMarkerPosLocal _x;
+        _marker setMarkerDirLocal getDirVisual _x;
+        _marker setMarkerAlphaLocal 0.7;
+
+        // UAV is controlled
+        if (!isNull _operator) then
+        {
+            // keinen Spielernamen beim eigenen Marker oder wenn es deaktiviert ist anhängen
+            if (!(GVAR(SHOW_NAMES)) || _operator isEqualTo player) then
+            {
+                _marker setMarkerTextLocal format["%1", _vehicleName];
+            }
+            else
+            {
+                _marker setMarkerTextLocal format["%1 (%2)", _vehicleName, name _operator];
+            };
+        }
+        // UAV is uncontrolled
+        else
+        {
+            _marker setMarkerTextLocal format["%1", _vehicleName];
+        };
+    } forEach _allUAVs;
+
+    // Cleanup old markers
+    if (time - GVAR(LastCleanUp) > MAX_MARKER_AGE) then
+    {
+        {
+            private _age = time - _y;
+            if (_age > MAX_MARKER_AGE) then
+            {
+                deleteMarkerLocal format["OPT_GPS_ALIVE_%1", _x];
+                deleteMarkerLocal format["OPT_GPS_DEAD_%1", _x];
+                deleteMarkerLocal format["OPT_GPS_UAV_%1", _x];
                 GVAR(MarkerPool) deleteAt _x;
             };
         } forEach +GVAR(MarkerPool);   // das Plus ist so gewollt (durch eine Kopie iterieren damit wir uns nicht zwischendrin selbst abwürgen)
