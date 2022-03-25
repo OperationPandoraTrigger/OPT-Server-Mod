@@ -95,6 +95,7 @@ GVAR(eventArgs) = [];
             west_shop_sup addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_EQUIPMENT)], {[EVENT_SHOP_KAUF_ONLOAD,["supplies", GVAR(nato_supplies) + GVAR(nato_static) + GVAR(nato_uavs_land), GVAR(pad_sup_west), 4, false]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
             west_shop_sea addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SEA)], {[EVENT_SHOP_KAUF_ONLOAD,["sea", GVAR(nato_sea), GVAR(pad_sea_west), 9, true]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
             west_shop_verkauf addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SELL)], {[EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
+            west_shop_verkauf2 addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SELL)], {[EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
         };
 
         case east:
@@ -108,6 +109,7 @@ GVAR(eventArgs) = [];
             east_shop_sea addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SEA)], {[EVENT_SHOP_KAUF_ONLOAD,["sea", GVAR(csat_sea), GVAR(pad_sea_east), 9, true]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
             east_shop_sea2 addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SEA)], {[EVENT_SHOP_KAUF_ONLOAD,["sea", GVAR(csat_sea), GVAR(pad_sea_east2), 9, true]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
             east_shop_verkauf addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SELL)], {[EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
+            east_shop_verkauf2 addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SELL)], {[EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", ""];
         };
 
         default
@@ -170,7 +172,7 @@ GVAR(eventArgs) = [];
                                             }
                                             else
                                             {
-                                                if (player distance west_shop_verkauf < MAX_DISTANCE_TO_SHOP) then
+                                                if ((player distance west_shop_verkauf < MAX_DISTANCE_TO_SHOP) || (player distance west_shop_verkauf2 < MAX_DISTANCE_TO_SHOP)) then
                                                 {
                                                     [EVENT_SHOP_VERKAUF_ORDER, ["sell"]] call CFUNC(localEvent);
                                                 };
@@ -234,7 +236,7 @@ GVAR(eventArgs) = [];
                                                 }
                                                 else
                                                 {
-                                                    if (player distance east_shop_verkauf < MAX_DISTANCE_TO_SHOP) then
+                                                    if ((player distance east_shop_verkauf < MAX_DISTANCE_TO_SHOP) || (player distance east_shop_verkauf2 < MAX_DISTANCE_TO_SHOP)) then
                                                     {
                                                         [EVENT_SHOP_VERKAUF_ORDER, ["sell"]] call CFUNC(localEvent);
                                                     };

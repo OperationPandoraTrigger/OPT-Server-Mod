@@ -74,13 +74,13 @@ switch playerSide do
     case west:
     {
         _playerFaction = EGVAR(SECTORCONTROL,nato_faction);
-        GVAR(pads) = [VerkaufsBoxWest];
+        GVAR(pads) = [VerkaufsBoxWest, VerkaufsBoxWest2];
     };
 
     case east:
     {
         _playerFaction = EGVAR(SECTORCONTROL,csat_faction);
-        GVAR(pads) = [VerkaufsBoxEast];
+        GVAR(pads) = [VerkaufsBoxEast, VerkaufsBoxEast2];
     };
 };
 
