@@ -167,6 +167,7 @@ class CfgCLibModules
         MODULE(RULES)
         {
             dependency[] = {"CLib/PerFrame", "Clib/Events", "Clib/StateMachine", "Clib/MapGraphics", "Clib/RemoteExecution"};
+            FNC(serverInit);
             FNC(clientInit);
             FNC(setup_classnames);
             FNC(weaponcheck);

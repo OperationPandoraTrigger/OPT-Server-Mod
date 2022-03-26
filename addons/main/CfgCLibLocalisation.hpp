@@ -203,6 +203,12 @@ class CfgCLibLocalisation
                 German = "Ein Spieler wurde aufgrund des Betretens der feindlichen Basis automatisch getötet!";
             };
 
+            class UAV_BASE_DISTANCE
+            {
+                English = "An enemy drone was removed from restricted airspace.";
+                German = "Eine feindliche Drohne wurde aus gesperrten Luftraum entfernt.";
+            };
+
             class PLAYER_OUT_OF_MAP
             {
                 English = "A player was automatically killed due to leaving the map!";
