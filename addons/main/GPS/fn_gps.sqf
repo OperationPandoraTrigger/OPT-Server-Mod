@@ -131,25 +131,8 @@ GVAR(markerOwn) setMarkerAlphaLocal 1;
         };
     } forEach _allUnits;
 
-    // Cleanup old markers
-    if (time - GVAR(LastCleanUp) > MAX_MARKER_AGE) then
-    {
-        {
-            private _age = time - _y;
-            if (_age > MAX_MARKER_AGE) then
-            {
-                deleteMarkerLocal format["OPT_GPS_ALIVE_%1", _x];
-                deleteMarkerLocal format["OPT_GPS_DEAD_%1", _x];
-                GVAR(MarkerPool) deleteAt _x;
-            };
-        } forEach +GVAR(MarkerPool);   // das Plus ist so gewollt (durch eine Kopie iterieren damit wir uns nicht zwischendrin selbst abwürgen)
-        GVAR(LastCleanUp) = time;
-    };
-
-    // get all UAVs from own side
+    // update all UAVs from own side
     private _allUAVs = allUnitsUAV select {(side group _x) isEqualTo (side group player)};
-
-    // update all UAVs
     {
         private _operator = (UAVControl _x) select 0;
         private _UavID = netId _x;
