@@ -471,12 +471,6 @@ GVAR(pad_sea_east) =
     SeaBoxEast2
 ];
 
-GVAR(pad_sea_east2) =
-[
-    SeaBoxEast3,
-    SeaBoxEast4
-];
-
 GVAR(pad_all_west) =
     GVAR(pad_veh_west) +
     GVAR(pad_air_west) +

@@ -41,7 +41,7 @@
                 private _side = side group _x;
                 if (
                     (_side == east && (_x inArea "NATO_T_Zone1" || _x inArea "NATO_T_Zone2")) ||
-                    (_side == west && (_x inArea "CSAT_T_Zone1" || _x inArea "CSAT_T_Zone2" || _x inArea "CSAT_T_Zone3"))
+                    (_side == west && (_x inArea "CSAT_T_Zone1" || _x inArea "CSAT_T_Zone2"))
                 ) then
                 {
                     private _operator = (UAVControl _x) select 0;

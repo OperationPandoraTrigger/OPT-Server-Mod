@@ -57,11 +57,6 @@ if ((playerSide == east) and ((player distance Teleport_CSAT_Basis2) < MIN_DISTA
     _nearBeamSpot = true;
 };
 
-if ((playerSide == east) and ((player distance Teleport_CSAT_Basis3) < MIN_DISTANCE_TO_BEAMSPOT)) then
-{
-    _nearBeamSpot = true;
-};
-
 // Abbrechen wenn kein eigenes Beam-Pad in der Nähe ist
 if (!_nearBeamSpot) exitWith {};
 

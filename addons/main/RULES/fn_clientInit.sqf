@@ -231,7 +231,7 @@
             private _posY = _pos select 1;
             if (((_posX < 0) || (_posX > _mapSize) || (_posY < 0) || (_posY > _mapSize)) && !(typeOf vehicle player in EGVAR(SHOP,planes) + EGVAR(SHOP,jets))) then
             {
-                if (!(player inArea "NATO_T_Zone1" || player inArea "NATO_T_Zone2" || player inArea "CSAT_T_Zone1" || player inArea "CSAT_T_Zone2" || player inArea "CSAT_T_Zone3")) then
+                if (!(player inArea "NATO_T_Zone1" || player inArea "NATO_T_Zone2" || player inArea "CSAT_T_Zone1" || player inArea "CSAT_T_Zone2")) then
                 {
                     ["Cheat", "OutOfMap", [getPlayerUID player, name player, side player, _pos, typeOf vehicle player]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
                     player setDamage 1;
@@ -258,7 +258,7 @@
             case west:
             {
                 [{
-                    if (player inArea "CSAT_T_Zone1" || player inArea "CSAT_T_Zone2" || player inArea "CSAT_T_Zone3") then
+                    if (player inArea "CSAT_T_Zone1" || player inArea "CSAT_T_Zone2") then
                     {
                         ["Cheat", "KillZone", [getPlayerUID player, name player, side player, position player, typeOf vehicle player]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
                         player setDamage 1;

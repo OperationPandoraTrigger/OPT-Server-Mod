@@ -107,7 +107,6 @@ GVAR(eventArgs) = [];
             east_shop_veh addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_GROUND)], {[EVENT_SHOP_KAUF_ONLOAD,["vehicles", GVAR(csat_vehicles) + GVAR(csat_vehicles_supply) + GVAR(csat_armored), GVAR(pad_veh_east), 9, true]] call CFUNC(localEvent);},"", 6, false, true, "", "count (UAVControl getConnectedUAV player # 1) == 0"];
             east_shop_sup addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_EQUIPMENT)], {[EVENT_SHOP_KAUF_ONLOAD,["supplies", GVAR(csat_supplies) + GVAR(csat_static) + GVAR(csat_uavs_land), GVAR(pad_sup_east), 4, false]] call CFUNC(localEvent);},"", 6, false, true, "", "count (UAVControl getConnectedUAV player # 1) == 0"];
             east_shop_sea addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SEA)], {[EVENT_SHOP_KAUF_ONLOAD,["sea", GVAR(csat_sea), GVAR(pad_sea_east), 9, true]] call CFUNC(localEvent);},"", 6, false, true, "", "count (UAVControl getConnectedUAV player # 1) == 0"];
-            east_shop_sea2 addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SEA)], {[EVENT_SHOP_KAUF_ONLOAD,["sea", GVAR(csat_sea), GVAR(pad_sea_east2), 9, true]] call CFUNC(localEvent);},"", 6, false, true, "", "count (UAVControl getConnectedUAV player # 1) == 0"];
             east_shop_verkauf addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SELL)], {[EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", "count (UAVControl getConnectedUAV player # 1) == 0"];
             east_shop_verkauf2 addAction [format["<t color=""#F60707"">%1</t>", MLOC(SHOPMENU_SELL)], {[EVENT_SHOP_VERKAUF_ORDER,["sell"]] call CFUNC(localEvent);},"", 6, false, true, "", "count (UAVControl getConnectedUAV player # 1) == 0"];
         };
@@ -212,34 +211,27 @@ GVAR(eventArgs) = [];
                                 }
                                 else
                                 {
-                                    if (player distance east_shop_sea2 < MAX_DISTANCE_TO_SHOP) then
+                                    if (player distance east_shop_plane < MAX_DISTANCE_TO_SHOP) then
                                     {
-                                        [EVENT_SHOP_KAUF_ONLOAD,["sea", GVAR(csat_sea), GVAR(pad_sea_east2), 9, true]] call CFUNC(localEvent);
+                                        [EVENT_SHOP_KAUF_ONLOAD,["planes", GVAR(csat_planes) + GVAR(csat_jets) + GVAR(csat_uavs_air), GVAR(pad_plane_east), 13, true]] call CFUNC(localEvent);
                                     }
                                     else
                                     {
-                                        if (player distance east_shop_plane < MAX_DISTANCE_TO_SHOP) then
+                                        if (player distance civ1_shop_plane < MAX_DISTANCE_TO_SHOP) then
                                         {
-                                            [EVENT_SHOP_KAUF_ONLOAD,["planes", GVAR(csat_planes) + GVAR(csat_jets) + GVAR(csat_uavs_air), GVAR(pad_plane_east), 13, true]] call CFUNC(localEvent);
+                                            [EVENT_SHOP_KAUF_ONLOAD,["planes", GVAR(csat_planes), [PlaneBoxCiv1], 13, true]] call CFUNC(localEvent);
                                         }
                                         else
                                         {
-                                            if (player distance civ1_shop_plane < MAX_DISTANCE_TO_SHOP) then
+                                            if (player distance civ2_shop_plane < MAX_DISTANCE_TO_SHOP) then
                                             {
-                                                [EVENT_SHOP_KAUF_ONLOAD,["planes", GVAR(csat_planes), [PlaneBoxCiv1], 13, true]] call CFUNC(localEvent);
+                                                [EVENT_SHOP_KAUF_ONLOAD,["planes", GVAR(csat_planes), [PlaneBoxCiv2], 13, true]] call CFUNC(localEvent);
                                             }
                                             else
                                             {
-                                                if (player distance civ2_shop_plane < MAX_DISTANCE_TO_SHOP) then
+                                                if ((player distance east_shop_verkauf < MAX_DISTANCE_TO_SHOP) || (player distance east_shop_verkauf2 < MAX_DISTANCE_TO_SHOP)) then
                                                 {
-                                                    [EVENT_SHOP_KAUF_ONLOAD,["planes", GVAR(csat_planes), [PlaneBoxCiv2], 13, true]] call CFUNC(localEvent);
-                                                }
-                                                else
-                                                {
-                                                    if ((player distance east_shop_verkauf < MAX_DISTANCE_TO_SHOP) || (player distance east_shop_verkauf2 < MAX_DISTANCE_TO_SHOP)) then
-                                                    {
-                                                        [EVENT_SHOP_VERKAUF_ORDER, ["sell"]] call CFUNC(localEvent);
-                                                    };
+                                                    [EVENT_SHOP_VERKAUF_ORDER, ["sell"]] call CFUNC(localEvent);
                                                 };
                                             };
                                         };
