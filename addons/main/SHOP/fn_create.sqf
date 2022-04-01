@@ -144,6 +144,9 @@ DFUNC(createOrder) =
     {
         createVehicleCrew (_veh);
         _veh setSkill 1.0;
+        _veh disableAI "TARGET";
+        _veh disableAI "AUTOTARGET";
+        _veh disableAI "AUTOCOMBAT";
     };
 
     // Nur gepanzerte Fahrzeuge verbleiben im Garbage Collector

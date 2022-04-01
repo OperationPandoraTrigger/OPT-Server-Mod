@@ -121,7 +121,7 @@ Flaggen-Seite loggen
             true,                                                        // showWindow
             true,                                                        // hideOnUse
             "",                                                          // shortcut
-            "(vehicle player == player and (OPT_GELDZEIT_GAMESTAGE == 2) and ((OPT_GELDZEIT_PLAYTIME - (serverTime - OPT_GELDZEIT_startTime)) > 0) and (playerside != _target getVariable 'owner'))",
+            "(vehicle player == player && (OPT_GELDZEIT_GAMESTAGE == 2) && ((OPT_GELDZEIT_PLAYTIME - (serverTime - OPT_GELDZEIT_startTime)) > 0) && (playerside != _target getVariable 'owner') && count (UAVControl getConnectedUAV player # 1) == 0)",
             GVAR(flagDistanceToPlayer)                                   // radius
         ]
     ] remoteExecCall ["addAction", -2, true];

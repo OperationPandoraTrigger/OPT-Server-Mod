@@ -33,8 +33,9 @@ if (_flag isEqualTo objNull or _unit isEqualTo objNull) exitWith{false};
 // ausserhalb eines Fahrzeugs
 // in Restspielzeit gezogen werden
 // nur von der anderen Seite
-vehicle _unit == _unit and
-OPT_GELDZEIT_GAMESTAGE == GAMESTAGE_WAR and
-(_flag distance player) <= GVAR(flagDistanceToPlayer) and
-OPT_GELDZEIT_PLAYTIME - (serverTime - OPT_GELDZEIT_startTime) > 0 and
-(side _unit != _flag getVariable ['owner', sideUnknown])
+vehicle _unit == _unit &&
+OPT_GELDZEIT_GAMESTAGE == GAMESTAGE_WAR &&
+(_flag distance player) <= GVAR(flagDistanceToPlayer) &&
+OPT_GELDZEIT_PLAYTIME - (serverTime - OPT_GELDZEIT_startTime) > 0 &&
+(side _unit != _flag getVariable ['owner', sideUnknown]) &&
+count (UAVControl getConnectedUAV player # 1) == 0
