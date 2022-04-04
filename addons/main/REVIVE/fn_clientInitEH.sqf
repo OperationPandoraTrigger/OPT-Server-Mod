@@ -86,7 +86,7 @@ DFUNC(isUnconscious) =
         {
             case west:
             {
-                _radio_key = "_blufor";
+                _radio_key = "_bluefor";
             };
 
             case east:
