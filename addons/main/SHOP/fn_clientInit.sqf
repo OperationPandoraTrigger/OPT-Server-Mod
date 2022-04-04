@@ -278,14 +278,14 @@ GVAR(eventArgs) = [];
                 {
                     if ((toLower(_encryption) == "_opfor")) then
                     {
-                        [_VehicleLR, "_bluefor"] call TFAR_fnc_setLrRadioCode;
+                        [_VehicleLR, "_blufor"] call TFAR_fnc_setLrRadioCode;
                         systemChat "Die Funk-Verschlüsselung wurde geändert.";
                     };
                 };
 
                 case east:
                 {
-                    if ((toLower(_encryption) == "_bluefor")) then
+                    if ((toLower(_encryption) == "_blufor")) then
                     {
                         [_VehicleLR, "_opfor"] call TFAR_fnc_setLrRadioCode;
                         systemChat "Die Funk-Verschlüsselung wurde geändert.";
