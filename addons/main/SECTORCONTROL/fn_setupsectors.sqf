@@ -39,7 +39,7 @@ if (worldName == "cup_chernarus_A3") then
             ],
 
             [   // Flaggen-Positionen
-                [8535,6648,0]   // TC2
+                [5292,10576,0]   // TC3
             ],
 
             [   // Beam-Positionen
