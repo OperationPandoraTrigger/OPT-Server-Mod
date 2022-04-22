@@ -118,6 +118,11 @@ DFUNC(isUnconscious) =
 
         // Waffe neu ausrüsten (evtl. hilft das gegen den Soundbug)
         call FUNC(weaponreequip);
+
+        // Keine Erschöpfung und Waffenwackeln abschwächen
+        player enableFatigue false;
+        player enableStamina false;
+        player setCustomAimCoef 0.5;
     }, 1, ""] call CFUNC(wait);
 }] call CFUNC(addEventhandler);
 
