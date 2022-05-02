@@ -57,6 +57,8 @@ if (worldName == "cup_chernarus_A3") then
             ],
 
             [   // Flaggen-Positionen
+                [4978, 15103, 0],
+                [4909, 13047, 0]
             ],
 
             [   // Beam-Positionen
@@ -74,6 +76,8 @@ if (worldName == "cup_chernarus_A3") then
             ],
 
             [   // Flaggen-Positionen
+                [7957, 14639, 0],
+                [8169, 12737, 0]
             ],
 
             [   // Beam-Positionen
@@ -91,6 +95,8 @@ if (worldName == "cup_chernarus_A3") then
             ],
 
             [   // Flaggen-Positionen
+                [9271, 13484, 0],
+                [10286, 14153, 0]
             ],
 
             [   // Beam-Positionen
@@ -107,6 +113,8 @@ if (worldName == "cup_chernarus_A3") then
             ],
 
             [   // Flaggen-Positionen
+                [11575, 14728, 0],
+                [12106, 13532, 0]
             ],
 
             [   // Beam-Positionen
@@ -125,6 +133,8 @@ if (worldName == "cup_chernarus_A3") then
             ],
 
             [   // Flaggen-Positionen
+                [13314, 11624, 0],
+                [12831, 9974, 0]
             ],
 
             [   // Beam-Positionen
@@ -141,6 +151,8 @@ if (worldName == "cup_chernarus_A3") then
             ],
 
             [   // Flaggen-Positionen
+                [11133, 12311, 0],
+                [10187, 12027, 0]
             ],
 
             [   // Beam-Positionen
@@ -159,6 +171,8 @@ if (worldName == "cup_chernarus_A3") then
             ],
 
             [   // Flaggen-Positionen
+                [8539, 11977, 0],
+                [9657, 10437, 0]
             ],
 
             [   // Beam-Positionen
@@ -178,6 +192,8 @@ if (worldName == "cup_chernarus_A3") then
             ],
 
             [   // Flaggen-Positionen
+                [6891, 11426, 0],
+                [5979, 10353, 0]
             ],
 
             [   // Beam-Positionen
@@ -193,6 +209,8 @@ if (worldName == "cup_chernarus_A3") then
             ],
 
             [   // Flaggen-Positionen
+                [3493, 13098, 0],
+                [2832, 12406, 0]
             ],
 
             [   // Beam-Positionen
@@ -210,6 +228,8 @@ if (worldName == "cup_chernarus_A3") then
             ],
 
             [   // Flaggen-Positionen
+                [4115, 11777, 0],
+                [2516, 10988, 0]
             ],
 
             [   // Beam-Positionen
@@ -225,6 +245,8 @@ if (worldName == "cup_chernarus_A3") then
             ],
 
             [   // Flaggen-Positionen
+                [515, 11084, 0],
+                [309, 9412, 0]
             ],
 
             [   // Beam-Positionen
@@ -241,6 +263,8 @@ if (worldName == "cup_chernarus_A3") then
             ],
 
             [   // Flaggen-Positionen
+                [1398, 9255, 0],
+                [2748, 10011, 0]
             ],
 
             [   // Beam-Positionen
@@ -260,6 +284,8 @@ if (worldName == "cup_chernarus_A3") then
             ],
 
             [   // Flaggen-Positionen
+                [4620, 9678, 0],
+                [5369, 8558, 0]
             ],
 
             [   // Beam-Positionen
@@ -277,6 +303,8 @@ if (worldName == "cup_chernarus_A3") then
             ],
 
             [   // Flaggen-Positionen
+                [6092, 7766, 0],
+                [7081, 7707, 0]
             ],
 
             [   // Beam-Positionen
@@ -297,6 +325,8 @@ if (worldName == "cup_chernarus_A3") then
             ],
 
             [   // Flaggen-Positionen
+                [8104, 9305, 0],
+                [9416, 8833, 0]
             ],
 
             [   // Beam-Positionen
@@ -315,6 +345,8 @@ if (worldName == "cup_chernarus_A3") then
             ],
 
             [   // Flaggen-Positionen
+                [13138, 7019, 0],
+                [12239, 6291, 0]
             ],
 
             [   // Beam-Positionen
@@ -333,6 +365,8 @@ if (worldName == "cup_chernarus_A3") then
             ],
 
             [   // Flaggen-Positionen
+                [9632, 6582, 0],
+                [8338, 5987, 0]
             ],
 
             [   // Beam-Positionen
@@ -351,6 +385,8 @@ if (worldName == "cup_chernarus_A3") then
             ],
 
             [   // Flaggen-Positionen
+                [4450, 6471, 0],
+                [3691, 5997, 0]
             ],
 
             [   // Beam-Positionen
@@ -368,6 +404,8 @@ if (worldName == "cup_chernarus_A3") then
             ],
 
             [   // Flaggen-Positionen
+                [3042,7869, 0],
+                [3800, 8846, 0]
             ],
 
             [   // Beam-Positionen
@@ -383,6 +421,8 @@ if (worldName == "cup_chernarus_A3") then
             ],
 
             [   // Flaggen-Positionen
+                [1026, 7639, 0],
+                [1110, 6637, 0]
             ],
 
             [   // Beam-Positionen
@@ -402,6 +442,8 @@ if (worldName == "cup_chernarus_A3") then
             ],
 
             [   // Flaggen-Positionen
+                [2757, 5448, 0],
+                [2513, 5070, 0]
             ],
 
             [   // Beam-Positionen
@@ -419,6 +461,8 @@ if (worldName == "cup_chernarus_A3") then
             ],
 
             [   // Flaggen-Positionen
+                [4540, 4546, 0],
+                [6568, 5585, 0]
             ],
 
             [   // Beam-Positionen
@@ -437,6 +481,8 @@ if (worldName == "cup_chernarus_A3") then
             ],
 
             [   // Flaggen-Positionen
+                [6752, 2528, 0],
+                [7250, 3033, 0]
             ],
 
             [   // Beam-Positionen
@@ -454,6 +500,8 @@ if (worldName == "cup_chernarus_A3") then
             ],
 
             [   // Flaggen-Positionen
+                [10130, 1910, 0],
+                [10510, 2256, 0]
             ],
 
             [   // Beam-Positionen
@@ -476,6 +524,8 @@ if (worldName == "cup_chernarus_A3") then
             ],
 
             [   // Flaggen-Positionen
+                [11252, 4286, 0],
+                [12813, 4487, 0]
             ],
 
             [   // Beam-Positionen
