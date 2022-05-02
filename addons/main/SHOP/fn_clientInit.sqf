@@ -211,6 +211,7 @@ GVAR(eventArgs) = [];
                                     [EVENT_SHOP_KAUF_ONLOAD,["sea", GVAR(csat_sea), GVAR(pad_sea_east), 9, true]] call CFUNC(localEvent);
                                 }
                                 else
+                                {
                                     if (player distance east_shop_sea2 < MAX_DISTANCE_TO_SHOP) then
                                     {
                                         [EVENT_SHOP_KAUF_ONLOAD,["sea", GVAR(csat_sea), GVAR(pad_sea_east2), 9, true]] call CFUNC(localEvent);
