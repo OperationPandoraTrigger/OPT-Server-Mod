@@ -28,7 +28,7 @@
 
 // Missionsnamen-Rekonstruktor (Symlink opt_latest -> opt_v123)
 GVAR(missionName) = missionName;
-if (GVAR(missionName) isEqualTo "[OPT] Ohrenbetäubende Waldromantik") then
+if (GVAR(missionName) isEqualTo "[OPT] Anyone in Cherno") then
 {
     GVAR(missionName) = "opt_v" + getMissionConfigValue "onLoadMission";
 };
