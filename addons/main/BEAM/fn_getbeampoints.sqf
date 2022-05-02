@@ -37,6 +37,7 @@ params [["_side", civilian], ["_withoutPlayer", false]];
 
 private _Homebase = nil;
 private _Outpost = nil;
+private _Outpost2 = nil;
 private _OwnSectorsAll = [];
 private _OwnSectorsSelected = [];
 private _OwnFlagsSelected = [];
@@ -62,6 +63,7 @@ switch playerSide do
     {
         _Homebase = Teleport_CSAT_Basis1;
         _Outpost = Teleport_CSAT_Basis2;
+        _Outpost2 = Teleport_CSAT_Basis3;
         _OwnSectorsAll = EGVAR(SECTORCONTROL,csat_allsectors);
         _OwnSectorsSelected = EGVAR(SECTORCONTROL,csat_sectors);
         _OwnFlagsSelected = EGVAR(SECTORCONTROL,csat_flags);
@@ -84,7 +86,8 @@ switch playerSide do
 
     case east:
     {
-        _points pushBack [getPosASL _Outpost, getDir _Outpost, "Außenposten", "", 0];
+        _points pushBack [getPosASL _Outpost, getDir _Outpost, "Außenposten Südost", "", 0];
+        _points pushBack [getPosASL _Outpost2, getDir _Outpost2, "Außenposten Ost", "", 0];
     };
 };
 
