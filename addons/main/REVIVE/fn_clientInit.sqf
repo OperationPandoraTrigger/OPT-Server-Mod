@@ -82,8 +82,8 @@ DFUNC(eigenversorgung) =
         call FUNC(weaponreequip);
     }, 1, ""] call CFUNC(wait);
 
-    // Keine Erschöpfung und Waffenwackeln abschwächen
-    player enableFatigue false;
-    player enableStamina false;
-    player setCustomAimCoef 0.5;
+    // Erschöpfung und Waffenwackeln
+    player enableFatigue GVAR(Fatigue);
+    player enableStamina GVAR(Stamina);
+    player setCustomAimCoef GVAR(CustomAimCoef);
 }] call CFUNC(addEventhandler);
