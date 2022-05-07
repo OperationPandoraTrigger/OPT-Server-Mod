@@ -92,7 +92,7 @@ switch playerSide do
 };
 
 // V-Fahnen Positionen des gewählten Sektors zur Liste der Beampunkte hinzufügen
-if (!EGVAR(SECTORCONTROL,flagStartNeutral)) then
+if (EGVAR(GELDZEIT,GAMESTAGE) != GAMESTAGE_WAR && !EGVAR(SECTORCONTROL,flagStartNeutral)) then
 {
     {
         private _sector = _x;
