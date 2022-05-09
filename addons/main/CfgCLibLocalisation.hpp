@@ -17,6 +17,12 @@ class CfgCLibLocalisation
                 German = "Die Zielposition ist derzeit leider belegt.";
             };
 
+            class BEAM_AIRGROUND
+            {
+                English = "Aircraft can only be transported in flight.";
+                German = "Luftfahrzeuge können nur fliegend transportiert werden.";
+            };
+
             class TELEPORT_MSG_HEADER
             {
                 English = "Teleport";

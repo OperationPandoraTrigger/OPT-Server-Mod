@@ -65,6 +65,13 @@ if ((playerSide == east) and ((player distance Teleport_CSAT_Basis3) < MIN_DISTA
 // Abbrechen wenn kein eigenes Beam-Pad in der Nähe ist
 if (!_nearBeamSpot) exitWith {};
 
+// Abbrechen wenn Luftfahrzeug am Boden steht
+if (typeOf vehicle player in EGVAR(SHOP,air) && isTouchingGround vehicle player) exitWith
+{
+    hint format ["%1", MLOC(BEAM_AIRGROUND)];
+    playSound "additemok";
+};
+
 // Array mit gültigen Beampunkten füllen
 GVAR(box) = [playerSide, true] call FUNC(getbeampoints);
 
