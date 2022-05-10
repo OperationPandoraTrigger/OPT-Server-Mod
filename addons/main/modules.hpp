@@ -87,6 +87,8 @@ class CfgCLibModules
             FNC(haftladungen);
             FNC(clientInitcbaclassevents);
             FNC(spritverbrauch);
+            FNC(berggang);
+            FNC(berggangcheck);
         };
 
         MODULE(BEAM)

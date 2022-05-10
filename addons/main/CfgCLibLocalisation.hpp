@@ -478,6 +478,11 @@ class CfgCLibLocalisation
                 English = "Explosive charge attached to vehicle";
                 German = "Sprengladung an Fahrzeug angebracht";
             };
+            class BERGGANG
+            {
+                English = "Berggang";
+                German = "mountain gear";
+            };
         };
 
         class FIELDREPAIR
