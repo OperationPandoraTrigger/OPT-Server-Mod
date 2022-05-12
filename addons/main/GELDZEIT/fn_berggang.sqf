@@ -1,6 +1,6 @@
 /**
 * Author: [GNC]Lord-MDB
-* Bergang Fahrzeugen
+* Bergang für Fahrzeuge
 *
 * Arguments:
 * None
@@ -9,43 +9,27 @@
 * None
 *
 * Example:
-* [] call Func(berggang);
+* [] call FUNC(berggang);
 *
 */
 #include "macros.hpp"
 
 params [["_veh", objNull]];
 
-GVAR(BergangFahrzeug) = _veh;
+GVAR(Mountain_Vehicle) = _veh;
 
 [{
-
     params ["_args", "_handle"];
+    private _veh = GVAR(Mountain_Vehicle);
 
-    private _steigung = (100 - GVAR(Steigungfahrzeug)+1)/100;
-    private _veh = GVAR(BergangFahrzeug);
-
-    if ((speed _veh < GVAR(Geschwindigkeitfahrzeug)) and
-       (_veh isKindOf 'landVehicle') and
-       (alive _veh) and
-       (isengineon _veh) and 
-       (canMove _veh) and
-       ((driver _veh) == player) and
-       ((vectorUp _veh) select 2 < _steigung) and
-       (player in _veh)) then
+    if ([_veh] call FUNC(berggangCheck)) then
     {
-
-        _vel = velocity _veh;
-        _dir = direction _veh;
-        _speed = GVAR(BerggangGeschwindigkeitfahrzeug);
-
-        _veh setVelocity [(_vel select 0) + (sin _dir * _speed), (_vel select 1) + (cos _dir * _speed),(_vel select 2)];
+        _veh setVelocity (velocity _veh vectorAdd [sin direction _veh * GVAR(Mountain_Boost), cos direction _veh * GVAR(Mountain_Boost), 0]);
     };
 
     //PFH Löschung
-    if (! alive _veh or (speed _veh > 20))  then
+    if (!alive _veh || speed _veh > 20 || !(player in _veh))  then
     {
         _handle call CFUNC(removePerframeHandler);
     };
-
 }, 0.1, _this] call CFUNC(addPerFrameHandler);

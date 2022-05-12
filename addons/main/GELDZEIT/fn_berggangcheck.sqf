@@ -1,40 +1,27 @@
 /**
 * Author: [GNC]Lord-MDB
-* Kontrolliet ob Berggang verfügbar ist.
+* Kontrolliert ob Berggang verfügbar ist.
 *
 * Arguments:
 * 0: <OBJECT> Fahrzeug
-* 1: <OBJECT> Einheit die den Bergang nutz
 *
 * Return Value:
 * None
 *
 * Example:
-* [vec, unit] call Func(berggangCheck);
+* [vehicle] call FUNC(berggangCheck);
 *
 */
 #include "macros.hpp"
 
-params ["_target", "_caller"];
+params ["_veh"];
 
-private _ret = false;
-private _steigung = (100 - GVAR(Steigungfahrzeug)+1)/100;
-
-private _cond =
-(
-    (speed _target < GVAR(Geschwindigkeitfahrzeug)) and
-    (_target isKindOf 'landVehicle') and
-    (alive _target) and
-    (isengineon _target) and 
-    (canMove _target) and
-    ((driver _target) == player) and
-    ((vectorUp _target) select 2 < _steigung) and
-    (player in _target)
-);
-
-if (_cond) then
-{
-    _ret = true;
-};
-
-_ret
+// return condition
+(speed _veh < GVAR(Mountain_MaxSpeed)) &&
+(_veh isKindOf 'landVehicle') &&
+(alive _veh) &&
+(isengineon _veh) &&
+(canMove _veh) &&
+((driver _veh) == player) &&
+((vectorUp _veh) select 2 < GVAR(Mountain_Slope)) &&
+(player in _veh)

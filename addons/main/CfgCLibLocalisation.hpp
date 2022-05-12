@@ -480,8 +480,8 @@ class CfgCLibLocalisation
             };
             class BERGGANG
             {
-                English = "Berggang";
-                German = "mountain gear";
+                English = "Mountain gear";
+                German = "Berggang";
             };
         };
 

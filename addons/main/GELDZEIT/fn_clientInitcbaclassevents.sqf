@@ -44,7 +44,7 @@
         false,
         true,
         "",
-        format["[_target, player] call %1", QFUNC(berggangCheck)],
+        format["[_target] call %1", QFUNC(berggangCheck)],
         5
     ];
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;

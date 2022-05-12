@@ -149,30 +149,42 @@
 ] call CBA_Settings_fnc_init;
 
 [
-    QGVAR(Steigungfahrzeug), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    QGVAR(Mountain_Slope_Perc), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "SLIDER", // setting type
-    ["Steigungwert [%] ab dem der Berggang vergügbar ist."], // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
-    ["OPT Fahrzeugfunktionen","Berggang"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
+    [
+        "Steigung [%]", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+        "Ab dieser Steigung steht der Berggang zur Verfügung." + endl // Mouse-Over description of the above
+    ],
+    ["OPT Fahrzeugfunktionen", "Berggang"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
     [0, 100, 10, 0], // data for this setting: [min, max, default, number of shown trailing decimals]
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
-    {} // function that will be executed once on mission start and every time the setting is changed.
+    {
+        params ["_value"];
+        GVAR(Mountain_Slope) = (100 - _value + 1) / 100;
+    } // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
 
 [
-    QGVAR(Geschwindigkeitfahrzeug), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    QGVAR(Mountain_MaxSpeed), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "SLIDER", // setting type
-    ["Maximalgeschwindigkeit [KM/H]für Berggang-Freischaltung"], // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
-    ["OPT Fahrzeugfunktionen","Berggang"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
+    [
+        "Maximalgeschwindigkeit [km/h]", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+        "Unterhalb dieser Geschwindigkeit steht der Berggang zur Verfügung." + endl // Mouse-Over description of the above
+    ],
+    ["OPT Fahrzeugfunktionen", "Berggang"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
     [0, 15, 10, 0], // data for this setting: [min, max, default, number of shown trailing decimals]
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {} // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
 
 [
-    QGVAR(BerggangGeschwindigkeitfahrzeug), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    QGVAR(Mountain_Boost), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "SLIDER", // setting type
-    ["Motorleistungerhöhung Faktor durch den Bergang."], // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
-    ["OPT Fahrzeugfunktionen","Berggang"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
+    [
+        "Motor-Boost Faktor", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+        "Um diesen Faktor wird die Motorleistung erhöht." + endl // Mouse-Over description of the above
+    ],
+    ["OPT Fahrzeugfunktionen", "Berggang"], // Pretty name of the category where the setting can be found. Can be stringtable entry.
     [0, 20, 1, 0], // data for this setting: [min, max, default, number of shown trailing decimals]
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {} // function that will be executed once on mission start and every time the setting is changed.
