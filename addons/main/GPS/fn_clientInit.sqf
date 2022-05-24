@@ -23,6 +23,8 @@
 */
 #include "macros.hpp"
 
+uiNamespace setVariable ["ace_markers_timestampChecked", false];    // disable ACE marker timestamping while on PreMission map
+
 ["missionStarted", {
     // Aktiviere GPS nur wenn es in den CBA-Settings aktiviert ist
     if (GVAR(ENABLED)) then
