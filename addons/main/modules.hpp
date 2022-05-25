@@ -64,7 +64,6 @@ class CfgCLibModules
             FNC(handleaction);
             FNC(checkplaymove);
             FNC(release);
-            FNC(weaponreequip);
             FNC(clientInitcbaclassevents);
         };
 

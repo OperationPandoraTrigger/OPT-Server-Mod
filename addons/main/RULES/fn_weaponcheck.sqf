@@ -21,6 +21,40 @@ private _typeOfPlayer = typeOf _unit;
 private _bad_item_used = false;
 private "_bad_weapon_used";
 
+// Feindliche SR-Funkgeräte löschen beim aufnehmen
+if (_item call TFAR_fnc_isRadio) then
+{
+    [{
+        private _key = _this call TFAR_fnc_getSwRadioCode;
+        if (_key != GVAR(OWN_RADIOKEY)) then
+        {
+            ["Cheat", "EnemyRadio", [getPlayerUID player, name player, side player, _key, _this]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
+
+            if (_this in (assignedItems player)) then
+            {
+                player unlinkItem _this;
+            }
+            else
+            {
+                player removeItem _this;
+            };
+        };
+    }, 1, _item] call CFUNC(wait);
+};
+
+// Feindliche LR-Funkgeräte löschen beim aufnehmen
+if (_item call TFAR_fnc_isLRRadio) then
+{
+    [{
+        private _key = (call TFAR_fnc_activeLrRadio) call TFAR_fnc_getLrRadioCode;
+        if (_key != GVAR(OWN_RADIOKEY)) then
+        {
+            ["Cheat", "EnemyRadio", [getPlayerUID player, name player, side player, _key, _this]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
+            removeBackpack player;
+        };
+    }, 1, _item] call CFUNC(wait);
+};
+
 // check sniper for standard rifle
 if (_typeOfPlayer in GVAR(snipers)) then
 {

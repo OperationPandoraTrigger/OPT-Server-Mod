@@ -59,11 +59,13 @@
         case west:
         {
             _playerFaction = EGVAR(SECTORCONTROL,nato_faction);
+            GVAR(OWN_RADIOKEY) = "_bluefor";
         };
 
         case east:
         {
             _playerFaction = EGVAR(SECTORCONTROL,csat_faction);
+            GVAR(OWN_RADIOKEY) = "_opfor";
         };
     };
 
@@ -81,6 +83,19 @@
             GVAR(MAX_FREQ) = 87;
         };
     };
+
+    // TFAR Encryption beim Joinen neu setzen (Zeitverzögert, da es sonst nicht greift)
+    [{
+        if (call TFAR_fnc_haveSWRadio) then
+        {
+            [call TFAR_fnc_activeSwRadio, GVAR(OWN_RADIOKEY)] call TFAR_fnc_setSwRadioCode;
+        };
+
+        if (call TFAR_fnc_haveLRRadio) then
+        {
+            [call TFAR_fnc_activeLrRadio, GVAR(OWN_RADIOKEY)] call TFAR_fnc_setLrRadioCode;
+        };
+    }, 5, ""] call CFUNC(wait);
 
     ["TFAR_event_OnFrequencyChanged",
     {
