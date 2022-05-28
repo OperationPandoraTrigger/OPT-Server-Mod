@@ -99,19 +99,28 @@ GVAR(playerList) = [];
                     ["Mission", "Start", [0, 0, GVAR(missionName)]] call EFUNC(LOGGING,writelog);
 
                     // Nach Ablauf der Waffenruhe die Sektorenmarker von der Karte entfernen
-                    if !(OPT_SECTORCONTROL_trainingon && OPT_SECTORCONTROL_trainingDontDeleteSectorMarkers) then
+                    if !(EGVAR(SECTORCONTROL,trainingon) && EGVAR(SECTORCONTROL,trainingDontDeleteSectorMarkers)) then
                     {
                         {
                             deleteMarker _x;
-                        } forEach (OPT_SECTORCONTROL_NATOSectorMarkers + OPT_SECTORCONTROL_CSATSectorMarkers);
+                        } forEach (EGVAR(SECTORCONTROL,NATOSectorMarkers) + EGVAR(SECTORCONTROL,CSATSectorMarkers));
                     };
 
                     // Nach Ablauf der Waffenruhe die Grenzlinien von der Karte entfernen
-                    if !(OPT_SECTORCONTROL_trainingon && OPT_SECTORCONTROL_trainingDontDeleteBorderMarkers) then
+                    if !(EGVAR(SECTORCONTROL,trainingon) && EGVAR(SECTORCONTROL,trainingDontDeleteBorderMarkers)) then
                     {
                         {
                             deleteMarker _x;
-                        } forEach OPT_SECTORCONTROL_BorderMarkers;
+                        } forEach EGVAR(SECTORCONTROL,BorderMarkers);
+                    };
+
+                    // Nach Ablauf der Waffenruhe die Sektoreinfärbung von der Karte entfernen
+                    if !(EGVAR(SECTORCONTROL,trainingon) && EGVAR(SECTORCONTROL,trainingDontDeleteSectorColors)) then
+                    {
+                        {
+                            private _MapControl = findDisplay 12 displayCtrl 51;
+                            _MapControl ctrlRemoveEventHandler ["Draw", OPT_SECTORCONTROL_MapHandler];
+                        } remoteExec ["call", -2, true];
                     };
                 };
             };
