@@ -297,7 +297,7 @@
             else
             {
                 {
-    	            if (position player inPolygon _x) then
+                    if (position player inPolygon _x) then
                     {
                         ["Cheat", "EnemySector", [getPlayerUID player, name player, side player, position player, typeOf vehicle player]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
                         {hint format ["%1", MLOC(PLAYER_IN_ENEMY_SECTOR)];} remoteExec ["call", -2];
