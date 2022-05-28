@@ -31,6 +31,9 @@
 // Wie oft (in Sekunden) wird die Spielerposition geprüft
 #define INTERVAL_DISTANCE_CHECK 15
 
+// Wie oft (in Sekunden) wird geprüft ob sich der Spieler in feindlichem Gebiet aufhält
+#define INTERVAL_ENEMY_CHECK 5
+
 ["missionStarted",
 {
     [] call FUNC(setup_classnames);
@@ -282,6 +285,27 @@
                 }, INTERVAL_DISTANCE_CHECK] call CFUNC(addPerFrameHandler);
             };
         };
+
+        // Regelmäßig checken ob sich der Spieler während der Waffenruhe in feindlichen Sektoren aufhält
+        GVAR(EnemySectorPFH) = [
+        {
+            // Nach der Waffenruhe den PFH löschen
+            if (EGVAR(GELDZEIT,GAMESTAGE) > GAMESTAGE_TRUCE) then
+            {
+                GVAR(EnemySectorPFH) call CFUNC(removePerframeHandler);
+            }
+            else
+            {
+                {
+    	            if (position player inPolygon _x) then
+                    {
+                        ["Cheat", "EnemySector", [getPlayerUID player, name player, side player, position player, typeOf vehicle player]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
+                        {hint format ["%1", MLOC(PLAYER_IN_ENEMY_SECTOR)];} remoteExec ["call", -2];
+                        break;
+                    };
+                } forEach EGVAR(SECTORCONTROL,EnemySectorPolygons);
+            };
+        }, INTERVAL_ENEMY_CHECK] call CFUNC(addPerFrameHandler);
     };  // if (!(OPT_SECTORCONTROL_trainingon))
 }] call CFUNC(addEventhandler);
 

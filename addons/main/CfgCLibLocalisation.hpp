@@ -221,6 +221,12 @@ class CfgCLibLocalisation
                 German = "Ein Spieler wurde aufgrund des Verlassens der Karte automatisch getötet!";
             };
 
+            class PLAYER_IN_ENEMY_SECTOR
+            {
+                English = "A player has entered enemy territory during the ceasefire!";
+                German = "Ein Spieler hat während der Waffenruhe feindliches Gebiet betreten!";
+            };
+
             class BAD_FREQUENCY
             {
                 English = "Invalid frequency (%1 MHz) used. Falling back to %2 MHz.";

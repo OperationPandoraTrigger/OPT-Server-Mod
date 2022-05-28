@@ -47,6 +47,36 @@ _MapControl ctrlAddEventHandler ["Draw",
     } forEach OPT_SECTORCONTROL_AllSectors;
 }];
 
+// Feindliche Sektoren als Polygon-Arrays vorbereiten
+private _EnemySectorsAll = [];
+switch playerSide do
+{
+    case west:
+    {
+        _EnemySectorsAll = EGVAR(SECTORCONTROL,csat_allsectors);
+    };
+
+    case east:
+    {
+        _EnemySectorsAll = EGVAR(SECTORCONTROL,nato_allsectors);
+    };
+};
+
+EGVAR(SECTORCONTROL,EnemySectorPolygons) = [];
+{
+    if (_forEachIndex in _EnemySectorsAll) then
+    {
+        private _poly = [];
+        {
+            // 2D -> 3D Umwandlung
+            private _tmp = +(_x # 0);
+            _tmp pushBack 0;
+            _poly pushBack _tmp;
+        } forEach _x # 0;
+        EGVAR(SECTORCONTROL,EnemySectorPolygons) pushBack _poly;
+    };
+} forEach OPT_SECTORCONTROL_AllSectors;
+
 ["missionStarted", {
     /*
     * https://cbateam.github.io/CBA_A3/docs/files/keybinding/fnc_addKeybind-sqf.html
