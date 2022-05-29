@@ -129,6 +129,12 @@ GVAR(playerList) = [];
                         {
                             deleteMarker _x;
                         } forEach EGVAR(SECTORCONTROL,SectorNumberMarkers);
+                    }
+                    else // Aber auf jeden Fall ohne Icon darstellen
+                    {
+                        {
+                            _x setMarkerType "EmptyIcon";
+                        } forEach EGVAR(SECTORCONTROL,SectorNumberMarkers);
                     };
                 };
             };

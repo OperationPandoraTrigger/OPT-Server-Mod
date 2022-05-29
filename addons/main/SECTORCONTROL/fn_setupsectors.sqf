@@ -960,6 +960,8 @@ private _markerID = 0;
 // CBA-Settings parsen, da dies sonst erst nach dem "Durchdrücken" geschieht
 GVAR(nato_allsectors) = parseSimpleArray format ["[%1]", GVAR(nato_allsectors_str)];
 GVAR(csat_allsectors) = parseSimpleArray format ["[%1]", GVAR(csat_allsectors_str)];
+GVAR(nato_sectors) = parseSimpleArray format ["[%1]", GVAR(nato_sectors_str)];
+GVAR(csat_sectors) = parseSimpleArray format ["[%1]", GVAR(csat_sectors_str)];
 
 // Sektormarker zeichnen
 {
@@ -1021,19 +1023,19 @@ GVAR(csat_allsectors) = parseSimpleArray format ["[%1]", GVAR(csat_allsectors_st
     private _pos = (_x # 4) # 0;
     if  (count _pos >= 2) then
     {
-        private "_color";
-        if (_forEachIndex in OPT_SECTORCONTROL_csat_allsectors) then
-        {
-            _color = "colorOPFOR";
-        }
-        else
-        {
-            _color = "colorBLUFOR";
-        };
+        private ["_color", "_icon"];
+
+        // Fraktionsabhängige Farben
+        if (_forEachIndex in GVAR(csat_allsectors)) then {_color = "colorOPFOR"}
+        else {_color = "colorBLUFOR"};
+
+        // Gewählte Sektoren bekommen ein Icon
+        if (_forEachIndex in (GVAR(nato_sectors) + GVAR(csat_sectors))) then {_icon = "hd_ambush"}
+        else {_icon = "EmptyIcon"};
 
         private _marker = createMarkerLocal [format ["SectorNumberMarker_%1", _forEachIndex], _pos];  
         _marker setMarkerColorLocal _color; 
-        _marker setMarkerTypeLocal "EmptyIcon"; 
+        _marker setMarkerTypeLocal _icon; 
         _marker setMarkerText str _forEachIndex;
         GVAR(SectorNumberMarkers) pushBack _marker;
     };
