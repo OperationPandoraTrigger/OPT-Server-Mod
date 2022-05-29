@@ -122,6 +122,14 @@ GVAR(playerList) = [];
                             _MapControl ctrlRemoveEventHandler ["Draw", OPT_SECTORCONTROL_MapHandler];
                         } remoteExec ["call", -2, true];
                     };
+
+                    // Nach Ablauf der Waffenruhe die Sektorennummern von der Karte entfernen
+                    if !(EGVAR(SECTORCONTROL,trainingon) && EGVAR(SECTORCONTROL,trainingDontDeleteSectorNumberMarkers)) then
+                    {
+                        {
+                            deleteMarker _x;
+                        } forEach EGVAR(SECTORCONTROL,SectorNumberMarkers);
+                    };
                 };
             };
 

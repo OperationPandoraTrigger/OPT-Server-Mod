@@ -45,6 +45,9 @@ if (worldName == "cup_chernarus_A3") then
             ],
 
             [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
             ]
         ],
 
@@ -73,6 +76,10 @@ if (worldName == "cup_chernarus_A3") then
                 [6472, 13118], [4012, 15365], [4012, 13954],
                 [4431, 12617], [6472, 13118], [4012, 13954],
                 [4431, 12617], [5241, 12168], [6472, 13118]
+            ],
+
+            [   // Sektormarker-Position
+                [5430, 14174]
             ]
         ],
 
@@ -99,6 +106,10 @@ if (worldName == "cup_chernarus_A3") then
                 [7337, 13786], [7615, 12034], [9025, 12617],
                 [9025, 12617], [8940, 15365], [7337, 13786],
                 [8940, 15365], [7337, 15365], [7337, 13786]
+            ],
+
+            [   // Sektormarker-Position
+                [7961, 13910]
             ]
         ],
 
@@ -125,6 +136,10 @@ if (worldName == "cup_chernarus_A3") then
                 [11362, 13786], [10886, 15365], [9966, 12952],
                 [8940, 15365], [9025, 12617], [9966, 12952],
                 [9025, 12617], [9609, 11768], [9966, 12952]
+            ],
+
+            [   // Sektormarker-Position
+                [9805, 14150]
             ]
         ],
 
@@ -149,6 +164,10 @@ if (worldName == "cup_chernarus_A3") then
                 [10886, 15365], [11362, 13786], [12646, 15365],
                 [12646, 15365], [11362, 13786], [13191, 13287],
                 [11362, 13786], [12573, 12542], [13191, 13287]
+            ],
+
+            [   // Sektormarker-Position
+                [11952, 14158]
             ]
         ],
 
@@ -177,6 +196,10 @@ if (worldName == "cup_chernarus_A3") then
                 [15365, 11944], [11470, 10993], [15365, 8910],
                 [15365, 8910], [11470, 10993], [11470, 9975],
                 [15365, 8910], [11470, 9975], [11628, 8776]
+            ],
+
+            [   // Sektormarker-Position
+                [13046, 10893]
             ]
         ],
 
@@ -201,6 +224,10 @@ if (worldName == "cup_chernarus_A3") then
                 [9966, 12952], [9609, 11768], [11470, 10993],
                 [9966, 12952], [11470, 10993], [12573, 12542],
                 [11362, 13786], [9966, 12952], [12573, 12542]
+            ],
+
+            [   // Sektormarker-Position
+                [10946, 12585]
             ]
         ],
 
@@ -229,6 +256,10 @@ if (worldName == "cup_chernarus_A3") then
                 [7907, 11562], [8940, 9891], [9609, 11768],
                 [9609, 11768], [8940, 9891], [9925, 9782],
                 [9609, 11768], [9925, 9782], [11470, 10993]
+            ],
+
+            [   // Sektormarker-Position
+                [9086, 11140]
             ]
         ],
 
@@ -259,6 +290,10 @@ if (worldName == "cup_chernarus_A3") then
                 [5241, 10871], [6204, 8533], [7481, 10278],
                 [7481, 10278], [6204, 8533], [7869, 8622],
                 [7615, 12034], [7481, 10278], [7907, 11562]
+            ],
+
+            [   // Sektormarker-Position
+                [6308, 10845]
             ]
         ],
 
@@ -281,6 +316,10 @@ if (worldName == "cup_chernarus_A3") then
             [   // Sektor-Dreiecke
                 [4012, 13954], [1224, 12168], [4431, 12617],
                 [4431, 12617], [1224, 12168], [5241, 12168]
+            ],
+
+            [   // Sektormarker-Position
+                [3203, 12753]
             ]
         ],
 
@@ -307,6 +346,10 @@ if (worldName == "cup_chernarus_A3") then
                 [1224, 12168], [1582, 10006], [3703, 10993],
                 [5241, 12168], [3703, 10993], [5241, 10871],
                 [3703, 10993], [4193, 10438], [5241, 10871]
+            ],
+
+            [   // Sektormarker-Position
+                [3288, 11469]
             ]
         ],
 
@@ -329,6 +372,10 @@ if (worldName == "cup_chernarus_A3") then
             [   // Sektor-Dreiecke
                 [0, 14449], [0, 8185], [1224, 12168],
                 [1224, 12168], [0, 8185], [1582, 10006]
+            ],
+
+            [   // Sektormarker-Position
+                [401, 11356]
             ]
         ],
 
@@ -353,6 +400,10 @@ if (worldName == "cup_chernarus_A3") then
                 [1582, 10006], [0, 8185], [2337, 8370],
                 [1582, 10006], [2337, 8370], [3547, 9603],
                 [1582, 10006], [3547, 9603], [3703, 10993]
+            ],
+
+            [   // Sektormarker-Position
+                [1974, 9520]
             ]
         ],
 
@@ -383,6 +434,10 @@ if (worldName == "cup_chernarus_A3") then
                 [5241, 10871], [4431, 9212], [6204, 8533],
                 [4431, 9212], [4671, 7686], [6204, 8533],
                 [4431, 9212], [4315, 8042], [4671, 7686]
+            ],
+
+            [   // Sektormarker-Position
+                [4856, 9249]
             ]
         ],
 
@@ -409,6 +464,10 @@ if (worldName == "cup_chernarus_A3") then
                 [5061, 7057], [5888, 6573], [6204, 8533],
                 [6204, 8533], [5888, 6573], [7481, 6124],
                 [6204, 8533], [7481, 6124], [7869, 8622]
+            ],
+
+            [   // Sektormarker-Position
+                [6284, 7468]
             ]
         ],
 
@@ -441,6 +500,10 @@ if (worldName == "cup_chernarus_A3") then
                 [9925, 9782], [11077, 7384], [11628, 8776],
                 [11470, 9975], [9925, 9782], [11628, 8776],
                 [9925, 9782], [11470, 9975], [11470, 10993]
+            ],
+
+            [   // Sektormarker-Position
+                [9310, 9097]
             ]
         ],
 
@@ -469,6 +532,10 @@ if (worldName == "cup_chernarus_A3") then
                 [11628, 8776], [11077, 7384], [12430, 5519],
                 [11628, 8776], [12430, 5519], [15365, 8910],
                 [12430, 5519], [15365, 3243], [15365, 8910]
+            ],
+
+            [   // Sektormarker-Position
+                [12567, 6782]
             ]
         ],
 
@@ -497,6 +564,10 @@ if (worldName == "cup_chernarus_A3") then
                 [11077, 7384], [7869, 8622], [9548, 5665],
                 [11077, 7384], [9548, 5665], [10412, 5701],
                 [9548, 5665], [7374, 4529], [9017, 4070]
+            ],
+
+            [   // Sektormarker-Position
+                [8623, 6526]
             ]
         ],
 
@@ -525,6 +596,10 @@ if (worldName == "cup_chernarus_A3") then
                 [4671, 7686], [3419, 5963], [5061, 7057],
                 [3419, 5963], [4431, 5277], [5061, 7057],
                 [5061, 7057], [4431, 5277], [5888, 6573]
+            ],
+
+            [   // Sektormarker-Position
+                [4185, 6678]
             ]
         ],
 
@@ -551,6 +626,10 @@ if (worldName == "cup_chernarus_A3") then
                 [2337, 8370], [2803, 6185], [4315, 8042],
                 [3547, 9603], [2337, 8370], [4315, 8042],
                 [4431, 9212], [3547, 9603], [4315, 8042]
+            ],
+
+            [   // Sektormarker-Position
+                [3107, 8123]
             ]
         ],
 
@@ -573,6 +652,10 @@ if (worldName == "cup_chernarus_A3") then
             [   // Sektor-Dreiecke
                 [0, 8185], [2188, 6407], [2337, 8370],
                 [0, 8185], [0, 5963], [2188, 6407]
+            ],
+
+            [   // Sektormarker-Position
+                [912, 7245]
             ]
         ],
 
@@ -603,6 +686,10 @@ if (worldName == "cup_chernarus_A3") then
                 [3419, 5963], [1873, 4376], [3741, 3490],
                 [4431, 5277], [3419, 5963], [3741, 3490],
                 [0, 5963], [0, 3741], [1873, 4376]
+            ],
+
+            [   // Sektormarker-Position
+                [1806, 5201]
             ]
         ],
 
@@ -629,6 +716,10 @@ if (worldName == "cup_chernarus_A3") then
                 [5888, 6573], [4431, 5277], [7374, 4529],
                 [7481, 6124], [5888, 6573], [7374, 4529],
                 [3741, 3490], [4215, 1681], [7374, 4529]
+            ],
+
+            [   // Sektormarker-Position
+                [5518, 4571]
             ]
         ],
 
@@ -657,6 +748,10 @@ if (worldName == "cup_chernarus_A3") then
                 [7374, 4529], [4215, 1681], [8047, 2068],
                 [7374, 4529], [8047, 2068], [8976, 3243],
                 [7374, 4529], [8976, 3243], [9017, 4070]
+            ],
+
+            [   // Sektormarker-Position
+                [6955, 2711]
             ]
         ],
 
@@ -683,6 +778,10 @@ if (worldName == "cup_chernarus_A3") then
                 [11372, 3678], [8976, 3243], [11048, 0],
                 [12477, 1810], [11372, 3678], [11048, 0],
                 [11048, 0], [8047, 2068], [8303, 0]
+            ],
+
+            [   // Sektormarker-Position
+                [9797, 2112]
             ]
         ],
 
@@ -719,6 +818,10 @@ if (worldName == "cup_chernarus_A3") then
                 [13999, 2286], [15365, 1621], [15365, 3243],
                 [13999, 2286], [11372, 3678], [12477, 1810],
                 [10412, 5701], [9548, 5665], [9017, 4070]
+            ],
+
+            [   // Sektormarker-Position
+                [12160, 4140]
             ]
         ],
 
@@ -743,6 +846,9 @@ if (worldName == "cup_chernarus_A3") then
                 [4215, 1681], [1873, 4376], [3199, 0],
                 [4215, 1681], [3741, 3490], [1873, 4376],
                 [0, 3741], [0, 0], [3199, 0]
+            ],
+
+            [   // Sektormarker-Position
             ]
         ],
 
@@ -763,6 +869,9 @@ if (worldName == "cup_chernarus_A3") then
             [   // Sektor-Dreiecke
                 [12646, 15365], [13191, 13287], [15365, 15365],
                 [13191, 13287], [15365, 11944], [15365, 15365]
+            ],
+
+            [   // Sektormarker-Position
             ]
         ],
 
@@ -785,6 +894,9 @@ if (worldName == "cup_chernarus_A3") then
                 [4012, 15365], [0, 15365], [0, 14449],
                 [4012, 15365], [0, 14449], [4012, 13954],
                 [0, 14449], [1224, 12168], [4012, 13954]
+            ],
+
+            [   // Sektormarker-Position
             ]
         ],
 
@@ -807,9 +919,12 @@ if (worldName == "cup_chernarus_A3") then
                 [12477, 1810], [11048, 0], [15365, 0],
                 [15365, 0], [13999, 2286], [12477, 1810],
                 [15365, 1621], [13999, 2286], [15365, 0]
+            ],
+
+            [   // Sektormarker-Position
             ]
         ]
-    ]; // letztes Komma löschen!!
+    ];
 };
 
 publicVariable QGVAR(AllSectors);
@@ -839,6 +954,7 @@ publicVariable QGVAR(PreMineZoneMarkers);
 GVAR(NATOSectorMarkers) = [];
 GVAR(CSATSectorMarkers) = [];
 GVAR(BorderMarkers) = [];
+GVAR(SectorNumberMarkers) = [];
 private _markerID = 0;
 
 // CBA-Settings parsen, da dies sonst erst nach dem "Durchdrücken" geschieht
@@ -899,3 +1015,26 @@ GVAR(csat_allsectors) = parseSimpleArray format ["[%1]", GVAR(csat_allsectors_st
 [[[worldSize, worldSize], [worldSize, 0]], "ColorRed", 24, "MapBorder2"] call FUNC(drawline);
 [[[worldSize, 0], [0, 0]], "ColorRed", 24, "MapBorder3"] call FUNC(drawline);
 [[[0, 0], [0, worldSize]], "ColorRed", 24, "MapBorder4"] call FUNC(drawline);
+
+// Sektornummern-Marker auf die Karte zeichnen
+{
+    private _pos = (_x # 4) # 0;
+    if  (count _pos >= 2) then
+    {
+        private "_color";
+        if (_forEachIndex in OPT_SECTORCONTROL_csat_allsectors) then
+        {
+            _color = "colorOPFOR";
+        }
+        else
+        {
+            _color = "colorBLUFOR";
+        };
+
+        private _marker = createMarkerLocal [format ["SectorNumberMarker_%1", _forEachIndex], _pos];  
+        _marker setMarkerColorLocal _color; 
+        _marker setMarkerTypeLocal "EmptyIcon"; 
+        _marker setMarkerText str _forEachIndex;
+        GVAR(SectorNumberMarkers) pushBack _marker;
+    };
+} forEach GVAR(AllSectors);
