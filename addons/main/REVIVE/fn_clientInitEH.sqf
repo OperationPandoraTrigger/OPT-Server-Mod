@@ -101,6 +101,9 @@ DFUNC(isUnconscious) =
             EGVAR(RULES,TFAR_LR_SETTINGS) = nil;
         };
 
+        // Waffe neu ausrüsten (evtl. hilft das gegen den Soundbug)
+        call FUNC(weaponreequip);
+
         // Erschöpfung und Waffenwackeln
         player enableFatigue GVAR(Fatigue);
         player enableStamina GVAR(Stamina);
