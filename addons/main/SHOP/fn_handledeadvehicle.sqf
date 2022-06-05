@@ -27,27 +27,37 @@ params
 ];
 
 // Wer zuletzt (bis zu 1 Minute vorher) einen Schaden verursacht hat, wird als Täter geführt. (1 Minute wegen fehlgeschlagener Notlandung, etc.)
-private _lastDamage = _veh getVariable "lastDamage";
-if !(isNil "_lastDamage") then
+private _lastDamageShooter = _veh getVariable "lastDamageShooter";
+if !(isNil "_lastDamageShooter") then
 {
-    private _lastDamageAge = serverTime - (_lastDamage select 0);
-    if (_lastDamageAge < 60) then
+    private _lastDamageShooterAge = serverTime - (_lastDamageShooter select 0);
+    if (_lastDamageShooterAge < 60) then
     {
-        _instigator = _lastDamage select 1;
+        _instigator = _lastDamageShooter select 1;
+    };
+};
+
+private _projectile = "";
+private _lastDamageProjectile = _veh getVariable "lastDamageProjectile";
+if !(isNil "_lastDamageProjectile") then
+{
+    private _lastDamageProjectileAge = serverTime - (_lastDamageProjectile select 0);
+    if (_lastDamageProjectileAge < 60) then
+    {
+        _projectile = _lastDamageProjectile select 1;
     };
 };
 
 // log destroyed vehicle and killer
-[_veh, _instigator, _source] call FUNC(writeKill);
+[_veh, _instigator, _source, _projectile] call FUNC(writeKill);
 
 //Loging Besatzung bei Heli Abschuss
 //Heli abschuwsse werden sonst nicht dem AA gutgeschrieben.
 if (_veh isKindOf "Air") then
 {
-    (crew _veh) apply
     {
-        [_x, _instigator, _source] remoteExecCall ["OPT_SHOP_fnc_writeKill", 2, false];
-    };
+        [_x, _instigator, _source, _projectile] call FUNC(writeKill);
+    } forEach (crew _veh);
  };
 
 // delete all wrecks within the base safezones

@@ -23,7 +23,6 @@
 */
 #include "macros.hpp"
 
-/* PARAMS */
 params
 [
     ["_victim", objNull, [objNull], 1],

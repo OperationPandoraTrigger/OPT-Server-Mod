@@ -28,12 +28,12 @@
 */
 #include "macros.hpp"
 
-if (!(isNull (findDisplay 5000 displayCtrl 5001))) exitWith{};
+if (!(isNull (findDisplay 5000 displayCtrl 5001))) exitWith {};
 
-//Dialog erstellen
+// Dialog erstellen
 private _success = createDialog "opt_revive_blackscreen";
 
-//Dialog definieren
+// Dialog definieren
 #define IDD_REVIVE_BLACKSCREEN 5000
 #define IDD_REVIVE_WOUNDEDLABEL 5003
 #define IDC_REVIVE_BUTTON 5011
@@ -49,24 +49,24 @@ private _MedicNearLabel_Meter = _display displayCtrl IDC_REVIVE_MEDICNEARLABEL_M
 private _BleedoutBar_Text = _display displayCtrl IDC_REVIVE_BLEEDOUTBAR_TEXT;
 private _WoundedLabel_Text = _display displayCtrl IDD_REVIVE_WOUNDEDLABEL;
 
-//Grundstellung
+// Grundstellung
 _BleedoutBar progressSetPosition 1.0;
 _MedicNearLabel_Meter ctrlSetText "";
 GVAR(ausblutzeit) = 300;
 _BleedoutBar_Text ctrlSetText format ["%1 sec", GVAR(ausblutzeit)];
 _WoundedLabel_Text ctrlSetText format [MLOC(WOUNDED)];
 
-//Chat abschalten
+// Chat abschalten
 1 enableChannel false;
 
-// Respwan Button
-_Respawn_button ctrlAddEventHandler [ "ButtonClick",
+// Respawn Button
+_Respawn_button ctrlAddEventHandler ["ButtonClick",
 {
     // Distanz-Tracker bei Respawn invalidieren
     EGVAR(LOGGING,LAST_POSITION) = nil;
     EGVAR(LOGGING,LAST_DISTANCE) = 0;
 
-    OPT_REVIVE_respawnedHandler = true;
+    GVAR(respawnedHandler) = true;
     ["Health", "Respawn", [getPlayerUID player, name player, side player, "RespawnClick"]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
     player setDamage 1;
     1 enableChannel true;
@@ -75,7 +75,7 @@ _Respawn_button ctrlAddEventHandler [ "ButtonClick",
 
 GVAR(startzeit) = time;
 
-//Anzeigen Steuerung im Dialog
+// Anzeigen Steuerung im Dialog
 [{
     params ["_args", "_handle"];
 
@@ -97,7 +97,7 @@ GVAR(startzeit) = time;
     {
         {
             private _sidesoldat = getnumber (configFile >> "CfgVehicles" >> (typeof _x) >> "side");
-            if (getDammage _x < GVAR(MAX_DAMAGE) && _sidesoldat == _sideplayer && alive _x && lifeState _x isNotEqualTo "INCAPACITATED") then
+            if (_sidesoldat == _sideplayer && alive _x && lifeState _x isNotEqualTo "INCAPACITATED") then
             {
                 private _isMedic = typeOf _x in EGVAR(RULES,medic);
 
@@ -123,10 +123,10 @@ GVAR(startzeit) = time;
     // Textausgabe über Medic entfernung
     _MedicNearLabel_Meter ctrlSetText format ["%1", _hintMsg];
 
-    //Auto Respwan nach Ablauf der Ausblutzeit
+    // Auto Respawn nach Ablauf der Ausblutzeit
     if (((GVAR(ausblutzeit) - (time - GVAR(startzeit))) < 0)) then
     {
-        OPT_REVIVE_respawnedHandler = true;
+        GVAR(respawnedHandler) = true;
         ["Health", "Respawn", [getPlayerUID player, name player, side player, "RespawnTimeout"]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
         player setDamage 1;
     };
@@ -144,24 +144,24 @@ GVAR(startzeit) = time;
     };
 
     // Dialog und PFH Löschung
-    if ((getDammage player) == 1)  then
+    if ((damage player) == 1)  then
     {
         closeDialog 5000;
         closeDialog 0;
         1 enableChannel true;
         player allowDamage true;
         player setVariable ["OPT_isUnconscious", 0, true];
-        OPT_REVIVE_unconsciousHandler = nil;
+        GVAR(unconsciousHandler) = nil;
         player setVariable ["tf_unable_to_use_radio", false];
 
-        //Schaden Freigeben
+        // Schaden Freigeben
         player allowDamage true;
 
         _handle call CFUNC(removePerframeHandler);
     };
 
     // Dialog und PFH Löschung
-    if (!(lifeState player isEqualTo "INCAPACITATED"))  then
+    if (lifeState player isNotEqualTo "INCAPACITATED") then
     {
         closeDialog 5000;
         closeDialog 0;
@@ -171,7 +171,7 @@ GVAR(startzeit) = time;
         OPT_REVIVE_unconsciousHandler = nil;
         player setVariable ["tf_unable_to_use_radio", false];
 
-        //Schaden Freigeben
+        // Schaden freigeben
         player allowDamage true;
 
         // Nicht nach dem Respawnen ausführen
@@ -187,7 +187,7 @@ GVAR(startzeit) = time;
 
                     if (_sidesoldat isEqualTo _sideplayer and !(lifeState _x isEqualTo "INCAPACITATED")) then
                     {
-                        [player, _x, 1] remoteExecCall ["OPT_REVIVE_fnc_revivelog", 2, false];
+                        [player, _x, 1] remoteExecCall [QGVAR(revivelog), 2, false];
                     };
                 } forEach _units;
             };
@@ -195,5 +195,4 @@ GVAR(startzeit) = time;
 
         _handle call CFUNC(removePerframeHandler);
     };
-
 }, 1, _this] call CFUNC(addPerFrameHandler);
