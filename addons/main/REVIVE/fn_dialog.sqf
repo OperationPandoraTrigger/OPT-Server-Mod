@@ -28,6 +28,8 @@
 */
 #include "macros.hpp"
 
+#define AUSBLUTZEIT 300
+
 if (!(isNull (findDisplay 5000 displayCtrl 5001))) exitWith {};
 
 // Dialog erstellen
@@ -52,8 +54,7 @@ private _WoundedLabel_Text = _display displayCtrl IDD_REVIVE_WOUNDEDLABEL;
 // Grundstellung
 _BleedoutBar progressSetPosition 1.0;
 _MedicNearLabel_Meter ctrlSetText "";
-GVAR(ausblutzeit) = 300;
-_BleedoutBar_Text ctrlSetText format ["%1 sec", GVAR(ausblutzeit)];
+_BleedoutBar_Text ctrlSetText format ["%1 sec", AUSBLUTZEIT];
 _WoundedLabel_Text ctrlSetText format [MLOC(WOUNDED)];
 
 // Chat abschalten
@@ -65,12 +66,11 @@ _Respawn_button ctrlAddEventHandler ["ButtonClick",
     // Distanz-Tracker bei Respawn invalidieren
     EGVAR(LOGGING,LAST_POSITION) = nil;
     EGVAR(LOGGING,LAST_DISTANCE) = 0;
-
-    GVAR(respawnedHandler) = true;
+    GVAR(RespawnPressed) = true;
     ["Health", "Respawn", [getPlayerUID player, name player, side player, "RespawnClick"]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
+    player allowDamage true;
     player setDamage 1;
     1 enableChannel true;
-    player allowDamage true;
 }];
 
 GVAR(startzeit) = time;
@@ -78,7 +78,6 @@ GVAR(startzeit) = time;
 // Anzeigen Steuerung im Dialog
 [{
     params ["_args", "_handle"];
-
     private _display = findDisplay IDD_REVIVE_BLACKSCREEN;
     private _BleedoutBar = _display displayCtrl IDC_REVIVE_BLEEDOUTBAR;
     private _Respawn_button = _display displayCtrl IDC_REVIVE_BUTTON;
@@ -124,16 +123,16 @@ GVAR(startzeit) = time;
     _MedicNearLabel_Meter ctrlSetText format ["%1", _hintMsg];
 
     // Auto Respawn nach Ablauf der Ausblutzeit
-    if (((GVAR(ausblutzeit) - (time - GVAR(startzeit))) < 0)) then
+    if ((time - GVAR(startzeit)) > AUSBLUTZEIT) then
     {
-        GVAR(respawnedHandler) = true;
+        GVAR(RespawnPressed) = true;
         ["Health", "Respawn", [getPlayerUID player, name player, side player, "RespawnTimeout"]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
         player setDamage 1;
     };
 
-    // Zeitausgabe bis Auto Respwan
-    _BleedoutBar_Text ctrlSetText format ["%1 sec", floor (GVAR(ausblutzeit) - (time - GVAR(startzeit)))];
-    _BleedoutBar progressSetPosition ((floor (GVAR(ausblutzeit) - (time - GVAR(startzeit)))) / GVAR(ausblutzeit));
+    // Zeitausgabe bis Auto Respawn
+    _BleedoutBar_Text ctrlSetText format ["%1 sec", round (AUSBLUTZEIT - (time - GVAR(startzeit)))];
+    _BleedoutBar progressSetPosition ((round (AUSBLUTZEIT - (time - GVAR(startzeit)))) / AUSBLUTZEIT);
     _BleedoutBar_Text ctrlSetTextColor [1, 0, 0, 1];
     _BleedoutBar ctrlSetTextColor [1, 0, 0, 1];
 
@@ -144,38 +143,20 @@ GVAR(startzeit) = time;
     };
 
     // Dialog und PFH Löschung
-    if ((damage player) == 1)  then
+    if (damage player < 0.1 || !isNil QGVAR(RespawnPressed)) then
     {
         closeDialog 5000;
         closeDialog 0;
         1 enableChannel true;
-        player allowDamage true;
         player setVariable ["OPT_isUnconscious", 0, true];
+        player setVariable ["tf_unable_to_use_radio", false];
         GVAR(unconsciousHandler) = nil;
-        player setVariable ["tf_unable_to_use_radio", false];
-
-        // Schaden Freigeben
-        player allowDamage true;
-
-        _handle call CFUNC(removePerframeHandler);
-    };
-
-    // Dialog und PFH Löschung
-    if (lifeState player isNotEqualTo "INCAPACITATED") then
-    {
-        closeDialog 5000;
-        closeDialog 0;
-        1 enableChannel true;
-        player allowDamage true;
-        player setVariable ["OPT_isUnconscious", 0, true];
-        OPT_REVIVE_unconsciousHandler = nil;
-        player setVariable ["tf_unable_to_use_radio", false];
 
         // Schaden freigeben
         player allowDamage true;
 
         // Nicht nach dem Respawnen ausführen
-        if (isNil "OPT_REVIVE_respawnedHandler") then
+        if (isNil QGVAR(RespawnPressed)) then
         {
             // Für alle zum Schluss anwesenden (25 m) Kameraden einen Revive-Punkt loggen
             _units = nearestObjects [getpos player, ["CAManBase"], 25] - [player];

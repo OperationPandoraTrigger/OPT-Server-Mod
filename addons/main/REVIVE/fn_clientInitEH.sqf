@@ -24,12 +24,13 @@
 
 #include "macros.hpp";
 
-// Ab 0.4 wird man in ArmA 3 bewusstlos
+// Ab 0.42 wird man in ArmA 3 bewusstlos
 #define MAX_DAMAGE 0.39
 
 DFUNC(HandleDamage) =
 {
     params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
+    ["DEBUG", "DamageHandler", [_unit, _selection, _damage, _source, _projectile, _hitIndex, _instigator, _hitPoint]] remoteExec [QEFUNC(LOGGING,writelog), 2];
 
     // Variablen nur übernehmen wenn sie gefüllt sind (der EH feuert diverse male - oft unvollständig)
     if !(isNull _unit) then
@@ -56,31 +57,29 @@ DFUNC(HandleDamage) =
         GVAR(Damage_instigator_age) = serverTime;
     };
 
-    // Einmalige Auslösung bei schwerer Verletzung von lebenswichtigen Körperteilen
-    if (isNil QGVAR(unconsciousHandler) && _damage >= MAX_DAMAGE && !(_selection in ["arms", "hands", "legs"])) then
-    {
-        GVAR(unconsciousHandler) = true;
+    ["DEBUG", "DamageHandler2", [GVAR(Damage_unit), _selection, _damage, GVAR(Damage_source), GVAR(Damage_projectile), _hitIndex, GVAR(Damage_instigator), _hitPoint]] remoteExec [QEFUNC(LOGGING,writelog), 2];
 
+    // Einmalige Auslösung bei schwerer Verletzung lebenswichtiger Körperteile
+    if (isNil QGVAR(unconsciousHandler) && _damage >= MAX_DAMAGE && !(_selection in ["arms", "hands", "legs"])) then
+//    if (isNil QGVAR(unconsciousHandler) && _damage >= MAX_DAMAGE) then
+    {
         // Spieler bewusstlos machen und weiteren Schaden ausblenden
         player setDamage 0.9;
         player allowDamage false;
 
-        // für GPS
+        GVAR(unconsciousHandler) = true;
+        ["DEBUG", "DamageHandler3", [GVAR(Damage_unit), _selection, _damage, GVAR(Damage_source), GVAR(Damage_projectile), _hitIndex, GVAR(Damage_instigator), _hitPoint]] remoteExec [QEFUNC(LOGGING,writelog), 2];
+
+        // für Dragging und Chat
         _unit setVariable ["OPT_isUnconscious", 1, true];
-
-        // Einheit aus Fahrzeug entfernen
-        if (vehicle _unit != _unit) then {moveOut _unit};
-
-        // Sprengladungen mit Totmannschalter zünden
-        [_unit] call ace_explosives_fnc_onIncapacitated;
 
         // TFAR deaktivieren und aktive Übertragung abbrechen
         player setVariable ["tf_unable_to_use_radio", true];
         call TFAR_fnc_onSwTangentReleased;
         call TFAR_fnc_onLRTangentReleased;
 
-        // Reisesdistanz loggen
-        true call EFUNC(LOGGING,tracker);
+        // Einheit aus Fahrzeug entfernen
+        if (vehicle _unit != _unit) then {moveOut _unit};
 
         // Verzögert, damit möglichst alle Variablen gefüllt sind (der EH feuert zig mal, teilweise mit unvollständigen Angaben)
         [{
@@ -96,6 +95,12 @@ DFUNC(HandleDamage) =
             if (isNull GVAR(Damage_instigator) && !isNull GVAR(Damage_source)) then {GVAR(Damage_instigator) = GVAR(Damage_source)};
 
             [GVAR(Damage_unit), GVAR(Damage_instigator), GVAR(Damage_source), GVAR(Damage_projectile)] remoteExecCall ["OPT_SHOP_fnc_writeKill", 2, false];
+
+            // Reisesdistanz loggen
+            true call EFUNC(LOGGING,tracker);
+
+            // Sprengladungen mit Totmannschalter zünden
+            [_unit] call ace_explosives_fnc_onIncapacitated;
 
             if (GVAR(Damage_unit) isNotEqualTo GVAR(Damage_source)) then
             {
@@ -130,10 +135,15 @@ DFUNC(HandleDamage) =
             // Respawn-Dialog ausführen
             [] call FUNC(dialog);
         }, 2, ""] call CFUNC(wait);
+        0;  // keine Damage zurückgeben, da wir uns jetzt selbst kümmern
+    }
+    else
+    {
+//        if (_selection in ["arms", "hands", "legs"]) then {_unit getHit _selection}
+        // Maximal MAX_DAMAGE zurückgeben, damit man nie sofort stirbt (Extremitätsverletzungen werden ignoriert)
+        if (_selection in ["arms", "hands", "legs"]) then {0}
+        else {_damage min MAX_DAMAGE};
     };
-
-    // Maximal die MAX_DAMAGE zurückgeben, damit man quasi nie stirbt
-    _damage min MAX_DAMAGE;
 };
 
 ["Respawn",
@@ -153,12 +163,12 @@ DFUNC(HandleDamage) =
 
     GVAR(OPT_isDragging) = false;
     GVAR(unconsciousHandler) = nil;
-    GVAR(respawnedHandler) = nil;
+    GVAR(RespawnPressed) = nil;
 
     1 enableChannel true;
 
     // Shop Dialoge freigeben
-    OPT_SHOP_LOCK = false;
+    EGVAR(SHOP,LOCK) = false;
 
     // Verzögert ausführen, da es sonst zeitgleich oder leicht vor dem ACE-Gearsave läuft
     [{

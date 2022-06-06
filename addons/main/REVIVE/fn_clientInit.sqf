@@ -64,11 +64,11 @@ DFUNC(eigenversorgung) =
     //ACE Interaktioneinträge
     GVAR(revive_Action_eigen) =
     [
-        MLOC(FIRST_AID),
-        MLOC(FIRST_AID),
+        MLOC(SELF_CARE),
+        MLOC(SELF_CARE),
         "a3\ui_f\data\igui\cfg\simpletasks\types\heal_ca.paa",
         {[] call FUNC(eigenversorgung)},
-        {((vehicle player == player) and (getdammage player > 0.2))},
+        {((vehicle player == player) && (getdammage player > 0.1))},
         {}
     ] call ace_interact_menu_fnc_createAction;
 
