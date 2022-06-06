@@ -73,7 +73,7 @@ GVAR(markerOwn) setMarkerAlphaLocal 1;
         GVAR(MarkerPool) set [_playerID, time];
 
         // Spieler am Leben
-        if (damage _x < 0.9) then
+        if (lifeState _x in ["HEALTHY", "INJURED"]) then
         {
             _markerDead setMarkerAlphaLocal 0;
 
@@ -107,7 +107,7 @@ GVAR(markerOwn) setMarkerAlphaLocal 1;
             _markerAlive setMarkerAlphaLocal 0;
 
             // playableUnits enthält nicht die Spieler die gerade respawnen
-            if (_x in playableUnits) then
+            if (_x in playableUnits && !(lifeState _x in ["DEAD", "DEAD-RESPAWN", "DEAD-SWITCHING"])) then
             {
                 _markerDead setMarkerPosLocal _playerVehicle;
                 _markerDead setMarkerDirLocal getDirVisual _playerVehicle;

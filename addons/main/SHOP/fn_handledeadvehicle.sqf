@@ -26,7 +26,7 @@ params
     "_useEffects"
 ];
 
-["DEBUG", "VehicleDestroyed", [_veh, _instigator, _source]] call EFUNC(LOGGING,writelog);
+//["DEBUG", "VehicleDestroyed", [_veh, _instigator, _source]] call EFUNC(LOGGING,writelog);
 
 // Wer zuletzt (bis zu 1 Minute vorher) einen Schaden verursacht hat, wird als Täter geführt. (1 Minute wegen fehlgeschlagener Notlandung, etc.)
 private _lastDamageShooter = _veh getVariable "lastDamageShooter";
@@ -50,7 +50,7 @@ if !(isNil "_lastDamageProjectile") then
     };
 };
 
-["DEBUG", "VehicleDestroyed2", [_veh, _instigator, _source, _projectile]] call EFUNC(LOGGING,writelog);
+//["DEBUG", "VehicleDestroyed2", [_veh, _instigator, _source, _projectile]] call EFUNC(LOGGING,writelog);
 
 // log destroyed vehicle
 [_veh, _instigator, _source, _projectile] call FUNC(writeKill);

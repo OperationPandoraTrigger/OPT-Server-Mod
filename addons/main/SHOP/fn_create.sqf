@@ -108,7 +108,7 @@ DFUNC(createOrder) =
     _veh addEventHandler ["Dammaged",
     {
         params ["_unit", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"];
-        ["DEBUG", "VehicleDamage", [_unit, _selection, _damage, _hitIndex, _hitPoint, _shooter, _projectile, typeOf _projectile]] remoteExec [QEFUNC(LOGGING,writelog), 2];
+//        ["DEBUG", "VehicleDamage", [_unit, _selection, _damage, _hitIndex, _hitPoint, _shooter, _projectile, typeOf _projectile]] remoteExec [QEFUNC(LOGGING,writelog), 2];
 
         if (!isNull _shooter && _shooter != currentPilot _unit) then
         {

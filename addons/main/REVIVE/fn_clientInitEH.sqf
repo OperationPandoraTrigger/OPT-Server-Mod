@@ -30,7 +30,7 @@
 DFUNC(HandleDamage) =
 {
     params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
-    ["DEBUG", "DamageHandler", [_unit, _selection, _damage, _source, _projectile, _hitIndex, _instigator, _hitPoint]] remoteExec [QEFUNC(LOGGING,writelog), 2];
+//    ["DEBUG", "DamageHandler", [_unit, _selection, _damage, _source, _projectile, _hitIndex, _instigator, _hitPoint]] remoteExec [QEFUNC(LOGGING,writelog), 2];
 
     // Variablen nur übernehmen wenn sie gefüllt sind (der EH feuert diverse male - oft unvollständig)
     if !(isNull _unit) then
@@ -58,14 +58,14 @@ DFUNC(HandleDamage) =
     };
 
     // Einmalige Auslösung bei schwerer Verletzung lebenswichtiger Körperteile
-    if (isNil QGVAR(unconsciousHandler) && _damage >= MAX_DAMAGE && !(_selection in ["arms", "hands", "legs"])) then
+    if (_unit isEqualTo player && isNil QGVAR(unconsciousHandler) && _damage >= MAX_DAMAGE && !(_selection in ["arms", "hands", "legs"])) then
     {
         // Spieler bewusstlos machen und weiteren Schaden ausblenden
-        player setDamage 0.9;
+        player setDamage 0.5;
         player allowDamage false;
 
         GVAR(unconsciousHandler) = true;
-        ["DEBUG", "KillHandler", [GVAR(Damage_unit), _selection, _damage, GVAR(Damage_source), GVAR(Damage_projectile), _hitIndex, GVAR(Damage_instigator), _hitPoint]] remoteExec [QEFUNC(LOGGING,writelog), 2];
+//        ["DEBUG", "KillHandler", [GVAR(Damage_unit), _selection, _damage, GVAR(Damage_source), GVAR(Damage_projectile), _hitIndex, GVAR(Damage_instigator), _hitPoint]] remoteExec [QEFUNC(LOGGING,writelog), 2];
 
         // für Dragging und Chat
         _unit setVariable ["OPT_isUnconscious", 1, true];
@@ -93,7 +93,7 @@ DFUNC(HandleDamage) =
 
             [GVAR(Damage_unit), GVAR(Damage_instigator), GVAR(Damage_source), GVAR(Damage_projectile)] remoteExecCall ["OPT_SHOP_fnc_writeKill", 2, false];
 
-            // Reisesdistanz loggen
+            // Reisedistanz loggen
             true call EFUNC(LOGGING,tracker);
 
             // Sprengladungen mit Totmannschalter zünden
@@ -102,21 +102,24 @@ DFUNC(HandleDamage) =
             // Fremdverschulden
             if (GVAR(Damage_unit) isNotEqualTo GVAR(Damage_source)) then
             {
-                [MLOC(KILL_MSG), format["%1", name GVAR(Damage_source)]] spawn BIS_fnc_infoText;
+                private _txt = format["<t font='PuristaBold' size='1.4'>%1</t><br /><t font='PuristaBold' size='2.2'>%2</t>", MLOC(KILL_MSG), name GVAR(Damage_source)];
+                [parseText _txt, true, nil, 7, 5, 0] spawn BIS_fnc_textTiles;
             }
             else
             {
                 // Eigenverschulden
                 if (GVAR(Damage_unit) in [GVAR(Damage_source), GVAR(Damage_instigator)]) then
                 {
-                    [MLOC(KILL_MSG), MLOC(KILL_SELF)] spawn BIS_fnc_infoText;
+                    private _txt = format["<t font='PuristaBold' size='1.4'>%1</t><br /><t font='PuristaBold' size='2.2'>%2</t>", MLOC(KILL_MSG), MLOC(KILL_SELF)];
+                    [parseText _txt, true, nil, 7, 5, 0] spawn BIS_fnc_textTiles;
                 }
                 else
                 {
                     // Ursache unbekannt
                     if (isNull GVAR(Damage_source)) then
                     {
-                        [MLOC(KILL_MSG), MLOC(KILL_UNKNOWN)] spawn BIS_fnc_infoText;
+                        private _txt = format["<t font='PuristaBold' size='1.4'>%1</t><br /><t font='PuristaBold' size='2.2'>%2</t>", MLOC(KILL_MSG), MLOC(KILL_UNKNOWN)];
+                        [parseText _txt, true, nil, 7, 5, 0] spawn BIS_fnc_textTiles;
                     };
                 };
             };
@@ -165,6 +168,10 @@ DFUNC(HandleDamage) =
     GVAR(RespawnPressed) = nil;
 
     1 enableChannel true;
+    2 enableChannel true;
+    3 enableChannel true;
+    4 enableChannel true;
+    5 enableChannel true;
 
     // Shop Dialoge freigeben
     EGVAR(SHOP,LOCK) = false;
@@ -215,6 +222,15 @@ inGameUISetEventHandler ["Action", '
     };
 '];
 
+// The initial EHs are not needed and resulting in strange problems adding a new EH, so we remove any.
+// still very bad practise that screams for sideeffects.
+// Just look away.
+for "_i" from 0 to 6 do {
+    player removeEventHandler ["HandleDamage", _i];
+};
+// ok now you may have a peek again
+
+
 // Initial assignment, Respawn Handler does not trigger on first-spawn.
 GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = player addEventHandler ["HandleDamage", FUNC(HandleDamage)];
 
@@ -235,7 +251,7 @@ GVAR(missionEH_draw3D) = addMissionEventHandler ["Draw3D",
     {
         (_x distance player) < 30 &&
         lifeState _x isEqualTo "INCAPACITATED" &&
-        !(incapacitatedState _x == "") &&
+        incapacitatedState _x isNotEqualTo "" &&
         _x != player &&
         ((getnumber (configFile >> "CfgVehicles" >> (typeof _x) >> "side")) isEqualTo (playerSide call BIS_fnc_sideID))
     };

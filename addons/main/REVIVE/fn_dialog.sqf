@@ -59,6 +59,10 @@ _WoundedLabel_Text ctrlSetText format [MLOC(WOUNDED)];
 
 // Chat abschalten
 1 enableChannel false;
+2 enableChannel false;
+3 enableChannel false;
+4 enableChannel false;
+5 enableChannel false;
 
 // Respawn Button
 _Respawn_button ctrlAddEventHandler ["ButtonClick",
@@ -66,11 +70,19 @@ _Respawn_button ctrlAddEventHandler ["ButtonClick",
     // Distanz-Tracker bei Respawn invalidieren
     EGVAR(LOGGING,LAST_POSITION) = nil;
     EGVAR(LOGGING,LAST_DISTANCE) = 0;
+
+    // Eventhandler löschen
+    player removeEventHandler ["HandleDamage", GVAR(PLAYER_HANDLE_DAMAGE_EH_ID)];
+
     GVAR(RespawnPressed) = true;
     ["Health", "Respawn", [getPlayerUID player, name player, side player, "RespawnClick"]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
     player allowDamage true;
     player setDamage 1;
     1 enableChannel true;
+    2 enableChannel true;
+    3 enableChannel true;
+    4 enableChannel true;
+    5 enableChannel true;
 }];
 
 GVAR(startzeit) = time;
@@ -149,12 +161,16 @@ GVAR(startzeit) = time;
         closeDialog 5000;
         closeDialog 0;
         1 enableChannel true;
+        2 enableChannel true;
+        3 enableChannel true;
+        4 enableChannel true;
+        5 enableChannel true;
         player setVariable ["OPT_isUnconscious", 0, true];
         player setVariable ["tf_unable_to_use_radio", false];
-        GVAR(unconsciousHandler) = nil;
 
         // Schaden freigeben
         player allowDamage true;
+        GVAR(unconsciousHandler) = nil;
 
         // Nicht nach dem Respawnen ausführen
         if (isNil QGVAR(RespawnPressed)) then
@@ -169,7 +185,7 @@ GVAR(startzeit) = time;
 
                     if (_sidesoldat isEqualTo _sideplayer and !(lifeState _x isEqualTo "INCAPACITATED")) then
                     {
-                        [player, _x, 1] remoteExecCall [QGVAR(revivelog), 2, false];
+                        [player, _x, 1] remoteExecCall [QFUNC(revivelog), 2, false];
                     };
                 } forEach _units;
             };
