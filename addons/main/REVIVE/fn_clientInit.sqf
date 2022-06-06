@@ -29,16 +29,15 @@
 #include "macros.hpp"
 
 // Eigenversorung Funktion
-DFUNC(eigenversorgung) =
+DFUNC(SelfCare) =
 {
     player switchmove "AinvPknlMstpSnonWrflDnon_medic";
-
     [
-        GVAR(Helizeiteigen),
+        GVAR(SelfCareDuration),
         [],
         {
             //Heilung auf in CBA eingestellten wert
-            player setDamage ((100-GVAR(Heliwerteigen))/100)+0.01;
+            player setDamage GVAR(SelfCareHealth);
             player switchmove "";
             player action ["WeaponInHand", player];
         },
@@ -67,8 +66,8 @@ DFUNC(eigenversorgung) =
         MLOC(SELF_CARE),
         MLOC(SELF_CARE),
         "a3\ui_f\data\igui\cfg\simpletasks\types\heal_ca.paa",
-        {[] call FUNC(eigenversorgung)},
-        {((vehicle player == player) && (getdammage player > 0.1))},
+        {[] call FUNC(SelfCare)},
+        {((vehicle player == player) && (damage player > GVAR(SelfCareHealth)))},
         {}
     ] call ace_interact_menu_fnc_createAction;
 

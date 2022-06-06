@@ -29,19 +29,19 @@
 #include "macros.hpp"
 
 [
-    QGVAR(Heliwerteigen), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    QGVAR(SelfCareHealth), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "SLIDER", // setting type
-    "Höhe (%) der Gesundung für die Eigenversorgung", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+    "Gesundheit nach der Eigenversorgung", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     "OPT San-System", // Pretty name of the category where the setting can be found. Can be stringtable entry.
-    [50, 100, 80, 0], // [min, max, default, decimal]
+    [0, 1, 0.1, 2], // [min, max, default, decimal]
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {} // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
 
 [
-    QGVAR(Helizeiteigen), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    QGVAR(SelfCareDuration), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "SLIDER", // setting type
-    "Dauer für die Eigenversorgung", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+    "Dauer der Eigenversorgung", // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
     "OPT San-System", // Pretty name of the category where the setting can be found. Can be stringtable entry.
     [1, 30, 20, 0], // [min, max, default, decimal]
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer

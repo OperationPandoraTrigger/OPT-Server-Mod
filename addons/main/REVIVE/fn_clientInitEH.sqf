@@ -57,18 +57,15 @@ DFUNC(HandleDamage) =
         GVAR(Damage_instigator_age) = serverTime;
     };
 
-    ["DEBUG", "DamageHandler2", [GVAR(Damage_unit), _selection, _damage, GVAR(Damage_source), GVAR(Damage_projectile), _hitIndex, GVAR(Damage_instigator), _hitPoint]] remoteExec [QEFUNC(LOGGING,writelog), 2];
-
     // Einmalige Auslösung bei schwerer Verletzung lebenswichtiger Körperteile
     if (isNil QGVAR(unconsciousHandler) && _damage >= MAX_DAMAGE && !(_selection in ["arms", "hands", "legs"])) then
-//    if (isNil QGVAR(unconsciousHandler) && _damage >= MAX_DAMAGE) then
     {
         // Spieler bewusstlos machen und weiteren Schaden ausblenden
         player setDamage 0.9;
         player allowDamage false;
 
         GVAR(unconsciousHandler) = true;
-        ["DEBUG", "DamageHandler3", [GVAR(Damage_unit), _selection, _damage, GVAR(Damage_source), GVAR(Damage_projectile), _hitIndex, GVAR(Damage_instigator), _hitPoint]] remoteExec [QEFUNC(LOGGING,writelog), 2];
+        ["DEBUG", "KillHandler", [GVAR(Damage_unit), _selection, _damage, GVAR(Damage_source), GVAR(Damage_projectile), _hitIndex, GVAR(Damage_instigator), _hitPoint]] remoteExec [QEFUNC(LOGGING,writelog), 2];
 
         // für Dragging und Chat
         _unit setVariable ["OPT_isUnconscious", 1, true];
@@ -102,18 +99,21 @@ DFUNC(HandleDamage) =
             // Sprengladungen mit Totmannschalter zünden
             [_unit] call ace_explosives_fnc_onIncapacitated;
 
+            // Fremdverschulden
             if (GVAR(Damage_unit) isNotEqualTo GVAR(Damage_source)) then
             {
                 [MLOC(KILL_MSG), format["%1", name GVAR(Damage_source)]] spawn BIS_fnc_infoText;
             }
             else
             {
+                // Eigenverschulden
                 if (GVAR(Damage_unit) in [GVAR(Damage_source), GVAR(Damage_instigator)]) then
                 {
                     [MLOC(KILL_MSG), MLOC(KILL_SELF)] spawn BIS_fnc_infoText;
                 }
                 else
                 {
+                    // Ursache unbekannt
                     if (isNull GVAR(Damage_source)) then
                     {
                         [MLOC(KILL_MSG), MLOC(KILL_UNKNOWN)] spawn BIS_fnc_infoText;
@@ -121,7 +121,7 @@ DFUNC(HandleDamage) =
                 };
             };
 
-            // "Secure" (Fesseln) für diese Leiche auf allen Clients deaktivieren
+            // "Secure" (Fesseln) dieser Leiche auf allen Clients deaktivieren
             [player,
             {
                 private _actionID = _this getVariable ["#rev_actionID_secure", -1];
@@ -132,14 +132,13 @@ DFUNC(HandleDamage) =
                 };
             }] remoteExec ["call", -2, true];
 
-            // Respawn-Dialog ausführen
+            // Respawn-Dialog anzeigen
             [] call FUNC(dialog);
         }, 2, ""] call CFUNC(wait);
-        0;  // keine Damage zurückgeben, da wir uns jetzt selbst kümmern
+        0;  // keine weitere Damage zurückgeben, da wir eh schon bewusstlos sind
     }
     else
     {
-//        if (_selection in ["arms", "hands", "legs"]) then {_unit getHit _selection}
         // Maximal MAX_DAMAGE zurückgeben, damit man nie sofort stirbt (Extremitätsverletzungen werden ignoriert)
         if (_selection in ["arms", "hands", "legs"]) then {0}
         else {_damage min MAX_DAMAGE};
@@ -150,9 +149,9 @@ DFUNC(HandleDamage) =
 {
     params ["_data", "_args"];
     _data params ["_newPlayer", "_oldPlayer"];
-    _oldPlayer removeEventHandler ["HandleDamage", GVAR(PLAYER_HANDLE_DAMAGE_EH_ID)];
 
     // Respawn will change the player Object. We need to reassign the Eventhandler.
+    _oldPlayer removeEventHandler ["HandleDamage", GVAR(PLAYER_HANDLE_DAMAGE_EH_ID)];
     GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = _newPlayer addEventHandler ["HandleDamage", FUNC(HandleDamage)];
 
     _newPlayer setVariable ["OPT_isUnconscious", 0, true];
@@ -234,10 +233,10 @@ GVAR(missionEH_draw3D) = addMissionEventHandler ["Draw3D",
 {
     private _nearbyUnits = playableUnits select
     {
-        (_x distance player) < 30 and
-        lifeState _x isEqualTo "INCAPACITATED" and
-        !(incapacitatedState _x == "") and
-        _x != player and
+        (_x distance player) < 30 &&
+        lifeState _x isEqualTo "INCAPACITATED" &&
+        !(incapacitatedState _x == "") &&
+        _x != player &&
         ((getnumber (configFile >> "CfgVehicles" >> (typeof _x) >> "side")) isEqualTo (playerSide call BIS_fnc_sideID))
     };
 

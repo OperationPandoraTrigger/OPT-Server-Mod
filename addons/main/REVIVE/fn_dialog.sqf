@@ -127,12 +127,13 @@ GVAR(startzeit) = time;
     {
         GVAR(RespawnPressed) = true;
         ["Health", "Respawn", [getPlayerUID player, name player, side player, "RespawnTimeout"]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
+        player allowDamage true;
         player setDamage 1;
     };
 
     // Zeitausgabe bis Auto Respawn
     _BleedoutBar_Text ctrlSetText format ["%1 sec", round (AUSBLUTZEIT - (time - GVAR(startzeit)))];
-    _BleedoutBar progressSetPosition ((round (AUSBLUTZEIT - (time - GVAR(startzeit)))) / AUSBLUTZEIT);
+    _BleedoutBar progressSetPosition ((AUSBLUTZEIT - (time - GVAR(startzeit))) / AUSBLUTZEIT);
     _BleedoutBar_Text ctrlSetTextColor [1, 0, 0, 1];
     _BleedoutBar ctrlSetTextColor [1, 0, 0, 1];
 
