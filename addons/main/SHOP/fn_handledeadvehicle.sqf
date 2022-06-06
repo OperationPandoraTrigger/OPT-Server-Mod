@@ -26,6 +26,8 @@ params
     "_useEffects"
 ];
 
+["DEBUG", "VehicleDestroyed", [_veh, _instigator, _source]] call EFUNC(LOGGING,writelog);
+
 // Wer zuletzt (bis zu 1 Minute vorher) einen Schaden verursacht hat, wird als Täter geführt. (1 Minute wegen fehlgeschlagener Notlandung, etc.)
 private _lastDamageShooter = _veh getVariable "lastDamageShooter";
 if !(isNil "_lastDamageShooter") then
@@ -48,17 +50,15 @@ if !(isNil "_lastDamageProjectile") then
     };
 };
 
-// log destroyed vehicle and killer
+["DEBUG", "VehicleDestroyed2", [_veh, _instigator, _source, _projectile]] call EFUNC(LOGGING,writelog);
+
+// log destroyed vehicle
 [_veh, _instigator, _source, _projectile] call FUNC(writeKill);
 
-//Loging Besatzung bei Heli Abschuss
-//Heli abschuwsse werden sonst nicht dem AA gutgeschrieben.
-if (_veh isKindOf "Air") then
+// log destroyed crew
 {
-    {
-        [_x, _instigator, _source, _projectile] call FUNC(writeKill);
-    } forEach (crew _veh);
- };
+    [_x, _instigator, _source, _projectile] call FUNC(writeKill);
+} forEach (crew _veh);
 
 // delete all wrecks within the base safezones
 if (!(_veh isKindOf "CAManBase") && {position _veh inArea "NATO_T_Zone1" || position _veh inArea "NATO_T_Zone2" || position _veh inArea "CSAT_T_Zone1" || position _veh inArea "CSAT_T_Zone2" || position _veh inArea "CSAT_T_Zone3" || position _veh inArea "CSAT_T_Zone4"}) then

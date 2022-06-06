@@ -108,16 +108,18 @@ DFUNC(createOrder) =
     _veh addEventHandler ["Dammaged",
     {
         params ["_unit", "_selection", "_damage", "_hitIndex", "_hitPoint", "_shooter", "_projectile"];
+        ["DEBUG", "VehicleDamage", [_unit, _selection, _damage, _hitIndex, _hitPoint, _shooter, _projectile, typeOf _projectile]] remoteExec [QEFUNC(LOGGING,writelog), 2];
 
         if (!isNull _shooter && _shooter != currentPilot _unit) then
         {
             _unit setVariable ["lastDamageShooter", [serverTime, _shooter], true];
         };
 
-        if (_projectile isNotEqualTo "") then
+        if (typeOf _projectile isNotEqualTo "") then
         {
-            _unit setVariable ["lastDamageProjectile", [serverTime, _projectile], true];
+            _unit setVariable ["lastDamageProjectile", [serverTime, typeOf _projectile], true];
         };
+
     }];
 
     // Fahrzeug bewaffnen
