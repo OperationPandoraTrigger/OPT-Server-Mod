@@ -23,7 +23,6 @@
 */
 #include "macros.hpp"
 
-/* PARAMS */
 params
 [
     ["_victim", objNull, [objNull], 1],
@@ -68,6 +67,9 @@ if (_victim isKindOf "Man") then
             };
         } forEach ([configFile >> "CfgMagazines", 0, true] call BIS_fnc_returnChildren);
     };
+
+    // no Ammo name found? use projectile instead
+    if (_projectileName isEqualTo "") then {_projectileName = _projectile};
     ["Health", "Kill", [getPlayerUID _victim, name _victim, side _victim, getPlayerUID _instigator, name _instigator, side _instigator, _victim distance2D _instigator, _projectileName]] call EFUNC(LOGGING,writelog);
 }
 else // victim = vehicle!

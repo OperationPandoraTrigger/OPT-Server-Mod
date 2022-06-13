@@ -28,12 +28,14 @@
 */
 #include "macros.hpp"
 
-if (!(isNull (findDisplay 5000 displayCtrl 5001))) exitWith{};
+#define AUSBLUTZEIT 300
 
-//Dialog erstellen
+if (!(isNull (findDisplay 5000 displayCtrl 5001))) exitWith {};
+
+// Dialog erstellen
 private _success = createDialog "opt_revive_blackscreen";
 
-//Dialog definieren
+// Dialog definieren
 #define IDD_REVIVE_BLACKSCREEN 5000
 #define IDD_REVIVE_WOUNDEDLABEL 5003
 #define IDC_REVIVE_BUTTON 5011
@@ -49,36 +51,45 @@ private _MedicNearLabel_Meter = _display displayCtrl IDC_REVIVE_MEDICNEARLABEL_M
 private _BleedoutBar_Text = _display displayCtrl IDC_REVIVE_BLEEDOUTBAR_TEXT;
 private _WoundedLabel_Text = _display displayCtrl IDD_REVIVE_WOUNDEDLABEL;
 
-//Grundstellung
+// Grundstellung
 _BleedoutBar progressSetPosition 1.0;
 _MedicNearLabel_Meter ctrlSetText "";
-GVAR(ausblutzeit) = 300;
-_BleedoutBar_Text ctrlSetText format ["%1 sec", GVAR(ausblutzeit)];
+_BleedoutBar_Text ctrlSetText format ["%1 sec", AUSBLUTZEIT];
 _WoundedLabel_Text ctrlSetText format [MLOC(WOUNDED)];
 
-//Chat abschalten
+// Chat abschalten
 1 enableChannel false;
+2 enableChannel false;
+3 enableChannel false;
+4 enableChannel false;
+5 enableChannel false;
 
-// Respwan Button
-_Respawn_button ctrlAddEventHandler [ "ButtonClick",
+// Respawn Button
+_Respawn_button ctrlAddEventHandler ["ButtonClick",
 {
     // Distanz-Tracker bei Respawn invalidieren
     EGVAR(LOGGING,LAST_POSITION) = nil;
     EGVAR(LOGGING,LAST_DISTANCE) = 0;
 
-    OPT_REVIVE_respawnedHandler = true;
+    // Eventhandler löschen
+    player removeEventHandler ["HandleDamage", GVAR(PLAYER_HANDLE_DAMAGE_EH_ID)];
+
+    GVAR(RespawnPressed) = true;
     ["Health", "Respawn", [getPlayerUID player, name player, side player, "RespawnClick"]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
+    player allowDamage true;
     player setDamage 1;
     1 enableChannel true;
-    player allowDamage true;
+    2 enableChannel true;
+    3 enableChannel true;
+    4 enableChannel true;
+    5 enableChannel true;
 }];
 
 GVAR(startzeit) = time;
 
-//Anzeigen Steuerung im Dialog
+// Anzeigen Steuerung im Dialog
 [{
     params ["_args", "_handle"];
-
     private _display = findDisplay IDD_REVIVE_BLACKSCREEN;
     private _BleedoutBar = _display displayCtrl IDC_REVIVE_BLEEDOUTBAR;
     private _Respawn_button = _display displayCtrl IDC_REVIVE_BUTTON;
@@ -97,7 +108,7 @@ GVAR(startzeit) = time;
     {
         {
             private _sidesoldat = getnumber (configFile >> "CfgVehicles" >> (typeof _x) >> "side");
-            if (getDammage _x < GVAR(MAX_DAMAGE) && _sidesoldat == _sideplayer && alive _x && lifeState _x isNotEqualTo "INCAPACITATED") then
+            if (_sidesoldat == _sideplayer && alive _x && lifeState _x isNotEqualTo "INCAPACITATED") then
             {
                 private _isMedic = typeOf _x in EGVAR(RULES,medic);
 
@@ -123,17 +134,18 @@ GVAR(startzeit) = time;
     // Textausgabe über Medic entfernung
     _MedicNearLabel_Meter ctrlSetText format ["%1", _hintMsg];
 
-    //Auto Respwan nach Ablauf der Ausblutzeit
-    if (((GVAR(ausblutzeit) - (time - GVAR(startzeit))) < 0)) then
+    // Auto Respawn nach Ablauf der Ausblutzeit
+    if ((time - GVAR(startzeit)) > AUSBLUTZEIT) then
     {
-        OPT_REVIVE_respawnedHandler = true;
+        GVAR(RespawnPressed) = true;
         ["Health", "Respawn", [getPlayerUID player, name player, side player, "RespawnTimeout"]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
+        player allowDamage true;
         player setDamage 1;
     };
 
-    // Zeitausgabe bis Auto Respwan
-    _BleedoutBar_Text ctrlSetText format ["%1 sec", floor (GVAR(ausblutzeit) - (time - GVAR(startzeit)))];
-    _BleedoutBar progressSetPosition ((floor (GVAR(ausblutzeit) - (time - GVAR(startzeit)))) / GVAR(ausblutzeit));
+    // Zeitausgabe bis Auto Respawn
+    _BleedoutBar_Text ctrlSetText format ["%1 sec", round (AUSBLUTZEIT - (time - GVAR(startzeit)))];
+    _BleedoutBar progressSetPosition ((AUSBLUTZEIT - (time - GVAR(startzeit))) / AUSBLUTZEIT);
     _BleedoutBar_Text ctrlSetTextColor [1, 0, 0, 1];
     _BleedoutBar ctrlSetTextColor [1, 0, 0, 1];
 
@@ -144,38 +156,24 @@ GVAR(startzeit) = time;
     };
 
     // Dialog und PFH Löschung
-    if ((getDammage player) == 1)  then
+    if (damage player < 0.1 || !isNil QGVAR(RespawnPressed)) then
     {
         closeDialog 5000;
         closeDialog 0;
         1 enableChannel true;
-        player allowDamage true;
+        2 enableChannel true;
+        3 enableChannel true;
+        4 enableChannel true;
+        5 enableChannel true;
         player setVariable ["OPT_isUnconscious", 0, true];
-        OPT_REVIVE_unconsciousHandler = nil;
         player setVariable ["tf_unable_to_use_radio", false];
 
-        //Schaden Freigeben
+        // Schaden freigeben
         player allowDamage true;
-
-        _handle call CFUNC(removePerframeHandler);
-    };
-
-    // Dialog und PFH Löschung
-    if (!(lifeState player isEqualTo "INCAPACITATED"))  then
-    {
-        closeDialog 5000;
-        closeDialog 0;
-        1 enableChannel true;
-        player allowDamage true;
-        player setVariable ["OPT_isUnconscious", 0, true];
-        OPT_REVIVE_unconsciousHandler = nil;
-        player setVariable ["tf_unable_to_use_radio", false];
-
-        //Schaden Freigeben
-        player allowDamage true;
+        GVAR(unconsciousHandler) = nil;
 
         // Nicht nach dem Respawnen ausführen
-        if (isNil "OPT_REVIVE_respawnedHandler") then
+        if (isNil QGVAR(RespawnPressed)) then
         {
             // Für alle zum Schluss anwesenden (25 m) Kameraden einen Revive-Punkt loggen
             _units = nearestObjects [getpos player, ["CAManBase"], 25] - [player];
@@ -187,7 +185,7 @@ GVAR(startzeit) = time;
 
                     if (_sidesoldat isEqualTo _sideplayer and !(lifeState _x isEqualTo "INCAPACITATED")) then
                     {
-                        [player, _x, 1] remoteExecCall ["OPT_REVIVE_fnc_revivelog", 2, false];
+                        [player, _x, 1] remoteExecCall [QFUNC(revivelog), 2, false];
                     };
                 } forEach _units;
             };
@@ -195,5 +193,4 @@ GVAR(startzeit) = time;
 
         _handle call CFUNC(removePerframeHandler);
     };
-
 }, 1, _this] call CFUNC(addPerFrameHandler);

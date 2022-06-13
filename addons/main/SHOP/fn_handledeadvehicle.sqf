@@ -26,29 +26,39 @@ params
     "_useEffects"
 ];
 
+//["DEBUG", "VehicleDestroyed", [_veh, _instigator, _source]] call EFUNC(LOGGING,writelog);
+
 // Wer zuletzt (bis zu 1 Minute vorher) einen Schaden verursacht hat, wird als Täter geführt. (1 Minute wegen fehlgeschlagener Notlandung, etc.)
-private _lastDamage = _veh getVariable "lastDamage";
-if !(isNil "_lastDamage") then
+private _lastDamageShooter = _veh getVariable "lastDamageShooter";
+if !(isNil "_lastDamageShooter") then
 {
-    private _lastDamageAge = serverTime - (_lastDamage select 0);
-    if (_lastDamageAge < 60) then
+    private _lastDamageShooterAge = serverTime - (_lastDamageShooter select 0);
+    if (_lastDamageShooterAge < 60) then
     {
-        _instigator = _lastDamage select 1;
+        _instigator = _lastDamageShooter select 1;
     };
 };
 
-// log destroyed vehicle and killer
-[_veh, _instigator, _source] call FUNC(writeKill);
-
-//Loging Besatzung bei Heli Abschuss
-//Heli abschuwsse werden sonst nicht dem AA gutgeschrieben.
-if (_veh isKindOf "Air") then
+private _projectile = "";
+private _lastDamageProjectile = _veh getVariable "lastDamageProjectile";
+if !(isNil "_lastDamageProjectile") then
 {
-    (crew _veh) apply
+    private _lastDamageProjectileAge = serverTime - (_lastDamageProjectile select 0);
+    if (_lastDamageProjectileAge < 60) then
     {
-        [_x, _instigator, _source] remoteExecCall ["OPT_SHOP_fnc_writeKill", 2, false];
+        _projectile = _lastDamageProjectile select 1;
     };
- };
+};
+
+//["DEBUG", "VehicleDestroyed2", [_veh, _instigator, _source, _projectile]] call EFUNC(LOGGING,writelog);
+
+// log destroyed vehicle
+[_veh, _instigator, _source, _projectile] call FUNC(writeKill);
+
+// log destroyed crew
+{
+    [_x, _instigator, _source, _projectile] call FUNC(writeKill);
+} forEach (crew _veh);
 
 // delete all wrecks within the base safezones
 if (!(_veh isKindOf "CAManBase") && {position _veh inArea "NATO_T_Zone1" || position _veh inArea "NATO_T_Zone2" || position _veh inArea "CSAT_T_Zone1" || position _veh inArea "CSAT_T_Zone2" || position _veh inArea "CSAT_T_Zone3" || position _veh inArea "CSAT_T_Zone4"}) then
