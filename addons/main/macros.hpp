@@ -105,3 +105,6 @@
 #define GAMESTAGE_TRUCE     1
 #define GAMESTAGE_WAR       2
 #define GAMESTAGE_END       3
+
+// Ab 0.42 wird man in ArmA 3 bewusstlos
+#define MAX_DAMAGE 0.39

@@ -73,7 +73,7 @@ GVAR(markerOwn) setMarkerAlphaLocal 1;
         GVAR(MarkerPool) set [_playerID, time];
 
         // Spieler am Leben
-        if (lifeState _x in ["HEALTHY", "INJURED"]) then
+        if (damage _x < MAX_DAMAGE || lifeState _x in ["HEALTHY", "INJURED"]) then
         {
             _markerDead setMarkerAlphaLocal 0;
 

@@ -24,9 +24,6 @@
 
 #include "macros.hpp";
 
-// Ab 0.42 wird man in ArmA 3 bewusstlos
-#define MAX_DAMAGE 0.39
-
 DFUNC(HandleDamage) =
 {
     params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
