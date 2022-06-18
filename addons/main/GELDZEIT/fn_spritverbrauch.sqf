@@ -49,11 +49,24 @@ if (_veh isKindOf "Helicopter") then
             _veh setFuel (fuel _veh) - ((((_hohe - GVAR(helibasisflughohe)) / GVAR(helibasisflughohe)) * 0.0055) * (GVAR(heliverbrauchsfaktor) / 100));
         };
 
-        // PFH löschen wenn Objekt zerstört wurde.
-        // oder Pilot aussteigt aus dem Flugzeug
-        if ((! alive _veh) or (vehicle player isEqualTo player)) then
+        // Erfassung KI Drohnen
+        if (typeOf _veh in EGVAR(SHOP,uavs)) then
+        {   
+            // PFH löschen wenn Objekt zerstört wurde.
+            // oder Pilot aussteigt aus dem Flugzeug
+            if (! alive _veh) then
+            {
+                _handle call CFUNC(removePerframeHandler);
+            };
+        }
+        else
         {
-            _handle call CFUNC(removePerframeHandler);
+            // PFH löschen wenn Objekt zerstört wurde.
+            // oder Pilot aussteigt aus dem Flugzeug
+            if ((! alive _veh) or (vehicle player isEqualTo player)) then
+            {
+                _handle call CFUNC(removePerframeHandler);
+            };
         };
     }, 1,_veh] call CFUNC(addPerFrameHandler);
 
@@ -76,11 +89,24 @@ else
             _veh setFuel (fuel _veh) - ((((_hohe - GVAR(flugzeugbasisflughohe)) / GVAR(flugzeugbasisflughohe)) * 0.0055) * (GVAR(flugzeugverbrauchsfaktor) / 100));
         };
 
-        // PFH löschen wenn Objekt zerstört wurde.
-        // oder Pilot aussteigt aus dem Flugzeug
-        if ((! alive _veh) or (vehicle player isEqualTo player)) then
+        // Erfassung KI Drohnen
+        if (typeOf _veh in EGVAR(SHOP,uavs)) then
+        {   
+            // PFH löschen wenn Objekt zerstört wurde.
+            // oder Pilot aussteigt aus dem Flugzeug
+            if (! alive _veh) then
+            {
+                _handle call CFUNC(removePerframeHandler);
+            };
+        }
+        else
         {
-            _handle call CFUNC(removePerframeHandler);
+            // PFH löschen wenn Objekt zerstört wurde.
+            // oder Pilot aussteigt aus dem Flugzeug
+            if ((! alive _veh) or (vehicle player isEqualTo player)) then
+            {
+                _handle call CFUNC(removePerframeHandler);
+            };
         };
     }, 1,_veh] call CFUNC(addPerFrameHandler);
 };
