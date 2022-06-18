@@ -307,10 +307,7 @@ GVAR(eventArgs) = [];
     {
         params ["_unit", "_Weapon"];
         // KI funktion ausschalten beim Aufstellen von Drohnen
-        private _drohne = [];
-        _drohne = GVAR(uavs) select {typeOf _Weapon isEqualTo _x};
-        //systemChat format ["D:%1 V:%2 B:%3",_drohne,_Weapon,(count _drohne > 0)];
-        if (count _drohne > 0) then
+        if (typeOf _Weapon in GVAR(uavs)) then
         {
             _Weapon enableAIFeature ["TARGET", false];
             _Weapon enableAIFeature ["AUTOTARGET", false];
