@@ -73,8 +73,11 @@
     };
 
     //erhöhter Treibstoffverbrauch bei Drohnen Lufteinheiten
-    [_veh] call OPT_GELDZEIT_fnc_spritverbrauch;
-    
+    //Kontrollabfrage um Doppelung mit Helis und Jet zuverhindern
+    if (typeOf _veh in GVAR(uavs)) then
+    {   
+        [_veh] call OPT_GELDZEIT_fnc_spritverbrauch;
+    };
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
 
 ["Air", "GetIn",
