@@ -302,4 +302,16 @@ GVAR(eventArgs) = [];
             };
         };
     }];
+
+    player addEventHandler ["WeaponAssembled",
+    {
+        params ["_unit", "_Weapon"];
+        // KI funktion ausschalten beim Aufstellen von Drohnen
+        if (typeOf _Weapon in GVAR(uavs)) then
+        {
+            _Weapon enableAIFeature ["TARGET", false];
+            _Weapon enableAIFeature ["AUTOTARGET", false];
+            _Weapon enableAIFeature ["AUTOCOMBAT", false];
+        }; 
+    }];   
 }, []] call CFUNC(addEventHandler);
