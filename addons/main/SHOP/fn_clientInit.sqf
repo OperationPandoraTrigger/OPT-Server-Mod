@@ -305,13 +305,13 @@ GVAR(eventArgs) = [];
 
     player addEventHandler ["WeaponAssembled",
     {
-        params ["_unit", "_Weapon"];
+        params ["_unit", "_weapon"];
         // KI funktion ausschalten beim Aufstellen von Drohnen
-        if (typeOf _Weapon in GVAR(uavs)) then
+        if (typeOf _weapon in GVAR(uavs)) then
         {
-            _Weapon enableAIFeature ["TARGET", false];
-            _Weapon enableAIFeature ["AUTOTARGET", false];
-            _Weapon enableAIFeature ["AUTOCOMBAT", false];
-        }; 
-    }];   
+            _weapon enableAIFeature ["TARGET", false];
+            _weapon enableAIFeature ["AUTOTARGET", false];
+            _weapon enableAIFeature ["AUTOCOMBAT", false];
+        };
+    }];
 }, []] call CFUNC(addEventHandler);
