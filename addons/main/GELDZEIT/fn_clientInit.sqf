@@ -77,23 +77,29 @@
         if (playerSide == blufor) then
         {
            private _userviewdistance = viewDistance;
-           private _sichtline = [Opforlinie1,Opforlinie2,Opforlinie3,Opforlinie4,Opforlinie5];
+           private _sichtline = [Opforlinie1,Opforlinie2,Opforlinie3,Opforlinie4,Opforlinie5,Opforlinie6,Opforlinie7,Opforlinie8,Opforlinie9,Opforlinie10,Opforlinie11,Opforlinie12,Opforlinie13,Opforlinie14,Opforlinie15];
            private _userdistance = 0;
+           private _userdistancearray = [];
+           private _userdistancemin = 0;
            
            {
                 _userdistance = Player distance2D _x;
-
-                if (_x > _userviewdistance) then
-                {
-                    setViewDistance -1;
-
-                }
-                else 
-                {
-                    setViewDistance _x;
-                };        
-
+                _userdistancearray pushBack _userdistance;
+      
            } forEach _sichtline;
+           
+           _userdistancemin = selectMin _userdistancearray;
+           
+           systemChat format ["UD:%1 X:%2 b:%3",_userdistancemin,viewDistance,(_userdistancemin > _userviewdistance)];
+           
+           if (_userdistancemin > _userviewdistance) then
+           {
+                setViewDistance -1;
+           }
+           else 
+           {
+                setViewDistance _userdistancemin;
+           };  
 
         };         
     };    
