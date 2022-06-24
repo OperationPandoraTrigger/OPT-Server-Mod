@@ -68,4 +68,36 @@
 
     // Freeze-Time
     [] call FUNC(frezztime);
+
+// Dynamische Sichtweite bei den CSAT Seebasen 
+//Gegenseite kann nur bis zur Sichtlinie das Wasser einsehen
+[{
+    if (!(OPT_SECTORCONTROL_trainingon)) then
+    {
+        if (playerSide == blufor) then
+        {
+           private _userviewdistance = viewDistance;
+           private _sichtline = [Opforlinie1,Opforlinie2,Opforlinie3,Opforlinie4,Opforlinie5];
+           private _userdistance = 0;
+           
+           {
+                _userdistance = Player distance2D _x;
+
+                if (_x > _userviewdistance) then
+                {
+                    setViewDistance -1;
+
+                }
+                else 
+                {
+                    setViewDistance _x;
+                };        
+
+           } forEach _sichtline;
+
+        };         
+    };    
+
+}, 1, _this] call CFUNC(addPerFrameHandler);
+
 }] call CFUNC(addEventhandler);
