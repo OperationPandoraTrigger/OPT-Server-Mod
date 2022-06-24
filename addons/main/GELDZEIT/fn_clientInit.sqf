@@ -68,4 +68,45 @@
 
     // Freeze-Time
     [] call FUNC(frezztime);
+
+// Dynamische Sichtweite bei den CSAT Seebasen 
+//Gegenseite kann nur bis zur Sichtlinie das Wasser einsehen
+
+GVAR(userviewdistance) = viewDistance;
+
+[{
+    if (!(OPT_SECTORCONTROL_trainingon)) then
+    {
+        if (playerSide == blufor) then
+        {
+           private _sichtline = [Opforlinie1,Opforlinie2,Opforlinie3,Opforlinie4,Opforlinie5,Opforlinie6,Opforlinie7,Opforlinie8,Opforlinie9,Opforlinie10,Opforlinie11,Opforlinie12,Opforlinie13,Opforlinie14,Opforlinie15];
+           private _userdistance = 0;
+           private _userdistancearray = [];
+           private _userdistancemin = 0;
+           
+           {
+                _userdistance = Player distance2D _x;
+                _userdistancearray pushBack _userdistance;
+      
+           } forEach _sichtline;
+           
+           _userdistancemin = selectMin _userdistancearray;
+           setViewDistance _userdistancemin;
+           
+           systemChat format ["UD:%1 D:%4 X:%2 b:%3",_userdistancemin,GVAR(userviewdistance),(_userdistancemin > GVAR(userviewdistance)),viewDistance];
+           
+           if (_userdistancemin > GVAR(userviewdistance)) then
+           {
+                setViewDistance GVAR(userviewdistance);
+           }
+           else 
+           {
+                setViewDistance _userdistancemin;
+           };  
+
+        };         
+    };    
+
+}, 1, _this] call CFUNC(addPerFrameHandler);
+
 }] call CFUNC(addEventhandler);
