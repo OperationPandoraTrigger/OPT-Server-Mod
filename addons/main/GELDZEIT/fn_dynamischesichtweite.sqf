@@ -34,8 +34,7 @@
 GVAR(userviewdistance) = viewDistance;
 
 [{
-    if (True) then
-    //if (!(OPT_SECTORCONTROL_trainingon)) then
+    if (!(OPT_SECTORCONTROL_trainingon)) then
     {
         if (playerSide == blufor) then
         {
