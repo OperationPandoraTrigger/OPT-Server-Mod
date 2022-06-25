@@ -89,6 +89,7 @@ class CfgCLibModules
             FNC(spritverbrauch);
             FNC(berggang);
             FNC(berggangcheck);
+            FNC(dynamischesichtweite);
         };
 
         MODULE(BEAM)
