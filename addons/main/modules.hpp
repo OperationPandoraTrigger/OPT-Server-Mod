@@ -66,6 +66,7 @@ class CfgCLibModules
             FNC(release);
             FNC(weaponreequip);
             FNC(clientInitcbaclassevents);
+            FNC(revive);
         };
 
         MODULE(GELDZEIT)
