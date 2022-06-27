@@ -168,6 +168,10 @@ GVAR(startzeit) = time;
         player setVariable ["OPT_isUnconscious", 0, true];
         player setVariable ["tf_unable_to_use_radio", false];
 
+        //Spieler umdrehen
+        player playMove "amovppnemstpsraswrfldnon";
+        player playMove "";
+
         // Schaden freigeben
         player allowDamage true;
         GVAR(unconsciousHandler) = nil;

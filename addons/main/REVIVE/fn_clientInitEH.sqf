@@ -75,6 +75,10 @@ DFUNC(HandleDamage) =
         // Einheit aus Fahrzeug entfernen
         if (vehicle _unit != _unit) then {moveOut _unit};
 
+        //Spieler verwundet darstellen 
+        player playMove "AinjPpneMstpSnonWrflDnon_rolltoback";
+        //player switchMove "AinjPpneMstpSnonWrflDnon";
+
         // Verzögert, damit möglichst alle Variablen gefüllt sind (der EH feuert zig mal, teilweise mit unvollständigen Angaben)
         [{
             // alte Variablen von vorherigen Verletzungen leeren
@@ -229,7 +233,16 @@ for "_i" from 0 to 6 do {
 
 
 // Initial assignment, Respawn Handler does not trigger on first-spawn.
-GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = player addEventHandler ["HandleDamage", FUNC(HandleDamage)];
+GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = player addEventHandler ["HandleDamage", 
+{ 
+ params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"]; 
+ systemchat format ["d:%1 S:%2 HI:%3 HP:%4",_damage,_selection,_hitIndex,_hitPoint];
+ if (_damage > GVAR(levelreviveaktiv)) then
+    {
+    _unit setDammage 0.95; 
+    [_unit, _selection, _damage, _source, _projectile, _hitIndex, _instigator, _hitPoint] call FUNC(HandleDamage);
+    };   
+}];
 
 // Variablen-Reset
 GVAR(Damage_unit) = objNull;

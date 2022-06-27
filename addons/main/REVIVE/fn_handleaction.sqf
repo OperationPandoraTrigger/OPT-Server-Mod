@@ -33,6 +33,11 @@ switch (_action) do
         [] call FUNC(release);
     };
 
+    case "action_revive":
+    {
+        [] call FUNC(revive);
+    };
+
     default
     {
 
