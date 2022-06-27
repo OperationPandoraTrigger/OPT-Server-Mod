@@ -211,27 +211,6 @@ DFUNC(HandleDamage) =
     }, 1, ""] call CFUNC(wait);
 }] call CFUNC(addEventhandler);
 
-// Avoid Handcuffing
-// by TeTeT for OPT
-// (ist nur noch zur Sicherheit drin)
-inGameUISetEventHandler ["Action", '
-    params ["_target"];
-    private _actionID = _target getVariable [ "#rev_actionID_secure", -1 ];
-    if (_actionID isNotEqualTo -1) then {
-        [ _target, _actionID ] call bis_fnc_holdActionRemove;
-        true;
-    };
-'];
-
-// The initial EHs are not needed and resulting in strange problems adding a new EH, so we remove any.
-// still very bad practise that screams for sideeffects.
-// Just look away.
-for "_i" from 0 to 6 do {
-    player removeEventHandler ["HandleDamage", _i];
-};
-// ok now you may have a peek again
-
-
 // Initial assignment, Respawn Handler does not trigger on first-spawn.
 GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = player addEventHandler ["HandleDamage", 
 { 
