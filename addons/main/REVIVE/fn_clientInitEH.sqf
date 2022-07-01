@@ -216,7 +216,6 @@ GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = player addEventHandler ["HandleDamage",
 { 
  params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"]; 
  systemchat format ["d:%1 S:%2 HI:%3 HP:%4",_damage,_selection,_hitIndex,_hitPoint];
- private _returndammage = 0;
 
  if (_damage > GVAR(levelreviveaktiv)) then
     {
@@ -225,14 +224,14 @@ GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = player addEventHandler ["HandleDamage",
 // Maximal levelreviveaktiv zurückgeben, damit man nie sofort stirbt (Extremitätsverletzungen werden ignoriert)
 if (_selection in ["arms", "hands", "legs"]) then 
     {
-       _returndammage = 0;
+       private _returndammage = 0;
     }
     else 
     {
-        _returndammage = _damage min GVAR(levelreviveaktiv);
+        private _returndammage = _damage min GVAR(levelreviveaktiv);
     };
 
-    _returndammage
+_returndammage
 }];
 
 // Variablen-Reset
