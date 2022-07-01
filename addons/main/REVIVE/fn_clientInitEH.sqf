@@ -149,6 +149,8 @@ DFUNC(HandleDamage) =
     };
 };
 
+GVAR(returndammage) = 0;
+
 ["Respawn",
 {
     params ["_data", "_args"];
@@ -224,14 +226,14 @@ GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = player addEventHandler ["HandleDamage",
 // Maximal levelreviveaktiv zurückgeben, damit man nie sofort stirbt (Extremitätsverletzungen werden ignoriert)
 if (_selection in ["arms", "hands", "legs"]) then 
     {
-       private _returndammage = 0;
+        GVAR(returndammage) = 0;
     }
     else 
     {
-        private _returndammage = _damage min GVAR(levelreviveaktiv);
+        GVAR(returndammage) = _damage min GVAR(levelreviveaktiv);
     };
 
-_returndammage
+GVAR(returndammage)
 }];
 
 // Variablen-Reset
