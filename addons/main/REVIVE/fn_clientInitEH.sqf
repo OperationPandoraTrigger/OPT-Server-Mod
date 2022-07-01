@@ -220,7 +220,6 @@ GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = player addEventHandler ["HandleDamage",
 
  if (_damage > GVAR(levelreviveaktiv)) then
     {
-    _unit setDammage 0.95; 
     [_unit, _selection, _damage, _source, _projectile, _hitIndex, _instigator, _hitPoint] call FUNC(HandleDamage);
     };  
 // Maximal MAX_DAMAGE zurückgeben, damit man nie sofort stirbt (Extremitätsverletzungen werden ignoriert)
