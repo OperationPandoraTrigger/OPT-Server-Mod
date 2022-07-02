@@ -58,8 +58,8 @@ DFUNC(HandleDamage) =
     if (_unit isEqualTo player && isNil QGVAR(unconsciousHandler) && _damage >= MAX_DAMAGE && !(_selection in ["arms", "hands", "legs"])) then
     {
         // Spieler bewusstlos machen und weiteren Schaden ausblenden
-        player setDamage GVAR(levelreviveaktiv);
         player allowDamage false;
+        player setDamage GVAR(levelreviveaktiv);
         player setUnconscious true;
 
         GVAR(unconsciousHandler) = true;
