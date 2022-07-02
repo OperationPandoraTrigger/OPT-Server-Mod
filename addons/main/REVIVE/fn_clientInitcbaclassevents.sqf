@@ -47,6 +47,21 @@
         }
     ] call ace_interact_menu_fnc_createAction;
 
+    private _action_revive =
+    [
+        "OPT_REVIVE_REVIVE",
+        MLOC(MEDIC_REVIVE),
+        "\a3\ui_f\data\map\MapControl\hospital_ca.paa",
+        {
+            params ["_target", "_player", "_params"];
+            [_target, _player, "action_revive"] call FUNC(handleAction);
+        },
+        {
+            params ["_target", "_player", "_params"];
+            [_target, _player] call FUNC(checkisUnconscious);
+        }
+    ] call ace_interact_menu_fnc_createAction;
+
     /*
     * Argument:
     * 0: Object the action should be assigned to <OBJECT>
@@ -61,5 +76,6 @@
             ["ACE_MainActions"],
             _x
         ] call ace_interact_menu_fnc_addActionToObject;
-    } forEach [ _action_drag];
+    } forEach [ _action_drag,_action_revive];
 }, nil, nil, true] call CBA_fnc_addClassEventHandler;
+

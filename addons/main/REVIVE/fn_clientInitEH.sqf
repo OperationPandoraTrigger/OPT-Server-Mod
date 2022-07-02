@@ -58,8 +58,9 @@ DFUNC(HandleDamage) =
     if (_unit isEqualTo player && isNil QGVAR(unconsciousHandler) && _damage >= MAX_DAMAGE && !(_selection in ["arms", "hands", "legs"])) then
     {
         // Spieler bewusstlos machen und weiteren Schaden ausblenden
-        player setDamage 0.5;
         player allowDamage false;
+        player setDamage GVAR(levelreviveaktiv);
+        player setUnconscious true;
 
         GVAR(unconsciousHandler) = true;
 //        ["DEBUG", "KillHandler", [GVAR(Damage_unit), _selection, _damage, GVAR(Damage_source), GVAR(Damage_projectile), _hitIndex, GVAR(Damage_instigator), _hitPoint]] remoteExec [QEFUNC(LOGGING,writelog), 2];
@@ -74,6 +75,9 @@ DFUNC(HandleDamage) =
 
         // Einheit aus Fahrzeug entfernen
         if (vehicle _unit != _unit) then {moveOut _unit};
+
+        //Spieler verwundet darstellen 
+        player playAction "Unconscious";
 
         // Verzögert, damit möglichst alle Variablen gefüllt sind (der EH feuert zig mal, teilweise mit unvollständigen Angaben)
         [{
@@ -159,6 +163,7 @@ DFUNC(HandleDamage) =
     _newPlayer setVariable ["OPT_isDragged", 0, true];
     _newPlayer allowDamage true;
     _newPlayer setVariable ["tf_unable_to_use_radio", false];
+    _newPlayer setUnconscious false;
 
     GVAR(OPT_isDragging) = false;
     GVAR(unconsciousHandler) = nil;
@@ -207,29 +212,29 @@ DFUNC(HandleDamage) =
     }, 1, ""] call CFUNC(wait);
 }] call CFUNC(addEventhandler);
 
-// Avoid Handcuffing
-// by TeTeT for OPT
-// (ist nur noch zur Sicherheit drin)
-inGameUISetEventHandler ["Action", '
-    params ["_target"];
-    private _actionID = _target getVariable [ "#rev_actionID_secure", -1 ];
-    if (_actionID isNotEqualTo -1) then {
-        [ _target, _actionID ] call bis_fnc_holdActionRemove;
-        true;
-    };
-'];
-
-// The initial EHs are not needed and resulting in strange problems adding a new EH, so we remove any.
-// still very bad practise that screams for sideeffects.
-// Just look away.
-for "_i" from 0 to 6 do {
-    player removeEventHandler ["HandleDamage", _i];
-};
-// ok now you may have a peek again
-
-
 // Initial assignment, Respawn Handler does not trigger on first-spawn.
-GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = player addEventHandler ["HandleDamage", FUNC(HandleDamage)];
+GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = player addEventHandler ["HandleDamage", 
+{ 
+ params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"]; 
+
+ if (_damage > GVAR(levelreviveaktiv)) then
+    {
+    [_unit, _selection, _damage, _source, _projectile, _hitIndex, _instigator, _hitPoint] call FUNC(HandleDamage);
+    };  
+
+// Maximal levelreviveaktiv zurückgeben, damit man nie sofort stirbt (Extremitätsverletzungen werden ignoriert)
+private _returndammage = 0;
+if (_selection in ["arms", "hands", "legs"]) then 
+    {
+        _returndammage = 0;
+    }
+    else 
+    {
+        _returndammage = _damage min GVAR(levelreviveaktiv);
+    };
+systemChat format ["d:%1 S:%2 rd:%3",_damage,_selection,_returndammage];
+_returndammage
+}];
 
 // Variablen-Reset
 GVAR(Damage_unit) = objNull;
@@ -257,3 +262,4 @@ GVAR(missionEH_draw3D) = addMissionEventHandler ["Draw3D",
         drawIcon3D ["\a3\ui_f\data\map\MapControl\hospital_ca.paa", [0.6, 0.15, 0, 0.8], _x, 0.5, 0.5, 0, format ["%1 (%2m)", name _x, round (player distance _x)], 0, 0.02];
     } forEach _nearbyUnits;
 }];
+
