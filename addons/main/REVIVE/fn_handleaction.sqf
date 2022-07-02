@@ -35,7 +35,7 @@ switch (_action) do
 
     case "action_revive":
     {
-        [] call FUNC(revive);
+        [_target] call FUNC(revive);
     };
 
     default

@@ -67,6 +67,7 @@ class CfgCLibModules
             FNC(weaponreequip);
             FNC(clientInitcbaclassevents);
             FNC(revive);
+            FNC(checkisUnconscious);
         };
 
         MODULE(GELDZEIT)
