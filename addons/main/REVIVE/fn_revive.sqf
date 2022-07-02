@@ -17,12 +17,21 @@
 params ["_target"];
 
 GVAR(verletzter) = _target;
+GVAR(Helizeit) = 0;
+
+GVAR(Helizeit) = GVAR(Helizeitsani);
+
+//längere Heilzeit bei nicht Sanitätern
+if (!(typeOf player in GVAR(SaniKlassen))) then 
+{
+	GVAR(Helizeit) = GVAR(Helizeitsani)+(GVAR(Helizeitsani)*GVAR(Helizeitfaktor)/100);
+};
 
 //Revive Funktion 
 player switchmove "AinvPknlMstpSnonWrflDnon_medic";
 
 [
-    GVAR(Helizeitsani),
+    GVAR(Helizeit),
     [],
     {
         player switchmove "";
