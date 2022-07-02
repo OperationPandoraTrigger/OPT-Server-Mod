@@ -28,13 +28,13 @@ if (!(typeOf player in GVAR(SaniKlassen))) then
 };
 
 //Revive Funktion 
-player switchmove "AinvPknlMstpSnonWrflDnon_medic";
+player playAction "medicStart";
 
 [
     GVAR(Helizeit),
     [],
     {
-        player switchmove "";
+        player playAction "medicStop";
         player action ["WeaponInHand", player];
 
         //Var zurück setzen 
@@ -42,7 +42,7 @@ player switchmove "AinvPknlMstpSnonWrflDnon_medic";
         GVAR(verletzter) setDamage 0.0;
     },
     {
-        player switchmove "";
+        player playAction "medicStop";
         player action ["WeaponInHand", player];
     },
     MLOC(MEDIC_REVIVE)

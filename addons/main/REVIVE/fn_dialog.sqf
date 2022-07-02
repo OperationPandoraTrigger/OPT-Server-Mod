@@ -175,6 +175,7 @@ GVAR(startzeit) = time;
         // Schaden freigeben
         player allowDamage true;
         GVAR(unconsciousHandler) = nil;
+        player setUnconscious false;
 
         // Nicht nach dem Respawnen ausführen
         if (isNil QGVAR(RespawnPressed)) then

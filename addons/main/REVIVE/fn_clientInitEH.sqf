@@ -58,8 +58,9 @@ DFUNC(HandleDamage) =
     if (_unit isEqualTo player && isNil QGVAR(unconsciousHandler) && _damage >= MAX_DAMAGE && !(_selection in ["arms", "hands", "legs"])) then
     {
         // Spieler bewusstlos machen und weiteren Schaden ausblenden
-        player setDamage 0.5;
+        player setDamage GVAR(levelreviveaktiv);
         player allowDamage false;
+        player setUnconscious true;
 
         GVAR(unconsciousHandler) = true;
 //        ["DEBUG", "KillHandler", [GVAR(Damage_unit), _selection, _damage, GVAR(Damage_source), GVAR(Damage_projectile), _hitIndex, GVAR(Damage_instigator), _hitPoint]] remoteExec [QEFUNC(LOGGING,writelog), 2];
@@ -76,8 +77,7 @@ DFUNC(HandleDamage) =
         if (vehicle _unit != _unit) then {moveOut _unit};
 
         //Spieler verwundet darstellen 
-        player playMove "AinjPpneMstpSnonWrflDnon_rolltoback";
-        //player switchMove "AinjPpneMstpSnonWrflDnon";
+        player playAction "Unconscious";
 
         // Verzögert, damit möglichst alle Variablen gefüllt sind (der EH feuert zig mal, teilweise mit unvollständigen Angaben)
         [{
@@ -163,6 +163,7 @@ DFUNC(HandleDamage) =
     _newPlayer setVariable ["OPT_isDragged", 0, true];
     _newPlayer allowDamage true;
     _newPlayer setVariable ["tf_unable_to_use_radio", false];
+    _newPlayer setUnconscious false;
 
     GVAR(OPT_isDragging) = false;
     GVAR(unconsciousHandler) = nil;
@@ -215,12 +216,12 @@ DFUNC(HandleDamage) =
 GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = player addEventHandler ["HandleDamage", 
 { 
  params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"]; 
- systemchat format ["d:%1 S:%2 HI:%3 HP:%4",_damage,_selection,_hitIndex,_hitPoint];
 
  if (_damage > GVAR(levelreviveaktiv)) then
     {
     [_unit, _selection, _damage, _source, _projectile, _hitIndex, _instigator, _hitPoint] call FUNC(HandleDamage);
     };  
+    
 // Maximal levelreviveaktiv zurückgeben, damit man nie sofort stirbt (Extremitätsverletzungen werden ignoriert)
 private _returndammage = 0;
 if (_selection in ["arms", "hands", "legs"]) then 
@@ -231,7 +232,7 @@ if (_selection in ["arms", "hands", "legs"]) then
     {
         _returndammage = _damage min GVAR(levelreviveaktiv);
     };
-
+diag_log format ["d:%1 S:%2 rd:%3",_damage,_selection,_returndammage];
 _returndammage
 }];
 
@@ -261,3 +262,4 @@ GVAR(missionEH_draw3D) = addMissionEventHandler ["Draw3D",
         drawIcon3D ["\a3\ui_f\data\map\MapControl\hospital_ca.paa", [0.6, 0.15, 0, 0.8], _x, 0.5, 0.5, 0, format ["%1 (%2m)", name _x, round (player distance _x)], 0, 0.02];
     } forEach _nearbyUnits;
 }];
+
