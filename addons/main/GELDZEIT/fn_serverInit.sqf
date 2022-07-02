@@ -148,8 +148,8 @@ GVAR(playerList) = [];
                     GVAR(TRACKER_ONCE) = false;
                 };
 
-                // Nach Ablauf der Spielzeit das Ende auslösen
-                if (serverTime > GVAR(Timestamp_Spielzeitende)) then
+                // Nach Ablauf der Spielzeit das Ende auslösen (im Trainingsmodus die Mission nie enden lassen)
+                if (serverTime > GVAR(Timestamp_Spielzeitende) && !EGVAR(SECTORCONTROL,trainingon)) then
                 {
                     GVAR(GAMESTAGE) = GAMESTAGE_END;
                     publicVariable QGVAR(GAMESTAGE);
