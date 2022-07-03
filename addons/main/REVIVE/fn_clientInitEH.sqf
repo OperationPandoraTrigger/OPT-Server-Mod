@@ -54,8 +54,14 @@ DFUNC(HandleDamage) =
         GVAR(Damage_instigator_age) = serverTime;
     };
 
+    private _damagePrev = damage _unit;
+    private _damageRecieved = _damage - _damagePrev;
+    private _damageAccumulated = (_unit getVariable ["OPT_damage_var",0]) + _damageRecieved;
+    _unit setVariable ["OPT_damage_var",_damageAccumulated];
+    systemChat format ["D:%1 DP:%2 DR:%3 AD:%4 V:%5",_damage,_damagePrev,_damageRecieved,_damageAccumulated,(_unit getVariable ["OPT_damage_var",0])];
+
     // Einmalige Auslösung bei schwerer Verletzung lebenswichtiger Körperteile
-    if (_unit isEqualTo player && isNil QGVAR(unconsciousHandler) && _damage >= MAX_DAMAGE && !(_selection in ["arms", "hands", "legs"])) then
+    if (_unit isEqualTo player && isNil QGVAR(unconsciousHandler) && _damageAccumulated >= GVAR(levelreviveaktiv) && !(_selection in ["arms", "hands", "legs"])) then
     {
         // Spieler bewusstlos machen und weiteren Schaden ausblenden
         player allowDamage false;
@@ -63,7 +69,6 @@ DFUNC(HandleDamage) =
         player setUnconscious true;
 
         GVAR(unconsciousHandler) = true;
-//        ["DEBUG", "KillHandler", [GVAR(Damage_unit), _selection, _damage, GVAR(Damage_source), GVAR(Damage_projectile), _hitIndex, GVAR(Damage_instigator), _hitPoint]] remoteExec [QEFUNC(LOGGING,writelog), 2];
 
         // für Dragging und Chat
         _unit setVariable ["OPT_isUnconscious", 1, true];
@@ -139,13 +144,13 @@ DFUNC(HandleDamage) =
             // Respawn-Dialog anzeigen
             [] call FUNC(dialog);
         }, 2, ""] call CFUNC(wait);
-        0;  // keine weitere Damage zurückgeben, da wir eh schon bewusstlos sind
+        GVAR(levelreviveaktiv);
     }
     else
     {
-        // Maximal MAX_DAMAGE zurückgeben, damit man nie sofort stirbt (Extremitätsverletzungen werden ignoriert)
+        // Maximal levelreviveaktiv zurückgeben, damit man nie sofort stirbt (Extremitätsverletzungen werden ignoriert)
         if (_selection in ["arms", "hands", "legs"]) then {0}
-        else {_damage min MAX_DAMAGE};
+        else {_damageAccumulated min GVAR(levelreviveaktiv)};
     };
 };
 
@@ -164,6 +169,7 @@ DFUNC(HandleDamage) =
     _newPlayer allowDamage true;
     _newPlayer setVariable ["tf_unable_to_use_radio", false];
     _newPlayer setUnconscious false;
+    _newPlayer setVariable ["OPT_damage_var",0];
 
     GVAR(OPT_isDragging) = false;
     GVAR(unconsciousHandler) = nil;
@@ -213,28 +219,7 @@ DFUNC(HandleDamage) =
 }] call CFUNC(addEventhandler);
 
 // Initial assignment, Respawn Handler does not trigger on first-spawn.
-GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = player addEventHandler ["HandleDamage", 
-{ 
- params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"]; 
-
- if (_damage > GVAR(levelreviveaktiv)) then
-    {
-    [_unit, _selection, _damage, _source, _projectile, _hitIndex, _instigator, _hitPoint] call FUNC(HandleDamage);
-    };  
-
-// Maximal levelreviveaktiv zurückgeben, damit man nie sofort stirbt (Extremitätsverletzungen werden ignoriert)
-private _returndammage = 0;
-if (_selection in ["arms", "hands", "legs"]) then 
-    {
-        _returndammage = 0;
-    }
-    else 
-    {
-        _returndammage = _damage min GVAR(levelreviveaktiv);
-    };
-systemChat format ["d:%1 S:%2 rd:%3",_damage,_selection,_returndammage];
-_returndammage
-}];
+GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = player addEventHandler ["HandleDamage", FUNC(HandleDamage)];
 
 // Variablen-Reset
 GVAR(Damage_unit) = objNull;

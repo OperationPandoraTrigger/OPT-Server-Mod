@@ -56,6 +56,7 @@ DFUNC(SelfCare) =
     player setVariable ["OPT_isStabilized", 0, true];
     GVAR(OPT_isDragging) = false;
     player setVariable ["OPT_isDragged", 0, true];
+    player setVariable ["OPT_damage_var",0];
 
     //Chat abschaltung bei Bewustlosigkeit
     (findDisplay 46) displayAddEventHandler ["KeyDown", {_this call FUNC(keyUnbind)}];
