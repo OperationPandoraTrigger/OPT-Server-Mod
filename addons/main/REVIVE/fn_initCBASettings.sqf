@@ -124,7 +124,7 @@
 ] call CBA_Settings_fnc_init;
 
 [
-    QGVAR(Helizeitsani), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    QGVAR(Heilzeitsani), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "SLIDER", // setting type
     [
         "Dauer für die Revivezeit des Sanis",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
@@ -137,7 +137,7 @@
 ] call CBA_Settings_fnc_init;
 
 [
-    QGVAR(Helizeitfaktor), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    QGVAR(Heilzeitfaktor), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "SLIDER", // setting type
     [
         "Verlängerung bei nicht Sani Einheiten",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
