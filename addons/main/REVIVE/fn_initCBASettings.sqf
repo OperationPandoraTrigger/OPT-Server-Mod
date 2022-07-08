@@ -141,7 +141,7 @@
     "SLIDER", // setting type
     [
         "Verlängerung bei nicht Sani Einheiten",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
-        "Prozentwert die sich die Sanihelizeit vergrößert" + endl  // Mouse-Over description of the above
+        "Prozentwert um die sich die Sani Heilzeit vergrößert" + endl  // Mouse-Over description of the above
     ],
     "OPT San-System", // Pretty name of the category where the setting can be found. Can be stringtable entry.
     [1, 100, 50, 0], // [min, max, default, decimal]
