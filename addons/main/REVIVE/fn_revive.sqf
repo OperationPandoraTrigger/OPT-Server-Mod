@@ -17,21 +17,21 @@
 params ["_target"];
 
 GVAR(verletzter) = _target;
-GVAR(Helizeit) = 0;
+GVAR(Heilzeit) = 0;
 
-GVAR(Helizeit) = GVAR(Helizeitsani);
+GVAR(Heilzeit) = GVAR(Heilzeitsani);
 
 //längere Heilzeit bei nicht Sanitätern
 if (!(typeOf player in GVAR(SaniKlassen))) then 
 {
-    GVAR(Helizeit) = GVAR(Helizeitsani)+(GVAR(Helizeitsani)*GVAR(Helizeitfaktor)/100);
+    GVAR(Heilzeit) = GVAR(Heilzeitsani)+(GVAR(Heilzeitsani)*GVAR(Heilzeitfaktor)/100);
 };
 
 //Revive Funktion 
 player playAction "medicStart";
 
 [
-    GVAR(Helizeit),
+    GVAR(Heilzeit),
     [],
     {
         player playAction "medicStop";
