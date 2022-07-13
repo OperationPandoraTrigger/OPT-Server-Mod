@@ -91,8 +91,8 @@ switch playerSide do
     };
 };
 
-// V-Fahnen Positionen des gewählten Sektors zur Liste der Beampunkte hinzufügen
-if (EGVAR(GELDZEIT,GAMESTAGE) != GAMESTAGE_WAR && !EGVAR(SECTORCONTROL,flagStartNeutral)) then
+// V-Fahnen Positionen des gewählten Sektors zur Liste der Beampunkte hinzufügen (nur wenn um mehr als 1 Fahne gespielt wird)
+if (EGVAR(GELDZEIT,GAMESTAGE) != GAMESTAGE_WAR && !EGVAR(SECTORCONTROL,flagStartNeutral) && (round EGVAR(SECTORCONTROL,flagCountNATO) + round EGVAR(SECTORCONTROL,flagCountCSAT)) > 1.01) then
 {
     {
         private _sector = _x;
