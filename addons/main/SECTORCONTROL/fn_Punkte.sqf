@@ -19,6 +19,15 @@ GVAR(csat_points_f) = 0;
 GVAR(nato_points_f) = 0;
 GVAR(points_logtime) = 0;
 
+if ((round GVAR(flagCountNATO) + round GVAR(flagCountCSAT)) > 1.01) then
+{
+    GVAR(PointsPerSec) = 0.016667;  // 1 Punkt pro Minute (1 / 60 = 0,0166666666) bei normaler Flaggenanzahl
+}
+else
+{
+    GVAR(PointsPerSec) = 0.005952380952381;  // 50 Punkte in 140 Min wenn um nur eine Flagge gespielt wird
+};
+
 GVAR(Punktecount) = [
 {
     // Logge und übertrage Punktestand, solange Spiel noch läuft
@@ -29,7 +38,7 @@ GVAR(Punktecount) = [
         {
             case west:
             {
-                GVAR(nato_points_f) = GVAR(nato_points_f) + 0.016667;    // 1 Punkt pro Minute (1 / 60 = 0,0166666666)
+                GVAR(nato_points_f) = GVAR(nato_points_f) + GVAR(PointsPerSec);
                 if (round GVAR(nato_points_f) > GVAR(nato_points)) then
                 {
                     GVAR(nato_points) = round GVAR(nato_points_f);    // übernahme in bisherige integer-zählweise
@@ -41,7 +50,7 @@ GVAR(Punktecount) = [
 
             case east:
             {
-                GVAR(csat_points_f) = GVAR(csat_points_f) + 0.016667;    // 1 Punkt pro Minute (1 / 60 = 0,0166666666)
+                GVAR(csat_points_f) = GVAR(csat_points_f) + GVAR(PointsPerSec);
                 if (round GVAR(csat_points_f) > GVAR(csat_points)) then
                 {
                     GVAR(csat_points) = round GVAR(csat_points_f);    // übernahme in bisherige integer-zählweise
