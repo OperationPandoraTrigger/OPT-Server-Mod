@@ -61,7 +61,7 @@ DFUNC(HandleDamage) =
     systemChat format ["D:%1 DP:%2 DR:%3 AD:%4 V:%5",_damage,_damagePrev,_damageRecieved,_damageAccumulated,(_unit getVariable ["OPT_damage_var",0])];
 
     // Einmalige Auslösung bei schwerer Verletzung lebenswichtiger Körperteile
-    if (_unit isEqualTo player && isNil QGVAR(unconsciousHandler) && _damageAccumulated >= GVAR(levelreviveaktiv) && !(_selection in ["arms", "hands", "legs"])) then
+    if (_unit isEqualTo player && isNil QGVAR(unconsciousHandler) && _damage >= GVAR(levelreviveaktiv) && !(_selection in ["arms", "hands", "legs"])) then
     {
         // Spieler bewusstlos machen und weiteren Schaden ausblenden
         player allowDamage false;
@@ -150,7 +150,7 @@ DFUNC(HandleDamage) =
     {
         // Maximal levelreviveaktiv zurückgeben, damit man nie sofort stirbt (Extremitätsverletzungen werden ignoriert)
         if (_selection in ["arms", "hands", "legs"]) then {0}
-        else {_damageAccumulated min GVAR(levelreviveaktiv)};
+        else {_damage min GVAR(levelreviveaktiv)};
     };
 };
 
@@ -161,6 +161,8 @@ DFUNC(HandleDamage) =
 
     // Respawn will change the player Object. We need to reassign the Eventhandler.
     //_oldPlayer removeEventHandler ["HandleDamage", GVAR(PLAYER_HANDLE_DAMAGE_EH_ID)];
+    _oldPlayer removeEventHandler ["HandleDamage",player getVariable ["opt_revive_ehHandleDamage",-1]];
+    player setVariable ["opt_revive_ehHandleDamage", player addEventHandler ["HandleDamage",OPT_REVIVE_fnc_HandleDamage]];
     //GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = _newPlayer addEventHandler ["HandleDamage", FUNC(HandleDamage)];
 
     _newPlayer setVariable ["OPT_isUnconscious", 0, true];
