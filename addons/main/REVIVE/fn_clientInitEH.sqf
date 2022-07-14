@@ -144,7 +144,7 @@ DFUNC(HandleDamage) =
             // Respawn-Dialog anzeigen
             [] call FUNC(dialog);
         }, 2, ""] call CFUNC(wait);
-        GVAR(levelreviveaktiv);
+        0;
     }
     else
     {
@@ -160,8 +160,8 @@ DFUNC(HandleDamage) =
     _data params ["_newPlayer", "_oldPlayer"];
 
     // Respawn will change the player Object. We need to reassign the Eventhandler.
-    _oldPlayer removeEventHandler ["HandleDamage", GVAR(PLAYER_HANDLE_DAMAGE_EH_ID)];
-    GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = _newPlayer addEventHandler ["HandleDamage", FUNC(HandleDamage)];
+    //_oldPlayer removeEventHandler ["HandleDamage", GVAR(PLAYER_HANDLE_DAMAGE_EH_ID)];
+    //GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = _newPlayer addEventHandler ["HandleDamage", FUNC(HandleDamage)];
 
     _newPlayer setVariable ["OPT_isUnconscious", 0, true];
     _newPlayer setVariable ["OPT_isStabilized", 0, true];
@@ -170,6 +170,7 @@ DFUNC(HandleDamage) =
     _newPlayer setVariable ["tf_unable_to_use_radio", false];
     _newPlayer setUnconscious false;
     _newPlayer setVariable ["OPT_damage_var",0];
+    _newPlayer playAction "PlayerStand";
 
     GVAR(OPT_isDragging) = false;
     GVAR(unconsciousHandler) = nil;
@@ -219,7 +220,8 @@ DFUNC(HandleDamage) =
 }] call CFUNC(addEventhandler);
 
 // Initial assignment, Respawn Handler does not trigger on first-spawn.
-GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = player addEventHandler ["HandleDamage", FUNC(HandleDamage)];
+//GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = player addEventHandler ["HandleDamage", FUNC(HandleDamage)];
+player setVariable ["opt_revive_ehHandleDamage", player addEventHandler ["HandleDamage",OPT_REVIVE_fnc_HandleDamage]];
 
 // Variablen-Reset
 GVAR(Damage_unit) = objNull;
