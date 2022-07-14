@@ -54,13 +54,7 @@ DFUNC(HandleDamage) =
         GVAR(Damage_instigator_age) = serverTime;
     };
 
-    private _damagePrev = damage _unit;
-    private _damageRecieved = _damage - _damagePrev;
-    private _damageAccumulated = (_unit getVariable ["OPT_damage_var",0]) + _damageRecieved;
-    _unit setVariable ["OPT_damage_var",_damageAccumulated];
-    systemChat format ["D:%1 DP:%2 DR:%3 AD:%4 V:%5",_damage,_damagePrev,_damageRecieved,_damageAccumulated,(_unit getVariable ["OPT_damage_var",0])];
-
-    // Einmalige Auslösung bei schwerer Verletzung lebenswichtiger Körperteile
+   // Einmalige Auslösung bei schwerer Verletzung lebenswichtiger Körperteile
     if (_unit isEqualTo player && isNil QGVAR(unconsciousHandler) && _damage >= GVAR(levelreviveaktiv) && !(_selection in ["arms", "hands", "legs"])) then
     {
         // Spieler bewusstlos machen und weiteren Schaden ausblenden
@@ -160,10 +154,8 @@ DFUNC(HandleDamage) =
     _data params ["_newPlayer", "_oldPlayer"];
 
     // Respawn will change the player Object. We need to reassign the Eventhandler.
-    //_oldPlayer removeEventHandler ["HandleDamage", GVAR(PLAYER_HANDLE_DAMAGE_EH_ID)];
     _oldPlayer removeEventHandler ["HandleDamage",player getVariable ["opt_revive_ehHandleDamage",-1]];
     player setVariable ["opt_revive_ehHandleDamage", player addEventHandler ["HandleDamage",OPT_REVIVE_fnc_HandleDamage]];
-    //GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = _newPlayer addEventHandler ["HandleDamage", FUNC(HandleDamage)];
 
     _newPlayer setVariable ["OPT_isUnconscious", 0, true];
     _newPlayer setVariable ["OPT_isStabilized", 0, true];
@@ -171,7 +163,6 @@ DFUNC(HandleDamage) =
     _newPlayer allowDamage true;
     _newPlayer setVariable ["tf_unable_to_use_radio", false];
     _newPlayer setUnconscious false;
-    _newPlayer setVariable ["OPT_damage_var",0];
     _newPlayer playAction "PlayerStand";
 
     GVAR(OPT_isDragging) = false;
@@ -222,7 +213,6 @@ DFUNC(HandleDamage) =
 }] call CFUNC(addEventhandler);
 
 // Initial assignment, Respawn Handler does not trigger on first-spawn.
-//GVAR(PLAYER_HANDLE_DAMAGE_EH_ID) = player addEventHandler ["HandleDamage", FUNC(HandleDamage)];
 player setVariable ["opt_revive_ehHandleDamage", player addEventHandler ["HandleDamage",OPT_REVIVE_fnc_HandleDamage]];
 
 // Variablen-Reset

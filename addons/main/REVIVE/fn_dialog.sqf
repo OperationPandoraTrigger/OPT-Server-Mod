@@ -71,9 +71,6 @@ _Respawn_button ctrlAddEventHandler ["ButtonClick",
     EGVAR(LOGGING,LAST_POSITION) = nil;
     EGVAR(LOGGING,LAST_DISTANCE) = 0;
 
-    // Eventhandler löschen
-    //player removeEventHandler ["HandleDamage", GVAR(PLAYER_HANDLE_DAMAGE_EH_ID)];
-
     GVAR(RespawnPressed) = true;
     ["Health", "Respawn", [getPlayerUID player, name player, side player, "RespawnClick"]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
     player allowDamage true;
