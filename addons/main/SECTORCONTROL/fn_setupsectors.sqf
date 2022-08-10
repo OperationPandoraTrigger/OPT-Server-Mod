@@ -95,7 +95,8 @@ if (worldName == "cup_chernarus_A3") then
 
             [   // Flaggen-Positionen
                 [7957, 14639, 0],
-                [8169, 12737, 0]
+                [8169, 12737, 0],
+                [8612, 13108, 0]
             ],
 
             [   // Beam-Positionen
