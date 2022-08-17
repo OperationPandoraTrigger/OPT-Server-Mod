@@ -42,8 +42,11 @@ private _beamLevel = (GVAR(box) select _idx) select 4;
 // Fluggeräte in 50-150 m Höhe spawnen
 if (typeOf vehicle player in EGVAR(SHOP,air)) then
 {
+    // Vor dem Beamen die bisherige Reisesdistanz loggen
+    true call EFUNC(LOGGING,tracker);
+
     // Beam loggen
-    ["Transport", "Beam", [getPlayerUID player, name player, side player, position vehicle player, _newPos, position vehicle player distance _newPos]] remoteExec [QEFUNC(LOGGING,writelog), 2];
+    ["Transport", "Beam", [getPlayerUID player, name player, side player, position vehicle player, _beamPosition, position vehicle player distance _beamPosition]] remoteExec [QEFUNC(LOGGING,writelog), 2];
 
     // Beamen
     vehicle player setPosASL (_beamPosition vectorAdd [0, 0, 50 + random 100]);
