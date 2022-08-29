@@ -81,8 +81,8 @@ GVAR(DB_choppers) =
     ["OPT_O_Heli_Transport_04_ammo_F",              60000,      10000,      20000,          0,          4,          false,      false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // Taru Munition
     ["OPT_O_Heli_Transport_04_fuel_F",              25000,      10000,      20000,          0,          4,          false,      false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // Taru Fuel
     ["OPT_O_Heli_Transport_04_F",                   15000,      10000,      20000,          0,          4,          false,      false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]], // Taru Kran
-    ["OPT_B_Heli_Attack_01_F",                      COST(350000),                           0,          0,          false,      false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [-1, -1, -1]], // Blackwood
-    ["OPT_O_Heli_Attack_02_F",                      COST(350000),                           0,          0,          false,      false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [-1, -1, -1]]  // Kajman
+    ["OPT_B_Heli_Attack_01_F",                      COST(350000),                           0,          0,          false,      false,      false,      false,      [0, 3, 0.2],    0,          0.1,            west,   [ 0, -1, -1]], // Blackwood
+    ["OPT_O_Heli_Attack_02_F",                      COST(350000),                           0,          0,          false,      false,      false,      false,      [0, 3, 0.2],    0,          0.1,            east,   [ 0, -1, -1]]  // Kajman
 ];
 
 GVAR(DB_planes) = [];
