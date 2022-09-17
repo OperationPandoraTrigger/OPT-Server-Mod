@@ -28,7 +28,26 @@ Auf der Karte werden noch vor Missionsstart die MineZoneMarkers sowie die Sektor
 
 #include "macros.hpp"
 
-GVAR(AllSectors) = [];
+// leeres Template
+GVAR(AllSectors) =
+[
+    [    // Sektor 0
+        [   // Sektormarker
+        ],
+
+        [   // Flaggen-Positionen
+        ],
+
+        [   // Beam-Positionen
+        ],
+
+        [   // Sektor-Dreiecke
+        ],
+
+        [   // Sektormarker-Position
+        ]
+    ]
+];
 
 if (worldName == "cup_chernarus_A3") then
 {
@@ -926,6 +945,484 @@ if (worldName == "cup_chernarus_A3") then
                 [12477, 1810], [11048, 0], [15365, 0],
                 [15365, 0], [13999, 2286], [12477, 1810],
                 [15365, 1621], [13999, 2286], [15365, 0]
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ]
+    ];
+};
+
+// Livonia
+if (worldName == "Enoch") then
+{
+    GVAR(AllSectors) =
+    [
+        [    // Sektor 0
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 1
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [1295, 9508, 0],
+                [1235, 8955, 0]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 2
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [3846, 11657, 0],
+                [4100, 10259, 0]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 3
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [6272, 10919, 0],
+                [6264, 10155, 0]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 4
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [7930, 11854, 0],
+                [8141, 10848, 0]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 5
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [9290, 11173, 0],
+                [9515, 10351, 0]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 6
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [1799, 7685, 0],
+                [3439, 8997, 0]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 7
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [4194, 9038, 0],
+                [5158, 9943, 0]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 8
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [6524, 9251, 0],
+                [6429, 8154, 0]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 9
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [7801, 10082, 0],
+                [8118, 8729, 0]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 10
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [9804, 8596, 0],
+                [11042, 9021, 0]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 11
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [1906, 7086, 0],
+                [3119, 6790, 0]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 12
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [4865, 7793, 0],
+                [4570, 6396, 0]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 13
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [7349, 6466, 0],
+                [9056, 6590, 0]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 14
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [10320, 6810, 0],
+                [11864.2, 7399.04, 0]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 15
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [890, 5475, 0],
+                [2624, 5453, 0]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 16
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [4688, 5613, 0],
+                [5618, 3780, 0]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 17
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [5962, 4077, 0],
+                [7669, 5316, 0]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 18
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [9059, 4433, 0],
+                [11728, 5015, 0]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 19
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [1658, 3690, 0],
+                [2409, 3815, 0]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 20
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [2799, 1620, 0]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 21
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [3266, 2138, 0],
+                [5096, 2126, 0]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 22
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [7364, 2599, 0],
+                [8938, 2049, 0]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 23
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [9902, 3788, 0],
+                [10498, 3129, 0]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 24
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [10219, 2168, 0]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
             ],
 
             [   // Sektormarker-Position
