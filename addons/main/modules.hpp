@@ -98,8 +98,6 @@ class CfgCLibModules
             FNC(initCBASettings);
             FNC(beam);
             FNC(beamdialog);
-            FNC(beammapmove);
-            FNC(getbeampoints);
             FNC(teleport);
             FNC(findFreePosition);
         };

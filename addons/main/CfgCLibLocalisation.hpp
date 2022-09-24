@@ -17,10 +17,22 @@ class CfgCLibLocalisation
                 German = "Die Zielposition ist derzeit leider belegt.";
             };
 
+            class BEAM_FORBIDDEN
+            {
+                English = "Unfortunately, the target position is currently forbidden.";
+                German = "Die Zielposition ist derzeit leider nicht erlaubt.";
+            };
+
             class BEAM_AIRGROUND
             {
                 English = "Aircraft can only be transported in flight.";
                 German = "Luftfahrzeuge können nur fliegend transportiert werden.";
+            };
+
+            class BEAM_MSG_HEADER
+            {
+                English = "Beamy McBeamface";
+                German = "Beamy McBeamface";
             };
 
             class TELEPORT_MSG_HEADER
@@ -35,10 +47,22 @@ class CfgCLibLocalisation
                 German = "Position zum Teleport mit Linksklick auswählen.";
             };
 
+            class BEAM_MSG
+            {
+                English = "Select position to beam with left click.";
+                German = "Position zum Beamen mit Linksklick auswählen.";
+            };
+
             class TELEPORT_FAIL
             {
                 English = "Teleporting failed. There is not enough space at the selected destination.";
                 German = "Teleport gescheitert. Am gewählten Ziel ist nicht genügend Platz vorhanden.";
+            };
+
+            class BEAM_FAIL
+            {
+                English = "Beam failed. There is not enough space at the selected destination.";
+                German = "Beam gescheitert. Am gewählten Ziel ist nicht genügend Platz vorhanden.";
             };
         };
 
