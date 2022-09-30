@@ -81,11 +81,25 @@ vehicle player setVelocity [0, 0, 0];
 } forEach GVAR(BeamZoneDeniedMarkers);
 GVAR(BeamZoneDeniedMarkers) = [];
 
+GVAR(ForbiddenZones) = [];
+
 switch playerSide do
 {
     case west:
     {
-        GVAR(ForbiddenZones) = EGVAR(SECTORCONTROL,nato_flags) + EGVAR(SECTORCONTROL,csat_flags);
+        // In Kriegszeiten alle aktiven Fahnen (eigene und feindliche) fürs Beamen verbieten
+        if (EGVAR(GELDZEIT,GAMESTAGE) == GAMESTAGE_WAR) then {GVAR(ForbiddenZones) = EGVAR(SECTORCONTROL,nato_flags) + EGVAR(SECTORCONTROL,csat_flags)}
+
+        // ansonsten (z.B. in Waffenruhe) nur feindliche Fahnen verbieten (alle wählbaren in deren Verteidigungssektor)
+        else
+        {
+            {
+                {
+                    GVAR(ForbiddenZones) pushBack _x;
+                } forEach ((EGVAR(SECTORCONTROL,AllSectors) select _x) select 1);
+            } forEach EGVAR(SECTORCONTROL,csat_sectors);
+        };
+
         GVAR(ForbiddenZones) pushBack Teleport_CSAT_Basis1;
         GVAR(ForbiddenZones) pushBack Teleport_CSAT_Basis2;
         GVAR(ForbiddenZones) pushBack Teleport_CSAT_Basis3;
@@ -94,23 +108,44 @@ switch playerSide do
 
     case east:
     {
-        GVAR(ForbiddenZones) = EGVAR(SECTORCONTROL,nato_flags) + EGVAR(SECTORCONTROL,csat_flags);
+        // In Kriegszeiten alle aktiven Fahnen (eigene und feindliche) fürs Beamen verbieten
+        if (EGVAR(GELDZEIT,GAMESTAGE) == GAMESTAGE_WAR) then {GVAR(ForbiddenZones) = EGVAR(SECTORCONTROL,nato_flags) + EGVAR(SECTORCONTROL,csat_flags)}
+
+        // ansonsten (z.B. in Waffenruhe) nur feindliche Fahnen verbieten (alle wählbaren in deren Verteidigungssektor)
+        else
+        {
+            {
+                {
+                    GVAR(ForbiddenZones) pushBack _x;
+                } forEach ((EGVAR(SECTORCONTROL,AllSectors) select _x) select 1);
+            } forEach EGVAR(SECTORCONTROL,nato_sectors);
+        };
+
         GVAR(ForbiddenZones) pushBack Teleport_NATO_Basis1;
         GVAR(ForbiddenZones) pushBack Teleport_NATO_Basis2;
         GVAR(ExactZones) = [Teleport_CSAT_Basis1, Teleport_CSAT_Basis2, Teleport_CSAT_Basis3];
     };
 };
 
+// Größe der Zone je nach Fahrzeugklasse
+GVAR(BeamRadius) = 0;
+if (vehicle player == player) then {GVAR(BeamRadius) = GVAR(BeamRadiusMan)};
+if (typeOf vehicle player in EGVAR(SHOP,light)) then {GVAR(BeamRadius) = GVAR(BeamRadiusLight)};
+if (typeOf vehicle player in EGVAR(SHOP,heavy)) then {GVAR(BeamRadius) = GVAR(BeamRadiusHeavy)};
+if (typeOf vehicle player in EGVAR(SHOP,air)) then {GVAR(BeamRadius) = GVAR(BeamRadiusAir)};
+if (typeOf vehicle player in EGVAR(SHOP,boat)) then {GVAR(BeamRadius) = GVAR(BeamRadiusBoat)};
+if (typeOf vehicle player in EGVAR(SHOP,supplies)) then {GVAR(BeamRadius) = GVAR(BeamRadiusSupplies)};
+if (typeOf vehicle player in EGVAR(SHOP,static)) then {GVAR(BeamRadius) = GVAR(BeamRadiusStatic)};
 
-// Punkt zu nah an aktiven Fahnen?
+// Verbotszonen zeichnen
 {
     private _markerName = format["BeamZoneDeniedMarker_%1", count GVAR(BeamZoneDeniedMarkers) + 1];
-    private _marker = createMarkerLocal [_markerName, getPos _x];
+    private _marker = createMarkerLocal [_markerName, _x];
     _marker setMarkerShapeLocal "ELLIPSE";
     _marker setMarkerBrushLocal "FDiagonal";
     _marker setMarkerColorLocal "ColorBlack";
     _marker setMarkerAlphaLocal 1;
-    _marker setMarkerSizeLocal [GVAR(MinDistance) * 1000, GVAR(MinDistance) * 1000];
+    _marker setMarkerSizeLocal [GVAR(BeamRadius) * 1000, GVAR(BeamRadius) * 1000];
     GVAR(BeamZoneDeniedMarkers) pushBack _marker;
 } forEach GVAR(ForbiddenZones);
 
@@ -135,7 +170,7 @@ openMap true;
 
     // Verbotene Bereiche checken
     {
-        if (_pos distance2D _x < (GVAR(MinDistance) * 1000)) then
+        if (_pos inArea _x) then
         {
             private _header = MLOC(BEAM_MSG_HEADER);
             private _txt = MLOC(BEAM_FORBIDDEN);
@@ -144,7 +179,7 @@ openMap true;
             _fail = true;
             break;
         };
-    } forEach GVAR(ForbiddenZones);
+    } forEach GVAR(BeamZoneDeniedMarkers);
 
     // Ziel in der Nähe der eigenen (Außen)Basis? Dann exakt auf das Beampad beamen
     {
