@@ -23,6 +23,12 @@ class CfgCLibLocalisation
                 German = "Die Zielposition ist derzeit leider nicht erlaubt.";
             };
 
+            class BEAM_LOCKED
+            {
+                English = "Unfortunately, you are currently not allowed to beam with your equipment.";
+                German = "Mit Ihrer Ausrüstung dürfen Sie derzeit leider nicht beamen.";
+            };
+
             class BEAM_AIRGROUND
             {
                 English = "Aircraft can only be transported in flight.";
@@ -31,8 +37,8 @@ class CfgCLibLocalisation
 
             class BEAM_MSG_HEADER
             {
-                English = "Beamy McBeamface";
-                German = "Beamy McBeamface";
+                English = "Beam target map";
+                German = "Beam Zielwahl";
             };
 
             class TELEPORT_MSG_HEADER
