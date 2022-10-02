@@ -101,8 +101,8 @@ switch playerSide do
         };
 
         GVAR(ForbiddenZones) pushBack Teleport_CSAT_Basis1;
-        GVAR(ForbiddenZones) pushBack Teleport_CSAT_Basis2;
-        GVAR(ForbiddenZones) pushBack Teleport_CSAT_Basis3;
+//        GVAR(ForbiddenZones) pushBack Teleport_CSAT_Basis2;
+//        GVAR(ForbiddenZones) pushBack Teleport_CSAT_Basis3;
         GVAR(ExactZones) = [Teleport_NATO_Basis1, Teleport_NATO_Basis2];
     };
 
@@ -122,7 +122,7 @@ switch playerSide do
         };
 
         GVAR(ForbiddenZones) pushBack Teleport_NATO_Basis1;
-        GVAR(ForbiddenZones) pushBack Teleport_NATO_Basis2;
+//        GVAR(ForbiddenZones) pushBack Teleport_NATO_Basis2;
         GVAR(ExactZones) = [Teleport_CSAT_Basis1, Teleport_CSAT_Basis2, Teleport_CSAT_Basis3];
     };
 };
@@ -156,7 +156,7 @@ if (GVAR(BeamRadius) > -0.00001) then
         _marker setMarkerBrushLocal "FDiagonal";
         _marker setMarkerColorLocal "ColorBlack";
         _marker setMarkerAlphaLocal 1;
-        _marker setMarkerSizeLocal [GVAR(BeamRadius) * 1000, GVAR(BeamRadius) * 1000];
+        _marker setMarkerSizeLocal [GVAR(BeamRadius) * 1000 * GVAR(BeamRadiusFactor), GVAR(BeamRadius) * 1000 * GVAR(BeamRadiusFactor)];
         GVAR(BeamZoneDeniedMarkers) pushBack _marker;
     } forEach GVAR(ForbiddenZones);
 
@@ -164,7 +164,9 @@ if (GVAR(BeamRadius) > -0.00001) then
     private _txt = MLOC(BEAM_MSG);
     hint format ["%1\n\n%2", _header, _txt];
 
+    // Karte öffnen und auf Gesamtansicht zoomen
     openMap true;
+    [[worldSize, worldSize], [worldSize / 2, worldSize / 2], 0.75] call BIS_fnc_zoomOnArea;
 
     [QGVAR(onMapSingleClick), "onMapSingleClick",
     {
@@ -179,9 +181,10 @@ if (GVAR(BeamRadius) > -0.00001) then
         private _fail = false;
         private _exact = false;
 
-        // Verbotene Bereiche checken
+        // Verbotene Bereiche checken (und ob innerhalb der Kartengrenzen)
+        private _inMap = _pos inArea [[worldSize / 2, worldSize / 2], worldSize / 2, worldSize / 2, 0, true, -1];
         {
-            if (_pos inArea _x) then
+            if (_pos inArea _x || !_inMap) then
             {
                 private _header = MLOC(BEAM_MSG_HEADER);
                 private _txt = MLOC(BEAM_FORBIDDEN);
