@@ -164,8 +164,40 @@ if (GVAR(BeamRadius) > -0.00001) then
     private _txt = MLOC(BEAM_MSG);
     hint format ["%1\n\n%2", _header, _txt];
 
-    // Karte öffnen und auf Gesamtansicht zoomen
+    // Karte öffnen
     openMap true;
+
+    // Feindliche Sektoren merken
+    GVAR(EnemySectorsAll) = [];
+    switch playerSide do
+    {
+        case west:
+        {
+            GVAR(EnemySectorsAll) = EGVAR(SECTORCONTROL,csat_allsectors);
+        };
+
+        case east:
+        {
+            GVAR(EnemySectorsAll) = EGVAR(SECTORCONTROL,nato_allsectors);
+        };
+    };
+
+    // Feindliche Sektoren markieren
+    private _MapControl = findDisplay 12 displayCtrl 51;
+    OPT_BEAM_MapHandler = _MapControl ctrlAddEventHandler ["Draw",
+    {
+        params ["_control"];
+        private _color = [];
+        {
+            if (_forEachIndex in OPT_BEAM_EnemySectorsAll) then
+            {
+                _color = [0, 0, 0, 1]; // OPFOR
+                _control drawTriangle [_x # 3, _color, "\A3\ui_f\data\map\markerbrushes\fdiagonal_ca.paa"];
+            };
+        } forEach OPT_SECTORCONTROL_AllSectors;
+    }];    
+
+    // Zoomfahrt auf gesamte Karte
     [[worldSize, worldSize], [worldSize / 2, worldSize / 2], 0.75] call BIS_fnc_zoomOnArea;
 
     [QGVAR(onMapSingleClick), "onMapSingleClick",
@@ -194,6 +226,19 @@ if (GVAR(BeamRadius) > -0.00001) then
                 break;
             };
         } forEach GVAR(BeamZoneDeniedMarkers);
+
+        // Feindliche Sektoren verbieten
+        {
+            if (_pos inPolygon _x) then
+            {
+                private _header = MLOC(BEAM_MSG_HEADER);
+                private _txt = MLOC(BEAM_FORBIDDEN_SECTOR);
+                hint format ["%1\n\n%2", _header, _txt];
+                playSound "additemok";
+                _fail = true;
+                break;
+            };
+        } forEach EGVAR(SECTORCONTROL,EnemySectorPolygons);
 
         // Ziel in der Nähe der eigenen (Außen)Basis? Dann exakt auf das Beampad beamen
         {
@@ -254,8 +299,16 @@ if (GVAR(BeamRadius) > -0.00001) then
                 [_newPos, _dir, GVAR(SearchRadiusBeam)] call FUNC(beam);
             };
 
+            // Clickhandler löschen
             [QGVAR(onMapSingleClick), "onMapSingleClick"] call BIS_fnc_removeStackedEventHandler;
-        
+
+            // Marker auf Karte löschen
+            if !(isNil "OPT_BEAM_MapHandler") then
+            {
+                private _MapControl = findDisplay 12 displayCtrl 51;
+                _MapControl ctrlRemoveEventHandler ["Draw", OPT_BEAM_MapHandler];
+            };
+
             // Beam-Verbotszonen löschen
             {
                 deleteMarkerLocal _x;

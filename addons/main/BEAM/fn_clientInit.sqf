@@ -81,6 +81,14 @@ if (EGVAR(SECTORCONTROL,trainingon)) then
         if (_key == 1 || _key == 50) then
         {
             [QGVAR(onMapSingleClick), "onMapSingleClick"] call BIS_fnc_removeStackedEventHandler;
+
+            // Beam-Sektormarker löschen
+            if !(isNil "OPT_BEAM_MapHandler") then
+            {
+                private _MapControl = findDisplay 12 displayCtrl 51;
+                _MapControl ctrlRemoveEventHandler ["Draw", OPT_BEAM_MapHandler];
+            };
+
             openMap false;
 
             // alte Beam-Verbotszonen löschen
