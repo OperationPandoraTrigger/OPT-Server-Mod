@@ -68,6 +68,19 @@ if (_typeOfPlayer in GVAR(snipers)) then
     } forEach (weapons _unit);
 };
 
+// check Munitionsträger rifle
+if (_typeOfPlayer in GVAR(Soldatmuni)) then
+{
+    {
+        if !(_x in GVAR(rifle65)) then
+        {
+            _unit removeWeapon _x;
+            _bad_weapon_used = _x;
+            _bad_item_used = true;
+        };
+    } forEach (weapons _unit);
+};
+
 // check SMG
 if !(_typeOfPlayer in (GVAR(pilots) + GVAR(jetpilots) + GVAR(crew) + GVAR(pioneers))) then
 {
