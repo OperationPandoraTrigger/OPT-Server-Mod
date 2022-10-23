@@ -255,3 +255,9 @@ GVAR(Soldatmuni) =
     "OPT_NATO_Soldatmuni",
     "OPT_CSAT_Soldatmuni"
 ];
+
+GVAR(rifle65) =
+[
+    "OPT_arifle_MXC_Black_ACO_pointer_F",
+    "OPT_arifle_Katiba_C_ACO_pointer_F"
+];
