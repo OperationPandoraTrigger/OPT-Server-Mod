@@ -22,7 +22,7 @@
         "Faktor verschiebt die Ausdauer, werte über 1,0 verringern die Ausdauer" + endl  // Mouse-Over description of the above
     ],
     "OPT Ausdauer", // Pretty name of the category where the setting can be found. Can be stringtable entry.
-    [0.10, 2.00 0.5, 2], // data for this setting: [min, max, default, number of shown trailing decimals]
+    [0.10, 2.00, 0.5, 2], // data for this setting: [min, max, default, number of shown trailing decimals]
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {} // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
@@ -35,7 +35,7 @@
         "Faktor verschiebt die Ausdauer, werte über 1,0 verringern die Ausdauer" + endl  // Mouse-Over description of the above
     ],
     "OPT Ausdauer", // Pretty name of the category where the setting can be found. Can be stringtable entry.
-    [0.10, 2.00 0.75, 2], // data for this setting: [min, max, default, number of shown trailing decimals]
+    [0.10, 2.00, 0.75, 2], // data for this setting: [min, max, default, number of shown trailing decimals]
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {} // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
@@ -48,7 +48,7 @@
         "Faktor verschiebt die Ausdauer, werte über 1,0 verringern die Ausdauer" + endl  // Mouse-Over description of the above
     ],
     "OPT Ausdauer", // Pretty name of the category where the setting can be found. Can be stringtable entry.
-    [0.10, 2.00 1.00, 2], // data for this setting: [min, max, default, number of shown trailing decimals]
+    [0.10, 2.00, 1.00, 2], // data for this setting: [min, max, default, number of shown trailing decimals]
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {} // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;

@@ -173,6 +173,9 @@ DFUNC(HandleDamage) =
     // Shop Dialoge freigeben
     EGVAR(SHOP,LOCK) = false;
 
+    //Ausdauerwerte nach Respwan setzten
+    [] call OPT_RULES_fnc_stamina;
+
     // Verzögert ausführen, da es sonst zeitgleich oder leicht vor dem ACE-Gearsave läuft
     [{
         // TFAR Encryption beim Joinen neu setzen
