@@ -172,6 +172,8 @@ class CfgCLibModules
             FNC(setup_classnames);
             FNC(weaponcheck);
             FNC(uav);
+            FNC(stamina);
+            FNC(initCBASettings);
         };
 
         MODULE(INTRO)

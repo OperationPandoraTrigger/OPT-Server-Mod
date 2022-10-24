@@ -248,3 +248,16 @@ GVAR(big_uavs) =
     "OPT_O_UAV_02_light_F",
     "OPT_O_UAV_02_F"
 ];
+
+// Munitionsträger
+GVAR(Soldatmuni) =
+[
+    "OPT_NATO_Soldatmuni",
+    "OPT_CSAT_Soldatmuni"
+];
+
+GVAR(rifle65) =
+[
+    "OPT_arifle_MXC_Black_ACO_pointer_F",
+    "OPT_arifle_Katiba_C_ACO_pointer_F"
+];

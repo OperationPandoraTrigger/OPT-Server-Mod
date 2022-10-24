@@ -85,4 +85,8 @@ DFUNC(SelfCare) =
     player enableFatigue GVAR(Fatigue);
     player enableStamina GVAR(Stamina);
     player setCustomAimCoef GVAR(CustomAimCoef);
+
+    //Ausdauerwerte nach Missionsstart setzten
+    [] call OPT_RULES_fnc_stamina;
+
 }] call CFUNC(addEventhandler);
