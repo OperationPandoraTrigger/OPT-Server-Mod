@@ -17,10 +17,34 @@ class CfgCLibLocalisation
                 German = "Die Zielposition ist derzeit leider belegt.";
             };
 
+            class BEAM_FORBIDDEN
+            {
+                English = "Unfortunately, the target position is currently forbidden.";
+                German = "Die Zielposition ist derzeit leider nicht erlaubt.";
+            };
+
+            class BEAM_FORBIDDEN_SECTOR
+            {
+                English = "Unfortunately, the target position is inside an enemy sector.";
+                German = "Die Zielposition befindet sich in einem feindlichen Sektor.";
+            };
+
+            class BEAM_LOCKED
+            {
+                English = "Unfortunately, you are currently not allowed to beam with your equipment.";
+                German = "Mit Ihrer Ausrüstung dürfen Sie derzeit leider nicht beamen.";
+            };
+
             class BEAM_AIRGROUND
             {
                 English = "Aircraft can only be transported in flight.";
                 German = "Luftfahrzeuge können nur fliegend transportiert werden.";
+            };
+
+            class BEAM_MSG_HEADER
+            {
+                English = "Beam target map";
+                German = "Beam Zielwahl";
             };
 
             class TELEPORT_MSG_HEADER
@@ -35,10 +59,22 @@ class CfgCLibLocalisation
                 German = "Position zum Teleport mit Linksklick auswählen.";
             };
 
+            class BEAM_MSG
+            {
+                English = "Select position to beam with left click.";
+                German = "Position zum Beamen mit Linksklick auswählen.";
+            };
+
             class TELEPORT_FAIL
             {
                 English = "Teleporting failed. There is not enough space at the selected destination.";
                 German = "Teleport gescheitert. Am gewählten Ziel ist nicht genügend Platz vorhanden.";
+            };
+
+            class BEAM_FAIL
+            {
+                English = "Beam failed. There is not enough space at the selected destination.";
+                German = "Beam gescheitert. Am gewählten Ziel ist nicht genügend Platz vorhanden.";
             };
         };
 

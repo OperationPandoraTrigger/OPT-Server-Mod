@@ -28,30 +28,7 @@
 */
 #include "macros.hpp"
 
-GVAR(BeamMarkers) = [];
-DFUNC(DrawBeamMarkers) =
-{
-    // Bisherige Marker löschen
-    {deleteMarkerLocal _x} forEach GVAR(BeamMarkers);
-    GVAR(BeamMarkers) = [];
-    {
-        private _pos = _x select 0;
-        private _markertext = _x select 3;
-        // Nur Marker mit Text (nicht die Heimatbasis und der Außenposten!)
-        if (_markertext != "") then
-        {
-            private _marker = createMarkerLocal [format ["beampointmarker_%1", _forEachIndex], _pos];
-            _marker setMarkerTypeLocal "mil_dot";
-            _marker setMarkerTextLocal _markertext;
-
-            // V-Fahnen Beams weiß markieren, Beampunkte dunkelgelb
-            if (_markertext select [0,1] == "F") then {_marker setMarkerColorLocal "ColorWhite"}
-            else {_marker setMarkerColorLocal "ColorUNKNOWN"};
-
-            GVAR(BeamMarkers) pushBack _marker;
-        };
-    } forEach ([playerSide, false] call FUNC(getbeampoints));
-};
+GVAR(BeamZoneDeniedMarkers) = [];
 
 if (EGVAR(SECTORCONTROL,trainingon)) then
 {
@@ -104,16 +81,21 @@ if (EGVAR(SECTORCONTROL,trainingon)) then
         if (_key == 1 || _key == 50) then
         {
             [QGVAR(onMapSingleClick), "onMapSingleClick"] call BIS_fnc_removeStackedEventHandler;
+
+            // Beam-Sektormarker löschen
+            if !(isNil "OPT_BEAM_MapHandler") then
+            {
+                private _MapControl = findDisplay 12 displayCtrl 51;
+                _MapControl ctrlRemoveEventHandler ["Draw", OPT_BEAM_MapHandler];
+            };
+
             openMap false;
-        };
+
+            // alte Beam-Verbotszonen löschen
+            {
+                deleteMarkerLocal _x;
+            } forEach GVAR(BeamZoneDeniedMarkers);
+            GVAR(BeamZoneDeniedMarkers) = [];            
+            };
     }];
-
-    // Nach Missionsstart die Marker für alle derzeitig gültigen Beampunkte aktualisieren
-    call FUNC(DrawBeamMarkers);
-
-    // Nach Ablauf der Waffenruhe die Marker für alle nun gültigen Beampunkte aktualisieren
-    [{call FUNC(DrawBeamMarkers)}, {(OPT_GELDZEIT_GAMESTAGE == GAMESTAGE_WAR)}, ""] call CLib_fnc_waitUntil;
 }] call CFUNC(addEventhandler);
-
-// Vor dem Missionsstart alle derzeitig gültigen Beampunkte zeichnen
-call FUNC(DrawBeamMarkers);
