@@ -28,7 +28,8 @@
 */
 #include "macros.hpp"
 
-GVAR(BeamZoneDeniedMarkers) = [];
+GVAR(BeamDialogOpen) = false;
+GVAR(BeamZoneMarkers) = [];
 
 if (EGVAR(SECTORCONTROL,trainingon)) then
 {
@@ -91,11 +92,12 @@ if (EGVAR(SECTORCONTROL,trainingon)) then
 
             openMap false;
 
-            // alte Beam-Verbotszonen löschen
+            // alte Beam-Zonen löschen
             {
                 deleteMarkerLocal _x;
-            } forEach GVAR(BeamZoneDeniedMarkers);
-            GVAR(BeamZoneDeniedMarkers) = [];            
-            };
+            } forEach GVAR(BeamZoneMarkers);
+            GVAR(BeamZoneMarkers) = [];
+            GVAR(BeamDialogOpen) = false;
+        };
     }];
 }] call CFUNC(addEventhandler);

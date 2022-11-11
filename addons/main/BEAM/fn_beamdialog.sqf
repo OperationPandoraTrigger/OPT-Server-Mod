@@ -31,37 +31,30 @@
 
 #include "macros.hpp"
 
+// Abbruch, wenn der Dialog schon offen ist
+if (GVAR(BeamDialogOpen)) exitWith {};
+GVAR(BeamDialogOpen) = true;
+
 // Minimalentfernung zum Beam-Platz
 #define MIN_DISTANCE_TO_BEAMSPOT 10
 
 // Überprüfung ob Spieler in der Nähe eines Beampunktes ist (wichtig für Hotkey-Aufruf)
 private _nearBeamSpot = false;
-
-if ((playerSide == west) and ((player distance Teleport_NATO_Basis1) < MIN_DISTANCE_TO_BEAMSPOT)) then
+switch playerSide do
 {
-    _nearBeamSpot = true;
-};
+    case west:
+    {
+        if (player distance Teleport_NATO_Basis1 < MIN_DISTANCE_TO_BEAMSPOT) then {_nearBeamSpot = true};
+        if (player distance Teleport_NATO_Basis2 < MIN_DISTANCE_TO_BEAMSPOT) then {_nearBeamSpot = true};
+    };
 
-if ((playerSide == west) and ((player distance Teleport_NATO_Basis2) < MIN_DISTANCE_TO_BEAMSPOT)) then
-{
-    _nearBeamSpot = true;
+    case east:
+    {
+        if (player distance Teleport_CSAT_Basis1 < MIN_DISTANCE_TO_BEAMSPOT) then {_nearBeamSpot = true};
+        if (player distance Teleport_CSAT_Basis2 < MIN_DISTANCE_TO_BEAMSPOT) then {_nearBeamSpot = true};
+        if (player distance Teleport_CSAT_Basis3 < MIN_DISTANCE_TO_BEAMSPOT) then {_nearBeamSpot = true};
+    };
 };
-
-if ((playerSide == east) and ((player distance Teleport_CSAT_Basis1) < MIN_DISTANCE_TO_BEAMSPOT)) then
-{
-    _nearBeamSpot = true;
-};
-
-if ((playerSide == east) and ((player distance Teleport_CSAT_Basis2) < MIN_DISTANCE_TO_BEAMSPOT)) then
-{
-    _nearBeamSpot = true;
-};
-
-if ((playerSide == east) and ((player distance Teleport_CSAT_Basis3) < MIN_DISTANCE_TO_BEAMSPOT)) then
-{
-    _nearBeamSpot = true;
-};
-
 // Abbrechen wenn kein eigenes Beam-Pad in der Nähe ist
 if (!_nearBeamSpot) exitWith {};
 
@@ -78,8 +71,8 @@ vehicle player setVelocity [0, 0, 0];
 // alte Beam-Verbotszonen löschen
 {
     deleteMarkerLocal _x;
-} forEach GVAR(BeamZoneDeniedMarkers);
-GVAR(BeamZoneDeniedMarkers) = [];
+} forEach GVAR(BeamZoneMarkers);
+GVAR(BeamZoneMarkers) = [];
 
 GVAR(ForbiddenZones) = [];
 
@@ -87,42 +80,15 @@ switch playerSide do
 {
     case west:
     {
-        // In Kriegszeiten alle aktiven Fahnen (eigene und feindliche) fürs Beamen verbieten
-        if (EGVAR(GELDZEIT,GAMESTAGE) == GAMESTAGE_WAR) then {GVAR(ForbiddenZones) = EGVAR(SECTORCONTROL,nato_flags) + EGVAR(SECTORCONTROL,csat_flags)}
-
-        // ansonsten (z.B. in Waffenruhe) nur feindliche Fahnen verbieten (alle wählbaren in deren Verteidigungssektor)
-        else
-        {
-            {
-                {
-                    GVAR(ForbiddenZones) pushBack _x;
-                } forEach ((EGVAR(SECTORCONTROL,AllSectors) select _x) select 1);
-            } forEach EGVAR(SECTORCONTROL,csat_sectors);
-        };
-
-        GVAR(ForbiddenZones) pushBack Teleport_CSAT_Basis1;
-//        GVAR(ForbiddenZones) pushBack Teleport_CSAT_Basis2;
-//        GVAR(ForbiddenZones) pushBack Teleport_CSAT_Basis3;
+        // In Kriegszeiten alle eigenen aktiven Fahnen fürs Beamen verbieten
+        if (EGVAR(GELDZEIT,GAMESTAGE) == GAMESTAGE_WAR) then {GVAR(ForbiddenZones) = EGVAR(SECTORCONTROL,nato_flags)};
         GVAR(ExactZones) = [Teleport_NATO_Basis1, Teleport_NATO_Basis2];
     };
 
     case east:
     {
-        // In Kriegszeiten alle aktiven Fahnen (eigene und feindliche) fürs Beamen verbieten
-        if (EGVAR(GELDZEIT,GAMESTAGE) == GAMESTAGE_WAR) then {GVAR(ForbiddenZones) = EGVAR(SECTORCONTROL,nato_flags) + EGVAR(SECTORCONTROL,csat_flags)}
-
-        // ansonsten (z.B. in Waffenruhe) nur feindliche Fahnen verbieten (alle wählbaren in deren Verteidigungssektor)
-        else
-        {
-            {
-                {
-                    GVAR(ForbiddenZones) pushBack _x;
-                } forEach ((EGVAR(SECTORCONTROL,AllSectors) select _x) select 1);
-            } forEach EGVAR(SECTORCONTROL,nato_sectors);
-        };
-
-        GVAR(ForbiddenZones) pushBack Teleport_NATO_Basis1;
-//        GVAR(ForbiddenZones) pushBack Teleport_NATO_Basis2;
+        // In Kriegszeiten alle eigenen aktiven Fahnen fürs Beamen verbieten
+        if (EGVAR(GELDZEIT,GAMESTAGE) == GAMESTAGE_WAR) then {GVAR(ForbiddenZones) = EGVAR(SECTORCONTROL,csat_flags)};
         GVAR(ExactZones) = [Teleport_CSAT_Basis1, Teleport_CSAT_Basis2, Teleport_CSAT_Basis3];
     };
 };
@@ -150,14 +116,14 @@ if (GVAR(BeamRadius) > -0.00001) then
 {
     // Verbotszonen zeichnen
     {
-        private _markerName = format["BeamZoneDeniedMarker_%1", count GVAR(BeamZoneDeniedMarkers) + 1];
+        private _markerName = format["BeamZoneDeniedMarker_%1", count GVAR(BeamZoneMarkers) + 1];
         private _marker = createMarkerLocal [_markerName, _x];
         _marker setMarkerShapeLocal "ELLIPSE";
         _marker setMarkerBrushLocal "FDiagonal";
         _marker setMarkerColorLocal "ColorBlack";
         _marker setMarkerAlphaLocal 1;
         _marker setMarkerSizeLocal [GVAR(BeamRadius) * 1000 * GVAR(BeamRadiusFactor), GVAR(BeamRadius) * 1000 * GVAR(BeamRadiusFactor)];
-        GVAR(BeamZoneDeniedMarkers) pushBack _marker;
+        GVAR(BeamZoneMarkers) pushBack _marker;
     } forEach GVAR(ForbiddenZones);
 
     private _header = MLOC(BEAM_MSG_HEADER);
@@ -167,32 +133,32 @@ if (GVAR(BeamRadius) > -0.00001) then
     // Karte öffnen
     openMap true;
 
-    // Feindliche Sektoren merken
-    GVAR(EnemySectorsAll) = [];
+    // Eigene Sektoren merken
+    GVAR(OwnSectorsAll) = [];
     switch playerSide do
     {
         case west:
         {
-            GVAR(EnemySectorsAll) = EGVAR(SECTORCONTROL,csat_allsectors);
+            GVAR(OwnSectorsAll) = EGVAR(SECTORCONTROL,nato_allsectors);
         };
 
         case east:
         {
-            GVAR(EnemySectorsAll) = EGVAR(SECTORCONTROL,nato_allsectors);
+            GVAR(OwnSectorsAll) = EGVAR(SECTORCONTROL,csat_allsectors);
         };
     };
 
-    // Feindliche Sektoren markieren
+    // Eigene Sektoren markieren
     private _MapControl = findDisplay 12 displayCtrl 51;
     OPT_BEAM_MapHandler = _MapControl ctrlAddEventHandler ["Draw",
     {
         params ["_control"];
         private _color = [];
         {
-            if (_forEachIndex in OPT_BEAM_EnemySectorsAll) then
+            if (_forEachIndex in OPT_BEAM_OwnSectorsAll) then
             {
-                _color = [0, 0, 0, 1]; // OPFOR
-                _control drawTriangle [_x # 3, _color, "\A3\ui_f\data\map\markerbrushes\fdiagonal_ca.paa"];
+                _color = [0, 1, 0, 0.2];
+                _control drawTriangle [_x # 3, _color, "#(rgb,1,1,1)color(1,1,1,1)"];
             };
         } forEach OPT_SECTORCONTROL_AllSectors;
     }];    
@@ -210,35 +176,25 @@ if (GVAR(BeamRadius) > -0.00001) then
         */
         private _newPos = [0, 0, 0];
         private _dir = getDir vehicle player;
-        private _fail = false;
+        private _fail = true;
         private _exact = false;
 
-        // Verbotene Bereiche checken (und ob innerhalb der Kartengrenzen)
-        private _inMap = _pos inArea [[worldSize / 2, worldSize / 2], worldSize / 2, worldSize / 2, 0, true, -1];
-        {
-            if (_pos inArea _x || !_inMap) then
-            {
-                private _header = MLOC(BEAM_MSG_HEADER);
-                private _txt = MLOC(BEAM_FORBIDDEN);
-                hint format ["%1\n\n%2", _header, _txt];
-                playSound "additemok";
-                _fail = true;
-                break;
-            };
-        } forEach GVAR(BeamZoneDeniedMarkers);
-
-        // Feindliche Sektoren verbieten
+        // Nur eigene Sektoren erlauben
         {
             if (_pos inPolygon _x) then
             {
-                private _header = MLOC(BEAM_MSG_HEADER);
-                private _txt = MLOC(BEAM_FORBIDDEN_SECTOR);
-                hint format ["%1\n\n%2", _header, _txt];
-                playSound "additemok";
-                _fail = true;
+                _fail = false;
+                // Verbotene Bereiche checken
+                {
+                    if (_pos inArea _x) then
+                    {
+                        _fail = true;
+                        break;
+                    };
+                } forEach GVAR(BeamZoneMarkers);
                 break;
             };
-        } forEach EGVAR(SECTORCONTROL,EnemySectorPolygons);
+        } forEach EGVAR(SECTORCONTROL,OwnSectorPolygons);
 
         // Ziel in der Nähe der eigenen (Außen)Basis? Dann exakt auf das Beampad beamen
         {
@@ -286,7 +242,14 @@ if (GVAR(BeamRadius) > -0.00001) then
             };
         };
 
-        if !(_fail) then
+        if (_fail) then
+        {
+            private _header = MLOC(BEAM_MSG_HEADER);
+            private _txt = MLOC(BEAM_FORBIDDEN);
+            hint format ["%1\n\n%2", _header, _txt];
+            playSound "additemok";
+        }
+        else
         {
             // Exakte positionierung (SearchRadius=0) bei Heimat- und Außenbasis
             if (_exact) then
@@ -312,10 +275,11 @@ if (GVAR(BeamRadius) > -0.00001) then
             // Beam-Verbotszonen löschen
             {
                 deleteMarkerLocal _x;
-            } forEach GVAR(BeamZoneDeniedMarkers);
-            GVAR(BeamZoneDeniedMarkers) = [];
+            } forEach GVAR(BeamZoneMarkers);
+            GVAR(BeamZoneMarkers) = [];
 
             openMap false;
+            GVAR(BeamDialogOpen) = false;
         };
     }] call BIS_fnc_addStackedEventHandler;
 }

@@ -23,12 +23,6 @@ class CfgCLibLocalisation
                 German = "Die Zielposition ist derzeit leider nicht erlaubt.";
             };
 
-            class BEAM_FORBIDDEN_SECTOR
-            {
-                English = "Unfortunately, the target position is inside an enemy sector.";
-                German = "Die Zielposition befindet sich in einem feindlichen Sektor.";
-            };
-
             class BEAM_LOCKED
             {
                 English = "Unfortunately, you are currently not allowed to beam with your equipment.";

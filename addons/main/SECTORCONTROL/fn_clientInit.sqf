@@ -49,32 +49,35 @@ _MapControl ctrlAddEventHandler ["Draw",
 
 // Feindliche Sektoren als Polygon-Arrays vorbereiten
 private _EnemySectorsAll = [];
+private _OwnSectorsAll = [];
 switch playerSide do
 {
     case west:
     {
         _EnemySectorsAll = EGVAR(SECTORCONTROL,csat_allsectors);
+        _OwnSectorsAll = EGVAR(SECTORCONTROL,nato_allsectors);
     };
 
     case east:
     {
         _EnemySectorsAll = EGVAR(SECTORCONTROL,nato_allsectors);
+        _OwnSectorsAll = EGVAR(SECTORCONTROL,csat_allsectors);
     };
 };
 
 EGVAR(SECTORCONTROL,EnemySectorPolygons) = [];
+EGVAR(SECTORCONTROL,OwnSectorPolygons) = [];
 {
-    if (_forEachIndex in _EnemySectorsAll) then
+    private _poly = [];
     {
-        private _poly = [];
-        {
-            // 2D -> 3D Umwandlung
-            private _tmp = +(_x # 0);
-            _tmp pushBack 0;
-            _poly pushBack _tmp;
-        } forEach _x # 0;
-        EGVAR(SECTORCONTROL,EnemySectorPolygons) pushBack _poly;
-    };
+        // 2D -> 3D Umwandlung
+        private _tmp = +(_x # 0);
+        _tmp pushBack 0;
+        _poly pushBack _tmp;
+    } forEach _x # 0;
+
+    if (_forEachIndex in _EnemySectorsAll) then {EGVAR(SECTORCONTROL,EnemySectorPolygons) pushBack _poly};
+    if (_forEachIndex in _OwnSectorsAll) then {EGVAR(SECTORCONTROL,OwnSectorPolygons) pushBack _poly};
 } forEach OPT_SECTORCONTROL_AllSectors;
 
 ["missionStarted", {
