@@ -31,9 +31,8 @@
 
 #include "macros.hpp"
 
-// Abbruch, wenn der Dialog schon offen ist
-if (GVAR(BeamDialogOpen)) exitWith {};
-GVAR(BeamDialogOpen) = true;
+// Abbruch, wenn die Map schon offen ist
+if (visibleMap) exitWith {};
 
 // Minimalentfernung zum Beam-Platz
 #define MIN_DISTANCE_TO_BEAMSPOT 10
@@ -279,7 +278,6 @@ if (GVAR(BeamRadius) > -0.00001) then
             GVAR(BeamZoneMarkers) = [];
 
             openMap false;
-            GVAR(BeamDialogOpen) = false;
         };
     }] call BIS_fnc_addStackedEventHandler;
 }

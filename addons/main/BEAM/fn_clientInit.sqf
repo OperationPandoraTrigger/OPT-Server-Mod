@@ -28,7 +28,6 @@
 */
 #include "macros.hpp"
 
-GVAR(BeamDialogOpen) = false;
 GVAR(BeamZoneMarkers) = [];
 
 if (EGVAR(SECTORCONTROL,trainingon)) then
@@ -90,14 +89,13 @@ if (EGVAR(SECTORCONTROL,trainingon)) then
                 _MapControl ctrlRemoveEventHandler ["Draw", OPT_BEAM_MapHandler];
             };
 
-            openMap false;
-
             // alte Beam-Zonen löschen
             {
                 deleteMarkerLocal _x;
             } forEach GVAR(BeamZoneMarkers);
             GVAR(BeamZoneMarkers) = [];
-            GVAR(BeamDialogOpen) = false;
+
+            openMap false;
         };
     }];
 }] call CFUNC(addEventhandler);
