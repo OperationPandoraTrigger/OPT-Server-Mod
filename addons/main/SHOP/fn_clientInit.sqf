@@ -279,6 +279,8 @@ GVAR(eventArgs) = [];
             private _VehicleLR = player call TFAR_fnc_VehicleLR;
             private _encryption = _VehicleLR call TFAR_fnc_getLrRadioCode;
 
+            ["DEBUG", "GetInRadioState", [getPlayerUID player, name player, side player, _pos, _veh, _VehicleLR, _encryption, _this]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
+
             // Check if vehicle was occupied by other team. IF so, we change the encryption to match the team again.
             switch (playerSide) do
             {
@@ -300,6 +302,10 @@ GVAR(eventArgs) = [];
                     };
                 };
             };
+        }
+        else
+        {
+            ["DEBUG", "GetInHasNoRadio", [getPlayerUID player, name player, side player, _pos, _veh, _this]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
         };
     }];
 

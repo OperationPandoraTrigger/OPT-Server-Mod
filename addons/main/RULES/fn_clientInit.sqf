@@ -92,11 +92,13 @@
         if (call TFAR_fnc_haveSWRadio) then
         {
             [call TFAR_fnc_activeSwRadio, GVAR(OWN_RADIOKEY)] call TFAR_fnc_setSwRadioCode;
+            ["DEBUG", "RadioJoinSetSWKey", [getPlayerUID player, name player, side player, position player, GVAR(OWN_RADIOKEY), _this]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
         };
 
         if (call TFAR_fnc_haveLRRadio) then
         {
             [call TFAR_fnc_activeLrRadio, GVAR(OWN_RADIOKEY)] call TFAR_fnc_setLrRadioCode;
+            ["DEBUG", "RadioJoinSetLRKey", [getPlayerUID player, name player, side player, position player, GVAR(OWN_RADIOKEY), _this]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
         };
     }, 5, ""] call CFUNC(wait);
 

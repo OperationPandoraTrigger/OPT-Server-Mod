@@ -28,7 +28,7 @@ if (_item call TFAR_fnc_isRadio) then
         private _key = _this call TFAR_fnc_getSwRadioCode;
         if (_key != GVAR(OWN_RADIOKEY)) then
         {
-            ["Cheat", "EnemyRadio", [getPlayerUID player, name player, side player, _key, _this]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
+            ["Cheat", "EnemyRadio", [getPlayerUID player, name player, side player, position player, _key, _this]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
 
             if (_this in (assignedItems player)) then
             {
@@ -38,6 +38,10 @@ if (_item call TFAR_fnc_isRadio) then
             {
                 player removeItem _this;
             };
+        }
+        else
+        {
+            ["DEBUG", "RadioTakenHasSameSWKey", [getPlayerUID player, name player, side player, position player, _key, _this]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
         };
     }, 1, _item] call CFUNC(wait);
 };
@@ -49,8 +53,12 @@ if (_item call TFAR_fnc_isLRRadio) then
         private _key = (call TFAR_fnc_activeLrRadio) call TFAR_fnc_getLrRadioCode;
         if (_key != GVAR(OWN_RADIOKEY)) then
         {
-            ["Cheat", "EnemyRadio", [getPlayerUID player, name player, side player, _key, _this]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
+            ["Cheat", "EnemyRadio", [getPlayerUID player, name player, side player, position player, _key, _this]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
             removeBackpack player;
+        }
+        else
+        {
+            ["DEBUG", "RadioTakenHasSameLRKey", [getPlayerUID player, name player, side player, position player, _key, _this]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
         };
     }, 1, _item] call CFUNC(wait);
 };

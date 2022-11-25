@@ -182,6 +182,7 @@ DFUNC(HandleDamage) =
         if (call TFAR_fnc_haveSWRadio) then
         {
             [call TFAR_fnc_activeSwRadio, EGVAR(RULES,OWN_RADIOKEY)] call TFAR_fnc_setSwRadioCode;
+            ["DEBUG", "RadioRespawnSetSWKey", [getPlayerUID player, name player, side player, position player, EGVAR(RULES,OWN_RADIOKEY), _this]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
         };
 
         if (call TFAR_fnc_haveLRRadio) then
@@ -192,6 +193,11 @@ DFUNC(HandleDamage) =
                 #define TFAR_CODE_OFFSET 4
                 EGVAR(RULES,TFAR_LR_SETTINGS) set [TFAR_CODE_OFFSET, EGVAR(RULES,OWN_RADIOKEY)];
                 [call TFAR_fnc_activeLrRadio, EGVAR(RULES,TFAR_LR_SETTINGS)] call TFAR_fnc_setLrSettings;
+                ["DEBUG", "RadioRespawnSetLRKey", [getPlayerUID player, name player, side player, position player, EGVAR(RULES,OWN_RADIOKEY), _this]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
+            }
+            else
+            {
+                ["DEBUG", "RadioRespawnHasNoLRKey", [getPlayerUID player, name player, side player, position player, _this]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
             };
         }
         else
