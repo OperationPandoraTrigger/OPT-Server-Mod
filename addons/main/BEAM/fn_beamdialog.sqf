@@ -64,8 +64,10 @@ if (typeOf vehicle player in EGVAR(SHOP,air) && isTouchingGround vehicle player)
     playSound "additemok";
 };
 
-// Fahrzeug abbremsen, bevor der Dialog aufgeht
+// Fahrzeug abbremsen und AutoHover aktivieren, bevor der Dialog aufgeht
 vehicle player setVelocity [0, 0, 0];
+GVAR(oldAutoHover) = isAutoHoverOn (vehicle player);
+(vehicle player) action ["AutoHover", vehicle player];
 
 // alte Beam-Verbotszonen löschen
 {
@@ -276,6 +278,16 @@ if (GVAR(BeamRadius) > -0.00001) then
                 deleteMarkerLocal _x;
             } forEach GVAR(BeamZoneMarkers);
             GVAR(BeamZoneMarkers) = [];
+
+            // Alten AutoHover-Zustand wiederherstellen
+            if !(isNil QGVAR(oldAutoHover)) then
+            {
+                if !(GVAR(oldAutoHover)) then
+                {
+                    (vehicle player) action ["AutoHoverCancel", vehicle player];
+                };
+                GVAR(oldAutoHover) = nil;
+            };
 
             openMap false;
         };

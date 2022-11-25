@@ -95,6 +95,17 @@ if (EGVAR(SECTORCONTROL,trainingon)) then
             } forEach GVAR(BeamZoneMarkers);
             GVAR(BeamZoneMarkers) = [];
 
+            // Alten AutoHover-Zustand wiederherstellen
+            if !(isNil QGVAR(oldAutoHover)) then
+            {
+                if !(GVAR(oldAutoHover)) then
+                {
+                    (vehicle player) action ["AutoHoverCancel", vehicle player];
+                };
+                GVAR(oldAutoHover) = nil;
+            };
+
+            // Karte schließen
             openMap false;
         };
     }];
