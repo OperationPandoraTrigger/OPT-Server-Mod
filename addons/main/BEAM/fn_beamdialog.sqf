@@ -64,10 +64,15 @@ if (typeOf vehicle player in EGVAR(SHOP,air) && isTouchingGround vehicle player)
     playSound "additemok";
 };
 
-// Fahrzeug abbremsen und AutoHover aktivieren, bevor der Dialog aufgeht
+// Fahrzeug abbremsen bevor die Karte aufgeht
 vehicle player setVelocity [0, 0, 0];
-GVAR(oldAutoHover) = isAutoHoverOn (vehicle player);
-(vehicle player) action ["AutoHover", vehicle player];
+
+// Bei Luftfahrzeugen in denen der Pilot die Beam-Karte öffnet wird vorher der AutoHover aktiviert
+if (vehicle player isKindOf "Air" && currentPilot vehicle player == player) then
+{
+    GVAR(oldAutoHover) = isAutoHoverOn (vehicle player);
+    (vehicle player) action ["AutoHover", vehicle player];
+};
 
 // alte Beam-Verbotszonen löschen
 {
@@ -280,13 +285,16 @@ if (GVAR(BeamRadius) > -0.00001) then
             GVAR(BeamZoneMarkers) = [];
 
             // Alten AutoHover-Zustand wiederherstellen
-            if !(isNil QGVAR(oldAutoHover)) then
+            if (vehicle player isKindOf "Air" && currentPilot vehicle player == player) then
             {
-                if !(GVAR(oldAutoHover)) then
+                if !(isNil QGVAR(oldAutoHover)) then
                 {
-                    (vehicle player) action ["AutoHoverCancel", vehicle player];
+                    if !(GVAR(oldAutoHover)) then
+                    {
+                        (vehicle player) action ["AutoHoverCancel", vehicle player];
+                    };
+                    GVAR(oldAutoHover) = nil;
                 };
-                GVAR(oldAutoHover) = nil;
             };
 
             openMap false;
