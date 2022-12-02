@@ -272,36 +272,38 @@ GVAR(eventArgs) = [];
         turret: Array - turret path
         */
         params ["_unit", "_pos", "_veh", "_turret"];
+        private _radios = _veh call TFAR_fnc_getVehicleRadios;
 
         // check if there is a radio in the vehicle
-        if (_veh call TFAR_fnc_hasVehicleRadio) then
+        if (count _radios > 0) then
         {
-            private _VehicleLR = player call TFAR_fnc_VehicleLR;
-            private _encryption = _VehicleLR call TFAR_fnc_getLrRadioCode;
-
-            ["DEBUG", "GetInRadioState", [getPlayerUID player, name player, side player, _pos, _veh, _VehicleLR, _encryption, _this]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
-
-            // Check if vehicle was occupied by other team. IF so, we change the encryption to match the team again.
-            switch (playerSide) do
             {
-                case west:
-                {
-                    if ((toLower(_encryption) != "_bluefor")) then
-                    {
-                        [_VehicleLR, "_bluefor"] call TFAR_fnc_setLrRadioCode;
-                        systemChat "Die Funk-Verschlüsselung wurde geändert.";
-                    };
-                };
+                private _encryption = _x call TFAR_fnc_getLrRadioCode;
+                ["DEBUG", "GetInRadioStateBefore", [getPlayerUID player, name player, side player, _pos, _veh, _x, _encryption, _this]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
 
-                case east:
+                // Check if vehicle was occupied by other team. IF so, we change the encryption to match the team again.
+                switch (playerSide) do
                 {
-                    if ((toLower(_encryption) != "_opfor")) then
+                    case west:
                     {
-                        [_VehicleLR, "_opfor"] call TFAR_fnc_setLrRadioCode;
-                        systemChat "Die Funk-Verschlüsselung wurde geändert.";
+                        if (_encryption != "_bluefor") then
+                        {
+                            [_x, "_bluefor"] call TFAR_fnc_setLrRadioCode;
+                            systemChat "Die Funk-Verschlüsselung wurde geändert.";
+                        };
+                    };
+
+                    case east:
+                    {
+                        if (_encryption != "_opfor") then
+                        {
+                            [_x, "_opfor"] call TFAR_fnc_setLrRadioCode;
+                            systemChat "Die Funk-Verschlüsselung wurde geändert.";
+                        };
                     };
                 };
-            };
+                ["DEBUG", "GetInRadioStateAfter", [getPlayerUID player, name player, side player, _pos, _veh, _x, _x call TFAR_fnc_getLrRadioCode, _this]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
+            } forEach _radios;
         }
         else
         {
