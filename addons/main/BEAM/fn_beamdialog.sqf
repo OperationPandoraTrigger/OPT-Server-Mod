@@ -80,24 +80,13 @@ if (vehicle player isKindOf "Air" && currentPilot vehicle player == player) then
 } forEach GVAR(BeamZoneMarkers);
 GVAR(BeamZoneMarkers) = [];
 
-GVAR(ForbiddenZones) = [];
-
-switch playerSide do
+// In der Schlacht alle Fahnen fürs Beamen verbieten
+if (EGVAR(GELDZEIT,GAMESTAGE) == GAMESTAGE_WAR) then
 {
-    case west:
-    {
-        // In Kriegszeiten alle eigenen aktiven Fahnen fürs Beamen verbieten
-        if (EGVAR(GELDZEIT,GAMESTAGE) == GAMESTAGE_WAR) then {GVAR(ForbiddenZones) = EGVAR(SECTORCONTROL,nato_flags)};
-        GVAR(ExactZones) = [Teleport_NATO_Basis1, Teleport_NATO_Basis2];
-    };
-
-    case east:
-    {
-        // In Kriegszeiten alle eigenen aktiven Fahnen fürs Beamen verbieten
-        if (EGVAR(GELDZEIT,GAMESTAGE) == GAMESTAGE_WAR) then {GVAR(ForbiddenZones) = EGVAR(SECTORCONTROL,csat_flags)};
-        GVAR(ExactZones) = [Teleport_CSAT_Basis1, Teleport_CSAT_Basis2, Teleport_CSAT_Basis3];
-    };
-};
+    GVAR(ForbiddenZones) = EGVAR(SECTORCONTROL,nato_flags) + EGVAR(SECTORCONTROL,csat_flags);
+}
+// Ansonsten halt nicht
+else {GVAR(ForbiddenZones) = []};
 
 // Größe der Zone für Fußsoldaten
 if (vehicle player == player) then
@@ -211,7 +200,7 @@ if (GVAR(BeamRadius) > -0.00001) then
                 _exact = true;
                 break;
             };
-        } forEach GVAR(ExactZones);
+        } forEach [Teleport_NATO_Basis1, Teleport_NATO_Basis2, Teleport_CSAT_Basis1, Teleport_CSAT_Basis2, Teleport_CSAT_Basis3];
 
         // Teleport auf Wasser oder Brücken
         if ((surfaceIsWater _pos) and !(vehicle player isKindOf "Air")) then
