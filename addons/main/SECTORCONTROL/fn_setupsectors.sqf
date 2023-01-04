@@ -974,14 +974,13 @@ if (worldName == "Enoch") then
             [   // Sektormarker-Position
             ]
         ],
-
         [    // Sektor 1
             [   // Sektormarker
             ],
 
             [   // Flaggen-Positionen
-                [1295, 9508, 0],
-                [1235, 8955, 0]
+                [1030, 12800-1405, 0],
+                [3128, 12800-866, 0]
             ],
 
             [   // Beam-Positionen
@@ -999,8 +998,8 @@ if (worldName == "Enoch") then
             ],
 
             [   // Flaggen-Positionen
-                [3846, 11657, 0],
-                [4100, 10259, 0]
+                [3846, 12800-1143, 0],
+                [4100, 12800-2541, 0]
             ],
 
             [   // Beam-Positionen
@@ -1018,8 +1017,8 @@ if (worldName == "Enoch") then
             ],
 
             [   // Flaggen-Positionen
-                [6272, 10919, 0],
-                [6264, 10155, 0]
+                [6272, 12800-1881, 0],
+                [7930, 12800-946, 0]
             ],
 
             [   // Beam-Positionen
@@ -1037,8 +1036,8 @@ if (worldName == "Enoch") then
             ],
 
             [   // Flaggen-Positionen
-                [7930, 11854, 0],
-                [8141, 10848, 0]
+                [8141, 12800-1952, 0],
+                [9290, 12800-1627, 0]
             ],
 
             [   // Beam-Positionen
@@ -1056,8 +1055,8 @@ if (worldName == "Enoch") then
             ],
 
             [   // Flaggen-Positionen
-                [9290, 11173, 0],
-                [9515, 10351, 0]
+                [ 9515, 12800-2449, 0],
+                [10684, 12800-1707, 0]
             ],
 
             [   // Beam-Positionen
@@ -1075,8 +1074,8 @@ if (worldName == "Enoch") then
             ],
 
             [   // Flaggen-Positionen
-                [1799, 7685, 0],
-                [3439, 8997, 0]
+                [7801, 12800-2718, 0],
+                [8118, 12800-4071, 0]
             ],
 
             [   // Beam-Positionen
@@ -1094,8 +1093,8 @@ if (worldName == "Enoch") then
             ],
 
             [   // Flaggen-Positionen
-                [4194, 9038, 0],
-                [5158, 9943, 0]
+                [6524, 12800-3549, 0],
+                [6429, 12800-4646, 0]
             ],
 
             [   // Beam-Positionen
@@ -1113,8 +1112,8 @@ if (worldName == "Enoch") then
             ],
 
             [   // Flaggen-Positionen
-                [6524, 9251, 0],
-                [6429, 8154, 0]
+                [5158, 12800-2857, 0],
+                [6264, 12800-2645, 0]
             ],
 
             [   // Beam-Positionen
@@ -1132,8 +1131,8 @@ if (worldName == "Enoch") then
             ],
 
             [   // Flaggen-Positionen
-                [7801, 10082, 0],
-                [8118, 8729, 0]
+                [4194, 12800-3762, 0],
+                [3439, 12800-3803, 0]
             ],
 
             [   // Beam-Positionen
@@ -1149,10 +1148,9 @@ if (worldName == "Enoch") then
         [    // Sektor 10
             [   // Sektormarker
             ],
-
             [   // Flaggen-Positionen
-                [9804, 8596, 0],
-                [11042, 9021, 0]
+                [1461, 12800-3068, 0],
+                [1235, 12800-3845, 0]
             ],
 
             [   // Beam-Positionen
@@ -1170,8 +1168,8 @@ if (worldName == "Enoch") then
             ],
 
             [   // Flaggen-Positionen
-                [1906, 7086, 0],
-                [3119, 6790, 0]
+                [4037, 12800-4914, 0],
+                [3119, 12800-6010, 0]
             ],
 
             [   // Beam-Positionen
@@ -1189,8 +1187,8 @@ if (worldName == "Enoch") then
             ],
 
             [   // Flaggen-Positionen
-                [4865, 7793, 0],
-                [4570, 6396, 0]
+                [4865, 12800-5007, 0],
+                [4570, 12800-6404, 0]
             ],
 
             [   // Beam-Positionen
@@ -1208,8 +1206,8 @@ if (worldName == "Enoch") then
             ],
 
             [   // Flaggen-Positionen
-                [7349, 6466, 0],
-                [9056, 6590, 0]
+                [4688, 12800-7187, 0],
+                [5962, 12800-8723, 0]
             ],
 
             [   // Beam-Positionen
@@ -1227,8 +1225,8 @@ if (worldName == "Enoch") then
             ],
 
             [   // Flaggen-Positionen
-                [10320, 6810, 0],
-                [11864.2, 7399.04, 0]
+                [7349, 12800-6334, 0],
+                [7669, 12800-7484, 0]
             ],
 
             [   // Beam-Positionen
@@ -1246,8 +1244,8 @@ if (worldName == "Enoch") then
             ],
 
             [   // Flaggen-Positionen
-                [890, 5475, 0],
-                [2624, 5453, 0]
+                [9056, 12800-6210, 0],
+                [9059, 12800-8367, 0]
             ],
 
             [   // Beam-Positionen
@@ -1265,8 +1263,8 @@ if (worldName == "Enoch") then
             ],
 
             [   // Flaggen-Positionen
-                [4688, 5613, 0],
-                [5618, 3780, 0]
+                [9902, 12800-9012, 0],
+                [10498, 12800-9671, 0]
             ],
 
             [   // Beam-Positionen
@@ -1284,8 +1282,8 @@ if (worldName == "Enoch") then
             ],
 
             [   // Flaggen-Positionen
-                [5962, 4077, 0],
-                [7669, 5316, 0]
+                [10219, 12800-10632, 0],
+                [11256, 12800-12097, 0]
             ],
 
             [   // Beam-Positionen
@@ -1303,8 +1301,8 @@ if (worldName == "Enoch") then
             ],
 
             [   // Flaggen-Positionen
-                [9059, 4433, 0],
-                [11728, 5015, 0]
+                [7621, 12800-10170, 0],
+                [8938, 12800-10751, 0]
             ],
 
             [   // Beam-Positionen
@@ -1322,8 +1320,8 @@ if (worldName == "Enoch") then
             ],
 
             [   // Flaggen-Positionen
-                [1658, 3690, 0],
-                [2409, 3815, 0]
+                [5618, 12800-9020, 0],
+                [5096, 12800-10674, 0]
             ],
 
             [   // Beam-Positionen
@@ -1341,7 +1339,8 @@ if (worldName == "Enoch") then
             ],
 
             [   // Flaggen-Positionen
-                [2799, 1620, 0]
+                [3266, 12800-10662, 0]
+                [2799, 12800-11180, 0]
             ],
 
             [   // Beam-Positionen
@@ -1359,8 +1358,6 @@ if (worldName == "Enoch") then
             ],
 
             [   // Flaggen-Positionen
-                [3266, 2138, 0],
-                [5096, 2126, 0]
             ],
 
             [   // Beam-Positionen
@@ -1378,8 +1375,6 @@ if (worldName == "Enoch") then
             ],
 
             [   // Flaggen-Positionen
-                [7364, 2599, 0],
-                [8938, 2049, 0]
             ],
 
             [   // Beam-Positionen
@@ -1397,8 +1392,6 @@ if (worldName == "Enoch") then
             ],
 
             [   // Flaggen-Positionen
-                [9902, 3788, 0],
-                [10498, 3129, 0]
             ],
 
             [   // Beam-Positionen
@@ -1416,7 +1409,6 @@ if (worldName == "Enoch") then
             ],
 
             [   // Flaggen-Positionen
-                [10219, 2168, 0]
             ],
 
             [   // Beam-Positionen
@@ -1872,9 +1864,9 @@ GVAR(csat_sectors) = parseSimpleArray format ["[%1]", GVAR(csat_sectors_str)];
         if (_forEachIndex in (GVAR(nato_sectors) + GVAR(csat_sectors))) then {_icon = "hd_ambush"}
         else {_icon = "EmptyIcon"};
 
-        private _marker = createMarkerLocal [format ["SectorNumberMarker_%1", _forEachIndex], _pos];  
-        _marker setMarkerColorLocal _color; 
-        _marker setMarkerTypeLocal _icon; 
+        private _marker = createMarkerLocal [format ["SectorNumberMarker_%1", _forEachIndex], _pos];
+        _marker setMarkerColorLocal _color;
+        _marker setMarkerTypeLocal _icon;
         _marker setMarkerText str _forEachIndex;
         GVAR(SectorNumberMarkers) pushBack _marker;
     };
