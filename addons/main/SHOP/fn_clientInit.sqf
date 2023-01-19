@@ -289,7 +289,7 @@ GVAR(eventArgs) = [];
                         if (_encryption != "_bluefor") then
                         {
                             [_x, "_bluefor"] call TFAR_fnc_setLrRadioCode;
-                            systemChat "Die Funk-Verschlüsselung wurde geändert.";
+//                            systemChat "Die Funk-Verschlüsselung wurde geändert.";
                         };
                     };
 
@@ -298,7 +298,7 @@ GVAR(eventArgs) = [];
                         if (_encryption != "_opfor") then
                         {
                             [_x, "_opfor"] call TFAR_fnc_setLrRadioCode;
-                            systemChat "Die Funk-Verschlüsselung wurde geändert.";
+//                            systemChat "Die Funk-Verschlüsselung wurde geändert.";
                         };
                     };
                 };
