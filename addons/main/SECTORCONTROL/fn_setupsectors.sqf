@@ -704,6 +704,406 @@ if (worldName == "Enoch") then
     ];
 };
 
+// Australia
+if (worldName == "australia") then
+{
+    GVAR(AllSectors) =
+    [
+        [    // Sektor 0
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 1
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [9588.92,21441.2,0.00131369],
+                [8738.74,26229.4,0.00129128]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 2
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [16718.5,33829.5,0.00143909],
+                [22593.3,24803.5,0.00143814]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 3
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [24783.4,13685.5,0.00143909],
+                [31035.1,19917.3,0.00143814]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 4
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [31351.7,11242.1,0.00143909],
+                [35422.7,8566.46,0]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ]
+    ];
+};
+
+// Laghisola
+if (worldName == "egl_laghisola") then
+{
+    GVAR(AllSectors) =
+    [
+        [    // Sektor 0
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 1
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [3512.25,2874.69,0.00140357],
+                [3936.58,4345.17,0.00143743]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 2
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [2360.46,7414.09,0.00143909],
+                [4220.21,9099.48,0.00143886]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 3
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [8008.27,7560.41,0.00143909],
+                [7333.6,5517.25,0.00143886]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 4
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [5150.87,4040.67,0.00143909],
+                [7916.12,2154.81,0.00144196]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ]
+    ];
+};
+
+// Lythium
+if (worldName == "lythium") then
+{
+    GVAR(AllSectors) =
+    [
+        [    // Sektor 0
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 1
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [11788.4,2822.26,0.00144768],
+                [12699.2,4902.94,0.00143623]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 2
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [11012.6,9070.58,0.00131989],
+                [5171.37,10317.3,0.00143433]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 3
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [9683.09,11330.2,0.00149536],
+                [6046.37,13321.9,0.00143433]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 4
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [12860.5,15295.8,0.00154114],
+                [3824.98,17814,0.00146484]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ]
+    ];
+};
+
+// Altis
+if (worldName == "Altis") then
+{
+    GVAR(AllSectors) =
+    [
+        [    // Sektor 0
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 1
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [9139.45,8341.89,0.00154877],
+                [11209,8710.87,0.00143433]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 2
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [10707.7,12157.1,0.00136185],
+                [11694.4,13644.4,0.00157261]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 3
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [14165,16296.9,0.00159264],
+                [14578.7,16804.6,0.00143814]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 4
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [25680.6,21377.8,0.00145721],
+                [25307.1,21824.5,0.00189209]
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ]
+    ];
+};
+
 publicVariable QGVAR(AllSectors);
 
 // Create MineZoneMarker for all possible flags (will be deleted after Waffenruhe)

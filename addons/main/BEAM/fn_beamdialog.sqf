@@ -191,6 +191,12 @@ if (GVAR(BeamRadius) > -0.00001) then
             };
         } forEach EGVAR(SECTORCONTROL,OwnSectorPolygons);
 
+        // Im Training alle Beampunkte erlauben (erlaubt auch das Beamen, falls gar keine Sektoren definiert sind)
+        if (EGVAR(SECTORCONTROL,trainingon)) then
+        {
+            _fail = false;
+        };
+
         // Ziel in der Nähe der eigenen (Außen)Basis? Dann exakt auf das Beampad beamen
         {
             if (_pos distance2D _x < 250) then
