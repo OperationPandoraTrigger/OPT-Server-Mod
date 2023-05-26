@@ -87,7 +87,7 @@
         };
     };
 
-    // TFAR Encryption beim Joinen neu setzen (Zeitverzögert, da es sonst nicht greift)
+    // TFAR Encryption und Armbänder beim Joinen neu setzen (Zeitverzögert, da es sonst nicht greift)
     [{
         if (call TFAR_fnc_haveSWRadio) then
         {
@@ -100,6 +100,9 @@
             [call TFAR_fnc_activeLrRadio, GVAR(OWN_RADIOKEY)] call TFAR_fnc_setLrRadioCode;
             ["DEBUG", "RadioJoinSetLRKey", [getPlayerUID player, name player, side player, position player, GVAR(OWN_RADIOKEY), _this]] remoteExecCall [QEFUNC(LOGGING,writelog), 2, false];
         };
+
+        // update armbands on join
+        [player, false] call EFUNC(RULES,armbandupdate);
     }, 5, ""] call CFUNC(wait);
 
     ["TFAR_event_OnFrequencyChanged",

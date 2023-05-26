@@ -71,6 +71,9 @@ if (_victim isKindOf "Man") then
     // no Ammo name found? use projectile instead
     if (_projectileName isEqualTo "") then {_projectileName = _projectile};
     ["Health", "Kill", [getPlayerUID _victim, name _victim, side _victim, getPlayerUID _instigator, name _instigator, side _instigator, _victim distance2D _instigator, _projectileName]] call EFUNC(LOGGING,writelog);
+
+    // update armbands (teamkill or normal kill)
+    [_instigator, (side group _victim == side group _instigator)] call EFUNC(RULES,armbandupdate);
 }
 else // victim = vehicle!
 {
@@ -156,6 +159,9 @@ else // victim = vehicle!
             } forEach (fullCrew _source);
             ["Vehicle", "DestroyByCrew", [_name, _category, _faction, netId _victim, getText (configFile >> "CfgVehicles" >> typeOf _source >> "displayName"), side _instigator, _victim distance2D _instigator, _crewArray joinString _separator]] call EFUNC(LOGGING,writelog);
         };
+
+            // update armbands (teamkill or normal kill)
+            [_instigator, (side group _victim == side group _instigator)] call EFUNC(RULES,armbandupdate);
     }
     else // Täter nicht bekannt
     {

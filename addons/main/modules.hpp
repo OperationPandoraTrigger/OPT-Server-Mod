@@ -174,6 +174,7 @@ class CfgCLibModules
             FNC(uav);
             FNC(stamina);
             FNC(initCBASettings);
+            FNC(armbandupdate);
         };
 
         MODULE(INTRO)

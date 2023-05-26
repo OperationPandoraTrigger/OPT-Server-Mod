@@ -213,6 +213,9 @@ DFUNC(HandleDamage) =
         player enableFatigue GVAR(Fatigue);
         player enableStamina GVAR(Stamina);
         player setCustomAimCoef GVAR(CustomAimCoef);
+
+        // update armbands on respawn
+        [player, false] call EFUNC(RULES,armbandupdate);
     }, 1, ""] call CFUNC(wait);
 }] call CFUNC(addEventhandler);
 
