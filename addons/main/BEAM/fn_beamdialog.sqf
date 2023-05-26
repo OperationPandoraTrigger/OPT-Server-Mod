@@ -35,7 +35,10 @@
 if (visibleMap) exitWith {};
 
 // Minimalentfernung zum Beam-Platz
-#define MIN_DISTANCE_TO_BEAMSPOT 10
+//#define MIN_DISTANCE_TO_BEAMSPOT 10
+
+// Beam deaktivieren für die Altis-Sommerschlacht
+#define MIN_DISTANCE_TO_BEAMSPOT 0
 
 // Überprüfung ob Spieler in der Nähe eines Beampunktes ist (wichtig für Hotkey-Aufruf)
 private _nearBeamSpot = false;
