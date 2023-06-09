@@ -46,4 +46,28 @@ enableTeamswitch false;
 {
     // setup earplug ace menu
     [] call FUNC(earplugs);
+
+    // setup earplug hotkey
+    [
+        "OPT",
+        QGVAR(cba_addKeybind_earplug),
+        ["Ohrenstöpsel", "Ohrenstöpsel Schnellzugriff"],
+        {
+            if (LastVolume > 0.3) then
+            {
+                LastVolume = 0.25;
+                1 fadeSound 0.25;
+            }
+            else
+            {
+                LastVolume = MaxVolume;
+                1 fadeSound MaxVolume;
+            };
+        },
+        {},
+        [
+            DIK_F1,
+            [false, false, false] // [shift, ctrl, alt]
+        ]
+    ] call CBA_fnc_addKeybind;
 }] call CFUNC(addEventhandler);
