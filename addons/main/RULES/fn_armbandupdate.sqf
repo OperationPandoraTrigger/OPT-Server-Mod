@@ -34,9 +34,10 @@ if (_teamkill) then
 // or equip and dress the correct armband
 else
 {
-    switch playerSide do
+    switch (getnumber (configFile >> "CfgVehicles" >> (typeof _player) >> "side")) do
     {
-        case west:
+        // WEST
+        case 1:
         {
             switch EGVAR(SECTORCONTROL,nato_faction) do
             {
@@ -54,7 +55,8 @@ else
             };
         };
 
-        case east:
+        // EAST
+        case 0:
         {
             switch EGVAR(SECTORCONTROL,csat_faction) do
             {

@@ -73,7 +73,7 @@ if (_victim isKindOf "Man") then
     ["Health", "Kill", [getPlayerUID _victim, name _victim, side _victim, getPlayerUID _instigator, name _instigator, side _instigator, _victim distance2D _instigator, _projectileName]] call EFUNC(LOGGING,writelog);
 
     // update armbands (teamkill or normal kill)
-    [_instigator, (side group _victim == side group _instigator)] call EFUNC(RULES,armbandupdate);
+    [_instigator, (getnumber (configFile >> "CfgVehicles" >> (typeof _victim) >> "side") == getnumber (configFile >> "CfgVehicles" >> (typeof _instigator) >> "side"))] call EFUNC(RULES,armbandupdate);
 }
 else // victim = vehicle!
 {
@@ -161,7 +161,7 @@ else // victim = vehicle!
         };
 
             // update armbands (teamkill or normal kill)
-            [_instigator, (side group _victim == side group _instigator)] call EFUNC(RULES,armbandupdate);
+            [_instigator, (getnumber (configFile >> "CfgVehicles" >> (typeof _victim) >> "side") == getnumber (configFile >> "CfgVehicles" >> (typeof _instigator) >> "side"))] call EFUNC(RULES,armbandupdate);
     }
     else // Täter nicht bekannt
     {
