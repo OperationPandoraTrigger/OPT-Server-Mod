@@ -75,7 +75,7 @@ if (worldName == "altis") then
             ],
 
             [   // Flaggen-Positionen
-                [18619.7, 16773.2, 0]
+                [15192.6, 17336.6, 0]
             ],
 
             [   // Beam-Positionen
@@ -92,7 +92,6 @@ if (worldName == "altis") then
             ],
 
             [   // Flaggen-Positionen
-                [18878.7, 16558.6, 0]
             ],
 
             [   // Beam-Positionen
