@@ -76,12 +76,15 @@ if (!(_veh isKindOf "CAManBase") && {position _veh inArea "NATO_T_Zone1" || posi
         _txt = format["%1\n\nEs erfolgt eine Gutschrift über %2€.", _txt, _gutschrift];
         [_entry select 1, _entry select 2, _entry select 3, netId _veh, _entry select 4, _gutschrift, "+"] remoteExecCall ["OPT_GELDZEIT_fnc_updateBudget", 2, false];
 
-        // Hardcap-Gutschrift
-        private _hardcaparray = GVAR(Hardcap_pool) get (typeOf _veh);
-        private _hardcapleft = _hardcaparray select 0;
-        private _hardcaptotal = _hardcaparray select 1;
-        GVAR(Hardcap_pool) set [typeOf _veh, [_hardcapleft + 1, _hardcaptotal]];
-        publicVariable QGVAR(Hardcap_pool);
+        // Hardcap-Gutschrift (nur für Objekte mit Hardcap)
+        if (typeOf _veh in GVAR(Hardcap_pool)) then
+        {
+            private _hardcaparray = GVAR(Hardcap_pool) get (typeOf _veh);
+            private _hardcapleft = _hardcaparray select 0;
+            private _hardcaptotal = _hardcaparray select 1;
+            GVAR(Hardcap_pool) set [typeOf _veh, [_hardcapleft + 1, _hardcaptotal]];
+            publicVariable QGVAR(Hardcap_pool);
+        };
     };
 
     // message only for those within a 200m radius
