@@ -168,6 +168,68 @@ if (worldName == "lythium") then
     ];
 };
 
+// Lythium
+if (worldName == "juju_sahatra") then
+{
+    GVAR(AllSectors) =
+    [
+        [    // Sektor 0
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 1
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [6854.2,2002.99,0]
+  
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ],
+
+        [    // Sektor 2
+            [   // Sektormarker
+            ],
+
+            [   // Flaggen-Positionen
+                [5074.52,3087.24,0]
+
+            ],
+
+            [   // Beam-Positionen
+            ],
+
+            [   // Sektor-Dreiecke
+            ],
+
+            [   // Sektormarker-Position
+            ]
+        ]
+    ];
+};
+
 publicVariable QGVAR(AllSectors);
 
 // Create MineZoneMarker for all possible flags (will be deleted after Waffenruhe)
