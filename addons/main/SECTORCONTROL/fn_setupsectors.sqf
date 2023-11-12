@@ -168,7 +168,7 @@ if (worldName == "lythium") then
     ];
 };
 
-// Lythium
+// Sahatra"
 if (worldName == "juju_sahatra") then
 {
     GVAR(AllSectors) =
