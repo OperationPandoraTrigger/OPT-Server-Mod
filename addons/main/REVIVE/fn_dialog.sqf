@@ -131,6 +131,22 @@ GVAR(startzeit) = time;
         } forEach _units;
     };
 
+    //Dynamische Respawnzeit
+    if (GVAR(Respawnzeitdynamisch)) then
+        {
+        // Respawnzeit setzen
+        private _PlayerOnMapTime = player getVariable ['OPT_isOnMap',GVAR(Respawnzeit)];
+        private _PlayerRespawnTime = GVAR(Respawnzeit) - (Time - _PlayerOnMapTime);
+        if (_PlayerRespwamTime <= 0) then
+            {
+            setPlayerRespawnTime 10;
+            }
+            else
+            {
+            setPlayerRespawnTime _PlayerRespawnTime;    
+            };
+        };
+
     // Textausgabe über Medic entfernung
     _MedicNearLabel_Meter ctrlSetText format ["%1", _hintMsg];
 
