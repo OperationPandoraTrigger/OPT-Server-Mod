@@ -111,26 +111,26 @@
 ] call CBA_Settings_fnc_init;
 
 [
-    QGVAR(Respwanzeitdynamisch), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    QGVAR(Respawnzeitdynamisch), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "CHECKBOX", // setting type
     [
         "Dynamische Respawn Zeit",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
         "Dynamische Respawn Zeit aktivieren?" + endl // Mouse-Over description of the above
     ],
-    "OPT Respwan", // Pretty name of the category where the setting can be found. Can be stringtable entry.
+    "OPT Respawn", // Pretty name of the category where the setting can be found. Can be stringtable entry.
     false, // Default value <BOOLEAN>
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {} // function that will be executed once on mission start and every time the setting is changed.
 ] call CBA_Settings_fnc_init;
 
 [
-    QGVAR(Respwanzeit), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
+    QGVAR(Respawnzeit), // Internal setting name, should always contain a tag! This will be the global variable which takes the value of the setting.
     "SLIDER", // setting type
     [
-        "Respwanzeit Spieler",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
-        "Zeit bis der Spieler Respwan" + endl  // Mouse-Over description of the above
+        "Respawnzeit Spieler",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
+        "Zeit bis der Spieler Respawn" + endl  // Mouse-Over description of the above
     ],
-    "OPT Respwan", // Pretty name of the category where the setting can be found. Can be stringtable entry.
+    "OPT Respawn", // Pretty name of the category where the setting can be found. Can be stringtable entry.
     [0, 1200, 900, 0], // [min, max, default, decimal]
     1, // "_isGlobal" flag. Set this to true to always have this setting synchronized between all clients in multiplayer
     {} // function that will be executed once on mission start and every time the setting is changed.

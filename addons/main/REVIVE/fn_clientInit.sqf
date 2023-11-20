@@ -58,6 +58,12 @@ DFUNC(SelfCare) =
     GVAR(OPT_isDragging) = false;
     player setVariable ["OPT_isDragged", 0, true];
 
+    if (GVAR(Respawnzeitdynamisch)) then
+        {
+        // Respawnzeit setzen
+        setPlayerRespawnTime GVAR(Respawnzeit);
+        };
+
     //Chat abschaltung bei Bewustlosigkeit
     (findDisplay 46) displayAddEventHandler ["KeyDown", {_this call FUNC(keyUnbind)}];
 
