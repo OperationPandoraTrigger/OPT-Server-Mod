@@ -132,18 +132,20 @@ GVAR(startzeit) = time;
     };
 
     //Dynamische Respawnzeit
+    private _PlayerOnMapTime = player getVariable ['OPT_PlayerOnMap',GVAR(Respawnzeit)];
+    private _PlayerRespawnTime = GVAR(Respawnzeit) - (Time - _PlayerOnMapTime);
+
+    //Dynamische Respawnzeit
     if (GVAR(Respawnzeitdynamisch)) then
         {
         // Respawnzeit setzen
-        private _PlayerOnMapTime = player getVariable ['OPT_isOnMap',GVAR(Respawnzeit)];
-        private _PlayerRespawnTime = GVAR(Respawnzeit) - (Time - _PlayerOnMapTime);
-        if (_PlayerRespwamTime <= 0) then
+        if (_PlayerRespawnTime <= 0) then
             {
             setPlayerRespawnTime 10;
             }
             else
             {
-            setPlayerRespawnTime _PlayerRespawnTime;    
+            setPlayerRespawnTime _PlayerRespawnTime;   
             };
         };
 
