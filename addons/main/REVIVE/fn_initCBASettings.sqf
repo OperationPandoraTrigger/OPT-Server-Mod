@@ -115,7 +115,7 @@
     "CHECKBOX", // setting type
     [
         "Dynamische Respawn Zeit",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
-        "Dynamische Respawn Zeit aktivieren?" + endl // Mouse-Over description of the above
+        "Dynamische Respawn Zeit aktivieren" + endl // Mouse-Over description of the above
     ],
     "OPT Respawn", // Pretty name of the category where the setting can be found. Can be stringtable entry.
     false, // Default value <BOOLEAN>
@@ -128,7 +128,7 @@
     "SLIDER", // setting type
     [
         "Respawnzeit Spieler",  // Pretty name shown inside the ingame settings menu. Can be stringtable entry.
-        "Zeit bis der Spieler Respawn" + endl  // Mouse-Over description of the above
+        "Maximale Respawn-Zeit [in s]" + endl  // Mouse-Over description of the above
     ],
     "OPT Respawn", // Pretty name of the category where the setting can be found. Can be stringtable entry.
     [0, 1200, 900, 0], // [min, max, default, decimal]
