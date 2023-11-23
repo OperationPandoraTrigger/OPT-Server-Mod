@@ -157,7 +157,7 @@ DFUNC(HandleDamage) =
     _newPlayer setVariable ["OPT_isUnconscious", 0, true];
     _newPlayer setVariable ["OPT_isStabilized", 0, true];
     _newPlayer setVariable ["OPT_isDragged", 0, true];
-    _newPlayer setVariable ["OOPT_SpawnTime", time, true];
+    _newPlayer setVariable ["OPT_SpawnTime", time, false];
     _newPlayer allowDamage true;
     _newPlayer setVariable ["tf_unable_to_use_radio", false];
 

@@ -54,7 +54,7 @@ DFUNC(SelfCare) =
     // Var setzen
     player setVariable ["OPT_isUnconscious", 0, true];
     player setVariable ["OPT_isStabilized", 0, true];
-    player setVariable ["OPT_SpawnTime", time, true];
+    player setVariable ["OPT_SpawnTime", time, false];
     GVAR(OPT_isDragging) = false;
     player setVariable ["OPT_isDragged", 0, true];
 
